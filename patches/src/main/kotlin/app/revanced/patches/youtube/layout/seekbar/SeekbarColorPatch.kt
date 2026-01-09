@@ -189,8 +189,8 @@ val seekbarColorPatch = bytecodePatch(
             }
 
             val lottieAnimationViewSetAnimationStreamMethod = firstImmutableMethodDeclaratively {
+                // No accessFlags constraint: on 21.02+ this setAnimation(Stream) method is private.
                 definingClass(lottieAnimationViewSetAnimationIntMethod.immutableClassDef.type)
-                accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
                 parameterTypes(factoryStreamReturnType.toString())
                 returnType("V")
             }
