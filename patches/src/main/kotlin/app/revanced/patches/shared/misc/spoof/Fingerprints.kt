@@ -189,6 +189,16 @@ internal val BytecodePatchContext.playbackStartDescriptorFeatureFlagMethodMatch 
     instructions(45665455L())
 }
 
+// Feature flag that causes Shorts content to freeze and fail to load when scrolling.
+// Flag does not seem to affect Shorts if spoofing is off.
+internal val BytecodePatchContext.reelItemWatchResponseFeatureFlagMethodMatch by composingFirstMethod {
+    instructions(45638126L())
+}
+
+internal val BytecodePatchContext.mediaSessionFeatureFlagMethodMatch by composingFirstMethod {
+    instructions(45640404L())
+}
+
 internal fun indexOfNewUrlRequestBuilderInstruction(method: Method) = method.indexOfFirstInstruction {
     val reference = methodReference ?: return@indexOfFirstInstruction false
 

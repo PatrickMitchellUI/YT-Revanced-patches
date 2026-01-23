@@ -35,6 +35,8 @@ internal fun spoofVideoStreamsPatch(
     fixMediaFetchHotConfig: BytecodePatchBuilder.() -> Boolean = { false },
     fixMediaFetchHotConfigAlternative: BytecodePatchBuilder.() -> Boolean = { false },
     fixParsePlaybackResponseFeatureFlag: BytecodePatchBuilder.() -> Boolean = { false },
+    fixMediaSessionFeatureFlag: BytecodePatchBuilder.() -> Boolean = { false },
+    fixReelItemWatchResponseFeatureFlag: BytecodePatchBuilder.() -> Boolean = { false },
     block: BytecodePatchBuilder.() -> Unit,
     executeBlock: BytecodePatchContext.() -> Unit = {},
 ) = bytecodePatch(
@@ -326,6 +328,20 @@ internal fun spoofVideoStreamsPatch(
             playbackStartDescriptorFeatureFlagMethodMatch.method.insertLiteralOverride(
                 playbackStartDescriptorFeatureFlagMethodMatch[0],
                 "$EXTENSION_CLASS_DESCRIPTOR->usePlaybackStartFeatureFlag(Z)Z",
+            )
+        }
+
+        if (fixMediaSessionFeatureFlag()) {
+            mediaSessionFeatureFlagMethodMatch.method.insertLiteralOverride(
+                mediaSessionFeatureFlagMethodMatch[0],
+                "$EXTENSION_CLASS_DESCRIPTOR->useMediaSessionFeatureFlag(Z)Z",
+            )
+        }
+
+        if (fixReelItemWatchResponseFeatureFlag()) {
+            reelItemWatchResponseFeatureFlagMethodMatch.method.insertLiteralOverride(
+                reelItemWatchResponseFeatureFlagMethodMatch[0],
+                "$EXTENSION_CLASS_DESCRIPTOR->useReelItemWatchResponseFeatureFlag(Z)Z",
             )
         }
 
