@@ -29,6 +29,7 @@ import app.revanced.patches.youtube.video.videoid.hookVideoId
 import app.revanced.patches.youtube.video.videoid.videoIdPatch
 import app.revanced.util.addInstructionsAtControlFlowLabel
 import app.revanced.util.cloneMutableAndPreserveParameters
+import app.revanced.util.numberOfParameterRegistersLogical
 import app.revanced.util.findFreeRegister
 import app.revanced.util.indexOfFirstInstructionOrThrow
 import app.revanced.util.insertLiteralOverride
@@ -184,8 +185,10 @@ val returnYouTubeDislikePatch = bytecodePatch(
                     "->" + textComponentConversionContextField.name +
                     ":" + textComponentConversionContextField.type
 
-            it.method.apply {
-                val insertIndex = it[1]
+            // 21.05+ clobbers p0 (this) register, so clone to preserve it.
+            it.method.cloneMutableAndPreserveParameters().apply {
+                // Offset the match index since cloning adds move instructions at the top.
+                val insertIndex = it[1] + numberOfParameterRegistersLogical
                 val charSequenceRegister =
                     getInstruction<FiveRegisterInstruction>(insertIndex).registerD
                 val conversionContextRegister =
