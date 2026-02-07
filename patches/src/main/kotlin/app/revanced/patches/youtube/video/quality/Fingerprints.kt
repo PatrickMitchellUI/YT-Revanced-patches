@@ -15,6 +15,7 @@ import app.revanced.patcher.gettingFirstImmutableMethodDeclaratively
 import app.revanced.patcher.gettingFirstMethodDeclaratively
 import app.revanced.patcher.immutableClassDef
 import app.revanced.patcher.instructions
+import app.revanced.patcher.type
 import app.revanced.patcher.invoke
 import app.revanced.patcher.name
 import app.revanced.patcher.opcodes
@@ -147,4 +148,36 @@ internal val BytecodePatchContext.videoQualityMenuViewInflateMethodMatch by comp
         Opcode.CHECK_CAST,
     )
     literal { videoQualityBottomSheetListFragmentTitle }
+}
+
+private const val STREAMING_DATA_CLASS_DESCRIPTOR =
+    $$"Lcom/google/protos/youtube/api/innertube/StreamingDataOuterClass$StreamingData;"
+
+internal fun BytecodePatchContext.getVideoStreamingDataConstructorMethod(): CompositeMatch {
+    val videoStreamingDataToStringMethod = firstImmutableMethodDeclaratively(
+        "VideoStreamingData(itags="
+    ) {
+        name("toString")
+        accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+        returnType("Ljava/lang/String;")
+        parameterTypes()
+    }
+
+    val videoStreamingDataClassDef = videoStreamingDataToStringMethod.immutableClassDef
+
+    return videoStreamingDataClassDef.firstMethodComposite {
+        accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
+        returnType("V")
+        instructions(
+            allOf(Opcode.IGET_OBJECT(), field { definingClass == STREAMING_DATA_CLASS_DESCRIPTOR }),
+            allOf(
+                Opcode.IGET_OBJECT(),
+                field {
+                    definingClass == videoStreamingDataClassDef.type && type == "Ljava/lang/String;"
+                },
+            ),
+            allOf(Opcode.NEW_INSTANCE(), type("Ljava/util/ArrayList;")),
+            allOf(Opcode.IGET_OBJECT(), field { definingClass == STREAMING_DATA_CLASS_DESCRIPTOR }),
+        )
+    }
 }

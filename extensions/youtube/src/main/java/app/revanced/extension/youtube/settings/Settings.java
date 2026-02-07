@@ -57,6 +57,7 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final BooleanSetting INCREASE_LIVESTREAM_SEEKING_DURATION = new BooleanSetting("revanced_increase_livestream_seeking_duration", TRUE, "revanced_increase_livestream_seeking_duration_user_dialog_message");
     public static final BooleanSetting FORCE_ORIGINAL_AUDIO = new BooleanSetting("revanced_force_original_audio", TRUE, true);
     public static final BooleanSetting HIDE_PREMIUM_VIDEO_QUALITY = new BooleanSetting("revanced_hide_premium_video_quality", TRUE, true);
+    public static final BooleanSetting PRIORITIZE_VIDEO_QUALITY = new BooleanSetting("revanced_prioritize_video_quality", TRUE, true);
     public static final IntegerSetting VIDEO_QUALITY_DEFAULT_WIFI = new IntegerSetting("revanced_video_quality_default_wifi", -2);
     public static final IntegerSetting VIDEO_QUALITY_DEFAULT_MOBILE = new IntegerSetting("revanced_video_quality_default_mobile", -2);
     public static final BooleanSetting REMEMBER_VIDEO_QUALITY_LAST_SELECTED = new BooleanSetting("revanced_remember_video_quality_last_selected", FALSE);

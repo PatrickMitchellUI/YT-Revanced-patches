@@ -1822,6 +1822,10 @@ Limitations:
             <string name="revanced_hide_premium_video_quality_summary_on">Premium quality options are hidden</string>
             <string name="revanced_hide_premium_video_quality_summary_off">Premium quality options are shown</string>
         </patch>
+        <patch id="video.quality.prioritizeVideoQualityPatch">
+            <string name="revanced_prioritize_video_quality_title">Prioritize video quality</string>
+            <string name="revanced_prioritize_video_quality_summary">Prioritizes the highest quality video over codec efficiency</string>
+        </patch>
         <patch id="interaction.seekbar.enableSlideToSeekPatch">
             <string name="revanced_slide_to_seek_title">Enable slide to seek</string>
             <string name="revanced_slide_to_seek_summary_on">Slide to seek is enabled</string>
