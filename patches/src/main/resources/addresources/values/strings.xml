@@ -1460,6 +1460,21 @@ Ready to submit?"</string>
             <string name="revanced_sb_about_api_title" translatable="false">sponsor.ajay.app</string>
             <string name="revanced_sb_about_api_summary">Data is provided by the SponsorBlock API. Tap here to learn more and see downloads for other platforms</string>
         </patch>
+        <patch id="layout.disableLayoutUpdatesPatch">
+            <string name="revanced_disable_layout_updates_title">Disable layout updates</string>
+            <string name="revanced_disable_layout_updates_summary">Prevents the server from updating the app layout</string>
+            <string name="revanced_disable_layout_updates_user_dialog_message">"App layout reverts to the layout used when first installed.
+
+Some server-side layouts may not revert.
+
+Changes include:
+• Components in player flyout menu (or related settings) may not work.
+• Rolling numbers are not animated.
+• Library tab is shown.
+• Music section of video description may not work.
+• Player flyout menu items cannot be hidden.
+• Account switch button may not appear on the Library tab."</string>
+        </patch>
         <patch id="layout.formfactor.changeFormFactorPatch">
             <string name="revanced_change_form_factor_title">Layout form factor</string>
             <string name="revanced_change_form_factor_entry_1">Default</string>
