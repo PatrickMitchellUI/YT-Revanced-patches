@@ -35,12 +35,6 @@ public final class DescriptionComponentsFilter extends Filter {
                 "youchat_entrypoint.e"
         );
 
-        final StringFilterGroup attributesSection = new StringFilterGroup(
-                Settings.HIDE_ATTRIBUTES_SECTION,
-                // "gaming_section", "music_section"
-                "video_attributes_section"
-        );
-
         featuredLinksSection = new StringFilterGroup(
                 Settings.HIDE_FEATURED_LINKS_SECTION,
                 "media_lockup"
