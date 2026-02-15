@@ -137,6 +137,10 @@ Disabling battery optimizations for MicroG will not negatively affect battery us
 Tap the continue button and allow optimization changes."</string>
             <string name="revanced_gms_core_dialog_continue_text">Continue</string>
         </patch>
+        <patch id="misc.audio.drc.disableDRCAudioPatch">
+            <string name="revanced_disable_drc_audio_title">Disable DRC audio</string>
+            <string name="revanced_disable_drc_audio_summary">Disables dynamic range compression (DRC) so audio uses its original volume levels.</string>
+        </patch>
         <patch id="misc.fix.playback.spoofVideoStreamsPatch">
             <string name="revanced_spoof_video_streams_screen_title">Spoof video streams</string>
             <string name="revanced_spoof_video_streams_screen_summary">Spoof the client video streams to prevent playback issues</string>
