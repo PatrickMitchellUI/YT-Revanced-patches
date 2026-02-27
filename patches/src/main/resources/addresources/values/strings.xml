@@ -668,6 +668,10 @@ Limitations:
             <string name="revanced_disable_sign_in_to_tv_popup_summary_on">Sign in to TV popup is disabled</string>
             <string name="revanced_disable_sign_in_to_tv_popup_summary_off">Sign in to TV popup is enabled</string>
         </patch>
+        <patch id="misc.sharesheet.openSystemShareSheetPatch">
+            <string name="revanced_open_system_share_sheet_title">Open system share sheet</string>
+            <string name="revanced_open_system_share_sheet_summary">Always opens the system share sheet instead of the in-app share sheet.</string>
+        </patch>
         <patch id="interaction.doubletap.disableDoubleTapActionsPatch">
             <string name="revanced_disable_chapter_skip_double_tap_title">Disable double tap chapter skip</string>
             <string name="revanced_disable_chapter_skip_double_tap_summary_on">Double tap can never trigger a skip to the next/previous chapter</string>

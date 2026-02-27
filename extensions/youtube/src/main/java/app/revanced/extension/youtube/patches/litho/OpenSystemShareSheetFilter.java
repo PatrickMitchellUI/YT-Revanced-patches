@@ -1,0 +1,35 @@
+package app.revanced.extension.youtube.patches.litho;
+
+import app.revanced.extension.shared.ConversionContext.ContextInterface;
+import app.revanced.extension.shared.patches.litho.Filter;
+import app.revanced.extension.shared.patches.litho.FilterGroup.StringFilterGroup;
+import app.revanced.extension.youtube.settings.Settings;
+
+/**
+ * LithoFilter for {@link app.revanced.extension.youtube.patches.OpenSystemShareSheetPatch}.
+ */
+@SuppressWarnings("unused")
+public final class OpenSystemShareSheetFilter extends Filter {
+
+    public static volatile boolean isShareSheetVisible;
+
+    public OpenSystemShareSheetFilter() {
+        addPathCallbacks(new StringFilterGroup(
+                Settings.OPEN_SYSTEM_SHARE_SHEET,
+                "share_sheet_container."
+        ));
+    }
+
+    @Override
+    public boolean isFiltered(ContextInterface contextInterface,
+                              String identifier,
+                              String accessibility,
+                              String path,
+                              byte[] buffer,
+                              StringFilterGroup matchedGroup,
+                              FilterContentType contentType,
+                              int contentIndex) {
+        isShareSheetVisible = true;
+        return false;
+    }
+}
