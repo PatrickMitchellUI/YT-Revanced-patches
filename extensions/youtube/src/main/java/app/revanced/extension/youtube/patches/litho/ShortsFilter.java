@@ -29,10 +29,6 @@ import app.revanced.extension.youtube.shared.PlayerType;
 public final class ShortsFilter extends Filter {
     private static final boolean HIDE_SHORTS_NAVIGATION_BAR = Settings.HIDE_SHORTS_NAVIGATION_BAR.get();
     private static final String COMPONENT_TYPE = "ComponentType";
-    private static final String[] REEL_ACTION_BAR_PATHS = {
-            "reel_action_bar.", // Regular Shorts.
-            "reels_player_overlay_layout." // Shorts ads.
-    };
     private final String REEL_CHANNEL_BAR_PATH = "reel_channel_bar.e";
 
     /**
@@ -461,7 +457,15 @@ public final class ShortsFilter extends Filter {
             }
 
             if (matchedGroup == shortsCompactFeedVideo) {
-                return shouldHideShortsFeedItems() && shortsCompactFeedVideoBuffer.check(buffer).isFiltered();
+                return shouldHideShortsFeedItems()
+                        && shortsCompactFeedVideoBuffer.check(buffer).isFiltered()
+                        // The litho path of the feed video is 'video_lockup_with_attachment.e'.
+                        // It appears shortsCompactFeedVideoBuffer is used after 20 seconds during autoplay in the feed in YouTube 20.44.38.
+                        // If the Shorts shelf is hidden on the Home feed, the video in the feed will be hidden after 20 seconds have passed since autoplay began in the feed.
+                        //
+                        // When a video is autoplaying in the feed, no new components are drawn on the screen.
+                        // Therefore, filtering is skipped when the current PlayerType is [INLINE_MINIMAL].
+                        && PlayerType.getCurrent() != PlayerType.INLINE_MINIMAL;
             }
 
             if (matchedGroup == shelfHeaderPath) {
