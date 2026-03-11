@@ -358,9 +358,9 @@ Second \"item\" text"</string>
             <string name="revanced_hide_quick_actions_title">Сакриј брзе радње</string>
             <string name="revanced_hide_quick_actions_summary_on">Брзе радње у режиму целог екрана су скривене</string>
             <string name="revanced_hide_quick_actions_summary_off">Брзе радње у режиму целог екрана су приказане</string>
-            <string name="revanced_hide_related_videos_title">Сакриј сродне видее</string>
-            <string name="revanced_hide_related_videos_summary_on">Сродни видеи у брзим радњама су скривени</string>
-            <string name="revanced_hide_related_videos_summary_off">Сродни видеи у брзим радњама су приказани</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">Сакриј сродне видее</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">Сродни видеи у брзим радњама су скривени</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">Сродни видеи у брзим радњама су приказани</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">Сакриј смернице пратилаца</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">Смернице заједнице пратилаца су скривене</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">Смернице заједнице пратилаца су приказане</string>
@@ -1114,9 +1114,9 @@ Second \"item\" text"</string>
             <string name="revanced_end_screen_suggested_video_summary_off">Предложени видео на завршном екрану је приказан</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">Сакриј сродне видее</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">Сродни видеи у режиму целог екрана су скривени</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">Сродни видеи у режиму целог екрана су приказани</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">Сакриј сродне видее</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">Сродни видеи у режиму целог екрана су скривени</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">Сродни видеи у режиму целог екрана су приказани</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">Сакриј временску ознаку видеа</string>

@@ -358,9 +358,9 @@ Tuttavia, l'abilitazione di questa opzione registrerà anche alcuni dati dell'ut
             <string name="revanced_hide_quick_actions_title">Nascondi azioni rapide</string>
             <string name="revanced_hide_quick_actions_summary_on">Le azioni rapide a schermo intero sono nascoste</string>
             <string name="revanced_hide_quick_actions_summary_off">Le azioni rapide a schermo intero sono mostrate</string>
-            <string name="revanced_hide_related_videos_title">Nascondi video correlati</string>
-            <string name="revanced_hide_related_videos_summary_on">I video correlati nelle azioni rapide sono nascosti</string>
-            <string name="revanced_hide_related_videos_summary_off">I video correlati nelle azioni rapide sono mostrati</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">Nascondi video correlati</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">I video correlati nelle azioni rapide sono nascosti</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">I video correlati nelle azioni rapide sono mostrati</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">Nascondi le linee guida per gli iscritti</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">Le linee guida degli iscritti alla community sono nascoste</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">Le linee guida degli iscritti alla community sono visibili</string>
@@ -1114,9 +1114,9 @@ Impostazioni → Riproduzione → Riproduzione automatica video successivo"</str
             <string name="revanced_end_screen_suggested_video_summary_off">Il video suggerito nella schermata finale è mostrato</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">Nascondi overlay video correlati</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">L\'overlay dei video correlati in modalità a schermo intero è nascosto</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">L\'overlay dei video correlati in modalità a schermo intero è mostrato</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">Nascondi overlay video correlati</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">L\'overlay dei video correlati in modalità a schermo intero è nascosto</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">L\'overlay dei video correlati in modalità a schermo intero è mostrato</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">Nascondi timestamp video</string>

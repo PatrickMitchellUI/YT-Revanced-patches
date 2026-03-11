@@ -348,9 +348,9 @@ Wenn Sie dies aktivieren, werden jedoch auch einige Benutzerdaten wie Ihre IP-Ad
             <string name="revanced_hide_quick_actions_title">Schnelle Aktionen ausblenden</string>
             <string name="revanced_hide_quick_actions_summary_on">Schnelle Aktionen im Vollbildmodus sind ausgeblendet</string>
             <string name="revanced_hide_quick_actions_summary_off">Schnelle Aktionen im Vollbildmodus sind angezeigt</string>
-            <string name="revanced_hide_related_videos_title">Ähnliche Videos ausblenden</string>
-            <string name="revanced_hide_related_videos_summary_on">Ähnliche Videos in den schnellen Aktionen sind ausgeblendet</string>
-            <string name="revanced_hide_related_videos_summary_off">Ähnliche Videos in den schnellen Aktionen sind angezeigt</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">Ähnliche Videos ausblenden</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">Ähnliche Videos in den schnellen Aktionen sind ausgeblendet</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">Ähnliche Videos in den schnellen Aktionen sind angezeigt</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">Abonnentenrichtlinien ausblenden</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">Abonnenten-Community-Richtlinien sind ausgeblendet</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">Abonnenten-Community-Richtlinien werden angezeigt</string>
@@ -1100,9 +1100,9 @@ Einstellungen → Wiedergabe → Nächstes Video automatisch abspielen"</string>
             <string name="revanced_end_screen_suggested_video_summary_off">Das vorgeschlagene Video auf dem Endbildschirm wird angezeigt</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">Overlay für verwandte Videos ausblenden</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">Overlay für verwandte Videos im Vollbild ist ausgeblendet</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">Overlay für verwandte Videos im Vollbild wird angezeigt</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">Overlay für verwandte Videos ausblenden</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">Overlay für verwandte Videos im Vollbild ist ausgeblendet</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">Overlay für verwandte Videos im Vollbild wird angezeigt</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">Verstecke Video-Zeitstempel</string>

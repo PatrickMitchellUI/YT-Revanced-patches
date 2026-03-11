@@ -352,9 +352,9 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
             <string name="revanced_hide_quick_actions_title">দ্রুত অ্যাকশন লুকান</string>
             <string name="revanced_hide_quick_actions_summary_on">ফুলস্ক্রিনে দ্রুত অ্যাকশন লুকানো আছে</string>
             <string name="revanced_hide_quick_actions_summary_off">ফুলস্ক্রিনে দ্রুত অ্যাকশন দেখানো আছে</string>
-            <string name="revanced_hide_related_videos_title">সম্পর্কিত ভিডিও লুকান</string>
-            <string name="revanced_hide_related_videos_summary_on">দ্রুত অ্যাকশনে সম্পর্কিত ভিডিও লুকানো আছে</string>
-            <string name="revanced_hide_related_videos_summary_off">দ্রুত অ্যাকশনে সম্পর্কিত ভিডিও দেখানো আছে</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">সম্পর্কিত ভিডিও লুকান</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">দ্রুত অ্যাকশনে সম্পর্কিত ভিডিও লুকানো আছে</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">দ্রুত অ্যাকশনে সম্পর্কিত ভিডিও দেখানো আছে</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">সাবস্ক্রাইবার নির্দেশিকা লুকান</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">সাবস্ক্রাইবারদের সম্পদ্রায় নির্দেশিকা লুকিয়ে রয়েছে</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">সাবস্ক্রাইবারদের সম্পদ্রায় নির্দেশিকা প্রদর্শিত হয়েছে</string>
@@ -1108,9 +1108,9 @@ YouTube সেটিংসে অটো প্লে পরিবর্তন �
             <string name="revanced_end_screen_suggested_video_summary_off">শেষ স্ক্রীনে প্রস্তাবিত ভিডিও দেখানো হয়েছে</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">সম্পর্কিত ভিডিও ওভারলে লুকান</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">ফুলস্ক্রিনে সম্পর্কিত ভিডিও ওভারলে লুকানো আছে</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">ফুলস্ক্রিনে সম্পর্কিত ভিডিও ওভারলে দেখানো হয়েছে</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">সম্পর্কিত ভিডিও ওভারলে লুকান</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">ফুলস্ক্রিনে সম্পর্কিত ভিডিও ওভারলে লুকানো আছে</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">ফুলস্ক্রিনে সম্পর্কিত ভিডিও ওভারলে দেখানো হয়েছে</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">ভিডিওর সময়স্ট্যাম্প লুকান</string>

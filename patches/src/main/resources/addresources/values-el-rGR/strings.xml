@@ -360,9 +360,9 @@ Second \"item\" text"</string>
             <string name="revanced_hide_quick_actions_title">Γρήγορες ενέργειες</string>
             <string name="revanced_hide_quick_actions_summary_on">Κρυμμένες</string>
             <string name="revanced_hide_quick_actions_summary_off">Εμφανίζονται</string>
-            <string name="revanced_hide_related_videos_title">Περισσότερα βίντεο στις γρήγορες ενέργειες</string>
-            <string name="revanced_hide_related_videos_summary_on">Κρυμμένα</string>
-            <string name="revanced_hide_related_videos_summary_off">Εμφανίζονται</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">Περισσότερα βίντεο στις γρήγορες ενέργειες</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">Κρυμμένα</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">Εμφανίζονται</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">Οδηγίες συνδρομητών</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">Κρυμμένες</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">Εμφανίζονται</string>
@@ -1116,9 +1116,9 @@ Second \"item\" text"</string>
             <string name="revanced_end_screen_suggested_video_summary_off">Εμφανίζεται</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">Σχετικά βίντεο στην πλήρη οθόνη</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">Κρυμμένα</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">Εμφανίζονται</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">Σχετικά βίντεο στην πλήρη οθόνη</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">Κρυμμένα</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">Εμφανίζονται</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">Χρονική πρόοδος βίντεο</string>

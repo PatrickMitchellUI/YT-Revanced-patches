@@ -352,9 +352,9 @@ Second \"item\" text"</string>
             <string name="revanced_hide_quick_actions_title">Скриване на бързите действия</string>
             <string name="revanced_hide_quick_actions_summary_on">Бързите действия на цял екран са скрити</string>
             <string name="revanced_hide_quick_actions_summary_off">Бързите действия на цял екран са показани</string>
-            <string name="revanced_hide_related_videos_title">Скриване на свързани видеоклипове</string>
-            <string name="revanced_hide_related_videos_summary_on">Свързаните видеоклипове в бързите действия са скрити</string>
-            <string name="revanced_hide_related_videos_summary_off">Свързаните видеоклипове в бързите действия са показани</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">Скриване на свързани видеоклипове</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">Свързаните видеоклипове в бързите действия са скрити</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">Свързаните видеоклипове в бързите действия са показани</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">Скриване на указанията за абонатори</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">Насоките за общността са скрити</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">Насоките за общността са показани</string>
@@ -1108,9 +1108,9 @@ Second \"item\" text"</string>
             <string name="revanced_end_screen_suggested_video_summary_off">Предложеното видео в края на екрана е показано</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">Скриване на наслагването със свързани видеоклипове</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">Наслагването със свързани видеоклипове на цял екран е скрито</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">Наслагването със свързани видеоклипове на цял екран е показано</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">Скриване на наслагването със свързани видеоклипове</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">Наслагването със свързани видеоклипове на цял екран е скрито</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">Наслагването със свързани видеоклипове на цял екран е показано</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">Скриване на клеймото за време на видеоклипа</string>

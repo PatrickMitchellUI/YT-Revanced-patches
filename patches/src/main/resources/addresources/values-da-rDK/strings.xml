@@ -344,9 +344,9 @@ Du modtager ikke notifikationer om uventede hændelser."</string>
             <string name="revanced_hide_quick_actions_title">Skjul hurtige handlinger</string>
             <string name="revanced_hide_quick_actions_summary_on">Hurtige handlinger i fuldskærm er skjult</string>
             <string name="revanced_hide_quick_actions_summary_off">Hurtige handlinger i fuldskærm er vist</string>
-            <string name="revanced_hide_related_videos_title">Skjul relaterede videoer</string>
-            <string name="revanced_hide_related_videos_summary_on">Relaterede videoer i hurtige handlinger er skjult</string>
-            <string name="revanced_hide_related_videos_summary_off">Relaterede videoer i hurtige handlinger er vist</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">Skjul relaterede videoer</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">Relaterede videoer i hurtige handlinger er skjult</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">Relaterede videoer i hurtige handlinger er vist</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">Skjul retningslinjer for abonnenter</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">Abonnenter community retningslinjer er skjult</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">Abonnenter community retningslinjer er vist</string>
@@ -1100,9 +1100,9 @@ Indstillinger → Afspilning → Afspil næste video automatisk"</string>
             <string name="revanced_end_screen_suggested_video_summary_off">Foreslået video på slutskærmen vises</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">Skjul overlay for relaterede videoer</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">Overlay for relaterede videoer i fuldskærm er skjult</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">Overlay for relaterede videoer i fuldskærm vises</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">Skjul overlay for relaterede videoer</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">Overlay for relaterede videoer i fuldskærm er skjult</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">Overlay for relaterede videoer i fuldskærm vises</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">Skjul tidsstempel på video</string>

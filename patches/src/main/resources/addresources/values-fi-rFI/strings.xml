@@ -358,9 +358,9 @@ Tämän käyttöönotto kirjaa myös joitakin käyttäjätietoja, kuten IP-osoit
             <string name="revanced_hide_quick_actions_title">Piilota pikatoiminnot</string>
             <string name="revanced_hide_quick_actions_summary_on">Pikatoiminnot piilotetaan kokoruututilassa</string>
             <string name="revanced_hide_quick_actions_summary_off">Pikatoiminnot näytetään kokoruututilassa</string>
-            <string name="revanced_hide_related_videos_title">Piilota liittyvät videot</string>
-            <string name="revanced_hide_related_videos_summary_on">Liittyvät videot piilotetaan pikatoiminnoissa</string>
-            <string name="revanced_hide_related_videos_summary_off">Liittyvät videot näytetään pikatoiminnoissa</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">Piilota liittyvät videot</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">Liittyvät videot piilotetaan pikatoiminnoissa</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">Liittyvät videot näytetään pikatoiminnoissa</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">Piilota tilaajien säännöt</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">Tilaajien yhteisön säännöt piilotetaan</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">Tilaajien yhteisön säännöt näytetään</string>
@@ -1114,9 +1114,9 @@ Asetukset → Toisto → Toista seuraava video automaattisesti"</string>
             <string name="revanced_end_screen_suggested_video_summary_off">Loppunäytön ehdotettu video näytetään</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">Piilota liittyvät videot -peittokuva</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">Liittyvät videot -peittokuva piilotetaan kokoruututilassa</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">Liittyvät videot -peittokuva näytetään kokoruututilassa</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">Piilota liittyvät videot -peittokuva</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">Liittyvät videot -peittokuva piilotetaan kokoruututilassa</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">Liittyvät videot -peittokuva näytetään kokoruututilassa</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">Piilota videon aikaleima</string>

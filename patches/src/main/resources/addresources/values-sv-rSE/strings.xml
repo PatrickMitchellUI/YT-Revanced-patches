@@ -348,9 +348,9 @@ Du kommer inte att bli meddelad om oväntade händelser."</string>
             <string name="revanced_hide_quick_actions_title">Dölj snabbåtgärder</string>
             <string name="revanced_hide_quick_actions_summary_on">Snabbåtgärder i helskärm är dolda</string>
             <string name="revanced_hide_quick_actions_summary_off">Snabbåtgärder i helskärm visas</string>
-            <string name="revanced_hide_related_videos_title">Dölj liknande videor</string>
-            <string name="revanced_hide_related_videos_summary_on">Liknande videor i snabbåtgärder är dolda</string>
-            <string name="revanced_hide_related_videos_summary_off">Liknande videor i snabbåtgärder visas</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">Dölj liknande videor</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">Liknande videor i snabbåtgärder är dolda</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">Liknande videor i snabbåtgärder visas</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">Dölj riktlinjer för prenumeranter</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">Community-riktlinjer för prenumeranter är dolda</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">Community-riktlinjer för prenumeranter visas</string>
@@ -1104,9 +1104,9 @@ Inställningar → Uppspelning → Spela upp nästa video automatiskt"</string>
             <string name="revanced_end_screen_suggested_video_summary_off">Föreslagen video på slutskärmen visas</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">Dölj överlägg för liknande videor</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">Överlägg för liknande videor i helskärm är dolt</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">Överlägg för liknande videor i helskärm visas</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">Dölj överlägg för liknande videor</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">Överlägg för liknande videor i helskärm är dolt</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">Överlägg för liknande videor i helskärm visas</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">Dölj videotidsstämpel</string>

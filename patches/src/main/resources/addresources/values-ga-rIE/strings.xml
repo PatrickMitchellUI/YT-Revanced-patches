@@ -358,9 +358,9 @@ Mar sin féin, má chumasaíonn tú é seo, logálfar roinnt sonraí úsáideora
             <string name="revanced_hide_quick_actions_title">Folaigh gníomhartha tapa</string>
             <string name="revanced_hide_quick_actions_summary_on">Tá gníomhartha tapa sa scáileán iomlán i bhfolach</string>
             <string name="revanced_hide_quick_actions_summary_off">Taispeántar gníomhartha tapa i lánscáileán</string>
-            <string name="revanced_hide_related_videos_title">Folaigh físeáin ghaolmhara</string>
-            <string name="revanced_hide_related_videos_summary_on">Tá físeáin ghaolmhara i ngníomhartha tapa i bhfolach</string>
-            <string name="revanced_hide_related_videos_summary_off">Taispeántar físeáin ghaolmhara i ngníomhartha tapa</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">Folaigh físeáin ghaolmhara</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">Tá físeáin ghaolmhara i ngníomhartha tapa i bhfolach</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">Taispeántar físeáin ghaolmhara i ngníomhartha tapa</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">Folaigh treoirlínte síntiúsóirí</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">Tá treoirlínte pobail síntiúsóirí i bhfolach</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">Taispeántar treoirlínte pobail do shíntiúsóirí</string>
@@ -1112,9 +1112,9 @@ Socruithe → Athsheinm → Uathsheinm an chéad fhíseán eile"</string>
             <string name="revanced_end_screen_suggested_video_summary_off">Taispeántar físeán molta scáileán deiridh</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">Folaigh forleagan físeáin ghaolmhara</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">Tá forleagan físeáin ghaolmhara i lánscáileán i bhfolach</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">Taispeántar forleagan físeáin ghaolmhara i lánscáileán</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">Folaigh forleagan físeáin ghaolmhara</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">Tá forleagan físeáin ghaolmhara i lánscáileán i bhfolach</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">Taispeántar forleagan físeáin ghaolmhara i lánscáileán</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">Folaigh stampa ama an fhíseáin</string>

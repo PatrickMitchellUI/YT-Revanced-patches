@@ -351,9 +351,9 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
             <string name="revanced_hide_quick_actions_title">Cəld fəaliyyətləri gizlət</string>
             <string name="revanced_hide_quick_actions_summary_on">Tam ekranda cəld fəaliyyətlər gizlədilib</string>
             <string name="revanced_hide_quick_actions_summary_off">Tam ekranda cəld fəaliyyətlər görünür</string>
-            <string name="revanced_hide_related_videos_title">Əlaqəli videoları gizlət</string>
-            <string name="revanced_hide_related_videos_summary_on">Əlaqəli videolar cəld fəaliyyətlərdə gizlədilib</string>
-            <string name="revanced_hide_related_videos_summary_off">Əlaqəli videolar cəld fəaliyyətlərdə görünür</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">Əlaqəli videoları gizlət</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">Əlaqəli videolar cəld fəaliyyətlərdə gizlədilib</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">Əlaqəli videolar cəld fəaliyyətlərdə görünür</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">Abunəçi təlimatlarını gizlət</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">Abunəliklərin icma təlimatları gizlidir</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">Abunəliklərin icma təlimatları göstərilir</string>
@@ -1107,9 +1107,9 @@ Ayarlar → Oxunuş → Növbəti videonu avtomatik oxudun"</string>
             <string name="revanced_end_screen_suggested_video_summary_off">Son ekranda bildirilən video göstərilir</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">Əlaqəli videolar örtüyünü gizlət</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">Əlaqəli videolar yerləşməsi tam ekranda gizlidir</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">Əlaqəli videolar yerləşməsi tam ekranda görünür</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">Əlaqəli videolar örtüyünü gizlət</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">Əlaqəli videolar yerləşməsi tam ekranda gizlidir</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">Əlaqəli videolar yerləşməsi tam ekranda görünür</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">Video vaxt möhürünü gizlət</string>

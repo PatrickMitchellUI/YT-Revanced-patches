@@ -358,9 +358,9 @@ Povolením této možnosti se však budou zaznamenávat i některá uživatelsk�
             <string name="revanced_hide_quick_actions_title">Skrýt rychlé akce</string>
             <string name="revanced_hide_quick_actions_summary_on">Rychlé akce na celé obrazovce jsou skryty</string>
             <string name="revanced_hide_quick_actions_summary_off">Rychlé akce na celé obrazovce jsou zobrazeny</string>
-            <string name="revanced_hide_related_videos_title">Skrýt související videa</string>
-            <string name="revanced_hide_related_videos_summary_on">Související videa v rychlých akcích jsou skryta</string>
-            <string name="revanced_hide_related_videos_summary_off">Související videa v rychlých akcích jsou zobrazena</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">Skrýt související videa</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">Související videa v rychlých akcích jsou skryta</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">Související videa v rychlých akcích jsou zobrazena</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">Skrýt pokyny pro odběratele</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">Pokyny pro komunitu předplatitelů jsou skryté</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">Pokyny pro komunitu odběratelů se zobrazují</string>
@@ -1114,9 +1114,9 @@ Nastavení → Přehrávání → Automatické přehrávání dalšího videa"</
             <string name="revanced_end_screen_suggested_video_summary_off">Navrhované video na konci obrazovky se zobrazuje</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">Skrýt překrytí souvisejících videí</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">Překrytí souvisejících videí v režimu celé obrazovky je skryto</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">Překrytí souvisejících videí v režimu celé obrazovky je zobrazeno</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">Skrýt překrytí souvisejících videí</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">Překrytí souvisejících videí v režimu celé obrazovky je skryto</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">Překrytí souvisejících videí v režimu celé obrazovky je zobrazeno</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">Skrýt čas videa</string>

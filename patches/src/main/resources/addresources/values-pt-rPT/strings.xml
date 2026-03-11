@@ -358,9 +358,9 @@ No entanto, ativar isto também irá registar alguns dados do utilizador, como o
             <string name="revanced_hide_quick_actions_title">Ocultar ações rápidas</string>
             <string name="revanced_hide_quick_actions_summary_on">As ações rápidas em tela cheia estão ocultas</string>
             <string name="revanced_hide_quick_actions_summary_off">As ações rápidas em tela cheia estão exibidas</string>
-            <string name="revanced_hide_related_videos_title">Ocultar vídeos relacionados</string>
-            <string name="revanced_hide_related_videos_summary_on">Os vídeos relacionados nas ações rápidas estão ocultos</string>
-            <string name="revanced_hide_related_videos_summary_off">Os vídeos relacionados nas ações rápidas estão exibidos</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">Ocultar vídeos relacionados</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">Os vídeos relacionados nas ações rápidas estão ocultos</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">Os vídeos relacionados nas ações rápidas estão exibidos</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">Ocultar as diretrizes para subscritores</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">As diretrizes da comunidade de subscritores estão escondidas</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">As diretrizes da comunidade são visíveis</string>
@@ -1114,9 +1114,9 @@ Definições → Reprodução → Reproduzir o próximo vídeo automaticamente"<
             <string name="revanced_end_screen_suggested_video_summary_off">O vídeo sugerido na tela final é exibido</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">Ocultar sobreposição de vídeos relacionados</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">A sobreposição de vídeos relacionados em tela cheia está oculta</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">A sobreposição de vídeos relacionados em tela cheia está visível</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">Ocultar sobreposição de vídeos relacionados</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">A sobreposição de vídeos relacionados em tela cheia está oculta</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">A sobreposição de vídeos relacionados em tela cheia está visível</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">Esconder timestamp do vídeo</string>

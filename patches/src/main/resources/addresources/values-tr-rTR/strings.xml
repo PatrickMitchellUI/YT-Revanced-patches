@@ -359,9 +359,9 @@ Ancak, bunun etkinleştirilmesi IP adresiniz gibi bazı kullanıcı verilerini d
             <string name="revanced_hide_quick_actions_title">Hızlı eylemleri gizle</string>
             <string name="revanced_hide_quick_actions_summary_on">Tam ekrandaki hızlı eylemler gizli</string>
             <string name="revanced_hide_quick_actions_summary_off">Tam ekrandaki hızlı eylemler görünür</string>
-            <string name="revanced_hide_related_videos_title">İlgili videoları gizle</string>
-            <string name="revanced_hide_related_videos_summary_on">Hızlı eylemlerdeki ilgili videolar gizli</string>
-            <string name="revanced_hide_related_videos_summary_off">Hızlı eylemlerdeki ilgili videolar görünür</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">İlgili videoları gizle</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">Hızlı eylemlerdeki ilgili videolar gizli</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">Hızlı eylemlerdeki ilgili videolar görünür</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">Abone yönergelerini gizle</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">Abone topluluk kuralları gizli</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">Abone topluluk kuralları görünür</string>
@@ -1115,9 +1115,9 @@ Ayarlar → Oynatma → Sonraki videoyu otomatik oynat"</string>
             <string name="revanced_end_screen_suggested_video_summary_off">Bitiş ekranı önerilen videosu görünür</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">İlgili videolar katmanını gizle</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">Tam ekrandaki ilgili videolar katmanı gizli</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">Tam ekrandaki ilgili videolar katmanı görünür</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">İlgili videolar katmanını gizle</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">Tam ekrandaki ilgili videolar katmanı gizli</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">Tam ekrandaki ilgili videolar katmanı görünür</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">Video zaman damgasını gizle</string>

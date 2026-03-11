@@ -356,9 +356,9 @@ Selle lubamine logib aga ka mõningaid kasutajaandmeid, näiteks teie IP-aadress
             <string name="revanced_hide_quick_actions_title">Peida kiirtoimingud</string>
             <string name="revanced_hide_quick_actions_summary_on">Kiirtoimingud täisekraanil on peidetud</string>
             <string name="revanced_hide_quick_actions_summary_off">Kiirtoimingud täisekraanil on nähtavad</string>
-            <string name="revanced_hide_related_videos_title">Peida seotud videod</string>
-            <string name="revanced_hide_related_videos_summary_on">Seotud videod kiirtoimingutes on peidetud</string>
-            <string name="revanced_hide_related_videos_summary_off">Seotud videod kiirtoimingutes on nähtavad</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">Peida seotud videod</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">Seotud videod kiirtoimingutes on peidetud</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">Seotud videod kiirtoimingutes on nähtavad</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">Peida tellijate juhised</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">Tellijate kogukonna juhised on peidetud</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">Tellijate kogukonna juhised on kuvatud</string>
@@ -1112,9 +1112,9 @@ Seaded → Taasesitus → Esita järgmine video automaatselt"</string>
             <string name="revanced_end_screen_suggested_video_summary_off">Lõpuekraani soovitatud video on nähtav</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">Peida seotud videote kate</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">Seotud videote kate täisekraanil on peidetud</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">Seotud videote kate täisekraanil on nähtaval</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">Peida seotud videote kate</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">Seotud videote kate täisekraanil on peidetud</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">Seotud videote kate täisekraanil on nähtaval</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">Peida video ajamärk</string>

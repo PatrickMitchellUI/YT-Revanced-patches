@@ -354,9 +354,9 @@ MicroG-ի համար մարտկոցի օպտիմալացումը անջատել�
             <string name="revanced_hide_quick_actions_title">Թաքցնել արագ գործողությունները</string>
             <string name="revanced_hide_quick_actions_summary_on">Ամբողջ էկրանի արագ գործողությունները թաքնված են</string>
             <string name="revanced_hide_quick_actions_summary_off">Ամբողջ էկրանի արագ գործողությունները ցուցադրված են</string>
-            <string name="revanced_hide_related_videos_title">Թաքցնել հարակից տեսանյութերը</string>
-            <string name="revanced_hide_related_videos_summary_on">Արագ գործողությունների հարակից տեսանյութերը թաքնված են</string>
-            <string name="revanced_hide_related_videos_summary_off">Արագ գործողությունների հարակից տեսանյութերը ցուցադրված են</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">Թաքցնել հարակից տեսանյութերը</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">Արագ գործողությունների հարակից տեսանյութերը թաքնված են</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">Արագ գործողությունների հարակից տեսանյութերը ցուցադրված են</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">Թաքցնել բաժանորդների ուղեցույցները</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">Բաժանորդագրերի համայնքի կանոնները թաքցված են</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">Բաժանորդագրերի համայնքի կանոնները երևում են</string>
@@ -1110,9 +1110,9 @@ MicroG-ի համար մարտկոցի օպտիմալացումը անջատել�
             <string name="revanced_end_screen_suggested_video_summary_off">Վերջնական էկրանին առաջարկվող տեսանյութը ցուցադրվում է</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">Թաքցնել հարակից տեսանյութերի վերադիրը</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">Հարակից տեսանյութերի վերադիրը ամբողջ էկրանով թաքնված է</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">Հարակից տեսանյութերի վերադիրը ամբողջ էկրանով ցուցադրված է</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">Թաքցնել հարակից տեսանյութերի վերադիրը</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">Հարակից տեսանյութերի վերադիրը ամբողջ էկրանով թաքնված է</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">Հարակից տեսանյութերի վերադիրը ամբողջ էկրանով ցուցադրված է</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">Թաքցնել տեսանյութի ժամանակային կետը</string>

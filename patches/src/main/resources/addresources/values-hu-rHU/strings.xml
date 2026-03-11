@@ -352,9 +352,9 @@ Ez a funkció azonban néhány felhasználói adatot is naplóz, például az IP
             <string name="revanced_hide_quick_actions_title">Gyorsműveletek elrejtése</string>
             <string name="revanced_hide_quick_actions_summary_on">A teljes képernyős gyorsműveletek el vannak rejtve</string>
             <string name="revanced_hide_quick_actions_summary_off">A teljes képernyős gyorsműveletek meg vannak jelenítve</string>
-            <string name="revanced_hide_related_videos_title">Kapcsolódó videók elrejtése</string>
-            <string name="revanced_hide_related_videos_summary_on">A gyorsműveletekben lévő kapcsolódó videók el vannak rejtve</string>
-            <string name="revanced_hide_related_videos_summary_off">A gyorsműveletekben lévő kapcsolódó videók meg vannak jelenítve</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">Kapcsolódó videók elrejtése</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">A gyorsműveletekben lévő kapcsolódó videók el vannak rejtve</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">A gyorsműveletekben lévő kapcsolódó videók meg vannak jelenítve</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">Feliratkozók közösségi irányelveinek elrejtése</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">A feliratkozók közösségi irányelvei rejtettek</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">A feliratkozók közösségi irányelvei megjelennek</string>
@@ -1108,9 +1108,9 @@ Beállítások → Lejátszás → Következő videó automatikus lejátszása"<
             <string name="revanced_end_screen_suggested_video_summary_off">A befejező képernyőn lévő javasolt videó látható</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">Kapcsolódó videók átfedésének elrejtése</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">A kapcsolódó videók átfedése teljes képernyőn elrejtve</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">A kapcsolódó videók átfedése teljes képernyőn látható</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">Kapcsolódó videók átfedésének elrejtése</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">A kapcsolódó videók átfedése teljes képernyőn elrejtve</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">A kapcsolódó videók átfedése teljes képernyőn látható</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">Videó időbélyegzőjének elrejtése</string>

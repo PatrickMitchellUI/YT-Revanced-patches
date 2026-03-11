@@ -358,9 +358,9 @@ Toutefois, l'activation de cette option entraînera également l'enregistrement 
             <string name="revanced_hide_quick_actions_title">Masquer les actions rapides</string>
             <string name="revanced_hide_quick_actions_summary_on">Les actions rapides en plein écran sont masquées</string>
             <string name="revanced_hide_quick_actions_summary_off">Les actions rapides en plein écran sont affichées</string>
-            <string name="revanced_hide_related_videos_title">Masquer les vidéos associées</string>
-            <string name="revanced_hide_related_videos_summary_on">Les vidéos associées dans les actions rapides sont masquées</string>
-            <string name="revanced_hide_related_videos_summary_off">Les vidéos associées dans les actions rapides sont affichées</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">Masquer les vidéos associées</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">Les vidéos associées dans les actions rapides sont masquées</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">Les vidéos associées dans les actions rapides sont affichées</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">Masquer les consignes pour les abonnés</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">Les consignes de la communauté des abonnés sont masquées</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">Les consignes de la communauté des abonnés sont affichées</string>
@@ -1114,9 +1114,9 @@ Paramètres → Lecture → Lecture automatique de la vidéo suivante"</string>
             <string name="revanced_end_screen_suggested_video_summary_off">L\'écran de fin suggérant une vidéo est affiché</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">Masquer l\'overlay des vidéos associées</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">L\'overlay des vidéos associées en mode plein écran est masqué</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">L\'overlay des vidéos associées en mode plein écran est affiché</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">Masquer l\'overlay des vidéos associées</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">L\'overlay des vidéos associées en mode plein écran est masqué</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">L\'overlay des vidéos associées en mode plein écran est affiché</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">Masquer le temps écoulé et la durée totale</string>

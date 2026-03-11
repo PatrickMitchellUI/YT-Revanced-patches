@@ -358,9 +358,9 @@ Als u dit inschakelt, worden echter ook bepaalde gebruikersgegevens, zoals uw IP
             <string name="revanced_hide_quick_actions_title">Snelle acties verbergen</string>
             <string name="revanced_hide_quick_actions_summary_on">Snelle acties in volledig scherm zijn verborgen</string>
             <string name="revanced_hide_quick_actions_summary_off">Snelle acties in volledig scherm zijn getoond</string>
-            <string name="revanced_hide_related_videos_title">Gerelateerde video\'s verbergen</string>
-            <string name="revanced_hide_related_videos_summary_on">Gerelateerde video\'s in snelle acties zijn verborgen</string>
-            <string name="revanced_hide_related_videos_summary_off">Gerelateerde video\'s in snelle acties zijn getoond</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">Gerelateerde video\'s verbergen</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">Gerelateerde video\'s in snelle acties zijn verborgen</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">Gerelateerde video\'s in snelle acties zijn getoond</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">Richtlijnen voor abonnees verbergen</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">Abonnementsrichtlijnen voor de community zijn verborgen</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">Abonnementsrichtlijnen voor de community worden getoond</string>
@@ -1114,9 +1114,9 @@ Instellingen → Afspelen → Volgende video automatisch afspelen"</string>
             <string name="revanced_end_screen_suggested_video_summary_off">Voorgestelde video op eindscherm wordt getoond</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">Overlay van gerelateerde video\'s verbergen</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">Overlay van gerelateerde video\'s in volledig scherm is verborgen</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">Overlay van gerelateerde video\'s in volledig scherm wordt getoond</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">Overlay van gerelateerde video\'s verbergen</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">Overlay van gerelateerde video\'s in volledig scherm is verborgen</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">Overlay van gerelateerde video\'s in volledig scherm wordt getoond</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">Verberg de videotijd</string>

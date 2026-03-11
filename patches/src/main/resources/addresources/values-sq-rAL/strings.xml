@@ -342,9 +342,9 @@ Gjithsesi, aktivizimi i këtij opsioni do të regjistrojë edhe disa të dhëna 
             <string name="revanced_hide_quick_actions_title">Fshih veprimet e shpejta</string>
             <string name="revanced_hide_quick_actions_summary_on">Veprimet e shpejta në ekran të plotë janë fshehur</string>
             <string name="revanced_hide_quick_actions_summary_off">Veprimet e shpejta në ekran të plotë janë shfaqur</string>
-            <string name="revanced_hide_related_videos_title">Fshih videot e lidhura</string>
-            <string name="revanced_hide_related_videos_summary_on">Videot e lidhura në veprimet e shpejta janë fshehur</string>
-            <string name="revanced_hide_related_videos_summary_off">Videot e lidhura në veprimet e shpejta janë shfaqur</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">Fshih videot e lidhura</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">Videot e lidhura në veprimet e shpejta janë fshehur</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">Videot e lidhura në veprimet e shpejta janë shfaqur</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">Fshih udhëzimet e abonentëve</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">Udhëzimet e komunitetit të abonuesve janë të fshehura</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">Udhëzimet e komunitetit të abonuesve janë të dukshme</string>
@@ -1098,9 +1098,9 @@ Cilësimet → Luajtja → Luaj automatikisht videon tjetër"</string>
             <string name="revanced_end_screen_suggested_video_summary_off">Videoja e sugjeruar në ekranin fundor shfaqet</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">Fshih mbivendosjen e videove të lidhura.</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">Mbivendosja e videove të lidhura në ekran të plotë është e fshehur.</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">Mbivendosja e videove të lidhura në ekran të plotë shfaqet.</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">Fshih mbivendosjen e videove të lidhura.</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">Mbivendosja e videove të lidhura në ekran të plotë është e fshehur.</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">Mbivendosja e videove të lidhura në ekran të plotë shfaqet.</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">Fsheh vulën e kohës së videos</string>

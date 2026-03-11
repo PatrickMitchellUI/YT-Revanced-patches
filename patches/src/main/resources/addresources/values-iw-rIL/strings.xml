@@ -352,9 +352,9 @@ Second \"item\" text"</string>
             <string name="revanced_hide_quick_actions_title">הסתר פעולות מהירות</string>
             <string name="revanced_hide_quick_actions_summary_on">פעולות מהירות במסך מלא מוסתרות</string>
             <string name="revanced_hide_quick_actions_summary_off">פעולות מהירות במסך מלא מוצגות</string>
-            <string name="revanced_hide_related_videos_title">הסתר סרטונים קשורים</string>
-            <string name="revanced_hide_related_videos_summary_on">סרטונים קשורים בפעולות מהירות מוסתרים</string>
-            <string name="revanced_hide_related_videos_summary_off">סרטונים קשורים בפעולות מהירות מוצגים</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">הסתר סרטונים קשורים</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">סרטונים קשורים בפעולות מהירות מוסתרים</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">סרטונים קשורים בפעולות מהירות מוצגים</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">הסתר את הנחיות המנויים</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">הנחיות קהילת המנויים מוסרת</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">הנחיות קהילת המנויים מוצגות</string>
@@ -1108,9 +1108,9 @@ Second \"item\" text"</string>
             <string name="revanced_end_screen_suggested_video_summary_off">סרטון מוצע של מסך סיום מוצג</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">הסתר שכבת-על של סרטונים קשורים</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">שכבת-על של סרטונים קשורים במסך מלא מוסתרת</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">שכבת-על של סרטונים קשורים במסך מלא מוצגת</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">הסתר שכבת-על של סרטונים קשורים</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">שכבת-על של סרטונים קשורים במסך מלא מוסתרת</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">שכבת-על של סרטונים קשורים במסך מלא מוצגת</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">הסתר חותמת זמן של סרטון</string>

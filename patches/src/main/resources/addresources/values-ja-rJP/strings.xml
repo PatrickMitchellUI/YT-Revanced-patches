@@ -359,9 +359,9 @@ YouTube Premium ユーザーの場合、この設定は必要ない可能性が�
             <string name="revanced_hide_quick_actions_title">クイック アクションを非表示</string>
             <string name="revanced_hide_quick_actions_summary_on">全画面表示モードのクイック アクションは表示されません</string>
             <string name="revanced_hide_quick_actions_summary_off">全画面表示モードのクイック アクションは表示されます</string>
-            <string name="revanced_hide_related_videos_title">関連動画を非表示</string>
-            <string name="revanced_hide_related_videos_summary_on">クイック アクション内の関連動画 (その他の動画) は表示されません</string>
-            <string name="revanced_hide_related_videos_summary_off">クイック アクション内の関連動画 (その他の動画) は表示されます</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">関連動画を非表示</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">クイック アクション内の関連動画 (その他の動画) は表示されません</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">クイック アクション内の関連動画 (その他の動画) は表示されます</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">チャンネル登録者のガイドラインを非表示</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">チャンネル登録者のコミュニティ ガイドラインは表示されません</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">チャンネル登録者のコミュニティ ガイドラインは表示されます</string>
@@ -1114,9 +1114,9 @@ YouTube Premium ユーザーの場合、この設定は必要ない可能性が�
             <string name="revanced_end_screen_suggested_video_summary_off">終了画面の「関連動画」は表示されます</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">関連動画オーバーレイを非表示</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">全画面表示モードの関連動画オーバーレイは表示されません</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">全画面表示モードの関連動画オーバーレイは表示されます</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">関連動画オーバーレイを非表示</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">全画面表示モードの関連動画オーバーレイは表示されません</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">全画面表示モードの関連動画オーバーレイは表示されます</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">動画のタイムスタンプを非表示</string>

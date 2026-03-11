@@ -353,9 +353,9 @@ Tomēr, iespējojot šo iestatījumu, tiks reģistrēti arī daži lietotāja da
             <string name="revanced_hide_quick_actions_title">Slēpt ātrās darbības</string>
             <string name="revanced_hide_quick_actions_summary_on">Ātrās darbības pilnekrāna režīmā ir paslēptas</string>
             <string name="revanced_hide_quick_actions_summary_off">Ātrās darbības pilnekrāna režīmā ir redzamas</string>
-            <string name="revanced_hide_related_videos_title">Slēpt saistītos video</string>
-            <string name="revanced_hide_related_videos_summary_on">Saistītie video ātrajās darbībās ir paslēpti</string>
-            <string name="revanced_hide_related_videos_summary_off">Saistītie video ātrajās darbībās ir redzami</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">Slēpt saistītos video</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">Saistītie video ātrajās darbībās ir paslēpti</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">Saistītie video ātrajās darbībās ir redzami</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">Paslēpt abonentu vadlīnijas</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">Abonētāju kopienas vadlīnijas ir paslēptas</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">Abonētāju kopienas vadlīnijas ir redzamas</string>
@@ -1109,9 +1109,9 @@ Iestatījumi → Atskaņošana → Automātiski atskaņot nākamo video"</string
             <string name="revanced_end_screen_suggested_video_summary_off">Ieteiktais video beigu ekrānā ir redzams</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">Slēpt saistīto video pārklājumu.</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">Saistīto video pārklājums pilnekrāna režīmā ir paslēpts.</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">Saistīto video pārklājums pilnekrāna režīmā ir redzams.</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">Slēpt saistīto video pārklājumu.</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">Saistīto video pārklājums pilnekrāna režīmā ir paslēpts.</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">Saistīto video pārklājums pilnekrāna režīmā ir redzams.</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">Paslēpt video laika zīmi</string>

@@ -354,9 +354,9 @@ Nie będziesz informowany o żadnych nieoczekiwanych zdarzeniach."</string>
             <string name="revanced_hide_quick_actions_title">Ukryj szybkie akcje</string>
             <string name="revanced_hide_quick_actions_summary_on">Szybkie akcje na pełnym ekranie są ukryte</string>
             <string name="revanced_hide_quick_actions_summary_off">Szybkie akcje na pełnym ekranie są widoczne</string>
-            <string name="revanced_hide_related_videos_title">Ukryj powiązane filmy</string>
-            <string name="revanced_hide_related_videos_summary_on">Powiązane filmy w szybkich akcjach są ukryte</string>
-            <string name="revanced_hide_related_videos_summary_off">Powiązane filmy w szybkich akcjach są widoczne</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">Ukryj powiązane filmy</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">Powiązane filmy w szybkich akcjach są ukryte</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">Powiązane filmy w szybkich akcjach są widoczne</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">Ukryj wytyczne dla subskrybentów</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">Wytyczne społeczności subskrybentów są widoczne</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">Wytyczne społeczności subskrybentów są widoczne</string>
@@ -1110,9 +1110,9 @@ Ustawienia → Odtwarzanie → Autoodtwarzanie następnego filmu"</string>
             <string name="revanced_end_screen_suggested_video_summary_off">Sugerowane wideo na ekranie końcowym jest wyświetlane</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">Ukryj nakładkę powiązanych filmów</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">Nakładka powiązanych filmów na pełnym ekranie jest ukryta</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">Nakładka powiązanych filmów na pełnym ekranie jest widoczna</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">Ukryj nakładkę powiązanych filmów</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">Nakładka powiązanych filmów na pełnym ekranie jest ukryta</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">Nakładka powiązanych filmów na pełnym ekranie jest widoczna</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">Znacznik czasu filmu</string>

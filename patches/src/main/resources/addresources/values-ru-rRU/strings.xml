@@ -358,9 +358,9 @@ Second \"item\" text"</string>
             <string name="revanced_hide_quick_actions_title">Скрыть быстрые действия</string>
             <string name="revanced_hide_quick_actions_summary_on">Быстрые действия в полноэкранном режиме скрыты</string>
             <string name="revanced_hide_quick_actions_summary_off">Быстрые действия в полноэкранном режиме показаны</string>
-            <string name="revanced_hide_related_videos_title">Скрыть похожие видео</string>
-            <string name="revanced_hide_related_videos_summary_on">Похожие видео в быстрых действиях скрыты</string>
-            <string name="revanced_hide_related_videos_summary_off">Похожие видео в быстрых действиях показаны</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">Скрыть похожие видео</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">Похожие видео в быстрых действиях скрыты</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">Похожие видео в быстрых действиях показаны</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">Скрыть правила сообщества подписчиков</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">Правила сообщества подписчиков в комментариях скрыты</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">Правила сообщества подписчиков в комментариях показаны</string>
@@ -1114,9 +1114,9 @@ Second \"item\" text"</string>
             <string name="revanced_end_screen_suggested_video_summary_off">Предлагаемые видео в конце просмотра показаны</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">Скрыть похожие видео</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">Похожие видео в полноэкранном режиме скрыты</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">Похожие видео в полноэкранном режиме показаны</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">Скрыть похожие видео</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">Похожие видео в полноэкранном режиме скрыты</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">Похожие видео в полноэкранном режиме показаны</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">Скрыть метку времени видео</string>

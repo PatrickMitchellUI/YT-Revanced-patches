@@ -358,9 +358,9 @@ Second \"item\" text"</string>
             <string name="revanced_hide_quick_actions_title">隱藏快速操作</string>
             <string name="revanced_hide_quick_actions_summary_on">已於全螢幕中隱藏快速操作</string>
             <string name="revanced_hide_quick_actions_summary_off">已於全螢幕中顯示快速操作</string>
-            <string name="revanced_hide_related_videos_title">隱藏相關影片</string>
-            <string name="revanced_hide_related_videos_summary_on">已隱藏快速操作中的相關影片</string>
-            <string name="revanced_hide_related_videos_summary_off">已顯示快速操作中的相關影片</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">隱藏相關影片</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">已隱藏快速操作中的相關影片</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">已顯示快速操作中的相關影片</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">隱藏訂閱者規範</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">已隱藏《訂閱者社群規範》</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">已顯示《訂閱者社群規範》</string>
@@ -1114,9 +1114,9 @@ Second \"item\" text"</string>
             <string name="revanced_end_screen_suggested_video_summary_off">已顯示片尾推薦影片</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">隱藏相關影片覆蓋層</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">全螢幕中的相關影片覆蓋層已隱藏</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">全螢幕中的相關影片覆蓋層已顯示</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">隱藏相關影片覆蓋層</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">全螢幕中的相關影片覆蓋層已隱藏</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">全螢幕中的相關影片覆蓋層已顯示</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">隱藏影片時間戳記</string>

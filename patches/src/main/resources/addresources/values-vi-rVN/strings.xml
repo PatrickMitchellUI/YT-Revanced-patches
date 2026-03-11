@@ -358,9 +358,9 @@ Tuy nhiên, bật tính năng này cũng sẽ ghi lại một số dữ liệu n
             <string name="revanced_hide_quick_actions_title">Ẩn bảng thao tác nhanh</string>
             <string name="revanced_hide_quick_actions_summary_on">Bảng thao tác nhanh ở chế độ toàn màn hình đã bị ẩn</string>
             <string name="revanced_hide_quick_actions_summary_off">Bảng thao tác nhanh ở chế độ toàn màn hình được hiển thị</string>
-            <string name="revanced_hide_related_videos_title">Ẩn video liên quan</string>
-            <string name="revanced_hide_related_videos_summary_on">Video liên quan trong bảng thao tác nhanh đã bị ẩn</string>
-            <string name="revanced_hide_related_videos_summary_off">Video liên quan trong bảng thao tác nhanh được hiển thị</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">Ẩn video liên quan</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">Video liên quan trong bảng thao tác nhanh đã bị ẩn</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">Video liên quan trong bảng thao tác nhanh được hiển thị</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">Ẩn nguyên tắc cộng đồng cho người đăng ký</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">Nguyên tắc cộng đồng cho người đăng ký đã bị ẩn</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">Nguyên tắc cộng đồng dành cho người đăng ký được hiển thị</string>
@@ -1114,9 +1114,9 @@ Cài đặt → Phát → Tự động phát video tiếp theo"</string>
             <string name="revanced_end_screen_suggested_video_summary_off">Video được đề xuất ở màn hình kết thúc được hiển thị</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">Ẩn lớp phủ video liên quan</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">Lớp phủ video liên quan ở chế độ toàn màn hình đã bị ẩn</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">Lớp phủ video liên quan ở chế độ toàn màn hình được hiển thị</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">Ẩn lớp phủ video liên quan</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">Lớp phủ video liên quan ở chế độ toàn màn hình đã bị ẩn</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">Lớp phủ video liên quan ở chế độ toàn màn hình được hiển thị</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">Ẩn dấu thời gian video</string>

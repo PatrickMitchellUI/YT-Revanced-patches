@@ -354,9 +354,9 @@ Ne boste obveščeni o nobenih nepričakovanih dogodkih."</string>
             <string name="revanced_hide_quick_actions_title">Skrij hitra dejanja</string>
             <string name="revanced_hide_quick_actions_summary_on">Hitra dejanja v celozaslonskem načinu so skrita</string>
             <string name="revanced_hide_quick_actions_summary_off">Hitra dejanja v celozaslonskem načinu so prikazana</string>
-            <string name="revanced_hide_related_videos_title">Skrij povezane videoposnetke</string>
-            <string name="revanced_hide_related_videos_summary_on">Povezani videoposnetki v hitrih dejanjih so skriti</string>
-            <string name="revanced_hide_related_videos_summary_off">Povezani videoposnetki v hitrih dejanjih so prikazani</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">Skrij povezane videoposnetke</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">Povezani videoposnetki v hitrih dejanjih so skriti</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">Povezani videoposnetki v hitrih dejanjih so prikazani</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">Skrij smernice za naročnike</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">Smernice skupnosti naročnikov so skrite</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">Smernice skupnosti naročnikov so prikazane</string>
@@ -1110,9 +1110,9 @@ Nastavitve → Predvajanje → Samodejno predvajanje naslednjega videoposnetka"<
             <string name="revanced_end_screen_suggested_video_summary_off">Predlagani videoposnetek na koncu zaslona je prikazan</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">Skrij prekrivanje povezanih videoposnetkov</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">Prekrivanje povezanih videoposnetkov v celozaslonskem načinu je skrito</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">Prekrivanje povezanih videoposnetkov v celozaslonskem načinu je prikazano</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">Skrij prekrivanje povezanih videoposnetkov</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">Prekrivanje povezanih videoposnetkov v celozaslonskem načinu je skrito</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">Prekrivanje povezanih videoposnetkov v celozaslonskem načinu je prikazano</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">Skrij časovni žig videoposnetka</string>

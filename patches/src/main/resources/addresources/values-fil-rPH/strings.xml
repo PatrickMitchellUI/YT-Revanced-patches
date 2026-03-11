@@ -337,9 +337,9 @@ Hindi ka aabisuhan ng anumang hindi inaasahang mga kaganapan."</string>
             <string name="revanced_hide_quick_actions_title">Itago ang mga mabilisang pagkilos</string>
             <string name="revanced_hide_quick_actions_summary_on">Nakago na ang mga mabilisang pagkilos sa fullscreen</string>
             <string name="revanced_hide_quick_actions_summary_off">Ipinapakita ang mga mabilisang pagkilos sa fullscreen</string>
-            <string name="revanced_hide_related_videos_title">Itago ang mga kaugnay na video</string>
-            <string name="revanced_hide_related_videos_summary_on">Nakago na ang mga kaugnay na video sa mga mabilisang pagkilos</string>
-            <string name="revanced_hide_related_videos_summary_off">Ipinapakita ang mga kaugnay na video sa mga mabilisang pagkilos</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">Itago ang mga kaugnay na video</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">Nakago na ang mga kaugnay na video sa mga mabilisang pagkilos</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">Ipinapakita ang mga kaugnay na video sa mga mabilisang pagkilos</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">Itago ang mga alituntunin ng mga subscriber</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">Nakatago ang mga alituntunin ng komunidad ng mga subscriber</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">Ang mga alituntunin ng komunidad ng mga subscriber ay ipinapakita</string>
@@ -1093,9 +1093,9 @@ Mga Setting → Pag-playback → I-autoplay ang susunod na video"</string>
             <string name="revanced_end_screen_suggested_video_summary_off">Ipinapakita ang iminungkahing video sa dulo ng screen</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">Itago ang overlay ng mga kaugnay na video</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">Nakatago ang overlay ng mga kaugnay na video sa fullscreen</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">Ipinapakita ang overlay ng mga kaugnay na video sa fullscreen</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">Itago ang overlay ng mga kaugnay na video</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">Nakatago ang overlay ng mga kaugnay na video sa fullscreen</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">Ipinapakita ang overlay ng mga kaugnay na video sa fullscreen</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">Itago ang timestamp ng video</string>

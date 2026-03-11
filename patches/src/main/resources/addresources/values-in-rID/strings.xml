@@ -358,9 +358,9 @@ Namun, mengaktifkan ini juga akan mencatat beberapa data pengguna seperti alamat
             <string name="revanced_hide_quick_actions_title">Sembunyikan tindakan cepat</string>
             <string name="revanced_hide_quick_actions_summary_on">Tindakan cepat dalam layar penuh disembunyikan</string>
             <string name="revanced_hide_quick_actions_summary_off">Tindakan cepat dalam layar penuh ditampilkan</string>
-            <string name="revanced_hide_related_videos_title">Sembunyikan video terkait</string>
-            <string name="revanced_hide_related_videos_summary_on">Video terkait dalam tindakan cepat disembunyikan</string>
-            <string name="revanced_hide_related_videos_summary_off">Video terkait dalam tindakan cepat ditampilkan</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">Sembunyikan video terkait</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">Video terkait dalam tindakan cepat disembunyikan</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">Video terkait dalam tindakan cepat ditampilkan</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">Sembunyikan panduan pelanggan</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">Pedoman komunitas pelanggan disembunyikan</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">Pedoman komunitas pelanggan ditampilkan</string>
@@ -1114,9 +1114,9 @@ Pengaturan → Pemutaran → Putar otomatis video berikutnya"</string>
             <string name="revanced_end_screen_suggested_video_summary_off">Video yang disarankan di layar akhir ditampilkan</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">Sembunyikan hamparan video terkait</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">Hamparan video terkait dalam layar penuh disembunyikan</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">Hamparan video terkait dalam layar penuh ditampilkan</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">Sembunyikan hamparan video terkait</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">Hamparan video terkait dalam layar penuh disembunyikan</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">Hamparan video terkait dalam layar penuh ditampilkan</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">Sembunyikan penanda waktu video</string>

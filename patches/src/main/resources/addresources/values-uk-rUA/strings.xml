@@ -358,9 +358,9 @@ Second \"item\" text"</string>
             <string name="revanced_hide_quick_actions_title">Приховати швидкі дії</string>
             <string name="revanced_hide_quick_actions_summary_on">Швидкі дії в повноекранному режимі приховано</string>
             <string name="revanced_hide_quick_actions_summary_off">Швидкі дії в повноекранному режимі показуються</string>
-            <string name="revanced_hide_related_videos_title">Приховати пов\'язані відео</string>
-            <string name="revanced_hide_related_videos_summary_on">Пов\'язані відео у швидких діях приховано</string>
-            <string name="revanced_hide_related_videos_summary_off">Пов\'язані відео у швидких діях показуються</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">Приховати пов\'язані відео</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">Пов\'язані відео у швидких діях приховано</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">Пов\'язані відео у швидких діях показуються</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">Приховати правила спільноти підписок</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">Правила спільноти підписок приховано</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">Правила спільноти підписок показуються</string>
@@ -1114,9 +1114,9 @@ Second \"item\" text"</string>
             <string name="revanced_end_screen_suggested_video_summary_off">Пропоноване відео на кінцевому екрані показується</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">Приховати накладення пов\'язаних відео</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">Накладення пов’язаних відео в повноекранному режимі приховано</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">Накладення пов’язаних відео в повноекранному режимі показуються</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">Приховати накладення пов\'язаних відео</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">Накладення пов’язаних відео в повноекранному режимі приховано</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">Накладення пов’язаних відео в повноекранному режимі показуються</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">Приховати мітку часу відео</string>

@@ -352,9 +352,9 @@ Tačiau įjungus šį nustatymą taip pat bus registruojami kai kurie vartotojo 
             <string name="revanced_hide_quick_actions_title">Slėpti greituosius veiksmus</string>
             <string name="revanced_hide_quick_actions_summary_on">Greitieji veiksmai viso ekrano režimu paslėpti</string>
             <string name="revanced_hide_quick_actions_summary_off">Greitieji veiksmai viso ekrano režimu rodomi</string>
-            <string name="revanced_hide_related_videos_title">Slėpti susijusius vaizdo įrašus</string>
-            <string name="revanced_hide_related_videos_summary_on">Susiję vaizdo įrašai greituosiuose veiksmuose paslėpti</string>
-            <string name="revanced_hide_related_videos_summary_off">Susiję vaizdo įrašai greituosiuose veiksmuose rodomi</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">Slėpti susijusius vaizdo įrašus</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">Susiję vaizdo įrašai greituosiuose veiksmuose paslėpti</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">Susiję vaizdo įrašai greituosiuose veiksmuose rodomi</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">Slėpti prenumeratoriams skirtas gaires</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">Prenumeratorių bendruomenės gairės yra paslėptos</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">Prenumeratorių bendruomenės gairės yra rodomos</string>
@@ -1108,9 +1108,9 @@ Nustatymai → Atkūrimas → Automatiškai leisti kitą vaizdo įrašą"</strin
             <string name="revanced_end_screen_suggested_video_summary_off">Pabaigos ekrane siūlomas vaizdo įrašas rodomas</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">Slėpti susijusių vaizdo įrašų perdangą</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">Susijusių vaizdo įrašų perdanga viso ekrano režimu yra paslėpta</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">Susijusių vaizdo įrašų perdanga viso ekrano režimu yra rodoma</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">Slėpti susijusių vaizdo įrašų perdangą</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">Susijusių vaizdo įrašų perdanga viso ekrano režimu yra paslėpta</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">Susijusių vaizdo įrašų perdanga viso ekrano režimu yra rodoma</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">Slėpti vaizdo įrašo laiko žymę</string>

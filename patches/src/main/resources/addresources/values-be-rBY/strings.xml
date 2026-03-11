@@ -352,9 +352,9 @@ Second \"item\" text"</string>
             <string name="revanced_hide_quick_actions_title">Схаваць хуткія дзеянні</string>
             <string name="revanced_hide_quick_actions_summary_on">Хуткія дзеянні ў поўнаэкранным рэжыме схаваныя</string>
             <string name="revanced_hide_quick_actions_summary_off">Хуткія дзеянні ў поўнаэкранным рэжыме паказаныя</string>
-            <string name="revanced_hide_related_videos_title">Схаваць звязаныя відэа</string>
-            <string name="revanced_hide_related_videos_summary_on">Звязаныя відэа ў хуткіх дзеяннях схаваныя</string>
-            <string name="revanced_hide_related_videos_summary_off">Звязаныя відэа ў хуткіх дзеяннях паказаныя</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">Схаваць звязаныя відэа</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">Звязаныя відэа ў хуткіх дзеяннях схаваныя</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">Звязаныя відэа ў хуткіх дзеяннях паказаныя</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">Схаваць рэкамендацыі для падпісчыкаў</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">Правілы супольнасці падпісчыкаў схаваны</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">Паказаны правілы супольнасці падпісчыкаў</string>
@@ -1108,9 +1108,9 @@ Second \"item\" text"</string>
             <string name="revanced_end_screen_suggested_video_summary_off">Прапанаванае відэа на канчатковым экране паказана</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">Схаваць накладку звязаных відэа</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">Накладка звязаных відэа ў поўнаэкранным рэжыме схавана</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">Накладка звязаных відэа ў поўнаэкранным рэжыме паказана</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">Схаваць накладку звязаных відэа</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">Накладка звязаных відэа ў поўнаэкранным рэжыме схавана</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">Накладка звязаных відэа ў поўнаэкранным рэжыме паказана</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">Схаваць метку часу відэа</string>

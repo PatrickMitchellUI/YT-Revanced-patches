@@ -351,9 +351,9 @@ Međutim, omogućavanje ovoga će takođe evidentirati neke korisničke podatke,
             <string name="revanced_hide_quick_actions_title">Sakrij brze radnje</string>
             <string name="revanced_hide_quick_actions_summary_on">Brze radnje u režimu celog ekrana su skrivene</string>
             <string name="revanced_hide_quick_actions_summary_off">Brze radnje u režimu celog ekrana su prikazane</string>
-            <string name="revanced_hide_related_videos_title">Sakrij srodne videe</string>
-            <string name="revanced_hide_related_videos_summary_on">Srodni videi u brzim radnjama su skriveni</string>
-            <string name="revanced_hide_related_videos_summary_off">Srodni videi u brzim radnjama su prikazani</string>
+            <string name="revanced_hide_quick_actions_related_videos_title">Sakrij srodne videe</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_on">Srodni videi u brzim radnjama su skriveni</string>
+            <string name="revanced_hide_quick_actions_related_videos_summary_off">Srodni videi u brzim radnjama su prikazani</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">Sakrij smernice pratilaca</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_on">Smernice zajednice pratilaca su skrivene</string>
             <string name="revanced_hide_subscribers_community_guidelines_summary_off">Smernice zajednice pratilaca su prikazane</string>
@@ -1107,9 +1107,9 @@ Podešavanja → Reprodukcija → Automatski pusti sledeći video"</string>
             <string name="revanced_end_screen_suggested_video_summary_off">Predloženi video na završnom ekranu je prikazan</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
-            <string name="revanced_hide_related_videos_overlay_title">Sakrij srodne videe</string>
-            <string name="revanced_hide_related_videos_overlay_summary_on">Srodni videi u režimu celog ekrana su skriveni</string>
-            <string name="revanced_hide_related_videos_overlay_summary_off">Srodni videi u režimu celog ekrana su prikazani</string>
+            <string name="revanced_hide_player_related_videos_overlay_title">Sakrij srodne videe</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_on">Srodni videi u režimu celog ekrana su skriveni</string>
+            <string name="revanced_hide_player_related_videos_overlay_summary_off">Srodni videi u režimu celog ekrana su prikazani</string>
         </patch>
         <patch id="layout.hide.time.hideTimestampPatch">
             <string name="revanced_hide_timestamp_title">Sakrij vremensku oznaku videa</string>
