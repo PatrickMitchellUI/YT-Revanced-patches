@@ -1,5 +1,11 @@
 package app.revanced.extension.youtube.patches.litho;
 
+import androidx.annotation.NonNull;
+
+import java.util.List;
+
+import app.revanced.extension.shared.ConversionContext.ContextInterface;
+import app.revanced.extension.shared.Logger;
 import app.revanced.extension.shared.patches.litho.Filter;
 import app.revanced.extension.shared.patches.litho.FilterGroup.*;
 import app.revanced.extension.youtube.settings.Settings;
@@ -95,8 +101,14 @@ public final class CommentsFilter extends Filter {
     }
 
     @Override
-    public boolean isFiltered(String identifier, String accessibility, String path, byte[] buffer,
-                              StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
+    public boolean isFiltered(ContextInterface contextInterface,
+                              String identifier,
+                              String accessibility,
+                              String path,
+                              byte[] buffer,
+                              StringFilterGroup matchedGroup,
+                              FilterContentType contentType,
+                              int contentIndex) {
         if (matchedGroup == chipBar) {
             // Playlist sort button uses same components and must only filter if the player is opened.
             return PlayerType.getCurrent().isMaximizedOrFullscreen()

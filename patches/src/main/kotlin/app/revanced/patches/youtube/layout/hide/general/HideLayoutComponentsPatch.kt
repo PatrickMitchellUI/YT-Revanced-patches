@@ -12,6 +12,7 @@ import app.revanced.patches.shared.misc.mapping.ResourceType
 import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
 import app.revanced.patches.shared.misc.settings.preference.*
 import app.revanced.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
+import app.revanced.patches.youtube.layout.hide.shelves.hideHorizontalShelvesPatch
 import app.revanced.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.revanced.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.revanced.patches.youtube.misc.navigation.navigationBarHookPatch
@@ -85,6 +86,7 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
         versionCheckPatch,
         engagementPanelHookPatch,
         resourceMappingPatch,
+        hideHorizontalShelvesPatch,
     ),
     filterClasses = setOf(
         LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR,
@@ -212,7 +214,6 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
                     )
                 ),
                 SwitchPreference("revanced_hide_community_button"),
-                SwitchPreference("revanced_hide_for_you_shelf"),
                 SwitchPreference("revanced_hide_join_button"),
                 SwitchPreference("revanced_hide_links_preview"),
                 SwitchPreference("revanced_hide_members_shelf"),
@@ -272,27 +273,20 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
 
     parseElementFromBufferMethodMatch.let {
         it.method.apply {
-            val startIndex = it[0]
-            val insertIndex = startIndex + 1
+            val insertIndex = it[0]
 
             val byteArrayParameter = "p3"
-            val conversionContextRegister =
-                getInstruction<TwoRegisterInstruction>(startIndex).registerA
-            val returnEmptyComponentInstruction =
-                instructions.last { it.opcode == Opcode.INVOKE_STATIC }
+            val returnEmptyComponentIndex = it[4]
+            val returnEmptyComponentInstruction = getInstruction(returnEmptyComponentIndex)
+
             val returnEmptyComponentRegister =
                 (returnEmptyComponentInstruction as FiveRegisterInstruction).registerC
-            val freeRegister =
-                findFreeRegister(
-                    insertIndex,
-                    conversionContextRegister,
-                    returnEmptyComponentRegister
-                )
+            val freeRegister = findFreeRegister(insertIndex, returnEmptyComponentRegister)
 
-            addInstructionsWithLabels(
+            addInstructionsAtControlFlowLabel(
                 insertIndex,
                 """
-                    invoke-static { v$conversionContextRegister, $byteArrayParameter }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->filterMixPlaylists(Ljava/lang/Object;[B)Z
+                    invoke-static { $byteArrayParameter }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->filterMixPlaylists([B)Z
                     move-result v$freeRegister 
                     if-eqz v$freeRegister, :show
                     move-object v$returnEmptyComponentRegister, p1   # Required for 19.47
