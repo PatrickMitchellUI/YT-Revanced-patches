@@ -486,9 +486,6 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
             <string name="revanced_hide_comments_ai_chat_summary_title">এআই চ্যাট সারাংশ লুকান</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">এআই চ্যাট সারাংশ লুকানো আছে</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">এআই চ্যাট সারাংশ দেখানো হয়েছে</string>
-            <string name="revanced_hide_comments_ai_summary_title">এআই মন্তব্য সংক্ষিপ্তসার লুকান</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">এআই মন্তব্য সারাংশ লুকানো আছে</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">এআই মন্তব্য সারাংশ দেখানো হয়েছে</string>
             <string name="revanced_hide_comments_channel_guidelines_title">চ্যানেল নির্দেশিকা লুকান</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">চ্যানেল নির্দেশিকা লুকানো হয়েছে</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">চ্যানেল নির্দেশিকা দেখানো হয়েছে</string>

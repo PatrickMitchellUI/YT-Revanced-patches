@@ -492,9 +492,6 @@ Mar sin féin, má chumasaíonn tú é seo, logálfar roinnt sonraí úsáideora
             <string name="revanced_hide_comments_ai_chat_summary_title">Folaigh achoimre comhrá IS</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">Tá achoimre comhrá IS i bhfolach</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">Taispeántar achoimre ar chomhrá AI</string>
-            <string name="revanced_hide_comments_ai_summary_title">Folaigh achoimre ar thráchtanna AI</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">Tá achoimre tráchtanna IS i bhfolach</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">Taispeántar achoimre ar thráchtanna IS</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Folaigh treoirlínte an chainéil</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">Tá treoirlínte an chainéil i bhfolach</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">Taispeántar treoirlínte an chainéil</string>

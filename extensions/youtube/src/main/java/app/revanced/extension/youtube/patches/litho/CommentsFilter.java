@@ -15,12 +15,11 @@ import app.revanced.extension.youtube.shared.PlayerType;
 @SuppressWarnings("unused")
 public final class CommentsFilter extends Filter {
 
+    private static final String CHIP_BAR_PATH_PREFIX = "chip_bar.e";
     private static final String COMMENT_COMPOSER_PATH = "comment_composer.e";
     private static final String VIDEO_LOCKUP_WITH_ATTACHMENT_PATH = "video_lockup_with_attachment.e";
     private static final String POST_COMMENTS_PATH = "post_comments_carousel.e";
 
-    private final StringFilterGroup chipBar;
-    private final ByteArrayFilterGroup aiCommentsSummary;
     private final StringFilterGroup comments;
     private final StringFilterGroup emojiAndTimestampButtons;
     
@@ -28,16 +27,6 @@ public final class CommentsFilter extends Filter {
         var chatSummary = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_AI_CHAT_SUMMARY,
                 "live_chat_summary_banner.e"
-        );
-
-        chipBar = new StringFilterGroup(
-                Settings.HIDE_COMMENTS_AI_SUMMARY,
-                "chip_bar.e"
-        );
-
-        aiCommentsSummary = new ByteArrayFilterGroup(
-                null,
-                "yt_fill_spark_"
         );
 
         var channelGuidelines = new StringFilterGroup(
@@ -88,7 +77,6 @@ public final class CommentsFilter extends Filter {
         addPathCallbacks(
                 channelGuidelines,
                 chatSummary,
-                chipBar,
                 commentsByMembers,
                 comments,
                 communityGuidelines,
@@ -109,12 +97,6 @@ public final class CommentsFilter extends Filter {
                               StringFilterGroup matchedGroup,
                               FilterContentType contentType,
                               int contentIndex) {
-        if (matchedGroup == chipBar) {
-            // Playlist sort button uses same components and must only filter if the player is opened.
-            return PlayerType.getCurrent().isMaximizedOrFullscreen()
-                    && aiCommentsSummary.check(buffer).isFiltered();
-        }
-
         if (matchedGroup == comments) {
             // Comment sections of videos and community posts in the feeds.
             if (path.startsWith(VIDEO_LOCKUP_WITH_ATTACHMENT_PATH) || path.contains(POST_COMMENTS_PATH)) {
@@ -123,12 +105,31 @@ public final class CommentsFilter extends Filter {
                         : Settings.HIDE_COMMENTS_SECTION_IN_HOME_FEED.get();
             }
             return Settings.HIDE_COMMENTS_SECTION.get();
-        }
-
-        if (matchedGroup == emojiAndTimestampButtons) {
+        } else if (matchedGroup == emojiAndTimestampButtons) {
             return path.startsWith(COMMENT_COMPOSER_PATH);
         }
 
         return true;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void sanitizeCommentsCategoryBar(@NonNull String identifier,
+                                                   @NonNull List<Object> treeNodeResultList) {
+        try {
+            if (Settings.SANITIZE_COMMENTS_CATEGORY_BAR.get()
+                    && identifier.startsWith(CHIP_BAR_PATH_PREFIX)
+                    // Playlist sort button uses same components and must only filter if the player is opened.
+                    && PlayerType.getCurrent().isMaximizedOrFullscreen()
+            ) {
+                int treeNodeResultListSize = treeNodeResultList.size();
+                if (treeNodeResultListSize > 2) {
+                    treeNodeResultList.subList(1, treeNodeResultListSize - 1).clear();
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "Failed to sanitize comment category bar", ex);
+        }
     }
 }

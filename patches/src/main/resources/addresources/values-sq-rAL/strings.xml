@@ -476,9 +476,6 @@ Gjithsesi, aktivizimi i këtij opsioni do të regjistrojë edhe disa të dhëna 
             <string name="revanced_hide_comments_ai_chat_summary_title">Fshih përmbledhjen e bisedës me AI</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">Përmbledhja e bisedës me AI është fshehur</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">Përmbledhja e bisedës me AI është shfaqur</string>
-            <string name="revanced_hide_comments_ai_summary_title">Fshih përmbledhjen e Komenteve me AI</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">Përmbledhja e komenteve të AI është fshehur</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">Përmbledhja e komenteve të AI është shfaqur</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Fshih udhëzimet e kanalit</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">Udhëzimet e kanalit janë të fshehura</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">Udhëzimet e kanalit shfaqen</string>

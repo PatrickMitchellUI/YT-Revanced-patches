@@ -492,9 +492,6 @@ Second \"item\" text"</string>
             <string name="revanced_hide_comments_ai_chat_summary_title">Приховати \"Огляд чату від ШІ\"</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">\"Огляд чату від ШІ\" приховано</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">\"Огляд чату від ШІ\" показується</string>
-            <string name="revanced_hide_comments_ai_summary_title">Приховати вкладку \"За темою\"</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">Зведення коментарів від ШІ приховано</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">Зведення коментарів від ШІ показується</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Приховати правила каналу</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">Правила каналу приховано</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">Правила каналу показуються</string>

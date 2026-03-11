@@ -488,9 +488,6 @@ MicroG-ի համար մարտկոցի օպտիմալացումը անջատել�
             <string name="revanced_hide_comments_ai_chat_summary_title">Թաքցնել արհեստական բանականության զրույցի ամփոփումը</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">Արհեստական բանականության զրույցի ամփոփումը թաքցված է</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">Արհեստական բանականության զրույցի ամփոփումը ցուցադրված է</string>
-            <string name="revanced_hide_comments_ai_summary_title">Թաքցնել AI մեկնաբանությունների ամփոփումը</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">Արհեստական բանականության մեկնաբանությունների ամփոփումը թաքցված է</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">Արհեստական բանականության մեկնաբանությունների ամփոփումը ցուցադրված է</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Թաքցնել ալիքի ուղեցույցները</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">Ալիքի ուղեցույցները թաքցված են</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">Ալիքի ուղեցույցները ցուցադրված են</string>

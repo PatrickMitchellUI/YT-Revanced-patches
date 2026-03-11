@@ -492,9 +492,6 @@ Tuttavia, l'abilitazione di questa opzione registrerà anche alcuni dati dell'ut
             <string name="revanced_hide_comments_ai_chat_summary_title">Nascondi riepilogo chat IA</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">Il riepilogo chat IA è nascosto</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">Il riepilogo chat IA è mostrato</string>
-            <string name="revanced_hide_comments_ai_summary_title">Nascondi il riepilogo dei commenti AI</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">Il riepilogo dei commenti IA è nascosto</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">Il riepilogo dei commenti IA è mostrato</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Nascondi linee guida canale</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">Le linee guida del canale sono nascoste</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">Le linee guida del canale sono mostrate</string>

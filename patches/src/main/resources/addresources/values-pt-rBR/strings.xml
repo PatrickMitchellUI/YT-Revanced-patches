@@ -485,9 +485,6 @@ No entanto, ativar isso também registrará alguns dados do usuário, como seu e
             <string name="revanced_hide_comments_ai_chat_summary_title">Ocultar resumo de chat de IA</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">O resumo do chat de IA está oculto</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">O resumo do chat de IA é mostrado</string>
-            <string name="revanced_hide_comments_ai_summary_title">Ocultar resumo dos comentários da IA</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">O resumo dos comentários de IA está oculto</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">O resumo dos comentários de IA é mostrado</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Ocultar diretrizes do canal</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">Diretrizes do canal estão ocultas</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">Diretrizes do canal são mostradas</string>

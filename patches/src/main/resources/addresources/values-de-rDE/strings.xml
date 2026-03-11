@@ -482,9 +482,6 @@ Wenn Sie dies aktivieren, werden jedoch auch einige Benutzerdaten wie Ihre IP-Ad
             <string name="revanced_hide_comments_ai_chat_summary_title">KI-Chat-Zusammenfassung ausblenden</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">KI-Chat-Zusammenfassung ist ausgeblendet</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">KI-Chat-Zusammenfassung ist eingeblendet</string>
-            <string name="revanced_hide_comments_ai_summary_title">KI-Kommentarübersicht ausblenden</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">KI-Kommentar-Zusammenfassung ist ausgeblendet</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">KI-Kommentar-Zusammenfassung ist eingeblendet</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Kanalrichtlinien ausblenden</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">Kanalrichtlinien sind ausgeblendet</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">Kanalrichtlinien werden angezeigt</string>

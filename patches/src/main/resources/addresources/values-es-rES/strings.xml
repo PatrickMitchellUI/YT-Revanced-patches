@@ -492,9 +492,6 @@ Sin embargo, si activas esto, también se registrarán algunos datos del usuario
             <string name="revanced_hide_comments_ai_chat_summary_title">Ocultar resumen de chat de IA</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">El resumen del chat de IA está oculto</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">El resumen del chat de IA es visible</string>
-            <string name="revanced_hide_comments_ai_summary_title">Ocultar el resumen de los comentarios de la IA</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">El resumen de comentarios de IA está oculto</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">El resumen de comentarios de IA es visible</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Ocultar directrices del canal</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">Las directrices del canal están ocultas</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">Las directrices del canal se muestran</string>

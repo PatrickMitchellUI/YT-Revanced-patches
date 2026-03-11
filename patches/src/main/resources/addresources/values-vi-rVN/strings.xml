@@ -492,9 +492,6 @@ Tuy nhiên, bật tính năng này cũng sẽ ghi lại một số dữ liệu n
             <string name="revanced_hide_comments_ai_chat_summary_title">Ẩn tóm tắt cuộc trò chuyện do AI tạo</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">Tóm tắt cuộc trò chuyện do AI tạo đã bị ẩn</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">Tóm tắt cuộc trò chuyện do AI tạo được hiển thị</string>
-            <string name="revanced_hide_comments_ai_summary_title">Ẩn tóm tắt bình luận do AI tạo</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">Tóm tắt bình luận do AI tạo đã bị ẩn</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">Tóm tắt bình luận do AI tạo được hiển thị</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Ẩn nguyên tắc kênh</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">Nguyên tắc kênh đã bị ẩn</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">Nguyên tắc kênh được hiển thị</string>

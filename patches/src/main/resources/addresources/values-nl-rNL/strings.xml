@@ -492,9 +492,6 @@ Als u dit inschakelt, worden echter ook bepaalde gebruikersgegevens, zoals uw IP
             <string name="revanced_hide_comments_ai_chat_summary_title">AI-chatsamenvatting verbergen</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">AI-chatsamenvatting is verborgen</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">AI-chatsamenvatting is getoond</string>
-            <string name="revanced_hide_comments_ai_summary_title">AI-opmerkingensamenvatting verbergen</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">AI-opmerkingensamenvatting is verborgen</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">AI-opmerkingensamenvatting is getoond</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Kanaalrichtlijnen verbergen</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">Kanaalrichtlijnen zijn verborgen</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">Kanaalrichtlijnen worden weergegeven</string>

@@ -487,9 +487,6 @@ Tomēr, iespējojot šo iestatījumu, tiks reģistrēti arī daži lietotāja da
             <string name="revanced_hide_comments_ai_chat_summary_title">Slēpt AI tērzēšanas kopsavilkumu</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">AI tērzēšanas kopsavilkums ir paslēpts</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">AI tērzēšanas kopsavilkums ir redzams</string>
-            <string name="revanced_hide_comments_ai_summary_title">Slēpt AI komentāru kopsavilkumu</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">AI komentāru kopsavilkums ir paslēpts</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">AI komentāru kopsavilkums ir redzams</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Slēpt kanāla vadlīnijas</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">Kanāla vadlīnijas ir paslēptas</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">Kanāla vadlīnijas ir redzamas</string>

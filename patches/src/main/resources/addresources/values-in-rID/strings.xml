@@ -492,9 +492,6 @@ Namun, mengaktifkan ini juga akan mencatat beberapa data pengguna seperti alamat
             <string name="revanced_hide_comments_ai_chat_summary_title">Sembunyikan ringkasan chat AI</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">Ringkasan chat AI disembunyikan</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">Ringkasan chat AI ditampilkan</string>
-            <string name="revanced_hide_comments_ai_summary_title">Sembunyikan ringkasan Komentar AI</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">Ringkasan komentar AI disembunyikan</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">Ringkasan komentar AI ditampilkan</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Sembunyikan pedoman saluran</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">Pedoman saluran disembunyikan</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">Pedoman saluran ditampilkan</string>

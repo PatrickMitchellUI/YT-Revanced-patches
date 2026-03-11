@@ -488,9 +488,6 @@ Ne boste obveščeni o nobenih nepričakovanih dogodkih."</string>
             <string name="revanced_hide_comments_ai_chat_summary_title">Skrij povzetek klepeta z AI</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">Povzetek klepeta z AI je skrit</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">Povzetek klepeta z AI je prikazan</string>
-            <string name="revanced_hide_comments_ai_summary_title">Skrij povzetek komentarjev z umetno inteligenco</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">Povzetek komentarjev z AI je skrit</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">Povzetek komentarjev z AI je prikazan</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Skrij smernice kanala</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">Smernice kanala so skrite</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">Smernice kanala so prikazane</string>

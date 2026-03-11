@@ -486,9 +486,6 @@ Tačiau įjungus šį nustatymą taip pat bus registruojami kai kurie vartotojo 
             <string name="revanced_hide_comments_ai_chat_summary_title">Slėpti AI pokalbių santrauką</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">AI pokalbių santrauka paslėpta</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">AI pokalbių santrauka rodoma</string>
-            <string name="revanced_hide_comments_ai_summary_title">Slėpti AI komentarų santrauką</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">AI komentarų santrauka paslėpta</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">AI komentarų santrauka rodoma</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Slėpti kanalo gaires</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">Kanalo gairės paslėptos</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">Kanalo gairės rodomos</string>

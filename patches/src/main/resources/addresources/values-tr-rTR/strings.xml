@@ -493,9 +493,6 @@ Ancak, bunun etkinleştirilmesi IP adresiniz gibi bazı kullanıcı verilerini d
             <string name="revanced_hide_comments_ai_chat_summary_title">Yapay zeka sohbet özetini gizle</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">Yapay zeka sohbet özeti gizli</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">Yapay zeka sohbet özeti görünür</string>
-            <string name="revanced_hide_comments_ai_summary_title">Yapay zeka yorumların özetini gizle</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">Yapay zeka yorumların özeti gizli</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">Yapay zeka yorumların özeti görünür</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Kanal yönergelerini gizle</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">Kanal yönergeleri gizli</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">Kanal yönergeleri görünür</string>

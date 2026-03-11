@@ -493,9 +493,6 @@ YouTube Premium ユーザーの場合、この設定は必要ない可能性が�
             <string name="revanced_hide_comments_ai_chat_summary_title">AI による「チャットの要約」を非表示</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">AI による「チャットの要約」は表示されません</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">AI による「チャットの要約」は表示されます</string>
-            <string name="revanced_hide_comments_ai_summary_title">AI によるコメントの要約を非表示</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">AI によるコメントの要約は表示されません\n\nコメント欄のヘッダーにはトピックボタンは表示されません</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">AI によるコメントの要約は表示されます\n\nコメント欄のヘッダーにはトピックボタンが表示されます</string>
             <string name="revanced_hide_comments_channel_guidelines_title">チャンネルのガイドラインを非表示</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">チャンネルのガイドラインは表示されません</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">チャンネルのガイドラインは表示されます</string>

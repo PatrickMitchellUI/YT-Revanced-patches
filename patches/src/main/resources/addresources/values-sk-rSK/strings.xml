@@ -485,9 +485,6 @@ Povolením tejto funkcie sa však budú zaznamenávať aj niektoré používate�
             <string name="revanced_hide_comments_ai_chat_summary_title">Skryť súhrn AI chatu</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">Súhrn AI chatu je skrytý</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">Súhrn AI chatu je zobrazený</string>
-            <string name="revanced_hide_comments_ai_summary_title">Skryť súhrn komentárov AI</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">Súhrn komentárov AI je skrytý</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">Súhrn komentárov AI je zobrazený</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Skryť pokyny kanála</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">Pokyny ku kanálu sú skryté</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">Pokyny ku kanálu sú zobrazené</string>

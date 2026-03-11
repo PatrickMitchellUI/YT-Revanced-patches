@@ -485,9 +485,6 @@ Međutim, omogućavanje ovoga će takođe evidentirati neke korisničke podatke,
             <string name="revanced_hide_comments_ai_chat_summary_title">Sakrij „Rezime ćaskanja koji je generisala veštačka inteligencija”</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">„Rezime ćaskanja koji je generisala veštačka inteligencija” je skriven</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">„Rezime ćaskanja koji je generisala veštačka inteligencija” je prikazan</string>
-            <string name="revanced_hide_comments_ai_summary_title">Sakrij „Rezime komentara koji je generisala veštačka inteligencija”</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">„Rezime komentara koji je generisala veštačka inteligencija” je skriven</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">„Rezime komentara koji je generisala veštačka inteligencija” je prikazan</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Sakrij smernice kanala</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">Smernice kanala su skrivene</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">Smernice kanala su prikazane</string>

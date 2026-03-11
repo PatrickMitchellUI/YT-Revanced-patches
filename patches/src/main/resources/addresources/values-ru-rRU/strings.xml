@@ -492,9 +492,6 @@ Second \"item\" text"</string>
             <string name="revanced_hide_comments_ai_chat_summary_title">Скрыть секцию ИИ сводки чата</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">Секция ИИ сводки чата скрыта</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">Секция ИИ сводки чата показана</string>
-            <string name="revanced_hide_comments_ai_summary_title">Скрыть вкладку AI-сводки по темам комментариев </string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">Секция ИИ сводки по темам комментариев скрыта</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">Секция ИИ сводки по темам комментариев показана</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Скрыть правила канала</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">Правила канала в комментариях скрыты</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">Правила канала в комментариях показаны</string>

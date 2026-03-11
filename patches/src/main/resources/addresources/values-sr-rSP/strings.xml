@@ -492,9 +492,6 @@ Second \"item\" text"</string>
             <string name="revanced_hide_comments_ai_chat_summary_title">Сакриј „Резиме ћаскања који је генерисала вештачка интелигенција”</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">„Резиме ћаскања који је генерисала вештачка интелигенција” је скривен</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">„Резиме ћаскања који је генерисала вештачка интелигенција” је приказан</string>
-            <string name="revanced_hide_comments_ai_summary_title">Сакриј „Резиме коментара који је генерисала вештачка интелигенција”</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">„Резиме коментара који је генерисала вештачка интелигенција” је скривен</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">„Резиме коментара који је генерисала вештачка интелигенција” је приказан</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Сакриј смернице канала</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">Смернице канала су скривене</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">Смернице канала су приказане</string>

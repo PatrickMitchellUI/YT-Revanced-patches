@@ -486,9 +486,6 @@ Ez a funkció azonban néhány felhasználói adatot is naplóz, például az IP
             <string name="revanced_hide_comments_ai_chat_summary_title">MI csevegés összefoglaló elrejtése</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">Az MI csevegés összefoglaló elrejtve</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">Az MI csevegés összefoglaló megjelenítve</string>
-            <string name="revanced_hide_comments_ai_summary_title">AI-kommentárok összefoglalójának elrejtése</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">Az MI megjegyzések összefoglaló elrejtve</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">Az MI megjegyzések összefoglaló megjelenítve</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Csatorna irányelveinek elrejtése</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">A csatorna irányelvei rejtve vannak</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">A csatorna irányelvei láthatók</string>

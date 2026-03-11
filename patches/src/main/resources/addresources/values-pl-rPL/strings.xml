@@ -488,9 +488,6 @@ Nie będziesz informowany o żadnych nieoczekiwanych zdarzeniach."</string>
             <string name="revanced_hide_comments_ai_chat_summary_title">Ukryj podsumowanie czatu AI</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">Podsumowanie czatu AI jest ukryte</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">Podsumowanie czatu AI jest pokazane</string>
-            <string name="revanced_hide_comments_ai_summary_title">Ukryj podsumowanie komentarzy AI</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">Podsumowanie komentarzy AI jest ukryte</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">Podsumowanie komentarzy AI jest pokazane</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Ukryj wytyczne kanału</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">Wytyczne kanału są ukryte</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">Wytyczne kanału są widoczne</string>

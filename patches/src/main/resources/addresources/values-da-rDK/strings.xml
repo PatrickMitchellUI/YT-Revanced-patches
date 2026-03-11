@@ -478,9 +478,6 @@ Du modtager ikke notifikationer om uventede hændelser."</string>
             <string name="revanced_hide_comments_ai_chat_summary_title">Skjul AI-chatsammendrag</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">AI-chatsammendrag er skjult</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">AI-chatsammendrag vises</string>
-            <string name="revanced_hide_comments_ai_summary_title">Skjul AI Kommentar-oversigt</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">AI-kommentarsammendrag er skjult</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">AI-kommentarsammendrag vises</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Skjul kanalretningslinjer</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">Kanalretningslinjer er skjult</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">Kanalretningslinjer er vist</string>

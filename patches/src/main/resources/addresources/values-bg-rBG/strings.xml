@@ -486,9 +486,6 @@ Second \"item\" text"</string>
             <string name="revanced_hide_comments_ai_chat_summary_title">Скриване на резюмето на AI чата</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">Резюмето на AI чата е скрито</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">Резюмето на AI чата е показано</string>
-            <string name="revanced_hide_comments_ai_summary_title">Скриване на резюмето на AI коментарите</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">Резюмето на AI коментари е скрито</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">Резюмето на AI коментари е показано</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Скриване на насоките на канала</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">Указанията за канала са скрити</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">Указанията за канала са показани</string>

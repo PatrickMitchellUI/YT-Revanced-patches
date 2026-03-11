@@ -492,9 +492,6 @@ Povolením této možnosti se však budou zaznamenávat i některá uživatelsk�
             <string name="revanced_hide_comments_ai_chat_summary_title">Skrýt souhrn chatu s AI</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">Souhrn chatu s AI je skryt</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">Souhrn chatu s AI je zobrazen</string>
-            <string name="revanced_hide_comments_ai_summary_title">Skrýt souhrn komentářů AI</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">Souhrn komentářů AI je skryt</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">Souhrn komentářů AI je zobrazen</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Skrýt pravidla kanálu</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">Pokyny ke kanálu jsou skryty</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">Pokyny ke kanálu jsou zobrazeny</string>

@@ -482,9 +482,6 @@ Du kommer inte att bli meddelad om oväntade händelser."</string>
             <string name="revanced_hide_comments_ai_chat_summary_title">Dölj AI-sammanfattning av chatt</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">AI-sammanfattning av chatt är dold</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">AI-sammanfattning av chatt visas</string>
-            <string name="revanced_hide_comments_ai_summary_title">Dölj AI-sammanfattning av kommentarer</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">AI-sammanfattning av kommentarer är dold</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">AI-sammanfattning av kommentarer visas</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Dölj kanalriktlinjer</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">Kanalriktlinjer är dolda</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">Kanalriktlinjer visas</string>

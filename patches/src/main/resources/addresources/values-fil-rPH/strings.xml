@@ -471,9 +471,6 @@ Hindi ka aabisuhan ng anumang hindi inaasahang mga kaganapan."</string>
             <string name="revanced_hide_comments_ai_chat_summary_title">Itago ang buod ng AI chat</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">Ang buod ng AI chat ay nakatago</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">Ang buod ng AI chat ay ipinapakita</string>
-            <string name="revanced_hide_comments_ai_summary_title">Itago ang Buod ng Mga Komento ng AI</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">Ang buod ng komento ng AI ay nakatago</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">Ang buod ng komento ng AI ay ipinapakita</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Itago ang mga guideline ng channel</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">Nakatago ang mga alituntunin ng channel</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">Ipinapakita ang mga alituntunin ng channel</string>

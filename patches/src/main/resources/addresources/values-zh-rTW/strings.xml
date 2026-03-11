@@ -492,9 +492,6 @@ Second \"item\" text"</string>
             <string name="revanced_hide_comments_ai_chat_summary_title">隱藏 AI 聊天摘要</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">AI 聊天摘要已隱藏</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">AI 聊天摘要已顯示</string>
-            <string name="revanced_hide_comments_ai_summary_title">隱藏 AI 留言摘要</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">AI 留言摘要已隱藏</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">AI 留言摘要已顯示</string>
             <string name="revanced_hide_comments_channel_guidelines_title">隱藏頻道準則</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">已隱藏頻道準則</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">已顯示頻道準則</string>

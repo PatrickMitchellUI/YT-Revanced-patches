@@ -490,9 +490,6 @@ Selle lubamine logib aga ka mõningaid kasutajaandmeid, näiteks teie IP-aadress
             <string name="revanced_hide_comments_ai_chat_summary_title">Peida AI vestluse kokkuvõte</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">AI vestluse kokkuvõte on peidetud</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">AI vestluse kokkuvõte on nähtav</string>
-            <string name="revanced_hide_comments_ai_summary_title">Peida tehisintellekti kommentaaride kokkuv\u00f5te</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">AI kommentaaride kokkuvõte on peidetud</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">AI kommentaaride kokkuvõte on nähtav</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Peida kanali juhised</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">Kanali juhised on peidetud</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">Kanali juhised on nähtaval</string>

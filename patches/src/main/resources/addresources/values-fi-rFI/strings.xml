@@ -492,9 +492,6 @@ Tämän käyttöönotto kirjaa myös joitakin käyttäjätietoja, kuten IP-osoit
             <string name="revanced_hide_comments_ai_chat_summary_title">Piilota tekoälyn luoma chat-yhteenveto</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">Tekoälyn luoma chat-yhteenveto piilotetaan</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">Tekoälyn luoma chat-yhteenveto näytetään</string>
-            <string name="revanced_hide_comments_ai_summary_title">Piilota tekoälyn luoma kommenttiyhteenveto</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">Tekoälyn luoma kommenttien yhteenveto piilotetaan</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">Tekoälyn luoma kommenttien yhteenveto näytetään</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Piilota kanavan säännöt</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">Kanavan säännöt piilotetaan</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">Kanavan säännöt näytetään</string>

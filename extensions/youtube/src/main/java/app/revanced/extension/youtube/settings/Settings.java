@@ -211,7 +211,6 @@ public class Settings extends YouTubeAndMusicSettings {
 
     // Comments
     public static final BooleanSetting HIDE_COMMENTS_AI_CHAT_SUMMARY = new BooleanSetting("revanced_hide_comments_ai_chat_summary", FALSE);
-    public static final BooleanSetting HIDE_COMMENTS_AI_SUMMARY = new BooleanSetting("revanced_hide_comments_ai_summary", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_BY_MEMBERS_HEADER = new BooleanSetting("revanced_hide_comments_by_members_header", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_CHANNEL_GUIDELINES = new BooleanSetting("revanced_hide_comments_channel_guidelines", TRUE);
     public static final BooleanSetting HIDE_COMMENTS_COMMUNITY_GUIDELINES = new BooleanSetting("revanced_hide_comments_community_guidelines", TRUE);
@@ -222,6 +221,7 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final BooleanSetting HIDE_COMMENTS_SECTION_IN_HOME_FEED = new BooleanSetting("revanced_hide_comments_section_in_home_feed", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_SECTION_IN_SUBSCRIPTIONS_FEED = new BooleanSetting("revanced_hide_comments_section_in_subscriptions_feed", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_THANKS_BUTTON = new BooleanSetting("revanced_hide_comments_thanks_button", TRUE);
+    public static final BooleanSetting SANITIZE_COMMENTS_CATEGORY_BAR = new BooleanSetting("revanced_sanitize_comments_category_bar", FALSE);
 
     // Description
     public static final BooleanSetting HIDE_AI_GENERATED_VIDEO_SUMMARY_SECTION = new BooleanSetting("revanced_hide_ai_generated_video_summary_section", FALSE);

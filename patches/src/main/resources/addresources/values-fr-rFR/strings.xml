@@ -492,9 +492,6 @@ Toutefois, l'activation de cette option entraînera également l'enregistrement 
             <string name="revanced_hide_comments_ai_chat_summary_title">Masquer le résumé IA du chat</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">Le résumé IA du chat est masqué</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">Le résumé IA du chat est affiché</string>
-            <string name="revanced_hide_comments_ai_summary_title">Masquer le résumé IA des commentaires</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">Le résumé IA des commentaires est masqué</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">Le résumé IA des commentaires est affiché</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Masquer les consignes de chaîne</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">Les consignes de chaîne sont masquées</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">Les consignes de chaîne sont affichées</string>

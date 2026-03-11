@@ -481,9 +481,6 @@ Cu toate acestea, activarea acestei opțiuni va înregistra și unele date ale u
             <string name="revanced_hide_comments_ai_chat_summary_title">Ascunde rezumatul chatului AI</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">Rezumatul chatului AI este ascuns</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">Rezumatul chatului AI este afișat</string>
-            <string name="revanced_hide_comments_ai_summary_title">Ascunde rezumatul comentariilor cu IA</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">Rezumatul comentariilor AI este ascuns</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">Rezumatul comentariilor AI este afișat</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Ascunde ghidurile canalului</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">Regulile canalului sunt ascunse</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">Regulile canalului sunt afișate</string>

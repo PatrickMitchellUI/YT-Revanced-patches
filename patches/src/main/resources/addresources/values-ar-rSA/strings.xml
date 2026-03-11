@@ -484,9 +484,6 @@ Second \"item\" text"</string>
             <string name="revanced_hide_comments_ai_chat_summary_title">إخفاء ملخص محادثات الذكاء الاصطناعي</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">تم إخفاء ملخص محادثة الذكاء الاصطناعي</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">يتم عرض ملخص محادثة الذكاء الاصطناعي</string>
-            <string name="revanced_hide_comments_ai_summary_title">إخفاء ملخص تعليقات الذكاء الاصطناعي</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">تم إخفاء ملخص تعليقات الذكاء الاصطناعي</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">يتم عرض ملخص تعليقات الذكاء الاصطناعي</string>
             <string name="revanced_hide_comments_channel_guidelines_title">إخفاء إرشادات القناة</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">تم إخفاء إرشادات القناة</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">يتم عرض إرشادات القناة</string>

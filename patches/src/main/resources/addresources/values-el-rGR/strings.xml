@@ -494,9 +494,6 @@ Second \"item\" text"</string>
             <string name="revanced_hide_comments_ai_chat_summary_title">Σύνοψη συζήτησης που δημιουργήθηκε από AI</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">Κρυμμένη</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">Εμφανίζεται</string>
-            <string name="revanced_hide_comments_ai_summary_title">Σύνοψη σχολίων που δημιουργήθηκε από AI</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">Κρυμμένη</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">Εμφανίζεται</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Οδηγίες καναλιού</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">Κρυμμένες</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">Εμφανίζονται</string>

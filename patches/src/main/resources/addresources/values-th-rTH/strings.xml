@@ -490,9 +490,6 @@ Second \"item\" text"</string>
             <string name="revanced_hide_comments_ai_chat_summary_title">ซ่อนสรุปแชท AI</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_on">สรุปแชท AI ถูกซ่อนอยู่</string>
             <string name="revanced_hide_comments_ai_chat_summary_summary_off">สรุปแชท AI แสดงอยู่</string>
-            <string name="revanced_hide_comments_ai_summary_title">ซ่อนสรุปความคิดเห็น AI</string>
-            <string name="revanced_hide_comments_ai_summary_summary_on">สรุปความคิดเห็น AI ถูกซ่อนอยู่</string>
-            <string name="revanced_hide_comments_ai_summary_summary_off">สรุปความคิดเห็น AI แสดงอยู่</string>
             <string name="revanced_hide_comments_channel_guidelines_title">ซ่อนแนวทางปฏิบัติของช่อง</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_on">ซ่อนแนวทางช่องแล้ว</string>
             <string name="revanced_hide_comments_channel_guidelines_summary_off">แสดงแนวทางช่องแล้ว</string>
