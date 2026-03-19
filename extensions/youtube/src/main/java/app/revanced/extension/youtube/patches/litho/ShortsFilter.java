@@ -544,7 +544,7 @@ public final class ShortsFilter extends Filter {
         }
 
         return switch (selectedNavButton) {
-            case HOME, EXPLORE -> hideHome;
+            case HOME -> hideHome;
             case SUBSCRIPTIONS -> hideSubscriptions;
             case LIBRARY -> hideHistory;
             default -> false;

@@ -1,15 +1,22 @@
 package app.revanced.patches.youtube.misc.contexthook
 
-import app.revanced.com.android.tools.smali.dexlib2.mutable.MutableMethod
 import app.revanced.com.android.tools.smali.dexlib2.mutable.MutableMethod.Companion.toMutable
 import app.revanced.patcher.accessFlags
+import app.revanced.patcher.allOf
 import app.revanced.patcher.classDef
+import app.revanced.patcher.composingFirstMethod
 import app.revanced.patcher.extensions.addInstructionsWithLabels
 import app.revanced.patcher.extensions.fieldReference
 import app.revanced.patcher.extensions.getInstruction
 import app.revanced.patcher.firstImmutableClassDefOrNull
+import app.revanced.patcher.extensions.methodReference
+import app.revanced.patcher.field
+import app.revanced.patcher.firstMethodComposite
 import app.revanced.patcher.firstMethodDeclaratively
 import app.revanced.patcher.immutableClassDef
+import app.revanced.patcher.instructions
+import app.revanced.patcher.invoke
+import app.revanced.patcher.method
 import app.revanced.patcher.parameterTypes
 import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patcher.patch.PatchException
@@ -29,8 +36,9 @@ import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
+import java.lang.ref.WeakReference
 
-private lateinit var browseIdField: FieldReference
+private lateinit var clientFormFactorField: FieldReference
 private lateinit var clientInfoField: FieldReference
 private lateinit var clientVersionField: FieldReference
 private lateinit var messageLiteBuilderField: FieldReference
@@ -44,12 +52,17 @@ enum class Endpoint(
     BROWSE(
         BytecodePatchContext::browseEndpointParentMethod::get
     ),
+    GET_WATCH(
+        BytecodePatchContext::getWatchEndpointConstructorPrimaryMethod::get,
+        BytecodePatchContext::getWatchEndpointConstructorSecondaryMethod::get,
+    ),
     GUIDE(
         BytecodePatchContext::guideEndpointConstructorMethod::get
     ),
     NEXT(
         BytecodePatchContext::nextEndpointConstructorMethod::get
     ),
+    PLAYER(BytecodePatchContext::playerEndpointParentMethod::get),
     REEL(
         // Endpoint was removed in 21.36.
         { if (is_21_36_or_greater) null else reelCreateItemsEndpointConstructorMethod },
@@ -106,12 +119,8 @@ val hookClientContextPatch = bytecodePatch(
             }
         }
 
-        browseEndpointParentMethod.immutableClassDef.browseEndpointConstructorMethodMatch.let {
-            it.method.apply {
-                val browseIdIndex = it[-1]
-                browseIdField =
-                    getInstruction<ReferenceInstruction>(browseIdIndex).fieldReference!!
-            }
+        clientFormFactorField = getSetClientFormFactorMethodMatch().let {
+            it.method.getInstruction<ReferenceInstruction>(it[0]).fieldReference!!
         }
     }
 
@@ -159,7 +168,7 @@ val hookClientContextPatch = bytecodePatch(
                         }
                     )
 
-                   it.findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
+                    it.findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
                         it.addInstructionsAtControlFlowLabel(
                             index,
                             "invoke-direct/range { p0 .. p0 }, ${it.definingClass}->$helperMethodName()V"
@@ -171,19 +180,22 @@ val hookClientContextPatch = bytecodePatch(
     }
 }
 
+fun addClientFormFactorHook(endPoint: Endpoint, descriptor: String) {
+    endPoint.instructions += """
+        iget v2, v1, $clientFormFactorField
+        invoke-static { v2 }, $descriptor
+        move-result v2
+        iput v2, v1, $clientFormFactorField
+    """
+}
+
 fun addClientVersionHook(endPoint: Endpoint, descriptor: String) {
-    endPoint.instructions += if (endPoint == Endpoint.BROWSE) """
-        iget-object v3, p0, $browseIdField
-        iget-object v2, v1, $clientVersionField
-        invoke-static { v3, v2 }, $descriptor
-        move-result-object v2
-        iput-object v2, v1, $clientVersionField
-        """ else """
+    endPoint.instructions += """
         iget-object v2, v1, $clientVersionField
         invoke-static { v2 }, $descriptor
         move-result-object v2
         iput-object v2, v1, $clientVersionField
-        """
+    """
 }
 
 fun addOSNameHook(endPoint: Endpoint, descriptor: String) {
@@ -192,5 +204,5 @@ fun addOSNameHook(endPoint: Endpoint, descriptor: String) {
         invoke-static { v2 }, $descriptor
         move-result-object v2
         iput-object v2, v1, $osNameField
-        """
+    """
 }
