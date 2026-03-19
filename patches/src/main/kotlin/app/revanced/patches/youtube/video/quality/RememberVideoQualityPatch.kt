@@ -1,8 +1,15 @@
 package app.revanced.patches.youtube.video.quality
 
+import app.revanced.patcher.allOf
 import app.revanced.patcher.extensions.addInstruction
+import app.revanced.patcher.extensions.addInstructions
 import app.revanced.patcher.extensions.getInstruction
+import app.revanced.patcher.field
+import app.revanced.patcher.firstMethodComposite
 import app.revanced.patcher.immutableClassDef
+import app.revanced.patcher.instructions
+import app.revanced.patcher.invoke
+import app.revanced.patcher.name
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
@@ -10,11 +17,14 @@ import app.revanced.patches.shared.misc.settings.preference.ListPreference
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
 import app.revanced.patches.youtube.misc.playertype.playerTypeHookPatch
+import app.revanced.patches.youtube.misc.playservice.is_21_36_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.patches.youtube.misc.settings.settingsPatch
 import app.revanced.patches.youtube.shared.videoQualityChangedMethodMatch
 import app.revanced.patches.youtube.video.information.onCreateHook
 import app.revanced.patches.youtube.video.information.videoInformationPatch
+import app.revanced.util.findFieldFromToString
+import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
@@ -64,11 +74,30 @@ val rememberVideoQualityPatch = bytecodePatch {
 
         onCreateHook(EXTENSION_CLASS_DESCRIPTOR, "newVideoStarted")
 
+        // Inject a call to override initial video quality.
+        // On 21.36 the override makes playback start with only the lowest quality available,
+        // and the default quality is still applied when the video starts.
+        if (!is_21_36_or_greater) getPlaybackStartParametersConstructorMethod().let {
+            it.method.apply {
+                val index = it[-1]
+                val register = getInstruction<TwoRegisterInstruction>(index).registerA
+
+                addInstructions(
+                    index,
+                    """
+                        invoke-static { v$register }, ${EXTENSION_CLASS_DESCRIPTOR}->getInitialVideoQuality(Lj$/util/Optional;)Lj$/util/Optional;
+                        move-result-object v$register
+                    """
+                )
+            }
+        }
+
         // Inject a call to remember the selected quality for Shorts.
-        videoQualityItemOnClickParentMethod.immutableClassDef.getVideoQualityItemOnClickMethod().addInstruction(
-            0,
-            "invoke-static { p3 }, $EXTENSION_CLASS_DESCRIPTOR->userChangedShortsQuality(I)V",
-        )
+        videoQualityItemOnClickParentMethod.immutableClassDef.getVideoQualityItemOnClickMethod()
+            .addInstruction(
+                0,
+                "invoke-static { p3 }, $EXTENSION_CLASS_DESCRIPTOR->userChangedShortsQuality(I)V",
+            )
 
         // Inject a call to remember the user selected quality for regular videos.
         videoQualityChangedMethodMatch.let { match ->
