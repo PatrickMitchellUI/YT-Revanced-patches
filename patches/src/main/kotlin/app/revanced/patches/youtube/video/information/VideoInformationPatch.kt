@@ -21,6 +21,7 @@ import app.revanced.patches.youtube.video.playerresponse.Hook
 import app.revanced.patches.youtube.video.playerresponse.addPlayerResponseMethodHook
 import app.revanced.patches.youtube.video.playerresponse.playerResponseMethodHookPatch
 import app.revanced.patches.youtube.video.videoid.hookBackgroundPlayVideoId
+import app.revanced.patches.youtube.video.videoid.hookPlayerResponsePlaylistId
 import app.revanced.patches.youtube.video.videoid.hookPlayerResponseVideoId
 import app.revanced.patches.youtube.video.videoid.hookVideoId
 import app.revanced.patches.youtube.video.videoid.videoIdPatch
@@ -162,6 +163,9 @@ val videoInformationPatch = bytecodePatch(
         val videoIdMethodDescriptor = "$EXTENSION_CLASS_DESCRIPTOR->setVideoId(Ljava/lang/String;)V"
         hookVideoId(videoIdMethodDescriptor)
         hookBackgroundPlayVideoId(videoIdMethodDescriptor)
+        hookPlayerResponsePlaylistId(
+            "$EXTENSION_CLASS_DESCRIPTOR->setPlayerResponsePlaylistId(Ljava/lang/String;Z)V",
+        )
         hookPlayerResponseVideoId(
             "$EXTENSION_CLASS_DESCRIPTOR->setPlayerResponseVideoId(Ljava/lang/String;Z)V",
         )

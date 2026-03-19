@@ -198,6 +198,7 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final BooleanSetting OPEN_SYSTEM_SHARE_SHEET = new BooleanSetting("revanced_open_system_share_sheet", FALSE, true);
     public static final BooleanSetting OPEN_VIDEOS_FULLSCREEN_PORTRAIT = new BooleanSetting("revanced_open_videos_fullscreen_portrait", FALSE);
     public static final BooleanSetting PLAYBACK_SPEED_DIALOG_BUTTON = new BooleanSetting("revanced_playback_speed_dialog_button", FALSE);
+    public static final BooleanSetting RELOAD_VIDEO = new BooleanSetting("revanced_reload_video", FALSE);
     public static final BooleanSetting VIDEO_QUALITY_DIALOG_BUTTON = new BooleanSetting("revanced_video_quality_dialog_button", FALSE);
     public static final IntegerSetting PLAYER_OVERLAY_OPACITY = new IntegerSetting("revanced_player_overlay_opacity", 100, true);
 

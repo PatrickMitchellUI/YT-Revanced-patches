@@ -98,7 +98,11 @@ private val sponsorBlockResourcePatch = resourcePatch {
             copyResources("sponsorblock", resourceGroup)
         }
 
-        addTopControl("sponsorblock")
+        addTopControl(
+            "sponsorblock",
+            "@+id/revanced_sb_voting_button",
+            "@+id/revanced_sb_create_segment_button"
+        )
     }
 }
 
