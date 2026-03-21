@@ -9,19 +9,24 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.preference.EditTextPreference;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
-import android.preference.EditTextPreference;
-import android.preference.ListPreference;
 import android.util.Pair;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -41,6 +46,33 @@ import app.revanced.extension.shared.ui.CustomDialog;
 
 @SuppressWarnings("deprecation")
 public abstract class AbstractPreferenceFragment extends PreferenceFragment {
+
+    private static class DebouncedListView extends ListView {
+        private long lastClick;
+
+        public DebouncedListView(Context context) {
+            super(context);
+
+            setId(android.R.id.list); // Required so PreferenceFragment recognizes it.
+
+            // Match the default layout params
+            setLayoutParams(new ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT
+            ));
+        }
+
+        @Override
+        public boolean performItemClick(View view, int position, long id) {
+            final long now = SystemClock.elapsedRealtime();
+            if (now - lastClick < 500) {
+                return true; // Ignore fast double click.
+            }
+            lastClick = now;
+
+            return super.performItemClick(view, position, id);
+        }
+    }
 
     @SuppressLint("StaticFieldLeak")
     public static AbstractPreferenceFragment instance;
@@ -489,6 +521,11 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
         } catch (Exception ex) {
             Logger.printException(() -> "importActivity failure", ex);
         }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return new DebouncedListView(getActivity());
     }
 
     @Override
