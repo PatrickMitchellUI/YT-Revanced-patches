@@ -4,7 +4,10 @@ import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.shared.misc.settings.preference.BasePreference
 import app.revanced.patches.shared.misc.settings.preference.PreferenceCategory
 import app.revanced.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
+import app.revanced.patches.youtube.misc.playservice.is_20_40_or_greater
+import app.revanced.patches.youtube.misc.playservice.is_21_36_or_greater
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
+import app.revanced.util.insertLiteralOverride
 
 /**
  * Video quality settings. Used to organize all speed related settings together.
@@ -41,5 +44,14 @@ val videoQualityPatch = bytecodePatch(
                 preferences = settingsMenuVideoQualityGroup,
             ),
         )
+
+        // 21.36 reads the flag elsewhere and is handled by the advanced video quality menu patch.
+        if (is_20_40_or_greater && !is_21_36_or_greater) {
+            // Flag breaks opening advanced quality menu.
+            // Alternatively can be fixed by using a delay when simulating the UI click.
+            newAdvancedQualityMenuStyleFlyoutMethodMatch.let {
+                it.method.insertLiteralOverride(it[0], false)
+            }
+        }
     }
 }
