@@ -1458,10 +1458,10 @@ Si se desactiva posteriormente, se recomienda borrar los datos de la aplicación
 Limitación: Es posible que el uso del botón de retroceso en la barra de herramientas no funcione"</string>
             <string name="revanced_change_start_page_always_summary_off">La página de inicio se cambia solo al iniciar la aplicación</string>
         </patch>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
-            <string name="revanced_disable_resuming_shorts_player_title">Desactivar reanudación del reproductor de Shorts</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_on">El reproductor de Shorts no se reanudará al iniciar la aplicación</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_off">El reproductor de Shorts se reanudará al iniciar la aplicación</string>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch">
+            <string name="revanced_disable_resuming_shorts_on_startup_title">Desactivar reanudación del reproductor de Shorts</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_on">El reproductor de Shorts no se reanudará al iniciar la aplicación</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_off">El reproductor de Shorts se reanudará al iniciar la aplicación</string>
         </patch>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch">
             <string name="revanced_shorts_player_type_title">Abre Shorts con</string>

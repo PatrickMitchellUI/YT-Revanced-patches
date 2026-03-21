@@ -1453,10 +1453,10 @@ Se posteriormente desativado, é recomendável limpar os dados do aplicativo par
 Limitação: usar o botão Voltar na barra de ferramentas pode não funcionar"</string>
             <string name="revanced_change_start_page_always_summary_off">A página inicial é alterada apenas na inicialização do aplicativo</string>
         </patch>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
-            <string name="revanced_disable_resuming_shorts_player_title">Desativar continuar a reproduzir Shorts</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_on">Shorts não irá continuar reproduzindo ao iniciar o aplicativo</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_off">Shorts irá continuar reproduzindo ao iniciar o aplicativo</string>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch">
+            <string name="revanced_disable_resuming_shorts_on_startup_title">Desativar continuar a reproduzir Shorts</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_on">Shorts não irá continuar reproduzindo ao iniciar o aplicativo</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_off">Shorts irá continuar reproduzindo ao iniciar o aplicativo</string>
         </patch>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch">
             <string name="revanced_shorts_player_type_title">Abrir Shorts com</string>

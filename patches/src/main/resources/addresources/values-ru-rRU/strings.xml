@@ -1468,10 +1468,10 @@ Second \"item\" text"</string>
 Ограничение: использование кнопки \"Назад\" на панели инструментов может не работать"</string>
             <string name="revanced_change_start_page_always_summary_off">Начальная страница изменяется только при запуске приложения</string>
         </patch>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
-            <string name="revanced_disable_resuming_shorts_player_title">Отключить возобновление плеера Shorts</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_on">Возобновление плеера Shorts при запуске приложения отключено</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_off">Возобновление плеера Shorts при запуске приложения включено</string>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch">
+            <string name="revanced_disable_resuming_shorts_on_startup_title">Отключить возобновление плеера Shorts</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_on">Возобновление плеера Shorts при запуске приложения отключено</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_off">Возобновление плеера Shorts при запуске приложения включено</string>
         </patch>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch">
             <string name="revanced_shorts_player_type_title">Плеер для открытия Shorts</string>

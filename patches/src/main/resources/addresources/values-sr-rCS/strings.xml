@@ -1454,10 +1454,10 @@ Ako se kasnije isključi, preporučuje se da izbrišete podatke aplikacije da bi
 Ograničenje: Korišćenje dugmeta „Nazad” na traci sa alatkama možda neće raditi"</string>
             <string name="revanced_change_start_page_always_summary_off">Polazna stranica se menja samo pri pokretanju aplikacije</string>
         </patch>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
-            <string name="revanced_disable_resuming_shorts_player_title">Onemogući nastavak reprodukcije Shorts plejera</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_on">Shorts plejer neće nastaviti reprodukciju pri pokretanju aplikacije</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_off">Shorts plejer će nastaviti reprodukciju pri pokretanju aplikacije</string>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch">
+            <string name="revanced_disable_resuming_shorts_on_startup_title">Onemogući nastavak reprodukcije Shorts plejera</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_on">Shorts plejer neće nastaviti reprodukciju pri pokretanju aplikacije</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_off">Shorts plejer će nastaviti reprodukciju pri pokretanju aplikacije</string>
         </patch>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch">
             <string name="revanced_shorts_player_type_title">Otvorite Shorts pomoću</string>

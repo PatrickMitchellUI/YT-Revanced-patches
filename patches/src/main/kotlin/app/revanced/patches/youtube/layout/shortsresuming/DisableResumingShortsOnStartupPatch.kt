@@ -1,4 +1,4 @@
-package app.revanced.patches.youtube.layout.startupshortsreset
+package app.revanced.patches.youtube.layout.shortsresuming
 
 import app.revanced.patcher.extensions.addInstructions
 import app.revanced.patcher.extensions.getInstruction
@@ -18,9 +18,11 @@ import app.revanced.util.findFreeRegister
 import app.revanced.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
-    "Lapp/revanced/extension/youtube/patches/DisableResumingStartupShortsPlayerPatch;"
+    "Lapp/revanced/extension/youtube/patches/DisableResumingShortsOnStartupPatch;"
 
 @Suppress("unused")
 val disableResumingShortsOnStartupPatch = bytecodePatch(
@@ -36,31 +38,34 @@ val disableResumingShortsOnStartupPatch = bytecodePatch(
 
     compatibleWith(
         "com.google.android.youtube"(
-            "20.14.43",
-            "20.21.37",
-            "20.26.46",
-            "20.31.42",
-            "20.37.48",
-            "20.40.45",
-            "21.36.47"
-            // This patch is obsolete with 21.03 because YT seems to have
-            // removed resuming Shorts functionality.
-            // TODO: Before adding 21.03+, merge this patch into `Hide Shorts component`
+            "20.40.45"
         ),
     )
 
     apply {
-        // 21.03+ seems to no longer have resuming Shorts functionality.
-        if (is_21_03_or_greater) return@apply
-
-        addResources("youtube", "layout.startupshortsreset.disableResumingShortsOnStartupPatch")
+        addResources("youtube", "layout.shortsresuming.disableResumingShortsOnStartupPatch")
 
         PreferenceScreen.SHORTS.addPreferences(
-            SwitchPreference("revanced_disable_resuming_shorts_player"),
+            SwitchPreference("revanced_disable_resuming_shorts_on_startup"),
         )
 
-        if (is_20_03_or_greater) {
-            userWasInShortsAlternativeMethodMatch.let {
+        if (is_21_03_or_greater) {
+            userWasInShortsEvaluateMethodMatch.let {
+                it.method.apply {
+                    val instruction = getInstruction<RegisterRangeInstruction>(it[0])
+                    val zMRegister = instruction.startRegister + 2
+
+                    addInstructions(
+                        it[0],
+                        """
+                            invoke-static { v$zMRegister }, ${EXTENSION_CLASS_DESCRIPTOR}->disableResumingShortsOnStartup(Z)Z
+                            move-result v$zMRegister
+                        """
+                    )
+                }
+            }
+        } else if (is_20_03_or_greater) {
+            userWasInShortsListenerMethodMatch.let {
                 it.method.apply {
                     val insertIndex = it[2] + 1
                     val register = getInstruction<OneRegisterInstruction>(insertIndex).registerA
@@ -68,7 +73,7 @@ val disableResumingShortsOnStartupPatch = bytecodePatch(
                     addInstructions(
                         insertIndex,
                         """
-                            invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->disableResumingStartupShortsPlayer(Z)Z
+                            invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->disableResumingShortsOnStartup(Z)Z
                             move-result v$register
                         """,
                     )
@@ -86,7 +91,7 @@ val disableResumingShortsOnStartupPatch = bytecodePatch(
                 addInstructionsAtControlFlowLabel(
                     listenableInstructionIndex,
                     """
-                        invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->disableResumingStartupShortsPlayer()Z
+                        invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->disableResumingShortsOnStartup()Z
                         move-result v$freeRegister
                         if-eqz v$freeRegister, :show_startup_shorts_player
                         return-void
@@ -100,7 +105,7 @@ val disableResumingShortsOnStartupPatch = bytecodePatch(
         userWasInShortsConfigMethod.addInstructions(
             0,
             """
-                invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->disableResumingStartupShortsPlayer()Z
+                invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->disableResumingShortsOnStartup()Z
                 move-result v0
                 if-eqz v0, :show
                 const/4 v0, 0x0

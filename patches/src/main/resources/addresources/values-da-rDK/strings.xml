@@ -1445,10 +1445,10 @@ Hvis det senere slås fra, anbefales det at rydde app-dataene for at forhindre U
 Begrænsning: Brug af tilbage-knappen på værktøjslinjen fungerer muligvis ikke"</string>
             <string name="revanced_change_start_page_always_summary_off">Startsiden ændres kun ved appstart</string>
         </patch>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
-            <string name="revanced_disable_resuming_shorts_player_title">Deaktivér genoptagelse af Shorts spiller</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_on">Shorts-afspilleren genoptages ikke ved app-start</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_off">Kortspilleren vil genoptage ved app-opstart</string>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch">
+            <string name="revanced_disable_resuming_shorts_on_startup_title">Deaktivér genoptagelse af Shorts spiller</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_on">Shorts-afspilleren genoptages ikke ved app-start</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_off">Kortspilleren vil genoptage ved app-opstart</string>
         </patch>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch">
             <string name="revanced_shorts_player_type_title">Åbne Shorts med</string>

@@ -1433,10 +1433,10 @@ Dacă este dezactivat ulterior, se recomandă să ștergeți datele aplicației 
 Limitare: Utilizarea butonului Înapoi de pe bara de instrumente poate să nu funcționeze"</string>
             <string name="revanced_change_start_page_always_summary_off">Pagina de pornire este schimbată doar la pornirea aplicației</string>
         </patch>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
-            <string name="revanced_disable_resuming_shorts_player_title">Dezactivează reluarea playerului Shorts</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_on">Playerul Shorts nu va relua la pornirea aplicației</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_off">Scurtătura va fi reluată la pornirea aplicației</string>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch">
+            <string name="revanced_disable_resuming_shorts_on_startup_title">Dezactivează reluarea playerului Shorts</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_on">Playerul Shorts nu va relua la pornirea aplicației</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_off">Scurtătura va fi reluată la pornirea aplicației</string>
         </patch>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch">
             <string name="revanced_shorts_player_type_title">Deschide Shorts cu</string>

@@ -1467,10 +1467,10 @@ Pokud bude později vypnuta, doporučujeme vymazat data aplikace, aby se zabrán
 Omezení: Použití tlačítka zpět na panelu nástrojů nemusí fungovat"</string>
             <string name="revanced_change_start_page_always_summary_off">Úvodní stránka se změní pouze při spuštění aplikace</string>
         </patch>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
-            <string name="revanced_disable_resuming_shorts_player_title">Zakázat obnovení přehrávače Shorts</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_on">Přehrávač Shorts nebude obnoven při spuštění aplikace</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_off">Přehrávač Shorts se po spuštění aplikace znovu spustí</string>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch">
+            <string name="revanced_disable_resuming_shorts_on_startup_title">Zakázat obnovení přehrávače Shorts</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_on">Přehrávač Shorts nebude obnoven při spuštění aplikace</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_off">Přehrávač Shorts se po spuštění aplikace znovu spustí</string>
         </patch>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch">
             <string name="revanced_shorts_player_type_title">Otevřít Shorts s</string>

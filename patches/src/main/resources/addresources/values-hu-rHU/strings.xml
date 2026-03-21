@@ -1454,10 +1454,10 @@ Ha később kikapcsolja, akkor ajánlott az alkalmazás adatait törölni, hogy 
             <string name="revanced_change_start_page_always_summary_on">"A kezdőlap mindig módosítva van\n\nKorlátozás: A visszalépés gomb a eszköztáron nem biztos, hogy működik"</string>
             <string name="revanced_change_start_page_always_summary_off">A kezdőoldal csak az alkalmazás indításakor változik meg</string>
         </patch>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
-            <string name="revanced_disable_resuming_shorts_player_title">A Shorts lejátszás folytatásának kikapcsolása</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_on">A Shorts lejátszás nem indul el az alkalmazás indításakor</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_off">A Shorts lejátszás folytatódik az alkalmazás indításakor</string>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch">
+            <string name="revanced_disable_resuming_shorts_on_startup_title">A Shorts lejátszás folytatásának kikapcsolása</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_on">A Shorts lejátszás nem indul el az alkalmazás indításakor</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_off">A Shorts lejátszás folytatódik az alkalmazás indításakor</string>
         </patch>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch">
             <string name="revanced_shorts_player_type_title">Shorts megnyitása ezzel:</string>

@@ -395,7 +395,7 @@ YouTube அமைப்புகளில் தானியங்கு ப்�
         <patch id="layout.formfactor.changeFormFactorPatch"/>
         <patch id="layout.spoofappversion.spoofAppVersionPatch"/>
         <patch id="layout.startpage.changeStartPagePatch"/>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch"/>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch"/>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch"/>
         <patch id="layout.shortsautoplay.shortsAutoplayPatch"/>
         <patch id="layout.miniplayer.miniplayerPatch"/>

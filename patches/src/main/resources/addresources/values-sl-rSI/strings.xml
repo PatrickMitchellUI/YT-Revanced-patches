@@ -1463,10 +1463,10 @@ To bo spremenilo videz in funkcije aplikacije, vendar se lahko pojavijo neznani 
 Omejitev: uporaba gumba za nazaj v orodni vrstici morda ne bo delovala"</string>
             <string name="revanced_change_start_page_always_summary_off">Začetna stran se spremeni samo ob zagonu aplikacije</string>
         </patch>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
-            <string name="revanced_disable_resuming_shorts_player_title">Onemogoči nadaljevanje predvajalnika Shorts</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_on">Predvajalnik Shorts se ne bo nadaljeval ob zagonu aplikacije</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_off">Predvajalnik Shorts se bo nadaljeval ob zagonu aplikacije</string>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch">
+            <string name="revanced_disable_resuming_shorts_on_startup_title">Onemogoči nadaljevanje predvajalnika Shorts</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_on">Predvajalnik Shorts se ne bo nadaljeval ob zagonu aplikacije</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_off">Predvajalnik Shorts se bo nadaljeval ob zagonu aplikacije</string>
         </patch>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch">
             <string name="revanced_shorts_player_type_title">Odpri Shorts z</string>

@@ -1457,10 +1457,10 @@ Ja vēlāk tiks izslēgts, ieteicams notīrīt lietotnes datus, lai novērstu li
 Ierobežojums: Atpakaļpoga rīkjoslā var nedarboties"</string>
             <string name="revanced_change_start_page_always_summary_off">Sākuma lapa tiek mainīta tikai lietotnes startēšanas reizē</string>
         </patch>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
-            <string name="revanced_disable_resuming_shorts_player_title">Atspējot Shorts atskaņotāja atsākšanu</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_on">Shorts atskaņotājs neatjaunosies lietotnes palaišanas laikā</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_off">Shorts atskaņotājs tiks atsākts lietotnes palaišanas laikā</string>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch">
+            <string name="revanced_disable_resuming_shorts_on_startup_title">Atspējot Shorts atskaņotāja atsākšanu</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_on">Shorts atskaņotājs neatjaunosies lietotnes palaišanas laikā</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_off">Shorts atskaņotājs tiks atsākts lietotnes palaišanas laikā</string>
         </patch>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch">
             <string name="revanced_shorts_player_type_title">Atvērt Shorts ar</string>

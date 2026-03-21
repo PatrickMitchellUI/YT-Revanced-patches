@@ -1464,10 +1464,10 @@ Jeśli później zostanie wyłączony, zaleca się wyczyszczenie danych aplikacj
 Ograniczenie: użycie przycisku wstecz na pasku narzędzi może nie działać"</string>
             <string name="revanced_change_start_page_always_summary_off">Strona startowa jest zmieniana tylko przy uruchomieniu aplikacji</string>
         </patch>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
-            <string name="revanced_disable_resuming_shorts_player_title">Wznawianie odtwarzacza Shortsów</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_on">Odtwarzacz Shortsów nie będzie wznawiany przy starcie aplikacji</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_off">Odtwarzacz Shortsów zostanie wznowiony przy starcie aplikacji</string>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch">
+            <string name="revanced_disable_resuming_shorts_on_startup_title">Wznawianie odtwarzacza Shortsów</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_on">Odtwarzacz Shortsów nie będzie wznawiany przy starcie aplikacji</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_off">Odtwarzacz Shortsów zostanie wznowiony przy starcie aplikacji</string>
         </patch>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch">
             <string name="revanced_shorts_player_type_title">Otwórz Shorts z</string>

@@ -1467,10 +1467,10 @@ Jika kemudian dimatikan, disarankan untuk menghapus data aplikasi untuk mencegah
 Batasan: Menggunakan tombol kembali pada toolbar mungkin tidak berfungsi"</string>
             <string name="revanced_change_start_page_always_summary_off">Halaman awal hanya diubah saat aplikasi dimulai</string>
         </patch>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
-            <string name="revanced_disable_resuming_shorts_player_title">Matikan melanjutkan pemutar video Shorts</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_on">Pemutaran Shorts tidak akan dilanjutkan saat aplikasi dimulai</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_off">Pemutaran Shorts akan dilanjutkan saat aplikasi dimulai</string>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch">
+            <string name="revanced_disable_resuming_shorts_on_startup_title">Matikan melanjutkan pemutar video Shorts</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_on">Pemutaran Shorts tidak akan dilanjutkan saat aplikasi dimulai</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_off">Pemutaran Shorts akan dilanjutkan saat aplikasi dimulai</string>
         </patch>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch">
             <string name="revanced_shorts_player_type_title">Buka Shorts dengan</string>

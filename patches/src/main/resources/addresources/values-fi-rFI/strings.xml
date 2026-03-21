@@ -1468,10 +1468,10 @@ Jos tämä poistetaan myöhemmin käytöstä, on suositeltavaa tyhjentää sovel
 Rajoitus: Työkalupalkin takaisin-painikkeen käyttäminen ei välttämättä toimi"</string>
             <string name="revanced_change_start_page_always_summary_off">Aloitussivu vaihdetaan vain sovelluksen käynnistyessä</string>
         </patch>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
-            <string name="revanced_disable_resuming_shorts_player_title">Poista Shorts-soittimen jatkaminen käytöstä</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_on">Shorts-soitin ei jatka sovelluksen käynnistyessä</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_off">Shorts-soitin jatkaa sovelluksen käynnistyessä</string>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch">
+            <string name="revanced_disable_resuming_shorts_on_startup_title">Poista Shorts-soittimen jatkaminen käytöstä</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_on">Shorts-soitin ei jatka sovelluksen käynnistyessä</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_off">Shorts-soitin jatkaa sovelluksen käynnistyessä</string>
         </patch>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch">
             <string name="revanced_shorts_player_type_title">Shortsien avaustapa</string>

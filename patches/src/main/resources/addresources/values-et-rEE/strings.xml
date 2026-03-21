@@ -1461,10 +1461,10 @@ Kui see hiljem välja lülitatakse, on soovitatav rakenduse andmed kustutada, et
 Piirang: tööriistaribal tagasinupp ei pruugi töötada"</string>
             <string name="revanced_change_start_page_always_summary_off">Avalehte muudetakse ainult rakenduse käivitamisel</string>
         </patch>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
-            <string name="revanced_disable_resuming_shorts_player_title">Keela Shortsi esitaja jätkamine</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_on">Shortsi esitaja ei jätka rakenduse käivitamisel</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_off">Shortsi esitaja jätkub rakenduse käivitamisel</string>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch">
+            <string name="revanced_disable_resuming_shorts_on_startup_title">Keela Shortsi esitaja jätkamine</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_on">Shortsi esitaja ei jätka rakenduse käivitamisel</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_off">Shortsi esitaja jätkub rakenduse käivitamisel</string>
         </patch>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch">
             <string name="revanced_shorts_player_type_title">Ava Shorts</string>

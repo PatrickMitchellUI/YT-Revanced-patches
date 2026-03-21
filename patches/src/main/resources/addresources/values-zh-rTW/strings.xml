@@ -1468,10 +1468,10 @@ Second \"item\" text"</string>
 限制：工具列上的返回按鈕可能無法運作"</string>
             <string name="revanced_change_start_page_always_summary_off">起始頁面僅在應用程式啟動時變更</string>
         </patch>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
-            <string name="revanced_disable_resuming_shorts_player_title">停用 Shorts 播放器接續播放功能</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_on">應用程式啟動時，Shorts 播放器將不會接續播放</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_off">應用程式啟動時，Shorts 播放器將接續播放</string>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch">
+            <string name="revanced_disable_resuming_shorts_on_startup_title">停用 Shorts 播放器接續播放功能</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_on">應用程式啟動時，Shorts 播放器將不會接續播放</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_off">應用程式啟動時，Shorts 播放器將接續播放</string>
         </patch>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch">
             <string name="revanced_shorts_player_type_title">Shorts 開啟方式</string>

@@ -1467,10 +1467,10 @@ Second \"item\" text"</string>
 Ограничење: Коришћење дугмета „Назад” на траци са алаткама можда неће радити"</string>
             <string name="revanced_change_start_page_always_summary_off">Полазна страница се мења само при покретању апликације</string>
         </patch>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
-            <string name="revanced_disable_resuming_shorts_player_title">Онемогући наставак репродукције Shorts плејера</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_on">Shorts плејер неће наставити репродукцију при покретању апликације</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_off">Shorts плејер ће наставити репродукцију при покретању апликације</string>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch">
+            <string name="revanced_disable_resuming_shorts_on_startup_title">Онемогући наставак репродукције Shorts плејера</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_on">Shorts плејер неће наставити репродукцију при покретању апликације</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_off">Shorts плејер ће наставити репродукцију при покретању апликације</string>
         </patch>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch">
             <string name="revanced_shorts_player_type_title">Отворите Shorts помоћу</string>

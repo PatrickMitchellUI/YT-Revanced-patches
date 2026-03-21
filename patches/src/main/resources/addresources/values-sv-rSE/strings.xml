@@ -1447,10 +1447,10 @@ Om du senare inaktiverar det rekommenderar vi att rensa appens data för att fö
 Begränsning: Bakåtknappen i verktygsfältet kanske inte fungerar"</string>
             <string name="revanced_change_start_page_always_summary_off">Startsidan byts endast vid appstart</string>
         </patch>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
-            <string name="revanced_disable_resuming_shorts_player_title">Inaktivera att Shorts-spelaren återupptas</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_on">Shorts-spelaren återupptas inte vid appstart</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_off">Shorts-spelaren återupptas vid appstart</string>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch">
+            <string name="revanced_disable_resuming_shorts_on_startup_title">Inaktivera att Shorts-spelaren återupptas</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_on">Shorts-spelaren återupptas inte vid appstart</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_off">Shorts-spelaren återupptas vid appstart</string>
         </patch>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch">
             <string name="revanced_shorts_player_type_title">Öppna Shorts-videor med</string>

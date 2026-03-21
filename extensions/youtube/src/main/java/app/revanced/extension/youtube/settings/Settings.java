@@ -325,7 +325,7 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final BooleanSetting WIDE_SEARCHBAR = new BooleanSetting("revanced_wide_searchbar", FALSE, true);
 
     // Shorts
-    public static final BooleanSetting DISABLE_RESUMING_SHORTS_PLAYER = new BooleanSetting("revanced_disable_resuming_shorts_player", FALSE);
+    public static final BooleanSetting DISABLE_RESUMING_SHORTS_ON_STARTUP = new BooleanSetting("revanced_disable_resuming_shorts_on_startup", FALSE);
     public static final BooleanSetting DISABLE_SHORTS_BACKGROUND_PLAYBACK = new BooleanSetting("revanced_shorts_disable_background_playback", FALSE);
     public static final EnumSetting<ShortsPlayerType> SHORTS_PLAYER_TYPE = new EnumSetting<>("revanced_shorts_player_type", ShortsPlayerType.SHORTS_PLAYER);
     public static final BooleanSetting HIDE_SHORTS_AI_BUTTON = new BooleanSetting("revanced_hide_shorts_ai_button", FALSE);
@@ -492,6 +492,7 @@ public class Settings extends YouTubeAndMusicSettings {
     // Deprecated migrations
     private static final BooleanSetting DEPRECATED_HIDE_RELATED_VIDEOS_OVERLAY = new BooleanSetting("revanced_hide_related_videos_overlay", FALSE);
     private static final BooleanSetting DEPRECATED_HIDE_RELATED_VIDEOS = new BooleanSetting("revanced_hide_related_videos", FALSE);
+    private static final BooleanSetting DEPRECATED_DISABLE_RESUMING_SHORTS_PLAYER = new BooleanSetting("revanced_disable_resuming_shorts_player", FALSE);
     private static final StringSetting DEPRECATED_SEEKBAR_CUSTOM_COLOR_PRIMARY = new StringSetting("revanced_seekbar_custom_color_value", "#FF0033");
 
     private static final FloatSetting DEPRECATED_SB_CATEGORY_SPONSOR_OPACITY = new FloatSetting("sb_sponsor_opacity", 0.8f, false, false);
@@ -508,7 +509,7 @@ public class Settings extends YouTubeAndMusicSettings {
     static {
         // region Migration
 
-        // Migrate renamed related videos settings.
+        // Migrate renamed settings.
         if (!DEPRECATED_HIDE_RELATED_VIDEOS_OVERLAY.isSetToDefault()) {
             HIDE_PLAYER_RELATED_VIDEOS_OVERLAY.save(DEPRECATED_HIDE_RELATED_VIDEOS_OVERLAY.get());
             DEPRECATED_HIDE_RELATED_VIDEOS_OVERLAY.resetToDefault();
@@ -516,6 +517,10 @@ public class Settings extends YouTubeAndMusicSettings {
         if (!DEPRECATED_HIDE_RELATED_VIDEOS.isSetToDefault()) {
             HIDE_QUICK_ACTIONS_RELATED_VIDEOS.save(DEPRECATED_HIDE_RELATED_VIDEOS.get());
             DEPRECATED_HIDE_RELATED_VIDEOS.resetToDefault();
+        }
+        if (!DEPRECATED_DISABLE_RESUMING_SHORTS_PLAYER.isSetToDefault()) {
+            DISABLE_RESUMING_SHORTS_ON_STARTUP.save(DEPRECATED_DISABLE_RESUMING_SHORTS_PLAYER.get());
+            DEPRECATED_DISABLE_RESUMING_SHORTS_PLAYER.resetToDefault();
         }
 
         // Migrate renamed change header enums.

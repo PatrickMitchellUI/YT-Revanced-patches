@@ -1466,10 +1466,10 @@ Má mhúchtar é níos déanaí, moltar sonraí na haipe a ghlanadh chun fabhtan
 Teorainn: Seans nach n-oibreoidh úsáid a bhaint as an gcnaipe cúil ar an mbarra uirlisí"</string>
             <string name="revanced_change_start_page_always_summary_off">Ní athraítear an leathanach tosaigh ach amháin ar tosú an aip</string>
         </patch>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
-            <string name="revanced_disable_resuming_shorts_player_title">Díchumasaigh atosú seinnteoir Shorts</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_on">Ní atosóidh seinnteoir Shorts nuair a thosófar an aip</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_off">Atosóidh seinnteoir Shorts nuair a thosóidh an aip arís</string>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch">
+            <string name="revanced_disable_resuming_shorts_on_startup_title">Díchumasaigh atosú seinnteoir Shorts</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_on">Ní atosóidh seinnteoir Shorts nuair a thosófar an aip</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_off">Atosóidh seinnteoir Shorts nuair a thosóidh an aip arís</string>
         </patch>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch">
             <string name="revanced_shorts_player_type_title">Oscail Shorts le</string>

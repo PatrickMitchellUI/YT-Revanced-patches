@@ -1464,10 +1464,10 @@ User id ของคุณเหมือนกับรหัสผ่าน �
 ข้อจำกัด: การใช้ปุ่มย้อนกลับบนแถบเครื่องมืออาจใช้ไม่ได้"</string>
             <string name="revanced_change_start_page_always_summary_off">หน้าเริ่มต้นจะเปลี่ยนเมื่อเริ่มแอปเท่านั้น</string>
         </patch>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
-            <string name="revanced_disable_resuming_shorts_player_title">ปิดใช้งานการกลับมาทำงานต่อของเครื่องเล่น Shorts</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_on">เครื่องเล่น Shorts จะไม่กลับมาทำงานต่อเมื่อเริ่มต้นแอป</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_off">เครื่องเล่น Shorts จะกลับมาทำงานต่อเมื่อเริ่มต้นแอป</string>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch">
+            <string name="revanced_disable_resuming_shorts_on_startup_title">ปิดใช้งานการกลับมาทำงานต่อของเครื่องเล่น Shorts</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_on">เครื่องเล่น Shorts จะไม่กลับมาทำงานต่อเมื่อเริ่มต้นแอป</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_off">เครื่องเล่น Shorts จะกลับมาทำงานต่อเมื่อเริ่มต้นแอป</string>
         </patch>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch">
             <string name="revanced_shorts_player_type_title">เปิด \"Shorts\" ด้วย</string>

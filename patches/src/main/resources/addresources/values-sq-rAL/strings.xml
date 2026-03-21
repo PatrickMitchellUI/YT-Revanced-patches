@@ -1443,10 +1443,10 @@ Nëse më vonë është çaktivizuar, është e rekomanduar të fshiheni të dh�
 Kufizimi: Përdorimi i butonit të kthimit në shiritin e veglave mund të mos funksionojë"</string>
             <string name="revanced_change_start_page_always_summary_off">Faqja e fillimit ndryshohet vetëm kur nis aplikacioni</string>
         </patch>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
-            <string name="revanced_disable_resuming_shorts_player_title">Fik rifillon lojtarin Shorts</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_on">Lojtari Shorts nuk do të rifillojë në fillimin e aplikacionit</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_off">Lojtari Shorts do të rifillojë në fillimin e aplikacionit</string>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch">
+            <string name="revanced_disable_resuming_shorts_on_startup_title">Fik rifillon lojtarin Shorts</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_on">Lojtari Shorts nuk do të rifillojë në fillimin e aplikacionit</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_off">Lojtari Shorts do të rifillojë në fillimin e aplikacionit</string>
         </patch>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch">
             <string name="revanced_shorts_player_type_title">Hap Shorts me</string>

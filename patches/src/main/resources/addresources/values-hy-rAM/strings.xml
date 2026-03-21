@@ -1459,10 +1459,10 @@ MicroG-ի համար մարտկոցի օպտիմալացումը անջատել�
 Սահմանափակում. գործիքագոտու վրա հետադարձ կոճակն օգտագործելը կարող է չաշխատել"</string>
             <string name="revanced_change_start_page_always_summary_off">Մեկնարկային էջը փոխվում է միայն հավելվածի գործարկման ժամանակ</string>
         </patch>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
-            <string name="revanced_disable_resuming_shorts_player_title">Անջատել Shorts պլեյերի վերսկսումը</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_on">Shorts պլեյերը չի վերսկսվի կիրառության մեկնարկի ժամանակ</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_off">Shorts պլեյերը կվերսկսվի կիրառության մեկնարկի ժամանակ</string>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch">
+            <string name="revanced_disable_resuming_shorts_on_startup_title">Անջատել Shorts պլեյերի վերսկսումը</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_on">Shorts պլեյերը չի վերսկսվի կիրառության մեկնարկի ժամանակ</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_off">Shorts պլեյերը կվերսկսվի կիրառության մեկնարկի ժամանակ</string>
         </patch>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch">
             <string name="revanced_shorts_player_type_title">Բացեք Shorts</string>

@@ -1469,10 +1469,10 @@ Daha sonra kapatılırsa, arayüz hatalarını önlemek için uygulama verilerin
 Kısıtlama: Araç çubuğundaki geri düğmesini kullanmak işe yaramayabilir"</string>
             <string name="revanced_change_start_page_always_summary_off">Başlangıç sayfası yalnızca uygulama başlatılırken değiştirilir</string>
         </patch>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
-            <string name="revanced_disable_resuming_shorts_player_title">Shorts oynatıcıya devam edilmesini devre dışı bırak</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_on">Shorts oynatıcı uygulama açıldığında devam etmeyecek</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_off">Shorts oynatıcı uygulama açıldığında devam edecek</string>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch">
+            <string name="revanced_disable_resuming_shorts_on_startup_title">Shorts oynatıcıya devam edilmesini devre dışı bırak</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_on">Shorts oynatıcı uygulama açıldığında devam etmeyecek</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_off">Shorts oynatıcı uygulama açıldığında devam edecek</string>
         </patch>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch">
             <string name="revanced_shorts_player_type_title">Shorts\'u şununla aç</string>

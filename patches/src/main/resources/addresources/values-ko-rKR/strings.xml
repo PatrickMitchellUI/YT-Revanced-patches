@@ -1467,10 +1467,10 @@ YouTube Premium 사용자라면 이 설정은 필요하지 않을 수 있습니�
 • 툴바에서 '뒤로 가기' 버튼이 작동하지 않을 수 있습니다"</string>
             <string name="revanced_change_start_page_always_summary_off">앱 시작 페이지를 앱 시작 시에만 변경합니다</string>
         </patch>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
-            <string name="revanced_disable_resuming_shorts_player_title">앱 시작 시 Shorts 플레이어 비활성화하기</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_on">앱 시작 시 Shorts 플레이어를 다시 실행하지 않습니다</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_off">앱 시작 시 Shorts 플레이어를 다시 실행합니다</string>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch">
+            <string name="revanced_disable_resuming_shorts_on_startup_title">앱 시작 시 Shorts 플레이어 비활성화하기</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_on">앱 시작 시 Shorts 플레이어를 다시 실행하지 않습니다</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_off">앱 시작 시 Shorts 플레이어를 다시 실행합니다</string>
         </patch>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch">
             <string name="revanced_shorts_player_type_title">Shorts 재생 플레이어 유형</string>

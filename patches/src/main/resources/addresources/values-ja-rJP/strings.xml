@@ -1467,10 +1467,10 @@ Automotive レイアウト
 制限事項: ツールバーの [戻る] ボタンが機能しない可能性があります"</string>
             <string name="revanced_change_start_page_always_summary_off">スタート画面の変更はアプリの起動時にのみ適用されます</string>
         </patch>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
-            <string name="revanced_disable_resuming_shorts_player_title">ショート プレーヤーの再開を無効化</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_on">ショート プレーヤーはアプリ起動時に再開されません</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_off">ショート プレーヤーはアプリ起動時に再開されます</string>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch">
+            <string name="revanced_disable_resuming_shorts_on_startup_title">ショート プレーヤーの再開を無効化</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_on">ショート プレーヤーはアプリ起動時に再開されません</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_off">ショート プレーヤーはアプリ起動時に再開されます</string>
         </patch>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch">
             <string name="revanced_shorts_player_type_title">ショートを開くプレーヤー</string>

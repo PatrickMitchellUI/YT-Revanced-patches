@@ -1458,10 +1458,10 @@ Second \"item\" text"</string>
 Абмежаванне: выкарыстанне кнопкі «Назад» на панэлі інструментаў можа не працаваць"</string>
             <string name="revanced_change_start_page_always_summary_off">Стартавая старонка змяняецца толькі пры запуску праграмы</string>
         </patch>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
-            <string name="revanced_disable_resuming_shorts_player_title">Адключыць аднаўленне прайгравання Shorts</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_on">Прайгравальнік Shorts не аднаўляецца пры запуску праграмы</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_off">Прайгравальнік Shorts адновіцца пры запуску праграмы</string>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch">
+            <string name="revanced_disable_resuming_shorts_on_startup_title">Адключыць аднаўленне прайгравання Shorts</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_on">Прайгравальнік Shorts не аднаўляецца пры запуску праграмы</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_off">Прайгравальнік Shorts адновіцца пры запуску праграмы</string>
         </patch>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch">
             <string name="revanced_shorts_player_type_title">Адкрыць Shorts з</string>

@@ -1467,10 +1467,10 @@ Si désactivé ultérieurement, il est recommandé d'effacer les données de l'a
 Limitation : Il se peut que le bouton Retour dans la barre d'outils ne fonctionne pas"</string>
             <string name="revanced_change_start_page_always_summary_off">La page de démarrage est modifiée uniquement au démarrage de l\'application</string>
         </patch>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
-            <string name="revanced_disable_resuming_shorts_player_title">Désactiver la reprise du lecteur Shorts</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_on">Le lecteur Shorts ne se relancera pas au démarrage de l\'application</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_off">Le lecteur Shorts reprendra au démarrage de l\'application</string>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch">
+            <string name="revanced_disable_resuming_shorts_on_startup_title">Désactiver la reprise du lecteur Shorts</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_on">Le lecteur Shorts ne se relancera pas au démarrage de l\'application</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_off">Le lecteur Shorts reprendra au démarrage de l\'application</string>
         </patch>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch">
             <string name="revanced_shorts_player_type_title">Ouvrir les Shorts avec</string>

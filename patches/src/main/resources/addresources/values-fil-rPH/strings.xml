@@ -1438,10 +1438,10 @@ Kung mamaya ay patayin, inirerekumenda na i-clear ang data ng app upang maiwasan
 Limitasyon: Maaaring hindi gumana ang paggamit ng back button sa toolbar"</string>
             <string name="revanced_change_start_page_always_summary_off">Binago ang panimulang pahina sa pagbukas lang ng app</string>
         </patch>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
-            <string name="revanced_disable_resuming_shorts_player_title">Huwag paganahin ang pagpapatuloy na manlalaro ng Shorts</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_on">Hindi magpapatuloy ang Shorts player sa pagsisimula ng app</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_off">Magpapatuloy ang manlalaro ng shorts sa pagsisimula ng app</string>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch">
+            <string name="revanced_disable_resuming_shorts_on_startup_title">Huwag paganahin ang pagpapatuloy na manlalaro ng Shorts</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_on">Hindi magpapatuloy ang Shorts player sa pagsisimula ng app</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_off">Magpapatuloy ang manlalaro ng shorts sa pagsisimula ng app</string>
         </patch>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch">
             <string name="revanced_shorts_player_type_title">Buksan ang Shorts gamit ang</string>

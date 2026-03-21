@@ -1456,10 +1456,10 @@ Second \"item\" text"</string>
 מגבלה: ייתכן שלחצן החזרה בסרגל הכלים לא יפעל"</string>
             <string name="revanced_change_start_page_always_summary_off">דף הפתיחה משתנה רק בעת הפעלת האפליקציה</string>
         </patch>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
-            <string name="revanced_disable_resuming_shorts_player_title">השבת חידוש נגן Shorts</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_on">נגן Shorts לא יתחדש בעת הפעלת היישום</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_off">נגן Shorts יתחדש בעת הפעלת היישום</string>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch">
+            <string name="revanced_disable_resuming_shorts_on_startup_title">השבת חידוש נגן Shorts</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_on">נגן Shorts לא יתחדש בעת הפעלת היישום</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_off">נגן Shorts יתחדש בעת הפעלת היישום</string>
         </patch>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch">
             <string name="revanced_shorts_player_type_title">פתח Shorts עם</string>

@@ -1457,10 +1457,10 @@ YouTube সেটিংসে অটো প্লে পরিবর্তন �
 সীমাবদ্ধতা: টুলবারে পিছনের বোতাম ব্যবহার করলে কাজ নাও করতে পারে"</string>
             <string name="revanced_change_start_page_always_summary_off">অ্যাপ শুরু করার সময় শুধুমাত্র শুরুর পৃষ্ঠা পরিবর্তন করা হয়</string>
         </patch>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
-            <string name="revanced_disable_resuming_shorts_player_title">Shorts প্লেয়ার আবার চালানো নিষ্ক্রিয় করুন</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_on">অ্যাপের শুরুতে Shorts প্লেয়ার আবার চলবে না</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_off">অ্যাপের শুরুতে Shorts প্লেয়ার আবার চলবে</string>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch">
+            <string name="revanced_disable_resuming_shorts_on_startup_title">Shorts প্লেয়ার আবার চালানো নিষ্ক্রিয় করুন</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_on">অ্যাপের শুরুতে Shorts প্লেয়ার আবার চলবে না</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_off">অ্যাপের শুরুতে Shorts প্লেয়ার আবার চলবে</string>
         </patch>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch">
             <string name="revanced_shorts_player_type_title">Shorts সঙ্গে খুলুন</string>

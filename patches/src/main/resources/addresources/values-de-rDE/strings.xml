@@ -1445,10 +1445,10 @@ Wenn Sie die Funktion später deaktivieren, wird empfohlen, die App-Daten zu lö
 Einschränkung: Die Verwendung der Zurück-Taste auf der Symbolleiste funktioniert möglicherweise nicht."</string>
             <string name="revanced_change_start_page_always_summary_off">Die Startseite wird nur beim Start der App geändert</string>
         </patch>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
-            <string name="revanced_disable_resuming_shorts_player_title">Fortsetzen des Shorts Players deaktivieren</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_on">Der Shorts Player wird beim Start der App nicht fortgesetzt</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_off">Shorts-Player wird beim Start der App fortgesetzt</string>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch">
+            <string name="revanced_disable_resuming_shorts_on_startup_title">Fortsetzen des Shorts Players deaktivieren</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_on">Der Shorts Player wird beim Start der App nicht fortgesetzt</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_off">Shorts-Player wird beim Start der App fortgesetzt</string>
         </patch>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch">
             <string name="revanced_shorts_player_type_title">Shorts mit</string>

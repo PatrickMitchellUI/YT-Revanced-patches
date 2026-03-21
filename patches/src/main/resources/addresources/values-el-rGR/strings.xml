@@ -1469,10 +1469,10 @@ Second \"item\" text"</string>
 Περιορισμός: Η χρήση του κουμπιού επιστροφής στη γραμμή εργαλείων ενδέχεται να μην λειτουργεί"</string>
             <string name="revanced_change_start_page_always_summary_off">Η αρχική σελίδα αλλάζει μόνο κατά την εκκίνηση της εφαρμογής</string>
         </patch>
-        <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
-            <string name="revanced_disable_resuming_shorts_player_title">Απενεργοποίηση συνέχισης των Shorts</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_on">Η αναπαραγωγή Shorts δε θα συνεχίζεται κατά την εκκίνηση της εφαρμογής</string>
-            <string name="revanced_disable_resuming_shorts_player_summary_off">Η αναπαραγωγή Shorts θα συνεχίζεται κατά την εκκίνηση της εφαρμογής</string>
+        <patch id="layout.shortsresuming.disableResumingShortsOnStartupPatch">
+            <string name="revanced_disable_resuming_shorts_on_startup_title">Απενεργοποίηση συνέχισης των Shorts</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_on">Η αναπαραγωγή Shorts δε θα συνεχίζεται κατά την εκκίνηση της εφαρμογής</string>
+            <string name="revanced_disable_resuming_shorts_on_startup_summary_off">Η αναπαραγωγή Shorts θα συνεχίζεται κατά την εκκίνηση της εφαρμογής</string>
         </patch>
         <patch id="layout.shortsplayer.shortsPlayerTypePatch">
             <string name="revanced_shorts_player_type_title">Άνοιγμα Shorts με</string>
