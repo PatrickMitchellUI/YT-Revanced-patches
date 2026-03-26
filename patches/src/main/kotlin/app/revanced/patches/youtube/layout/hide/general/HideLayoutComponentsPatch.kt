@@ -164,6 +164,7 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
                 SwitchPreference("revanced_hide_comments_community_guidelines"),
                 SwitchPreference("revanced_hide_comments_create_a_short_button"),
                 SwitchPreference("revanced_hide_comments_emoji_and_timestamp_buttons"),
+                SwitchPreference("revanced_hide_comments_info_button"),
                 SwitchPreference("revanced_hide_comments_preview_comment"),
                 SwitchPreference("revanced_hide_comments_thanks_button"),
                 SwitchPreference("revanced_sanitize_comments_category_bar"),
@@ -459,11 +460,28 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
 
     // endregion
 
-    // region Hide comment page
+    // region Hide comment carousel
 
     hookElement("${COMMENTS_FILTER_CLASS_NAME}->onCommentsLoaded([B)[B")
 
     // endregion
+
+
+    // region hide comments info button
+
+    engagementPanelInformationButtonMethodMatch.let {
+        it.method.apply {
+            val checkCastIndex = it[1]
+            val viewRegister = getInstruction<OneRegisterInstruction>(checkCastIndex).registerA
+
+            addInstruction(
+                checkCastIndex + 1,
+                "invoke-static { v$viewRegister }, ${COMMENTS_FILTER_CLASS_NAME}->hideCommentsInfoButton(Landroid/view/View;)V"
+            )
+        }
+    }
+
+    //endregion
 
     // region Hide Floating microphone
 

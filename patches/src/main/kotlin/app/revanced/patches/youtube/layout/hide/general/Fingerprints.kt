@@ -356,3 +356,14 @@ internal val BytecodePatchContext.channelTabRendererMethod by gettingFirstMethod
         "I"
     )
 }
+
+
+internal val BytecodePatchContext.engagementPanelInformationButtonMethodMatch by composingFirstMethod {
+    accessFlags(AccessFlags.PRIVATE, AccessFlags.FINAL)
+    returnType("V")
+    parameterTypes("Landroid/content/Context;")
+    instructions(
+        ResourceType.ID("information_button"),
+        Opcode.CHECK_CAST(),
+    )
+}
