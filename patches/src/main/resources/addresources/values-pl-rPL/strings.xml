@@ -320,9 +320,9 @@ Nie będziesz informowany o żadnych nieoczekiwanych zdarzeniach."</string>
             <string name="revanced_hide_you_may_like_section_summary_on">Sekcja „Może Ci się spodobać” jest ukryta</string>
             <string name="revanced_hide_you_may_like_section_summary_off">Sekcja „Może Ci się spodobać” jest widoczna</string>
             <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-            <string name="revanced_hide_doodles_title">Ukryj YouTube Doodles</string>
-            <string name="revanced_hide_doodles_summary_on">Animacja Doodles YouTube na logo jest ukryta</string>
-            <string name="revanced_hide_doodles_summary_off">Animacja YouTube Doodles na logo jest widoczna</string>
+            <string name="revanced_hide_youtube_doodles_title">Ukryj YouTube Doodles</string>
+            <string name="revanced_hide_youtube_doodles_summary_on">Animacja Doodles YouTube na logo jest ukryta</string>
+            <string name="revanced_hide_youtube_doodles_summary_off">Animacja YouTube Doodles na logo jest widoczna</string>
             <string name="revanced_hide_channel_bar_title">Ukryj pasek kanału</string>
             <string name="revanced_hide_channel_bar_summary_on">Pasek kanału jest ukryty</string>
             <string name="revanced_hide_channel_bar_summary_off">Pasek kanału jest widoczny</string>
@@ -938,7 +938,7 @@ Aby wyświetlić menu ścieżek audio, zmień „Fałszowanie strumieni wideo”
             <string name="revanced_disable_fullscreen_ambient_mode_summary_on">Oświetlenie kinowe wyłączone</string>
             <string name="revanced_disable_fullscreen_ambient_mode_summary_off">Oświetlenie kinowe włączone</string>
         </patch>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch">
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch">
             <string name="revanced_hide_info_cards_title">Karty informacyjne</string>
             <string name="revanced_hide_info_cards_summary_on">Karty informacyjne są ukryte</string>
             <string name="revanced_hide_info_cards_summary_off">Karty informacyjne są widoczne</string>
@@ -1099,12 +1099,12 @@ Aby wyświetlić menu ścieżek audio, zmień „Fałszowanie strumieni wideo”
             <string name="revanced_hide_autoplay_preview_summary_off">Podgląd autoodtwarzania jest widoczny</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">Ukryj sugerowane wideo na ekranie końcowym</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"Sugerowane wideo na ekranie końcowym jest ukryte, gdy automatyczne odtwarzanie jest wyłączone
+            <string name="revanced_hide_end_screen_suggested_video_title">Ukryj sugerowane wideo na ekranie końcowym</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"Sugerowane wideo na ekranie końcowym jest ukryte, gdy automatyczne odtwarzanie jest wyłączone
 
 Automatyczne odtwarzanie można zmienić w ustawieniach YouTube:
 Ustawienia → Odtwarzanie → Autoodtwarzanie następnego filmu"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">Sugerowane wideo na ekranie końcowym jest wyświetlane</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">Sugerowane wideo na ekranie końcowym jest wyświetlane</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
             <string name="revanced_hide_player_related_videos_overlay_title">Ukryj nakładkę powiązanych filmów</string>

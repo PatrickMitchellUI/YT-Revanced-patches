@@ -328,7 +328,7 @@ Second \"item\" text"</string>
             <string name="revanced_hide_end_screen_cards_summary_off">កាតអេក្រង់បញ្ចប់ត្រូវបានបង្ហាញ</string>
         </patch>
         <patch id="layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch"/>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch"/>
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch"/>
         <patch id="layout.hide.rollingnumber.disableRollingNumberAnimationPatch"/>
         <patch id="layout.hide.seekbar.hideSeekbarPatch">
             <!-- Seekbar shown inside video thumbnails found the home/feed/search/history.  The seekbar shows the prior watch progress when the video was last open. -->
@@ -362,12 +362,12 @@ Second \"item\" text"</string>
             <string name="revanced_hide_autoplay_preview_summary_off">ការមើលជាមុននៃការចាក់ដោយស្វ័យប្រវត្តិត្រូវបានបង្ហាញ</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">លាក់វីដេអូដែលបានណែនាំនៅអេក្រង់បញ្ចប់</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"វីដេអូដែលបានណែនាំនៅអេក្រង់បញ្ចប់ត្រូវបានលាក់នៅពេលដែលការចាក់ដោយស្វ័យប្រវត្តិត្រូវបានបិទ
+            <string name="revanced_hide_end_screen_suggested_video_title">លាក់វីដេអូដែលបានណែនាំនៅអេក្រង់បញ្ចប់</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"វីដេអូដែលបានណែនាំនៅអេក្រង់បញ្ចប់ត្រូវបានលាក់នៅពេលដែលការចាក់ដោយស្វ័យប្រវត្តិត្រូវបានបិទ
 
 ការចាក់ដោយស្វ័យប្រវត្តិអាចត្រូវបានផ្លាស់ប្ដូរនៅក្នុងការកំណត់ YouTube:
 ការកំណត់ → ការចាក់ → ចាក់វីដេអូបន្ទាប់ដោយស្វ័យប្រវត្តិ"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">វីដេអូដែលបានណែនាំនៅអេក្រង់បញ្ចប់ត្រូវបានបង្ហាញ</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">វីដេអូដែលបានណែនាំនៅអេក្រង់បញ្ចប់ត្រូវបានបង្ហាញ</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch"/>
         <patch id="layout.hide.time.hideTimestampPatch"/>

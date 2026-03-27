@@ -328,7 +328,7 @@ Continue বুটামত টেপ কৰক আৰু অপ্টিমা�
             <string name="revanced_hide_end_screen_cards_summary_off">শেষ পৰ্দাৰ কাৰ্ডসমূহ দেখুওৱা হৈছে</string>
         </patch>
         <patch id="layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch"/>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch"/>
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch"/>
         <patch id="layout.hide.rollingnumber.disableRollingNumberAnimationPatch"/>
         <patch id="layout.hide.seekbar.hideSeekbarPatch">
             <!-- Seekbar shown inside video thumbnails found the home/feed/search/history.  The seekbar shows the prior watch progress when the video was last open. -->
@@ -362,12 +362,12 @@ Continue বুটামত টেপ কৰক আৰু অপ্টিমা�
             <string name="revanced_hide_autoplay_preview_summary_off">স্বয়ংক্ৰিয় প্লে\'ৰ পূৰ্বদৃশ্য দেখুওৱা হৈছে</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">শেষ পৰ্দাৰ প্ৰস্তাৱিত ভিডিঅ\' লুকুৱাওক</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"স্বয়ংক্ৰিয় প্লে' বন্ধ কৰিলে শেষ পৰ্দাৰ প্ৰস্তাৱিত ভিডিঅ' লুকাই থাকে
+            <string name="revanced_hide_end_screen_suggested_video_title">শেষ পৰ্দাৰ প্ৰস্তাৱিত ভিডিঅ\' লুকুৱাওক</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"স্বয়ংক্ৰিয় প্লে' বন্ধ কৰিলে শেষ পৰ্দাৰ প্ৰস্তাৱিত ভিডিঅ' লুকাই থাকে
 
 YouTube ছেটিংছত স্বয়ংক্ৰিয় প্লে' সলনি কৰিব পাৰি:
 ছেটিংছ → প্লেবেক → পৰৱৰ্তী ভিডিঅ' স্বয়ংক্ৰিয় প্লে'"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">শেষ পৰ্দাৰ প্ৰস্তাৱিত ভিডিঅ\' দেখুওৱা হৈছে</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">শেষ পৰ্দাৰ প্ৰস্তাৱিত ভিডিঅ\' দেখুওৱা হৈছে</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch"/>
         <patch id="layout.hide.time.hideTimestampPatch"/>

@@ -316,7 +316,7 @@ Cheklovlar:
             <string name="revanced_hide_end_screen_cards_summary_off">Yakuniy ekran kartalari koʻrsatilgan</string>
         </patch>
         <patch id="layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch"/>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch"/>
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch"/>
         <patch id="layout.hide.rollingnumber.disableRollingNumberAnimationPatch"/>
         <patch id="layout.hide.seekbar.hideSeekbarPatch">
             <!-- Seekbar shown inside video thumbnails found the home/feed/search/history.  The seekbar shows the prior watch progress when the video was last open. -->
@@ -350,12 +350,12 @@ Cheklovlar:
             <string name="revanced_hide_autoplay_preview_summary_off">Avtomatik ijro etish oldindan koʻrishi koʻrsatilgan</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">Yakuniy ekran tavsiya etilgan videosini yashirish</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"Avtomatik ijro etish oʻchirilganida yakuniy ekran tavsiya etilgan videosi yashiriladi
+            <string name="revanced_hide_end_screen_suggested_video_title">Yakuniy ekran tavsiya etilgan videosini yashirish</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"Avtomatik ijro etish oʻchirilganida yakuniy ekran tavsiya etilgan videosi yashiriladi
 
 Avtomatik ijro etishni YouTube sozlamalarida oʻzgartirish mumkin:
 Sozlamalar → Ijro etish → Keyingi videoni avtomatik ijro etish"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">Yakuniy ekran tavsiya etilgan videosi koʻrsatilgan</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">Yakuniy ekran tavsiya etilgan videosi koʻrsatilgan</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch"/>
         <patch id="layout.hide.time.hideTimestampPatch"/>

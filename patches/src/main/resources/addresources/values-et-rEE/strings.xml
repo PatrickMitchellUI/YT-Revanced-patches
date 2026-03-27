@@ -322,9 +322,9 @@ Selle lubamine logib aga ka mõningaid kasutajaandmeid, näiteks teie IP-aadress
             <string name="revanced_hide_you_may_like_section_summary_on">Jaotis „Sulle võivad meeldida” on peidetud</string>
             <string name="revanced_hide_you_may_like_section_summary_off">Jaotis „Sulle võivad meeldida” on nähtav</string>
             <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-            <string name="revanced_hide_doodles_title">Peida YouTube Doodles</string>
-            <string name="revanced_hide_doodles_summary_on">YouTube Doodles animatsioon logol on peidetud</string>
-            <string name="revanced_hide_doodles_summary_off">YouTube Doodles animatsioon logol on nähtav</string>
+            <string name="revanced_hide_youtube_doodles_title">Peida YouTube Doodles</string>
+            <string name="revanced_hide_youtube_doodles_summary_on">YouTube Doodles animatsioon logol on peidetud</string>
+            <string name="revanced_hide_youtube_doodles_summary_off">YouTube Doodles animatsioon logol on nähtav</string>
             <string name="revanced_hide_channel_bar_title">Peida kanali riba</string>
             <string name="revanced_hide_channel_bar_summary_on">Kanali riba on peidetud</string>
             <string name="revanced_hide_channel_bar_summary_off">Kanaliribas on näidatud</string>
@@ -940,7 +940,7 @@ Heliriba menüü kuvamiseks muutke „Spoof video streams” väärtuseks „And
             <string name="revanced_disable_fullscreen_ambient_mode_summary_on">Ümbritseva režiimi keelatud</string>
             <string name="revanced_disable_fullscreen_ambient_mode_summary_off">Ümbritseva režiimi lubatud</string>
         </patch>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch">
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch">
             <string name="revanced_hide_info_cards_title">Peida infokaardid</string>
             <string name="revanced_hide_info_cards_summary_on">Infokaardid on peidetud</string>
             <string name="revanced_hide_info_cards_summary_off">Infokaardid on nähtaval</string>
@@ -1101,12 +1101,12 @@ Heliriba menüü kuvamiseks muutke „Spoof video streams” väärtuseks „And
             <string name="revanced_hide_autoplay_preview_summary_off">Automaatse esituse eelvaade on nähtav</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">Peida lõpuekraani soovitatud video</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"Lõpuekraani soovitatud video on peidetud, kui automaatesitus on välja lülitatud.
+            <string name="revanced_hide_end_screen_suggested_video_title">Peida lõpuekraani soovitatud video</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"Lõpuekraani soovitatud video on peidetud, kui automaatesitus on välja lülitatud.
 
 Automaatesitust saab muuta YouTube'i seadetes:
 Seaded → Taasesitus → Esita järgmine video automaatselt"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">Lõpuekraani soovitatud video on nähtav</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">Lõpuekraani soovitatud video on nähtav</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
             <string name="revanced_hide_player_related_videos_overlay_title">Peida seotud videote kate</string>

@@ -328,7 +328,7 @@ Mugaketak:
             <string name="revanced_hide_end_screen_cards_summary_off">Amaiera-pantailako txartelak ikusgai daude</string>
         </patch>
         <patch id="layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch"/>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch"/>
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch"/>
         <patch id="layout.hide.rollingnumber.disableRollingNumberAnimationPatch"/>
         <patch id="layout.hide.seekbar.hideSeekbarPatch">
             <!-- Seekbar shown inside video thumbnails found the home/feed/search/history.  The seekbar shows the prior watch progress when the video was last open. -->
@@ -362,12 +362,12 @@ Mugaketak:
             <string name="revanced_hide_autoplay_preview_summary_off">Erreprodukzio automatikoko aurrebista ikusgai dago</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">Ezkutatu amaiera-pantailako iradokitako bideoa</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"Amaiera-pantailako iradokitako bideoa ezkutatuta dago erreprodukzio automatikoa desgaituta dagoenean
+            <string name="revanced_hide_end_screen_suggested_video_title">Ezkutatu amaiera-pantailako iradokitako bideoa</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"Amaiera-pantailako iradokitako bideoa ezkutatuta dago erreprodukzio automatikoa desgaituta dagoenean
 
 Erreprodukzio automatikoa YouTube ezarpenetan alda daiteke:
 Ezarpenak → Erreprodukzioa → Hurrengo bideoa automatikoki erreproduzitu"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">Amaiera-pantailako iradokitako bideoa ikusgai dago</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">Amaiera-pantailako iradokitako bideoa ikusgai dago</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch"/>
         <patch id="layout.hide.time.hideTimestampPatch"/>

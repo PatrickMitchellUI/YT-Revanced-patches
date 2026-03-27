@@ -313,9 +313,9 @@ Cu toate acestea, activarea acestei opțiuni va înregistra și unele date ale u
             <string name="revanced_hide_you_may_like_section_summary_on">Secțiunea „S-ar putea să-ți placă” este ascunsă</string>
             <string name="revanced_hide_you_may_like_section_summary_off">Secțiunea „S-ar putea să-ți placă” este afișată</string>
             <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-            <string name="revanced_hide_doodles_title">Ascunde Doodle-urile YouTube</string>
-            <string name="revanced_hide_doodles_summary_on">Animația YouTube Doodles de pe logo este ascunsă.</string>
-            <string name="revanced_hide_doodles_summary_off">Animația Doodles YouTube pe logo este afișată</string>
+            <string name="revanced_hide_youtube_doodles_title">Ascunde Doodle-urile YouTube</string>
+            <string name="revanced_hide_youtube_doodles_summary_on">Animația YouTube Doodles de pe logo este ascunsă.</string>
+            <string name="revanced_hide_youtube_doodles_summary_off">Animația Doodles YouTube pe logo este afișată</string>
             <string name="revanced_hide_channel_bar_title">Ascunde bara de canal</string>
             <string name="revanced_hide_channel_bar_summary_on">Bara de canal este ascunsă</string>
             <string name="revanced_hide_channel_bar_summary_off">Bara de canal este afișată</string>
@@ -920,7 +920,7 @@ Pentru a afișa meniul piste audio, schimbați \"Falsificare fluxuri video\" în
             <string name="revanced_disable_fullscreen_ambient_mode_summary_on">Mod ambiental dezactivat</string>
             <string name="revanced_disable_fullscreen_ambient_mode_summary_off">Mod Ambient activat</string>
         </patch>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch">
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch">
             <string name="revanced_hide_info_cards_title">Ascunde cardurile cu informații</string>
             <string name="revanced_hide_info_cards_summary_on">Cardurile de informații sunt ascunse</string>
             <string name="revanced_hide_info_cards_summary_off">Cardurile de informații sunt afișate</string>
@@ -1081,9 +1081,9 @@ Pentru a afișa meniul piste audio, schimbați \"Falsificare fluxuri video\" în
             <string name="revanced_hide_autoplay_preview_summary_off">Previzualizarea redării automate este afișată</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">Ascunde videoclipul sugerat de pe ecranul final</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"Videoclipul sugerat de pe ecranul final este ascuns când redarea automată este oprită\n\nRedarea automată poate fi modificată în setările YouTube:\nSetări → Redare → Redare automată videoclipul următor"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">Videoclipul sugerat de pe ecranul final este afișat</string>
+            <string name="revanced_hide_end_screen_suggested_video_title">Ascunde videoclipul sugerat de pe ecranul final</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"Videoclipul sugerat de pe ecranul final este ascuns când redarea automată este oprită\n\nRedarea automată poate fi modificată în setările YouTube:\nSetări → Redare → Redare automată videoclipul următor"</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">Videoclipul sugerat de pe ecranul final este afișat</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
             <string name="revanced_hide_player_related_videos_overlay_title">Ascunde suprapunerea videoclipurilor similare.</string>

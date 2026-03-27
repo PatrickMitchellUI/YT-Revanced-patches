@@ -328,7 +328,7 @@ Limitacions:
             <string name="revanced_hide_end_screen_cards_summary_off">Les targetes de la pantalla final es mostren</string>
         </patch>
         <patch id="layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch"/>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch"/>
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch"/>
         <patch id="layout.hide.rollingnumber.disableRollingNumberAnimationPatch"/>
         <patch id="layout.hide.seekbar.hideSeekbarPatch">
             <!-- Seekbar shown inside video thumbnails found the home/feed/search/history.  The seekbar shows the prior watch progress when the video was last open. -->
@@ -362,12 +362,12 @@ Limitacions:
             <string name="revanced_hide_autoplay_preview_summary_off">La previsualització de la reproducció automàtica es mostra</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">Amaga el vídeo suggerit de la pantalla final</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"El vídeo suggerit de la pantalla final està ocult quan la reproducció automàtica està desactivada
+            <string name="revanced_hide_end_screen_suggested_video_title">Amaga el vídeo suggerit de la pantalla final</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"El vídeo suggerit de la pantalla final està ocult quan la reproducció automàtica està desactivada
 
 La reproducció automàtica es pot canviar a la configuració de YouTube:
 Configuració → Reproducció → Reprodueix el següent vídeo automàticament"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">El vídeo suggerit de la pantalla final es mostra</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">El vídeo suggerit de la pantalla final es mostra</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch"/>
         <patch id="layout.hide.time.hideTimestampPatch"/>

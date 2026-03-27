@@ -328,7 +328,7 @@ MicroG کے لیے بیٹری آپٹیمائزیشنز کو غیر فعال کر
             <string name="revanced_hide_end_screen_cards_summary_off">اختتامی سکرین کارڈز دکھائے گئے ہیں</string>
         </patch>
         <patch id="layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch"/>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch"/>
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch"/>
         <patch id="layout.hide.rollingnumber.disableRollingNumberAnimationPatch"/>
         <patch id="layout.hide.seekbar.hideSeekbarPatch">
             <!-- Seekbar shown inside video thumbnails found the home/feed/search/history.  The seekbar shows the prior watch progress when the video was last open. -->
@@ -362,12 +362,12 @@ MicroG کے لیے بیٹری آپٹیمائزیشنز کو غیر فعال کر
             <string name="revanced_hide_autoplay_preview_summary_off">آٹو پلے پیش نظارہ دکھایا گیا ہے</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">اختتامی سکرین پر تجویز کردہ ویڈیو چھپائیں</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"جب آٹو پلے بند ہو تو اختتامی سکرین پر تجویز کردہ ویڈیو چھپی رہتی ہے
+            <string name="revanced_hide_end_screen_suggested_video_title">اختتامی سکرین پر تجویز کردہ ویڈیو چھپائیں</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"جب آٹو پلے بند ہو تو اختتامی سکرین پر تجویز کردہ ویڈیو چھپی رہتی ہے
 
 آٹو پلے کو YouTube کی ترتیبات میں تبدیل کیا جا سکتا ہے:
 ترتیبات → پلے بیک → اگلی ویڈیو کو خود بخود چلائیں"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">اختتامی سکرین پر تجویز کردہ ویڈیو دکھایا گیا ہے</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">اختتامی سکرین پر تجویز کردہ ویڈیو دکھایا گیا ہے</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch"/>
         <patch id="layout.hide.time.hideTimestampPatch"/>

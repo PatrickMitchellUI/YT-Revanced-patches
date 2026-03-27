@@ -324,9 +324,9 @@ Povolením této možnosti se však budou zaznamenávat i některá uživatelsk�
             <string name="revanced_hide_you_may_like_section_summary_on">Sekce „Mohlo by se vám líbit“ je skrytá</string>
             <string name="revanced_hide_you_may_like_section_summary_off">Sekce „Mohlo by se vám líbit“ je zobrazena</string>
             <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-            <string name="revanced_hide_doodles_title">Skrýt YouTube Doodles</string>
-            <string name="revanced_hide_doodles_summary_on">Animace \"Doodles\" YouTube na logu je skryta</string>
-            <string name="revanced_hide_doodles_summary_off">Animace YouTube Doodles na logu je zobrazena</string>
+            <string name="revanced_hide_youtube_doodles_title">Skrýt YouTube Doodles</string>
+            <string name="revanced_hide_youtube_doodles_summary_on">Animace \"Doodles\" YouTube na logu je skryta</string>
+            <string name="revanced_hide_youtube_doodles_summary_off">Animace YouTube Doodles na logu je zobrazena</string>
             <string name="revanced_hide_channel_bar_title">Skrýt lištu kanálu</string>
             <string name="revanced_hide_channel_bar_summary_on">Lišta kanálu je skrytá</string>
             <string name="revanced_hide_channel_bar_summary_off">Lišta kanálu je zobrazena</string>
@@ -942,7 +942,7 @@ Chcete-li zobrazit nabídku zvukových stop, změňte \"Podvrhnout video streamy
             <string name="revanced_disable_fullscreen_ambient_mode_summary_on">Režim Ambient je zakázán</string>
             <string name="revanced_disable_fullscreen_ambient_mode_summary_off">Režim Ambient je povolen</string>
         </patch>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch">
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch">
             <string name="revanced_hide_info_cards_title">Skrýt informační karty</string>
             <string name="revanced_hide_info_cards_summary_on">Informační karty jsou skryty</string>
             <string name="revanced_hide_info_cards_summary_off">Informační karty jsou zobrazeny</string>
@@ -1103,12 +1103,12 @@ Chcete-li zobrazit nabídku zvukových stop, změňte \"Podvrhnout video streamy
             <string name="revanced_hide_autoplay_preview_summary_off">Náhled automatického přehrávání je zobrazen</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">Skrýt navrhované video na konci obrazovky</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"Navrhované video na konci obrazovky je skryté, když je automatické přehrávání vypnuté.
+            <string name="revanced_hide_end_screen_suggested_video_title">Skrýt navrhované video na konci obrazovky</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"Navrhované video na konci obrazovky je skryté, když je automatické přehrávání vypnuté.
 
 Automatické přehrávání lze změnit v nastavení YouTube:
 Nastavení → Přehrávání → Automatické přehrávání dalšího videa"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">Navrhované video na konci obrazovky se zobrazuje</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">Navrhované video na konci obrazovky se zobrazuje</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
             <string name="revanced_hide_player_related_videos_overlay_title">Skrýt překrytí souvisejících videí</string>

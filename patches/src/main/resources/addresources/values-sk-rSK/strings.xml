@@ -317,9 +317,9 @@ Povolením tejto funkcie sa však budú zaznamenávať aj niektoré používate�
             <string name="revanced_hide_you_may_like_section_summary_on">Sekcia „Mohlo by sa vám páčiť“ je skrytá</string>
             <string name="revanced_hide_you_may_like_section_summary_off">Sekcia „Mohlo by sa vám páčiť“ je zobrazená</string>
             <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-            <string name="revanced_hide_doodles_title">Skryť YouTube Doodles</string>
-            <string name="revanced_hide_doodles_summary_on">Animácia YouTube Doodles na logu je skrytá</string>
-            <string name="revanced_hide_doodles_summary_off">Animácia YouTube Doodles na logu je zobrazená</string>
+            <string name="revanced_hide_youtube_doodles_title">Skryť YouTube Doodles</string>
+            <string name="revanced_hide_youtube_doodles_summary_on">Animácia YouTube Doodles na logu je skrytá</string>
+            <string name="revanced_hide_youtube_doodles_summary_off">Animácia YouTube Doodles na logu je zobrazená</string>
             <string name="revanced_hide_channel_bar_title">Skryť panel kanálov</string>
             <string name="revanced_hide_channel_bar_summary_on">Panel kanálov je skrytý</string>
             <string name="revanced_hide_channel_bar_summary_off">Zobrazí sa panel kanálov</string>
@@ -935,7 +935,7 @@ Ak chcete zobraziť menu zvukových stôp, zmeňte 'Spoof video streams' na 'And
             <string name="revanced_disable_fullscreen_ambient_mode_summary_on">Ambientný režim je vypnutý</string>
             <string name="revanced_disable_fullscreen_ambient_mode_summary_off">Ambientný režim je povolený</string>
         </patch>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch">
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch">
             <string name="revanced_hide_info_cards_title">Skryť informačné karty</string>
             <string name="revanced_hide_info_cards_summary_on">Informačné karty sú skryté</string>
             <string name="revanced_hide_info_cards_summary_off">Informačné karty sú zobrazené</string>
@@ -1096,12 +1096,12 @@ Ak chcete zobraziť menu zvukových stôp, zmeňte 'Spoof video streams' na 'And
             <string name="revanced_hide_autoplay_preview_summary_off">Náhľad automatického prehrávania je zobrazený</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">Skryť navrhované video na konci obrazovky</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"Navrhované video na konci obrazovky je skryté, keď je automatické prehrávanie vypnuté.
+            <string name="revanced_hide_end_screen_suggested_video_title">Skryť navrhované video na konci obrazovky</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"Navrhované video na konci obrazovky je skryté, keď je automatické prehrávanie vypnuté.
 
 Automatické prehrávanie je možné zmeniť v nastaveniach YouTube:
 Nastavenia → Prehrávanie → Automatické prehrávanie ďalšieho videa"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">Navrhované video na konci obrazovky je zobrazené</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">Navrhované video na konci obrazovky je zobrazené</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
             <string name="revanced_hide_player_related_videos_overlay_title">Skryť prekrytie súvisiacich videí</string>

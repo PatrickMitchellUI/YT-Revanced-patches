@@ -328,7 +328,7 @@ MicroG ਲਈ ਬੈਟਰੀ ਔਪਟੀਮਾਈਜ਼ੇਸ਼ਨ ਨੂੰ 
             <string name="revanced_hide_end_screen_cards_summary_off">ਅੰਤਿਮ ਸਕ੍ਰੀਨ ਕਾਰਡ ਦਿਖਾਏ ਗਏ ਹਨ</string>
         </patch>
         <patch id="layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch"/>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch"/>
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch"/>
         <patch id="layout.hide.rollingnumber.disableRollingNumberAnimationPatch"/>
         <patch id="layout.hide.seekbar.hideSeekbarPatch">
             <!-- Seekbar shown inside video thumbnails found the home/feed/search/history.  The seekbar shows the prior watch progress when the video was last open. -->
@@ -362,12 +362,12 @@ MicroG ਲਈ ਬੈਟਰੀ ਔਪਟੀਮਾਈਜ਼ੇਸ਼ਨ ਨੂੰ 
             <string name="revanced_hide_autoplay_preview_summary_off">ਆਟੋਪਲੇਅ ਪ੍ਰੀਵਿਊ ਦਿਖਾਇਆ ਗਿਆ ਹੈ</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">ਅੰਤਿਮ ਸਕ੍ਰੀਨ ਸੁਝਾਏ ਵੀਡੀਓ ਨੂੰ ਲੁਕਾਓ</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"ਜਦੋਂ ਆਟੋਪਲੇਅ ਬੰਦ ਹੁੰਦਾ ਹੈ ਤਾਂ ਅੰਤਿਮ ਸਕ੍ਰੀਨ ਸੁਝਾਇਆ ਵੀਡੀਓ ਲੁਕਾਇਆ ਜਾਂਦਾ ਹੈ
+            <string name="revanced_hide_end_screen_suggested_video_title">ਅੰਤਿਮ ਸਕ੍ਰੀਨ ਸੁਝਾਏ ਵੀਡੀਓ ਨੂੰ ਲੁਕਾਓ</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"ਜਦੋਂ ਆਟੋਪਲੇਅ ਬੰਦ ਹੁੰਦਾ ਹੈ ਤਾਂ ਅੰਤਿਮ ਸਕ੍ਰੀਨ ਸੁਝਾਇਆ ਵੀਡੀਓ ਲੁਕਾਇਆ ਜਾਂਦਾ ਹੈ
 
 ਆਟੋਪਲੇਅ ਨੂੰ YouTube ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਬਦਲਿਆ ਜਾ ਸਕਦਾ ਹੈ:
 ਸੈਟਿੰਗਾਂ → ਪਲੇਬੈਕ → ਅਗਲਾ ਵੀਡੀਓ ਆਪਣੇ ਆਪ ਚਲਾਓ"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">ਅੰਤਿਮ ਸਕ੍ਰੀਨ ਸੁਝਾਇਆ ਵੀਡੀਓ ਦਿਖਾਇਆ ਗਿਆ ਹੈ</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">ਅੰਤਿਮ ਸਕ੍ਰੀਨ ਸੁਝਾਇਆ ਵੀਡੀਓ ਦਿਖਾਇਆ ਗਿਆ ਹੈ</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch"/>
         <patch id="layout.hide.time.hideTimestampPatch"/>

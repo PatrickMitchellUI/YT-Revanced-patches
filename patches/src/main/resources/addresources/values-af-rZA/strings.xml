@@ -328,7 +328,7 @@ Beperkings:
             <string name="revanced_hide_end_screen_cards_summary_off">Eindskermkaarte word gewys</string>
         </patch>
         <patch id="layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch"/>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch"/>
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch"/>
         <patch id="layout.hide.rollingnumber.disableRollingNumberAnimationPatch"/>
         <patch id="layout.hide.seekbar.hideSeekbarPatch">
             <!-- Seekbar shown inside video thumbnails found the home/feed/search/history.  The seekbar shows the prior watch progress when the video was last open. -->
@@ -362,12 +362,12 @@ Beperkings:
             <string name="revanced_hide_autoplay_preview_summary_off">Outospeel-voorskou word gewys</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">Versteek eindskerm voorgestelde video</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"Eindskerm voorgestelde video is versteek wanneer outospeel afgeskakel is
+            <string name="revanced_hide_end_screen_suggested_video_title">Versteek eindskerm voorgestelde video</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"Eindskerm voorgestelde video is versteek wanneer outospeel afgeskakel is
 
 Outospeel kan in YouTube-instellings verander word:
 Instellings → Afspeel → Speel volgende video outomaties af"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">Eindskerm voorgestelde video word gewys</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">Eindskerm voorgestelde video word gewys</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch"/>
         <patch id="layout.hide.time.hideTimestampPatch"/>

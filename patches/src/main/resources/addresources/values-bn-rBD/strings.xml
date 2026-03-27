@@ -318,9 +318,9 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
             <string name="revanced_hide_you_may_like_section_summary_on">\'আপনার পছন্দ হতে পারে\' বিভাগ লুকানো আছে</string>
             <string name="revanced_hide_you_may_like_section_summary_off">\'আপনার পছন্দ হতে পারে\' বিভাগ দেখানো আছে</string>
             <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-            <string name="revanced_hide_doodles_title">YouTube Doodles छिपाएँ</string>
-            <string name="revanced_hide_doodles_summary_on">লোগোতে YouTube Doodles অ্যানিমেশন লুকানো আছে</string>
-            <string name="revanced_hide_doodles_summary_off">লোগোতে YouTube Doodles অ্যানিমেশন দেখানো হয়</string>
+            <string name="revanced_hide_youtube_doodles_title">YouTube Doodles छिपाएँ</string>
+            <string name="revanced_hide_youtube_doodles_summary_on">লোগোতে YouTube Doodles অ্যানিমেশন লুকানো আছে</string>
+            <string name="revanced_hide_youtube_doodles_summary_off">লোগোতে YouTube Doodles অ্যানিমেশন দেখানো হয়</string>
             <string name="revanced_hide_channel_bar_title">চ্যানেল বার লুকান</string>
             <string name="revanced_hide_channel_bar_summary_on">চ্যানেল বার লুকিয়ে রয়েছে</string>
             <string name="revanced_hide_channel_bar_summary_off">চ্যানেল বার প্রদর্শিত হয়েছে</string>
@@ -936,7 +936,7 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
             <string name="revanced_disable_fullscreen_ambient_mode_summary_on">অ্যাম্বিয়েন্ট মোড নিষ্ক্রিয় করা হয়েছে</string>
             <string name="revanced_disable_fullscreen_ambient_mode_summary_off">অ্যাম্বিয়েন্ট মোড সক্রিয় করা হয়েছে</string>
         </patch>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch">
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch">
             <string name="revanced_hide_info_cards_title">তথ্য কার্ড লুকান</string>
             <string name="revanced_hide_info_cards_summary_on">তথ্য কার্ড লুকিয়ে রয়েছে</string>
             <string name="revanced_hide_info_cards_summary_off">তথ্য কার্ড প্রদর্শিত হয়েছে</string>
@@ -1097,12 +1097,12 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
             <string name="revanced_hide_autoplay_preview_summary_off">অটো প্লে পূর্বরূপ দেখানো আছে</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">শেষ স্ক্রীনে প্রস্তাবিত ভিডিও লুকান</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"অটো প্লে বন্ধ থাকলে শেষ স্ক্রীনে প্রস্তাবিত ভিডিও লুকানো থাকে
+            <string name="revanced_hide_end_screen_suggested_video_title">শেষ স্ক্রীনে প্রস্তাবিত ভিডিও লুকান</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"অটো প্লে বন্ধ থাকলে শেষ স্ক্রীনে প্রস্তাবিত ভিডিও লুকানো থাকে
 
 YouTube সেটিংসে অটো প্লে পরিবর্তন করা যেতে পারে:
 সেটিংস → প্লেব্যাক → অটো প্লে পরবর্তী ভিডিও"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">শেষ স্ক্রীনে প্রস্তাবিত ভিডিও দেখানো হয়েছে</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">শেষ স্ক্রীনে প্রস্তাবিত ভিডিও দেখানো হয়েছে</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
             <string name="revanced_hide_player_related_videos_overlay_title">সম্পর্কিত ভিডিও ওভারলে লুকান</string>

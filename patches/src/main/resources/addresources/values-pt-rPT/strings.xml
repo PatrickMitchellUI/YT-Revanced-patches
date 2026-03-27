@@ -324,9 +324,9 @@ No entanto, ativar isto também irá registar alguns dados do utilizador, como o
             <string name="revanced_hide_you_may_like_section_summary_on">A seção \"Você pode gostar\" está oculta</string>
             <string name="revanced_hide_you_may_like_section_summary_off">A seção \"Você pode gostar\" é exibida</string>
             <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-            <string name="revanced_hide_doodles_title">Ocultar Doodles do YouTube</string>
-            <string name="revanced_hide_doodles_summary_on">A animação dos Doodles do YouTube no logótipo está oculta</string>
-            <string name="revanced_hide_doodles_summary_off">Animação dos Doodles do YouTube no logótipo é exibida</string>
+            <string name="revanced_hide_youtube_doodles_title">Ocultar Doodles do YouTube</string>
+            <string name="revanced_hide_youtube_doodles_summary_on">A animação dos Doodles do YouTube no logótipo está oculta</string>
+            <string name="revanced_hide_youtube_doodles_summary_off">Animação dos Doodles do YouTube no logótipo é exibida</string>
             <string name="revanced_hide_channel_bar_title">Esconder barra do canal</string>
             <string name="revanced_hide_channel_bar_summary_on">A barra do canal está escondida</string>
             <string name="revanced_hide_channel_bar_summary_off">Barra de canal exibida</string>
@@ -942,7 +942,7 @@ Para mostrar o menu da faixa de áudio, altere \"Falsificar fluxos de vídeo\" p
             <string name="revanced_disable_fullscreen_ambient_mode_summary_on">Modo ambiente desativado</string>
             <string name="revanced_disable_fullscreen_ambient_mode_summary_off">Modo ambiente ativado</string>
         </patch>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch">
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch">
             <string name="revanced_hide_info_cards_title">Esconder cartões de informação</string>
             <string name="revanced_hide_info_cards_summary_on">Cartões de informação estão escondidos</string>
             <string name="revanced_hide_info_cards_summary_off">Cartões de informação são exibidos</string>
@@ -1103,12 +1103,12 @@ Para mostrar o menu da faixa de áudio, altere \"Falsificar fluxos de vídeo\" p
             <string name="revanced_hide_autoplay_preview_summary_off">A pré-visualização de reprodução automática é exibida</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">Ocultar vídeo sugerido na tela final</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"O vídeo sugerido na tela final fica oculto quando a reprodução automática está desativada
+            <string name="revanced_hide_end_screen_suggested_video_title">Ocultar vídeo sugerido na tela final</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"O vídeo sugerido na tela final fica oculto quando a reprodução automática está desativada
 
 A reprodução automática pode ser alterada nas configurações do YouTube:
 Definições → Reprodução → Reproduzir o próximo vídeo automaticamente"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">O vídeo sugerido na tela final é exibido</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">O vídeo sugerido na tela final é exibido</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
             <string name="revanced_hide_player_related_videos_overlay_title">Ocultar sobreposição de vídeos relacionados</string>

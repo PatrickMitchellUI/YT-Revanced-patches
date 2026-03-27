@@ -328,7 +328,7 @@ MicroG ପାଇଁ ବ୍ୟାଟେରୀ ଅପ୍ଟିମାଇଜେସ�
             <string name="revanced_hide_end_screen_cards_summary_off">ଶେଷ ସ୍କ୍ରିନ୍ କାର୍ଡଗୁଡ଼ିକ ଦେଖାଯାଉଛି</string>
         </patch>
         <patch id="layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch"/>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch"/>
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch"/>
         <patch id="layout.hide.rollingnumber.disableRollingNumberAnimationPatch"/>
         <patch id="layout.hide.seekbar.hideSeekbarPatch">
             <!-- Seekbar shown inside video thumbnails found the home/feed/search/history.  The seekbar shows the prior watch progress when the video was last open. -->
@@ -362,12 +362,12 @@ MicroG ପାଇଁ ବ୍ୟାଟେରୀ ଅପ୍ଟିମାଇଜେସ�
             <string name="revanced_hide_autoplay_preview_summary_off">ଅଟୋପ୍ଲେ ପ୍ରିଭ୍ୟୁ ଦେଖାଯାଉଛି</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">ଶେଷ ସ୍କ୍ରିନ୍ ସୁପାରିଶିତ ଭିଡିଓ ଲୁଚାନ୍ତୁ</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"ଅଟୋପ୍ଲେ ବନ୍ଦ ଥିବାବେଳେ ଶେଷ ସ୍କ୍ରିନ୍ ସୁପାରିଶିତ ଭିଡିଓ ଲୁଚିଛି
+            <string name="revanced_hide_end_screen_suggested_video_title">ଶେଷ ସ୍କ୍ରିନ୍ ସୁପାରିଶିତ ଭିଡିଓ ଲୁଚାନ୍ତୁ</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"ଅଟୋପ୍ଲେ ବନ୍ଦ ଥିବାବେଳେ ଶେଷ ସ୍କ୍ରିନ୍ ସୁପାରିଶିତ ଭିଡିଓ ଲୁଚିଛି
 
 ଅଟୋପ୍ଲେ YouTube ସେଟିଂସରେ ପରିବର୍ତ୍ତନ କରାଯାଇପାରିବ:
 ସେଟିଂସ୍ → ପ୍ଲେବ୍ୟାକ୍ → ପରବର୍ତ୍ତୀ ଭିଡିଓ ଅଟୋପ୍ଲେ କରନ୍ତୁ"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">ଶେଷ ସ୍କ୍ରିନ୍ ସୁପାରିଶିତ ଭିଡିଓ ଦେଖାଯାଉଛି</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">ଶେଷ ସ୍କ୍ରିନ୍ ସୁପାରିଶିତ ଭିଡିଓ ଦେଖାଯାଉଛି</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch"/>
         <patch id="layout.hide.time.hideTimestampPatch"/>

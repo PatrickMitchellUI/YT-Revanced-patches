@@ -320,7 +320,7 @@ Second \"item\" text"</string>
             <string name="revanced_hide_end_screen_cards_summary_off">અંતિમ સ્ક્રીન કાર્ડ્સ બતાવવામાં આવ્યા છે</string>
         </patch>
         <patch id="layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch"/>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch"/>
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch"/>
         <patch id="layout.hide.rollingnumber.disableRollingNumberAnimationPatch"/>
         <patch id="layout.hide.seekbar.hideSeekbarPatch">
             <!-- Seekbar shown inside video thumbnails found the home/feed/search/history.  The seekbar shows the prior watch progress when the video was last open. -->
@@ -354,12 +354,12 @@ Second \"item\" text"</string>
             <string name="revanced_hide_autoplay_preview_summary_off">ઑટોપ્લે પૂર્વાવલોકન બતાવવામાં આવ્યું છે</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">અંતિમ સ્ક્રીન સૂચવેલ વીડિયો છુપાવો</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"ઑટોપ્લે બંધ હોય ત્યારે અંતિમ સ્ક્રીન સૂચવેલ વીડિયો છુપાવેલ છે
+            <string name="revanced_hide_end_screen_suggested_video_title">અંતિમ સ્ક્રીન સૂચવેલ વીડિયો છુપાવો</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"ઑટોપ્લે બંધ હોય ત્યારે અંતિમ સ્ક્રીન સૂચવેલ વીડિયો છુપાવેલ છે
 
 ઑટોપ્લે YouTube સેટિંગ્સમાં બદલી શકાય છે:
 સેટિંગ્સ → પ્લેબેક → આગલો વીડિયો ઑટોપ્લે કરો"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">અંતિમ સ્ક્રીન સૂચવેલ વીડિયો બતાવવામાં આવ્યો છે</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">અંતિમ સ્ક્રીન સૂચવેલ વીડિયો બતાવવામાં આવ્યો છે</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch"/>
         <patch id="layout.hide.time.hideTimestampPatch"/>

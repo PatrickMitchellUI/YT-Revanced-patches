@@ -326,7 +326,7 @@ MicroG-ისთვის ბატარეის ოპტიმიზაც�
             <string name="revanced_hide_end_screen_cards_summary_off">ბოლო ეკრანის ბარათები ნაჩვენებია</string>
         </patch>
         <patch id="layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch"/>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch"/>
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch"/>
         <patch id="layout.hide.rollingnumber.disableRollingNumberAnimationPatch"/>
         <patch id="layout.hide.seekbar.hideSeekbarPatch">
             <!-- Seekbar shown inside video thumbnails found the home/feed/search/history.  The seekbar shows the prior watch progress when the video was last open. -->
@@ -360,12 +360,12 @@ MicroG-ისთვის ბატარეის ოპტიმიზაც�
             <string name="revanced_hide_autoplay_preview_summary_off">ავტომატური დაკვრის გადახედვა ნაჩვენებია</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">ბოლო ეკრანის შემოთავაზებული ვიდეოს დამალვა</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"ბოლო ეკრანის შემოთავაზებული ვიდეო დამალულია, როდესაც ავტომატური დაკვრა გამორთულია
+            <string name="revanced_hide_end_screen_suggested_video_title">ბოლო ეკრანის შემოთავაზებული ვიდეოს დამალვა</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"ბოლო ეკრანის შემოთავაზებული ვიდეო დამალულია, როდესაც ავტომატური დაკვრა გამორთულია
 
 ავტომატური დაკვრის შეცვლა შესაძლებელია YouTube-ის პარამეტრებში:
 პარამეტრები → დაკვრა → შემდეგი ვიდეოს ავტომატური დაკვრა"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">ბოლო ეკრანის შემოთავაზებული ვიდეო ნაჩვენებია</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">ბოლო ეკრანის შემოთავაზებული ვიდეო ნაჩვენებია</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch"/>
         <patch id="layout.hide.time.hideTimestampPatch"/>

@@ -328,7 +328,7 @@ Second \"item\" text"</string>
             <string name="revanced_hide_end_screen_cards_summary_off">የመጨረሻ ማያ ገጽ ካርዶች ይታያሉ</string>
         </patch>
         <patch id="layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch"/>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch"/>
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch"/>
         <patch id="layout.hide.rollingnumber.disableRollingNumberAnimationPatch"/>
         <patch id="layout.hide.seekbar.hideSeekbarPatch">
             <!-- Seekbar shown inside video thumbnails found the home/feed/search/history.  The seekbar shows the prior watch progress when the video was last open. -->
@@ -362,12 +362,12 @@ Second \"item\" text"</string>
             <string name="revanced_hide_autoplay_preview_summary_off">ራስ-አጫውት ቅድመ እይታ ይታያል</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">የመጨረሻ ማያ ገጽ የተጠቆመ ቪዲዮን ደብቅ</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"ራስ-አጫውት ሲጠፋ የመጨረሻ ማያ ገጽ የተጠቆመ ቪዲዮ ይደበቃል
+            <string name="revanced_hide_end_screen_suggested_video_title">የመጨረሻ ማያ ገጽ የተጠቆመ ቪዲዮን ደብቅ</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"ራስ-አጫውት ሲጠፋ የመጨረሻ ማያ ገጽ የተጠቆመ ቪዲዮ ይደበቃል
 
 ራስ-አጫውት በYouTube ቅንብሮች ውስጥ ሊቀየር ይችላል:
 ቅንብሮች → መልሶ ማጫወት → ቀጣዩን ቪዲዮ በራስ-ሰር ያጫውቱ"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">የመጨረሻ ማያ ገጽ የተጠቆመ ቪዲዮ ይታያል</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">የመጨረሻ ማያ ገጽ የተጠቆመ ቪዲዮ ይታያል</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch"/>
         <patch id="layout.hide.time.hideTimestampPatch"/>

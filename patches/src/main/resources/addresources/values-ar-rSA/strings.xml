@@ -316,9 +316,9 @@ Second \"item\" text"</string>
             <string name="revanced_hide_you_may_like_section_summary_on"> \'تم إخفاء قسم \'قد يعجبك\'</string>
             <string name="revanced_hide_you_may_like_section_summary_off"> \'يتم عرض قسم \'قد يعجبك\'</string>
             <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-            <string name="revanced_hide_doodles_title">إخفاء رسومات YouTube</string>
-            <string name="revanced_hide_doodles_summary_on">تم إخفاء رسوم Doodles المتحركة على شعار YouTube</string>
-            <string name="revanced_hide_doodles_summary_off">يتم عرض رسوم Doodles المتحركة على شعار YouTube</string>
+            <string name="revanced_hide_youtube_doodles_title">إخفاء رسومات YouTube</string>
+            <string name="revanced_hide_youtube_doodles_summary_on">تم إخفاء رسوم Doodles المتحركة على شعار YouTube</string>
+            <string name="revanced_hide_youtube_doodles_summary_off">يتم عرض رسوم Doodles المتحركة على شعار YouTube</string>
             <string name="revanced_hide_channel_bar_title">إخفاء شريط القناة</string>
             <string name="revanced_hide_channel_bar_summary_on">تم إخفاء شريط القناة</string>
             <string name="revanced_hide_channel_bar_summary_off">يتم عرض شريط القناة</string>
@@ -934,7 +934,7 @@ Second \"item\" text"</string>
             <string name="revanced_disable_fullscreen_ambient_mode_summary_on">تم تعطيل وضع الإضاءة السينمائية</string>
             <string name="revanced_disable_fullscreen_ambient_mode_summary_off">تم تمكين وضع الإضاءة السينمائية</string>
         </patch>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch">
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch">
             <string name="revanced_hide_info_cards_title">إخفاء بطاقات المعلومات</string>
             <string name="revanced_hide_info_cards_summary_on">تم إخفاء بطاقات المعلومات</string>
             <string name="revanced_hide_info_cards_summary_off">يتم عرض بطاقات المعلومات</string>
@@ -1095,12 +1095,12 @@ Second \"item\" text"</string>
             <string name="revanced_hide_autoplay_preview_summary_off">يتم عرض معاينة التشغيل التلقائي</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">إخفاء الفيديو المقترح في شاشة النهاية</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"تم إخفاء الفيديو المقترح في شاشة النهاية عند إيقاف التشغيل التلقائي
+            <string name="revanced_hide_end_screen_suggested_video_title">إخفاء الفيديو المقترح في شاشة النهاية</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"تم إخفاء الفيديو المقترح في شاشة النهاية عند إيقاف التشغيل التلقائي
 
 يمكن تغيير التشغيل التلقائي في إعدادات YouTube:
 الإعدادات ← التشغيل ← تشغيل الفيديو التالي تلقائيًا"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">يتم عرض الفيديو المقترح في شاشة النهاية</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">يتم عرض الفيديو المقترح في شاشة النهاية</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
             <string name="revanced_hide_player_related_videos_overlay_title">إخفاء واجهة الفيديوهات ذات الصلة</string>

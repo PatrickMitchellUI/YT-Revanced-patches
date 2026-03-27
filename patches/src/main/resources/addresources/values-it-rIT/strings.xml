@@ -324,9 +324,9 @@ Tuttavia, l'abilitazione di questa opzione registrerà anche alcuni dati dell'ut
             <string name="revanced_hide_you_may_like_section_summary_on">La sezione \'Potrebbero piacerti\' è nascosta</string>
             <string name="revanced_hide_you_may_like_section_summary_off">La sezione \'Potrebbero piacerti\' è visibile</string>
             <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-            <string name="revanced_hide_doodles_title">Nascondi Doodles di YouTube</string>
-            <string name="revanced_hide_doodles_summary_on">L\'animazione YouTube Doodles sul logo è nascosta</string>
-            <string name="revanced_hide_doodles_summary_off">L\'animazione di YouTube Doodles sul logo è mostrata</string>
+            <string name="revanced_hide_youtube_doodles_title">Nascondi Doodles di YouTube</string>
+            <string name="revanced_hide_youtube_doodles_summary_on">L\'animazione YouTube Doodles sul logo è nascosta</string>
+            <string name="revanced_hide_youtube_doodles_summary_off">L\'animazione di YouTube Doodles sul logo è mostrata</string>
             <string name="revanced_hide_channel_bar_title">Nascondi barra del canale</string>
             <string name="revanced_hide_channel_bar_summary_on">La barra del canale è nascosta</string>
             <string name="revanced_hide_channel_bar_summary_off">La barra dei canali è visibile</string>
@@ -942,7 +942,7 @@ Per mostrare il menu della traccia audio, cambia \"Maschera flussi video\" in \"
             <string name="revanced_disable_fullscreen_ambient_mode_summary_on">Modalità Ambient disabilitata</string>
             <string name="revanced_disable_fullscreen_ambient_mode_summary_off">Modalità Ambient abilitata</string>
         </patch>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch">
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch">
             <string name="revanced_hide_info_cards_title">Nascondi schede info</string>
             <string name="revanced_hide_info_cards_summary_on">Le schede informative verranno nascoste</string>
             <string name="revanced_hide_info_cards_summary_off">Le schede informative verranno mostrate</string>
@@ -1103,12 +1103,12 @@ Per mostrare il menu della traccia audio, cambia \"Maschera flussi video\" in \"
             <string name="revanced_hide_autoplay_preview_summary_off">L\'anteprima riproduzione automatica è visibile</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">Nascondi video suggerito nella schermata finale</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"Il video suggerito nella schermata finale è nascosto quando l'autoplay è disattivato
+            <string name="revanced_hide_end_screen_suggested_video_title">Nascondi video suggerito nella schermata finale</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"Il video suggerito nella schermata finale è nascosto quando l'autoplay è disattivato
 
 L'autoplay può essere modificato nelle impostazioni di YouTube:
 Impostazioni → Riproduzione → Riproduzione automatica video successivo"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">Il video suggerito nella schermata finale è mostrato</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">Il video suggerito nella schermata finale è mostrato</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
             <string name="revanced_hide_player_related_videos_overlay_title">Nascondi overlay video correlati</string>

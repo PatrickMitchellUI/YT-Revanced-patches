@@ -336,7 +336,7 @@ Second \"item\" text"</string>
             <string name="revanced_hide_end_screen_cards_summary_off">ಅಂತ್ಯ ಪರದೆಯ ಕಾರ್ಡ್‌ಗಳನ್ನು ತೋರಿಸಲಾಗಿದೆ</string>
         </patch>
         <patch id="layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch"/>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch"/>
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch"/>
         <patch id="layout.hide.rollingnumber.disableRollingNumberAnimationPatch"/>
         <patch id="layout.hide.seekbar.hideSeekbarPatch">
             <!-- Seekbar shown inside video thumbnails found the home/feed/search/history.  The seekbar shows the prior watch progress when the video was last open. -->
@@ -370,12 +370,12 @@ Second \"item\" text"</string>
             <string name="revanced_hide_autoplay_preview_summary_off">ಸ್ವಯಂಪ್ಲೇ ಪೂರ್ವವೀಕ್ಷಣೆಯನ್ನು ತೋರಿಸಲಾಗಿದೆ</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">ಅಂತ್ಯ ಪರದೆಯ ಸೂಚಿಸಿದ ವೀಡಿಯೊವನ್ನು ಮರೆಮಾಡಿ</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"ಸ್ವಯಂಪ್ಲೇ ಆಫ್ ಮಾಡಿದಾಗ ಅಂತ್ಯ ಪರದೆಯ ಸೂಚಿಸಿದ ವೀಡಿಯೊ ಮರೆಮಾಡಲಾಗಿದೆ
+            <string name="revanced_hide_end_screen_suggested_video_title">ಅಂತ್ಯ ಪರದೆಯ ಸೂಚಿಸಿದ ವೀಡಿಯೊವನ್ನು ಮರೆಮಾಡಿ</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"ಸ್ವಯಂಪ್ಲೇ ಆಫ್ ಮಾಡಿದಾಗ ಅಂತ್ಯ ಪರದೆಯ ಸೂಚಿಸಿದ ವೀಡಿಯೊ ಮರೆಮಾಡಲಾಗಿದೆ
 
 ಸ್ವಯಂಪ್ಲೇ ಅನ್ನು YouTube ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಬದಲಾಯಿಸಬಹುದು:
 ಸೆಟ್ಟಿಂಗ್‌ಗಳು → ಪ್ಲೇಬ್ಯಾಕ್ → ಮುಂದಿನ ವೀಡಿಯೊವನ್ನು ಸ್ವಯಂಪ್ಲೇ ಮಾಡಿ"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">ಅಂತ್ಯ ಪರದೆಯ ಸೂಚಿಸಿದ ವೀಡಿಯೊವನ್ನು ತೋರಿಸಲಾಗಿದೆ</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">ಅಂತ್ಯ ಪರದೆಯ ಸೂಚಿಸಿದ ವೀಡಿಯೊವನ್ನು ತೋರಿಸಲಾಗಿದೆ</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch"/>
         <patch id="layout.hide.time.hideTimestampPatch"/>

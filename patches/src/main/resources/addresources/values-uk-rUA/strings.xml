@@ -324,9 +324,9 @@ Second \"item\" text"</string>
             <string name="revanced_hide_you_may_like_section_summary_on">Секцію \"Може сподобатися\" приховано</string>
             <string name="revanced_hide_you_may_like_section_summary_off">Секція \"Може сподобатися\" показується</string>
             <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-            <string name="revanced_hide_doodles_title">Приховати Дудли YouTube</string>
-            <string name="revanced_hide_doodles_summary_on">Анімацію Дудлів YouTube на логотипі приховано</string>
-            <string name="revanced_hide_doodles_summary_off">Анімація Дудлів YouTube на логотипі показується</string>
+            <string name="revanced_hide_youtube_doodles_title">Приховати Дудли YouTube</string>
+            <string name="revanced_hide_youtube_doodles_summary_on">Анімацію Дудлів YouTube на логотипі приховано</string>
+            <string name="revanced_hide_youtube_doodles_summary_off">Анімація Дудлів YouTube на логотипі показується</string>
             <string name="revanced_hide_channel_bar_title">Приховати панель каналу</string>
             <string name="revanced_hide_channel_bar_summary_on">Панель каналу під відеоплеєром приховано</string>
             <string name="revanced_hide_channel_bar_summary_off">Панель каналу під відеоплеєром показується</string>
@@ -942,7 +942,7 @@ Second \"item\" text"</string>
             <string name="revanced_disable_fullscreen_ambient_mode_summary_on">Кінематографічне освітлення в повноекранному режимі вимкнено</string>
             <string name="revanced_disable_fullscreen_ambient_mode_summary_off">Кінематографічне освітлення в повноекранному режимі ввімкнено</string>
         </patch>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch">
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch">
             <string name="revanced_hide_info_cards_title">Приховати підказки</string>
             <string name="revanced_hide_info_cards_summary_on">Підказки справа вгорі відеоплеєра приховано</string>
             <string name="revanced_hide_info_cards_summary_off">Підказки справа вгорі відеоплеєра показуються</string>
@@ -1103,12 +1103,12 @@ Second \"item\" text"</string>
             <string name="revanced_hide_autoplay_preview_summary_off">Попередній перегляд автовідтворення показано</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">Приховати пропоноване відео на кінцевому екрані</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"Пропоноване відео на кінцевому екрані приховано, коли автоматичне відтворення вимкнено.
+            <string name="revanced_hide_end_screen_suggested_video_title">Приховати пропоноване відео на кінцевому екрані</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"Пропоноване відео на кінцевому екрані приховано, коли автоматичне відтворення вимкнено.
 
 Автоматичне відтворення можна змінити в налаштуваннях YouTube:
 Налаштування → Відтворення → Автовідтворення наступного відео"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">Пропоноване відео на кінцевому екрані показується</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">Пропоноване відео на кінцевому екрані показується</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
             <string name="revanced_hide_player_related_videos_overlay_title">Приховати накладення пов\'язаних відео</string>

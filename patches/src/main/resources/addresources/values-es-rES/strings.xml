@@ -324,9 +324,9 @@ Sin embargo, si activas esto, también se registrarán algunos datos del usuario
             <string name="revanced_hide_you_may_like_section_summary_on">La sección \"Te podría gustar\" está oculta</string>
             <string name="revanced_hide_you_may_like_section_summary_off">La sección \"Te podría gustar\" es visible</string>
             <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-            <string name="revanced_hide_doodles_title">Ocultar YouTube Doodles</string>
-            <string name="revanced_hide_doodles_summary_on">La animación de los Doodles de YouTube en el logotipo está oculta</string>
-            <string name="revanced_hide_doodles_summary_off">Se muestra la animación de Doodles de YouTube en el logo</string>
+            <string name="revanced_hide_youtube_doodles_title">Ocultar YouTube Doodles</string>
+            <string name="revanced_hide_youtube_doodles_summary_on">La animación de los Doodles de YouTube en el logotipo está oculta</string>
+            <string name="revanced_hide_youtube_doodles_summary_off">Se muestra la animación de Doodles de YouTube en el logo</string>
             <string name="revanced_hide_channel_bar_title">Ocultar barra de canal</string>
             <string name="revanced_hide_channel_bar_summary_on">La barra de canales está oculta</string>
             <string name="revanced_hide_channel_bar_summary_off">Barra de canales mostrada</string>
@@ -942,7 +942,7 @@ Para mostrar el menú de la pista de audio, cambia 'Suplantar transmisiones de v
             <string name="revanced_disable_fullscreen_ambient_mode_summary_on">Modo ambiente desactivado</string>
             <string name="revanced_disable_fullscreen_ambient_mode_summary_off">Modo ambiente activado</string>
         </patch>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch">
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch">
             <string name="revanced_hide_info_cards_title">Ocultar tarjetas de información</string>
             <string name="revanced_hide_info_cards_summary_on">Las tarjetas de información están ocultas</string>
             <string name="revanced_hide_info_cards_summary_off">Las tarjetas de información son visibles</string>
@@ -1103,12 +1103,12 @@ Para mostrar el menú de la pista de audio, cambia 'Suplantar transmisiones de v
             <string name="revanced_hide_autoplay_preview_summary_off">La vista previa de reproducción automática es visible</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">Ocultar el vídeo sugerido de la pantalla final</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"El vídeo sugerido de la pantalla final se oculta cuando la reproducción automática está desactivada
+            <string name="revanced_hide_end_screen_suggested_video_title">Ocultar el vídeo sugerido de la pantalla final</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"El vídeo sugerido de la pantalla final se oculta cuando la reproducción automática está desactivada
 
 La reproducción automática se puede cambiar en la configuración de YouTube:
 Configuración → Reproducción → Reproducir el siguiente vídeo automáticamente"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">Se muestra el vídeo sugerido de la pantalla final</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">Se muestra el vídeo sugerido de la pantalla final</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
             <string name="revanced_hide_player_related_videos_overlay_title">Ocultar la superposición de vídeos relacionados</string>

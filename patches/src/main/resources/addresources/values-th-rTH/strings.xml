@@ -322,9 +322,9 @@ Second \"item\" text"</string>
             <string name="revanced_hide_you_may_like_section_summary_on">ส่วน \'คุณอาจชอบ\' ถูกซ่อน</string>
             <string name="revanced_hide_you_may_like_section_summary_off">ส่วน \'คุณอาจชอบ\' แสดงอยู่</string>
             <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-            <string name="revanced_hide_doodles_title">ซ่อน Doodles ของ YouTube</string>
-            <string name="revanced_hide_doodles_summary_on">ภาพเคลื่อนไหว YouTube Doodles บนโลโก้ถูกซ่อนไว้</string>
-            <string name="revanced_hide_doodles_summary_off">แสดงแอนิเมชัน Doodles ของ YouTube บนโลโก้</string>
+            <string name="revanced_hide_youtube_doodles_title">ซ่อน Doodles ของ YouTube</string>
+            <string name="revanced_hide_youtube_doodles_summary_on">ภาพเคลื่อนไหว YouTube Doodles บนโลโก้ถูกซ่อนไว้</string>
+            <string name="revanced_hide_youtube_doodles_summary_off">แสดงแอนิเมชัน Doodles ของ YouTube บนโลโก้</string>
             <string name="revanced_hide_channel_bar_title">ซ่อนแถบช่อง</string>
             <string name="revanced_hide_channel_bar_summary_on">แถบช่องถูกซ่อนไว้</string>
             <string name="revanced_hide_channel_bar_summary_off">แถบช่องแสดงอยู่</string>
@@ -938,7 +938,7 @@ Second \"item\" text"</string>
             <string name="revanced_disable_fullscreen_ambient_mode_summary_on">โหมดพักผ่อนปิดใช้งาน</string>
             <string name="revanced_disable_fullscreen_ambient_mode_summary_off">โหมดพักผ่อนเปิดใช้งาน</string>
         </patch>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch">
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch">
             <string name="revanced_hide_info_cards_title">ซ่อนการ์ดข้อมูล</string>
             <string name="revanced_hide_info_cards_summary_on">บัตรข้อมูลซ่อนอยู่</string>
             <string name="revanced_hide_info_cards_summary_off">บัตรข้อมูลแสดงแล้ว</string>
@@ -1099,12 +1099,12 @@ Second \"item\" text"</string>
             <string name="revanced_hide_autoplay_preview_summary_off">การแสดงตัวอย่างเล่นอัตโนมัติแสดงอยู่</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">ซ่อนวิดีโอแนะนำในหน้าจอสิ้นสุด</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"วิดีโอแนะนำในหน้าจอสิ้นสุดจะถูกซ่อนเมื่อปิดเล่นอัตโนมัติ
+            <string name="revanced_hide_end_screen_suggested_video_title">ซ่อนวิดีโอแนะนำในหน้าจอสิ้นสุด</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"วิดีโอแนะนำในหน้าจอสิ้นสุดจะถูกซ่อนเมื่อปิดเล่นอัตโนมัติ
 
 สามารถเปลี่ยนการเล่นอัตโนมัติได้ในการตั้งค่า YouTube:
 การตั้งค่า → การเล่น → เล่นวิดีโอถัดไปอัตโนมัติ"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">วิดีโอแนะนำในหน้าจอสิ้นสุดจะปรากฏ</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">วิดีโอแนะนำในหน้าจอสิ้นสุดจะปรากฏ</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
             <string name="revanced_hide_player_related_videos_overlay_title">ซ่อนโอเวอร์เลย์วิดีโอที่เกี่ยวข้อง</string>

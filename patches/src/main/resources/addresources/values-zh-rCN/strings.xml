@@ -307,9 +307,9 @@ Second \"item\" text"</string>
             <string name="revanced_hide_you_may_like_section_summary_on">“您可能喜欢”部分已隐藏</string>
             <string name="revanced_hide_you_may_like_section_summary_off">“您可能喜欢”部分已显示</string>
             <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-            <string name="revanced_hide_doodles_title">隐藏 YouTube 涂鸦</string>
-            <string name="revanced_hide_doodles_summary_on">隐藏YouTube徽标上的Doodles动画</string>
-            <string name="revanced_hide_doodles_summary_off">YouTube 徽标上的 Doodles 动画已显示</string>
+            <string name="revanced_hide_youtube_doodles_title">隐藏 YouTube 涂鸦</string>
+            <string name="revanced_hide_youtube_doodles_summary_on">隐藏YouTube徽标上的Doodles动画</string>
+            <string name="revanced_hide_youtube_doodles_summary_off">YouTube 徽标上的 Doodles 动画已显示</string>
             <string name="revanced_hide_channel_bar_title">隐藏频道栏</string>
             <string name="revanced_hide_channel_bar_summary_on">频道栏已隐藏</string>
             <string name="revanced_hide_channel_bar_summary_off">频道栏已显示</string>
@@ -925,7 +925,7 @@ Second \"item\" text"</string>
             <string name="revanced_disable_fullscreen_ambient_mode_summary_on">氛围模式已禁用</string>
             <string name="revanced_disable_fullscreen_ambient_mode_summary_off">氛围模式已启用</string>
         </patch>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch">
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch">
             <string name="revanced_hide_info_cards_title">隐藏信息卡片</string>
             <string name="revanced_hide_info_cards_summary_on">信息卡片已隐藏</string>
             <string name="revanced_hide_info_cards_summary_off">信息卡片已显示</string>
@@ -1086,12 +1086,12 @@ Second \"item\" text"</string>
             <string name="revanced_hide_autoplay_preview_summary_off">自动播放预览已显示</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">隐藏片尾画面推荐视频</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"自动播放关闭时隐藏片尾画面推荐视频
+            <string name="revanced_hide_end_screen_suggested_video_title">隐藏片尾画面推荐视频</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"自动播放关闭时隐藏片尾画面推荐视频
 
 可以在 YouTube 设置中更改自动播放设置：
 设置 → 播放 → 自动播放下一个视频"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">显示片尾画面推荐视频</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">显示片尾画面推荐视频</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
             <string name="revanced_hide_player_related_videos_overlay_title">隐藏相关视频叠加层</string>

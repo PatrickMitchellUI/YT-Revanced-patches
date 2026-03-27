@@ -303,9 +303,9 @@ Hindi ka aabisuhan ng anumang hindi inaasahang mga kaganapan."</string>
             <string name="revanced_hide_you_may_like_section_summary_on">Nakatago ang seksyon na \'Maaaring magustuhan mo\'</string>
             <string name="revanced_hide_you_may_like_section_summary_off">Ipinapakita ang seksyon na \'Maaaring magustuhan mo\'</string>
             <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-            <string name="revanced_hide_doodles_title">Itago ang mga Doodles ng YouTube</string>
-            <string name="revanced_hide_doodles_summary_on">Nakatago ang animasyon ng YouTube Doodles sa logo</string>
-            <string name="revanced_hide_doodles_summary_off">Ang animasyon ng YouTube Doodles sa logo ay ipinapakita</string>
+            <string name="revanced_hide_youtube_doodles_title">Itago ang mga Doodles ng YouTube</string>
+            <string name="revanced_hide_youtube_doodles_summary_on">Nakatago ang animasyon ng YouTube Doodles sa logo</string>
+            <string name="revanced_hide_youtube_doodles_summary_off">Ang animasyon ng YouTube Doodles sa logo ay ipinapakita</string>
             <string name="revanced_hide_channel_bar_title">Itago ang channel bar</string>
             <string name="revanced_hide_channel_bar_summary_on">Nakatago ang channel bar</string>
             <string name="revanced_hide_channel_bar_summary_off">Ipinapakita ang channel bar</string>
@@ -921,7 +921,7 @@ Upang ipakita ang menu ng Audio track, baguhin ang 'Spoof video streams' sa 'And
             <string name="revanced_disable_fullscreen_ambient_mode_summary_on">Naka-disable ang ambient mode</string>
             <string name="revanced_disable_fullscreen_ambient_mode_summary_off">Pinagana ang ambient mode</string>
         </patch>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch">
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch">
             <string name="revanced_hide_info_cards_title">Itago ang mga card ng impormasyon</string>
             <string name="revanced_hide_info_cards_summary_on">Nakatago ang info cards</string>
             <string name="revanced_hide_info_cards_summary_off">Nakalabas ang info cards</string>
@@ -1082,12 +1082,12 @@ Upang ipakita ang menu ng Audio track, baguhin ang 'Spoof video streams' sa 'And
             <string name="revanced_hide_autoplay_preview_summary_off">Ipinapakita ang autoplay preview</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">Itago ang iminungkahing video sa dulo ng screen</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"Nakatago ang iminungkahing video sa dulo ng screen kapag nakapatay ang autoplay
+            <string name="revanced_hide_end_screen_suggested_video_title">Itago ang iminungkahing video sa dulo ng screen</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"Nakatago ang iminungkahing video sa dulo ng screen kapag nakapatay ang autoplay
 
 Maaaring baguhin ang Autoplay sa mga setting ng YouTube:
 Mga Setting → Pag-playback → I-autoplay ang susunod na video"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">Ipinapakita ang iminungkahing video sa dulo ng screen</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">Ipinapakita ang iminungkahing video sa dulo ng screen</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
             <string name="revanced_hide_player_related_videos_overlay_title">Itago ang overlay ng mga kaugnay na video</string>

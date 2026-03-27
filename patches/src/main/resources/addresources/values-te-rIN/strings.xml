@@ -326,7 +326,7 @@ MicroG కోసం బ్యాటరీ ఆప్టిమైజేషన్�
             <string name="revanced_hide_end_screen_cards_summary_off">ముగింపు స్క్రీన్ కార్డ్‌లు చూపబడ్డాయి.</string>
         </patch>
         <patch id="layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch"/>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch"/>
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch"/>
         <patch id="layout.hide.rollingnumber.disableRollingNumberAnimationPatch"/>
         <patch id="layout.hide.seekbar.hideSeekbarPatch">
             <!-- Seekbar shown inside video thumbnails found the home/feed/search/history.  The seekbar shows the prior watch progress when the video was last open. -->
@@ -360,12 +360,12 @@ MicroG కోసం బ్యాటరీ ఆప్టిమైజేషన్�
             <string name="revanced_hide_autoplay_preview_summary_off">ఆటోప్లే ప్రివ్యూ చూపబడింది.</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">ముగింపు స్క్రీన్ సూచించిన వీడియోను దాచు.</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"ఆటోప్లే ఆఫ్ చేయబడినప్పుడు ముగింపు స్క్రీన్ సూచించిన వీడియో దాచివేయబడింది
+            <string name="revanced_hide_end_screen_suggested_video_title">ముగింపు స్క్రీన్ సూచించిన వీడియోను దాచు.</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"ఆటోప్లే ఆఫ్ చేయబడినప్పుడు ముగింపు స్క్రీన్ సూచించిన వీడియో దాచివేయబడింది
 
 YouTube సెట్టింగ్‌లలో ఆటోప్లే మార్చవచ్చు:
 సెట్టింగ్‌లు → ప్లేబ్యాక్ → తర్వాత వీడియోను ఆటోప్లే చేయండి."</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">ముగింపు స్క్రీన్ సూచించిన వీడియో చూపబడింది.</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">ముగింపు స్క్రీన్ సూచించిన వీడియో చూపబడింది.</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch"/>
         <patch id="layout.hide.time.hideTimestampPatch"/>

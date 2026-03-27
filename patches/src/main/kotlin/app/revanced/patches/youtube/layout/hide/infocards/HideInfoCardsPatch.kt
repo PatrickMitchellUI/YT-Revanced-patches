@@ -24,7 +24,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 internal var drawerResourceId = -1L
     private set
 
-private val hideInfocardsResourcePatch = resourcePatch {
+private val hideInfoCardsResourcePatch = resourcePatch {
     dependsOn(resourceMappingPatch)
 
     apply {
@@ -40,7 +40,7 @@ val hideInfoCardsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         lithoFilterPatch,
-        hideInfocardsResourcePatch,
+        hideInfoCardsResourcePatch,
         settingsPatch,
         addResourcesPatch,
     )
@@ -53,7 +53,7 @@ val hideInfoCardsPatch = bytecodePatch(
     )
 
     apply {
-        addResources("youtube", "layout.hide.infocards.hideInfocardsResourcePatch")
+        addResources("youtube", "layout.hide.infocards.hideInfoCardsResourcePatch")
 
         PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("revanced_hide_info_cards"),
@@ -74,7 +74,7 @@ val hideInfoCardsPatch = bytecodePatch(
         }
 
         // Edit: This old non-litho code may be obsolete and no longer used by any supported versions.
-        infocardsMethodCallMethodMatch.let {
+        infoCardsMethodCallMethodMatch.let {
             val invokeInterfaceIndex = it[-1]
             it.method.apply {
                 val register = implementation!!.registerCount - 1
@@ -96,7 +96,7 @@ val hideInfoCardsPatch = bytecodePatch(
 
         // Info cards can also appear as Litho components.
         val filterClassDescriptor =
-            "Lapp/revanced/extension/youtube/patches/litho/HideInfoCardsFilter;"
+            "Lapp/revanced/extension/youtube/patches/litho/InfoCardsFilter;"
         addLithoFilter(filterClassDescriptor)
     }
 }

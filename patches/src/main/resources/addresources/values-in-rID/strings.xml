@@ -324,9 +324,9 @@ Namun, mengaktifkan ini juga akan mencatat beberapa data pengguna seperti alamat
             <string name="revanced_hide_you_may_like_section_summary_on">Bagian \'Anda mungkin suka\' disembunyikan</string>
             <string name="revanced_hide_you_may_like_section_summary_off">Bagian \'Anda mungkin suka\' ditampilkan</string>
             <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-            <string name="revanced_hide_doodles_title">Sembunyikan YouTube Doodles</string>
-            <string name="revanced_hide_doodles_summary_on">Animasi YouTube Doodles pada logo disembunyikan</string>
-            <string name="revanced_hide_doodles_summary_off">Animasi YouTube Doodles pada logo ditampilkan</string>
+            <string name="revanced_hide_youtube_doodles_title">Sembunyikan YouTube Doodles</string>
+            <string name="revanced_hide_youtube_doodles_summary_on">Animasi YouTube Doodles pada logo disembunyikan</string>
+            <string name="revanced_hide_youtube_doodles_summary_off">Animasi YouTube Doodles pada logo ditampilkan</string>
             <string name="revanced_hide_channel_bar_title">Sembunyikan bilah saluran</string>
             <string name="revanced_hide_channel_bar_summary_on">Bilah saluran disembunyikan</string>
             <string name="revanced_hide_channel_bar_summary_off">Bilah saluran ditampilkan</string>
@@ -942,7 +942,7 @@ Untuk menampilkan menu trek audio, ubah 'Palsukan aliran video' ke 'Android No S
             <string name="revanced_disable_fullscreen_ambient_mode_summary_on">Mode sinematik dinonaktifkan</string>
             <string name="revanced_disable_fullscreen_ambient_mode_summary_off">Mode sinematik diaktifkan</string>
         </patch>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch">
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch">
             <string name="revanced_hide_info_cards_title">Sembunyikan kartu info</string>
             <string name="revanced_hide_info_cards_summary_on">Kartu info disembunyikan</string>
             <string name="revanced_hide_info_cards_summary_off">Kartu info ditampilkan</string>
@@ -1103,12 +1103,12 @@ Untuk menampilkan menu trek audio, ubah 'Palsukan aliran video' ke 'Android No S
             <string name="revanced_hide_autoplay_preview_summary_off">Pratinjau putar otomatis ditampilkan</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">Sembunyikan video yang disarankan di layar akhir</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"Video yang disarankan di layar akhir disembunyikan saat pemutaran otomatis dimatikan
+            <string name="revanced_hide_end_screen_suggested_video_title">Sembunyikan video yang disarankan di layar akhir</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"Video yang disarankan di layar akhir disembunyikan saat pemutaran otomatis dimatikan
 
 Pemutaran otomatis dapat diubah di pengaturan YouTube:
 Pengaturan → Pemutaran → Putar otomatis video berikutnya"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">Video yang disarankan di layar akhir ditampilkan</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">Video yang disarankan di layar akhir ditampilkan</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
             <string name="revanced_hide_player_related_videos_overlay_title">Sembunyikan hamparan video terkait</string>

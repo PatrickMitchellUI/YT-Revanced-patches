@@ -320,7 +320,7 @@ Takmarkanir:
             <string name="revanced_hide_end_screen_cards_summary_off">Endaskjárspjöld eru sýnd</string>
         </patch>
         <patch id="layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch"/>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch"/>
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch"/>
         <patch id="layout.hide.rollingnumber.disableRollingNumberAnimationPatch"/>
         <patch id="layout.hide.seekbar.hideSeekbarPatch">
             <!-- Seekbar shown inside video thumbnails found the home/feed/search/history.  The seekbar shows the prior watch progress when the video was last open. -->
@@ -354,12 +354,12 @@ Takmarkanir:
             <string name="revanced_hide_autoplay_preview_summary_off">Sjálfvirk forskoðun er sýnd</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">Fela ráðlagt myndband á endaskjá</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"Ráðlagt myndband á endaskjá er falið þegar sjálfvirk spilun er slökkt
+            <string name="revanced_hide_end_screen_suggested_video_title">Fela ráðlagt myndband á endaskjá</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"Ráðlagt myndband á endaskjá er falið þegar sjálfvirk spilun er slökkt
 
 Hægt er að breyta sjálfvirkri spilun í YouTube stillingum:
 Stillingar → Spilun → Spila næsta myndband sjálfvirkt"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">Ráðlagt myndband á endaskjá er sýnt</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">Ráðlagt myndband á endaskjá er sýnt</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch"/>
         <patch id="layout.hide.time.hideTimestampPatch"/>

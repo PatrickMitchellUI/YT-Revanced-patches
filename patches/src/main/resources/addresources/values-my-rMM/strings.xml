@@ -326,7 +326,7 @@ MicroG အတွက် ဘက်ထရီ အကောင်းဆုံးပ�
             <string name="revanced_hide_end_screen_cards_summary_off">အဆုံးသတ်မျက်နှာပြင်ကတ်များကို ပြသထားသည်</string>
         </patch>
         <patch id="layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch"/>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch"/>
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch"/>
         <patch id="layout.hide.rollingnumber.disableRollingNumberAnimationPatch"/>
         <patch id="layout.hide.seekbar.hideSeekbarPatch">
             <!-- Seekbar shown inside video thumbnails found the home/feed/search/history.  The seekbar shows the prior watch progress when the video was last open. -->
@@ -360,12 +360,12 @@ MicroG အတွက် ဘက်ထရီ အကောင်းဆုံးပ�
             <string name="revanced_hide_autoplay_preview_summary_off">အလိုအလျောက်ဖွင့်သည့် ကြည့်ရှုမှုအကြိုကို ပြသထားသည်</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">အဆုံးသတ်မျက်နှာပြင် အကြံပြုဗီဒီယိုကို ဖျောက်ပါ</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"အလိုအလျောက်ဖွင့်ခြင်းကို ပိတ်ထားသည့်အခါ အဆုံးသတ်မျက်နှာပြင် အကြံပြုဗီဒီယိုကို ဖျောက်ထားသည်
+            <string name="revanced_hide_end_screen_suggested_video_title">အဆုံးသတ်မျက်နှာပြင် အကြံပြုဗီဒီယိုကို ဖျောက်ပါ</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"အလိုအလျောက်ဖွင့်ခြင်းကို ပိတ်ထားသည့်အခါ အဆုံးသတ်မျက်နှာပြင် အကြံပြုဗီဒီယိုကို ဖျောက်ထားသည်
 
 အလိုအလျောက်ဖွင့်ခြင်းကို YouTube ဆက်တင်များတွင် ပြောင်းလဲနိုင်သည်:
 ဆက်တင်များ → ဖွင့်ခြင်း → နောက်ဗီဒီယိုကို အလိုအလျောက်ဖွင့်ပါ"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">အဆုံးသတ်မျက်နှာပြင် အကြံပြုဗီဒီယိုကို ပြသထားသည်</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">အဆုံးသတ်မျက်နှာပြင် အကြံပြုဗီဒီယိုကို ပြသထားသည်</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch"/>
         <patch id="layout.hide.time.hideTimestampPatch"/>

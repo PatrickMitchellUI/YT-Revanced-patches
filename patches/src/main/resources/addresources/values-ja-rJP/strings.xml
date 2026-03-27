@@ -325,9 +325,9 @@ YouTube Premium ユーザーの場合、この設定は必要ない可能性が�
             <string name="revanced_hide_you_may_like_section_summary_on">検索履歴の「おすすめ」セクションは表示されません</string>
             <string name="revanced_hide_you_may_like_section_summary_off">検索履歴の「おすすめ」セクションは表示されます</string>
             <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-            <string name="revanced_hide_doodles_title">YouTube Doodle を非表示</string>
-            <string name="revanced_hide_doodles_summary_on">ロゴの YouTube Doodle アニメーションは表示されません</string>
-            <string name="revanced_hide_doodles_summary_off">ロゴの YouTube Doodle アニメーションは表示されます</string>
+            <string name="revanced_hide_youtube_doodles_title">YouTube Doodle を非表示</string>
+            <string name="revanced_hide_youtube_doodles_summary_on">ロゴの YouTube Doodle アニメーションは表示されません</string>
+            <string name="revanced_hide_youtube_doodles_summary_off">ロゴの YouTube Doodle アニメーションは表示されます</string>
             <string name="revanced_hide_channel_bar_title">チャンネルバーを非表示</string>
             <string name="revanced_hide_channel_bar_summary_on">チャンネルバーは表示されません</string>
             <string name="revanced_hide_channel_bar_summary_off">チャンネルバーは表示されます</string>
@@ -942,7 +942,7 @@ YouTube Premium ユーザーの場合、この設定は必要ない可能性が�
             <string name="revanced_disable_fullscreen_ambient_mode_summary_on">全画面表示中のアンビエント モードは無効です</string>
             <string name="revanced_disable_fullscreen_ambient_mode_summary_off">全画面表示中のアンビエント モードは有効です</string>
         </patch>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch">
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch">
             <string name="revanced_hide_info_cards_title">情報カードを非表示</string>
             <string name="revanced_hide_info_cards_summary_on">情報カードはプレーヤー画面に表示されません</string>
             <string name="revanced_hide_info_cards_summary_off">情報カードはプレーヤー画面に表示されます</string>
@@ -1103,12 +1103,12 @@ YouTube Premium ユーザーの場合、この設定は必要ない可能性が�
             <string name="revanced_hide_autoplay_preview_summary_off">自動再生の「次の動画」のプレビューは表示されます</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">終了画面の「関連動画」を非表示</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"終了画面の「関連動画」は表示されませんが、自動再生がオンの場合は関連動画が自動で再生されます
+            <string name="revanced_hide_end_screen_suggested_video_title">終了画面の「関連動画」を非表示</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"終了画面の「関連動画」は表示されませんが、自動再生がオンの場合は関連動画が自動で再生されます
 
 自動再生の設定は YouTube の設定で変更できます:
 [設定] &gt; [再生] &gt; [次の動画を自動再生]"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">終了画面の「関連動画」は表示されます</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">終了画面の「関連動画」は表示されます</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
             <string name="revanced_hide_player_related_videos_overlay_title">関連動画オーバーレイを非表示</string>

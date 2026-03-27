@@ -330,7 +330,7 @@ MicroG के लिए बैटरी अनुकूलन अक्षम �
             <string name="revanced_hide_end_screen_cards_summary_off">अंतिम स्क्रीन कार्ड दिखाए गए हैं</string>
         </patch>
         <patch id="layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch"/>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch"/>
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch"/>
         <patch id="layout.hide.rollingnumber.disableRollingNumberAnimationPatch"/>
         <patch id="layout.hide.seekbar.hideSeekbarPatch">
             <!-- Seekbar shown inside video thumbnails found the home/feed/search/history.  The seekbar shows the prior watch progress when the video was last open. -->
@@ -364,12 +364,12 @@ MicroG के लिए बैटरी अनुकूलन अक्षम �
             <string name="revanced_hide_autoplay_preview_summary_off">ऑटोप्ले पूर्वावलोकन दिखाया गया है</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">अंतिम स्क्रीन सुझाया गया वीडियो छिपाएँ</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"ऑटोप्ले बंद होने पर अंतिम स्क्रीन सुझाया गया वीडियो छिपा हुआ है
+            <string name="revanced_hide_end_screen_suggested_video_title">अंतिम स्क्रीन सुझाया गया वीडियो छिपाएँ</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"ऑटोप्ले बंद होने पर अंतिम स्क्रीन सुझाया गया वीडियो छिपा हुआ है
 
 ऑटोप्ले को YouTube सेटिंग में बदला जा सकता है:
 सेटिंग → प्लेबैक → अगला वीडियो अपने आप चलाएँ"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">अंतिम स्क्रीन सुझाया गया वीडियो दिखाया गया है</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">अंतिम स्क्रीन सुझाया गया वीडियो दिखाया गया है</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch"/>
         <patch id="layout.hide.time.hideTimestampPatch"/>

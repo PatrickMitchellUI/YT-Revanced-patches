@@ -308,9 +308,9 @@ Gjithsesi, aktivizimi i këtij opsioni do të regjistrojë edhe disa të dhëna 
             <string name="revanced_hide_you_may_like_section_summary_on">\'Mund t\'ju pëlqejë\' seksioni është i fshehur</string>
             <string name="revanced_hide_you_may_like_section_summary_off">\'Mund t\'ju pëlqejë\' seksioni është i shfaqur</string>
             <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-            <string name="revanced_hide_doodles_title">Fsheh YouTube Doodles</string>
-            <string name="revanced_hide_doodles_summary_on">Animacioni \"Doodles\" i YouTube në logo është i fshehur.</string>
-            <string name="revanced_hide_doodles_summary_off">Animacioni YouTube Doodles në logo shfaqet</string>
+            <string name="revanced_hide_youtube_doodles_title">Fsheh YouTube Doodles</string>
+            <string name="revanced_hide_youtube_doodles_summary_on">Animacioni \"Doodles\" i YouTube në logo është i fshehur.</string>
+            <string name="revanced_hide_youtube_doodles_summary_off">Animacioni YouTube Doodles në logo shfaqet</string>
             <string name="revanced_hide_channel_bar_title">Fshi shiritin e kanalit</string>
             <string name="revanced_hide_channel_bar_summary_on">Shiriti i kanalit është i fshehur</string>
             <string name="revanced_hide_channel_bar_summary_off">Shiriti i kanalit është i dukshme</string>
@@ -926,7 +926,7 @@ Për të shfaqur menynë e gjurmës audio, ndryshoje 'Falsifiko transmetimet vid
             <string name="revanced_disable_fullscreen_ambient_mode_summary_on">\"Modaliteti Ambient\" është i çaktivizuar</string>
             <string name="revanced_disable_fullscreen_ambient_mode_summary_off">\"Modaliteti Ambient\" është i aktivizuar</string>
         </patch>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch">
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch">
             <string name="revanced_hide_info_cards_title">Fsheh kartat e informacionit</string>
             <string name="revanced_hide_info_cards_summary_on">Kartat e informacionit janë të fshehura</string>
             <string name="revanced_hide_info_cards_summary_off">Kartat e informacionit janë të dukshme</string>
@@ -1087,12 +1087,12 @@ Për të shfaqur menynë e gjurmës audio, ndryshoje 'Falsifiko transmetimet vid
             <string name="revanced_hide_autoplay_preview_summary_off">Pamja paraprake automatike është e shfaqur</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">Fshih videon e sugjeruar në ekranin fundor</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"Videoja e sugjeruar në ekranin fundor fshihet kur çaktivizohet luajtja automatike
+            <string name="revanced_hide_end_screen_suggested_video_title">Fshih videon e sugjeruar në ekranin fundor</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"Videoja e sugjeruar në ekranin fundor fshihet kur çaktivizohet luajtja automatike
 
 Luajtja automatike mund të ndryshohet në cilësimet e YouTube:
 Cilësimet → Luajtja → Luaj automatikisht videon tjetër"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">Videoja e sugjeruar në ekranin fundor shfaqet</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">Videoja e sugjeruar në ekranin fundor shfaqet</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
             <string name="revanced_hide_player_related_videos_overlay_title">Fshih mbivendosjen e videove të lidhura.</string>

@@ -320,7 +320,7 @@ Imikhawulo:
             <string name="revanced_hide_end_screen_cards_summary_off">Amakhadi esikrini sokuphela abonisiwe</string>
         </patch>
         <patch id="layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch"/>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch"/>
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch"/>
         <patch id="layout.hide.rollingnumber.disableRollingNumberAnimationPatch"/>
         <patch id="layout.hide.seekbar.hideSeekbarPatch">
             <!-- Seekbar shown inside video thumbnails found the home/feed/search/history.  The seekbar shows the prior watch progress when the video was last open. -->
@@ -354,12 +354,12 @@ Imikhawulo:
             <string name="revanced_hide_autoplay_preview_summary_off">Ukubuka kuqala okuzenzakalelayo kubonisiwe</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">Fihla ividiyo ephakanyisiwe yesikrini sokuphela</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"Ividiyo ephakanyisiwe yesikrini sokuphela ifihliwe uma ukudlala okuzenzakalelayo kukhutshaziwe
+            <string name="revanced_hide_end_screen_suggested_video_title">Fihla ividiyo ephakanyisiwe yesikrini sokuphela</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"Ividiyo ephakanyisiwe yesikrini sokuphela ifihliwe uma ukudlala okuzenzakalelayo kukhutshaziwe
 
 Ukudlala okuzenzakalelayo kungashintshwa kuzilungiselelo ze-YouTube:
 Izilungiselelo → Ukudlala → Dlala ividiyo elandelayo ngokuzenzakalelayo"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">Ividiyo ephakanyisiwe yesikrini sokuphela ibonisiwe</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">Ividiyo ephakanyisiwe yesikrini sokuphela ibonisiwe</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch"/>
         <patch id="layout.hide.time.hideTimestampPatch"/>

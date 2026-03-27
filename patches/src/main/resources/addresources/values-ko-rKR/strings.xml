@@ -327,9 +327,9 @@ YouTube Premium 사용자라면 이 설정은 필요하지 않을 수 있습니�
             <string name="revanced_hide_you_may_like_section_summary_on">추천 콘텐츠 섹션이 숨겨집니다</string>
             <string name="revanced_hide_you_may_like_section_summary_off">추천 콘텐츠 섹션이 표시됩니다</string>
             <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-            <string name="revanced_hide_doodles_title">YouTube Doodles 숨기기</string>
-            <string name="revanced_hide_doodles_summary_on">해더 로고에서 YouTube Doodles 애니메이션이 숨겨집니다</string>
-            <string name="revanced_hide_doodles_summary_off">헤더 로고에서 YouTube Doodles 애니메이션이 표시됩니다</string>
+            <string name="revanced_hide_youtube_doodles_title">YouTube Doodles 숨기기</string>
+            <string name="revanced_hide_youtube_doodles_summary_on">해더 로고에서 YouTube Doodles 애니메이션이 숨겨집니다</string>
+            <string name="revanced_hide_youtube_doodles_summary_off">헤더 로고에서 YouTube Doodles 애니메이션이 표시됩니다</string>
             <string name="revanced_hide_channel_bar_title">채널바 숨기기</string>
             <string name="revanced_hide_channel_bar_summary_on">채널바가 숨겨집니다</string>
             <string name="revanced_hide_channel_bar_summary_off">채널바가 표시됩니다</string>
@@ -940,7 +940,7 @@ YouTube Premium 사용자라면 이 설정은 필요하지 않을 수 있습니�
             <string name="revanced_disable_fullscreen_ambient_mode_summary_on">앰비언트 모드를 비활성화합니다</string>
             <string name="revanced_disable_fullscreen_ambient_mode_summary_off">앰비언트 모드를 활성화합니다</string>
         </patch>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch">
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch">
             <string name="revanced_hide_info_cards_title">정보 카드 숨기기</string>
             <string name="revanced_hide_info_cards_summary_on">정보 카드가 숨겨집니다</string>
             <string name="revanced_hide_info_cards_summary_off">정보 카드가 표시됩니다</string>
@@ -1101,12 +1101,12 @@ YouTube Premium 사용자라면 이 설정은 필요하지 않을 수 있습니�
             <string name="revanced_hide_autoplay_preview_summary_off">자동 재생 미리보기가 표시됩니다</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">최종 화면 추천 동영상 숨기기</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"자동재생이 꺼져 있을 경우에 최종 화면에서 추천 동영상이 숨겨집니다
+            <string name="revanced_hide_end_screen_suggested_video_title">최종 화면 추천 동영상 숨기기</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"자동재생이 꺼져 있을 경우에 최종 화면에서 추천 동영상이 숨겨집니다
 
 자동재생은 YouTube 설정에서 변경할 수 있습니다:
 설정 → 재생 → 다음 동영상 자동재생"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">최종 화면에서 추천 동영상이 표시됩니다</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">최종 화면에서 추천 동영상이 표시됩니다</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
             <string name="revanced_hide_player_related_videos_overlay_title">관련 동영상 오버레이 숨기기</string>

@@ -323,7 +323,7 @@ Ograničenja:
             <string name="revanced_hide_end_screen_cards_summary_off">Kartice završnog zaslona su prikazane</string>
         </patch>
         <patch id="layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch"/>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch"/>
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch"/>
         <patch id="layout.hide.rollingnumber.disableRollingNumberAnimationPatch"/>
         <patch id="layout.hide.seekbar.hideSeekbarPatch">
             <!-- Seekbar shown inside video thumbnails found the home/feed/search/history.  The seekbar shows the prior watch progress when the video was last open. -->
@@ -357,12 +357,12 @@ Ograničenja:
             <string name="revanced_hide_autoplay_preview_summary_off">Pretpregled automatske reprodukcije je prikazan</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">Sakrij predloženi videozapis na završnom zaslonu</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"Predloženi videozapis na završnom zaslonu je skriven kada je automatska reprodukcija isključena
+            <string name="revanced_hide_end_screen_suggested_video_title">Sakrij predloženi videozapis na završnom zaslonu</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"Predloženi videozapis na završnom zaslonu je skriven kada je automatska reprodukcija isključena
 
 Automatska reprodukcija može se promijeniti u postavkama YouTubea:
 Postavke → Reprodukcija → Automatska reprodukcija sljedećeg videozapisa"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">Predloženi videozapis na završnom zaslonu je prikazan</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">Predloženi videozapis na završnom zaslonu je prikazan</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch"/>
         <patch id="layout.hide.time.hideTimestampPatch"/>

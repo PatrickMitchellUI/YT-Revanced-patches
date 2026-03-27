@@ -326,9 +326,9 @@ Second \"item\" text"</string>
             <string name="revanced_hide_you_may_like_section_summary_on">Κρυμμένη</string>
             <string name="revanced_hide_you_may_like_section_summary_off">Εμφανίζεται</string>
             <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-            <string name="revanced_hide_doodles_title">YouTube Doodles</string>
-            <string name="revanced_hide_doodles_summary_on">Κρυμμένα\n\nΑφορά τις κινούμενες εικόνες YouTube Doodles στο λογότυπο</string>
-            <string name="revanced_hide_doodles_summary_off">Εμφανίζεται\n\nΑφορά τις κινούμενες εικόνες YouTube Doodles στο λογότυπο</string>
+            <string name="revanced_hide_youtube_doodles_title">YouTube Doodles</string>
+            <string name="revanced_hide_youtube_doodles_summary_on">Κρυμμένα\n\nΑφορά τις κινούμενες εικόνες YouTube Doodles στο λογότυπο</string>
+            <string name="revanced_hide_youtube_doodles_summary_off">Εμφανίζεται\n\nΑφορά τις κινούμενες εικόνες YouTube Doodles στο λογότυπο</string>
             <string name="revanced_hide_channel_bar_title">Γραμμή καναλιού</string>
             <string name="revanced_hide_channel_bar_summary_on">Κρυμμένη</string>
             <string name="revanced_hide_channel_bar_summary_off">Εμφανίζεται</string>
@@ -944,7 +944,7 @@ Second \"item\" text"</string>
             <string name="revanced_disable_fullscreen_ambient_mode_summary_on">Η λειτουργία περιβάλλοντος σε πλήρη οθόνη είναι απενεργοποιημένη</string>
             <string name="revanced_disable_fullscreen_ambient_mode_summary_off">Η λειτουργία περιβάλλοντος σε πλήρη οθόνη είναι ενεργοποιημένη</string>
         </patch>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch">
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch">
             <string name="revanced_hide_info_cards_title">Κάρτες πληροφοριών</string>
             <string name="revanced_hide_info_cards_summary_on">Κρυμμένες</string>
             <string name="revanced_hide_info_cards_summary_off">Εμφανίζονται</string>
@@ -1105,12 +1105,12 @@ Second \"item\" text"</string>
             <string name="revanced_hide_autoplay_preview_summary_off">Εμφανίζεται</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">Προτεινόμενο βίντεο τελικής οθόνης</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"Κρυμμένο όταν η αυτόματη αναπαραγωγή είναι απενεργοποιημένη
+            <string name="revanced_hide_end_screen_suggested_video_title">Προτεινόμενο βίντεο τελικής οθόνης</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"Κρυμμένο όταν η αυτόματη αναπαραγωγή είναι απενεργοποιημένη
 
 Η αυτόματη αναπαραγωγή μπορεί να αλλαχτεί στις ρυθμίσεις YouTube:
 Ρυθμίσεις → Αναπαραγωγή→ Αυτόματη αναπαραγωγή επόμενου βίντεο"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">Εμφανίζεται</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">Εμφανίζεται</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
             <string name="revanced_hide_player_related_videos_overlay_title">Σχετικά βίντεο στην πλήρη οθόνη</string>

@@ -375,7 +375,7 @@ Second \"item\" text"</string>
             <string name="revanced_hide_end_screen_cards_summary_off">کارت‌های پایان ویدئو نمایش داده می‌شوند</string>
         </patch>
         <patch id="layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch"/>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch"/>
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch"/>
         <patch id="layout.hide.rollingnumber.disableRollingNumberAnimationPatch"/>
         <patch id="layout.hide.seekbar.hideSeekbarPatch">
             <!-- Seekbar shown inside video thumbnails found the home/feed/search/history.  The seekbar shows the prior watch progress when the video was last open. -->
@@ -409,12 +409,12 @@ Second \"item\" text"</string>
             <string name="revanced_hide_autoplay_preview_summary_off">پیش‌نمایش پخش خودکار نمایش داده می‌شود</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">ویدئوی پیشنهادی پایان صفحه را پنهان کنید</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"ویدئوی پیشنهادی پایان صفحه هنگامی که پخش خودکار خاموش است، پنهان می‌شود
+            <string name="revanced_hide_end_screen_suggested_video_title">ویدئوی پیشنهادی پایان صفحه را پنهان کنید</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"ویدئوی پیشنهادی پایان صفحه هنگامی که پخش خودکار خاموش است، پنهان می‌شود
 
 پخش خودکار را می‌توان در تنظیمات YouTube تغییر داد:
 تنظیمات ← پخش ← پخش خودکار ویدئوی بعدی"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">ویدئوی پیشنهادی پایان صفحه نمایش داده می‌شود</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">ویدئوی پیشنهادی پایان صفحه نمایش داده می‌شود</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch"/>
         <patch id="layout.hide.time.hideTimestampPatch"/>

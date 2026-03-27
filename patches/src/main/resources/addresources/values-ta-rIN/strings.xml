@@ -324,7 +324,7 @@ MicroG க்கான பேட்டரி மேம்படுத்தல�
             <string name="revanced_hide_end_screen_cards_summary_off">முடிவுத் திரை கார்டுகள் காட்டப்பட்டுள்ளன</string>
         </patch>
         <patch id="layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch"/>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch"/>
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch"/>
         <patch id="layout.hide.rollingnumber.disableRollingNumberAnimationPatch"/>
         <patch id="layout.hide.seekbar.hideSeekbarPatch">
             <!-- Seekbar shown inside video thumbnails found the home/feed/search/history.  The seekbar shows the prior watch progress when the video was last open. -->
@@ -358,12 +358,12 @@ MicroG க்கான பேட்டரி மேம்படுத்தல�
             <string name="revanced_hide_autoplay_preview_summary_off">தானியங்கு ப்ளே முன்னோட்டம் காட்டப்பட்டுள்ளது</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">முடிவுத் திரை பரிந்துரைக்கப்பட்ட வீடியோவை மறை</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"தானியங்கு ப்ளே முடக்கப்பட்டிருக்கும்போது முடிவுத் திரை பரிந்துரைக்கப்பட்ட வீடியோ மறைக்கப்படும்
+            <string name="revanced_hide_end_screen_suggested_video_title">முடிவுத் திரை பரிந்துரைக்கப்பட்ட வீடியோவை மறை</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"தானியங்கு ப்ளே முடக்கப்பட்டிருக்கும்போது முடிவுத் திரை பரிந்துரைக்கப்பட்ட வீடியோ மறைக்கப்படும்
 
 YouTube அமைப்புகளில் தானியங்கு ப்ளேவை மாற்றலாம்:
 அமைப்புகள் → பிளேபேக் → அடுத்த வீடியோவை தானியங்கு ப்ளே"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">முடிவுத் திரை பரிந்துரைக்கப்பட்ட வீடியோ காட்டப்பட்டுள்ளது</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">முடிவுத் திரை பரிந்துரைக்கப்பட்ட வீடியோ காட்டப்பட்டுள்ளது</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch"/>
         <patch id="layout.hide.time.hideTimestampPatch"/>

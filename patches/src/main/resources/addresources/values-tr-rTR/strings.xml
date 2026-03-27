@@ -325,9 +325,9 @@ Ancak, bunun etkinleştirilmesi IP adresiniz gibi bazı kullanıcı verilerini d
             <string name="revanced_hide_you_may_like_section_summary_on">\'Beğenebilecekleriniz\' kısmı gizli</string>
             <string name="revanced_hide_you_may_like_section_summary_off">\'Beğenebilecekleriniz\' kısmı görünür</string>
             <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-            <string name="revanced_hide_doodles_title">YouTube Doodle\'larını gizle</string>
-            <string name="revanced_hide_doodles_summary_on">Logodaki YouTube Doodles animasyonu gizli</string>
-            <string name="revanced_hide_doodles_summary_off">Logodaki YouTube Doodles animasyonu görünür</string>
+            <string name="revanced_hide_youtube_doodles_title">YouTube Doodle\'larını gizle</string>
+            <string name="revanced_hide_youtube_doodles_summary_on">Logodaki YouTube Doodles animasyonu gizli</string>
+            <string name="revanced_hide_youtube_doodles_summary_off">Logodaki YouTube Doodles animasyonu görünür</string>
             <string name="revanced_hide_channel_bar_title">Kanal çubuğunu gizle</string>
             <string name="revanced_hide_channel_bar_summary_on">Kanal çubuğu gizli</string>
             <string name="revanced_hide_channel_bar_summary_off">Kanal çubuğu görünür</string>
@@ -943,7 +943,7 @@ Ses parçası menüsünü göstermek için 'Video akışlarını taklit et' ayar
             <string name="revanced_disable_fullscreen_ambient_mode_summary_on">Ambiyans modu devre dışı</string>
             <string name="revanced_disable_fullscreen_ambient_mode_summary_off">Ambiyans modu etkin</string>
         </patch>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch">
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch">
             <string name="revanced_hide_info_cards_title">Bilgi kartlarını gizle</string>
             <string name="revanced_hide_info_cards_summary_on">Bilgi kartları gizli</string>
             <string name="revanced_hide_info_cards_summary_off">Bilgi kartları görünür</string>
@@ -1104,12 +1104,12 @@ Ses parçası menüsünü göstermek için 'Video akışlarını taklit et' ayar
             <string name="revanced_hide_autoplay_preview_summary_off">Otomatik oynatma ön izlemesi görünür</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">Bitiş ekranı önerilen videosunu gizle</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"Otomatik oynatma kapatıldığında bitiş ekranı önerilen videosu gizlenir
+            <string name="revanced_hide_end_screen_suggested_video_title">Bitiş ekranı önerilen videosunu gizle</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"Otomatik oynatma kapatıldığında bitiş ekranı önerilen videosu gizlenir
 
 Otomatik oynatma YouTube ayarlarından değiştirilebilir:
 Ayarlar → Oynatma → Sonraki videoyu otomatik oynat"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">Bitiş ekranı önerilen videosu görünür</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">Bitiş ekranı önerilen videosu görünür</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
             <string name="revanced_hide_player_related_videos_overlay_title">İlgili videolar katmanını gizle</string>

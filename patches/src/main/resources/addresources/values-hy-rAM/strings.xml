@@ -320,9 +320,9 @@ MicroG-ի համար մարտկոցի օպտիմալացումը անջատել�
             <string name="revanced_hide_you_may_like_section_summary_on">«Ձեզ կարող է դուր գալ» բաժինը թաքնված է</string>
             <string name="revanced_hide_you_may_like_section_summary_off">«Ձեզ կարող է դուր գալ» բաժինը ցուցադրվում է</string>
             <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-            <string name="revanced_hide_doodles_title">Թաքցնել YouTube-ի Doodles-ները</string>
-            <string name="revanced_hide_doodles_summary_on">YouTube Doodles անիմացիան լոգոյի վրա թաքնված է</string>
-            <string name="revanced_hide_doodles_summary_off">YouTube Doodles անիմացիան լոգոյի վրա ցուցադրվում է</string>
+            <string name="revanced_hide_youtube_doodles_title">Թաքցնել YouTube-ի Doodles-ները</string>
+            <string name="revanced_hide_youtube_doodles_summary_on">YouTube Doodles անիմացիան լոգոյի վրա թաքնված է</string>
+            <string name="revanced_hide_youtube_doodles_summary_off">YouTube Doodles անիմացիան լոգոյի վրա ցուցադրվում է</string>
             <string name="revanced_hide_channel_bar_title">Թաքցնել ալիքի գծանշանը</string>
             <string name="revanced_hide_channel_bar_summary_on">Ալիքի գծանշանը թաքցված է</string>
             <string name="revanced_hide_channel_bar_summary_off">Ալիքի գծանշանը երևում է</string>
@@ -938,7 +938,7 @@ MicroG-ի համար մարտկոցի օպտիմալացումը անջատել�
             <string name="revanced_disable_fullscreen_ambient_mode_summary_on">Ամբիենտ ռեժիմը անջատված է</string>
             <string name="revanced_disable_fullscreen_ambient_mode_summary_off">Ամբիենտ ռեժիմը միացված է</string>
         </patch>
-        <patch id="layout.hide.infocards.hideInfocardsResourcePatch">
+        <patch id="layout.hide.infocards.hideInfoCardsResourcePatch">
             <string name="revanced_hide_info_cards_title">Տեղեկատվական քարտերը թաքցնել</string>
             <string name="revanced_hide_info_cards_summary_on">Տեղեկատվական քարտերը թաքցված են</string>
             <string name="revanced_hide_info_cards_summary_off">Տեղեկատվական քարտերը երևում են</string>
@@ -1099,12 +1099,12 @@ MicroG-ի համար մարտկոցի օպտիմալացումը անջատել�
             <string name="revanced_hide_autoplay_preview_summary_off">Ավտոմատ նախադիտումը ցուցադրվում է</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_end_screen_suggested_video_title">Թաքցնել վերջնական էկրանին առաջարկվող տեսանյութը</string>
-            <string name="revanced_end_screen_suggested_video_summary_on">"Վերջնական էկրանին առաջարկվող տեսանյութը թաքցված է, երբ ավտոմատ նվագարկումն անջատված է
+            <string name="revanced_hide_end_screen_suggested_video_title">Թաքցնել վերջնական էկրանին առաջարկվող տեսանյութը</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_on">"Վերջնական էկրանին առաջարկվող տեսանյութը թաքցված է, երբ ավտոմատ նվագարկումն անջատված է
 
 Ավտոմատ նվագարկումը կարելի է փոխել YouTube-ի կարգավորումներում.
 Կարգավորումներ → Վերարտադրում → Ավտոմատ նվագարկել հաջորդ տեսանյութը"</string>
-            <string name="revanced_end_screen_suggested_video_summary_off">Վերջնական էկրանին առաջարկվող տեսանյութը ցուցադրվում է</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary_off">Վերջնական էկրանին առաջարկվող տեսանյութը ցուցադրվում է</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
             <string name="revanced_hide_player_related_videos_overlay_title">Թաքցնել հարակից տեսանյութերի վերադիրը</string>
