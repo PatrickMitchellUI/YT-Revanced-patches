@@ -19,6 +19,39 @@ internal val BytecodePatchContext.createPivotBarMethodMatch by composingFirstMet
     )
 }
 
+internal val BytecodePatchContext.animatedNavigationTabsFeatureFlagMethodMatch by composingFirstMethod {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+    returnType("Z")
+    instructions(
+        45680008L(),
+    )
+}
+
+internal val BytecodePatchContext.autoHideNavigationBarMethod by gettingFirstMethodDeclaratively {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+    returnType("V")
+    parameterTypes("Landroid/support/v7/widget/RecyclerView;", "I", "I")
+    instructions(
+        45677535L(),
+    )
+}
+
+/**
+ * 21.36+ feed scroll listener that shows or hides the navigation bar (show, animate).
+ */
+internal val BytecodePatchContext.navigationBarScrollMethodMatch by composingFirstMethod {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+    returnType("V")
+    parameterTypes("Landroid/support/v7/widget/RecyclerView;", "I", "I")
+    instructions(
+        method { name == "getScaledTouchSlop" && definingClass == "Landroid/view/ViewConfiguration;" },
+        allOf(
+            Opcode.INVOKE_INTERFACE(),
+            method { returnType == "V" && parameterTypes.map { it.toString() } == listOf("Z", "Z") },
+        ),
+    )
+}
+
 internal val BytecodePatchContext.pivotBarStyleMethodMatch by composingFirstMethod {
     definingClass("/PivotBar;")
     returnType("V")
