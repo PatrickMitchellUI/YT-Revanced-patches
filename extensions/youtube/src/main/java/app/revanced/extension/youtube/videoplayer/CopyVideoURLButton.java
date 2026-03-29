@@ -18,14 +18,16 @@ public class CopyVideoURLButton {
      */
     public static void initializeButton(View controlsView) {
         try {
+            // Tap copies in the default mode and long press copies in the opposite mode.
+            // The default mode is set by the 'Copy timestamp' setting.
             instance = new PlayerControlButton(
                     controlsView,
                     "revanced_copy_video_url_button",
                     null,
                     Settings.COPY_VIDEO_URL::get,
-                    view -> CopyVideoURLPatch.copyURL(false),
+                    view -> CopyVideoURLPatch.copyURL(Settings.COPY_VIDEO_URL_TIMESTAMP.get()),
                     view -> {
-                        CopyVideoURLPatch.copyURL(true);
+                        CopyVideoURLPatch.copyURL(!Settings.COPY_VIDEO_URL_TIMESTAMP.get());
                         return true;
                     }
             );

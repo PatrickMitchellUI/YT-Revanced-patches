@@ -35,7 +35,6 @@ private val copyVideoURLResourcePatch = resourcePatch {
             ResourceGroup(
                 resourceDirectoryName = "drawable",
                 "revanced_yt_copy.xml",
-                "revanced_yt_copy_timestamp.xml",
             ),
         )
 
@@ -46,7 +45,7 @@ private val copyVideoURLResourcePatch = resourcePatch {
 @Suppress("unused")
 val copyVideoURLPatch = bytecodePatch(
     name = "Copy video URL",
-    description = "Adds options to display buttons in the video player to copy video URLs.",
+    description = "Adds an option to display a button in the video player to copy the video URL.",
 ) {
     dependsOn(
         copyVideoURLResourcePatch,
@@ -67,15 +66,9 @@ val copyVideoURLPatch = bytecodePatch(
     )
 
     apply {
-        val extensionPlayerPackage = "Lapp/revanced/extension/youtube/videoplayer"
-        val buttonsDescriptors = listOf(
-            "$extensionPlayerPackage/CopyVideoURLButton;",
-            "$extensionPlayerPackage/CopyVideoURLTimestampButton;",
-        )
+        val buttonDescriptor = "Lapp/revanced/extension/youtube/videoplayer/CopyVideoURLButton;"
 
-        buttonsDescriptors.forEach { descriptor ->
-            initializeBottomControl(descriptor)
-            injectVisibilityCheckCall(descriptor)
-        }
+        initializeBottomControl(buttonDescriptor)
+        injectVisibilityCheckCall(buttonDescriptor)
     }
 }
