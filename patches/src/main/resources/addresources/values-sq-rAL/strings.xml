@@ -154,14 +154,12 @@ Riprodhimi mund të mos funksionojë"</string>
             <string name="revanced_debug_toast_on_error_user_dialog_message">"Fshirja e toast-eve të gabimit fsheh të gjitha njoftimet e gabimeve të ReVanced.
 
 Ju nuk do të njoftoheni për ndonjë ngjarje të papritur."</string>
-            <string name="revanced_debug_export_logs_to_clipboard_title">Eksporto regjistrat e korrigjimit</string>
-            <string name="revanced_debug_export_logs_to_clipboard_summary">Kopjon regjistrat e korrigjimit të ReVanced në kujtesën e shkurtër</string>
+            <string name="revanced_debug_export_logs_title">Eksporto regjistrat e korrigjimit</string>
+            <string name="revanced_debug_export_logs_summary">Kopjon regjistrat e korrigjimit të ReVanced në kujtesën e shkurtër</string>
             <string name="revanced_debug_logs_disabled">Regjistrimi i korrigjimeve është çaktivizuar</string>
             <string name="revanced_debug_logs_none_found">Nuk u gjetën regjistra</string>
             <string name="revanced_debug_logs_copied_to_clipboard">Regjistrat u kopjuan</string>
             <string name="revanced_debug_logs_failed_to_export">Dështoi eksportimi i regjistrave: %s</string>
-            <string name="revanced_debug_logs_clear_buffer_title">Pastro regjistrat e korrigjimit</string>
-            <string name="revanced_debug_logs_clear_buffer_summary">Pastro të gjithë regjistrat e ruajtur të korrigjimit të ReVanced</string>
             <string name="revanced_debug_logs_clear_toast">Regjistrat u pastruan</string>
             <string name="revanced_debug_feature_flags_manager_title">Manager i sinjaleve të veçorive</string>
             <string name="revanced_debug_feature_flags_manager_summary">Menaxhoni sinjalet boolean të veçorive</string>

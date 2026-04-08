@@ -167,14 +167,12 @@ Seans nach n-oibreoidh an t-athsheinm"</string>
             <string name="revanced_debug_toast_on_error_user_dialog_message">"Má mhúchtar tóstaí earráide, folaítear gach fógra earráide ReVanced.
 
 Ní chuirfear ar an eolas thú faoi aon imeachtaí gan choinne."</string>
-            <string name="revanced_debug_export_logs_to_clipboard_title">Easpórtáil logaí dífhabhtaithe</string>
-            <string name="revanced_debug_export_logs_to_clipboard_summary">Cóipeálann sé logaí dífhabhtaithe ReVanced chuig an gearrthaisce</string>
+            <string name="revanced_debug_export_logs_title">Easpórtáil logaí dífhabhtaithe</string>
+            <string name="revanced_debug_export_logs_summary">Cóipeálann sé logaí dífhabhtaithe ReVanced chuig an gearrthaisce</string>
             <string name="revanced_debug_logs_disabled">Tá logáil dífhabhtaithe díchumasaithe</string>
             <string name="revanced_debug_logs_none_found">Níor aimsíodh aon logaí</string>
             <string name="revanced_debug_logs_copied_to_clipboard">Lógaí cóipeáilte</string>
             <string name="revanced_debug_logs_failed_to_export">Theip ar logaí a easpórtáil: %s</string>
-            <string name="revanced_debug_logs_clear_buffer_title">Glan logaí dífhabhtaithe</string>
-            <string name="revanced_debug_logs_clear_buffer_summary">Glanann sé gach loga dífhabhtaithe ReVanced stóráilte</string>
             <string name="revanced_debug_logs_clear_toast">Lógaí glanta</string>
             <string name="revanced_debug_feature_flags_manager_title">Bainisteoir bratacha gnéithe</string>
             <string name="revanced_debug_feature_flags_manager_summary">Bainistigh bratacha gné boole</string>

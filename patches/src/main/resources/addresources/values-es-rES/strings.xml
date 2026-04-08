@@ -167,14 +167,12 @@ La reproducción podría no funcionar"</string>
             <string name="revanced_debug_toast_on_error_user_dialog_message">"Desactivar los avisos de error oculta todas las notificaciones de error de ReVanced.
 
 No se le notificará de ningún evento inesperado."</string>
-            <string name="revanced_debug_export_logs_to_clipboard_title">Exportar registros de depuración</string>
-            <string name="revanced_debug_export_logs_to_clipboard_summary">Copia los registros de depuración de ReVanced al portapapeles</string>
+            <string name="revanced_debug_export_logs_title">Exportar registros de depuración</string>
+            <string name="revanced_debug_export_logs_summary">Copia los registros de depuración de ReVanced al portapapeles</string>
             <string name="revanced_debug_logs_disabled">El registro de depuración está desactivado</string>
             <string name="revanced_debug_logs_none_found">No se encontraron registros</string>
             <string name="revanced_debug_logs_copied_to_clipboard">Registros copiados</string>
             <string name="revanced_debug_logs_failed_to_export">Error al exportar registros: %s</string>
-            <string name="revanced_debug_logs_clear_buffer_title">Borrar registros de depuración</string>
-            <string name="revanced_debug_logs_clear_buffer_summary">Borra todos los registros de depuración de ReVanced almacenados</string>
             <string name="revanced_debug_logs_clear_toast">Registros borrados</string>
             <string name="revanced_debug_feature_flags_manager_title">Manager de indicadores de funciones</string>
             <string name="revanced_debug_feature_flags_manager_summary">Gestionar indicadores de funciones booleanos</string>

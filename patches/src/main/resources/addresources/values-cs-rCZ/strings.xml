@@ -167,14 +167,12 @@ Přehrávání nemusí fungovat"</string>
             <string name="revanced_debug_toast_on_error_user_dialog_message">"Vypnutí chybových toastů skryje všechna chybová oznámení ReVanced.
 
 Nebudete informováni o žádné neočekávané události."</string>
-            <string name="revanced_debug_export_logs_to_clipboard_title">Exportovat ladicí protokoly</string>
-            <string name="revanced_debug_export_logs_to_clipboard_summary">Zkopíruje ladicí protokoly ReVanced do schránky</string>
+            <string name="revanced_debug_export_logs_title">Exportovat ladicí protokoly</string>
+            <string name="revanced_debug_export_logs_summary">Zkopíruje ladicí protokoly ReVanced do schránky</string>
             <string name="revanced_debug_logs_disabled">Ladění je vypnuto</string>
             <string name="revanced_debug_logs_none_found">Nebyly nalezeny žádné protokoly</string>
             <string name="revanced_debug_logs_copied_to_clipboard">Protokoly zkopírovány</string>
             <string name="revanced_debug_logs_failed_to_export">Nepodařilo se exportovat protokoly: %s</string>
-            <string name="revanced_debug_logs_clear_buffer_title">Vymazat ladicí protokoly</string>
-            <string name="revanced_debug_logs_clear_buffer_summary">Vymaže všechny uložené ladicí protokoly ReVanced</string>
             <string name="revanced_debug_logs_clear_toast">Protokoly vymazány</string>
             <string name="revanced_debug_feature_flags_manager_title">Příznaky funkcí Manager</string>
             <string name="revanced_debug_feature_flags_manager_summary">Spravovat boolean příznaky funkcí</string>

@@ -167,14 +167,12 @@ La riproduzione potrebbe non funzionare"</string>
             <string name="revanced_debug_toast_on_error_user_dialog_message">"Disabilitare i toast di errore nasconde tutte le notifiche di errore di ReVanced.
 
 Non sarai notificato di eventi imprevisti."</string>
-            <string name="revanced_debug_export_logs_to_clipboard_title">Esporta i log di debug</string>
-            <string name="revanced_debug_export_logs_to_clipboard_summary">Copia i log di debug di ReVanced negli Appunti</string>
+            <string name="revanced_debug_export_logs_title">Esporta i log di debug</string>
+            <string name="revanced_debug_export_logs_summary">Copia i log di debug di ReVanced negli Appunti</string>
             <string name="revanced_debug_logs_disabled">La registrazione di debug è disabilitata</string>
             <string name="revanced_debug_logs_none_found">Nessun log trovato</string>
             <string name="revanced_debug_logs_copied_to_clipboard">Log copiati</string>
             <string name="revanced_debug_logs_failed_to_export">Esportazione dei log non riuscita: %s</string>
-            <string name="revanced_debug_logs_clear_buffer_title">Cancella i log di debug</string>
-            <string name="revanced_debug_logs_clear_buffer_summary">Cancella tutti i log di debug di ReVanced memorizzati</string>
             <string name="revanced_debug_logs_clear_toast">Log cancellati</string>
             <string name="revanced_debug_feature_flags_manager_title">Manager dei flag di funzionalità</string>
             <string name="revanced_debug_feature_flags_manager_summary">Gestisci flag di funzionalità booleani</string>

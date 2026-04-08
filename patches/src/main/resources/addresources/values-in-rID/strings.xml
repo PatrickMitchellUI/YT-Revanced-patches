@@ -167,14 +167,12 @@ Pemutaran mungkin tidak berfungsi"</string>
             <string name="revanced_debug_toast_on_error_user_dialog_message">"Mematikan notifikasi kesalahan menyembunyikan semua notifikasi kesalahan ReVanced.
 
 Anda tidak akan diberi tahu tentang kejadian yang tidak terduga."</string>
-            <string name="revanced_debug_export_logs_to_clipboard_title">Ekspor catatan debug</string>
-            <string name="revanced_debug_export_logs_to_clipboard_summary">Salin catatan debug ReVanced ke papan klip</string>
+            <string name="revanced_debug_export_logs_title">Ekspor catatan debug</string>
+            <string name="revanced_debug_export_logs_summary">Salin catatan debug ReVanced ke papan klip</string>
             <string name="revanced_debug_logs_disabled">Pencatatan debug dinonaktifkan</string>
             <string name="revanced_debug_logs_none_found">Tidak ditemukan catatan</string>
             <string name="revanced_debug_logs_copied_to_clipboard">Catatan disalin</string>
             <string name="revanced_debug_logs_failed_to_export">Gagal mengekspor catatan: %s</string>
-            <string name="revanced_debug_logs_clear_buffer_title">Bersihkan catatan debug</string>
-            <string name="revanced_debug_logs_clear_buffer_summary">Membersihkan semua catatan debug ReVanced yang tersimpan</string>
             <string name="revanced_debug_logs_clear_toast">Catatan dibersihkan</string>
             <string name="revanced_debug_feature_flags_manager_title">Fitur pengelolaan tanda</string>
             <string name="revanced_debug_feature_flags_manager_summary">Kelola tanda fitur boolean</string>

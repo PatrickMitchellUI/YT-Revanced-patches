@@ -154,14 +154,12 @@ Maaaring hindi gumana ang pag-playback"</string>
             <string name="revanced_debug_toast_on_error_user_dialog_message">"Ang pag-off ng mga toast ng error ay nagtatago ng lahat ng mga abiso ng error ng ReVanced.
 
 Hindi ka aabisuhan ng anumang hindi inaasahang mga kaganapan."</string>
-            <string name="revanced_debug_export_logs_to_clipboard_title">I-export ang mga debug log</string>
-            <string name="revanced_debug_export_logs_to_clipboard_summary">Kinokopya ang mga ReVanced debug log sa clipboard</string>
+            <string name="revanced_debug_export_logs_title">I-export ang mga debug log</string>
+            <string name="revanced_debug_export_logs_summary">Kinokopya ang mga ReVanced debug log sa clipboard</string>
             <string name="revanced_debug_logs_disabled">Hindi pinagana ang pag-log ng debug</string>
             <string name="revanced_debug_logs_none_found">Walang nakitang mga log</string>
             <string name="revanced_debug_logs_copied_to_clipboard">Nakopya ang mga log</string>
             <string name="revanced_debug_logs_failed_to_export">Nabigo ang pag-export ng mga log: %s</string>
-            <string name="revanced_debug_logs_clear_buffer_title">I-clear ang mga debug log</string>
-            <string name="revanced_debug_logs_clear_buffer_summary">Iki-clear ang lahat ng nakaimbak na ReVanced debug log</string>
             <string name="revanced_debug_logs_clear_toast">Na-clear ang mga log</string>
             <string name="revanced_debug_feature_flags_manager_title">Manager ng Mga Flag ng Tampok</string>
             <string name="revanced_debug_feature_flags_manager_summary">Pamahalaan ang mga boolean na flag ng tampok</string>

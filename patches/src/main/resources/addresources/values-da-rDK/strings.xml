@@ -161,14 +161,12 @@ Afspilning fungerer muligvis ikke"</string>
             <string name="revanced_debug_toast_on_error_user_dialog_message">"Hvis du deaktiverer fejl-toasts, skjules alle ReVanced-fejlmeddelelser.
 
 Du modtager ikke notifikationer om uventede hændelser."</string>
-            <string name="revanced_debug_export_logs_to_clipboard_title">Eksportér fejlsøgningslogfiler</string>
-            <string name="revanced_debug_export_logs_to_clipboard_summary">Kopierer ReVanced-fejlsøgningslogfiler til udklipsholderen</string>
+            <string name="revanced_debug_export_logs_title">Eksportér fejlsøgningslogfiler</string>
+            <string name="revanced_debug_export_logs_summary">Kopierer ReVanced-fejlsøgningslogfiler til udklipsholderen</string>
             <string name="revanced_debug_logs_disabled">Fejlsøgningslogning er deaktiveret</string>
             <string name="revanced_debug_logs_none_found">Ingen logfiler fundet</string>
             <string name="revanced_debug_logs_copied_to_clipboard">Logfiler kopieret</string>
             <string name="revanced_debug_logs_failed_to_export">Kunne ikke eksportere logfiler: %s</string>
-            <string name="revanced_debug_logs_clear_buffer_title">Ryd fejlsøgningslogfiler</string>
-            <string name="revanced_debug_logs_clear_buffer_summary">Rydder alle gemte ReVanced-fejlsøgningslogfiler</string>
             <string name="revanced_debug_logs_clear_toast">Logfiler ryddet</string>
             <string name="revanced_debug_feature_flags_manager_title">Funktionsflag Manager</string>
             <string name="revanced_debug_feature_flags_manager_summary">Administrer booleske funktionsflag</string>

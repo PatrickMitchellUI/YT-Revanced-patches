@@ -163,14 +163,12 @@ Prehrávanie nemusí fungovať"</string>
             <string name="revanced_debug_toast_on_error_user_dialog_message">"Vypnutie upozornení o chybách skryje všetky upozornenia o chybách v ReVanced.
 
 Nebudete informovaní o žiadnych nepredvídaných udalostiach."</string>
-            <string name="revanced_debug_export_logs_to_clipboard_title">Exportovať protokoly ladenia</string>
-            <string name="revanced_debug_export_logs_to_clipboard_summary">Skopíruje protokoly ladenia ReVanced do schránky</string>
+            <string name="revanced_debug_export_logs_title">Exportovať protokoly ladenia</string>
+            <string name="revanced_debug_export_logs_summary">Skopíruje protokoly ladenia ReVanced do schránky</string>
             <string name="revanced_debug_logs_disabled">Protokolovanie ladenia je vypnuté</string>
             <string name="revanced_debug_logs_none_found">Nenašli sa žiadne protokoly</string>
             <string name="revanced_debug_logs_copied_to_clipboard">Protokoly skopírované</string>
             <string name="revanced_debug_logs_failed_to_export">Nepodarilo sa exportovať protokoly: %s</string>
-            <string name="revanced_debug_logs_clear_buffer_title">Vymazať protokoly ladenia</string>
-            <string name="revanced_debug_logs_clear_buffer_summary">Vymaže všetky uložené protokoly ladenia ReVanced</string>
             <string name="revanced_debug_logs_clear_toast">Protokoly vymazané</string>
             <string name="revanced_debug_feature_flags_manager_title">Manager príznakov funkcií</string>
             <string name="revanced_debug_feature_flags_manager_summary">Spravovať booleovské príznaky funkcií</string>

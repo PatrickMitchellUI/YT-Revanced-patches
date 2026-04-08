@@ -163,14 +163,12 @@ Uppspelning kanske inte fungerar"</string>
             <string name="revanced_debug_toast_on_error_user_dialog_message">"Om du stänger av popup-felmeddelanden döljs alla ReVanced-felmeddelanden.
 
 Du kommer inte att bli meddelad om oväntade händelser."</string>
-            <string name="revanced_debug_export_logs_to_clipboard_title">Exportera felsökningsloggar</string>
-            <string name="revanced_debug_export_logs_to_clipboard_summary">Kopierar ReVanced-felsökningsloggar till urklipp</string>
+            <string name="revanced_debug_export_logs_title">Exportera felsökningsloggar</string>
+            <string name="revanced_debug_export_logs_summary">Kopierar ReVanced-felsökningsloggar till urklipp</string>
             <string name="revanced_debug_logs_disabled">Felsökningsloggar är inaktiverade</string>
             <string name="revanced_debug_logs_none_found">Inga loggar hittades</string>
             <string name="revanced_debug_logs_copied_to_clipboard">Loggar kopierade</string>
             <string name="revanced_debug_logs_failed_to_export">Det gick inte att exportera loggar: %s</string>
-            <string name="revanced_debug_logs_clear_buffer_title">Rensa felsökningsloggar</string>
-            <string name="revanced_debug_logs_clear_buffer_summary">Rensar alla lagrade ReVanced-felsökningsloggar</string>
             <string name="revanced_debug_logs_clear_toast">Loggar rensade</string>
             <string name="revanced_debug_feature_flags_manager_title">Funktionsflagghanterare</string>
             <string name="revanced_debug_feature_flags_manager_summary">Hantera booleska funktionsflaggor</string>

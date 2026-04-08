@@ -163,14 +163,12 @@ Oynatma işləməyə bilər"</string>
             <string name="revanced_debug_toast_on_error_user_dialog_message">"Xəta ani bildirişlərin qapatmaq, bütün ReVanced xəta bildirişlərin gizlədir.
 
 Gözlənilməz hallardan xəbərdar olmayacaqsınız."</string>
-            <string name="revanced_debug_export_logs_to_clipboard_title">Sazlama qeydlərini ixrac edin</string>
-            <string name="revanced_debug_export_logs_to_clipboard_summary">ReVanced sazlama qeydlərini buferə köçürür</string>
+            <string name="revanced_debug_export_logs_title">Sazlama qeydlərini ixrac edin</string>
+            <string name="revanced_debug_export_logs_summary">ReVanced sazlama qeydlərini buferə köçürür</string>
             <string name="revanced_debug_logs_disabled">Sazlama qeydi qapalıdır</string>
             <string name="revanced_debug_logs_none_found">Qeydlər tapılmadı</string>
             <string name="revanced_debug_logs_copied_to_clipboard">Qeydlər köçürüldü</string>
             <string name="revanced_debug_logs_failed_to_export">Qeydləri ixrac etmək alınmadı: %s</string>
-            <string name="revanced_debug_logs_clear_buffer_title">Sazlama qeydlərini təmizlə</string>
-            <string name="revanced_debug_logs_clear_buffer_summary">Saxlanılan bütün ReVanced sazlama qeydlərini təmizləyir</string>
             <string name="revanced_debug_logs_clear_toast">Qeydlər silindi</string>
             <string name="revanced_debug_feature_flags_manager_title">Xüsusiyyət nişançıları idarəedicisi</string>
             <string name="revanced_debug_feature_flags_manager_summary">Boolean xüsusiyyət nişançıların idarə et</string>

@@ -167,14 +167,12 @@ Odtwarzanie może nie działać"</string>
             <string name="revanced_debug_toast_on_error_user_dialog_message">"Wyłączenie notyfikacji błędów ukrywa wszystkie powiadomienia o błędach ReVanced.
 
 Nie będziesz informowany o żadnych nieoczekiwanych zdarzeniach."</string>
-            <string name="revanced_debug_export_logs_to_clipboard_title">Eksportuj dzienniki debugowania</string>
-            <string name="revanced_debug_export_logs_to_clipboard_summary">Kopiuje dzienniki debugowania ReVanced do schowka</string>
+            <string name="revanced_debug_export_logs_title">Eksportuj dzienniki debugowania</string>
+            <string name="revanced_debug_export_logs_summary">Kopiuje dzienniki debugowania ReVanced do schowka</string>
             <string name="revanced_debug_logs_disabled">Rejestrowanie debugowania jest wyłączone</string>
             <string name="revanced_debug_logs_none_found">Nie znaleziono dzienników</string>
             <string name="revanced_debug_logs_copied_to_clipboard">Dzienniki skopiowane</string>
             <string name="revanced_debug_logs_failed_to_export">Nie udało się wyeksportować logów: %s</string>
-            <string name="revanced_debug_logs_clear_buffer_title">Wyczyść dzienniki debugowania</string>
-            <string name="revanced_debug_logs_clear_buffer_summary">Czyści wszystkie zapisane dzienniki debugowania ReVanced</string>
             <string name="revanced_debug_logs_clear_toast">Dzienniki wyczyszczone</string>
             <string name="revanced_debug_feature_flags_manager_title">Manager flag funkcji</string>
             <string name="revanced_debug_feature_flags_manager_summary">Zarządzaj flagami funkcji typu boolean</string>

@@ -167,14 +167,12 @@ Second \"item\" text"</string>
             <string name="revanced_debug_toast_on_error_user_dialog_message">"Искључивање искачућих обавештења о грешкама сакрива сва обавештења о грешкама у ReVanced-у.
 
 Нећете бити обавештени ни о каквим неочекиваним догађајима."</string>
-            <string name="revanced_debug_export_logs_to_clipboard_title">Извези евиденције отклањања грешака</string>
-            <string name="revanced_debug_export_logs_to_clipboard_summary">Копира евиденције отклањања грешака ReVanced-а у привремену меморију</string>
+            <string name="revanced_debug_export_logs_title">Извези евиденције отклањања грешака</string>
+            <string name="revanced_debug_export_logs_summary">Копира евиденције отклањања грешака ReVanced-а у привремену меморију</string>
             <string name="revanced_debug_logs_disabled">Евидентирање отклањања грешака је онемогућено</string>
             <string name="revanced_debug_logs_none_found">Нема пронађених евиденција</string>
             <string name="revanced_debug_logs_copied_to_clipboard">Евиденције су копиране</string>
             <string name="revanced_debug_logs_failed_to_export">Неуспешан извоз евиденција: %s</string>
-            <string name="revanced_debug_logs_clear_buffer_title">Избриши евиденције отклањања грешака</string>
-            <string name="revanced_debug_logs_clear_buffer_summary">Брише све сачуване евиденције отклањања грешака ReVanced-а</string>
             <string name="revanced_debug_logs_clear_toast">Евиденције су избрисане</string>
             <string name="revanced_debug_feature_flags_manager_title">Менаџер експерименталних ознака</string>
             <string name="revanced_debug_feature_flags_manager_summary">Управљајте експерименталним буловим ознакама</string>

@@ -163,14 +163,12 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
             <string name="revanced_debug_toast_on_error_user_dialog_message">"ত্রুটি \"toast\" বন্ধ করে ReVanced ত্রুটি বিজ্ঞপ্তিগুলি লুকানো হয়।
 
 আপনি কোনও অপ্রত্যাশিত ঘটনার বিষয়ে অবহিত হবেন না।"</string>
-            <string name="revanced_debug_export_logs_to_clipboard_title">ডিবাগ লগগুলি রফতানি করুন</string>
-            <string name="revanced_debug_export_logs_to_clipboard_summary">ক্লিপবোর্ডে ReVanced ডিবাগ লগগুলি অনুলিপি করে</string>
+            <string name="revanced_debug_export_logs_title">ডিবাগ লগগুলি রফতানি করুন</string>
+            <string name="revanced_debug_export_logs_summary">ক্লিপবোর্ডে ReVanced ডিবাগ লগগুলি অনুলিপি করে</string>
             <string name="revanced_debug_logs_disabled">ডিবাগ লগিং নিষ্ক্রিয় করা হয়েছে</string>
             <string name="revanced_debug_logs_none_found">কোনো লগ পাওয়া যায়নি</string>
             <string name="revanced_debug_logs_copied_to_clipboard">লগ অনুলিপি করা হয়েছে</string>
             <string name="revanced_debug_logs_failed_to_export">লগ এক্সপোর্ট করা যায়নি: %s</string>
-            <string name="revanced_debug_logs_clear_buffer_title">ডিবাগ লগগুলি সাফ করুন</string>
-            <string name="revanced_debug_logs_clear_buffer_summary">সমস্ত সঞ্চিত ReVanced ডিবাগ লগ সাফ করে</string>
             <string name="revanced_debug_logs_clear_toast">লগ সাফ করা হয়েছে</string>
             <string name="revanced_debug_feature_flags_manager_title">ফিচার ফ্ল্যাগ Manager</string>
             <string name="revanced_debug_feature_flags_manager_summary">বুলিয়ান ফিচার ফ্ল্যাগ পরিচালনা করুন</string>

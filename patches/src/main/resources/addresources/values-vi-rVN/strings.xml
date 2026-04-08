@@ -167,14 +167,12 @@ Có thể gặp lỗi khi phát."</string>
             <string name="revanced_debug_toast_on_error_user_dialog_message">"Tắt thông báo lỗi sẽ ẩn mọi thông báo lỗi từ ReVanced.
 
 Bạn sẽ không được thông báo khi xẩy ra lỗi bất ngờ."</string>
-            <string name="revanced_debug_export_logs_to_clipboard_title">Xuất nhật ký gỡ lỗi</string>
-            <string name="revanced_debug_export_logs_to_clipboard_summary">Sao chép nhật ký gỡ lỗi ReVanced vào bảng nhớ tạm</string>
+            <string name="revanced_debug_export_logs_title">Xuất nhật ký gỡ lỗi</string>
+            <string name="revanced_debug_export_logs_summary">Sao chép nhật ký gỡ lỗi ReVanced vào bảng nhớ tạm</string>
             <string name="revanced_debug_logs_disabled">Tính năng ghi nhật ký gỡ lỗi đã tắt</string>
             <string name="revanced_debug_logs_none_found">Không tìm thấy nhật ký</string>
             <string name="revanced_debug_logs_copied_to_clipboard">Đã sao chép nhật ký</string>
             <string name="revanced_debug_logs_failed_to_export">Xuất nhật ký thất bại: %s</string>
-            <string name="revanced_debug_logs_clear_buffer_title">Xóa nhật ký gỡ lỗi</string>
-            <string name="revanced_debug_logs_clear_buffer_summary">Xóa tất cả nhật ký gỡ lỗi ReVanced đã lưu trữ</string>
             <string name="revanced_debug_logs_clear_toast">Đã xóa nhật ký</string>
             <string name="revanced_debug_feature_flags_manager_title">Trình quản lý cờ tính năng</string>
             <string name="revanced_debug_feature_flags_manager_summary">Quản lý các cờ tính năng boolean</string>

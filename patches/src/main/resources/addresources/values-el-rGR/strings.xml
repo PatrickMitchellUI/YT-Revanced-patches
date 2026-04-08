@@ -167,14 +167,12 @@ Second \"item\" text"</string>
             <string name="revanced_debug_toast_on_error_user_dialog_message">"Η απενεργοποίηση των μηνυμάτων σφαλμάτων κρύβει όλες τις ειδοποιήσεις σφαλμάτων που αφορούν το ReVanced.
 
 Δεν θα ειδοποιηθείτε για τυχόν απρόβλεπτα γεγονότα."</string>
-            <string name="revanced_debug_export_logs_to_clipboard_title">Εξαγωγή αρχείων καταγραφής εντοπισμού σφαλμάτων</string>
-            <string name="revanced_debug_export_logs_to_clipboard_summary">Αντιγραφή των αρχείων καταγραφής εντοπισμού σφαλμάτων ReVanced στο πρόχειρο</string>
+            <string name="revanced_debug_export_logs_title">Εξαγωγή αρχείων καταγραφής εντοπισμού σφαλμάτων</string>
+            <string name="revanced_debug_export_logs_summary">Αντιγραφή των αρχείων καταγραφής εντοπισμού σφαλμάτων ReVanced στο πρόχειρο</string>
             <string name="revanced_debug_logs_disabled">Η καταγραφή εντοπισμού σφαλμάτων είναι απενεργοποιημένη</string>
             <string name="revanced_debug_logs_none_found">Δεν βρέθηκαν αρχεία καταγραφής</string>
             <string name="revanced_debug_logs_copied_to_clipboard">Τα αρχεία καταγραφής αντιγράφηκαν</string>
             <string name="revanced_debug_logs_failed_to_export">Αποτυχία εξαγωγής αρχείων καταγραφής: %s</string>
-            <string name="revanced_debug_logs_clear_buffer_title">Εκκαθάριση αρχείων καταγραφής εντοπισμού σφαλμάτων</string>
-            <string name="revanced_debug_logs_clear_buffer_summary">Εκκαθάριση όλων των αποθηκευμένων αρχειών καταγραφής εντοπισμού σφαλμάτων ReVanced</string>
             <string name="revanced_debug_logs_clear_toast">Τα αρχεία καταγραφής εκκαθαρίστηκαν</string>
             <string name="revanced_debug_feature_flags_manager_title">Διαχειριστής σημαιών λειτουργιών</string>
             <string name="revanced_debug_feature_flags_manager_summary">Διαχείριση των boolean σημαιών λειτουργιών</string>

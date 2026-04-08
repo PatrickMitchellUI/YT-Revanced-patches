@@ -163,14 +163,12 @@ Second \"item\" text"</string>
             <string name="revanced_debug_toast_on_error_user_dialog_message">"Изключването на изскачащи съобщения за грешки крие всички известия за грешки на ReVanced.
 
 Няма да бъдете уведомени за неочаквани събития."</string>
-            <string name="revanced_debug_export_logs_to_clipboard_title">Експортиране на логове за отстраняване на грешки</string>
-            <string name="revanced_debug_export_logs_to_clipboard_summary">Копира логовете за отстраняване на грешки на ReVanced в клипборда</string>
+            <string name="revanced_debug_export_logs_title">Експортиране на логове за отстраняване на грешки</string>
+            <string name="revanced_debug_export_logs_summary">Копира логовете за отстраняване на грешки на ReVanced в клипборда</string>
             <string name="revanced_debug_logs_disabled">Отстраняването на грешки е деактивирано</string>
             <string name="revanced_debug_logs_none_found">Не са намерени логове</string>
             <string name="revanced_debug_logs_copied_to_clipboard">Логовете са копирани</string>
             <string name="revanced_debug_logs_failed_to_export">Неуспешно експортиране на логове: %s</string>
-            <string name="revanced_debug_logs_clear_buffer_title">Изчистване на логовете за отстраняване на грешки</string>
-            <string name="revanced_debug_logs_clear_buffer_summary">Изчиства всички съхранени логове за отстраняване на грешки на ReVanced</string>
             <string name="revanced_debug_logs_clear_toast">Логовете са изчистени</string>
             <string name="revanced_debug_feature_flags_manager_title">Мениджър на флагове за функции</string>
             <string name="revanced_debug_feature_flags_manager_summary">Управление на булеви флагове за функции</string>

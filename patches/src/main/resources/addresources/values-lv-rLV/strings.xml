@@ -164,14 +164,12 @@ Atskaņošana var nedarboties"</string>
             <string name="revanced_debug_toast_on_error_user_dialog_message">"Kļūdu paziņojumu izslēgšana paslēpj visus ReVanced kļūdu paziņojumus.
 
 Jūs netiksit informēts par neparedzētiem notikumiem."</string>
-            <string name="revanced_debug_export_logs_to_clipboard_title">Eksportēt atkļūdošanas žurnālus</string>
-            <string name="revanced_debug_export_logs_to_clipboard_summary">Kopē ReVanced atkļūdošanas žurnālus starpliktuvē</string>
+            <string name="revanced_debug_export_logs_title">Eksportēt atkļūdošanas žurnālus</string>
+            <string name="revanced_debug_export_logs_summary">Kopē ReVanced atkļūdošanas žurnālus starpliktuvē</string>
             <string name="revanced_debug_logs_disabled">Atkļūdošanas žurnālu reģistrēšana ir atspējota</string>
             <string name="revanced_debug_logs_none_found">Žurnāli nav atrasti</string>
             <string name="revanced_debug_logs_copied_to_clipboard">Žurnāli ir kopēti</string>
             <string name="revanced_debug_logs_failed_to_export">Neizdevās eksportēt žurnālus: %s</string>
-            <string name="revanced_debug_logs_clear_buffer_title">Notīrīt atkļūdošanas žurnālus</string>
-            <string name="revanced_debug_logs_clear_buffer_summary">Notīra visus saglabātos ReVanced atkļūdošanas žurnālus</string>
             <string name="revanced_debug_logs_clear_toast">Žurnāli ir notīrīti</string>
             <string name="revanced_debug_feature_flags_manager_title">Funkciju karodziņu Manager</string>
             <string name="revanced_debug_feature_flags_manager_summary">Pārvaldīt Būla funkciju karodziņus</string>

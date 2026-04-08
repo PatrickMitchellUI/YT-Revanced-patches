@@ -165,14 +165,12 @@ MicroG-ի համար մարտկոցի օպտիմալացումը անջատել�
             <string name="revanced_debug_toast_on_error_user_dialog_message">"Սխալների տոաստի անջատումը թաքցնում է ReVanced-ի բոլոր սխալների ծանուցումները։
 
 Դուք չեք ստանա ան予期した出来事ի մասին ծանուցում։"</string>
-            <string name="revanced_debug_export_logs_to_clipboard_title">Արտահանել վրեժխնդրության կարգաբերման մատյանները</string>
-            <string name="revanced_debug_export_logs_to_clipboard_summary">Պատճենում է ReVanced-ի կարգաբերման մատյանները սեղմատախտակին</string>
+            <string name="revanced_debug_export_logs_title">Արտահանել վրեժխնդրության կարգաբերման մատյանները</string>
+            <string name="revanced_debug_export_logs_summary">Պատճենում է ReVanced-ի կարգաբերման մատյանները սեղմատախտակին</string>
             <string name="revanced_debug_logs_disabled">Վրեժխնդրության մատյանների գրանցումն անջատված է</string>
             <string name="revanced_debug_logs_none_found">Մատյաններ չեն գտնվել</string>
             <string name="revanced_debug_logs_copied_to_clipboard">Մատյանները պատճենված են</string>
             <string name="revanced_debug_logs_failed_to_export">Չհաջողվեց արտահանել տեղեկամատյանները՝ %s</string>
-            <string name="revanced_debug_logs_clear_buffer_title">Մաքրել վրեժխնդրության մատյանները</string>
-            <string name="revanced_debug_logs_clear_buffer_summary">Մաքրում է բոլոր պահված ReVanced կարգաբերման մատյանները</string>
             <string name="revanced_debug_logs_clear_toast">Մատյանները մաքրվել են</string>
             <string name="revanced_debug_feature_flags_manager_title">Գործառույթի դրոշակների Manager</string>
             <string name="revanced_debug_feature_flags_manager_summary">Կառավարել բուլյան գործառույթի դրոշակները</string>

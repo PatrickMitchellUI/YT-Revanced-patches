@@ -165,14 +165,12 @@ Second \"item\" text"</string>
             <string name="revanced_debug_toast_on_error_user_dialog_message">"การปิดการแจ้งเตือนข้อผิดพลาดจะซ่อนการแจ้งเตือนข้อผิดพลาดของ ReVanced ทั้งหมด
 
 คุณจะไม่ได้รับแจ้งเกี่ยวกับเหตุการณ์ที่ไม่คาดคิดใดๆ"</string>
-            <string name="revanced_debug_export_logs_to_clipboard_title">ส่งออกบันทึกการแก้ไขข้อบกพร่อง</string>
-            <string name="revanced_debug_export_logs_to_clipboard_summary">คัดลอกบันทึกการแก้ไขข้อบกพร่องของ ReVanced ไปยังคลิปบอร์ด</string>
+            <string name="revanced_debug_export_logs_title">ส่งออกบันทึกการแก้ไขข้อบกพร่อง</string>
+            <string name="revanced_debug_export_logs_summary">คัดลอกบันทึกการแก้ไขข้อบกพร่องของ ReVanced ไปยังคลิปบอร์ด</string>
             <string name="revanced_debug_logs_disabled">ปิดใช้งานการบันทึกการแก้ไขข้อบกพร่อง</string>
             <string name="revanced_debug_logs_none_found">ไม่พบบันทึก</string>
             <string name="revanced_debug_logs_copied_to_clipboard">คัดลอกบันทึกแล้ว</string>
             <string name="revanced_debug_logs_failed_to_export">ส่งออกบันทึกไม่สำเร็จ: %s</string>
-            <string name="revanced_debug_logs_clear_buffer_title">ล้างบันทึกการแก้ไขข้อบกพร่อง</string>
-            <string name="revanced_debug_logs_clear_buffer_summary">ล้างบันทึกการแก้ไขข้อบกพร่องของ ReVanced ที่จัดเก็บไว้ทั้งหมด</string>
             <string name="revanced_debug_logs_clear_toast">ล้างบันทึกแล้ว</string>
             <string name="revanced_debug_feature_flags_manager_title">แฟล็กคุณสมบัติ Manager</string>
             <string name="revanced_debug_feature_flags_manager_summary">จัดการแฟล็กคุณสมบัติบูลีน</string>

@@ -167,14 +167,12 @@ Taasesitus ei pruugi töötada"</string>
             <string name="revanced_debug_toast_on_error_user_dialog_message">"Vea teadete väljalülitamine peidab kõik ReVanced i veateadete märguanded.
 
 Teid ei teavitata ühestki ootamatust sündmusest."</string>
-            <string name="revanced_debug_export_logs_to_clipboard_title">Ekspordi silumislogid</string>
-            <string name="revanced_debug_export_logs_to_clipboard_summary">Kopeerib ReVanced silumislogid lõikelauale</string>
+            <string name="revanced_debug_export_logs_title">Ekspordi silumislogid</string>
+            <string name="revanced_debug_export_logs_summary">Kopeerib ReVanced silumislogid lõikelauale</string>
             <string name="revanced_debug_logs_disabled">Silumislogimine on keelatud</string>
             <string name="revanced_debug_logs_none_found">Logisid ei leitud</string>
             <string name="revanced_debug_logs_copied_to_clipboard">Logid kopeeritud</string>
             <string name="revanced_debug_logs_failed_to_export">Logide eksportimine ebaõnnestus: %s</string>
-            <string name="revanced_debug_logs_clear_buffer_title">Puhasta silumislogid</string>
-            <string name="revanced_debug_logs_clear_buffer_summary">Puhastab kõik salvestatud ReVanced silumislogid</string>
             <string name="revanced_debug_logs_clear_toast">Logid puhastatud</string>
             <string name="revanced_debug_feature_flags_manager_title">Funktsioonilipikute Manager</string>
             <string name="revanced_debug_feature_flags_manager_summary">Halda booleani funktsioonilipikuid</string>

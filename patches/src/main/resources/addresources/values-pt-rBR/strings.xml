@@ -163,14 +163,12 @@ A reprodução pode não funcionar"</string>
             <string name="revanced_debug_toast_on_error_user_dialog_message">"Desligar as notificações de erro oculta todas as notificações de erro do ReVanced. 
 
 Você não será notificado sobre nenhum evento inesperado."</string>
-            <string name="revanced_debug_export_logs_to_clipboard_title">Exportar registros de depuração</string>
-            <string name="revanced_debug_export_logs_to_clipboard_summary">Copia os registros de depuração do ReVanced para a área de transferência</string>
+            <string name="revanced_debug_export_logs_title">Exportar registros de depuração</string>
+            <string name="revanced_debug_export_logs_summary">Copia os registros de depuração do ReVanced para a área de transferência</string>
             <string name="revanced_debug_logs_disabled">O registro de depuração está desativado</string>
             <string name="revanced_debug_logs_none_found">Nenhum registro encontrado</string>
             <string name="revanced_debug_logs_copied_to_clipboard">Registros copiados</string>
             <string name="revanced_debug_logs_failed_to_export">Falha ao exportar registros: %s</string>
-            <string name="revanced_debug_logs_clear_buffer_title">Limpar registros de depuração</string>
-            <string name="revanced_debug_logs_clear_buffer_summary">Limpa todos os registros de depuração do ReVanced armazenados</string>
             <string name="revanced_debug_logs_clear_toast">Registros limpos</string>
             <string name="revanced_debug_feature_flags_manager_title">Gerenciador de sinalizadores de recursos</string>
             <string name="revanced_debug_feature_flags_manager_summary">Gerenciar sinalizadores de recursos booleanos</string>

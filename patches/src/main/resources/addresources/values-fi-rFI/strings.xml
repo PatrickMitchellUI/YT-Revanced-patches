@@ -167,14 +167,12 @@ Toisto ei välttämättä toimi"</string>
             <string name="revanced_debug_toast_on_error_user_dialog_message">"Virheilmoitusten poistaminen käytöstä piilottaa kaikki ReVancedin virheilmoitukset.
 
 Et saa ilmoituksia odottamattomista tapahtumista."</string>
-            <string name="revanced_debug_export_logs_to_clipboard_title">Vie virheenkorjauslokit</string>
-            <string name="revanced_debug_export_logs_to_clipboard_summary">Kopioi ReVancedin virheenkorjauslokit leikepöydälle</string>
+            <string name="revanced_debug_export_logs_title">Vie virheenkorjauslokit</string>
+            <string name="revanced_debug_export_logs_summary">Kopioi ReVancedin virheenkorjauslokit leikepöydälle</string>
             <string name="revanced_debug_logs_disabled">Virheenkorjausloki ei ole käytössä</string>
             <string name="revanced_debug_logs_none_found">Lokeja ei löytynyt</string>
             <string name="revanced_debug_logs_copied_to_clipboard">Lokit kopioitu</string>
             <string name="revanced_debug_logs_failed_to_export">Lokien vienti epäonnistui: %s</string>
-            <string name="revanced_debug_logs_clear_buffer_title">Tyhjennä virheenkorjauslokit</string>
-            <string name="revanced_debug_logs_clear_buffer_summary">Tyhjentää kaikki tallennetut ReVanced-virheenkorjauslokit</string>
             <string name="revanced_debug_logs_clear_toast">Lokit tyhjennetty</string>
             <string name="revanced_debug_feature_flags_manager_title">Ominaisuuslippujen hallinta</string>
             <string name="revanced_debug_feature_flags_manager_summary">Hallitse totuusarvo-ominaisuuslippuja</string>

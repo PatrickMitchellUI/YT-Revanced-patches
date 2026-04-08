@@ -163,14 +163,12 @@ Reprodukcija možda neće raditi"</string>
             <string name="revanced_debug_toast_on_error_user_dialog_message">"Isključivanje iskačućih obaveštenja o greškama sakriva sve obaveštenja o greškama u ReVancedu.
 
 Nećete biti obavešteni ni o kakvim neočekivanim događajima."</string>
-            <string name="revanced_debug_export_logs_to_clipboard_title">Izvezi evidencije otklanjanja grešaka</string>
-            <string name="revanced_debug_export_logs_to_clipboard_summary">Kopira evidencije otklanjanja grešaka ReVanceda u privremenu memoriju</string>
+            <string name="revanced_debug_export_logs_title">Izvezi evidencije otklanjanja grešaka</string>
+            <string name="revanced_debug_export_logs_summary">Kopira evidencije otklanjanja grešaka ReVanceda u privremenu memoriju</string>
             <string name="revanced_debug_logs_disabled">Evidentiranje otklanjanja grešaka je onemogućeno</string>
             <string name="revanced_debug_logs_none_found">Nema pronađenih evidencija</string>
             <string name="revanced_debug_logs_copied_to_clipboard">Evidencije su kopirane</string>
             <string name="revanced_debug_logs_failed_to_export">Neuspešan izvoz evidencija: %s</string>
-            <string name="revanced_debug_logs_clear_buffer_title">Izbriši evidencije otklanjanja grešaka</string>
-            <string name="revanced_debug_logs_clear_buffer_summary">Briše sve sačuvane evidencije otklanjanja grešaka ReVanceda</string>
             <string name="revanced_debug_logs_clear_toast">Evidencije su izbrisane</string>
             <string name="revanced_debug_feature_flags_manager_title">Menadžer eksperimentalnih oznaka</string>
             <string name="revanced_debug_feature_flags_manager_summary">Upravljajte eksperimentalnim bulovim oznakama</string>

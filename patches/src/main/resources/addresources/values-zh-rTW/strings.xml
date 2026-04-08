@@ -167,14 +167,12 @@ Second \"item\" text"</string>
             <string name="revanced_debug_toast_on_error_user_dialog_message">"關閉錯誤提示訊息會隱藏所有 ReVanced 的錯誤通知。
 
 你將不會收到任何非預期的事件通知。"</string>
-            <string name="revanced_debug_export_logs_to_clipboard_title">匯出偵錯記錄</string>
-            <string name="revanced_debug_export_logs_to_clipboard_summary">將 ReVanced 偵錯記錄複製到剪貼簿</string>
+            <string name="revanced_debug_export_logs_title">匯出偵錯記錄</string>
+            <string name="revanced_debug_export_logs_summary">將 ReVanced 偵錯記錄複製到剪貼簿</string>
             <string name="revanced_debug_logs_disabled">偵錯記錄已停用</string>
             <string name="revanced_debug_logs_none_found">找不到記錄</string>
             <string name="revanced_debug_logs_copied_to_clipboard">記錄已複製</string>
             <string name="revanced_debug_logs_failed_to_export">匯出記錄失敗：%s</string>
-            <string name="revanced_debug_logs_clear_buffer_title">清除偵錯記錄</string>
-            <string name="revanced_debug_logs_clear_buffer_summary">清除所有儲存的 ReVanced 偵錯記錄</string>
             <string name="revanced_debug_logs_clear_toast">記錄已清除</string>
             <string name="revanced_debug_feature_flags_manager_title">功能旗標 Manager</string>
             <string name="revanced_debug_feature_flags_manager_summary">管理布林功能旗標</string>
