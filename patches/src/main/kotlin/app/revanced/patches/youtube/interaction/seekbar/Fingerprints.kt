@@ -3,7 +3,9 @@ package app.revanced.patches.youtube.interaction.seekbar
 import app.revanced.patcher.*
 import app.revanced.patcher.extensions.instructions
 import app.revanced.patcher.patch.BytecodePatchContext
+import app.revanced.util.getting
 import app.revanced.util.literal
+import app.revanced.util.using
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.ClassDef
@@ -115,4 +117,23 @@ internal val BytecodePatchContext.fullscreenLargeSeekbarFeatureFlagMethodMatch b
     returnType("Z")
     parameterTypes()
     instructions(45691569L())
+}
+
+internal val BytecodePatchContext.videoStreamingDataAllowSeekingMethod by getting {
+    firstMethodDeclaratively {
+        returnType("Z")
+        parameterTypes()
+        instructions(
+            8L(),
+            after(Opcode.IF_EQ()),
+            after(1L()) // Another method in the same class almost matches this but uses 0 here.
+        )
+    }
+} using {
+    firstImmutableMethodDeclaratively {
+        accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+        returnType("Ljava/lang/String;")
+        name("toString")
+        instructions("VideoStreamingData(itags="())
+    }
 }
