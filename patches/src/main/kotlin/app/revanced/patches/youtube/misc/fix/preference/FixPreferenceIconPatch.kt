@@ -3,6 +3,7 @@ package app.revanced.patches.youtube.misc.fix.preference
 import app.revanced.com.android.tools.smali.dexlib2.mutable.MutableMethod
 import app.revanced.com.android.tools.smali.dexlib2.mutable.MutableMethod.Companion.toMutable
 import app.revanced.patcher.extensions.addInstructionsWithLabels
+import app.revanced.patcher.extensions.fieldReference
 import app.revanced.patcher.extensions.getInstruction
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
@@ -14,7 +15,6 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
@@ -34,7 +34,7 @@ internal val fixPreferenceIconPatch = bytecodePatch{
         val helperMethod: MutableMethod
 
         findPreferenceByIndexMethodMatch.let {
-            val getAllPreferenceField = it.method.getInstruction<FieldReference>(it[-1])
+            val getAllPreferenceField = it.method.getInstruction<ReferenceInstruction>(it[-1]).fieldReference!!
 
             it.classDef.apply {
                 helperMethod = ImmutableMethod(
