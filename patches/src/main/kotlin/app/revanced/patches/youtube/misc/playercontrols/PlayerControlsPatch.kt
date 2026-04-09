@@ -60,9 +60,11 @@ internal val playerControlsResourcePatch = resourcePatch {
 
         bottomTargetDocument = document("res/layout/$targetResourceName")
 
-        val bottomTargetElement: Node = bottomTargetDocument.getElementsByTagName(
-            "android.support.constraint.ConstraintLayout",
-        ).item(0)
+        val bottomTargetElement: Node = (
+            bottomTargetDocument.getElementsByTagName("android.support.constraint.ConstraintLayout")
+                .takeIf { it.length > 0 }
+                ?: bottomTargetDocument.getElementsByTagName("androidx.constraintlayout.widget.ConstraintLayout")
+            ).item(0)
 
         val bottomTargetDocumentChildNodes = bottomTargetDocument.childNodes
         var bottomInsertBeforeNode: Node =
