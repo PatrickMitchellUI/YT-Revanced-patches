@@ -25,8 +25,8 @@ import app.revanced.patches.shared.misc.settings.preference.TextPreference
 import app.revanced.patches.youtube.layout.hide.shelves.hideHorizontalShelvesPatch
 import app.revanced.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.revanced.patches.youtube.misc.litho.filter.lithoFilterPatch
-import app.revanced.patches.youtube.misc.litho.lazily.hookLazilyConvertedElementPatch
-import app.revanced.patches.youtube.misc.litho.lazily.hookTreeNodeResult
+import app.revanced.patches.youtube.misc.litho.node.hookTreeNodeElementPatch
+import app.revanced.patches.youtube.misc.litho.node.hookTreeNodeResult
 import app.revanced.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.revanced.patches.youtube.misc.playservice.is_20_21_or_greater
 import app.revanced.patches.youtube.misc.playservice.is_21_11_or_greater
@@ -73,7 +73,7 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
         resourceMappingPatch,
         hideHorizontalShelvesPatch,
         hookProtobufElementParserPatch,
-        hookLazilyConvertedElementPatch
+        hookTreeNodeElementPatch
     ),
     filterClasses = setOf(
         LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR,

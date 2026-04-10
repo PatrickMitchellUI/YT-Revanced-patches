@@ -1,4 +1,4 @@
-package app.revanced.patches.youtube.misc.litho.lazily
+package app.revanced.patches.youtube.misc.litho.node
 
 import app.revanced.patcher.accessFlags
 import app.revanced.patcher.allOf
@@ -33,6 +33,12 @@ internal val BytecodePatchContext.treeNodeResultListMethod by getting {
             "Cannot read theme key from model."()
         )
     }
+}
+
+internal val BytecodePatchContext.componentPatchMethod by gettingFirstMethodDeclaratively {
+    name("onComponentLoaded")
+    definingClass(EXTENSION_CLASS_DESCRIPTOR)
+    accessFlags(AccessFlags.PRIVATE, AccessFlags.STATIC)
 }
 
 internal val BytecodePatchContext.lazilyConvertedElementPatchMethod by gettingFirstMethodDeclaratively {
