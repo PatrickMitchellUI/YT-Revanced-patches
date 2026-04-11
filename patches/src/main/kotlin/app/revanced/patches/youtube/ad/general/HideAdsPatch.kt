@@ -25,6 +25,8 @@ import app.revanced.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.revanced.patches.youtube.misc.fix.backtoexitgesture.fixBackToExitGesturePatch
 import app.revanced.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
+import app.revanced.patches.youtube.misc.protobuf.hookElement
+import app.revanced.patches.youtube.misc.protobuf.hookProtobufElementParserPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
 import app.revanced.util.addInstructionsAtControlFlowLabel
@@ -85,6 +87,7 @@ val hideAdsPatch = bytecodePatch(
         hideAdsResourcePatch,
         verticalScrollPatch,
         fixBackToExitGesturePatch,
+        hookProtobufElementParserPatch,
         versionCheckPatch
     )
 
@@ -101,6 +104,10 @@ val hideAdsPatch = bytecodePatch(
     )
 
     apply {
+        // Hide YouTube Premium promotions and YouTube Doodles.
+
+        hookElement("$EXTENSION_CLASS_DESCRIPTOR->hideStatementBanner([B)[B")
+
         // Hide fullscreen ad
 
         lithoDialogBuilderMethodMatch.let {
