@@ -92,7 +92,8 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
             "20.31.42",
             "20.37.48",
             "20.40.45",
-            "20.45.36"
+            "20.45.36",
+            "20.47.62"
         ),
     ),
 ) {
