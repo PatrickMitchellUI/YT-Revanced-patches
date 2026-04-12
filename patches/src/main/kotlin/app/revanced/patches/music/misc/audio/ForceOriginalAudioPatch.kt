@@ -24,6 +24,7 @@ val forceOriginalAudioPatch = forceOriginalAudioPatch(
                 "8.37.56",
                 "8.40.54",
                 "8.44.54",
+                "8.47.56",
                 "9.13.50"
             )
         )
