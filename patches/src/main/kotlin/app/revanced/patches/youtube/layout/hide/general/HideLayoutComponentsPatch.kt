@@ -16,6 +16,7 @@ import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.shared.layout.hide.general.hideLayoutComponentsPatch
 import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
 import app.revanced.patches.shared.misc.settings.preference.InputType
+import app.revanced.patches.shared.misc.settings.preference.ListPreference
 import app.revanced.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.revanced.patches.shared.misc.settings.preference.PreferenceCategory
 import app.revanced.patches.shared.misc.settings.preference.PreferenceScreenPreference
@@ -29,6 +30,7 @@ import app.revanced.patches.youtube.misc.litho.node.hookTreeNodeElementPatch
 import app.revanced.patches.youtube.misc.litho.node.hookTreeNodeResult
 import app.revanced.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.revanced.patches.youtube.misc.playservice.is_20_21_or_greater
+import app.revanced.patches.youtube.misc.playservice.is_20_26_or_greater
 import app.revanced.patches.youtube.misc.playservice.is_21_11_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.patches.youtube.misc.protobuf.hookElement
@@ -222,16 +224,24 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
                 SwitchPreference("revanced_hide_join_button"),
                 SwitchPreference("revanced_hide_links_preview"),
                 SwitchPreference("revanced_hide_members_shelf"),
+                SwitchPreference("revanced_hide_posts_shelf"),
                 SwitchPreference("revanced_hide_store_button"),
                 SwitchPreference("revanced_hide_subscribe_button_in_channel_page"),
             ),
         ),
         SwitchPreference("revanced_hide_album_cards"),
         SwitchPreference("revanced_hide_artist_cards"),
-        SwitchPreference("revanced_hide_chips_shelf"),
         SwitchPreference("revanced_hide_community_posts"),
         SwitchPreference("revanced_hide_compact_banner"),
-        SwitchPreference("revanced_hide_expandable_card"),
+        if (is_20_26_or_greater) {
+            ListPreference("revanced_hide_expandable_card")
+        } else {
+            ListPreference(
+                key = "revanced_hide_expandable_card",
+                entriesKey = "revanced_hide_expandable_card_legacy_entries",
+                entryValuesKey = "revanced_hide_expandable_card_legacy_entry_values"
+            )
+        },
         PreferenceCategory(
             titleKey = null,
             sorting = Sorting.UNSORTED,
@@ -250,7 +260,6 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
             tag = "app.revanced.extension.shared.settings.preference.BulletPointSwitchPreference",
         ),
         SwitchPreference("revanced_hide_image_shelf"),
-        SwitchPreference("revanced_hide_latest_posts"),
         SwitchPreference("revanced_hide_latest_videos_button"),
         SwitchPreference("revanced_hide_mix_playlists"),
         SwitchPreference("revanced_hide_movies_section"),
