@@ -8,6 +8,7 @@ import app.revanced.extension.shared.patches.litho.FilterGroupList.ByteArrayFilt
 import app.revanced.extension.shared.settings.BaseSettings;
 import app.revanced.extension.shared.settings.Setting;
 import app.revanced.extension.shared.spoof.SpoofVideoStreamsPatch;
+import app.revanced.extension.youtube.patches.VersionCheckPatch;
 import app.revanced.extension.youtube.settings.Settings;
 import app.revanced.extension.youtube.shared.ShortsPlayerState;
 
@@ -160,7 +161,9 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
         }
 
         // 21.x+ fix.
-        if (path.contains("bottom_sheet_list_option.e")) return false;
+        if (VersionCheckPatch.IS_20_31_OR_GREATER && path.contains("bottom_sheet_list_option.e")) {
+            return false;
+        }
 
         return flyoutFilterGroupList.check(buffer).isFiltered();
     }
