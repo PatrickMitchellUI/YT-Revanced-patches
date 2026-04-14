@@ -20,6 +20,7 @@ import android.preference.PreferenceGroup;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
+import android.preference.TwoStatePreference;
 import android.text.InputType;
 import android.util.Pair;
 import android.view.LayoutInflater;
@@ -72,6 +73,12 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
         @Override
         public boolean performItemClick(View view, int position, long id) {
+            Object item = getAdapter().getItem(position);
+
+            if (item instanceof TwoStatePreference) {
+                return super.performItemClick(view, position, id);
+            }
+
             if (Utils.isFastClick()) {
                 return true; // Ignore fast double click.
             }
@@ -84,6 +91,13 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Object item = parent.getAdapter().getItem(position);
+
+            if (item instanceof TwoStatePreference) {
+                originalListener.onItemClick(parent, view, position, id);
+                return;
+            }
+
             if (Utils.isFastClick()) {
                 return; // Ignore fast double click.
             }
