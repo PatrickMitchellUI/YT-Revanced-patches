@@ -30,6 +30,7 @@ import app.revanced.patches.shared.misc.settings.settingsPatch
 import app.revanced.patches.youtube.misc.check.checkEnvironmentPatch
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
 import app.revanced.patches.youtube.misc.fix.contentprovider.fixContentProviderPatch
+import app.revanced.patches.youtube.misc.fix.pipchatbar.fixPipChatBarPatch
 import app.revanced.patches.youtube.misc.fix.playbackspeed.fixPlaybackSpeedWhilePlayingPatch
 import app.revanced.patches.youtube.misc.fix.preference.fixPreferenceIconPatch
 import app.revanced.patches.youtube.misc.playservice.is_20_31_or_greater
@@ -192,6 +193,7 @@ val settingsPatch = bytecodePatch(
         fixPreferenceIconPatch,
         fixPlaybackSpeedWhilePlayingPatch,
         fixContentProviderPatch,
+        fixPipChatBarPatch,
         // Currently there is no easy way to make a mandatory patch,
         // so for now this is a dependent of this patch.
         checkEnvironmentPatch,
