@@ -42,6 +42,14 @@ internal const val MINIPLAYER_ANIMATED_EXPAND_FEATURE_KEY = 45644360L
 // In later targets this feature flag does nothing and is dead code.
 internal const val MINIPLAYER_MODERN_FEATURE_LEGACY_KEY = 45630429L
 
+// 2026.16+ matches to a feature flag method.
+// Earlier targets match to the miniplayer constructor.
+internal val BytecodePatchContext.miniplayerModernFeatureMethod by gettingFirstMethodDeclaratively {
+    instructions(
+        MINIPLAYER_MODERN_FEATURE_KEY(),
+    )
+}
+
 internal val BytecodePatchContext.miniplayerModernConstructorMethod by gettingFirstMethodDeclaratively {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
     instructions(
