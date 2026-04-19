@@ -151,16 +151,21 @@ public class GmsCoreSupport {
                 // Verify the user has not included GmsCore for a root installation.
                 // GmsCore Support changes the package name, but with a mounted installation
                 // all manifest changes are ignored and the original package name is used.
-                if (isPackageNameOriginal()) {
+                // Must check both original package name and if resources load correctly
+                // to allow changing to original package name with YT Music.
+                if (isPackageNameOriginal() && Utils.getResourceIdentifier(
+                        ResourceType.STRING, "revanced_gms_core_dialog_title") == 0) {
                     Logger.printInfo(() -> "App is mounted with root, but GmsCore patch was included");
                     // Cannot use localize text here, since the app will load resources
                     // from the unpatched app and all patch strings are missing.
-                    Utils.showToastLong("The 'GmsCore support' patch breaks mount installations");
+                    Utils.showToastLong("Do not include 'GmsCore support' patch with root install");
 
                     // Do not exit. If the app exits before launch completes (and without
                     // opening another activity), then on some devices such as Pixel phone Android 10
                     // no toast will be shown and the app will continually relaunch
                     // with the appearance of a hung app.
+                    open("https://revanced.app");
+                    return;
                 }
 
                 // Verify GmsCore is installed.

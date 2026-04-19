@@ -1213,6 +1213,20 @@ public class Utils {
     }
 
     /**
+     * Parse a color resource or hex code to an int representation of the color,
+     * or returns the default color if the resource cannot be found.
+     */
+    @ColorInt
+    public static int getColorFromString(String colorString, @ColorInt int defaultColor) {
+        try {
+            return getColorFromString(colorString);
+        } catch (Exception ex) {
+            Logger.printException(() -> "Could not find color: " + colorString);
+            return defaultColor;
+        }
+    }
+
+    /**
      * Uses {@link #adjustColorBrightness(int, float)} depending on if light or dark mode is active.
      */
     @ColorInt
