@@ -10,6 +10,7 @@ import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
 import app.revanced.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.util.addInstructionsAtControlFlowLabel
+import app.revanced.util.cloneMutableAndPreserveParameters
 import app.revanced.util.findFreeRegister
 import app.revanced.util.indexOfFirstInstructionReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
@@ -39,7 +40,7 @@ internal fun hideFullscreenAdsPatch(
         )
 
         lithoDialogBuilderMethodMatch.let {
-            it.method.apply {
+            it.method.cloneMutableAndPreserveParameters().apply {
                 // Find the class name of the custom dialog
                 val dialogClass = getInstruction(it[0]).methodReference!!.definingClass
 
