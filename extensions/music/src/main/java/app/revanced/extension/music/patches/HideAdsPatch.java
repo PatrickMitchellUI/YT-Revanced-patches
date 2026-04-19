@@ -3,7 +3,7 @@ package app.revanced.extension.music.patches;
 import app.revanced.extension.music.settings.Settings;
 
 @SuppressWarnings("unused")
-public class HideGetPremiumPatch {
+public class HideAdsPatch {
 
     /**
      * Injection point

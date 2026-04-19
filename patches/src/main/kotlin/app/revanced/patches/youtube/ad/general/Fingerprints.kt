@@ -48,17 +48,6 @@ internal val BytecodePatchContext.getPremiumViewMethodMatch by composingFirstMet
     )
 }
 
-internal val BytecodePatchContext.lithoDialogBuilderMethodMatch by composingFirstMethod {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returnType("V")
-    parameterTypes("[B", "L")
-    instructions(
-        allOf(Opcode.INVOKE_VIRTUAL(), method("show")),
-        ResourceType.STYLE("SlidingDialogAnimation")
-    )
-}
-
-
 internal val BytecodePatchContext.playerOverlayTimelyShelfMethod by gettingFirstMethodDeclaratively {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returnType("V")

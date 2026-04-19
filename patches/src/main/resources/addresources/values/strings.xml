@@ -19,6 +19,11 @@ Second \"item\" text"</string>
 -->
 <resources>
     <app id="shared">
+        <patch id="ad.hideFullscreenAdsPatch">
+            <string name="revanced_hide_fullscreen_ads_title">Hide fullscreen ads</string>
+            <string name="revanced_hide_fullscreen_ads_summary_on">Fullscreen ads are hidden</string>
+            <string name="revanced_hide_fullscreen_ads_summary_off">Fullscreen ads are shown</string>
+        </patch>
         <patch id="layout.branding.baseCustomBrandingPatch">
             <string name="revanced_custom_branding_name_title">App name</string>
             <!-- Translations of this should be identical to revanced_custom_branding_icon_entry_5 -->
@@ -618,9 +623,6 @@ Limitations:
             <string name="revanced_hide_end_screen_store_banner_title">Hide end screen store banner</string>
             <string name="revanced_hide_end_screen_store_banner_summary_on">End screen store banner is hidden</string>
             <string name="revanced_hide_end_screen_store_banner_summary_off">End screen store banner is shown</string>
-            <string name="revanced_hide_fullscreen_ads_title">Hide fullscreen ads</string>
-            <string name="revanced_hide_fullscreen_ads_summary_on">Fullscreen ads are hidden</string>
-            <string name="revanced_hide_fullscreen_ads_summary_off">Fullscreen ads are shown</string>
             <string name="revanced_hide_general_ads_title">Hide general ads</string>
             <string name="revanced_hide_general_ads_summary_on">General ads are hidden</string>
             <string name="revanced_hide_general_ads_summary_off">General ads are shown</string>
@@ -1991,10 +1993,10 @@ Video playback with AV1 may stutter or drop frames."</string>
             <string name="revanced_music_hide_navigation_bar_labels_summary_on">Labels are hidden</string>
             <string name="revanced_music_hide_navigation_bar_labels_summary_off">Labels are shown</string>
         </patch>
-        <patch id="layout.premium.hideGetPremiumPatch">
+        <patch id="ad.general.hideAdsPatch">
             <string name="revanced_music_hide_get_premium_label_title">Hide \'Get Music Premium\' label</string>
-            <string name="revanced_music_hide_get_premium_label_summary_on">Label is hidden</string>
-            <string name="revanced_music_hide_get_premium_label_summary_off">Label is shown</string>
+            <string name="revanced_music_hide_get_premium_label_summary_on">Get Music Premium label is hidden</string>
+            <string name="revanced_music_hide_get_premium_label_summary_off">Get Music Premium label is shown</string>
         </patch>
         <patch id="layout.upgradebutton.hideUpgradeButtonPatch">
             <string name="revanced_music_hide_upgrade_button_title">Hide upgrade button</string>

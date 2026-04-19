@@ -1,4 +1,4 @@
-package app.revanced.patches.music.layout.premium
+package app.revanced.patches.music.ad.general
 
 import app.revanced.patcher.extensions.addInstruction
 import app.revanced.patcher.extensions.addInstructionsWithLabels
@@ -10,19 +10,21 @@ import app.revanced.patches.all.misc.resources.addResourcesPatch
 import app.revanced.patches.music.misc.extension.sharedExtensionPatch
 import app.revanced.patches.music.misc.settings.PreferenceScreen
 import app.revanced.patches.music.misc.settings.settingsPatch
+import app.revanced.patches.shared.ad.hideFullscreenAdsPatch
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
-    "Lapp/revanced/extension/music/patches/HideGetPremiumPatch;"
+    "Lapp/revanced/extension/music/patches/HideAdsPatch;"
 
 @Suppress("unused")
-val hideGetMusicPremiumPatch = bytecodePatch(
-    name = "Hide 'Get Music Premium'",
-    description = "Adds an option to hide the \"Get Music Premium\" label in the settings and account menu.",
+val hideMusicAdsPatch = bytecodePatch(
+    name = "Hide ads",
+    description = "Adds options to hide ads such as the fullscreen Premium popup and \"Get Music Premium\" label.",
 ) {
     dependsOn(
         sharedExtensionPatch,
+        hideFullscreenAdsPatch(PreferenceScreen.ADS),
         settingsPatch,
         addResourcesPatch,
     )
@@ -40,12 +42,13 @@ val hideGetMusicPremiumPatch = bytecodePatch(
     )
 
     apply {
-        addResources("music", "layout.premium.hideGetPremiumPatch")
+        addResources("music", "ad.general.hideAdsPatch")
 
         PreferenceScreen.ADS.addPreferences(
             SwitchPreference("revanced_music_hide_get_premium_label"),
         )
 
+        // Hide 'Get Music Premium' label
         hideGetPremiumMethodMatch.let {
             val insertIndex = it[-1]
 

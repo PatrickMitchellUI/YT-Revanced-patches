@@ -1,4 +1,4 @@
-package app.revanced.patches.music.layout.premium
+package app.revanced.patches.music.ad.general
 
 import app.revanced.patcher.*
 import app.revanced.patcher.patch.BytecodePatchContext

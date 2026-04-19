@@ -1,16 +1,15 @@
 package app.revanced.patches.youtube.ad.general
 
 import app.revanced.patcher.extensions.addInstructionsWithLabels
-import app.revanced.patcher.extensions.fieldReference
 import app.revanced.patcher.extensions.getInstruction
 import app.revanced.patcher.extensions.instructions
-import app.revanced.patcher.extensions.methodReference
 import app.revanced.patcher.extensions.replaceInstruction
 import app.revanced.patcher.extensions.wideLiteral
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patcher.patch.resourcePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
+import app.revanced.patches.shared.ad.hideFullscreenAdsPatch
 import app.revanced.patches.shared.misc.fix.verticalscroll.verticalScrollPatch
 import app.revanced.patches.shared.misc.litho.filter.addLithoFilter
 import app.revanced.patches.shared.misc.mapping.ResourceType
@@ -29,10 +28,7 @@ import app.revanced.patches.youtube.misc.protobuf.hookElement
 import app.revanced.patches.youtube.misc.protobuf.hookProtobufElementParserPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
-import app.revanced.util.addInstructionsAtControlFlowLabel
-import app.revanced.util.findFreeRegister
 import app.revanced.util.forEachInstructionAsSequence
-import app.revanced.util.indexOfFirstInstructionReversedOrThrow
 import app.revanced.util.injectHideViewCall
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
@@ -60,7 +56,6 @@ private val hideAdsResourcePatch = resourcePatch {
 
         PreferenceScreen.ADS.addPreferences(
             SwitchPreference("revanced_hide_end_screen_store_banner"),
-            SwitchPreference("revanced_hide_fullscreen_ads"),
             SwitchPreference("revanced_hide_general_ads"),
             SwitchPreference("revanced_hide_merchandise_banners"),
             SwitchPreference("revanced_hide_paid_promotion_label"),
@@ -85,6 +80,7 @@ val hideAdsPatch = bytecodePatch(
 ) {
     dependsOn(
         hideAdsResourcePatch,
+        hideFullscreenAdsPatch(PreferenceScreen.ADS),
         verticalScrollPatch,
         fixBackToExitGesturePatch,
         hookProtobufElementParserPatch,
@@ -108,32 +104,6 @@ val hideAdsPatch = bytecodePatch(
         // Hide YouTube Premium promotions and YouTube Doodles.
 
         hookElement("$EXTENSION_CLASS_DESCRIPTOR->hideStatementBanner([B)[B")
-
-        // Hide fullscreen ad
-
-        lithoDialogBuilderMethodMatch.let {
-            it.method.apply {
-                // Find the class name of the custom dialog
-                val dialogClass = getInstruction(it[0]).methodReference!!.definingClass
-
-                // The dialog can be closed after dialog.show(),
-                // and it is better to close the dialog after the layout of the dialog has changed
-                val insertIndex = indexOfFirstInstructionReversedOrThrow {
-                    opcode == Opcode.IPUT_OBJECT && fieldReference?.type == dialogClass
-                }
-                val insertRegister =
-                    getInstruction<TwoRegisterInstruction>(insertIndex).registerA
-                val freeRegister = findFreeRegister(insertIndex, insertRegister)
-
-                addInstructionsAtControlFlowLabel(
-                    insertIndex,
-                    """
-                        move-object/from16 v$freeRegister, p1
-                        invoke-static { v$insertRegister, v$freeRegister }, ${EXTENSION_CLASS_DESCRIPTOR}->closeFullscreenAd(Ljava/lang/Object;[B)V
-                    """
-                )
-            }
-        }
 
         // Hide get premium
 
