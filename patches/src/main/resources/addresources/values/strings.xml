@@ -1017,6 +1017,9 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android >Reel\
             <string name="revanced_hide_player_previous_next_buttons_title">Hide Previous &amp; Next buttons</string>
             <string name="revanced_hide_player_previous_next_buttons_summary_on">Previous &amp; Next buttons are hidden</string>
             <string name="revanced_hide_player_previous_next_buttons_summary_off">Previous &amp; Next buttons are shown</string>
+            <string name="revanced_hide_settings_button_title">Hide Settings button</string>
+            <string name="revanced_hide_settings_button_summary_on">Settings button is hidden</string>
+            <string name="revanced_hide_settings_button_summary_off">Settings button is shown</string>
         </patch>
         <patch id="layout.hide.endscreencards.hideEndScreenCardsResourcePatch">
             <string name="revanced_hide_end_screen_cards_title">Hide end screen cards</string>

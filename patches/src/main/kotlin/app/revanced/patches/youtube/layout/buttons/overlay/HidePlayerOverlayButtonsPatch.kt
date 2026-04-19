@@ -68,9 +68,10 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
             SwitchPreference("revanced_hide_fullscreen_button"),
             SwitchPreference("revanced_hide_player_control_buttons_background"),
             SwitchPreference("revanced_hide_player_previous_next_buttons"),
+            SwitchPreference("revanced_hide_settings_button"),
         )
 
-        // region Hide player next/previous button.
+        // region Hide player previous/next & settings button.
 
         getLayoutConstructorMethodMatch().let {
             val insertIndex = it[-1]
@@ -81,6 +82,12 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
                 insertIndex,
                 "invoke-static { v$viewRegister }, $EXTENSION_CLASS_DESCRIPTOR" +
                         "->hidePreviousNextButtons(Landroid/view/View;)V",
+            )
+
+            it.method.addInstruction(
+                insertIndex,
+                "invoke-static { v$viewRegister }, $EXTENSION_CLASS_DESCRIPTOR" +
+                        "->hideSettingsButton(Landroid/view/View;)V",
             )
         }
 
