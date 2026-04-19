@@ -9,6 +9,7 @@ import app.revanced.patcher.extensions.methodReference
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
+import app.revanced.patches.shared.misc.mapping.ResourceType
 import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
@@ -69,6 +70,11 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
             SwitchPreference("revanced_hide_player_previous_next_buttons"),
             SwitchPreference("revanced_hide_settings_button"),
         )
+
+        // Verify resources exist.
+        ResourceType.ID["player_control_next_button_touch_area"]
+        ResourceType.ID["player_control_previous_button_touch_area"]
+        ResourceType.ID["player_overflow_button"]
 
         // region Hide player previous/next & settings button.
 
