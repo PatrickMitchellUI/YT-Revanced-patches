@@ -106,9 +106,6 @@ public final class HidePlayerOverlayButtonsPatch {
         });
     }
 
-    private static final int PLAYER_OVERFLOW_BUTTON_CONTAINER_ID = getResourceIdentifierOrThrow(
-            ResourceType.ID, "player_overflow_button_container");
-
     private static final int PLAYER_OVERFLOW_BUTTON_ID = getResourceIdentifierOrThrow(
             ResourceType.ID, "player_overflow_button");
 
@@ -121,7 +118,6 @@ public final class HidePlayerOverlayButtonsPatch {
         }
 
         Utils.runOnMainThread(() -> {
-            hideView(parentView, PLAYER_OVERFLOW_BUTTON_CONTAINER_ID);
             hideView(parentView, PLAYER_OVERFLOW_BUTTON_ID);
         });
     }
