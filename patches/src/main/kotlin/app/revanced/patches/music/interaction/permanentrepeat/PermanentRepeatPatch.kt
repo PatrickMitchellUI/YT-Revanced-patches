@@ -9,7 +9,6 @@ import app.revanced.patches.music.misc.extension.sharedExtensionPatch
 import app.revanced.patches.music.misc.settings.PreferenceScreen
 import app.revanced.patches.music.misc.settings.settingsPatch
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
-import app.revanced.util.findFreeRegister
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
@@ -49,16 +48,14 @@ val permanentRepeatPatch = bytecodePatch(
 
             // Start index is at a branch, but the same
             // register is clobbered in both branch paths.
-            val freeRegister = findFreeRegister(startIndex)
             val targetRegister = getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
 
             addInstructionsWithLabels(
                 startIndex,
                 """
+                    if-nez v$targetRegister, :skip_override
                     invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->permanentRepeat()Z
-                    move-result v$freeRegister
-                    if-eqz v$freeRegister, :skip_override
-                    const/16 v$targetRegister, 0x1
+                    move-result v$targetRegister
                     :skip_override
                     nop
                 """
