@@ -198,6 +198,18 @@ internal val BytecodePatchContext.crowdfundingBoxMethodMatch by composingFirstMe
         after(Opcode.MOVE_RESULT_OBJECT()),
     )
 }
+
+internal val BytecodePatchContext.liveChatDonatorsBarMethodMatch by composingFirstMethod {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
+    instructions(
+        ResourceType.LAYOUT("live_chat_ticker_item"),
+        allOf(
+            Opcode.INVOKE_VIRTUAL(),
+            method { name == "inflate" && returnType == "Landroid/view/View;" }
+        ),
+        after(Opcode.MOVE_RESULT_OBJECT()),
+    )
+}
 internal val BytecodePatchContext.filterBarHeightMethodMatch by composingFirstMethod {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
     instructions(

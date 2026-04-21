@@ -165,6 +165,7 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
         SwitchPreference("revanced_hide_emergency_box"),
         SwitchPreference("revanced_hide_info_panels"),
         SwitchPreference("revanced_hide_join_membership_button"),
+        SwitchPreference("revanced_hide_live_chat_donators_bar"),
         SwitchPreference("revanced_hide_live_chat_replay_button"),
         SwitchPreference("revanced_hide_medical_panels"),
         SwitchPreference("revanced_hide_quick_actions"),
@@ -452,6 +453,16 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
         crowdfundingBoxMethodMatch[-1],
         LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR,
         "hideCrowdfundingBox"
+    )
+
+    // endregion
+
+    // region Hide live chat donators bar
+
+    liveChatDonatorsBarMethodMatch.method.injectHideViewCall(
+        liveChatDonatorsBarMethodMatch[-1],
+        LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR,
+        "hideLiveChatDonatorsBar"
     )
 
     // endregion
