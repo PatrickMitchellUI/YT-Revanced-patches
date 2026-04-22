@@ -23,6 +23,7 @@ public final class DescriptionComponentsFilter extends Filter {
     private final StringFilterGroup featuredLinksSection;
     private final StringFilterGroup featuredVideosSection;
     private final StringFilterGroup subscribeButton;
+    private final StringFilterGroup shortsHowThisWasMadeSection;
 
     public DescriptionComponentsFilter() {
         final StringFilterGroup aiGeneratedVideoSummarySection = new StringFilterGroup(
@@ -75,6 +76,12 @@ public final class DescriptionComponentsFilter extends Filter {
                 "how_this_was_made_section"
         );
 
+        shortsHowThisWasMadeSection = new StringFilterGroup(
+                Settings.HIDE_HOW_THIS_WAS_MADE_SECTION,
+                "shelf_header.e",
+                "cell_video_attribute.e"
+        );
+
         final StringFilterGroup courseProgressSection = new StringFilterGroup(
                 Settings.HIDE_COURSE_PROGRESS_SECTION,
                 "course_progress"
@@ -125,6 +132,7 @@ public final class DescriptionComponentsFilter extends Filter {
                 infoCardsSection,
                 macroMarkersCarousel,
                 playlistSection,
+                shortsHowThisWasMadeSection,
                 subscribeButton,
                 transcriptSection
         );
@@ -156,6 +164,10 @@ public final class DescriptionComponentsFilter extends Filter {
 
         if (matchedGroup == macroMarkersCarousel) {
             return contentIndex == 0 && macroMarkersCarouselGroupList.check(buffer).isFiltered();
+        }
+
+        if (matchedGroup == shortsHowThisWasMadeSection) {
+            return ShortsPlayerState.isOpen() && EngagementPanel.isDescription();
         }
 
         return true;
