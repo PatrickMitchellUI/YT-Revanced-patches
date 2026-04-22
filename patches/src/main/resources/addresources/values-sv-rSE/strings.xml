@@ -597,14 +597,14 @@ Begränsningar:
             <string name="revanced_hide_video_ads_summary_off">Videoannonser visas</string>
         </patch>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_success">URL kopierad till urklipp</string>
-            <string name="revanced_share_copy_url_timestamp_success">URL med tidsstämpel kopierad</string>
-            <string name="revanced_copy_video_url_title">Visa knapp för att kopiera video-URL</string>
-            <string name="revanced_copy_video_url_summary_on">Knappen för att kopiera video-URL visas. Tryck för att kopiera video-URL:en. Tryck och håll ned för att kopiera med tidsstämpel</string>
-            <string name="revanced_copy_video_url_summary_off">Knappen för att kopiera video-URL visas inte</string>
-            <string name="revanced_copy_video_url_timestamp_title">Visa knapp för att kopiera URL med tidsstämpel</string>
-            <string name="revanced_copy_video_url_timestamp_summary_on">Knappen för att kopiera URL med tidsstämpel visas. Tryck för att kopiera video-URL med tidsstämpel. Tryck och håll ned för att kopiera utan tidsstämpel</string>
-            <string name="revanced_copy_video_url_timestamp_summary_off">Knappen för att kopiera URL med tidsstämpel visas inte</string>
+            <string name="revanced_share_copy_url_button_success">URL kopierad till urklipp</string>
+            <string name="revanced_share_copy_url_button_timestamp_success">URL med tidsstämpel kopierad</string>
+            <string name="revanced_copy_video_url_button_title">Visa knapp för att kopiera video-URL</string>
+            <string name="revanced_copy_video_url_button_summary_on">Knappen för att kopiera video-URL visas. Tryck för att kopiera video-URL:en. Tryck och håll ned för att kopiera med tidsstämpel</string>
+            <string name="revanced_copy_video_url_button_summary_off">Knappen för att kopiera video-URL visas inte</string>
+            <string name="revanced_copy_video_url_button_timestamp_title">Visa knapp för att kopiera URL med tidsstämpel</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_on">Knappen för att kopiera URL med tidsstämpel visas. Tryck för att kopiera video-URL med tidsstämpel. Tryck och håll ned för att kopiera utan tidsstämpel</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_off">Knappen för att kopiera URL med tidsstämpel visas inte</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
             <string name="revanced_remove_viewer_discretion_dialog_title">Ta bort dialogrutan Känsliga tittare varnas</string>

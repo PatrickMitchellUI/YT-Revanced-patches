@@ -189,14 +189,14 @@ MicroG үчүн батареяны оптималдаштырууну өчүрү
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_success">URL алмашуу буферине көчүрүлдү</string>
-            <string name="revanced_share_copy_url_timestamp_success">Убакыт белгиси менен URL көчүрүлдү</string>
-            <string name="revanced_copy_video_url_title">Видеонун URL дарегин көчүрүү баскычын көрсөтүү</string>
-            <string name="revanced_copy_video_url_summary_on">Видеонун URL дарегин көчүрүү баскычы көрсөтүлгөн. Видеонун URL дарегин көчүрүү үчүн басыңыз. Убакыт белгиси менен көчүрүү үчүн басып туруңуз</string>
-            <string name="revanced_copy_video_url_summary_off">Видеонун URL дарегин көчүрүү баскычы көрсөтүлгөн эмес</string>
-            <string name="revanced_copy_video_url_timestamp_title">Убакыт белгиси менен URL көчүрүү баскычын көрсөтүү</string>
-            <string name="revanced_copy_video_url_timestamp_summary_on">Убакыт белгиси менен URL көчүрүү баскычы көрсөтүлгөн. Видеонун URL дарегин убакыт белгиси менен көчүрүү үчүн басыңыз. Убакыт белгиси жок көчүрүү үчүн басып туруңуз</string>
-            <string name="revanced_copy_video_url_timestamp_summary_off">Убакыт белгиси менен URL көчүрүү баскычы көрсөтүлгөн эмес</string>
+            <string name="revanced_share_copy_url_button_success">URL алмашуу буферине көчүрүлдү</string>
+            <string name="revanced_share_copy_url_button_timestamp_success">Убакыт белгиси менен URL көчүрүлдү</string>
+            <string name="revanced_copy_video_url_button_title">Видеонун URL дарегин көчүрүү баскычын көрсөтүү</string>
+            <string name="revanced_copy_video_url_button_summary_on">Видеонун URL дарегин көчүрүү баскычы көрсөтүлгөн. Видеонун URL дарегин көчүрүү үчүн басыңыз. Убакыт белгиси менен көчүрүү үчүн басып туруңуз</string>
+            <string name="revanced_copy_video_url_button_summary_off">Видеонун URL дарегин көчүрүү баскычы көрсөтүлгөн эмес</string>
+            <string name="revanced_copy_video_url_button_timestamp_title">Убакыт белгиси менен URL көчүрүү баскычын көрсөтүү</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_on">Убакыт белгиси менен URL көчүрүү баскычы көрсөтүлгөн. Видеонун URL дарегин убакыт белгиси менен көчүрүү үчүн басыңыз. Убакыт белгиси жок көчүрүү үчүн басып туруңуз</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_off">Убакыт белгиси менен URL көчүрүү баскычы көрсөтүлгөн эмес</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch"/>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">

@@ -189,14 +189,14 @@ MicroG ਲਈ ਬੈਟਰੀ ਔਪਟੀਮਾਈਜ਼ੇਸ਼ਨ ਨੂੰ 
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_success">URL ਕਲਿੱਪਬੋਰਡ \'ਤੇ ਕਾਪੀ ਕੀਤਾ ਗਿਆ</string>
-            <string name="revanced_share_copy_url_timestamp_success">ਟਾਈਮਸਟੈਂਪ ਵਾਲਾ URL ਕਾਪੀ ਕੀਤਾ ਗਿਆ</string>
-            <string name="revanced_copy_video_url_title">ਵੀਡੀਓ URL ਕਾਪੀ ਬਟਨ ਦਿਖਾਓ</string>
-            <string name="revanced_copy_video_url_summary_on">ਵੀਡੀਓ URL ਕਾਪੀ ਬਟਨ ਦਿਖਾਇਆ ਗਿਆ ਹੈ। ਵੀਡੀਓ URL ਕਾਪੀ ਕਰਨ ਲਈ ਟੈਪ ਕਰੋ। ਟਾਈਮਸਟੈਂਪ ਨਾਲ ਕਾਪੀ ਕਰਨ ਲਈ ਟੈਪ ਕਰਕੇ ਹੋਲਡ ਕਰੋ</string>
-            <string name="revanced_copy_video_url_summary_off">ਵੀਡੀਓ URL ਕਾਪੀ ਬਟਨ ਨਹੀਂ ਦਿਖਾਇਆ ਗਿਆ</string>
-            <string name="revanced_copy_video_url_timestamp_title">ਟਾਈਮਸਟੈਂਪ URL ਕਾਪੀ ਬਟਨ ਦਿਖਾਓ</string>
-            <string name="revanced_copy_video_url_timestamp_summary_on">ਟਾਈਮਸਟੈਂਪ URL ਕਾਪੀ ਬਟਨ ਦਿਖਾਇਆ ਗਿਆ ਹੈ। ਟਾਈਮਸਟੈਂਪ ਨਾਲ ਵੀਡੀਓ URL ਕਾਪੀ ਕਰਨ ਲਈ ਟੈਪ ਕਰੋ। ਟਾਈਮਸਟੈਂਪ ਤੋਂ ਬਿਨਾਂ ਕਾਪੀ ਕਰਨ ਲਈ ਟੈਪ ਕਰਕੇ ਹੋਲਡ ਕਰੋ</string>
-            <string name="revanced_copy_video_url_timestamp_summary_off">ਟਾਈਮਸਟੈਂਪ URL ਕਾਪੀ ਬਟਨ ਨਹੀਂ ਦਿਖਾਇਆ ਗਿਆ</string>
+            <string name="revanced_share_copy_url_button_success">URL ਕਲਿੱਪਬੋਰਡ \'ਤੇ ਕਾਪੀ ਕੀਤਾ ਗਿਆ</string>
+            <string name="revanced_share_copy_url_button_timestamp_success">ਟਾਈਮਸਟੈਂਪ ਵਾਲਾ URL ਕਾਪੀ ਕੀਤਾ ਗਿਆ</string>
+            <string name="revanced_copy_video_url_button_title">ਵੀਡੀਓ URL ਕਾਪੀ ਬਟਨ ਦਿਖਾਓ</string>
+            <string name="revanced_copy_video_url_button_summary_on">ਵੀਡੀਓ URL ਕਾਪੀ ਬਟਨ ਦਿਖਾਇਆ ਗਿਆ ਹੈ। ਵੀਡੀਓ URL ਕਾਪੀ ਕਰਨ ਲਈ ਟੈਪ ਕਰੋ। ਟਾਈਮਸਟੈਂਪ ਨਾਲ ਕਾਪੀ ਕਰਨ ਲਈ ਟੈਪ ਕਰਕੇ ਹੋਲਡ ਕਰੋ</string>
+            <string name="revanced_copy_video_url_button_summary_off">ਵੀਡੀਓ URL ਕਾਪੀ ਬਟਨ ਨਹੀਂ ਦਿਖਾਇਆ ਗਿਆ</string>
+            <string name="revanced_copy_video_url_button_timestamp_title">ਟਾਈਮਸਟੈਂਪ URL ਕਾਪੀ ਬਟਨ ਦਿਖਾਓ</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_on">ਟਾਈਮਸਟੈਂਪ URL ਕਾਪੀ ਬਟਨ ਦਿਖਾਇਆ ਗਿਆ ਹੈ। ਟਾਈਮਸਟੈਂਪ ਨਾਲ ਵੀਡੀਓ URL ਕਾਪੀ ਕਰਨ ਲਈ ਟੈਪ ਕਰੋ। ਟਾਈਮਸਟੈਂਪ ਤੋਂ ਬਿਨਾਂ ਕਾਪੀ ਕਰਨ ਲਈ ਟੈਪ ਕਰਕੇ ਹੋਲਡ ਕਰੋ</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_off">ਟਾਈਮਸਟੈਂਪ URL ਕਾਪੀ ਬਟਨ ਨਹੀਂ ਦਿਖਾਇਆ ਗਿਆ</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch"/>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">

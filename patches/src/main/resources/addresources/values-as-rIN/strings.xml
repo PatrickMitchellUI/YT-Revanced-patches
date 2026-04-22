@@ -189,14 +189,14 @@ Continue বুটামত টেপ কৰক আৰু অপ্টিমা�
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_success">URL ক্লিপব\'ৰ্ডলৈ কপি কৰা হৈছে</string>
-            <string name="revanced_share_copy_url_timestamp_success">টাইমষ্টাম্পৰ সৈতে URL কপি কৰা হৈছে</string>
-            <string name="revanced_copy_video_url_title">ভিডিঅ\' URL কপি বুটাম দেখুৱাওক</string>
-            <string name="revanced_copy_video_url_summary_on">ভিডিঅ\' URL কপি বুটাম দেখুওৱা হৈছে। ভিডিঅ\' URL কপি কৰিবলৈ টেপ কৰক। টাইমষ্টাম্পৰ সৈতে কপি কৰিবলৈ টেপ কৰি ধৰি ৰাখক</string>
-            <string name="revanced_copy_video_url_summary_off">ভিডিঅ\' URL কপি বুটাম দেখুওৱা হোৱা নাই</string>
-            <string name="revanced_copy_video_url_timestamp_title">টাইমষ্টাম্প URL কপি বুটাম দেখুৱাওক</string>
-            <string name="revanced_copy_video_url_timestamp_summary_on">টাইমষ্টাম্প URL কপি বুটাম দেখুওৱা হৈছে। টাইমষ্টাম্পৰ সৈতে ভিডিঅ\' URL কপি কৰিবলৈ টেপ কৰক। টাইমষ্টাম্প অবিহনে কপি কৰিবলৈ টেপ কৰি ধৰি ৰাখক</string>
-            <string name="revanced_copy_video_url_timestamp_summary_off">টাইমষ্টাম্প URL কপি বুটাম দেখুওৱা হোৱা নাই</string>
+            <string name="revanced_share_copy_url_button_success">URL ক্লিপব\'ৰ্ডলৈ কপি কৰা হৈছে</string>
+            <string name="revanced_share_copy_url_button_timestamp_success">টাইমষ্টাম্পৰ সৈতে URL কপি কৰা হৈছে</string>
+            <string name="revanced_copy_video_url_button_title">ভিডিঅ\' URL কপি বুটাম দেখুৱাওক</string>
+            <string name="revanced_copy_video_url_button_summary_on">ভিডিঅ\' URL কপি বুটাম দেখুওৱা হৈছে। ভিডিঅ\' URL কপি কৰিবলৈ টেপ কৰক। টাইমষ্টাম্পৰ সৈতে কপি কৰিবলৈ টেপ কৰি ধৰি ৰাখক</string>
+            <string name="revanced_copy_video_url_button_summary_off">ভিডিঅ\' URL কপি বুটাম দেখুওৱা হোৱা নাই</string>
+            <string name="revanced_copy_video_url_button_timestamp_title">টাইমষ্টাম্প URL কপি বুটাম দেখুৱাওক</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_on">টাইমষ্টাম্প URL কপি বুটাম দেখুওৱা হৈছে। টাইমষ্টাম্পৰ সৈতে ভিডিঅ\' URL কপি কৰিবলৈ টেপ কৰক। টাইমষ্টাম্প অবিহনে কপি কৰিবলৈ টেপ কৰি ধৰি ৰাখক</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_off">টাইমষ্টাম্প URL কপি বুটাম দেখুওৱা হোৱা নাই</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch"/>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">

@@ -181,14 +181,14 @@ Second \"item\" text"</string>
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_success">URL хуулбарлагдан санах ойд хадгалагдлаа</string>
-            <string name="revanced_share_copy_url_timestamp_success">Цагийн тэмдэглэгээтэй URL хуулбарлагдан санах ойд хадгалагдлаа</string>
-            <string name="revanced_copy_video_url_title">Видео URL хуулах товчийг харуулах</string>
-            <string name="revanced_copy_video_url_summary_on">Видео URL хуулах товч харагдаж байна. Видео URL-ийг хуулахын тулд дарна уу. Цагийн тэмдэглэгээтэй хуулахын тулд дарж барина уу</string>
-            <string name="revanced_copy_video_url_summary_off">Видео URL хуулах товч харагдахгүй байна</string>
-            <string name="revanced_copy_video_url_timestamp_title">Цагийн тэмдэглэгээтэй URL хуулах товчийг харуулах</string>
-            <string name="revanced_copy_video_url_timestamp_summary_on">Цагийн тэмдэглэгээтэй URL хуулах товч харагдаж байна. Цагийн тэмдэглэгээтэй видео URL-ийг хуулахын тулд дарна уу. Цагийн тэмдэглэгээгүй хуулахын тулд дарж барина уу</string>
-            <string name="revanced_copy_video_url_timestamp_summary_off">Цагийн тэмдэглэгээтэй URL хуулах товч харагдахгүй байна</string>
+            <string name="revanced_share_copy_url_button_success">URL хуулбарлагдан санах ойд хадгалагдлаа</string>
+            <string name="revanced_share_copy_url_button_timestamp_success">Цагийн тэмдэглэгээтэй URL хуулбарлагдан санах ойд хадгалагдлаа</string>
+            <string name="revanced_copy_video_url_button_title">Видео URL хуулах товчийг харуулах</string>
+            <string name="revanced_copy_video_url_button_summary_on">Видео URL хуулах товч харагдаж байна. Видео URL-ийг хуулахын тулд дарна уу. Цагийн тэмдэглэгээтэй хуулахын тулд дарж барина уу</string>
+            <string name="revanced_copy_video_url_button_summary_off">Видео URL хуулах товч харагдахгүй байна</string>
+            <string name="revanced_copy_video_url_button_timestamp_title">Цагийн тэмдэглэгээтэй URL хуулах товчийг харуулах</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_on">Цагийн тэмдэглэгээтэй URL хуулах товч харагдаж байна. Цагийн тэмдэглэгээтэй видео URL-ийг хуулахын тулд дарна уу. Цагийн тэмдэглэгээгүй хуулахын тулд дарж барина уу</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_off">Цагийн тэмдэглэгээтэй URL хуулах товч харагдахгүй байна</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch"/>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">

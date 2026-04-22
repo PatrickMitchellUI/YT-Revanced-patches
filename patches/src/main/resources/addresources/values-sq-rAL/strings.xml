@@ -591,14 +591,14 @@ Kufizime:
             <string name="revanced_hide_video_ads_summary_off">Reklamimet e videos janë të dukshme</string>
         </patch>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_success">URL u kopjua në shkëmbim</string>
-            <string name="revanced_share_copy_url_timestamp_success">URL me kohëzgjatje u kopjua</string>
-            <string name="revanced_copy_video_url_title">Shfaq butonin e kopjimit të URL-së së videos</string>
-            <string name="revanced_copy_video_url_summary_on">Butoni \"Kopjo URL-në e videos\" shfaqet. Prekni për të kopjuar URL-në e videos. Prekni dhe mbani shtypur për të kopjuar me vulë kohore</string>
-            <string name="revanced_copy_video_url_summary_off">Butoni \"Kopjo URL-në e videos\" nuk shfaqet</string>
-            <string name="revanced_copy_video_url_timestamp_title">Shfaq butonin \"Kopjo URL-në me vulë kohe\"</string>
-            <string name="revanced_copy_video_url_timestamp_summary_on">Butoni \"Kopjo URL-në me vulë kohore\" shfaqet. Prekni për të kopjuar URL-në e videos me vulë kohore. Prekni dhe mbani shtypur për të kopjuar pa vulë kohore</string>
-            <string name="revanced_copy_video_url_timestamp_summary_off">Butoni \"Kopjo URL-në me vulë kohore\" nuk shfaqet</string>
+            <string name="revanced_share_copy_url_button_success">URL u kopjua në shkëmbim</string>
+            <string name="revanced_share_copy_url_button_timestamp_success">URL me kohëzgjatje u kopjua</string>
+            <string name="revanced_copy_video_url_button_title">Shfaq butonin e kopjimit të URL-së së videos</string>
+            <string name="revanced_copy_video_url_button_summary_on">Butoni \"Kopjo URL-në e videos\" shfaqet. Prekni për të kopjuar URL-në e videos. Prekni dhe mbani shtypur për të kopjuar me vulë kohore</string>
+            <string name="revanced_copy_video_url_button_summary_off">Butoni \"Kopjo URL-në e videos\" nuk shfaqet</string>
+            <string name="revanced_copy_video_url_button_timestamp_title">Shfaq butonin \"Kopjo URL-në me vulë kohe\"</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_on">Butoni \"Kopjo URL-në me vulë kohore\" shfaqet. Prekni për të kopjuar URL-në e videos me vulë kohore. Prekni dhe mbani shtypur për të kopjuar pa vulë kohore</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_off">Butoni \"Kopjo URL-në me vulë kohore\" nuk shfaqet</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
             <string name="revanced_remove_viewer_discretion_dialog_title">Hiq kutinë e dialogut \"Diskrecioni i shikuesit\"</string>

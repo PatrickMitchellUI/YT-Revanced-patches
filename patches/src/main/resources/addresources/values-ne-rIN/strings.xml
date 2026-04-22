@@ -192,14 +192,14 @@ MicroG को लागि ब्याट्री अप्टिमाइज�
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_success">URL क्लिपबोर्डमा प्रतिलिपि गरियो</string>
-            <string name="revanced_share_copy_url_timestamp_success">टाइमस्ट्याम्पसहितको URL प्रतिलिपि गरियो</string>
-            <string name="revanced_copy_video_url_title">भिडियो URL प्रतिलिपि गर्नुहोस् बटन देखाउनुहोस्</string>
-            <string name="revanced_copy_video_url_summary_on">भिडियो URL प्रतिलिपि गर्नुहोस् बटन देखाइएको छ। भिडियो URL प्रतिलिपि गर्न ट्याप गर्नुहोस्। टाइमस्ट्याम्पसहित प्रतिलिपि गर्न ट्याप गरेर होल्ड गर्नुहोस्</string>
-            <string name="revanced_copy_video_url_summary_off">भिडियो URL प्रतिलिपि गर्नुहोस् बटन देखाइएको छैन</string>
-            <string name="revanced_copy_video_url_timestamp_title">टाइमस्ट्याम्प URL प्रतिलिपि गर्नुहोस् बटन देखाउनुहोस्</string>
-            <string name="revanced_copy_video_url_timestamp_summary_on">टाइमस्ट्याम्प URL प्रतिलिपि गर्नुहोस् बटन देखाइएको छ। टाइमस्ट्याम्पसहित भिडियो URL प्रतिलिपि गर्न ट्याप गर्नुहोस्। टाइमस्ट्याम्प बिना प्रतिलिपि गर्न ट्याप गरेर होल्ड गर्नुहोस्</string>
-            <string name="revanced_copy_video_url_timestamp_summary_off">टाइमस्ट्याम्प URL प्रतिलिपि गर्नुहोस् बटन देखाइएको छैन</string>
+            <string name="revanced_share_copy_url_button_success">URL क्लिपबोर्डमा प्रतिलिपि गरियो</string>
+            <string name="revanced_share_copy_url_button_timestamp_success">टाइमस्ट्याम्पसहितको URL प्रतिलिपि गरियो</string>
+            <string name="revanced_copy_video_url_button_title">भिडियो URL प्रतिलिपि गर्नुहोस् बटन देखाउनुहोस्</string>
+            <string name="revanced_copy_video_url_button_summary_on">भिडियो URL प्रतिलिपि गर्नुहोस् बटन देखाइएको छ। भिडियो URL प्रतिलिपि गर्न ट्याप गर्नुहोस्। टाइमस्ट्याम्पसहित प्रतिलिपि गर्न ट्याप गरेर होल्ड गर्नुहोस्</string>
+            <string name="revanced_copy_video_url_button_summary_off">भिडियो URL प्रतिलिपि गर्नुहोस् बटन देखाइएको छैन</string>
+            <string name="revanced_copy_video_url_button_timestamp_title">टाइमस्ट्याम्प URL प्रतिलिपि गर्नुहोस् बटन देखाउनुहोस्</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_on">टाइमस्ट्याम्प URL प्रतिलिपि गर्नुहोस् बटन देखाइएको छ। टाइमस्ट्याम्पसहित भिडियो URL प्रतिलिपि गर्न ट्याप गर्नुहोस्। टाइमस्ट्याम्प बिना प्रतिलिपि गर्न ट्याप गरेर होल्ड गर्नुहोस्</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_off">टाइमस्ट्याम्प URL प्रतिलिपि गर्नुहोस् बटन देखाइएको छैन</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch"/>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">

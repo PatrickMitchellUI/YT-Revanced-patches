@@ -607,14 +607,14 @@ Beperkingen:
             <string name="revanced_hide_video_ads_summary_off">Video-advertenties worden getoond</string>
         </patch>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_success">URL gekopieerd naar klembord</string>
-            <string name="revanced_share_copy_url_timestamp_success">URL met tijdstempel gekopieerd</string>
-            <string name="revanced_copy_video_url_title">Knop \"Video-URL kopiëren\" weergeven</string>
-            <string name="revanced_copy_video_url_summary_on">Knop \'Video-URL kopiëren\' wordt weergegeven. Tik om de video-URL te kopiëren. Tik en houd vast om te kopiëren met tijdstempel</string>
-            <string name="revanced_copy_video_url_summary_off">Knop \'Video-URL kopiëren\' wordt niet weergegeven</string>
-            <string name="revanced_copy_video_url_timestamp_title">Knop \"Tijdstempel URL kopiëren\" weergeven</string>
-            <string name="revanced_copy_video_url_timestamp_summary_on">Knop \'Tijdstempel-URL kopiëren\' wordt weergegeven. Tik om de video-URL met tijdstempel te kopiëren. Tik en houd vast om te kopiëren zonder tijdstempel</string>
-            <string name="revanced_copy_video_url_timestamp_summary_off">Knop \'Tijdstempel-URL kopiëren\' wordt niet weergegeven</string>
+            <string name="revanced_share_copy_url_button_success">URL gekopieerd naar klembord</string>
+            <string name="revanced_share_copy_url_button_timestamp_success">URL met tijdstempel gekopieerd</string>
+            <string name="revanced_copy_video_url_button_title">Knop \"Video-URL kopiëren\" weergeven</string>
+            <string name="revanced_copy_video_url_button_summary_on">Knop \'Video-URL kopiëren\' wordt weergegeven. Tik om de video-URL te kopiëren. Tik en houd vast om te kopiëren met tijdstempel</string>
+            <string name="revanced_copy_video_url_button_summary_off">Knop \'Video-URL kopiëren\' wordt niet weergegeven</string>
+            <string name="revanced_copy_video_url_button_timestamp_title">Knop \"Tijdstempel URL kopiëren\" weergeven</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_on">Knop \'Tijdstempel-URL kopiëren\' wordt weergegeven. Tik om de video-URL met tijdstempel te kopiëren. Tik en houd vast om te kopiëren zonder tijdstempel</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_off">Knop \'Tijdstempel-URL kopiëren\' wordt niet weergegeven</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
             <string name="revanced_remove_viewer_discretion_dialog_title">Dialog van kijker discretie verwijderen</string>

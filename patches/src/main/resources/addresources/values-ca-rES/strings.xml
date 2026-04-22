@@ -189,14 +189,14 @@ Limitacions:
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_success">URL copiada al porta-retalls</string>
-            <string name="revanced_share_copy_url_timestamp_success">URL amb marca de temps copiada</string>
-            <string name="revanced_copy_video_url_title">Mostra el botó per copiar l\'URL del vídeo</string>
-            <string name="revanced_copy_video_url_summary_on">Es mostra el botó per copiar l\'URL del vídeo. Toca per copiar l\'URL del vídeo. Mantén premut per copiar amb marca de temps</string>
-            <string name="revanced_copy_video_url_summary_off">El botó per copiar l\'URL del vídeo no es mostra</string>
-            <string name="revanced_copy_video_url_timestamp_title">Mostra el botó per copiar l\'URL amb marca de temps</string>
-            <string name="revanced_copy_video_url_timestamp_summary_on">Es mostra el botó per copiar l\'URL amb marca de temps. Toca per copiar l\'URL del vídeo amb marca de temps. Mantén premut per copiar sense marca de temps</string>
-            <string name="revanced_copy_video_url_timestamp_summary_off">El botó per copiar l\'URL amb marca de temps no es mostra</string>
+            <string name="revanced_share_copy_url_button_success">URL copiada al porta-retalls</string>
+            <string name="revanced_share_copy_url_button_timestamp_success">URL amb marca de temps copiada</string>
+            <string name="revanced_copy_video_url_button_title">Mostra el botó per copiar l\'URL del vídeo</string>
+            <string name="revanced_copy_video_url_button_summary_on">Es mostra el botó per copiar l\'URL del vídeo. Toca per copiar l\'URL del vídeo. Mantén premut per copiar amb marca de temps</string>
+            <string name="revanced_copy_video_url_button_summary_off">El botó per copiar l\'URL del vídeo no es mostra</string>
+            <string name="revanced_copy_video_url_button_timestamp_title">Mostra el botó per copiar l\'URL amb marca de temps</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_on">Es mostra el botó per copiar l\'URL amb marca de temps. Toca per copiar l\'URL del vídeo amb marca de temps. Mantén premut per copiar sense marca de temps</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_off">El botó per copiar l\'URL amb marca de temps no es mostra</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch"/>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">

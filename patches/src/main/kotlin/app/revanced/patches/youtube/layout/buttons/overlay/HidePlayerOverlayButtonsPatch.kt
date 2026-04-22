@@ -15,7 +15,6 @@ import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
 import app.revanced.patches.youtube.misc.playservice.is_20_28_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
-import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
 import app.revanced.patches.youtube.shared.getLayoutConstructorMethodMatch
 import app.revanced.patches.youtube.shared.subtitleButtonControllerMethod
@@ -41,6 +40,7 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
         sharedExtensionPatch,
         settingsPatch,
         addResourcesPatch,
+        playerOverlayButtonsSettingsPatch,
         resourceMappingPatch, // Used for finding methods.
         versionCheckPatch,
     )
@@ -60,7 +60,7 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
     apply {
         addResources("youtube", "layout.buttons.overlay.hidePlayerOverlayButtonsPatch")
 
-        PreferenceScreen.PLAYER.addPreferences(
+        addPlayerOverlayPreferences(
             SwitchPreference("revanced_hide_autoplay_button"),
             SwitchPreference("revanced_hide_captions_button"),
             SwitchPreference("revanced_hide_cast_button"),

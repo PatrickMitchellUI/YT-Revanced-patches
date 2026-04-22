@@ -181,14 +181,14 @@ Imikhawulo:
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_success">I-URL ikopishwe ebhodini lokunamathisela</string>
-            <string name="revanced_share_copy_url_timestamp_success">I-URL enesikhathi ikopishwe</string>
-            <string name="revanced_copy_video_url_title">Bonisa inkinobho yokukopisha i-URL yevidiyo</string>
-            <string name="revanced_copy_video_url_summary_on">Inkinobho yokukopisha i-URL yevidiyo ibonisiwe. Thepha ukuze ukopishe i-URL yevidiyo. Thepha bese ubamba ukuze ukopishe ngesikhathi</string>
-            <string name="revanced_copy_video_url_summary_off">Inkinobho yokukopisha i-URL yevidiyo ayibonisiwe</string>
-            <string name="revanced_copy_video_url_timestamp_title">Bonisa inkinobho yokukopisha i-URL yesikhathi</string>
-            <string name="revanced_copy_video_url_timestamp_summary_on">Inkinobho yokukopisha i-URL yesikhathi ibonisiwe. Thepha ukuze ukopishe i-URL yevidiyo ngesikhathi. Thepha bese ubamba ukuze ukopishe ngaphandle kwesikhathi</string>
-            <string name="revanced_copy_video_url_timestamp_summary_off">Inkinobho yokukopisha i-URL yesikhathi ayibonisiwe</string>
+            <string name="revanced_share_copy_url_button_success">I-URL ikopishwe ebhodini lokunamathisela</string>
+            <string name="revanced_share_copy_url_button_timestamp_success">I-URL enesikhathi ikopishwe</string>
+            <string name="revanced_copy_video_url_button_title">Bonisa inkinobho yokukopisha i-URL yevidiyo</string>
+            <string name="revanced_copy_video_url_button_summary_on">Inkinobho yokukopisha i-URL yevidiyo ibonisiwe. Thepha ukuze ukopishe i-URL yevidiyo. Thepha bese ubamba ukuze ukopishe ngesikhathi</string>
+            <string name="revanced_copy_video_url_button_summary_off">Inkinobho yokukopisha i-URL yevidiyo ayibonisiwe</string>
+            <string name="revanced_copy_video_url_button_timestamp_title">Bonisa inkinobho yokukopisha i-URL yesikhathi</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_on">Inkinobho yokukopisha i-URL yesikhathi ibonisiwe. Thepha ukuze ukopishe i-URL yevidiyo ngesikhathi. Thepha bese ubamba ukuze ukopishe ngaphandle kwesikhathi</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_off">Inkinobho yokukopisha i-URL yesikhathi ayibonisiwe</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch"/>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">

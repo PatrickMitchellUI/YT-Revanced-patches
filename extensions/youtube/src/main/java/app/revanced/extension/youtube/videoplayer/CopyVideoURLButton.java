@@ -24,10 +24,10 @@ public class CopyVideoURLButton {
                     controlsView,
                     "revanced_copy_video_url_button",
                     null,
-                    Settings.COPY_VIDEO_URL::get,
-                    view -> CopyVideoURLPatch.copyURL(Settings.COPY_VIDEO_URL_TIMESTAMP.get()),
+                    Settings.COPY_VIDEO_URL_BUTTON::get,
+                    view -> CopyVideoURLPatch.copyURL(Settings.COPY_VIDEO_URL_BUTTON_TIMESTAMP.get()),
                     view -> {
-                        CopyVideoURLPatch.copyURL(!Settings.COPY_VIDEO_URL_TIMESTAMP.get());
+                        CopyVideoURLPatch.copyURL(!Settings.COPY_VIDEO_URL_BUTTON_TIMESTAMP.get());
                         return true;
                     }
             );

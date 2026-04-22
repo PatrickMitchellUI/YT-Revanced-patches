@@ -275,6 +275,19 @@ public abstract class Setting<T> {
     }
 
     /**
+     * Migrate a setting value if the path is renamed but otherwise the old and new settings are identical.
+     */
+    public static <T> void migrateOldSettingToNew(Setting<T> oldSetting, Setting<T> newSetting) {
+        if (oldSetting == newSetting) throw new IllegalArgumentException();
+
+        if (!oldSetting.isSetToDefault()) {
+            Logger.printInfo(() -> "Migrating old setting value: " + oldSetting + " into replacement setting: " + newSetting);
+            newSetting.save(oldSetting.value);
+            oldSetting.resetToDefault();
+        }
+    }
+
+    /**
      * Sets, but does _not_ persistently save the value.
      * This method is only to be used by the Settings preference code.
      * <p>

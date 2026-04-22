@@ -2,6 +2,7 @@ package app.revanced.extension.youtube.settings;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
+import static app.revanced.extension.shared.settings.Setting.migrateOldSettingToNew;
 import static app.revanced.extension.shared.settings.Setting.parent;
 import static app.revanced.extension.shared.settings.Setting.parentNot;
 import static app.revanced.extension.shared.settings.Setting.parentsAll;
@@ -156,8 +157,8 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final BooleanSetting HIDE_SUBSCRIBE_BUTTON_IN_CHANNEL_PAGE = new BooleanSetting("revanced_hide_subscribe_button_in_channel_page", FALSE);
 
     // Player
-    public static final BooleanSetting COPY_VIDEO_URL = new BooleanSetting("revanced_copy_video_url", FALSE);
-    public static final BooleanSetting COPY_VIDEO_URL_TIMESTAMP = new BooleanSetting("revanced_copy_video_url_timestamp", TRUE);
+    public static final BooleanSetting COPY_VIDEO_URL_BUTTON = new BooleanSetting("revanced_copy_video_url_button", FALSE);
+    public static final BooleanSetting COPY_VIDEO_URL_BUTTON_TIMESTAMP = new BooleanSetting("revanced_copy_video_url_button_timestamp", TRUE);
     public static final BooleanSetting DISABLE_AUTO_CAPTIONS = new BooleanSetting("revanced_disable_auto_captions", FALSE, true);
     public static final BooleanSetting DISABLE_CHAPTER_SKIP_DOUBLE_TAP = new BooleanSetting("revanced_disable_chapter_skip_double_tap", FALSE);
     public static final BooleanSetting DISABLE_HAPTIC_FEEDBACK_CHAPTERS = new BooleanSetting("revanced_disable_haptic_feedback_chapters", FALSE);
@@ -190,16 +191,26 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final BooleanSetting HIDE_PLAYER_CONTROL_BUTTONS_BACKGROUND = new BooleanSetting("revanced_hide_player_control_buttons_background", FALSE, true);
     public static final BooleanSetting HIDE_PLAYER_PREVIOUS_NEXT_BUTTONS = new BooleanSetting("revanced_hide_player_previous_next_buttons", FALSE, true);
     public static final BooleanSetting HIDE_QUICK_ACTIONS = new BooleanSetting("revanced_hide_quick_actions", FALSE);
+    public static final BooleanSetting HIDE_QUICK_ACTIONS_ASK_BUTTON = new BooleanSetting("revanced_hide_quick_actions_ask_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
+    public static final BooleanSetting HIDE_QUICK_ACTIONS_COMMENTS_BUTTON = new BooleanSetting("revanced_hide_quick_actions_comments_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
+    public static final BooleanSetting HIDE_QUICK_ACTIONS_DISLIKE_BUTTON = new BooleanSetting("revanced_hide_quick_actions_dislike_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
+    public static final BooleanSetting HIDE_QUICK_ACTIONS_LIKE_BUTTON = new BooleanSetting("revanced_hide_quick_actions_like_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
+    public static final BooleanSetting HIDE_QUICK_ACTIONS_LIVE_CHAT_BUTTON = new BooleanSetting("revanced_hide_quick_actions_live_chat_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
+    public static final BooleanSetting HIDE_QUICK_ACTIONS_MIX_BUTTON = new BooleanSetting("revanced_hide_quick_actions_mix_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
+    public static final BooleanSetting HIDE_QUICK_ACTIONS_MORE_BUTTON = new BooleanSetting("revanced_hide_quick_actions_more_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
+    public static final BooleanSetting HIDE_QUICK_ACTIONS_MORE_VIDEOS_BUTTON = new BooleanSetting("revanced_hide_quick_actions_more_videos_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
+    public static final BooleanSetting HIDE_QUICK_ACTIONS_PLAYLIST_BUTTON = new BooleanSetting("revanced_hide_quick_actions_playlist_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
+    public static final BooleanSetting HIDE_QUICK_ACTIONS_SAVE_BUTTON = new BooleanSetting("revanced_hide_quick_actions_save_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
+    public static final BooleanSetting HIDE_QUICK_ACTIONS_SHARE_BUTTON = new BooleanSetting("revanced_hide_quick_actions_share_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
     public static final BooleanSetting HIDE_PLAYER_RELATED_VIDEOS_OVERLAY = new BooleanSetting("revanced_hide_player_related_videos_overlay", FALSE, true);
     public static final BooleanSetting HIDE_SETTINGS_BUTTON = new BooleanSetting("revanced_hide_settings_button", FALSE, true);
-    public static final BooleanSetting HIDE_QUICK_ACTIONS_RELATED_VIDEOS = new BooleanSetting("revanced_hide_quick_actions_related_videos", FALSE);
     public static final BooleanSetting HIDE_SUBSCRIBERS_COMMUNITY_GUIDELINES = new BooleanSetting("revanced_hide_subscribers_community_guidelines", TRUE);
     public static final BooleanSetting HIDE_TIMED_REACTIONS = new BooleanSetting("revanced_hide_timed_reactions", TRUE);
     public static final BooleanSetting HIDE_VIDEO_TITLE = new BooleanSetting("revanced_hide_video_title", FALSE);
     public static final BooleanSetting OPEN_SYSTEM_SHARE_SHEET = new BooleanSetting("revanced_open_system_share_sheet", FALSE, true);
     public static final BooleanSetting OPEN_VIDEOS_FULLSCREEN_PORTRAIT = new BooleanSetting("revanced_open_videos_fullscreen_portrait", FALSE);
     public static final BooleanSetting PLAYBACK_SPEED_DIALOG_BUTTON = new BooleanSetting("revanced_playback_speed_dialog_button", FALSE);
-    public static final BooleanSetting RELOAD_VIDEO = new BooleanSetting("revanced_reload_video", FALSE);
+    public static final BooleanSetting RELOAD_VIDEO_BUTTON = new BooleanSetting("revanced_reload_video_button", FALSE);
     public static final BooleanSetting VIDEO_QUALITY_DIALOG_BUTTON = new BooleanSetting("revanced_video_quality_dialog_button", FALSE);
     public static final IntegerSetting PLAYER_OVERLAY_OPACITY = new IntegerSetting("revanced_player_overlay_opacity", 100, true);
 
@@ -502,6 +513,10 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final StringSetting SB_CATEGORY_UNSUBMITTED_COLOR = new StringSetting("sb_unsubmitted_color", "#FFFFFFFF", false, false);
 
     // Deprecated migrations
+    private static final BooleanSetting DEPRECATED_COPY_VIDEO_URL = new BooleanSetting("revanced_copy_video_url", FALSE);
+    private static final BooleanSetting DEPRECATED_COPY_VIDEO_URL_TIMESTAMP = new BooleanSetting("revanced_copy_video_url_timestamp", TRUE);
+    private static final BooleanSetting DEPRECATED_RELOAD_VIDEO = new BooleanSetting("revanced_reload_video", FALSE);
+
     private static final StringSetting DEPRECATED_SEEKBAR_CUSTOM_COLOR_PRIMARY = new StringSetting("revanced_seekbar_custom_color_value", "#FF0033");
 
     private static final FloatSetting DEPRECATED_SB_CATEGORY_SPONSOR_OPACITY = new FloatSetting("sb_sponsor_opacity", 0.8f, false, false);
@@ -517,6 +532,10 @@ public class Settings extends YouTubeAndMusicSettings {
 
     static {
         // region Migration
+
+        migrateOldSettingToNew(DEPRECATED_COPY_VIDEO_URL, COPY_VIDEO_URL_BUTTON);
+        migrateOldSettingToNew(DEPRECATED_COPY_VIDEO_URL_TIMESTAMP, COPY_VIDEO_URL_BUTTON_TIMESTAMP);
+        migrateOldSettingToNew(DEPRECATED_RELOAD_VIDEO, RELOAD_VIDEO_BUTTON);
 
         // 20.37+ YT removed parts of the code for the legacy tablet miniplayer.
         // This check must remain until the Tablet type is eventually removed.

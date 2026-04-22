@@ -181,14 +181,14 @@ Takmarkanir:
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_success">Slóð afrituð á klippiborð</string>
-            <string name="revanced_share_copy_url_timestamp_success">Slóð með tímastimpli afrituð</string>
-            <string name="revanced_copy_video_url_title">Sýna hnappinn til að afrita myndbandsslóð</string>
-            <string name="revanced_copy_video_url_summary_on">Hnappurinn til að afrita myndbandsslóð er sýndur. Bankaðu til að afrita myndbandsslóð. Haltu inni til að afrita með tímastimpli</string>
-            <string name="revanced_copy_video_url_summary_off">Hnappurinn til að afrita myndbandsslóð er ekki sýndur</string>
-            <string name="revanced_copy_video_url_timestamp_title">Sýna hnappinn til að afrita slóð með tímastimpli</string>
-            <string name="revanced_copy_video_url_timestamp_summary_on">Hnappurinn til að afrita slóð með tímastimpli er sýndur. Bankaðu til að afrita myndbandsslóð með tímastimpli. Haltu inni til að afrita án tímastimpils</string>
-            <string name="revanced_copy_video_url_timestamp_summary_off">Hnappurinn til að afrita slóð með tímastimpli er ekki sýndur</string>
+            <string name="revanced_share_copy_url_button_success">Slóð afrituð á klippiborð</string>
+            <string name="revanced_share_copy_url_button_timestamp_success">Slóð með tímastimpli afrituð</string>
+            <string name="revanced_copy_video_url_button_title">Sýna hnappinn til að afrita myndbandsslóð</string>
+            <string name="revanced_copy_video_url_button_summary_on">Hnappurinn til að afrita myndbandsslóð er sýndur. Bankaðu til að afrita myndbandsslóð. Haltu inni til að afrita með tímastimpli</string>
+            <string name="revanced_copy_video_url_button_summary_off">Hnappurinn til að afrita myndbandsslóð er ekki sýndur</string>
+            <string name="revanced_copy_video_url_button_timestamp_title">Sýna hnappinn til að afrita slóð með tímastimpli</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_on">Hnappurinn til að afrita slóð með tímastimpli er sýndur. Bankaðu til að afrita myndbandsslóð með tímastimpli. Haltu inni til að afrita án tímastimpils</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_off">Hnappurinn til að afrita slóð með tímastimpli er ekki sýndur</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch"/>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">

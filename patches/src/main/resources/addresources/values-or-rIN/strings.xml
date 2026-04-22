@@ -189,14 +189,14 @@ MicroG ପାଇଁ ବ୍ୟାଟେରୀ ଅପ୍ଟିମାଇଜେସ�
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_success">URL କ୍ଲିପବୋର୍ଡକୁ କପି ହୋଇଛି</string>
-            <string name="revanced_share_copy_url_timestamp_success">ଟାଇମ୍‌ଷ୍ଟାମ୍ପ୍ ସହିତ URL କପି ହୋଇଛି</string>
-            <string name="revanced_copy_video_url_title">ଭିଡିଓ URL କପି ବଟନ୍ ଦେଖାନ୍ତୁ</string>
-            <string name="revanced_copy_video_url_summary_on">ଭିଡିଓ URL କପି ବଟନ୍ ଦେଖାଯାଉଛି। ଭିଡିଓ URL କପି କରିବା ପାଇଁ ଟ୍ୟାପ୍ କରନ୍ତୁ। ଟାଇମ୍‌ଷ୍ଟାମ୍ପ୍ ସହିତ କପି କରିବା ପାଇଁ ଟ୍ୟାପ୍ କରି ଧରି ରଖନ୍ତୁ</string>
-            <string name="revanced_copy_video_url_summary_off">ଭିଡିଓ URL କପି ବଟନ୍ ଦେଖାଯାଉ ନାହିଁ</string>
-            <string name="revanced_copy_video_url_timestamp_title">ଟାଇମ୍‌ଷ୍ଟାମ୍ପ୍ URL କପି ବଟନ୍ ଦେଖାନ୍ତୁ</string>
-            <string name="revanced_copy_video_url_timestamp_summary_on">ଟାଇମ୍‌ଷ୍ଟାମ୍ପ୍ URL କପି ବଟନ୍ ଦେଖାଯାଉଛି। ଟାଇମ୍‌ଷ୍ଟାମ୍ପ୍ ସହିତ ଭିଡିଓ URL କପି କରିବା ପାଇଁ ଟ୍ୟାପ୍ କରନ୍ତୁ। ଟାଇମ୍‌ଷ୍ଟାମ୍ପ୍ ବିନା କପି କରିବା ପାଇଁ ଟ୍ୟାପ୍ କରି ଧରି ରଖନ୍ତୁ</string>
-            <string name="revanced_copy_video_url_timestamp_summary_off">ଟାଇମ୍‌ଷ୍ଟାମ୍ପ୍ URL କପି ବଟନ୍ ଦେଖାଯାଉ ନାହିଁ</string>
+            <string name="revanced_share_copy_url_button_success">URL କ୍ଲିପବୋର୍ଡକୁ କପି ହୋଇଛି</string>
+            <string name="revanced_share_copy_url_button_timestamp_success">ଟାଇମ୍‌ଷ୍ଟାମ୍ପ୍ ସହିତ URL କପି ହୋଇଛି</string>
+            <string name="revanced_copy_video_url_button_title">ଭିଡିଓ URL କପି ବଟନ୍ ଦେଖାନ୍ତୁ</string>
+            <string name="revanced_copy_video_url_button_summary_on">ଭିଡିଓ URL କପି ବଟନ୍ ଦେଖାଯାଉଛି। ଭିଡିଓ URL କପି କରିବା ପାଇଁ ଟ୍ୟାପ୍ କରନ୍ତୁ। ଟାଇମ୍‌ଷ୍ଟାମ୍ପ୍ ସହିତ କପି କରିବା ପାଇଁ ଟ୍ୟାପ୍ କରି ଧରି ରଖନ୍ତୁ</string>
+            <string name="revanced_copy_video_url_button_summary_off">ଭିଡିଓ URL କପି ବଟନ୍ ଦେଖାଯାଉ ନାହିଁ</string>
+            <string name="revanced_copy_video_url_button_timestamp_title">ଟାଇମ୍‌ଷ୍ଟାମ୍ପ୍ URL କପି ବଟନ୍ ଦେଖାନ୍ତୁ</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_on">ଟାଇମ୍‌ଷ୍ଟାମ୍ପ୍ URL କପି ବଟନ୍ ଦେଖାଯାଉଛି। ଟାଇମ୍‌ଷ୍ଟାମ୍ପ୍ ସହିତ ଭିଡିଓ URL କପି କରିବା ପାଇଁ ଟ୍ୟାପ୍ କରନ୍ତୁ। ଟାଇମ୍‌ଷ୍ଟାମ୍ପ୍ ବିନା କପି କରିବା ପାଇଁ ଟ୍ୟାପ୍ କରି ଧରି ରଖନ୍ତୁ</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_off">ଟାଇମ୍‌ଷ୍ଟାମ୍ପ୍ URL କପି ବଟନ୍ ଦେଖାଯାଉ ନାହିଁ</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch"/>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">

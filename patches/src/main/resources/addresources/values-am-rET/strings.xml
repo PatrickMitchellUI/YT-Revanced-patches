@@ -189,14 +189,14 @@ Second \"item\" text"</string>
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_success">URL ወደ ቅንጥብ ሰሌዳ ተቀድቷል</string>
-            <string name="revanced_share_copy_url_timestamp_success">URL ከሰዓት ማህተም ጋር ተቀድቷል</string>
-            <string name="revanced_copy_video_url_title">የቪዲዮ URL መቅጃ ቁልፍን አሳይ</string>
-            <string name="revanced_copy_video_url_summary_on">የቪዲዮ URL መቅጃ ቁልፍ ይታያል። የቪዲዮ URL ለመቅዳት ይንኩ። ከሰዓት ማህተም ጋር ለመቅዳት ተጭነው ይያዙ</string>
-            <string name="revanced_copy_video_url_summary_off">የቪዲዮ URL መቅጃ ቁልፍ አይታይም</string>
-            <string name="revanced_copy_video_url_timestamp_title">የሰዓት ማህተም URL መቅጃ ቁልፍን አሳይ</string>
-            <string name="revanced_copy_video_url_timestamp_summary_on">የሰዓት ማህተም URL መቅጃ ቁልፍ ይታያል። የቪዲዮ URLን ከሰዓት ማህተም ጋር ለመቅዳት ይንኩ። ያለሰዓት ማህተም ለመቅዳት ተጭነው ይያዙ</string>
-            <string name="revanced_copy_video_url_timestamp_summary_off">የሰዓት ማህተም URL መቅጃ ቁልፍ አይታይም</string>
+            <string name="revanced_share_copy_url_button_success">URL ወደ ቅንጥብ ሰሌዳ ተቀድቷል</string>
+            <string name="revanced_share_copy_url_button_timestamp_success">URL ከሰዓት ማህተም ጋር ተቀድቷል</string>
+            <string name="revanced_copy_video_url_button_title">የቪዲዮ URL መቅጃ ቁልፍን አሳይ</string>
+            <string name="revanced_copy_video_url_button_summary_on">የቪዲዮ URL መቅጃ ቁልፍ ይታያል። የቪዲዮ URL ለመቅዳት ይንኩ። ከሰዓት ማህተም ጋር ለመቅዳት ተጭነው ይያዙ</string>
+            <string name="revanced_copy_video_url_button_summary_off">የቪዲዮ URL መቅጃ ቁልፍ አይታይም</string>
+            <string name="revanced_copy_video_url_button_timestamp_title">የሰዓት ማህተም URL መቅጃ ቁልፍን አሳይ</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_on">የሰዓት ማህተም URL መቅጃ ቁልፍ ይታያል። የቪዲዮ URLን ከሰዓት ማህተም ጋር ለመቅዳት ይንኩ። ያለሰዓት ማህተም ለመቅዳት ተጭነው ይያዙ</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_off">የሰዓት ማህተም URL መቅጃ ቁልፍ አይታይም</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch"/>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">

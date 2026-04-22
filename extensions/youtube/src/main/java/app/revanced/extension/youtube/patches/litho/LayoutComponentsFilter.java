@@ -250,20 +250,10 @@ public final class LayoutComponentsFilter extends Filter {
                 "compact_channel_bar"
         );
 
-        final var relatedVideos = new StringFilterGroup(
-                Settings.HIDE_QUICK_ACTIONS_RELATED_VIDEOS,
-                "fullscreen_related_videos"
-        );
-
         final var playables = new StringFilterGroup(
                 Settings.HIDE_PLAYABLES,
                 "horizontal_gaming_shelf.e",
                 "mini_game_card.e"
-        );
-
-        final var quickActions = new StringFilterGroup(
-                Settings.HIDE_QUICK_ACTIONS,
-                "quick_actions"
         );
 
         final var imageShelf = new StringFilterGroup(
@@ -375,8 +365,6 @@ public final class LayoutComponentsFilter extends Filter {
                 paidPromotion,
                 playables,
                 postsShelf,
-                quickActions,
-                relatedVideos,
                 searchFriction,
                 singleItemInformationPanel,
                 subscribedChannelsBar,

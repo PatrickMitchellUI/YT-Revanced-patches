@@ -177,14 +177,14 @@ Cheklovlar:
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_success">URL manzili buferga nusxalandi</string>
-            <string name="revanced_share_copy_url_timestamp_success">Vaqt tamgʻasi bilan URL manzili nusxalandi</string>
-            <string name="revanced_copy_video_url_title">Video URL manzilini nusxalash tugmasini koʻrsatish</string>
-            <string name="revanced_copy_video_url_summary_on">Video URL manzilini nusxalash tugmasi koʻrsatilgan. Video URL manzilini nusxalash uchun bosing. Vaqt tamgʻasi bilan nusxalash uchun bosib turing</string>
-            <string name="revanced_copy_video_url_summary_off">Video URL manzilini nusxalash tugmasi koʻrsatilmagan</string>
-            <string name="revanced_copy_video_url_timestamp_title">Vaqt tamgʻasi URL manzilini nusxalash tugmasini koʻrsatish</string>
-            <string name="revanced_copy_video_url_timestamp_summary_on">Vaqt tamgʻasi URL manzilini nusxalash tugmasi koʻrsatilgan. Vaqt tamgʻasi bilan video URL manzilini nusxalash uchun bosing. Vaqt tamgʻasisiz nusxalash uchun bosib turing</string>
-            <string name="revanced_copy_video_url_timestamp_summary_off">Vaqt tamgʻasi URL manzilini nusxalash tugmasi koʻrsatilmagan</string>
+            <string name="revanced_share_copy_url_button_success">URL manzili buferga nusxalandi</string>
+            <string name="revanced_share_copy_url_button_timestamp_success">Vaqt tamgʻasi bilan URL manzili nusxalandi</string>
+            <string name="revanced_copy_video_url_button_title">Video URL manzilini nusxalash tugmasini koʻrsatish</string>
+            <string name="revanced_copy_video_url_button_summary_on">Video URL manzilini nusxalash tugmasi koʻrsatilgan. Video URL manzilini nusxalash uchun bosing. Vaqt tamgʻasi bilan nusxalash uchun bosib turing</string>
+            <string name="revanced_copy_video_url_button_summary_off">Video URL manzilini nusxalash tugmasi koʻrsatilmagan</string>
+            <string name="revanced_copy_video_url_button_timestamp_title">Vaqt tamgʻasi URL manzilini nusxalash tugmasini koʻrsatish</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_on">Vaqt tamgʻasi URL manzilini nusxalash tugmasi koʻrsatilgan. Vaqt tamgʻasi bilan video URL manzilini nusxalash uchun bosing. Vaqt tamgʻasisiz nusxalash uchun bosib turing</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_off">Vaqt tamgʻasi URL manzilini nusxalash tugmasi koʻrsatilmagan</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch"/>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">

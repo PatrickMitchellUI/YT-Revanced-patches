@@ -607,14 +607,14 @@ Limitations :
             <string name="revanced_hide_video_ads_summary_off">Les annonces vidéo sont affichées</string>
         </patch>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_success">URL copiée dans le presse-papiers</string>
-            <string name="revanced_share_copy_url_timestamp_success">URL avec horodatage copiée</string>
-            <string name="revanced_copy_video_url_title">Afficher le bouton \"Copier l\'URL de la vidéo\"</string>
-            <string name="revanced_copy_video_url_summary_on">Le bouton Copier l\'URL de la vidéo est affiché. Appuyez pour copier l\'URL de la vidéo. Appuyez longuement pour copier avec horodatage.</string>
-            <string name="revanced_copy_video_url_summary_off">Le bouton Copier l\'URL de la vidéo n\'est pas affiché</string>
-            <string name="revanced_copy_video_url_timestamp_title">Afficher le bouton \"Copier l\'URL avec horodatage\"</string>
-            <string name="revanced_copy_video_url_timestamp_summary_on">Le bouton Copier l\'URL avec horodatage est affiché. Appuyez pour copier l\'URL de la vidéo avec horodatage. Appuyez longuement pour copier sans horodatage.</string>
-            <string name="revanced_copy_video_url_timestamp_summary_off">Le bouton Copier l\'URL avec horodatage n\'est pas affiché</string>
+            <string name="revanced_share_copy_url_button_success">URL copiée dans le presse-papiers</string>
+            <string name="revanced_share_copy_url_button_timestamp_success">URL avec horodatage copiée</string>
+            <string name="revanced_copy_video_url_button_title">Afficher le bouton \"Copier l\'URL de la vidéo\"</string>
+            <string name="revanced_copy_video_url_button_summary_on">Le bouton Copier l\'URL de la vidéo est affiché. Appuyez pour copier l\'URL de la vidéo. Appuyez longuement pour copier avec horodatage.</string>
+            <string name="revanced_copy_video_url_button_summary_off">Le bouton Copier l\'URL de la vidéo n\'est pas affiché</string>
+            <string name="revanced_copy_video_url_button_timestamp_title">Afficher le bouton \"Copier l\'URL avec horodatage\"</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_on">Le bouton Copier l\'URL avec horodatage est affiché. Appuyez pour copier l\'URL de la vidéo avec horodatage. Appuyez longuement pour copier sans horodatage.</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_off">Le bouton Copier l\'URL avec horodatage n\'est pas affiché</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
             <string name="revanced_remove_viewer_discretion_dialog_title">Supprimer le message de vérification de l\'âge</string>

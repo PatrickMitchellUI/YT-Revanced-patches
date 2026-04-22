@@ -187,14 +187,14 @@ MicroG-ისთვის ბატარეის ოპტიმიზაც�
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_success">URL ბუფერში დაკოპირებულია</string>
-            <string name="revanced_share_copy_url_timestamp_success">URL დროის ნიშნულით დაკოპირებულია</string>
-            <string name="revanced_copy_video_url_title">ვიდეო URL-ის კოპირების ღილაკის ჩვენება</string>
-            <string name="revanced_copy_video_url_summary_on">ვიდეო URL-ის კოპირების ღილაკი ნაჩვენებია. შეეხეთ ვიდეო URL-ის კოპირებისთვის. ხანგრძლივად შეხება დროის ნიშნულით კოპირებისთვის</string>
-            <string name="revanced_copy_video_url_summary_off">ვიდეო URL-ის კოპირების ღილაკი არ არის ნაჩვენები</string>
-            <string name="revanced_copy_video_url_timestamp_title">დროის ნიშნულის URL-ის კოპირების ღილაკის ჩვენება</string>
-            <string name="revanced_copy_video_url_timestamp_summary_on">დროის ნიშნულის URL-ის კოპირების ღილაკი ნაჩვენებია. შეეხეთ ვიდეო URL-ის დროის ნიშნულით კოპირებისთვის. ხანგრძლივად შეხება დროის ნიშნულის გარეშე კოპირებისთვის</string>
-            <string name="revanced_copy_video_url_timestamp_summary_off">დროის ნიშნულის URL-ის კოპირების ღილაკი არ არის ნაჩვენები</string>
+            <string name="revanced_share_copy_url_button_success">URL ბუფერში დაკოპირებულია</string>
+            <string name="revanced_share_copy_url_button_timestamp_success">URL დროის ნიშნულით დაკოპირებულია</string>
+            <string name="revanced_copy_video_url_button_title">ვიდეო URL-ის კოპირების ღილაკის ჩვენება</string>
+            <string name="revanced_copy_video_url_button_summary_on">ვიდეო URL-ის კოპირების ღილაკი ნაჩვენებია. შეეხეთ ვიდეო URL-ის კოპირებისთვის. ხანგრძლივად შეხება დროის ნიშნულით კოპირებისთვის</string>
+            <string name="revanced_copy_video_url_button_summary_off">ვიდეო URL-ის კოპირების ღილაკი არ არის ნაჩვენები</string>
+            <string name="revanced_copy_video_url_button_timestamp_title">დროის ნიშნულის URL-ის კოპირების ღილაკის ჩვენება</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_on">დროის ნიშნულის URL-ის კოპირების ღილაკი ნაჩვენებია. შეეხეთ ვიდეო URL-ის დროის ნიშნულით კოპირებისთვის. ხანგრძლივად შეხება დროის ნიშნულის გარეშე კოპირებისთვის</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_off">დროის ნიშნულის URL-ის კოპირების ღილაკი არ არის ნაჩვენები</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch"/>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">

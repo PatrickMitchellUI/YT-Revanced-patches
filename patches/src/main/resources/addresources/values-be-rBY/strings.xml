@@ -601,14 +601,14 @@ Second \"item\" text"</string>
             <string name="revanced_hide_video_ads_summary_off">Паказваецца відэарэклама</string>
         </patch>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_success">URL скапіраваны ў буфер абмену</string>
-            <string name="revanced_share_copy_url_timestamp_success">URL-адрас з пазнакай часу скапіраваны</string>
-            <string name="revanced_copy_video_url_title">Паказаць кнопку скапіравання URL відэа</string>
-            <string name="revanced_copy_video_url_summary_on">Кнопка «Капіяваць URL відэа» паказана. Націсніце, каб скапіяваць URL відэа. Націсніце і ўтрымлівайце, каб скапіяваць з пазнакай часу</string>
-            <string name="revanced_copy_video_url_summary_off">Кнопка «Капіяваць URL відэа» не паказана</string>
-            <string name="revanced_copy_video_url_timestamp_title">Паказаць кнопку URL-адрас з часовай пазнакай</string>
-            <string name="revanced_copy_video_url_timestamp_summary_on">Кнопка «Капіяваць URL з пазнакай часу» паказана. Націсніце, каб скапіяваць URL відэа з пазнакай часу. Націсніце і ўтрымлівайце, каб скапіяваць без пазнакі часу</string>
-            <string name="revanced_copy_video_url_timestamp_summary_off">Кнопка «Капіяваць URL з пазнакай часу» не паказана</string>
+            <string name="revanced_share_copy_url_button_success">URL скапіраваны ў буфер абмену</string>
+            <string name="revanced_share_copy_url_button_timestamp_success">URL-адрас з пазнакай часу скапіраваны</string>
+            <string name="revanced_copy_video_url_button_title">Паказаць кнопку скапіравання URL відэа</string>
+            <string name="revanced_copy_video_url_button_summary_on">Кнопка «Капіяваць URL відэа» паказана. Націсніце, каб скапіяваць URL відэа. Націсніце і ўтрымлівайце, каб скапіяваць з пазнакай часу</string>
+            <string name="revanced_copy_video_url_button_summary_off">Кнопка «Капіяваць URL відэа» не паказана</string>
+            <string name="revanced_copy_video_url_button_timestamp_title">Паказаць кнопку URL-адрас з часовай пазнакай</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_on">Кнопка «Капіяваць URL з пазнакай часу» паказана. Націсніце, каб скапіяваць URL відэа з пазнакай часу. Націсніце і ўтрымлівайце, каб скапіяваць без пазнакі часу</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_off">Кнопка «Капіяваць URL з пазнакай часу» не паказана</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
             <string name="revanced_remove_viewer_discretion_dialog_title">Выдаліць дыялогавае акно права прагляду</string>

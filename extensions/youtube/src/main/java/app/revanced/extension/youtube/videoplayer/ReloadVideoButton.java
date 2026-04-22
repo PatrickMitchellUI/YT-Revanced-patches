@@ -22,7 +22,7 @@ public class ReloadVideoButton {
                     controlsView,
                     "revanced_reload_video_button",
                     null,
-                    Settings.RELOAD_VIDEO::get,
+                    Settings.RELOAD_VIDEO_BUTTON::get,
                     v -> ReloadVideoPatch.reloadVideo(),
                     null
             );

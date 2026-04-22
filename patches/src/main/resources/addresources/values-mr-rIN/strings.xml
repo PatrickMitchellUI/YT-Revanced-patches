@@ -189,14 +189,14 @@ MicroG साठी बॅटरी ऑप्टिमायझेशन अक�
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_success">URL क्लिपबोर्डवर कॉपी केली</string>
-            <string name="revanced_share_copy_url_timestamp_success">टाइमस्टॅम्पसह URL कॉपी केली</string>
-            <string name="revanced_copy_video_url_title">व्हिडिओ URL कॉपी करा बटण दाखवा</string>
-            <string name="revanced_copy_video_url_summary_on">व्हिडिओ URL कॉपी करा बटण दिसत आहे. व्हिडिओ URL कॉपी करण्यासाठी टॅप करा. टाइमस्टॅम्पसह कॉपी करण्यासाठी टॅप करून धरून ठेवा</string>
-            <string name="revanced_copy_video_url_summary_off">व्हिडिओ URL कॉपी करा बटण दिसत नाही</string>
-            <string name="revanced_copy_video_url_timestamp_title">टाइमस्टॅम्प URL कॉपी करा बटण दाखवा</string>
-            <string name="revanced_copy_video_url_timestamp_summary_on">टाइमस्टॅम्प URL कॉपी करा बटण दिसत आहे. टाइमस्टॅम्पसह व्हिडिओ URL कॉपी करण्यासाठी टॅप करा. टाइमस्टॅम्पशिवाय कॉपी करण्यासाठी टॅप करून धरून ठेवा</string>
-            <string name="revanced_copy_video_url_timestamp_summary_off">टाइमस्टॅम्प URL कॉपी करा बटण दिसत नाही</string>
+            <string name="revanced_share_copy_url_button_success">URL क्लिपबोर्डवर कॉपी केली</string>
+            <string name="revanced_share_copy_url_button_timestamp_success">टाइमस्टॅम्पसह URL कॉपी केली</string>
+            <string name="revanced_copy_video_url_button_title">व्हिडिओ URL कॉपी करा बटण दाखवा</string>
+            <string name="revanced_copy_video_url_button_summary_on">व्हिडिओ URL कॉपी करा बटण दिसत आहे. व्हिडिओ URL कॉपी करण्यासाठी टॅप करा. टाइमस्टॅम्पसह कॉपी करण्यासाठी टॅप करून धरून ठेवा</string>
+            <string name="revanced_copy_video_url_button_summary_off">व्हिडिओ URL कॉपी करा बटण दिसत नाही</string>
+            <string name="revanced_copy_video_url_button_timestamp_title">टाइमस्टॅम्प URL कॉपी करा बटण दाखवा</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_on">टाइमस्टॅम्प URL कॉपी करा बटण दिसत आहे. टाइमस्टॅम्पसह व्हिडिओ URL कॉपी करण्यासाठी टॅप करा. टाइमस्टॅम्पशिवाय कॉपी करण्यासाठी टॅप करून धरून ठेवा</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_off">टाइमस्टॅम्प URL कॉपी करा बटण दिसत नाही</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch"/>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">

@@ -189,14 +189,14 @@ Ograničenja:
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_success">URL kopiran u međuspremnik</string>
-            <string name="revanced_share_copy_url_timestamp_success">URL sa vremenskom oznakom kopiran</string>
-            <string name="revanced_copy_video_url_title">Prikaži dugme za kopiranje URL-a videozapisa</string>
-            <string name="revanced_copy_video_url_summary_on">Dugme za kopiranje URL-a videozapisa je prikazano. Dodirnite za kopiranje URL-a videozapisa. Dodirnite i držite za kopiranje sa vremenskom oznakom</string>
-            <string name="revanced_copy_video_url_summary_off">Dugme za kopiranje URL-a videozapisa nije prikazano</string>
-            <string name="revanced_copy_video_url_timestamp_title">Prikaži dugme za kopiranje URL-a vremenske oznake</string>
-            <string name="revanced_copy_video_url_timestamp_summary_on">Dugme za kopiranje URL-a vremenske oznake je prikazano. Dodirnite za kopiranje URL-a videozapisa sa vremenskom oznakom. Dodirnite i držite za kopiranje bez vremenske oznake</string>
-            <string name="revanced_copy_video_url_timestamp_summary_off">Dugme za kopiranje URL-a vremenske oznake nije prikazano</string>
+            <string name="revanced_share_copy_url_button_success">URL kopiran u međuspremnik</string>
+            <string name="revanced_share_copy_url_button_timestamp_success">URL sa vremenskom oznakom kopiran</string>
+            <string name="revanced_copy_video_url_button_title">Prikaži dugme za kopiranje URL-a videozapisa</string>
+            <string name="revanced_copy_video_url_button_summary_on">Dugme za kopiranje URL-a videozapisa je prikazano. Dodirnite za kopiranje URL-a videozapisa. Dodirnite i držite za kopiranje sa vremenskom oznakom</string>
+            <string name="revanced_copy_video_url_button_summary_off">Dugme za kopiranje URL-a videozapisa nije prikazano</string>
+            <string name="revanced_copy_video_url_button_timestamp_title">Prikaži dugme za kopiranje URL-a vremenske oznake</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_on">Dugme za kopiranje URL-a vremenske oznake je prikazano. Dodirnite za kopiranje URL-a videozapisa sa vremenskom oznakom. Dodirnite i držite za kopiranje bez vremenske oznake</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_off">Dugme za kopiranje URL-a vremenske oznake nije prikazano</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch"/>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">

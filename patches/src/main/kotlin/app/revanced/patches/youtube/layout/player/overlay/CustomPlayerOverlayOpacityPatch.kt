@@ -8,7 +8,8 @@ import app.revanced.patches.all.misc.resources.addResourcesPatch
 import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
 import app.revanced.patches.shared.misc.settings.preference.InputType
 import app.revanced.patches.shared.misc.settings.preference.TextPreference
-import app.revanced.patches.youtube.misc.settings.PreferenceScreen
+import app.revanced.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
+import app.revanced.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
 import app.revanced.patches.youtube.misc.settings.settingsPatch
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
@@ -24,6 +25,7 @@ val customPlayerOverlayOpacityPatch = bytecodePatch(
         settingsPatch,
         resourceMappingPatch,
         addResourcesPatch,
+        playerOverlayButtonsSettingsPatch,
     )
 
     compatibleWith(
@@ -41,7 +43,7 @@ val customPlayerOverlayOpacityPatch = bytecodePatch(
     apply {
         addResources("youtube", "layout.player.overlay.customPlayerOverlayOpacityResourcePatch")
 
-        PreferenceScreen.PLAYER.addPreferences(
+        addPlayerOverlayPreferences(
             TextPreference("revanced_player_overlay_opacity", inputType = InputType.NUMBER),
         )
 

@@ -189,14 +189,14 @@ Mapungufu:
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_success">URL imenakiliwa kwenye ubao klipu</string>
-            <string name="revanced_share_copy_url_timestamp_success">URL yenye muhuri wa muda imenakiliwa</string>
-            <string name="revanced_copy_video_url_title">Onyesha kitufe cha kunakili URL ya video</string>
-            <string name="revanced_copy_video_url_summary_on">Kitufe cha kunakili URL ya video kimeonyeshwa. Gonga ili kunakili URL ya video. Gonga na ushikilie ili kunakili na muhuri wa muda</string>
-            <string name="revanced_copy_video_url_summary_off">Kitufe cha kunakili URL ya video hakijaonyeshwa</string>
-            <string name="revanced_copy_video_url_timestamp_title">Onyesha kitufe cha kunakili URL ya muhuri wa muda</string>
-            <string name="revanced_copy_video_url_timestamp_summary_on">Kitufe cha kunakili URL ya muhuri wa muda kimeonyeshwa. Gonga ili kunakili URL ya video na muhuri wa muda. Gonga na ushikilie ili kunakili bila muhuri wa muda</string>
-            <string name="revanced_copy_video_url_timestamp_summary_off">Kitufe cha kunakili URL ya muhuri wa muda hakijaonyeshwa</string>
+            <string name="revanced_share_copy_url_button_success">URL imenakiliwa kwenye ubao klipu</string>
+            <string name="revanced_share_copy_url_button_timestamp_success">URL yenye muhuri wa muda imenakiliwa</string>
+            <string name="revanced_copy_video_url_button_title">Onyesha kitufe cha kunakili URL ya video</string>
+            <string name="revanced_copy_video_url_button_summary_on">Kitufe cha kunakili URL ya video kimeonyeshwa. Gonga ili kunakili URL ya video. Gonga na ushikilie ili kunakili na muhuri wa muda</string>
+            <string name="revanced_copy_video_url_button_summary_off">Kitufe cha kunakili URL ya video hakijaonyeshwa</string>
+            <string name="revanced_copy_video_url_button_timestamp_title">Onyesha kitufe cha kunakili URL ya muhuri wa muda</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_on">Kitufe cha kunakili URL ya muhuri wa muda kimeonyeshwa. Gonga ili kunakili URL ya video na muhuri wa muda. Gonga na ushikilie ili kunakili bila muhuri wa muda</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_off">Kitufe cha kunakili URL ya muhuri wa muda hakijaonyeshwa</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch"/>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">

@@ -189,14 +189,14 @@ Had:
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_success">URL disalin ke papan keratan</string>
-            <string name="revanced_share_copy_url_timestamp_success">URL dengan cap waktu disalin</string>
-            <string name="revanced_copy_video_url_title">Paparkan butang salin URL video</string>
-            <string name="revanced_copy_video_url_summary_on">Butang salin URL video dipaparkan. Ketik untuk menyalin URL video. Ketik dan tahan untuk menyalin dengan cap waktu</string>
-            <string name="revanced_copy_video_url_summary_off">Butang salin URL video tidak dipaparkan</string>
-            <string name="revanced_copy_video_url_timestamp_title">Paparkan butang salin URL cap waktu</string>
-            <string name="revanced_copy_video_url_timestamp_summary_on">Butang salin URL cap waktu dipaparkan. Ketik untuk menyalin URL video dengan cap waktu. Ketik dan tahan untuk menyalin tanpa cap waktu</string>
-            <string name="revanced_copy_video_url_timestamp_summary_off">Butang salin URL cap waktu tidak dipaparkan</string>
+            <string name="revanced_share_copy_url_button_success">URL disalin ke papan keratan</string>
+            <string name="revanced_share_copy_url_button_timestamp_success">URL dengan cap waktu disalin</string>
+            <string name="revanced_copy_video_url_button_title">Paparkan butang salin URL video</string>
+            <string name="revanced_copy_video_url_button_summary_on">Butang salin URL video dipaparkan. Ketik untuk menyalin URL video. Ketik dan tahan untuk menyalin dengan cap waktu</string>
+            <string name="revanced_copy_video_url_button_summary_off">Butang salin URL video tidak dipaparkan</string>
+            <string name="revanced_copy_video_url_button_timestamp_title">Paparkan butang salin URL cap waktu</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_on">Butang salin URL cap waktu dipaparkan. Ketik untuk menyalin URL video dengan cap waktu. Ketik dan tahan untuk menyalin tanpa cap waktu</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_off">Butang salin URL cap waktu tidak dipaparkan</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch"/>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">

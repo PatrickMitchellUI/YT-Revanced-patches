@@ -181,14 +181,14 @@ Second \"item\" text"</string>
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_success">ສຳເນົາ URL ໃສ່ຄລິບບອດແລ້ວ</string>
-            <string name="revanced_share_copy_url_timestamp_success">ສຳເນົາ URL ພ້ອມເຄື່ອງໝາຍເວລາແລ້ວ</string>
-            <string name="revanced_copy_video_url_title">ສະແດງປຸ່ມສຳເນົາ URL ວິດີໂອ</string>
-            <string name="revanced_copy_video_url_summary_on">ປຸ່ມສຳເນົາ URL ວິດີໂອຖືກສະແດງ. ແຕະເພື່ອສຳເນົາ URL ວິດີໂອ. ແຕະຄ້າງໄວ້ເພື່ອສຳເນົາພ້ອມເຄື່ອງໝາຍເວລາ</string>
-            <string name="revanced_copy_video_url_summary_off">ປຸ່ມສຳເນົາ URL ວິດີໂອບໍ່ຖືກສະແດງ</string>
-            <string name="revanced_copy_video_url_timestamp_title">ສະແດງປຸ່ມສຳເນົາ URL ເຄື່ອງໝາຍເວລາ</string>
-            <string name="revanced_copy_video_url_timestamp_summary_on">ປຸ່ມສຳເນົາ URL ເຄື່ອງໝາຍເວລາຖືກສະແດງ. ແຕະເພື່ອສຳເນົາ URL ວິດີໂອພ້ອມເຄື່ອງໝາຍເວລາ. ແຕະຄ້າງໄວ້ເພື່ອສຳເນົາໂດຍບໍ່ມີເຄື່ອງໝາຍເວລາ</string>
-            <string name="revanced_copy_video_url_timestamp_summary_off">ປຸ່ມສຳເນົາ URL ເຄື່ອງໝາຍເວລາບໍ່ຖືກສະແດງ</string>
+            <string name="revanced_share_copy_url_button_success">ສຳເນົາ URL ໃສ່ຄລິບບອດແລ້ວ</string>
+            <string name="revanced_share_copy_url_button_timestamp_success">ສຳເນົາ URL ພ້ອມເຄື່ອງໝາຍເວລາແລ້ວ</string>
+            <string name="revanced_copy_video_url_button_title">ສະແດງປຸ່ມສຳເນົາ URL ວິດີໂອ</string>
+            <string name="revanced_copy_video_url_button_summary_on">ປຸ່ມສຳເນົາ URL ວິດີໂອຖືກສະແດງ. ແຕະເພື່ອສຳເນົາ URL ວິດີໂອ. ແຕະຄ້າງໄວ້ເພື່ອສຳເນົາພ້ອມເຄື່ອງໝາຍເວລາ</string>
+            <string name="revanced_copy_video_url_button_summary_off">ປຸ່ມສຳເນົາ URL ວິດີໂອບໍ່ຖືກສະແດງ</string>
+            <string name="revanced_copy_video_url_button_timestamp_title">ສະແດງປຸ່ມສຳເນົາ URL ເຄື່ອງໝາຍເວລາ</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_on">ປຸ່ມສຳເນົາ URL ເຄື່ອງໝາຍເວລາຖືກສະແດງ. ແຕະເພື່ອສຳເນົາ URL ວິດີໂອພ້ອມເຄື່ອງໝາຍເວລາ. ແຕະຄ້າງໄວ້ເພື່ອສຳເນົາໂດຍບໍ່ມີເຄື່ອງໝາຍເວລາ</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_off">ປຸ່ມສຳເນົາ URL ເຄື່ອງໝາຍເວລາບໍ່ຖືກສະແດງ</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch"/>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">

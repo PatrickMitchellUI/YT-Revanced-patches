@@ -189,14 +189,14 @@ Mugaketak:
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_success">URLa arbelera kopiatu da</string>
-            <string name="revanced_share_copy_url_timestamp_success">URLa denbora-markarekin kopiatu da</string>
-            <string name="revanced_copy_video_url_title">Erakutsi bideoaren URLaren kopia botoia</string>
-            <string name="revanced_copy_video_url_summary_on">Bideoaren URLaren kopia botoia ikusgai dago. Sakatu bideoaren URLa kopiatzeko. Luze sakatu denbora-markarekin kopiatzeko</string>
-            <string name="revanced_copy_video_url_summary_off">Bideoaren URLaren kopia botoia ez dago ikusgai</string>
-            <string name="revanced_copy_video_url_timestamp_title">Erakutsi denbora-markaren URLaren kopia botoia</string>
-            <string name="revanced_copy_video_url_timestamp_summary_on">Denbora-markaren URLaren kopia botoia ikusgai dago. Sakatu denbora-markarekin bideoaren URLa kopiatzeko. Luze sakatu denbora-markarik gabe kopiatzeko</string>
-            <string name="revanced_copy_video_url_timestamp_summary_off">Denbora-markaren URLaren kopia botoia ez dago ikusgai</string>
+            <string name="revanced_share_copy_url_button_success">URLa arbelera kopiatu da</string>
+            <string name="revanced_share_copy_url_button_timestamp_success">URLa denbora-markarekin kopiatu da</string>
+            <string name="revanced_copy_video_url_button_title">Erakutsi bideoaren URLaren kopia botoia</string>
+            <string name="revanced_copy_video_url_button_summary_on">Bideoaren URLaren kopia botoia ikusgai dago. Sakatu bideoaren URLa kopiatzeko. Luze sakatu denbora-markarekin kopiatzeko</string>
+            <string name="revanced_copy_video_url_button_summary_off">Bideoaren URLaren kopia botoia ez dago ikusgai</string>
+            <string name="revanced_copy_video_url_button_timestamp_title">Erakutsi denbora-markaren URLaren kopia botoia</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_on">Denbora-markaren URLaren kopia botoia ikusgai dago. Sakatu denbora-markarekin bideoaren URLa kopiatzeko. Luze sakatu denbora-markarik gabe kopiatzeko</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_off">Denbora-markaren URLaren kopia botoia ez dago ikusgai</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch"/>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">

@@ -39,14 +39,14 @@ private val reloadVideoResourcePatch = resourcePatch {
         addResources("youtube", "interaction.reload.reloadVideoResourcePatch")
 
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("revanced_reload_video", summaryKey = null),
+            SwitchPreference("revanced_reload_video_button", summaryKey = null),
         )
 
         copyResources(
             "reloadbutton",
             ResourceGroup(
                 "drawable",
-                "revanced_reload_video.xml",
+                "revanced_reload_video_button.xml",
             ),
         )
     }
@@ -70,7 +70,7 @@ private const val EXTENSION_PLAYER_INTERFACE =
     "Lapp/revanced/extension/youtube/patches/ReloadVideoPatch\$PlayerInterface;"
 
 @Suppress("unused")
-val reloadVideoPatch = bytecodePatch(
+val reloadVideoButtonPatch = bytecodePatch(
     name = "Reload video",
     description = "Adds options to display buttons in the video player to reload video.",
 ) {

@@ -197,14 +197,14 @@ Second \"item\" text"</string>
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_success">URL ಕ್ಲಿಪ್‌ಬೋರ್ಡ್‌ಗೆ ನಕಲಿಸಲಾಗಿದೆ</string>
-            <string name="revanced_share_copy_url_timestamp_success">ಸಮಯದ ಮುದ್ರೆಯೊಂದಿಗೆ URL ನಕಲಿಸಲಾಗಿದೆ</string>
-            <string name="revanced_copy_video_url_title">ವೀಡಿಯೊ URL ನಕಲಿಸುವ ಬಟನ್ ತೋರಿಸಿ</string>
-            <string name="revanced_copy_video_url_summary_on">ವೀಡಿಯೊ URL ನಕಲಿಸುವ ಬಟನ್ ಅನ್ನು ತೋರಿಸಲಾಗಿದೆ. ವೀಡಿಯೊ URL ಅನ್ನು ನಕಲಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ. ಸಮಯದ ಮುದ್ರೆಯೊಂದಿಗೆ ನಕಲಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ ಮತ್ತು ಹಿಡಿದುಕೊಳ್ಳಿ</string>
-            <string name="revanced_copy_video_url_summary_off">ವೀಡಿಯೊ URL ನಕಲಿಸುವ ಬಟನ್ ಅನ್ನು ತೋರಿಸಿಲ್ಲ</string>
-            <string name="revanced_copy_video_url_timestamp_title">ಸಮಯದ ಮುದ್ರೆ URL ನಕಲಿಸುವ ಬಟನ್ ತೋರಿಸಿ</string>
-            <string name="revanced_copy_video_url_timestamp_summary_on">ಸಮಯದ ಮುದ್ರೆ URL ನಕಲಿಸುವ ಬಟನ್ ಅನ್ನು ತೋರಿಸಲಾಗಿದೆ. ಸಮಯದ ಮುದ್ರೆಯೊಂದಿಗೆ ವೀಡಿಯೊ URL ಅನ್ನು ನಕಲಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ. ಸಮಯದ ಮುದ್ರೆಯಿಲ್ಲದೆ ನಕಲಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ ಮತ್ತು ಹಿಡಿದುಕೊಳ್ಳಿ</string>
-            <string name="revanced_copy_video_url_timestamp_summary_off">ಸಮಯದ ಮುದ್ರೆ URL ನಕಲಿಸುವ ಬಟನ್ ಅನ್ನು ತೋರಿಸಿಲ್ಲ</string>
+            <string name="revanced_share_copy_url_button_success">URL ಕ್ಲಿಪ್‌ಬೋರ್ಡ್‌ಗೆ ನಕಲಿಸಲಾಗಿದೆ</string>
+            <string name="revanced_share_copy_url_button_timestamp_success">ಸಮಯದ ಮುದ್ರೆಯೊಂದಿಗೆ URL ನಕಲಿಸಲಾಗಿದೆ</string>
+            <string name="revanced_copy_video_url_button_title">ವೀಡಿಯೊ URL ನಕಲಿಸುವ ಬಟನ್ ತೋರಿಸಿ</string>
+            <string name="revanced_copy_video_url_button_summary_on">ವೀಡಿಯೊ URL ನಕಲಿಸುವ ಬಟನ್ ಅನ್ನು ತೋರಿಸಲಾಗಿದೆ. ವೀಡಿಯೊ URL ಅನ್ನು ನಕಲಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ. ಸಮಯದ ಮುದ್ರೆಯೊಂದಿಗೆ ನಕಲಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ ಮತ್ತು ಹಿಡಿದುಕೊಳ್ಳಿ</string>
+            <string name="revanced_copy_video_url_button_summary_off">ವೀಡಿಯೊ URL ನಕಲಿಸುವ ಬಟನ್ ಅನ್ನು ತೋರಿಸಿಲ್ಲ</string>
+            <string name="revanced_copy_video_url_button_timestamp_title">ಸಮಯದ ಮುದ್ರೆ URL ನಕಲಿಸುವ ಬಟನ್ ತೋರಿಸಿ</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_on">ಸಮಯದ ಮುದ್ರೆ URL ನಕಲಿಸುವ ಬಟನ್ ಅನ್ನು ತೋರಿಸಲಾಗಿದೆ. ಸಮಯದ ಮುದ್ರೆಯೊಂದಿಗೆ ವೀಡಿಯೊ URL ಅನ್ನು ನಕಲಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ. ಸಮಯದ ಮುದ್ರೆಯಿಲ್ಲದೆ ನಕಲಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ ಮತ್ತು ಹಿಡಿದುಕೊಳ್ಳಿ</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_off">ಸಮಯದ ಮುದ್ರೆ URL ನಕಲಿಸುವ ಬಟನ್ ಅನ್ನು ತೋರಿಸಿಲ್ಲ</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch"/>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">

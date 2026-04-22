@@ -607,14 +607,14 @@ Second \"item\" text"</string>
             <string name="revanced_hide_video_ads_summary_off">已顯示影片廣告</string>
         </patch>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_success">已將網址複製到剪貼簿</string>
-            <string name="revanced_share_copy_url_timestamp_success">已複製時間戳記網址</string>
-            <string name="revanced_copy_video_url_title">顯示複製影片網址按鈕</string>
-            <string name="revanced_copy_video_url_summary_on">「複製影片網址」按鈕已顯示。輕觸即可複製影片網址。長按即可複製附時間戳記的網址</string>
-            <string name="revanced_copy_video_url_summary_off">「複製影片網址」按鈕未顯示</string>
-            <string name="revanced_copy_video_url_timestamp_title">顯示複製時間戳記網址按鈕</string>
-            <string name="revanced_copy_video_url_timestamp_summary_on">「複製時間戳記網址」按鈕已顯示。輕觸即可複製附時間戳記的影片網址。長按即可複製不附時間戳記的網址</string>
-            <string name="revanced_copy_video_url_timestamp_summary_off">「複製時間戳記網址」按鈕未顯示</string>
+            <string name="revanced_share_copy_url_button_success">已將網址複製到剪貼簿</string>
+            <string name="revanced_share_copy_url_button_timestamp_success">已複製時間戳記網址</string>
+            <string name="revanced_copy_video_url_button_title">顯示複製影片網址按鈕</string>
+            <string name="revanced_copy_video_url_button_summary_on">「複製影片網址」按鈕已顯示。輕觸即可複製影片網址。長按即可複製附時間戳記的網址</string>
+            <string name="revanced_copy_video_url_button_summary_off">「複製影片網址」按鈕未顯示</string>
+            <string name="revanced_copy_video_url_button_timestamp_title">顯示複製時間戳記網址按鈕</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_on">「複製時間戳記網址」按鈕已顯示。輕觸即可複製附時間戳記的影片網址。長按即可複製不附時間戳記的網址</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_off">「複製時間戳記網址」按鈕未顯示</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
             <string name="revanced_remove_viewer_discretion_dialog_title">移除觀眾謹慎觀看對話方塊</string>

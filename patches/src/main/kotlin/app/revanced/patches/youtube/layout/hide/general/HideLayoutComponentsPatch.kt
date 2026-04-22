@@ -168,8 +168,6 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
         SwitchPreference("revanced_hide_live_chat_donators_bar"),
         SwitchPreference("revanced_hide_live_chat_replay_button"),
         SwitchPreference("revanced_hide_medical_panels"),
-        SwitchPreference("revanced_hide_quick_actions"),
-        SwitchPreference("revanced_hide_quick_actions_related_videos"),
         SwitchPreference("revanced_hide_subscribers_community_guidelines"),
         SwitchPreference("revanced_hide_timed_reactions"),
         SwitchPreference("revanced_hide_video_title")

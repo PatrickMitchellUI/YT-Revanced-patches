@@ -72,8 +72,27 @@ val hideVideoActionButtonsPatch = resourcePatch(
                 "revanced_hide_buttons_screen",
                 preferences = preferences,
             ),
+            PreferenceScreenPreference(
+                key = "revanced_quick_actions_screen",
+                sorting = PreferenceScreenPreference.Sorting.UNSORTED,
+                preferences = setOf(
+                    SwitchPreference("revanced_hide_quick_actions_ask_button"),
+                    SwitchPreference("revanced_hide_quick_actions_comments_button"),
+                    SwitchPreference("revanced_hide_quick_actions_dislike_button"),
+                    SwitchPreference("revanced_hide_quick_actions_like_button"),
+                    SwitchPreference("revanced_hide_quick_actions_live_chat_button"),
+                    SwitchPreference("revanced_hide_quick_actions_mix_button"),
+                    SwitchPreference("revanced_hide_quick_actions_more_button"),
+                    SwitchPreference("revanced_hide_quick_actions_more_videos_button"),
+                    SwitchPreference("revanced_hide_quick_actions_playlist_button"),
+                    SwitchPreference("revanced_hide_quick_actions_save_button"),
+                    SwitchPreference("revanced_hide_quick_actions_share_button"),
+                    SwitchPreference("revanced_hide_quick_actions"),
+                ),
+            ),
         )
 
         addLithoFilter("Lapp/revanced/extension/youtube/patches/litho/VideoActionButtonsFilter;")
+        addLithoFilter("Lapp/revanced/extension/youtube/patches/litho/QuickActionButtonsFilter;")
     }
 }

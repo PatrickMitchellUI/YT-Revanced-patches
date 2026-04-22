@@ -189,14 +189,14 @@ Second \"item\" text"</string>
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_success">URL-то е копирано во таблата со исечоци</string>
-            <string name="revanced_share_copy_url_timestamp_success">URL-то со временска ознака е копирано</string>
-            <string name="revanced_copy_video_url_title">Прикажи копче за копирање URL на видео</string>
-            <string name="revanced_copy_video_url_summary_on">Копчето за копирање URL на видео е прикажано. Допрете за да копирате URL на видео. Допрете и задржете за да копирате со временска ознака</string>
-            <string name="revanced_copy_video_url_summary_off">Копчето за копирање URL на видео не е прикажано</string>
-            <string name="revanced_copy_video_url_timestamp_title">Прикажи копче за копирање URL со временска ознака</string>
-            <string name="revanced_copy_video_url_timestamp_summary_on">Копчето за копирање URL со временска ознака е прикажано. Допрете за да копирате URL на видео со временска ознака. Допрете и задржете за да копирате без временска ознака</string>
-            <string name="revanced_copy_video_url_timestamp_summary_off">Копчето за копирање URL со временска ознака не е прикажано</string>
+            <string name="revanced_share_copy_url_button_success">URL-то е копирано во таблата со исечоци</string>
+            <string name="revanced_share_copy_url_button_timestamp_success">URL-то со временска ознака е копирано</string>
+            <string name="revanced_copy_video_url_button_title">Прикажи копче за копирање URL на видео</string>
+            <string name="revanced_copy_video_url_button_summary_on">Копчето за копирање URL на видео е прикажано. Допрете за да копирате URL на видео. Допрете и задржете за да копирате со временска ознака</string>
+            <string name="revanced_copy_video_url_button_summary_off">Копчето за копирање URL на видео не е прикажано</string>
+            <string name="revanced_copy_video_url_button_timestamp_title">Прикажи копче за копирање URL со временска ознака</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_on">Копчето за копирање URL со временска ознака е прикажано. Допрете за да копирате URL на видео со временска ознака. Допрете и задржете за да копирате без временска ознака</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_off">Копчето за копирање URL со временска ознака не е прикажано</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch"/>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">

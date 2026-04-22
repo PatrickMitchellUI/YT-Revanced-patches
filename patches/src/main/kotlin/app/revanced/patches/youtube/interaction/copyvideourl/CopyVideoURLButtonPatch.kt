@@ -5,11 +5,12 @@ import app.revanced.patcher.patch.resourcePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
+import app.revanced.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
+import app.revanced.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
 import app.revanced.patches.youtube.misc.playercontrols.addBottomControl
 import app.revanced.patches.youtube.misc.playercontrols.initializeBottomControl
 import app.revanced.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
 import app.revanced.patches.youtube.misc.playercontrols.playerControlsPatch
-import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
 import app.revanced.patches.youtube.video.information.videoInformationPatch
 import app.revanced.util.ResourceGroup
@@ -25,11 +26,6 @@ private val copyVideoURLResourcePatch = resourcePatch {
     apply {
         addResources("youtube", "interaction.copyvideourl.copyVideoURLResourcePatch")
 
-        PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("revanced_copy_video_url"),
-            SwitchPreference("revanced_copy_video_url_timestamp"),
-        )
-
         copyResources(
             "copyvideourl",
             ResourceGroup(
@@ -43,12 +39,13 @@ private val copyVideoURLResourcePatch = resourcePatch {
 }
 
 @Suppress("unused")
-val copyVideoURLPatch = bytecodePatch(
+val copyVideoURLButtonPatch = bytecodePatch(
     name = "Copy video URL",
     description = "Adds an option to display a button in the video player to copy the video URL.",
 ) {
     dependsOn(
         copyVideoURLResourcePatch,
+        playerOverlayButtonsSettingsPatch,
         playerControlsPatch,
         videoInformationPatch,
     )
@@ -66,6 +63,11 @@ val copyVideoURLPatch = bytecodePatch(
     )
 
     apply {
+        addPlayerOverlayPreferences(
+            SwitchPreference("revanced_copy_video_url_button"),
+            SwitchPreference("revanced_copy_video_url_button_timestamp"),
+        )
+
         val buttonDescriptor = "Lapp/revanced/extension/youtube/videoplayer/CopyVideoURLButton;"
 
         initializeBottomControl(buttonDescriptor)

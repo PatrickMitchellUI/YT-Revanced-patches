@@ -189,14 +189,14 @@ MicroG үшін батареяны оңтайландыруды өшіру ба�
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_success">URL мекенжайы алмасу буферіне көшірілді</string>
-            <string name="revanced_share_copy_url_timestamp_success">Уақыт белгісі бар URL көшірілді</string>
-            <string name="revanced_copy_video_url_title">Бейне URL мекенжайын көшіру түймесін көрсету</string>
-            <string name="revanced_copy_video_url_summary_on">Бейне URL мекенжайын көшіру түймесі көрсетілген. Бейне URL мекенжайын көшіру үшін түртіңіз. Уақыт белгісімен көшіру үшін түртіп ұстаңыз</string>
-            <string name="revanced_copy_video_url_summary_off">Бейне URL мекенжайын көшіру түймесі көрсетілмеген</string>
-            <string name="revanced_copy_video_url_timestamp_title">Уақыт белгісі бар URL көшіру түймесін көрсету</string>
-            <string name="revanced_copy_video_url_timestamp_summary_on">Уақыт белгісі бар URL көшіру түймесі көрсетілген. Уақыт белгісі бар бейне URL мекенжайын көшіру үшін түртіңіз. Уақыт белгісінсіз көшіру үшін түртіп ұстаңыз</string>
-            <string name="revanced_copy_video_url_timestamp_summary_off">Уақыт белгісі бар URL көшіру түймесі көрсетілмеген</string>
+            <string name="revanced_share_copy_url_button_success">URL мекенжайы алмасу буферіне көшірілді</string>
+            <string name="revanced_share_copy_url_button_timestamp_success">Уақыт белгісі бар URL көшірілді</string>
+            <string name="revanced_copy_video_url_button_title">Бейне URL мекенжайын көшіру түймесін көрсету</string>
+            <string name="revanced_copy_video_url_button_summary_on">Бейне URL мекенжайын көшіру түймесі көрсетілген. Бейне URL мекенжайын көшіру үшін түртіңіз. Уақыт белгісімен көшіру үшін түртіп ұстаңыз</string>
+            <string name="revanced_copy_video_url_button_summary_off">Бейне URL мекенжайын көшіру түймесі көрсетілмеген</string>
+            <string name="revanced_copy_video_url_button_timestamp_title">Уақыт белгісі бар URL көшіру түймесін көрсету</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_on">Уақыт белгісі бар URL көшіру түймесі көрсетілген. Уақыт белгісі бар бейне URL мекенжайын көшіру үшін түртіңіз. Уақыт белгісінсіз көшіру үшін түртіп ұстаңыз</string>
+            <string name="revanced_copy_video_url_button_timestamp_summary_off">Уақыт белгісі бар URL көшіру түймесі көрсетілмеген</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch"/>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">
