@@ -786,13 +786,13 @@ Adjust volume by swiping vertically on the right side of the screen"</string>
             <string name="revanced_disable_auto_captions_summary_off">Auto captions are enabled</string>
         </patch>
         <patch id="layout.buttons.action.hideButtonsPatch">
-            <string name="revanced_hide_buttons_screen_title">Action buttons</string>
-            <string name="revanced_hide_buttons_screen_summary">Hide or show buttons under videos</string>
-            <string name="revanced_quick_actions_screen_title">Quick actions</string>
-            <string name="revanced_quick_actions_screen_summary">Hide or show fullscreen quick actions related components</string>
-            <string name="revanced_hide_quick_actions_title">Hide Quick actions</string>
-            <string name="revanced_hide_quick_actions_summary_on">Quick actions are hidden</string>
-            <string name="revanced_hide_quick_actions_summary_off">Quick actions are shown</string>
+            <string name="revanced_action_buttons_screen_title">Action buttons</string>
+            <string name="revanced_action_buttons_screen_summary">Hide or show action buttons in fullscreen and portrait</string>
+            <string name="revanced_portrait_buttons">Portrait buttons</string>
+            <string name="revanced_fullscreen_buttons">Fullscreen buttons</string>
+            <string name="revanced_hide_quick_actions_title">Hide action bar</string>
+            <string name="revanced_hide_quick_actions_summary_on">Action bar is hidden</string>
+            <string name="revanced_hide_quick_actions_summary_off">Action bar is shown</string>
             <string name="revanced_hide_quick_actions_ask_button_title">Hide Ask</string>
             <string name="revanced_hide_quick_actions_ask_button_summary_on">Ask button is hidden</string>
             <string name="revanced_hide_quick_actions_ask_button_summary_off">Ask button is shown</string>

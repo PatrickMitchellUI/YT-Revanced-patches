@@ -5,6 +5,7 @@ import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
 import app.revanced.patches.shared.misc.litho.filter.addLithoFilter
 import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
+import app.revanced.patches.shared.misc.settings.preference.PreferenceCategory
 import app.revanced.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.youtube.misc.litho.filter.lithoFilterPatch
@@ -15,8 +16,7 @@ import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 @Suppress("unused")
 val hideVideoActionButtonsPatch = resourcePatch(
     name = "Hide video action buttons",
-    description = "Adds options to hide action buttons (such as the Download button) under videos. " +
-            "Patching version 20.21.37 or lower can hide more player button types."
+    description = "Adds options to hide video action buttons in fullscreen and portrait modes."
 ) {
     dependsOn(
         resourceMappingPatch,
@@ -40,7 +40,7 @@ val hideVideoActionButtonsPatch = resourcePatch(
     apply {
         addResources("youtube", "layout.buttons.action.hideButtonsPatch")
 
-        val preferences = mutableSetOf(
+        val portraitPreferences = mutableSetOf(
             SwitchPreference("revanced_disable_like_subscribe_glow"),
             SwitchPreference("revanced_hide_download_button"),
             SwitchPreference("revanced_hide_like_dislike_button"),
@@ -48,12 +48,11 @@ val hideVideoActionButtonsPatch = resourcePatch(
             SwitchPreference("revanced_hide_save_button"),
             SwitchPreference("revanced_hide_remix_button"),
             SwitchPreference("revanced_hide_share_button"),
-
-            )
+        )
 
         // 20.22+ cannot hide all action buttons because of buffer changes.
         if (!is_20_22_or_greater) {
-            preferences.addAll(
+            portraitPreferences.addAll(
                 listOf(
                     SwitchPreference("revanced_hide_hype_button"),
                     SwitchPreference("revanced_hide_ask_button"),
@@ -69,25 +68,29 @@ val hideVideoActionButtonsPatch = resourcePatch(
 
         PreferenceScreen.PLAYER.addPreferences(
             PreferenceScreenPreference(
-                "revanced_hide_buttons_screen",
-                preferences = preferences,
-            ),
-            PreferenceScreenPreference(
-                key = "revanced_quick_actions_screen",
-                sorting = PreferenceScreenPreference.Sorting.UNSORTED,
+                key = "revanced_action_buttons_screen",
                 preferences = setOf(
-                    SwitchPreference("revanced_hide_quick_actions_ask_button"),
-                    SwitchPreference("revanced_hide_quick_actions_comments_button"),
-                    SwitchPreference("revanced_hide_quick_actions_dislike_button"),
-                    SwitchPreference("revanced_hide_quick_actions_like_button"),
-                    SwitchPreference("revanced_hide_quick_actions_live_chat_button"),
-                    SwitchPreference("revanced_hide_quick_actions_mix_button"),
-                    SwitchPreference("revanced_hide_quick_actions_more_button"),
-                    SwitchPreference("revanced_hide_quick_actions_more_videos_button"),
-                    SwitchPreference("revanced_hide_quick_actions_playlist_button"),
-                    SwitchPreference("revanced_hide_quick_actions_save_button"),
-                    SwitchPreference("revanced_hide_quick_actions_share_button"),
-                    SwitchPreference("revanced_hide_quick_actions"),
+                    PreferenceCategory(
+                        titleKey = "revanced_portrait_buttons",
+                        preferences = portraitPreferences,
+                    ),
+                    PreferenceCategory(
+                        titleKey = "revanced_fullscreen_buttons",
+                        preferences = setOf(
+                            SwitchPreference("revanced_hide_quick_actions"),
+                            SwitchPreference("revanced_hide_quick_actions_ask_button"),
+                            SwitchPreference("revanced_hide_quick_actions_comments_button"),
+                            SwitchPreference("revanced_hide_quick_actions_dislike_button"),
+                            SwitchPreference("revanced_hide_quick_actions_like_button"),
+                            SwitchPreference("revanced_hide_quick_actions_live_chat_button"),
+                            SwitchPreference("revanced_hide_quick_actions_mix_button"),
+                            SwitchPreference("revanced_hide_quick_actions_more_button"),
+                            SwitchPreference("revanced_hide_quick_actions_more_videos_button"),
+                            SwitchPreference("revanced_hide_quick_actions_playlist_button"),
+                            SwitchPreference("revanced_hide_quick_actions_save_button"),
+                            SwitchPreference("revanced_hide_quick_actions_share_button"),
+                        ),
+                    ),
                 ),
             ),
         )
