@@ -218,9 +218,6 @@ internal val BytecodePatchContext.miniplayerOnCloseHandlerMethod by gettingFirst
     )
 }
 
-internal const val YOUTUBE_PLAYER_OVERLAYS_LAYOUT_CLASS_NAME =
-    "Lcom/google/android/apps/youtube/app/common/player/overlay/YouTubePlayerOverlaysLayout;"
-
 internal val BytecodePatchContext.miniplayerSetIconsMethod by gettingFirstMethodDeclaratively {
     returnType("V")
     parameterTypes("I", "Ljava/lang/Runnable;")

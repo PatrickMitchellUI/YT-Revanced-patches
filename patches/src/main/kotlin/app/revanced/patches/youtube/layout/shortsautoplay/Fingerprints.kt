@@ -22,7 +22,13 @@ internal val BytecodePatchContext.reelPlaybackRepeatMethod by getting {
     firstMethodDeclaratively {
         returnType("V")
         parameterTypes("L")
-        instructions(method { toString() == "Lcom/google/common/util/concurrent/ListenableFuture;->isDone()Z" })
+        instructions(
+            anyOf(
+                method { toString() == "Lcom/google/common/util/concurrent/ListenableFuture;->isDone()Z" },
+                // 21.17+
+                method { toString() == "Lj\$/util/Optional;->ofNullable(Ljava/lang/Object;)Lj\$/util/Optional;" },
+            ),
+        )
     }
 } using {
     firstImmutableMethodDeclaratively {
