@@ -26,15 +26,17 @@ public final class HidePlayerOverlayButtonsPatch {
     /**
      * Injection point.
      */
-    public static int getCastButtonOverrideV2(int original) {
+    public static int hideCastButton(int original) {
         return Settings.HIDE_CAST_BUTTON.get() ? View.GONE : original;
     }
 
     /**
      * Injection point.
      */
-    public static boolean getCastButtonOverrideV2(boolean original) {
-        if (Settings.HIDE_CAST_BUTTON.get()) return false;
+    public static boolean getCastButtonOverride(boolean original) {
+        if (Settings.HIDE_CAST_BUTTON.get()) {
+            return false;
+        }
 
         return original;
     }

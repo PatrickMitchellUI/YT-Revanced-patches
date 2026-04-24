@@ -100,13 +100,20 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
 
         // region Hide cast button.
 
-        mediaRouteButtonMethod.addInstructions(
-            0,
-            """
-                invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->getCastButtonOverrideV2(I)I
-                move-result p1
-            """,
-        )
+        playerButtonMethodMatch.let {
+            it.method.apply {
+                val setVisibilityIndex = it[0]
+                val visibilityRegister = getInstruction<FiveRegisterInstruction>(setVisibilityIndex).registerD
+
+                addInstructions(
+                    setVisibilityIndex,
+                    """
+                        invoke-static { v$visibilityRegister }, $EXTENSION_CLASS_DESCRIPTOR->hideCastButton(I)I
+                        move-result v$visibilityRegister
+                    """,
+                )
+            }
+        }
 
         if (is_20_28_or_greater) {
             arrayOf(
@@ -115,7 +122,7 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
             ).forEach { match ->
                 match.method.insertLiteralOverride(
                     match[0],
-                    "$EXTENSION_CLASS_DESCRIPTOR->getCastButtonOverrideV2(Z)Z",
+                    "$EXTENSION_CLASS_DESCRIPTOR->getCastButtonOverride(Z)Z",
                 )
             }
         }

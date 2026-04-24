@@ -6,10 +6,14 @@ import app.revanced.patches.shared.misc.mapping.ResourceType
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val BytecodePatchContext.mediaRouteButtonMethod by gettingFirstMethodDeclaratively {
-    name("setVisibility")
-    definingClass("/MediaRouteButton;")
-    parameterTypes("I")
+internal val BytecodePatchContext.playerButtonMethodMatch by composingFirstMethod {
+    accessFlags(AccessFlags.PRIVATE, AccessFlags.FINAL)
+    returnType("V")
+    parameterTypes()
+    instructions(
+        method("setVisibility"),
+        11208L(),
+    )
 }
 
 internal val BytecodePatchContext.castButtonPlayerFeatureFlagMethodMatch by composingFirstMethod {
