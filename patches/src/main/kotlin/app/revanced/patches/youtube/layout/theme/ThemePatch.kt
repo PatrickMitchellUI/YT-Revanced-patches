@@ -176,13 +176,17 @@ val themePatch = baseThemePatch(
                             "yt_sys_color_baseline_dark_static_black",
                             "yt_sys_color_baseline_light_inverted_background",
                             "yt_sys_color_baseline_light_static_black",
+                            // 21.17+
+                            "yt_sys_color_baseline_mobile_dark_default_base_background",
                         ) else emptySet()
                 },
                 getLightColorNames = {
                     THEME_DEFAULT_LIGHT_COLOR_NAMES + if (is_21_06_or_greater)
                         setOf(
                             "yt_sys_color_baseline_light_base_background",
-                            "yt_sys_color_baseline_light_raised_background"
+                            "yt_sys_color_baseline_light_raised_background",
+                            // 21.17+
+                            "yt_sys_color_baseline_mobile_light_default_base_background",
                         )
                     else emptySet()
                 }
