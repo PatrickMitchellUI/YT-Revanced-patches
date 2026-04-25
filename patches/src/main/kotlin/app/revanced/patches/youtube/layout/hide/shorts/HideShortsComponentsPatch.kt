@@ -31,6 +31,7 @@ import app.revanced.util.findElementByAttributeValueOrThrow
 import app.revanced.util.forEachInstructionAsSequence
 import app.revanced.util.indexOfFirstInstructionOrThrow
 import app.revanced.util.removeFromParent
+import app.revanced.util.addInstructionsAtControlFlowLabel
 import app.revanced.util.returnLate
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
@@ -67,6 +68,7 @@ private val hideShortsComponentsResourcePatch = resourcePatch {
             SwitchPreference("revanced_hide_shorts_subscriptions"),
             SwitchPreference("revanced_hide_shorts_video_description"),
             SwitchPreference("revanced_hide_shorts_history"),
+            SwitchPreference("revanced_disable_shorts_double_tap_to_like"),
 
             PreferenceScreenPreference(
                 key = "revanced_shorts_player_screen",
@@ -274,6 +276,25 @@ val hideShortsComponentsPatch = bytecodePatch(
         // experimental Shorts player. If this is enabled but Shorts player
         // is disabled then the app crashes when the Shorts player is opened.
         renderNextUIFeatureFlagMethod.returnLate(false)
+
+        // endregion
+
+        // region Disable double tap to like.
+
+        doubleTapToLikeLogicMethodMatch.let {
+            val ifEqzIndex = it[-1]
+            it.method.apply {
+                val register = getInstruction<OneRegisterInstruction>(ifEqzIndex).registerA
+
+                addInstructionsAtControlFlowLabel(
+                    ifEqzIndex,
+                    """
+                        invoke-static { v$register }, $FILTER_CLASS_DESCRIPTOR->allowDoubleTapToLike(Z)Z
+                        move-result v$register
+                    """,
+                )
+            }
+        }
 
         // endregion
     }

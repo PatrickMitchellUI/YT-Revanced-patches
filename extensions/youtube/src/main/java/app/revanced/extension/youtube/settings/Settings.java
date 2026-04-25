@@ -352,6 +352,7 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final BooleanSetting DISABLE_RESUMING_SHORTS_ON_STARTUP = new BooleanSetting("revanced_disable_resuming_shorts_on_startup", FALSE);
     public static final BooleanSetting DISABLE_SHORTS_BACKGROUND_PLAYBACK = new BooleanSetting("revanced_shorts_disable_background_playback", FALSE);
     public static final EnumSetting<ShortsPlayerType> SHORTS_PLAYER_TYPE = new EnumSetting<>("revanced_shorts_player_type", ShortsPlayerType.SHORTS_PLAYER);
+    public static final BooleanSetting DISABLE_SHORTS_DOUBLE_TAP_TO_LIKE = new BooleanSetting("revanced_disable_shorts_double_tap_to_like", FALSE);
     public static final BooleanSetting HIDE_SHORTS_AI_BUTTON = new BooleanSetting("revanced_hide_shorts_ai_button", FALSE);
     public static final BooleanSetting HIDE_SHORTS_AUTO_DUBBED_LABEL = new BooleanSetting("revanced_hide_shorts_auto_dubbed_label", FALSE);
     public static final BooleanSetting HIDE_SHORTS_CHANNEL = new BooleanSetting("revanced_hide_shorts_channel", FALSE);

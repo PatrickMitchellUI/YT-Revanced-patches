@@ -2,7 +2,11 @@ package app.revanced.patches.youtube.layout.hide.shorts
 
 import app.revanced.patcher.accessFlags
 import app.revanced.patcher.after
+import app.revanced.patcher.afterAtMost
+import app.revanced.patcher.allOf
 import app.revanced.patcher.composingFirstMethod
+import app.revanced.patcher.custom
+import app.revanced.patcher.field
 import app.revanced.patcher.firstImmutableMethodDeclaratively
 import app.revanced.patcher.firstMethodComposite
 import app.revanced.patcher.firstMethodDeclaratively
@@ -122,5 +126,30 @@ internal val BytecodePatchContext.renderNextUIFeatureFlagMethod by gettingFirstM
     parameterTypes()
     instructions(
         45649743L(),
+    )
+}
+
+internal val BytecodePatchContext.doubleTapToLikeLogicMethodMatch by composingFirstMethod {
+    returnType("Z")
+    parameterTypes("Landroid/view/MotionEvent;")
+
+    var methodDefiningClass = ""
+    custom {
+        methodDefiningClass = definingClass
+        true
+    }
+
+    instructions(
+        255L(),
+        method { toString() == "Landroid/view/MotionEvent;->getEventTime()J" },
+        method { toString() == "Ljava/lang/Math;->hypot(DD)D" },
+        afterAtMost(
+            25,
+            allOf(
+                Opcode.IGET_BOOLEAN(),
+                field { definingClass == methodDefiningClass },
+            ),
+        ),
+        afterAtMost(5, Opcode.IF_EQZ()),
     )
 }
