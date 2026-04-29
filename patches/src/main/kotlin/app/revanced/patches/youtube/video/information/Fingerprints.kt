@@ -1,6 +1,7 @@
 package app.revanced.patches.youtube.video.information
 
 import app.revanced.patcher.accessFlags
+import app.revanced.patcher.afterAtMost
 import app.revanced.patcher.allOf
 import app.revanced.patcher.anyOf
 import app.revanced.patcher.composingFirstMethod
@@ -237,5 +238,19 @@ internal val BytecodePatchContext.channelIdMethod by gettingFirstMethodDeclarati
     parameterTypes("Ljava/lang/Object;")
     instructions(
         "com.google.android.apps.youtube.mdx.watch.LAST_MEALBAR_PROMOTED_LIVE_FEED_CHANNELS"(),
+    )
+}
+
+context(_: BytecodePatchContext)
+internal fun ClassDef.getVideoTimeMethodMatch() = firstMethodComposite {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+    returnType("V")
+    parameterTypes()
+    instructions(
+        method { // getVideoTime()
+            definingClass == type &&
+                    returnType == "J" && parameterTypes.isEmpty()
+        },
+        afterAtMost(5, 69L()),
     )
 }
