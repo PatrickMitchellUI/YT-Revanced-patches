@@ -1,8 +1,10 @@
 package app.revanced.patches.shared.ad
 
+import app.revanced.patcher.extensions.addInstructions
 import app.revanced.patcher.extensions.fieldReference
 import app.revanced.patcher.extensions.getInstruction
 import app.revanced.patcher.extensions.methodReference
+import app.revanced.patcher.immutableClassDef
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
@@ -16,7 +18,7 @@ import app.revanced.util.indexOfFirstInstructionReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+internal const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/revanced/extension/shared/patches/HideFullscreenAdsPatch;"
 
 /**
@@ -62,5 +64,17 @@ internal fun hideFullscreenAdsPatch(
                 )
             }
         }
+
+        // Set close dialog method.
+        val customDialogOnBackPressedMethod =
+            customDialogOnBackPressedParentMethodMatch.immutableClassDef.customDialogOnBackPressedMethod()
+
+        fullscreenAdsCloseDialogMethod.addInstructions(
+            0,
+            """
+                check-cast p0, ${customDialogOnBackPressedMethod.definingClass}
+                invoke-virtual { p0 }, $customDialogOnBackPressedMethod
+            """
+        )
     }
 }
