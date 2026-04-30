@@ -8,6 +8,7 @@ import android.view.WindowManager;
 import androidx.annotation.Nullable;
 
 import app.revanced.extension.shared.Logger;
+import app.revanced.extension.shared.Utils;
 import app.revanced.extension.shared.patches.litho.FilterGroup.ByteArrayFilterGroup;
 import app.revanced.extension.shared.settings.YouTubeAndMusicSettings;
 
@@ -28,6 +29,14 @@ public class HideFullscreenAdsPatch {
         //
         // So the patch calls the 'onBackPressed()' method of the custom dialog class.
         // The 'onBackPressed()' method of the customDialog class handles the OnBackInvokedDispatcher.
+    }
+
+    /**
+     * Injection point.
+     * Invoke only in old clients.
+     */
+    public static void hideFullscreenAds(View view) {
+        Utils.hideViewBy0dpUnderCondition(YouTubeAndMusicSettings.HIDE_FULLSCREEN_ADS, view);
     }
 
     /**

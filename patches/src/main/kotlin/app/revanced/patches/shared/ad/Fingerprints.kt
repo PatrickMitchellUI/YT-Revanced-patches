@@ -7,6 +7,13 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.ClassDef
 
+internal val BytecodePatchContext.interstitialsContainerMethodMatch by composingFirstMethod("overlay_controller_param") {
+    returnType("V")
+    instructions(
+        ResourceType.ID("interstitials_container"),
+    )
+}
+
 internal val BytecodePatchContext.lithoDialogBuilderMethodMatch by composingFirstMethod {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returnType("V")

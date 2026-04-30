@@ -1,5 +1,6 @@
 package app.revanced.patches.shared.ad
 
+import app.revanced.patcher.extensions.addInstruction
 import app.revanced.patcher.extensions.addInstructions
 import app.revanced.patcher.extensions.fieldReference
 import app.revanced.patcher.extensions.getInstruction
@@ -16,6 +17,7 @@ import app.revanced.util.cloneMutableAndPreserveParameters
 import app.revanced.util.findFreeRegister
 import app.revanced.util.indexOfFirstInstructionReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 internal const val EXTENSION_CLASS_DESCRIPTOR =
@@ -40,6 +42,19 @@ internal fun hideFullscreenAdsPatch(
         preferenceScreen.addPreferences(
             SwitchPreference("revanced_hide_fullscreen_ads"),
         )
+
+        // Non-litho view, used in some old clients.
+        interstitialsContainerMethodMatch.let {
+            it.method.apply {
+                val viewIndex = it[0] + 2
+                val register = getInstruction<OneRegisterInstruction>(viewIndex).registerA
+
+                addInstruction(
+                    viewIndex + 1,
+                    "invoke-static { v$register }, ${EXTENSION_CLASS_DESCRIPTOR}->hideFullscreenAds(Landroid/view/View;)V",
+                )
+            }
+        }
 
         lithoDialogBuilderMethodMatch.let {
             it.method.cloneMutableAndPreserveParameters().apply {
