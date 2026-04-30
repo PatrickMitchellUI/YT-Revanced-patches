@@ -1,8 +1,12 @@
 package app.revanced.patches.youtube.misc.backgroundplayback
 
+import app.revanced.com.android.tools.smali.dexlib2.mutable.MutableMethod
+import app.revanced.patcher.CompositeMatch
+import app.revanced.patcher.extensions.addInstructionsWithLabels
 import app.revanced.patcher.extensions.getInstruction
 import app.revanced.patcher.extensions.instructions
 import app.revanced.patcher.extensions.methodReference
+import app.revanced.patcher.firstMethod
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
@@ -21,8 +25,6 @@ import app.revanced.util.addInstructionsAtControlFlowLabel
 import app.revanced.util.findInstructionIndicesReversedOrThrow
 import app.revanced.util.getReference
 import app.revanced.util.insertLiteralOverride
-import app.revanced.util.returnEarly
-import app.revanced.util.returnLate
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
@@ -66,6 +68,10 @@ val removeBackgroundPlaybackRestrictionsPatch = bytecodePatch(
             SwitchPreference("revanced_shorts_disable_background_playback"),
         )
 
+        PreferenceScreen.MISC.addPreferences(
+            SwitchPreference("revanced_remove_background_playback_restrictions"),
+        )
+
         prefBackgroundAndOfflineCategoryId =
             ResourceType.STRING["pref_background_and_offline_category"]
 
@@ -88,37 +94,50 @@ val removeBackgroundPlaybackRestrictionsPatch = bytecodePatch(
             }
         }
 
+        fun MutableMethod.addBackgroundPlaybackIsPatchEnabledHook() {
+            val returnInstruction = if (returnType == "Z") "return v0" else "return-void"
+
+            addInstructionsWithLabels(
+                0,
+                """
+                    invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->isPatchEnabled()Z
+                    move-result v0
+                    if-eqz v0, :disabled
+                    $returnInstruction
+                    :disabled
+                    nop
+                """,
+            )
+        }
+
+        fun CompositeMatch.addBackgroundPlaybackFeatureFlagHook(enable: Boolean) {
+            val methodName = if (enable) "enableFeatureFlag" else "disableFeatureFlag"
+            method.insertLiteralOverride(this[0], "$EXTENSION_CLASS_DESCRIPTOR->$methodName(Z)Z")
+        }
+
         // Enable background playback option in YouTube settings
         backgroundPlaybackSettingsMethod.apply {
-            val booleanCalls = instructions.withIndex().filter {
-                it.value.methodReference?.returnType == "Z"
+            val booleanCalls = instructions.filter {
+                it.methodReference?.returnType == "Z"
             }
 
-            val settingsBooleanIndex = booleanCalls.elementAt(1).index
-
-            val settingsBooleanMethod = navigate(this).to(settingsBooleanIndex).stop()
-
-            settingsBooleanMethod.returnEarly(true)
+            firstMethod(booleanCalls[1].methodReference!!)
+                .addBackgroundPlaybackIsPatchEnabledHook()
         }
 
         // Force allowing background play for Shorts.
-        shortsBackgroundPlaybackFeatureFlagMethod.returnEarly(true)
+        shortsBackgroundPlaybackFeatureFlagMethodMatch.addBackgroundPlaybackFeatureFlagHook(true)
 
         // Force allowing background play for videos labeled for kids.
-        kidsBackgroundPlaybackPolicyControllerMethod.returnEarly()
+        kidsBackgroundPlaybackPolicyControllerMethod.addBackgroundPlaybackIsPatchEnabledHook()
 
         // Fix PiP buttons not working after locking/unlocking device screen.
-        pipInputConsumerFeatureFlagMethodMatch.let {
-            it.method.insertLiteralOverride(
-                it[0],
-                false,
-            )
-        }
+        pipInputConsumerFeatureFlagMethodMatch.addBackgroundPlaybackFeatureFlagHook(false)
 
         if (is_20_29_or_greater) {
             // Client flag that interferes with background playback of some video types.
             // Exact purpose is not clear and it's used in ~ 100 locations.
-            newPlayerTypeEnumFeatureFlagMethod.returnLate(false)
+            newPlayerTypeEnumFeatureFlagMethodMatch.addBackgroundPlaybackFeatureFlagHook(false)
         }
     }
 }

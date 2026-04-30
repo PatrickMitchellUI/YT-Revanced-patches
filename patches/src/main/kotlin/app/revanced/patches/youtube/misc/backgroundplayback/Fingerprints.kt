@@ -72,7 +72,7 @@ internal val BytecodePatchContext.kidsBackgroundPlaybackPolicyControllerMethod b
     literal { 5 }
 }
 
-internal val BytecodePatchContext.shortsBackgroundPlaybackFeatureFlagMethod by gettingFirstMethodDeclaratively {
+internal val BytecodePatchContext.shortsBackgroundPlaybackFeatureFlagMethodMatch by composingFirstMethod {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returnType("Z")
     parameterTypes()
@@ -87,6 +87,6 @@ internal val BytecodePatchContext.pipInputConsumerFeatureFlagMethodMatch by comp
     )
 }
 
-internal val BytecodePatchContext.newPlayerTypeEnumFeatureFlagMethod by gettingFirstMethodDeclaratively {
+internal val BytecodePatchContext.newPlayerTypeEnumFeatureFlagMethodMatch by composingFirstMethod {
     instructions(45698813L())
 }

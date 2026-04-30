@@ -350,7 +350,7 @@ public class Settings extends YouTubeAndMusicSettings {
 
     // Shorts
     public static final BooleanSetting DISABLE_RESUMING_SHORTS_ON_STARTUP = new BooleanSetting("revanced_disable_resuming_shorts_on_startup", FALSE);
-    public static final BooleanSetting DISABLE_SHORTS_BACKGROUND_PLAYBACK = new BooleanSetting("revanced_shorts_disable_background_playback", FALSE);
+    public static final BooleanSetting DISABLE_SHORTS_BACKGROUND_PLAYBACK = new BooleanSetting("revanced_shorts_disable_background_playback", FALSE, true);
     public static final EnumSetting<ShortsPlayerType> SHORTS_PLAYER_TYPE = new EnumSetting<>("revanced_shorts_player_type", ShortsPlayerType.SHORTS_PLAYER);
     public static final BooleanSetting DISABLE_SHORTS_DOUBLE_TAP_TO_LIKE = new BooleanSetting("revanced_disable_shorts_double_tap_to_like", FALSE);
     public static final BooleanSetting HIDE_SHORTS_AI_BUTTON = new BooleanSetting("revanced_hide_shorts_ai_button", FALSE);
@@ -412,6 +412,7 @@ public class Settings extends YouTubeAndMusicSettings {
     // Miscellaneous
     public static final BooleanSetting ANNOUNCEMENTS = new BooleanSetting("revanced_announcements", TRUE);
     public static final IntegerSetting ANNOUNCEMENT_LAST_ID = new IntegerSetting("revanced_announcement_last_id", -1, false, false);
+    public static final BooleanSetting REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS = new BooleanSetting("revanced_remove_background_playback_restrictions", TRUE, true);
     public static final BooleanSetting LOOP_VIDEO = new BooleanSetting("revanced_loop_video", FALSE);
     public static final BooleanSetting LOOP_VIDEO_BUTTON = new BooleanSetting("revanced_loop_video_button", FALSE);
     public static final BooleanSetting PAUSE_ON_AUDIO_INTERRUPT = new BooleanSetting("revanced_pause_on_audio_interrupt", FALSE, true);
