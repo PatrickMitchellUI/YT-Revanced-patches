@@ -66,23 +66,26 @@ internal val BytecodePatchContext.seekMethod by getting {
 
 internal val BytecodePatchContext.videoLengthMethodMatch by getting {
     firstMethodComposite {
-        opcodes(
-            Opcode.MOVE_RESULT_WIDE,
-            Opcode.CMP_LONG,
-            Opcode.IF_LEZ,
-            Opcode.IGET_OBJECT,
-            Opcode.CHECK_CAST,
-            Opcode.INVOKE_VIRTUAL,
-            Opcode.MOVE_RESULT_WIDE,
-            Opcode.GOTO,
-            Opcode.INVOKE_VIRTUAL,
-            Opcode.MOVE_RESULT_WIDE,
-            Opcode.CONST_4,
-            Opcode.INVOKE_VIRTUAL,
+        returnType("V")
+        parameterTypes()
+        instructions(
+            method {
+                definingClass == "Landroid/graphics/Rect;" && name == "set"
+                        && parameterTypes.size == 1 && parameterTypes[0] == "Landroid/graphics/Rect;"
+            },
+
+            method { returnType == "J" },
+            afterAtMost(5, method { returnType == "J" }),
+            afterAtMost(10, method { returnType == "J" }),
+            afterAtMost(10, method { returnType == "J" }),
+
+            method { returnType == "Z" && parameterTypes.isEmpty() },
+            afterAtMost(8, Opcode.CMP_LONG()),
         )
     }
 } using {
     firstImmutableMethodDeclaratively {
+        name("onDraw")
         returnType("V")
         instructions("timed_markers_width"())
     }

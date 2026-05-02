@@ -36,6 +36,7 @@ import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.ThreeRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
@@ -149,16 +150,12 @@ val videoInformationPatch = bytecodePatch(
         }
 
         videoLengthMethodMatch.method.apply {
-            val videoLengthRegisterIndex = videoLengthMethodMatch[-1] - 2
-            val videoLengthRegister =
-                getInstruction<OneRegisterInstruction>(videoLengthRegisterIndex).registerA
-            val dummyRegisterForLong =
-                videoLengthRegister + 1 // Required for long values since they are wide.
+            val index = videoLengthMethodMatch[-1]
+            val register = getInstruction<ThreeRegisterInstruction>(index).registerB
 
-            addInstruction(
-                videoLengthMethodMatch[-1],
-                "invoke-static {v$videoLengthRegister, v$dummyRegisterForLong}, " +
-                        "$EXTENSION_CLASS_DESCRIPTOR->setVideoLength(J)V",
+            addInstructionsAtControlFlowLabel(
+                index,
+                "invoke-static { v$register, v${register + 1} }, $EXTENSION_CLASS_DESCRIPTOR->setVideoLength(J)V",
             )
         }
 
