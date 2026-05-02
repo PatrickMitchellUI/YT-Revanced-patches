@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.ViewGroup
+import android.view.WindowInsets
 import app.revanced.extension.shared.Logger.printDebug
 import app.revanced.extension.shared.Logger.printException
 import app.revanced.extension.youtube.patches.VersionCheckPatch
@@ -21,6 +22,7 @@ import app.revanced.extension.youtube.swipecontrols.controller.gesture.core.Gest
 import app.revanced.extension.youtube.swipecontrols.misc.Rectangle
 import app.revanced.extension.youtube.swipecontrols.views.SwipeControlsOverlayLayout
 import java.lang.ref.WeakReference
+import kotlin.concurrent.Volatile
 
 /**
  * The main controller for volume and brightness swipe controls.
@@ -67,6 +69,12 @@ class SwipeControlsHostActivity : Activity() {
      */
     private val contentRoot
         get() = window.decorView.findViewById<ViewGroup>(android.R.id.content)
+
+    /**
+     * whether the status bar is visible on Android 15+ (edge-to-edge display)
+     */
+    @Volatile
+    var statusBarVisible: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -155,6 +163,18 @@ class SwipeControlsHostActivity : Activity() {
 
         // set current instance reference
         currentHost = WeakReference(this)
+
+        // fix edge-to-edge display
+        // Android 15 (VANILLA_ICE_CREAM, API 35) is referenced as a literal as the extension compiles against an older SDK.
+        if (Build.VERSION.SDK_INT >= 35) {
+            val rootView = contentRoot.parent
+            if (rootView is ViewGroup) {
+                rootView.setOnApplyWindowInsetsListener { _, insets ->
+                    statusBarVisible = insets.isVisible(WindowInsets.Type.statusBars())
+                    insets
+                }
+            }
+        }
     }
 
     /**
