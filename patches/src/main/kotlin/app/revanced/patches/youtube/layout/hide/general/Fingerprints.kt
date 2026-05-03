@@ -12,6 +12,7 @@ import app.revanced.patcher.firstImmutableMethodDeclaratively
 import app.revanced.patcher.firstMethodComposite
 import app.revanced.patcher.firstMethodDeclaratively
 import app.revanced.patcher.gettingFirstMethodDeclaratively
+import app.revanced.patcher.gettingFirstMethodDeclarativelyOrNull
 import app.revanced.patcher.immutableClassDef
 import app.revanced.patcher.instructions
 import app.revanced.patcher.invoke
@@ -384,6 +385,26 @@ internal val BytecodePatchContext.bottomSheetMenuItemBuilderMethodMatch by compo
             }
         ),
         after(Opcode.MOVE_RESULT_OBJECT()),
+        "Text missing for BottomSheetMenuItem."()
+    )
+}
+
+// Experimental app targets have a second bottom sheet menu item builder method that is otherwise
+// identical, but additionally calls toString() on the text. Matched optionally as it is absent on
+// current targets. Replaces the need for matchAll(), which the patcher does not yet support.
+internal val BytecodePatchContext.bottomSheetMenuItemBuilderWithToStringMethod by gettingFirstMethodDeclarativelyOrNull {
+    returnType("L")
+    parameterTypes("L")
+    instructions(
+        allOf(
+            Opcode.INVOKE_STATIC(),
+            method {
+                returnType == "Ljava/lang/CharSequence;" &&
+                        parameterTypes.size == 1 && parameterTypes[0].startsWith("L")
+            }
+        ),
+        after(Opcode.MOVE_RESULT_OBJECT()),
+        method { name == "toString" },
         "Text missing for BottomSheetMenuItem."()
     )
 }

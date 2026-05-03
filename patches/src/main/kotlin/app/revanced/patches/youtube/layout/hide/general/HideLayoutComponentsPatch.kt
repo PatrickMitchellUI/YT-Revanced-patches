@@ -40,6 +40,7 @@ import app.revanced.patches.youtube.misc.settings.settingsPatch
 import app.revanced.util.addInstructionsAtControlFlowLabel
 import app.revanced.util.findFreeRegister
 import app.revanced.util.findInstructionIndicesReversedOrThrow
+import app.revanced.util.indexOfFirstInstructionOrThrow
 import app.revanced.util.indexOfFirstInstructionReversedOrThrow
 import app.revanced.util.injectHideViewCall
 import app.revanced.util.insertLiteralOverride
@@ -709,9 +710,33 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
                 index + 1,
                 """
                         invoke-static { v$register }, ${LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR}->hideFlyoutMenu(Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
-                        move-result-object v$register      
+                        move-result-object v$register
                     """
             )
+        }
+    }
+
+    // Experimental app targets have a second bottom sheet menu item builder method.
+    // Hook it as well if present, skipping if it resolves to the method already hooked above.
+    bottomSheetMenuItemBuilderWithToStringMethod?.let { method ->
+        if (method.toString() != bottomSheetMenuItemBuilderMethodMatch.method.toString()) {
+            method.apply {
+                val moveResultIndex = indexOfFirstInstructionOrThrow {
+                    opcode == Opcode.INVOKE_STATIC && methodReference?.let { reference ->
+                        reference.returnType == "Ljava/lang/CharSequence;" &&
+                                reference.parameterTypes.size == 1
+                    } == true
+                } + 1
+                val register = getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
+
+                addInstructions(
+                    moveResultIndex + 1,
+                    """
+                        invoke-static { v$register }, ${LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR}->hideFlyoutMenu(Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+                        move-result-object v$register
+                    """
+                )
+            }
         }
     }
 
