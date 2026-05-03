@@ -74,6 +74,7 @@ val miniplayerPatch = bytecodePatch(
                     entryValuesKey = "revanced_miniplayer_type_legacy_20_03_entry_values",
                 )
             },
+            SwitchPreference("revanced_miniplayer_disable_resuming"),
             SwitchPreference("revanced_miniplayer_disable_drag_and_drop"),
             SwitchPreference("revanced_miniplayer_disable_horizontal_drag"),
             SwitchPreference("revanced_miniplayer_disable_rounded_corners"),
@@ -158,6 +159,25 @@ val miniplayerPatch = bytecodePatch(
                 """,
             )
         }
+
+        // region Disable resuming miniplayer (Continue watching).
+
+        showMiniplayerCommandMethodMatch.let {
+            it.method.apply {
+                val ifEqzIndex = it[1]
+                val register = getInstruction<OneRegisterInstruction>(ifEqzIndex).registerA
+
+                addInstructions(
+                    ifEqzIndex,
+                    """
+                        invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->disableResumingStartupMiniPlayer(Z)Z
+                        move-result v$register
+                    """,
+                )
+            }
+        }
+
+        // endregion
 
         // region Enable tablet miniplayer.
         // Parts of the YT code is removed in 20.37+ and the legacy player no longer works.

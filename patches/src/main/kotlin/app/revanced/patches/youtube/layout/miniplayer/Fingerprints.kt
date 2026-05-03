@@ -3,6 +3,7 @@
 package app.revanced.patches.youtube.layout.miniplayer
 
 import app.revanced.patcher.accessFlags
+import app.revanced.patcher.after
 import app.revanced.patcher.afterAtMost
 import app.revanced.patcher.allOf
 import app.revanced.patcher.anyOf
@@ -207,6 +208,18 @@ internal val BytecodePatchContext.miniplayerResponseModelSizeCheckMethodMatch by
         Opcode.INVOKE_STATIC,
         Opcode.MOVE_RESULT,
         Opcode.IF_NEZ,
+    )
+}
+
+internal val BytecodePatchContext.showMiniplayerCommandMethodMatch by composingFirstMethod {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+    returnType("V")
+    parameterTypes("L", "Ljava/util/Map;")
+    instructions(
+        Opcode.IF_NEZ(),
+        after(Opcode.IF_EQZ()),
+        164817L(),
+        121253L(),
     )
 }
 

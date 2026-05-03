@@ -217,6 +217,7 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final BooleanSetting HIDE_NOTIFICATION_MEDIA_PREV_NEXT = new BooleanSetting("revanced_hide_notification_media_prev_next", FALSE, true);
 
     // Miniplayer
+    public static final BooleanSetting MINIPLAYER_DISABLE_RESUMING = new BooleanSetting("revanced_miniplayer_disable_resuming", FALSE, true, "revanced_miniplayer_disable_resuming_user_dialog_message");
     public static final EnumSetting<MiniplayerType> MINIPLAYER_TYPE = new EnumSetting<>("revanced_miniplayer_type", MiniplayerType.DEFAULT, true);
     public static final BooleanSetting MINIPLAYER_DISABLE_DRAG_AND_DROP = new BooleanSetting("revanced_miniplayer_disable_drag_and_drop", FALSE, true, new MiniplayerAnyModernAvailability());
     public static final BooleanSetting MINIPLAYER_DISABLE_HORIZONTAL_DRAG = new BooleanSetting("revanced_miniplayer_disable_horizontal_drag", FALSE, true, new MiniplayerHorizontalDragAvailability());
