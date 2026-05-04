@@ -7,6 +7,7 @@ import app.revanced.com.android.tools.smali.dexlib2.mutable.MutableMethod
 import app.revanced.com.android.tools.smali.dexlib2.mutable.MutableMethod.Companion.toMutable
 import app.revanced.patcher.MutablePredicateList
 import app.revanced.patcher.classDef
+import app.revanced.patcher.CompositeMatch
 import app.revanced.patcher.custom
 import app.revanced.patcher.extensions.ExternalLabel
 import app.revanced.patcher.extensions.addInstruction
@@ -171,6 +172,13 @@ internal fun Method.findMethodFromToString(fieldName: String): MutableMethod {
     val methodUsageIndex = findInstructionIndexFromToString(fieldName, false)
     return context.navigate(this).to(methodUsageIndex).stop()
 }
+
+/**
+ * @return The method invoked by the instruction at the given match instruction [index].
+ */
+context(context: BytecodePatchContext)
+internal fun CompositeMatch.getMethodReferenceAtInstructionIndex(index: Int): MutableMethod =
+    context.firstMethod(method.getInstruction(this[index]).methodReference!!)
 
 /**
  * Find the field used for a toString() StringBuilder write of a given String name.

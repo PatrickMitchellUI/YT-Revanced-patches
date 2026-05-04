@@ -1,8 +1,6 @@
 package app.revanced.patches.youtube.interaction.dialog
 
 import app.revanced.patcher.extensions.addInstructionsWithLabels
-import app.revanced.patcher.extensions.getInstruction
-import app.revanced.patcher.extensions.methodReference
 import app.revanced.patcher.immutableClassDef
 import app.revanced.patcher.invoke
 import app.revanced.patcher.patch.bytecodePatch
@@ -13,6 +11,7 @@ import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
 import app.revanced.util.findInstructionIndicesReversedOrThrow
+import app.revanced.util.getMethodReferenceAtInstructionIndex
 import com.android.tools.smali.dexlib2.Opcode
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
@@ -50,8 +49,7 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
         )
 
         allowControversialContentMethodMatch.let {
-            val allowControversialContentMethod =
-                navigate(it.method.getInstruction(it[2]).methodReference!!).stop()
+            val allowControversialContentMethod = it.getMethodReferenceAtInstructionIndex(2)
 
             allowControversialContentMethod.apply {
                 findInstructionIndicesReversedOrThrow(Opcode.RETURN).forEach { index ->

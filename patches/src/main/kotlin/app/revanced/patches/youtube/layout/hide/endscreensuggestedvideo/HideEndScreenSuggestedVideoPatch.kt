@@ -4,15 +4,13 @@ import app.revanced.patcher.extensions.ExternalLabel
 import app.revanced.patcher.extensions.addInstructionsWithLabels
 import app.revanced.patcher.extensions.fieldReference
 import app.revanced.patcher.extensions.getInstruction
-import app.revanced.patcher.extensions.methodReference
-import app.revanced.patcher.firstMethod
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import app.revanced.util.getMethodReferenceAtInstructionIndex
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/revanced/extension/youtube/patches/HideEndScreenSuggestedVideoPatch;"
@@ -49,9 +47,7 @@ val hideEndScreenSuggestedVideoPatch = bytecodePatch(
             SwitchPreference("revanced_hide_end_screen_suggested_video"),
         )
 
-        val endScreenMethod = removeOnLayoutChangeListenerMethodMatch.let {
-            firstMethod(it.method.getInstruction<ReferenceInstruction>(it[1]).methodReference!!)
-        }
+        val endScreenMethod = removeOnLayoutChangeListenerMethodMatch.getMethodReferenceAtInstructionIndex(1)
 
 
         getEndScreenSuggestedVideoMethodMatch(autoNavStatusMethod).let { match ->
