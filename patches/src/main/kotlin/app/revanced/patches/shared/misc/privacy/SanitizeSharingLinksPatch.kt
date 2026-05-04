@@ -8,6 +8,7 @@ import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
+import app.revanced.patches.shared.misc.settings.preference.BasePreference
 import app.revanced.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.revanced.patches.shared.misc.settings.preference.PreferenceCategory
 import app.revanced.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -28,6 +29,7 @@ internal fun sanitizeSharingLinksPatch(
     executeBlock: BytecodePatchContext.() -> Unit = {},
     preferenceScreen: BasePreferenceScreen.Screen,
     replaceMusicLinksWithYouTube: Boolean = false,
+    replaceLinksWithShortener: Boolean = false,
 ) = bytecodePatch(
     name = "Sanitize sharing links",
     description = "Removes the tracking query parameters from shared links.",
@@ -44,15 +46,16 @@ internal fun sanitizeSharingLinksPatch(
         val sanitizePreference = SwitchPreference("revanced_sanitize_sharing_links")
 
         preferenceScreen.addPreferences(
-            if (replaceMusicLinksWithYouTube) {
+            if (replaceMusicLinksWithYouTube || replaceLinksWithShortener) {
+                val preferences = mutableSetOf<BasePreference>(sanitizePreference)
+                if (replaceMusicLinksWithYouTube) preferences += SwitchPreference("revanced_replace_music_with_youtube")
+                if (replaceLinksWithShortener) preferences += SwitchPreference("revanced_replace_links_with_shortener")
+
                 PreferenceCategory(
                     titleKey = null,
                     sorting = Sorting.UNSORTED,
                     tag = "app.revanced.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                    preferences = setOf(
-                        sanitizePreference,
-                        SwitchPreference("revanced_replace_music_with_youtube"),
-                    ),
+                    preferences = preferences,
                 )
             } else {
                 sanitizePreference

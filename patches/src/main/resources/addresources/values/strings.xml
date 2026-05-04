@@ -230,6 +230,9 @@ However, enabling this will also log some user data such as your IP address."</s
             <string name="revanced_replace_music_with_youtube_title">Change share links to youtube.com</string>
             <string name="revanced_replace_music_with_youtube_summary_on">Shared links use youtube.com</string>
             <string name="revanced_replace_music_with_youtube_summary_off">Shared links use music.youtube.com</string>
+            <string name="revanced_replace_links_with_shortener_title">Change share links to youtu.be</string>
+            <string name="revanced_replace_links_with_shortener_summary_on">Shared live stream and Shorts links use youtu.be</string>
+            <string name="revanced_replace_links_with_shortener_summary_off">Shared live stream and Shorts links use their original URLs</string>
         </patch>
         <patch id="layout.hide.general.hideLayoutComponentsPatch">
             <string name="revanced_custom_filter_screen_title">Custom filter</string>

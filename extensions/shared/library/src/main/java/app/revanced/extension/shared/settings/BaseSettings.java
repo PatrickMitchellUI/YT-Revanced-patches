@@ -53,6 +53,7 @@ public class BaseSettings {
 
     public static final BooleanSetting SANITIZE_SHARING_LINKS = new BooleanSetting("revanced_sanitize_sharing_links", TRUE);
     public static final BooleanSetting REPLACE_MUSIC_LINKS_WITH_YOUTUBE = new BooleanSetting("revanced_replace_music_with_youtube", FALSE);
+    public static final BooleanSetting REPLACE_LINKS_WITH_SHORTENER = new BooleanSetting("revanced_replace_links_with_shortener", FALSE);
 
     public static final BooleanSetting CHECK_WATCH_HISTORY_DOMAIN_NAME = new BooleanSetting("revanced_check_watch_history_domain_name", TRUE, false, false);
 

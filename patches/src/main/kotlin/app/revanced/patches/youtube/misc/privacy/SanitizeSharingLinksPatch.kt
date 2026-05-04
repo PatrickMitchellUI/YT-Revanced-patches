@@ -25,5 +25,6 @@ val sanitizeSharingLinksPatch = sanitizeSharingLinksPatch(
             )
         )
     },
-    preferenceScreen = PreferenceScreen.MISC
+    preferenceScreen = PreferenceScreen.MISC,
+    replaceLinksWithShortener = true
 )
