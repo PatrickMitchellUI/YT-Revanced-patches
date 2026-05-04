@@ -8,6 +8,7 @@ import app.revanced.patcher.extensions.getInstruction
 import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patcher.patch.resourcePatch
+import app.revanced.patches.all.misc.fix.openurllinks.removeLinkVerification
 import app.revanced.patches.all.misc.packagename.setOrGetFallbackPackageName
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
@@ -194,6 +195,7 @@ val settingsPatch = bytecodePatch(
         fixPlaybackSpeedWhilePlayingPatch,
         fixContentProviderPatch,
         fixPipChatBarPatch,
+        removeLinkVerification,
         // Currently there is no easy way to make a mandatory patch,
         // so for now this is a dependent of this patch.
         checkEnvironmentPatch,

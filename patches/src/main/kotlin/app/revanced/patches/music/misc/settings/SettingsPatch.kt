@@ -2,6 +2,7 @@ package app.revanced.patches.music.misc.settings
 
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patcher.patch.resourcePatch
+import app.revanced.patches.all.misc.fix.openurllinks.removeLinkVerification
 import app.revanced.patches.all.misc.packagename.setOrGetFallbackPackageName
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
@@ -76,7 +77,8 @@ val settingsPatch = bytecodePatch(
         sharedExtensionPatch,
         settingsResourcePatch,
         addResourcesPatch,
-        versionCheckPatch
+        versionCheckPatch,
+        removeLinkVerification,
     )
 
     apply {
