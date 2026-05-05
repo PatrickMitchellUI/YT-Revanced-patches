@@ -51,6 +51,7 @@ import app.revanced.extension.youtube.patches.litho.LayoutComponentsFilter.Expan
 import app.revanced.extension.youtube.sponsorblock.SponsorBlockSettings;
 import app.revanced.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeOverlayStyle;
 
+@SuppressWarnings("deprecation")
 public class Settings extends YouTubeAndMusicSettings {
     // Video
     public static final BooleanSetting ADVANCED_VIDEO_QUALITY_MENU = new BooleanSetting("revanced_advanced_video_quality_menu", TRUE);

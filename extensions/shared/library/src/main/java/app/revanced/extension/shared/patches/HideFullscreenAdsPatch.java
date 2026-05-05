@@ -44,6 +44,7 @@ public class HideFullscreenAdsPatch {
      * Called from a different place then the other filters.
      */
     // TODO: Extract this into a youtube-shared patch
+    @SuppressWarnings("deprecation")
     public static void closeFullscreenAd(Object customDialog, @Nullable byte[] buffer) {
         try {
             if (!YouTubeAndMusicSettings.HIDE_FULLSCREEN_ADS.get()) {
@@ -78,7 +79,15 @@ public class HideFullscreenAdsPatch {
                     window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_UNSPECIFIED);
 
                     // Restore decorView visibility
-                    window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+                        android.view.WindowInsetsController insetsController = window.getInsetsController();
+                        if (insetsController != null) {
+                            insetsController.show(android.view.WindowInsets.Type.systemBars());
+                        }
+                    } else {
+                        View decorView = window.getDecorView();
+                        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+                    }
                 }
 
                 // In YouTube Music, the home feed doesn't load when the dialog is closed with [Dialog.dismiss()].

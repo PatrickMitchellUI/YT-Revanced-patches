@@ -1,6 +1,5 @@
 package app.revanced.extension.shared.checks;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageInfo;
@@ -32,7 +31,7 @@ import static app.revanced.extension.shared.checks.PatchInfo.Build.*;
  * Various indicators help to detect if the app was patched by the user.
  */
 @RequiresApi(api = Build.VERSION_CODES.N)
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "deprecation"})
 public final class CheckEnvironmentPatch {
     private static final boolean DEBUG_ALWAYS_SHOW_CHECK_FAILED_DIALOG = debugAlwaysShowWarning();
 
@@ -124,7 +123,6 @@ public final class CheckEnvironmentPatch {
      * If the build properties are different, the app was likely downloaded pre-patched or patched on another device.
      */
     private static class CheckWasPatchedOnSameDevice extends Check {
-        @SuppressLint("HardwareIds")
         @Override
         protected Boolean check() {
             if (PATCH_BOARD.isEmpty()) {
@@ -133,7 +131,6 @@ public final class CheckEnvironmentPatch {
                 return null;
             }
 
-            //noinspection deprecation
             final var passed = buildFieldEqualsHash("BOARD", Build.BOARD, PATCH_BOARD) &
                     buildFieldEqualsHash("BOOTLOADER", Build.BOOTLOADER, PATCH_BOOTLOADER) &
                     buildFieldEqualsHash("BRAND", Build.BRAND, PATCH_BRAND) &

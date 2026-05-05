@@ -20,6 +20,7 @@ import app.revanced.extension.shared.settings.BaseActivityHook;
  * Hooks {@link com.google.android.gms.common.api.GoogleApiActivity}
  * to inject a custom {@link MusicPreferenceFragment} with a toolbar and search.
  */
+@SuppressWarnings("deprecation")
 public class MusicActivityHook extends BaseActivityHook {
 
     @SuppressLint("StaticFieldLeak")
@@ -90,7 +91,13 @@ public class MusicActivityHook extends BaseActivityHook {
     @Override
     protected Drawable getNavigationIcon() {
         Drawable navigationIcon = MusicPreferenceFragment.getBackButtonDrawable();
-        navigationIcon.setColorFilter(Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+            navigationIcon.setColorFilter(new android.graphics.BlendModeColorFilter(
+                    Utils.getAppForegroundColor(), android.graphics.BlendMode.SRC_IN));
+        } else {
+            navigationIcon.setColorFilter(Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN);
+        }
+
         return navigationIcon;
     }
 

@@ -6,11 +6,11 @@ import app.revanced.patcher.extensions.replaceInstruction
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
-import app.revanced.patches.all.misc.transformation.transformInstructionsPatch
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
+import app.revanced.util.forEachInstructionAsSequence
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
@@ -25,32 +25,6 @@ val disableVideoCodecsPatch = bytecodePatch(
         sharedExtensionPatch,
         settingsPatch,
         addResourcesPatch,
-        /**
-         * Override all calls of `getSupportedHdrTypes`.
-         */
-        transformInstructionsPatch(
-            filterMap = filterMap@{ classDef, _, instruction, instructionIndex ->
-                if (classDef.type.startsWith("Lapp/revanced/")) {
-                    return@filterMap null
-                }
-
-                val reference = instruction.methodReference
-                if (reference?.definingClass == "Landroid/view/Display\$HdrCapabilities;" && reference.name == "getSupportedHdrTypes") {
-                    return@filterMap instruction to instructionIndex
-                }
-                return@filterMap null
-            },
-            transform = { method, entry ->
-                val (instruction, index) = entry
-                val register = (instruction as FiveRegisterInstruction).registerC
-
-                method.replaceInstruction(
-                    index,
-                    "invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS_DESCRIPTOR->" +
-                            $$"disableHdrVideo(Landroid/view/Display$HdrCapabilities;)[I",
-                )
-            },
-        ),
     )
 
     compatibleWith(
@@ -66,6 +40,31 @@ val disableVideoCodecsPatch = bytecodePatch(
     )
 
     apply {
+        // Override all calls of `getSupportedHdrTypes`.
+        forEachInstructionAsSequence(
+            match@{ classDef, _, instruction, instructionIndex ->
+                if (classDef.type.startsWith("Lapp/revanced/")) {
+                    return@match null
+                }
+
+                val reference = instruction.methodReference
+                if (reference?.definingClass == "Landroid/view/Display\$HdrCapabilities;" && reference.name == "getSupportedHdrTypes") {
+                    return@match instruction to instructionIndex
+                }
+                return@match null
+            },
+            { method, entry ->
+                val (instruction, index) = entry
+                val register = (instruction as FiveRegisterInstruction).registerC
+
+                method.replaceInstruction(
+                    index,
+                    "invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS_DESCRIPTOR->" +
+                            $$"disableHdrVideo(Landroid/view/Display$HdrCapabilities;)[I",
+                )
+            },
+        )
+
         addResources("youtube", "video.codecs.disableVideoCodecsPatch")
 
         PreferenceScreen.VIDEO.addPreferences(

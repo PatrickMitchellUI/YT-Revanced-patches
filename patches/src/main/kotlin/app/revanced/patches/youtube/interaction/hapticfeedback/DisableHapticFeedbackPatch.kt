@@ -10,11 +10,11 @@ import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
 import app.revanced.patches.all.misc.transformation.IMethodCall
 import app.revanced.patches.all.misc.transformation.filterMapInstruction35c
-import app.revanced.patches.all.misc.transformation.transformInstructionsPatch
 import app.revanced.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
+import app.revanced.util.forEachInstructionAsSequence
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS_DESCRIPTOR_PREFIX =
@@ -30,25 +30,6 @@ val disableHapticFeedbackPatch = bytecodePatch(
     dependsOn(
         settingsPatch,
         addResourcesPatch,
-        transformInstructionsPatch(
-            filterMap = { classDef, _, instruction, instructionIndex ->
-                filterMapInstruction35c<MethodCall>(
-                    EXTENSION_CLASS_DESCRIPTOR_PREFIX,
-                    classDef,
-                    instruction,
-                    instructionIndex,
-                )
-            },
-            transform = { method, entry ->
-                val (methodType, instruction, instructionIndex) = entry
-                methodType.replaceInvokeVirtualWithExtension(
-                    EXTENSION_CLASS_DESCRIPTOR,
-                    method,
-                    instruction,
-                    instructionIndex,
-                )
-            },
-        ),
     )
 
     compatibleWith(
@@ -64,6 +45,27 @@ val disableHapticFeedbackPatch = bytecodePatch(
     )
 
     apply {
+        // Override all calls of Vibrator#vibrate.
+        forEachInstructionAsSequence(
+            { classDef, _, instruction, instructionIndex ->
+                filterMapInstruction35c<MethodCall>(
+                    EXTENSION_CLASS_DESCRIPTOR_PREFIX,
+                    classDef,
+                    instruction,
+                    instructionIndex,
+                )
+            },
+            { method, entry ->
+                val (methodType, instruction, instructionIndex) = entry
+                methodType.replaceInvokeVirtualWithExtension(
+                    EXTENSION_CLASS_DESCRIPTOR,
+                    method,
+                    instruction,
+                    instructionIndex,
+                )
+            },
+        )
+
         addResources("youtube", "misc.hapticfeedback.disableHapticFeedbackPatch")
 
         PreferenceScreen.PLAYER.addPreferences(
