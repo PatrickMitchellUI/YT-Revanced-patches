@@ -113,6 +113,7 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
                 SwitchPreference("revanced_hide_ask_section"),
                 SwitchPreference("revanced_hide_attributes_section"),
                 SwitchPreference("revanced_hide_chapters_section"),
+                SwitchPreference("revanced_hide_corrections_section"),
                 SwitchPreference("revanced_hide_course_progress_section"),
                 SwitchPreference("revanced_hide_explore_section"),
                 SwitchPreference("revanced_hide_explore_course_section"),
@@ -128,7 +129,8 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
                 SwitchPreference("revanced_hide_music_section"),
                 SwitchPreference("revanced_hide_quizzes_section"),
                 SwitchPreference("revanced_hide_subscribe_button"),
-                SwitchPreference("revanced_hide_transcript_section")
+                SwitchPreference("revanced_hide_transcript_section"),
+                SwitchPreference("revanced_hide_video_details_section")
             ),
         ),
         PreferenceScreenPreference(
@@ -231,6 +233,7 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
         ),
         SwitchPreference("revanced_hide_album_cards"),
         SwitchPreference("revanced_hide_artist_cards"),
+        SwitchPreference("revanced_hide_auto_dubbed_label"),
         SwitchPreference("revanced_hide_community_posts"),
         SwitchPreference("revanced_hide_compact_banner"),
         if (is_20_26_or_greater) {
@@ -259,6 +262,7 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
             key = "revanced_hide_horizontal_shelves",
             tag = "app.revanced.extension.shared.settings.preference.BulletPointSwitchPreference",
         ),
+        SwitchPreference("revanced_hide_hyped_label"),
         SwitchPreference("revanced_hide_image_shelf"),
         SwitchPreference("revanced_hide_latest_videos_button"),
         SwitchPreference("revanced_hide_mix_playlists"),

@@ -282,6 +282,9 @@ However, enabling this will also log some user data such as your IP address."</s
             <string name="revanced_hide_artist_cards_title">Hide artist cards</string>
             <string name="revanced_hide_artist_cards_summary_on">Artist cards are hidden</string>
             <string name="revanced_hide_artist_cards_summary_off">Artist cards are shown</string>
+            <string name="revanced_hide_auto_dubbed_label_title">Hide \'Auto-dubbed\' label</string>
+            <string name="revanced_hide_auto_dubbed_label_summary_on">Auto-dubbed label is hidden</string>
+            <string name="revanced_hide_auto_dubbed_label_summary_off">Auto-dubbed label is shown</string>
             <string name="revanced_hide_comments_section_in_home_feed_title">Hide comments section under videos in Home feed</string>
             <string name="revanced_hide_comments_section_in_home_feed_summary_on">Comments section under videos in Home feed is hidden</string>
             <string name="revanced_hide_comments_section_in_home_feed_summary_off">Comments section under videos in Home feed is shown</string>
@@ -315,6 +318,9 @@ However, enabling this will also log some user data such as your IP address."</s
 • Shopping
 • Watch it again"</string>
             <string name="revanced_hide_horizontal_shelves_summary_off">Horizontal shelves are shown</string>
+            <string name="revanced_hide_hyped_label_title">Hide Hyped label</string>
+            <string name="revanced_hide_hyped_label_summary_on">Hyped label is hidden</string>
+            <string name="revanced_hide_hyped_label_summary_off">Hyped label is shown</string>
             <string name="revanced_hide_image_shelf_title">Hide image shelf</string>
             <string name="revanced_hide_image_shelf_summary_on">Image shelf in search results is hidden</string>
             <string name="revanced_hide_image_shelf_summary_off">Image shelf in search results is shown</string>
@@ -420,6 +426,9 @@ However, enabling this will also log some user data such as your IP address."</s
             <string name="revanced_hide_chapters_section_title">Hide Chapters</string>
             <string name="revanced_hide_chapters_section_summary_on">Chapters section is hidden</string>
             <string name="revanced_hide_chapters_section_summary_off">Chapters section is shown</string>
+            <string name="revanced_hide_corrections_section_title">Hide Corrections</string>
+            <string name="revanced_hide_corrections_section_summary_on">Corrections section is hidden</string>
+            <string name="revanced_hide_corrections_section_summary_off">Corrections section is shown</string>
             <string name="revanced_hide_course_progress_section_title">Hide \'Course progress\'</string>
             <string name="revanced_hide_course_progress_section_summary_on">Course progress section is hidden</string>
             <string name="revanced_hide_course_progress_section_summary_off">Course progress section is shown</string>
@@ -473,6 +482,9 @@ However, enabling this will also log some user data such as your IP address."</s
             <string name="revanced_hide_transcript_section_title">Hide Transcript</string>
             <string name="revanced_hide_transcript_section_summary_on">Transcript section is hidden</string>
             <string name="revanced_hide_transcript_section_summary_off">Transcript section is shown</string>
+            <string name="revanced_hide_video_details_section_title">Hide \'Video details\'</string>
+            <string name="revanced_hide_video_details_section_summary_on">Video details section is hidden</string>
+            <string name="revanced_hide_video_details_section_summary_off">Video details section is shown</string>
             <string name="revanced_hide_quizzes_section_title">Hide Quizzes</string>
             <string name="revanced_hide_quizzes_section_summary_on">Quizzes section is hidden</string>
             <string name="revanced_hide_quizzes_section_summary_off">Quizzes section is shown</string>

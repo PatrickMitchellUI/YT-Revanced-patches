@@ -26,6 +26,7 @@ import app.revanced.extension.shared.Utils;
 import app.revanced.extension.shared.patches.litho.Filter;
 import app.revanced.extension.shared.patches.litho.FilterGroup.ByteArrayFilterGroup;
 import app.revanced.extension.shared.patches.litho.FilterGroup.StringFilterGroup;
+import app.revanced.extension.shared.patches.litho.FilterGroupList.ByteArrayFilterGroupList;
 import app.revanced.extension.shared.patches.litho.FilterGroupList.StringFilterGroupList;
 import app.revanced.extension.youtube.patches.ChangeHeaderPatch;
 import app.revanced.extension.youtube.settings.Settings;
@@ -61,6 +62,8 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup chipBar;
     private final StringFilterGroup channelProfile;
     private final StringFilterGroupList channelProfileGroupList;
+    private final StringFilterGroup videoLabels;
+    private final ByteArrayFilterGroupList videoLabelsGroupList = new ByteArrayFilterGroupList();
 
     public enum ExpandableCardStyle {
         SHOW_ALL,
@@ -274,7 +277,8 @@ public final class LayoutComponentsFilter extends Filter {
 
         compactChannelBarInner = new StringFilterGroup(
                 Settings.HIDE_JOIN_MEMBERSHIP_BUTTON,
-                "compact_channel_bar_inner"
+                "compact_channel_bar_inner",
+                "video_description_header"
         );
 
         compactChannelBarInnerButton = new StringFilterGroup(
@@ -316,6 +320,23 @@ public final class LayoutComponentsFilter extends Filter {
                 Settings.HIDE_WEB_SEARCH_RESULTS,
                 "web_link_panel",
                 "web_result_panel"
+        );
+
+        videoLabels = new StringFilterGroup(
+                null,
+                "|badge.e"
+        );
+        videoLabelsGroupList.addAll(
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_AUTO_DUBBED_LABEL,
+                        "yt_outline_person_radar",
+                        "yt_outline_experimental_person_waves"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_HYPED_LABEL,
+                        "yt_fill_star_shooting",
+                        "yt_fill_experimental_hype"
+                )
         );
 
         channelProfile = new StringFilterGroup(
@@ -372,6 +393,7 @@ public final class LayoutComponentsFilter extends Filter {
                 subscriptionsChipBar,
                 surveys,
                 timedReactions,
+                videoLabels,
                 videoTitle,
                 videoRecommendationLabels,
                 webLinkPanel
@@ -434,6 +456,10 @@ public final class LayoutComponentsFilter extends Filter {
                     return false;
                 }
             }
+        }
+
+        if (matchedGroup == videoLabels) {
+            return videoLabelsGroupList.check(buffer).isFiltered();
         }
 
         if (matchedGroup == channelProfile) {
