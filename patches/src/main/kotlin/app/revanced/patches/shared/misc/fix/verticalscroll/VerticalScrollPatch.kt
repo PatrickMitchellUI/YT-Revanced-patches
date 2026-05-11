@@ -2,14 +2,26 @@ package app.revanced.patches.shared.misc.fix.verticalscroll
 
 import app.revanced.patcher.extensions.addInstruction
 import app.revanced.patcher.extensions.getInstruction
+import app.revanced.patcher.patch.BytecodePatchBuilder
 import app.revanced.patcher.patch.bytecodePatch
+import app.revanced.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-val verticalScrollPatch = bytecodePatch(
+internal fun verticalScrollPatch(
+    fixChoreographerPostFrameCallbackFeatureFlag: BytecodePatchBuilder.() -> Boolean = { false },
+) = bytecodePatch(
     description = "Fixes issues with refreshing the feed when the first component is of type EmptyComponent.",
 ) {
 
     apply {
+        if (fixChoreographerPostFrameCallbackFeatureFlag()) {
+            // Can cause issues with scrolling.
+            choreographerPostFrameCallbackFeatureFlagMethodMatch.method.insertLiteralOverride(
+                45782902L,
+                false,
+            )
+        }
+
         canScrollVerticallyMethodMatch.let {
             it.method.apply {
                 val moveResultIndex = it[-1]

@@ -24,6 +24,7 @@ import app.revanced.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.revanced.patches.youtube.misc.fix.backtoexitgesture.fixBackToExitGesturePatch
 import app.revanced.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
+import app.revanced.patches.youtube.misc.playservice.is_21_18_or_greater
 import app.revanced.patches.youtube.misc.protobuf.hookElement
 import app.revanced.patches.youtube.misc.protobuf.hookProtobufElementParserPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
@@ -81,7 +82,7 @@ val hideAdsPatch = bytecodePatch(
     dependsOn(
         hideAdsResourcePatch,
         hideFullscreenAdsPatch(PreferenceScreen.ADS),
-        verticalScrollPatch,
+        verticalScrollPatch(fixChoreographerPostFrameCallbackFeatureFlag = { is_21_18_or_greater }),
         fixBackToExitGesturePatch,
         hookProtobufElementParserPatch,
         versionCheckPatch

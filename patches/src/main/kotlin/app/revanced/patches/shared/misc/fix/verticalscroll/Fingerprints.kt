@@ -17,3 +17,9 @@ internal val BytecodePatchContext.canScrollVerticallyMethodMatch by composingFir
         Opcode.MOVE_RESULT,
     )
 }
+
+internal val BytecodePatchContext.choreographerPostFrameCallbackFeatureFlagMethodMatch by composingFirstMethod {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
+    parameterTypes("L", "L")
+    instructions(45782902L())
+}
