@@ -66,13 +66,13 @@ val navigationBarPatch = bytecodePatch(
         addResources("youtube", "layout.buttons.navigation.navigationBarPatch")
 
         val preferences = mutableSetOf(
-            SwitchPreference("revanced_hide_home_button"),
-            SwitchPreference("revanced_hide_shorts_button"),
-            SwitchPreference("revanced_hide_create_button"),
-            SwitchPreference("revanced_hide_subscriptions_button"),
-            SwitchPreference("revanced_hide_notifications_button"),
-            SwitchPreference("revanced_switch_create_with_notifications_button"),
-            SwitchPreference("revanced_hide_navigation_button_labels"),
+            SwitchPreference("revanced_hide_home_button", summaryKey = null),
+            SwitchPreference("revanced_hide_shorts_button", summaryKey = null),
+            SwitchPreference("revanced_hide_create_button", summaryKey = null),
+            SwitchPreference("revanced_hide_subscriptions_button", summaryKey = null),
+            SwitchPreference("revanced_hide_notifications_button", summaryKey = null),
+            SwitchPreference("revanced_switch_create_with_notifications_button", summaryKey = null),
+            SwitchPreference("revanced_hide_navigation_button_labels", summaryKey = null),
             SwitchPreference("revanced_narrow_navigation_buttons"),
         )
 
@@ -190,12 +190,12 @@ val navigationBarPatch = bytecodePatch(
         //
 
         val toolbarPreferences = mutableSetOf(
-            SwitchPreference("revanced_hide_toolbar_create_button"),
-            SwitchPreference("revanced_hide_toolbar_notification_button"),
-            SwitchPreference("revanced_hide_toolbar_search_button")
+            SwitchPreference("revanced_hide_toolbar_create_button", summaryKey = null),
+            SwitchPreference("revanced_hide_toolbar_notification_button", summaryKey = null),
+            SwitchPreference("revanced_hide_toolbar_search_button", summaryKey = null)
         )
         if (!is_20_31_or_greater) {
-            toolbarPreferences += SwitchPreference("revanced_wide_searchbar")
+            toolbarPreferences += SwitchPreference("revanced_wide_searchbar", summaryKey = null)
         }
 
         PreferenceScreen.GENERAL.addPreferences(

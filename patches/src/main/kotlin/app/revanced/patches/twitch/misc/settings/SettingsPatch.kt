@@ -59,15 +59,14 @@ val settingsPatch = bytecodePatch(
 
         PreferenceScreen.MISC.OTHER.addPreferences(
             // The debug setting is shared across multiple apps and the key must be the same.
-            // But the title and summary must be different, otherwise when the strings file is flattened
+            // But the title must be different, otherwise when the strings file is flattened
             // for Crowdin push, Crowdin gets confused by the duplicate keys.
             // FIXME: Ideally the shared debug strings are extracted into a common app group
-            //  and then both apps import that. But for now unique unique title and summary keys also works.
+            //  and then both apps import that. But for now a unique title key also works.
             SwitchPreference(
                 key = "revanced_debug",
                 titleKey = "revanced_twitch_debug_title",
-                summaryOnKey = "revanced_twitch_debug_summary_on",
-                summaryOffKey = "revanced_twitch_debug_summary_off",
+                summaryKey = null,
             ),
         )
 

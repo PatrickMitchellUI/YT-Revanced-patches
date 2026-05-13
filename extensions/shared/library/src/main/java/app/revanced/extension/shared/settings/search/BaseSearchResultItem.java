@@ -125,8 +125,6 @@ public abstract class BaseSearchResultItem {
         final String searchableText;
         final CharSequence originalTitle;
         final CharSequence originalSummary;
-        final CharSequence originalSummaryOn;
-        final CharSequence originalSummaryOff;
         final CharSequence[] originalEntries;
         private CharSequence[] highlightedEntries;
         private boolean entriesHighlightingApplied;
@@ -149,8 +147,6 @@ public abstract class BaseSearchResultItem {
 
             // Initialize type-specific fields.
             FieldInitializationResult result = initTypeSpecificFields(pref);
-            this.originalSummaryOn = result.summaryOn;
-            this.originalSummaryOff = result.summaryOff;
             this.originalEntries = result.entries;
 
             // Build searchable text.
@@ -158,8 +154,6 @@ public abstract class BaseSearchResultItem {
         }
 
         private static class FieldInitializationResult {
-            CharSequence summaryOn = null;
-            CharSequence summaryOff = null;
             CharSequence[] entries = null;
         }
 
@@ -175,10 +169,7 @@ public abstract class BaseSearchResultItem {
         private FieldInitializationResult initTypeSpecificFields(Preference pref) {
             FieldInitializationResult result = new FieldInitializationResult();
 
-            if (pref instanceof SwitchPreference switchPref) {
-                result.summaryOn = switchPref.getSummaryOn();
-                result.summaryOff = switchPref.getSummaryOff();
-            } else if (pref instanceof ColorPickerPreference colorPref) {
+            if (pref instanceof ColorPickerPreference colorPref) {
                 String colorString = colorPref.getText();
                 this.color = TextUtils.isEmpty(colorString) ? 0 : Color.parseColor(colorString);
             } else if (pref instanceof ListPreference listPref) {
@@ -215,9 +206,6 @@ public abstract class BaseSearchResultItem {
                         appendText(searchBuilder, entry);
                     }
                 }
-            } else if (pref instanceof SwitchPreference) {
-                appendText(searchBuilder, originalSummaryOn);
-                appendText(searchBuilder, originalSummaryOff);
             } else if (pref instanceof ColorPickerPreference) {
                 appendText(searchBuilder, ColorPickerPreference.getColorString(color, false));
             }
@@ -249,14 +237,7 @@ public abstract class BaseSearchResultItem {
                     return staticSum;
                 }
             }
-            if (preference instanceof SwitchPreference switchPref) {
-                boolean currentState = switchPref.isChecked();
-                return currentState
-                        ? (originalSummaryOn != null ? originalSummaryOn :
-                        originalSummary != null ? originalSummary : "")
-                        : (originalSummaryOff != null ? originalSummaryOff :
-                        originalSummary != null ? originalSummary : "");
-            } else if (preference instanceof ListPreference listPref) {
+            if (preference instanceof ListPreference listPref) {
                 String value = listPref.getValue();
                 CharSequence[] entries = listPref.getEntries();
                 CharSequence[] entryValues = listPref.getEntryValues();

@@ -40,7 +40,7 @@ val disableAutoCaptionsPatch = bytecodePatch(
         addResources("youtube", "layout.autocaptions.autoCaptionsPatch")
 
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("revanced_disable_auto_captions"),
+            SwitchPreference("revanced_disable_auto_captions", summaryKey = null),
         )
 
         subtitleTrackMethod.addInstructions(

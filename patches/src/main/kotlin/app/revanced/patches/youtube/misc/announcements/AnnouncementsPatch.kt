@@ -38,7 +38,7 @@ val announcementsPatch = bytecodePatch(
         addResources("youtube", "misc.announcements.announcementsPatch")
 
         PreferenceScreen.MISC.addPreferences(
-            SwitchPreference("revanced_announcements"),
+            SwitchPreference("revanced_announcements", summaryKey = null),
         )
 
         mainActivityOnCreateMethod.addInstruction(

@@ -39,7 +39,7 @@ val hideTimestampPatch = bytecodePatch(
         addResources("youtube", "layout.hide.time.hideTimestampPatch")
 
         PreferenceScreen.SEEKBAR.addPreferences(
-            SwitchPreference("revanced_hide_timestamp"),
+            SwitchPreference("revanced_hide_timestamp", summaryKey = null),
         )
 
         timeCounterMethod.addInstructionsWithLabels(

@@ -67,8 +67,8 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
 
         settingsMenuVideoSpeedGroup.addAll(
             listOf(
-                SwitchPreference("revanced_custom_speed_menu"),
-                SwitchPreference("revanced_restore_old_speed_menu"),
+                SwitchPreference("revanced_custom_speed_menu", summaryKey = null),
+                SwitchPreference("revanced_restore_old_speed_menu", summaryKey = null),
                 TextPreference(
                     "revanced_custom_playback_speeds",
                     inputType = InputType.TEXT_MULTI_LINE,

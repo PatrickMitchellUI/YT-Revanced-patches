@@ -36,7 +36,7 @@ val openVideosFullscreenPatch = bytecodePatch(
         addResources("youtube", "layout.player.fullscreen.openVideosFullscreen")
 
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("revanced_open_videos_fullscreen_portrait"),
+            SwitchPreference("revanced_open_videos_fullscreen_portrait", summaryKey = null),
         )
 
         // Enable the logic for the user Setting to open regular videos fullscreen.

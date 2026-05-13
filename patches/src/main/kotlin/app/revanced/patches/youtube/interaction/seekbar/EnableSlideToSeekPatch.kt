@@ -34,7 +34,7 @@ val enableSlideToSeekPatch = bytecodePatch(
         addResources("youtube", "interaction.seekbar.enableSlideToSeekPatch")
 
         PreferenceScreen.SEEKBAR.addPreferences(
-            SwitchPreference("revanced_slide_to_seek"),
+            SwitchPreference("revanced_slide_to_seek", summaryKey = null),
         )
 
         var modifiedMethods = false

@@ -56,7 +56,7 @@ private fun gmsCoreSupportResourcePatch(
             PreferenceScreenPreference(
                 "revanced_gms_core_screen",
                 preferences = setOf(
-                    SwitchPreference("revanced_gms_core_check_updates"),
+                    SwitchPreference("revanced_gms_core_check_updates", summaryKey = null),
                     IntentPreference(
                         "revanced_gms_core_settings",
                         intent = IntentPreference.Intent("", "org.microg.gms.ui.SettingsActivity") {

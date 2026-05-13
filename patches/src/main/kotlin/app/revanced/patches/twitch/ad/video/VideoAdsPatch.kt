@@ -31,7 +31,7 @@ val blockVideoAdsPatch = bytecodePatch(
                 addResources("twitch", "ad.video.videoAdsPatch")
 
                 PreferenceScreen.ADS.CLIENT_SIDE.addPreferences(
-                    SwitchPreference("revanced_block_video_ads"),
+                    SwitchPreference("revanced_block_video_ads", summaryKey = null),
                 )
 
                 /* Amazon ads SDK */

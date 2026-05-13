@@ -72,7 +72,7 @@ internal fun enableDebuggingPatch(
         addResources("shared", "misc.debugging.enableDebuggingPatch")
 
         val preferences = mutableSetOf<BasePreference>(
-            SwitchPreference("revanced_debug"),
+            SwitchPreference("revanced_debug", summaryKey = null),
         )
 
         preferences + additionalDebugPreferences
@@ -80,7 +80,7 @@ internal fun enableDebuggingPatch(
         preferences += listOf(
             SwitchPreference("revanced_debug_protocolbuffer"),
             SwitchPreference("revanced_debug_stacktrace"),
-            SwitchPreference("revanced_debug_toast_on_error"),
+            SwitchPreference("revanced_debug_toast_on_error", summaryKey = null),
             NonInteractivePreference(
                 "revanced_debug_export_logs",
                 tag = "app.revanced.extension.shared.settings.preference.ExportLogToClipboardPreference",

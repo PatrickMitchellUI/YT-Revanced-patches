@@ -77,9 +77,9 @@ val miniplayerPatch = bytecodePatch(
             SwitchPreference("revanced_miniplayer_disable_resuming"),
             SwitchPreference("revanced_miniplayer_disable_drag_and_drop"),
             SwitchPreference("revanced_miniplayer_disable_horizontal_drag"),
-            SwitchPreference("revanced_miniplayer_disable_rounded_corners"),
-            SwitchPreference("revanced_miniplayer_hide_subtext"),
-            SwitchPreference("revanced_miniplayer_hide_overlay_buttons"),
+            SwitchPreference("revanced_miniplayer_disable_rounded_corners", summaryKey = null),
+            SwitchPreference("revanced_miniplayer_hide_subtext", summaryKey = null),
+            SwitchPreference("revanced_miniplayer_hide_overlay_buttons", summaryKey = null),
             TextPreference("revanced_miniplayer_width_dip", inputType = InputType.NUMBER),
             TextPreference("revanced_miniplayer_opacity", inputType = InputType.NUMBER)
         )

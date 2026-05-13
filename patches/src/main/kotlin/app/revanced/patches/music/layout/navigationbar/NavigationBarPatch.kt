@@ -71,14 +71,14 @@ val navigationBarPatch = bytecodePatch(
                 key = "revanced_music_navigation_bar_screen",
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
-                    SwitchPreference("revanced_music_hide_navigation_bar_home_button"),
-                    SwitchPreference("revanced_music_hide_navigation_bar_samples_button"),
-                    SwitchPreference("revanced_music_hide_navigation_bar_explore_button"),
-                    SwitchPreference("revanced_music_hide_navigation_bar_library_button"),
-                    SwitchPreference("revanced_music_hide_navigation_bar_upgrade_button"),
+                    SwitchPreference("revanced_music_hide_navigation_bar_home_button", summaryKey = null),
+                    SwitchPreference("revanced_music_hide_navigation_bar_samples_button", summaryKey = null),
+                    SwitchPreference("revanced_music_hide_navigation_bar_explore_button", summaryKey = null),
+                    SwitchPreference("revanced_music_hide_navigation_bar_library_button", summaryKey = null),
+                    SwitchPreference("revanced_music_hide_navigation_bar_upgrade_button", summaryKey = null),
 
-                    SwitchPreference("revanced_music_hide_navigation_bar"),
-                    SwitchPreference("revanced_music_hide_navigation_bar_labels"),
+                    SwitchPreference("revanced_music_hide_navigation_bar", summaryKey = null),
+                    SwitchPreference("revanced_music_hide_navigation_bar_labels", summaryKey = null),
                 ),
             ),
         )

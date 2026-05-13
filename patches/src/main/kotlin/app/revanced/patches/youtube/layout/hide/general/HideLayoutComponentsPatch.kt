@@ -102,35 +102,35 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
     PreferenceScreen.ADS.addPreferences(
         // Uses horizontal shelf and a buffer, which requires managing in a single place in the code
         // to ensure the generic "hide horizontal shelves" doesn't hide when it should show.
-        SwitchPreference("revanced_hide_creator_store_shelf")
+        SwitchPreference("revanced_hide_creator_store_shelf", summaryKey = null)
     )
 
     PreferenceScreen.PLAYER.addPreferences(
         PreferenceScreenPreference(
             key = "revanced_hide_description_components_screen",
             preferences = setOf(
-                SwitchPreference("revanced_hide_ai_generated_video_summary_section"),
-                SwitchPreference("revanced_hide_ask_section"),
+                SwitchPreference("revanced_hide_ai_generated_video_summary_section", summaryKey = null),
+                SwitchPreference("revanced_hide_ask_section", summaryKey = null),
                 SwitchPreference("revanced_hide_attributes_section"),
-                SwitchPreference("revanced_hide_chapters_section"),
-                SwitchPreference("revanced_hide_corrections_section"),
-                SwitchPreference("revanced_hide_course_progress_section"),
+                SwitchPreference("revanced_hide_chapters_section", summaryKey = null),
+                SwitchPreference("revanced_hide_corrections_section", summaryKey = null),
+                SwitchPreference("revanced_hide_course_progress_section", summaryKey = null),
                 SwitchPreference("revanced_hide_explore_section"),
-                SwitchPreference("revanced_hide_explore_course_section"),
-                SwitchPreference("revanced_hide_explore_podcast_section"),
-                SwitchPreference("revanced_hide_featured_links_section"),
-                SwitchPreference("revanced_hide_featured_places_section"),
-                SwitchPreference("revanced_hide_featured_videos_section"),
-                SwitchPreference("revanced_hide_gaming_section"),
-                SwitchPreference("revanced_hide_how_this_was_made_section"),
-                SwitchPreference("revanced_hide_hype_points"),
-                SwitchPreference("revanced_hide_info_cards_section"),
-                SwitchPreference("revanced_hide_key_concepts_section"),
-                SwitchPreference("revanced_hide_music_section"),
-                SwitchPreference("revanced_hide_quizzes_section"),
-                SwitchPreference("revanced_hide_subscribe_button"),
-                SwitchPreference("revanced_hide_transcript_section"),
-                SwitchPreference("revanced_hide_video_details_section")
+                SwitchPreference("revanced_hide_explore_course_section", summaryKey = null),
+                SwitchPreference("revanced_hide_explore_podcast_section", summaryKey = null),
+                SwitchPreference("revanced_hide_featured_links_section", summaryKey = null),
+                SwitchPreference("revanced_hide_featured_places_section", summaryKey = null),
+                SwitchPreference("revanced_hide_featured_videos_section", summaryKey = null),
+                SwitchPreference("revanced_hide_gaming_section", summaryKey = null),
+                SwitchPreference("revanced_hide_how_this_was_made_section", summaryKey = null),
+                SwitchPreference("revanced_hide_hype_points", summaryKey = null),
+                SwitchPreference("revanced_hide_info_cards_section", summaryKey = null),
+                SwitchPreference("revanced_hide_key_concepts_section", summaryKey = null),
+                SwitchPreference("revanced_hide_music_section", summaryKey = null),
+                SwitchPreference("revanced_hide_quizzes_section", summaryKey = null),
+                SwitchPreference("revanced_hide_subscribe_button", summaryKey = null),
+                SwitchPreference("revanced_hide_transcript_section", summaryKey = null),
+                SwitchPreference("revanced_hide_video_details_section", summaryKey = null)
             ),
         ),
         PreferenceScreenPreference(
@@ -141,37 +141,37 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
                     sorting = Sorting.UNSORTED,
                     tag = "app.revanced.extension.shared.settings.preference.NoTitlePreferenceCategory",
                     preferences = setOf(
-                        SwitchPreference("revanced_hide_comments_carousel"),
+                        SwitchPreference("revanced_hide_comments_carousel", summaryKey = null),
                         TextPreference(
                             "revanced_hide_comments_carousel_filter_strings",
                             inputType = InputType.TEXT_MULTI_LINE
                         ),
                     )
                 ),
-                SwitchPreference("revanced_hide_comments_ai_chat_summary"),
-                SwitchPreference("revanced_hide_comments_channel_guidelines"),
-                SwitchPreference("revanced_hide_comments_by_members_header"),
-                SwitchPreference("revanced_hide_comments_section"),
-                SwitchPreference("revanced_hide_comments_section_in_home_feed"),
-                SwitchPreference("revanced_hide_comments_community_guidelines"),
-                SwitchPreference("revanced_hide_comments_create_a_short_button"),
-                SwitchPreference("revanced_hide_comments_emoji_and_timestamp_buttons"),
+                SwitchPreference("revanced_hide_comments_ai_chat_summary", summaryKey = null),
+                SwitchPreference("revanced_hide_comments_channel_guidelines", summaryKey = null),
+                SwitchPreference("revanced_hide_comments_by_members_header", summaryKey = null),
+                SwitchPreference("revanced_hide_comments_section", summaryKey = null),
+                SwitchPreference("revanced_hide_comments_section_in_home_feed", summaryKey = null),
+                SwitchPreference("revanced_hide_comments_community_guidelines", summaryKey = null),
+                SwitchPreference("revanced_hide_comments_create_a_short_button", summaryKey = null),
+                SwitchPreference("revanced_hide_comments_emoji_and_timestamp_buttons", summaryKey = null),
                 SwitchPreference("revanced_hide_comments_preview_comment"),
-                SwitchPreference("revanced_hide_comments_thanks_button"),
+                SwitchPreference("revanced_hide_comments_thanks_button", summaryKey = null),
                 SwitchPreference("revanced_sanitize_comments_category_bar"),
             ),
             sorting = Sorting.UNSORTED,
         ),
-        SwitchPreference("revanced_hide_channel_bar"),
-        SwitchPreference("revanced_hide_channel_watermark"),
-        SwitchPreference("revanced_hide_crowdfunding_box"),
-        SwitchPreference("revanced_hide_emergency_box"),
+        SwitchPreference("revanced_hide_channel_bar", summaryKey = null),
+        SwitchPreference("revanced_hide_channel_watermark", summaryKey = null),
+        SwitchPreference("revanced_hide_crowdfunding_box", summaryKey = null),
+        SwitchPreference("revanced_hide_emergency_box", summaryKey = null),
         SwitchPreference("revanced_hide_info_panels"),
-        SwitchPreference("revanced_hide_join_membership_button"),
-        SwitchPreference("revanced_hide_live_chat_donators_bar"),
+        SwitchPreference("revanced_hide_join_membership_button", summaryKey = null),
+        SwitchPreference("revanced_hide_live_chat_donators_bar", summaryKey = null),
         SwitchPreference("revanced_hide_live_chat_replay_button"),
-        SwitchPreference("revanced_hide_medical_panels"),
-        SwitchPreference("revanced_hide_subscribers_community_guidelines"),
+        SwitchPreference("revanced_hide_medical_panels", summaryKey = null),
+        SwitchPreference("revanced_hide_subscribers_community_guidelines", summaryKey = null),
         SwitchPreference("revanced_hide_timed_reactions"),
         SwitchPreference("revanced_hide_video_title")
     )
@@ -181,9 +181,9 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
             key = "revanced_hide_keyword_content_screen",
             sorting = Sorting.UNSORTED,
             preferences = setOf(
-                SwitchPreference("revanced_hide_keyword_content_home"),
-                SwitchPreference("revanced_hide_keyword_content_subscriptions"),
-                SwitchPreference("revanced_hide_keyword_content_search"),
+                SwitchPreference("revanced_hide_keyword_content_home", summaryKey = null),
+                SwitchPreference("revanced_hide_keyword_content_subscriptions", summaryKey = null),
+                SwitchPreference("revanced_hide_keyword_content_search", summaryKey = null),
                 TextPreference(
                     "revanced_hide_keyword_content_phrases",
                     inputType = InputType.TEXT_MULTI_LINE
@@ -201,10 +201,10 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
         PreferenceScreenPreference(
             key = "revanced_hide_filter_bar_screen",
             preferences = setOf(
-                SwitchPreference("revanced_hide_filter_bar_feed_in_feed"),
-                SwitchPreference("revanced_hide_filter_bar_feed_in_related_videos"),
-                SwitchPreference("revanced_hide_filter_bar_feed_in_search"),
-                SwitchPreference("revanced_hide_filter_bar_feed_in_history"),
+                SwitchPreference("revanced_hide_filter_bar_feed_in_feed", summaryKey = null),
+                SwitchPreference("revanced_hide_filter_bar_feed_in_related_videos", summaryKey = null),
+                SwitchPreference("revanced_hide_filter_bar_feed_in_search", summaryKey = null),
+                SwitchPreference("revanced_hide_filter_bar_feed_in_history", summaryKey = null),
             ),
         ),
         PreferenceScreenPreference(
@@ -215,26 +215,26 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
                     sorting = Sorting.UNSORTED,
                     tag = "app.revanced.extension.shared.settings.preference.NoTitlePreferenceCategory",
                     preferences = setOf(
-                        SwitchPreference("revanced_hide_channel_tab"),
+                        SwitchPreference("revanced_hide_channel_tab", summaryKey = null),
                         TextPreference(
                             "revanced_hide_channel_tab_filter_strings",
                             inputType = InputType.TEXT_MULTI_LINE
                         ),
                     )
                 ),
-                SwitchPreference("revanced_hide_community_button"),
-                SwitchPreference("revanced_hide_join_button"),
+                SwitchPreference("revanced_hide_community_button", summaryKey = null),
+                SwitchPreference("revanced_hide_join_button", summaryKey = null),
                 SwitchPreference("revanced_hide_links_preview"),
                 SwitchPreference("revanced_hide_members_shelf"),
-                SwitchPreference("revanced_hide_posts_shelf"),
-                SwitchPreference("revanced_hide_store_button"),
-                SwitchPreference("revanced_hide_subscribe_button_in_channel_page"),
+                SwitchPreference("revanced_hide_posts_shelf", summaryKey = null),
+                SwitchPreference("revanced_hide_store_button", summaryKey = null),
+                SwitchPreference("revanced_hide_subscribe_button_in_channel_page", summaryKey = null),
             ),
         ),
         SwitchPreference("revanced_hide_album_cards"),
         SwitchPreference("revanced_hide_artist_cards"),
-        SwitchPreference("revanced_hide_auto_dubbed_label"),
-        SwitchPreference("revanced_hide_community_posts"),
+        SwitchPreference("revanced_hide_auto_dubbed_label", summaryKey = null),
+        SwitchPreference("revanced_hide_community_posts", summaryKey = null),
         SwitchPreference("revanced_hide_compact_banner"),
         if (is_20_26_or_greater) {
             ListPreference("revanced_hide_expandable_card")
@@ -250,7 +250,7 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
             sorting = Sorting.UNSORTED,
             tag = "app.revanced.extension.shared.settings.preference.NoTitlePreferenceCategory",
             preferences = setOf(
-                SwitchPreference("revanced_hide_feed_flyout_menu"),
+                SwitchPreference("revanced_hide_feed_flyout_menu", summaryKey = null),
                 TextPreference(
                     "revanced_hide_feed_flyout_menu_filter_strings",
                     inputType = InputType.TEXT_MULTI_LINE
@@ -262,27 +262,27 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
             key = "revanced_hide_horizontal_shelves",
             tag = "app.revanced.extension.shared.settings.preference.BulletPointSwitchPreference",
         ),
-        SwitchPreference("revanced_hide_hyped_label"),
+        SwitchPreference("revanced_hide_hyped_label", summaryKey = null),
         SwitchPreference("revanced_hide_image_shelf"),
         SwitchPreference("revanced_hide_latest_videos_button"),
-        SwitchPreference("revanced_hide_mix_playlists"),
-        SwitchPreference("revanced_hide_movies_section"),
+        SwitchPreference("revanced_hide_mix_playlists", summaryKey = null),
+        SwitchPreference("revanced_hide_movies_section", summaryKey = null),
         SwitchPreference("revanced_hide_notify_me_button"),
         SwitchPreference("revanced_hide_playables"),
         SwitchPreference("revanced_hide_search_term_thumbnails"),
         SwitchPreference("revanced_hide_show_more_button"),
-        SwitchPreference("revanced_hide_surveys"),
-        SwitchPreference("revanced_hide_ticket_shelf"),
-        SwitchPreference("revanced_hide_upload_time"),
+        SwitchPreference("revanced_hide_surveys", summaryKey = null),
+        SwitchPreference("revanced_hide_ticket_shelf", summaryKey = null),
+        SwitchPreference("revanced_hide_upload_time", summaryKey = null),
         SwitchPreference("revanced_hide_video_recommendation_labels"),
-        SwitchPreference("revanced_hide_view_count"),
-        SwitchPreference("revanced_hide_visual_spacer"),
+        SwitchPreference("revanced_hide_view_count", summaryKey = null),
+        SwitchPreference("revanced_hide_visual_spacer", summaryKey = null),
         SwitchPreference("revanced_hide_youtube_doodles"),
     )
 
     if (is_20_21_or_greater) {
         PreferenceScreen.FEED.addPreferences(
-            SwitchPreference("revanced_hide_you_may_like_section")
+            SwitchPreference("revanced_hide_you_may_like_section", summaryKey = null)
         )
     }
 

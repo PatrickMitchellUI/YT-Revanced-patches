@@ -72,11 +72,11 @@ val disableHapticFeedbackPatch = bytecodePatch(
             PreferenceScreenPreference(
                 "revanced_disable_haptic_feedback",
                 preferences = setOf(
-                    SwitchPreference("revanced_disable_haptic_feedback_chapters"),
-                    SwitchPreference("revanced_disable_haptic_feedback_precise_seeking"),
-                    SwitchPreference("revanced_disable_haptic_feedback_seek_undo"),
-                    SwitchPreference("revanced_disable_haptic_feedback_tap_and_hold"),
-                    SwitchPreference("revanced_disable_haptic_feedback_zoom"),
+                    SwitchPreference("revanced_disable_haptic_feedback_chapters", summaryKey = null),
+                    SwitchPreference("revanced_disable_haptic_feedback_precise_seeking", summaryKey = null),
+                    SwitchPreference("revanced_disable_haptic_feedback_seek_undo", summaryKey = null),
+                    SwitchPreference("revanced_disable_haptic_feedback_tap_and_hold", summaryKey = null),
+                    SwitchPreference("revanced_disable_haptic_feedback_zoom", summaryKey = null),
                 ),
             ),
         )

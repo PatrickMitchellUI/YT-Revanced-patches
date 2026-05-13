@@ -40,7 +40,7 @@ internal val hidePremiumVideoQualityPatch = bytecodePatch {
         addResources("youtube", "video.quality.hidePremiumVideoQualityPatch")
 
         settingsMenuVideoQualityGroup.add(
-            SwitchPreference("revanced_hide_premium_video_quality")
+            SwitchPreference("revanced_hide_premium_video_quality", summaryKey = null)
         )
 
         // Class name is obfuscated in 21.02+.

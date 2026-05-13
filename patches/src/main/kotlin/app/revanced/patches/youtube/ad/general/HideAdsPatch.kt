@@ -56,15 +56,15 @@ private val hideAdsResourcePatch = resourcePatch {
         addResources("youtube", "ad.general.hideAdsResourcePatch")
 
         PreferenceScreen.ADS.addPreferences(
-            SwitchPreference("revanced_hide_end_screen_store_banner"),
-            SwitchPreference("revanced_hide_general_ads"),
-            SwitchPreference("revanced_hide_merchandise_banners"),
-            SwitchPreference("revanced_hide_paid_promotion_label"),
-            SwitchPreference("revanced_hide_player_popup_ads"),
-            SwitchPreference("revanced_hide_self_sponsor_ads"),
-            SwitchPreference("revanced_hide_shopping_links"),
-            SwitchPreference("revanced_hide_view_products_banner"),
-            SwitchPreference("revanced_hide_youtube_premium_promotions")
+            SwitchPreference("revanced_hide_end_screen_store_banner", summaryKey = null),
+            SwitchPreference("revanced_hide_general_ads", summaryKey = null),
+            SwitchPreference("revanced_hide_merchandise_banners", summaryKey = null),
+            SwitchPreference("revanced_hide_paid_promotion_label", summaryKey = null),
+            SwitchPreference("revanced_hide_player_popup_ads", summaryKey = null),
+            SwitchPreference("revanced_hide_self_sponsor_ads", summaryKey = null),
+            SwitchPreference("revanced_hide_shopping_links", summaryKey = null),
+            SwitchPreference("revanced_hide_view_products_banner", summaryKey = null),
+            SwitchPreference("revanced_hide_youtube_premium_promotions", summaryKey = null)
         )
 
         addLithoFilter("Lapp/revanced/extension/youtube/patches/litho/AdsFilter;")

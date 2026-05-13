@@ -62,7 +62,7 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
                         tag = "app.revanced.extension.youtube.settings.preference.SpoofVideoStreamsSideEffectsPreference",
                     ),
                     SwitchPreference("revanced_spoof_video_streams_av1"),
-                    SwitchPreference("revanced_spoof_video_streams_stats_for_nerds"),
+                    SwitchPreference("revanced_spoof_video_streams_stats_for_nerds", summaryKey = null),
                 ),
             ),
         )

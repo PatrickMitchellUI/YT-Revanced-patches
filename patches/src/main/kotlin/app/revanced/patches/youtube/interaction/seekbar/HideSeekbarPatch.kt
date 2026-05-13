@@ -31,9 +31,9 @@ val hideSeekbarPatch = bytecodePatch(
         addResources("youtube", "layout.hide.seekbar.hideSeekbarPatch")
 
         PreferenceScreen.SEEKBAR.addPreferences(
-            SwitchPreference("revanced_hide_seekbar"),
+            SwitchPreference("revanced_hide_seekbar", summaryKey = null),
             SwitchPreference("revanced_hide_seekbar_thumbnail"),
-            SwitchPreference("revanced_fullscreen_large_seekbar"),
+            SwitchPreference("revanced_fullscreen_large_seekbar", summaryKey = null),
         )
 
         getSeekbarOnDrawMethodMatch().method.addInstructionsWithLabels(

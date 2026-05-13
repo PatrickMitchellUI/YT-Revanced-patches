@@ -40,7 +40,7 @@ internal fun hideFullscreenAdsPatch(
         addResources("shared", "ad.hideFullscreenAdsPatch")
 
         preferenceScreen.addPreferences(
-            SwitchPreference("revanced_hide_fullscreen_ads"),
+            SwitchPreference("revanced_hide_fullscreen_ads", summaryKey = null),
         )
 
         // Non-litho view, used in some old clients.

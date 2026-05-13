@@ -46,7 +46,7 @@ val disableFullscreenAmbientModePatch = bytecodePatch(
         )
 
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("revanced_disable_fullscreen_ambient_mode"),
+            SwitchPreference("revanced_disable_fullscreen_ambient_mode", summaryKey = null),
         )
 
         setFullScreenBackgroundColorMethod.apply {

@@ -42,7 +42,7 @@ internal fun hideLayoutComponentsPatch(
                 key = "revanced_custom_filter_screen",
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
-                    SwitchPreference("revanced_custom_filter"),
+                    SwitchPreference("revanced_custom_filter", summaryKey = null),
                     TextPreference("revanced_custom_filter_strings", inputType = InputType.TEXT_MULTI_LINE),
                 ),
             ),

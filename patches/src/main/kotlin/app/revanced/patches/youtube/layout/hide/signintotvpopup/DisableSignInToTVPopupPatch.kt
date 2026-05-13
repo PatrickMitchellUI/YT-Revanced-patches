@@ -41,7 +41,7 @@ val disableSignInToTVPopupPatch = bytecodePatch(
         addResources("youtube", "layout.hide.signintotv.disableSignInToTVPopupPatch")
 
         PreferenceScreen.MISC.addPreferences(
-            SwitchPreference("revanced_disable_sign_in_to_tv_popup"),
+            SwitchPreference("revanced_disable_sign_in_to_tv_popup", summaryKey = null),
         )
 
         signInToTVPopupMethod.addInstructionsWithLabels(

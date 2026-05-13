@@ -61,14 +61,14 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
         addResources("youtube", "layout.buttons.overlay.hidePlayerOverlayButtonsPatch")
 
         addPlayerOverlayPreferences(
-            SwitchPreference("revanced_hide_autoplay_button"),
-            SwitchPreference("revanced_hide_captions_button"),
-            SwitchPreference("revanced_hide_cast_button"),
-            SwitchPreference("revanced_hide_collapse_button"),
-            SwitchPreference("revanced_hide_fullscreen_button"),
+            SwitchPreference("revanced_hide_autoplay_button", summaryKey = null),
+            SwitchPreference("revanced_hide_captions_button", summaryKey = null),
+            SwitchPreference("revanced_hide_cast_button", summaryKey = null),
+            SwitchPreference("revanced_hide_collapse_button", summaryKey = null),
+            SwitchPreference("revanced_hide_fullscreen_button", summaryKey = null),
             SwitchPreference("revanced_hide_player_control_buttons_background"),
-            SwitchPreference("revanced_hide_player_previous_next_buttons"),
-            SwitchPreference("revanced_hide_settings_button"),
+            SwitchPreference("revanced_hide_player_previous_next_buttons", summaryKey = null),
+            SwitchPreference("revanced_hide_settings_button", summaryKey = null),
         )
 
         // Verify resources exist.

@@ -217,7 +217,7 @@ val themePatch = baseThemePatch(
         )
 
         val preferences = mutableSetOf(
-            SwitchPreference("revanced_seekbar_custom_color"),
+            SwitchPreference("revanced_seekbar_custom_color", summaryKey = null),
             TextPreference(
                 "revanced_seekbar_custom_color_primary",
                 tag = "app.revanced.extension.shared.settings.preference.ColorPickerPreference",

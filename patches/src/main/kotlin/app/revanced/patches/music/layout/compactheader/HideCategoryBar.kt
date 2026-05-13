@@ -43,7 +43,7 @@ val hideCategoryBarPatch = bytecodePatch(
         addResources("music", "layout.compactheader.hideCategoryBar")
 
         PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("revanced_music_hide_category_bar"),
+            SwitchPreference("revanced_music_hide_category_bar", summaryKey = null),
         )
 
         chipCloud = ResourceType.LAYOUT["chip_cloud"]

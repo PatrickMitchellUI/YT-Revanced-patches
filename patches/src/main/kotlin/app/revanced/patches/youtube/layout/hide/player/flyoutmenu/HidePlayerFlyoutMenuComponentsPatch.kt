@@ -58,30 +58,30 @@ val hidePlayerFlyoutMenuComponentsPatch = bytecodePatch(
             PreferenceScreenPreference(
                 key = "revanced_hide_player_flyout",
                 preferences = setOf(
-                    SwitchPreference("revanced_hide_player_flyout_captions"),
-                    SwitchPreference("revanced_hide_player_flyout_captions_footer"),
-                    SwitchPreference("revanced_hide_player_flyout_captions_header"),
-                    SwitchPreference("revanced_hide_player_flyout_listen_with_youtube_music"),
-                    SwitchPreference("revanced_hide_player_flyout_help"),
-                    SwitchPreference("revanced_hide_player_flyout_speed"),
-                    SwitchPreference("revanced_hide_player_flyout_lock_screen"),
+                    SwitchPreference("revanced_hide_player_flyout_captions", summaryKey = null),
+                    SwitchPreference("revanced_hide_player_flyout_captions_footer", summaryKey = null),
+                    SwitchPreference("revanced_hide_player_flyout_captions_header", summaryKey = null),
+                    SwitchPreference("revanced_hide_player_flyout_listen_with_youtube_music", summaryKey = null),
+                    SwitchPreference("revanced_hide_player_flyout_help", summaryKey = null),
+                    SwitchPreference("revanced_hide_player_flyout_speed", summaryKey = null),
+                    SwitchPreference("revanced_hide_player_flyout_lock_screen", summaryKey = null),
                     SwitchPreference(
-                        key = "revanced_hide_player_flyout_audio_track",
+                        key = "revanced_hide_player_flyout_audio_track", summaryKey = null,
                         tag = "app.revanced.extension.youtube.settings.preference.HideAudioFlyoutMenuPreference"
                     ),
                     SwitchPreference(
-                        key = "revanced_hide_player_flyout_audio_track_footer",
+                        key = "revanced_hide_player_flyout_audio_track_footer", summaryKey = null,
                         tag = "app.revanced.extension.youtube.settings.preference.HideAudioFlyoutMenuPreference"
                     ),
-                    SwitchPreference("revanced_hide_player_flyout_quality"),
-                    SwitchPreference("revanced_hide_player_flyout_quality_footer"),
-                    SwitchPreference("revanced_hide_player_flyout_quality_header"),
-                    SwitchPreference("revanced_hide_player_flyout_additional_settings"),
-                    SwitchPreference("revanced_hide_player_flyout_ambient_mode"),
-                    SwitchPreference("revanced_hide_player_flyout_stable_volume"),
-                    SwitchPreference("revanced_hide_player_flyout_loop_video"),
-                    SwitchPreference("revanced_hide_player_flyout_sleep_timer"),
-                    SwitchPreference("revanced_hide_player_flyout_watch_in_vr"),
+                    SwitchPreference("revanced_hide_player_flyout_quality", summaryKey = null),
+                    SwitchPreference("revanced_hide_player_flyout_quality_footer", summaryKey = null),
+                    SwitchPreference("revanced_hide_player_flyout_quality_header", summaryKey = null),
+                    SwitchPreference("revanced_hide_player_flyout_additional_settings", summaryKey = null),
+                    SwitchPreference("revanced_hide_player_flyout_ambient_mode", summaryKey = null),
+                    SwitchPreference("revanced_hide_player_flyout_stable_volume", summaryKey = null),
+                    SwitchPreference("revanced_hide_player_flyout_loop_video", summaryKey = null),
+                    SwitchPreference("revanced_hide_player_flyout_sleep_timer", summaryKey = null),
+                    SwitchPreference("revanced_hide_player_flyout_watch_in_vr", summaryKey = null),
                 ),
             )
         )

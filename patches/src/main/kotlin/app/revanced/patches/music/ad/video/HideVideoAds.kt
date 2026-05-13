@@ -37,7 +37,7 @@ val hideMusicVideoAdsPatch = bytecodePatch(
         addResources("music", "ad.video.hideVideoAdsPatch")
 
         PreferenceScreen.ADS.addPreferences(
-            SwitchPreference("revanced_music_hide_video_ads"),
+            SwitchPreference("revanced_music_hide_video_ads", summaryKey = null),
         )
 
         navigate(showVideoAdsMethodMatch.immutableMethod)

@@ -28,7 +28,7 @@ val blockAudioAdsPatch = bytecodePatch(
         addResources("twitch", "ad.audio.audioAdsPatch")
 
         PreferenceScreen.ADS.CLIENT_SIDE.addPreferences(
-            SwitchPreference("revanced_block_audio_ads"),
+            SwitchPreference("revanced_block_audio_ads", summaryKey = null),
         )
 
         // Block playAds call

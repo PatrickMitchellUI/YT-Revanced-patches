@@ -51,7 +51,7 @@ private val swipeControlsResourcePatch = resourcePatch {
             SwitchPreference("revanced_swipe_brightness"),
             SwitchPreference("revanced_swipe_volume"),
             SwitchPreference("revanced_swipe_press_to_engage"),
-            SwitchPreference("revanced_swipe_haptic_feedback"),
+            SwitchPreference("revanced_swipe_haptic_feedback", summaryKey = null),
             SwitchPreference("revanced_swipe_save_and_restore_brightness"),
             SwitchPreference("revanced_swipe_lowest_value_enable_auto_brightness"),
             ListPreference("revanced_swipe_overlay_style"),

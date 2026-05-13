@@ -216,11 +216,11 @@ val settingsPatch = bytecodePatch(
         )
 
         PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("revanced_restore_old_settings_menus"),
+            SwitchPreference("revanced_restore_old_settings_menus", summaryKey = null),
         )
 
         PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("revanced_settings_search_history"),
+            SwitchPreference("revanced_settings_search_history", summaryKey = null),
         )
 
         PreferenceScreen.GENERAL.addPreferences(
@@ -230,12 +230,12 @@ val settingsPatch = bytecodePatch(
                     sorting = Sorting.UNSORTED,
                     tag = "app.revanced.extension.shared.settings.preference.NoTitlePreferenceCategory",
                     preferences = setOf(
-                        SwitchPreference("revanced_show_menu_icons"),
-                        SwitchPreference("revanced_settings_disable_bold_icons"),
+                        SwitchPreference("revanced_show_menu_icons", summaryKey = null),
+                        SwitchPreference("revanced_settings_disable_bold_icons", summaryKey = null),
                     ),
                 )
             } else {
-                SwitchPreference("revanced_show_menu_icons")
+                SwitchPreference("revanced_show_menu_icons", summaryKey = null)
             },
         )
 

@@ -60,7 +60,7 @@ val hideInfoCardsPatch = bytecodePatch(
         addResources("youtube", "layout.hide.infocards.hideInfoCardsResourcePatch")
 
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("revanced_hide_info_cards"),
+            SwitchPreference("revanced_hide_info_cards", summaryKey = null),
         )
 
         // Edit: This old non-litho code may be obsolete and no longer used by any supported versions.

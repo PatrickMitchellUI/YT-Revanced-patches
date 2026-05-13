@@ -94,12 +94,12 @@ val settingsPatch = bytecodePatch(
         )
 
         PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("revanced_settings_search_history")
+            SwitchPreference("revanced_settings_search_history", summaryKey = null)
         )
 
         if (is_8_40_or_greater) {
             PreferenceScreen.GENERAL.addPreferences(
-                SwitchPreference("revanced_settings_disable_bold_icons")
+                SwitchPreference("revanced_settings_disable_bold_icons", summaryKey = null)
             )
         }
 

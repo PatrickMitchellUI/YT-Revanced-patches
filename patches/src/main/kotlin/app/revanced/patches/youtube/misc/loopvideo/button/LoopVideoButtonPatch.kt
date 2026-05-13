@@ -47,7 +47,7 @@ internal val loopVideoButtonPatch = bytecodePatch(
         addResources("youtube", "misc.loopvideo.button.loopVideoButtonPatch")
 
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("revanced_loop_video_button"),
+            SwitchPreference("revanced_loop_video_button", summaryKey = null),
         )
 
         // Initialize the button using standard approach.

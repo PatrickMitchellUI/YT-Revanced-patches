@@ -68,9 +68,9 @@ val disableVideoCodecsPatch = bytecodePatch(
         addResources("youtube", "video.codecs.disableVideoCodecsPatch")
 
         PreferenceScreen.VIDEO.addPreferences(
-            SwitchPreference("revanced_disable_hdr_video"),
+            SwitchPreference("revanced_disable_hdr_video", summaryKey = null),
             SwitchPreference(
-                key = "revanced_force_avc_codec",
+                key = "revanced_force_avc_codec", summaryKey = null,
                 tag = "app.revanced.extension.youtube.settings.preference.ForceAVCSwitchPreference"
             )
         )

@@ -65,11 +65,11 @@ val removeBackgroundPlaybackRestrictionsPatch = bytecodePatch(
         addResources("youtube", "misc.backgroundplayback.backgroundPlaybackPatch")
 
         PreferenceScreen.SHORTS.addPreferences(
-            SwitchPreference("revanced_shorts_disable_background_playback"),
+            SwitchPreference("revanced_shorts_disable_background_playback", summaryKey = null),
         )
 
         PreferenceScreen.MISC.addPreferences(
-            SwitchPreference("revanced_remove_background_playback_restrictions"),
+            SwitchPreference("revanced_remove_background_playback_restrictions", summaryKey = null),
         )
 
         prefBackgroundAndOfflineCategoryId =

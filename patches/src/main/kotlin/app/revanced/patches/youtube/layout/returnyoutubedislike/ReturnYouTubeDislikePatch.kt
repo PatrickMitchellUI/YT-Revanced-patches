@@ -75,7 +75,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
         addResources("youtube", "layout.returnyoutubedislike.returnYouTubeDislikePatch")
 
         PreferenceScreen.RETURN_YOUTUBE_DISLIKE.addPreferences(
-            SwitchPreference("revanced_ryd_enabled"),
+            SwitchPreference("revanced_ryd_enabled", summaryKey = null),
             SwitchPreference("revanced_ryd_shorts"),
             SwitchPreference("revanced_ryd_dislike_percentage"),
             SwitchPreference("revanced_ryd_compact_layout"),

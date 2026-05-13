@@ -43,7 +43,7 @@ val hideMusicAdsPatch = bytecodePatch(
         addResources("music", "ad.general.hideAdsPatch")
 
         PreferenceScreen.ADS.addPreferences(
-            SwitchPreference("revanced_music_hide_get_premium_label"),
+            SwitchPreference("revanced_music_hide_get_premium_label", summaryKey = null),
         )
 
         // Hide 'Get Music Premium' label

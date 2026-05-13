@@ -42,26 +42,26 @@ val hideVideoActionButtonsPatch = resourcePatch(
 
         val portraitPreferences = mutableSetOf(
             SwitchPreference("revanced_disable_like_subscribe_glow"),
-            SwitchPreference("revanced_hide_download_button"),
-            SwitchPreference("revanced_hide_like_dislike_button"),
-            SwitchPreference("revanced_hide_comments_button"),
-            SwitchPreference("revanced_hide_save_button"),
-            SwitchPreference("revanced_hide_remix_button"),
-            SwitchPreference("revanced_hide_share_button"),
+            SwitchPreference("revanced_hide_download_button", summaryKey = null),
+            SwitchPreference("revanced_hide_like_dislike_button", summaryKey = null),
+            SwitchPreference("revanced_hide_comments_button", summaryKey = null),
+            SwitchPreference("revanced_hide_save_button", summaryKey = null),
+            SwitchPreference("revanced_hide_remix_button", summaryKey = null),
+            SwitchPreference("revanced_hide_share_button", summaryKey = null),
         )
 
         // 20.22+ cannot hide all action buttons because of buffer changes.
         if (!is_20_22_or_greater) {
             portraitPreferences.addAll(
                 listOf(
-                    SwitchPreference("revanced_hide_hype_button"),
-                    SwitchPreference("revanced_hide_ask_button"),
-                    SwitchPreference("revanced_hide_clip_button"),
-                    SwitchPreference("revanced_hide_promote_button"),
-                    SwitchPreference("revanced_hide_report_button"),
-                    SwitchPreference("revanced_hide_shop_button"),
-                    SwitchPreference("revanced_hide_stop_ads_button"),
-                    SwitchPreference("revanced_hide_thanks_button"),
+                    SwitchPreference("revanced_hide_hype_button", summaryKey = null),
+                    SwitchPreference("revanced_hide_ask_button", summaryKey = null),
+                    SwitchPreference("revanced_hide_clip_button", summaryKey = null),
+                    SwitchPreference("revanced_hide_promote_button", summaryKey = null),
+                    SwitchPreference("revanced_hide_report_button", summaryKey = null),
+                    SwitchPreference("revanced_hide_shop_button", summaryKey = null),
+                    SwitchPreference("revanced_hide_stop_ads_button", summaryKey = null),
+                    SwitchPreference("revanced_hide_thanks_button", summaryKey = null),
                 ),
             )
         }
@@ -77,18 +77,18 @@ val hideVideoActionButtonsPatch = resourcePatch(
                     PreferenceCategory(
                         titleKey = "revanced_fullscreen_buttons",
                         preferences = setOf(
-                            SwitchPreference("revanced_hide_quick_actions"),
-                            SwitchPreference("revanced_hide_quick_actions_ask_button"),
-                            SwitchPreference("revanced_hide_quick_actions_comments_button"),
-                            SwitchPreference("revanced_hide_quick_actions_dislike_button"),
-                            SwitchPreference("revanced_hide_quick_actions_like_button"),
-                            SwitchPreference("revanced_hide_quick_actions_live_chat_button"),
-                            SwitchPreference("revanced_hide_quick_actions_mix_button"),
-                            SwitchPreference("revanced_hide_quick_actions_more_button"),
-                            SwitchPreference("revanced_hide_quick_actions_more_videos_button"),
-                            SwitchPreference("revanced_hide_quick_actions_playlist_button"),
-                            SwitchPreference("revanced_hide_quick_actions_save_button"),
-                            SwitchPreference("revanced_hide_quick_actions_share_button"),
+                            SwitchPreference("revanced_hide_quick_actions", summaryKey = null),
+                            SwitchPreference("revanced_hide_quick_actions_ask_button", summaryKey = null),
+                            SwitchPreference("revanced_hide_quick_actions_comments_button", summaryKey = null),
+                            SwitchPreference("revanced_hide_quick_actions_dislike_button", summaryKey = null),
+                            SwitchPreference("revanced_hide_quick_actions_like_button", summaryKey = null),
+                            SwitchPreference("revanced_hide_quick_actions_live_chat_button", summaryKey = null),
+                            SwitchPreference("revanced_hide_quick_actions_mix_button", summaryKey = null),
+                            SwitchPreference("revanced_hide_quick_actions_more_button", summaryKey = null),
+                            SwitchPreference("revanced_hide_quick_actions_more_videos_button", summaryKey = null),
+                            SwitchPreference("revanced_hide_quick_actions_playlist_button", summaryKey = null),
+                            SwitchPreference("revanced_hide_quick_actions_save_button", summaryKey = null),
+                            SwitchPreference("revanced_hide_quick_actions_share_button", summaryKey = null),
                         ),
                     ),
                 ),

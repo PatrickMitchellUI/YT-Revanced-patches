@@ -39,7 +39,7 @@ val permanentRepeatPatch = bytecodePatch(
         addResources("music", "interaction.permanentrepeat.permanentRepeatPatch")
 
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("revanced_music_play_permanent_repeat"),
+            SwitchPreference("revanced_music_play_permanent_repeat", summaryKey = null),
         )
 
         repeatTrackMethodMatch.method.apply {
