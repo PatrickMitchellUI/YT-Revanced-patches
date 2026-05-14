@@ -184,8 +184,6 @@ internal val BytecodePatchContext.mediaFetchHotConfigAlternativeMethodMatch by c
 // then videos will never start playback and load forever.
 // Flag does not seem to affect playback if spoofing is off.
 internal val BytecodePatchContext.playbackStartDescriptorFeatureFlagMethodMatch by composingFirstMethod {
-    parameterTypes()
-    returnType("Z")
     instructions(45665455L())
 }
 
