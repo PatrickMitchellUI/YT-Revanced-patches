@@ -31,8 +31,10 @@ internal val BytecodePatchContext.autoHideNavigationBarMethod by gettingFirstMet
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returnType("V")
     parameterTypes("Landroid/support/v7/widget/RecyclerView;", "I", "I")
+    // 21.x removed the 45677535 feature flag literal, anchor on the ViewConfiguration calls instead.
     instructions(
-        45677535L(),
+        method { toString() == "Landroid/view/ViewConfiguration;->get(Landroid/content/Context;)Landroid/view/ViewConfiguration;" },
+        afterAtMost(5, method { toString() == "Landroid/view/ViewConfiguration;->getScaledTouchSlop()I" }),
     )
 }
 

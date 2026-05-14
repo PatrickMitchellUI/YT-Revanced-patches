@@ -9,6 +9,7 @@ import app.revanced.patcher.extensions.addInstructionsWithLabels
 import app.revanced.patcher.extensions.fieldReference
 import app.revanced.patcher.extensions.getInstruction
 import app.revanced.patcher.extensions.instructions
+import app.revanced.patcher.extensions.instructionsOrNull
 import app.revanced.patcher.extensions.methodReference
 import app.revanced.patcher.extensions.removeInstruction
 import app.revanced.patcher.extensions.replaceInstruction
@@ -32,6 +33,7 @@ import app.revanced.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.revanced.patches.youtube.misc.playservice.is_20_21_or_greater
 import app.revanced.patches.youtube.misc.playservice.is_20_26_or_greater
 import app.revanced.patches.youtube.misc.playservice.is_21_11_or_greater
+import app.revanced.patches.youtube.misc.playservice.is_21_20_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.patches.youtube.misc.protobuf.hookElement
 import app.revanced.patches.youtube.misc.protobuf.hookProtobufElementParserPatch
@@ -761,40 +763,76 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
 
     // region Hide channel tab
 
-    channelTabRendererMethod.apply {
-        val iteratorIndex = indexOfFirstInstructionReversedOrThrow {
-            methodReference?.name == "hasNext"
+    if (is_21_20_or_greater) {
+        channelTabRendererMethod.classDef.methods.first { candidate ->
+            candidate.returnType == "V" &&
+                    candidate.parameterTypes.size == 2 &&
+                    candidate.parameterTypes[0].startsWith("L") &&
+                    candidate.parameterTypes[1] == "I" &&
+                    candidate.instructionsOrNull?.any {
+                        it.methodReference?.toString() == "Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z"
+                    } == true
+        }.apply {
+            val targetIndex = indexOfFirstInstructionReversedOrThrow {
+                val reference = methodReference
+
+                opcode == Opcode.INVOKE_INTERFACE &&
+                        reference?.returnType == channelTabBuilderMethod.returnType &&
+                        reference.parameterTypes == channelTabBuilderMethod.parameterTypes
+            }
+            val objectIndex = indexOfFirstInstructionReversedOrThrow(targetIndex, Opcode.IGET_OBJECT)
+            val register = getInstruction<TwoRegisterInstruction>(objectIndex).registerA
+            val insertIndex = objectIndex + 1
+            val free = findFreeRegister(insertIndex, register)
+
+            addInstructionsWithLabels(
+                insertIndex,
+                """
+                    invoke-static { v$register }, ${LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR}->hideChannelTab(Ljava/lang/String;)Z
+                    move-result v$free
+                    if-eqz v$free, :ignore
+                    return-void
+                    :ignore
+                    nop
+                """
+            )
         }
+    } else {
+        channelTabRendererMethod.apply {
+            val iteratorIndex = indexOfFirstInstructionReversedOrThrow {
+                methodReference?.name == "hasNext"
+            }
 
-        val iteratorRegister = getInstruction<FiveRegisterInstruction>(iteratorIndex).registerC
-        val targetIndex = indexOfFirstInstructionReversedOrThrow {
-            val reference = methodReference
+            val iteratorRegister = getInstruction<FiveRegisterInstruction>(iteratorIndex).registerC
+            val targetIndex = indexOfFirstInstructionReversedOrThrow {
+                val reference = methodReference
 
-            opcode == Opcode.INVOKE_INTERFACE &&
-                    reference?.returnType == channelTabBuilderMethod.returnType &&
-                    reference.parameterTypes == channelTabBuilderMethod.parameterTypes
+                opcode == Opcode.INVOKE_INTERFACE &&
+                        reference?.returnType == channelTabBuilderMethod.returnType &&
+                        reference.parameterTypes == channelTabBuilderMethod.parameterTypes
+            }
+
+            val objectIndex = indexOfFirstInstructionReversedOrThrow(
+                targetIndex,
+                Opcode.IGET_OBJECT
+            )
+            val objectInstruction = getInstruction<TwoRegisterInstruction>(objectIndex)
+            val objectReference = getInstruction<ReferenceInstruction>(objectIndex).reference
+
+            addInstructionsWithLabels(
+                objectIndex + 1,
+                """
+                    invoke-static { v${objectInstruction.registerA} }, ${LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR}->hideChannelTab(Ljava/lang/String;)Z
+                    move-result v${objectInstruction.registerA}
+                    if-eqz v${objectInstruction.registerA}, :ignore
+                    invoke-interface { v$iteratorRegister }, Ljava/util/Iterator;->remove()V
+                    goto :next_iterator
+                    :ignore
+                    iget-object v${objectInstruction.registerA}, v${objectInstruction.registerB}, $objectReference
+                    """,
+                ExternalLabel("next_iterator", getInstruction(iteratorIndex))
+            )
         }
-
-        val objectIndex = indexOfFirstInstructionReversedOrThrow(
-            targetIndex,
-            Opcode.IGET_OBJECT
-        )
-        val objectInstruction = getInstruction<TwoRegisterInstruction>(objectIndex)
-        val objectReference = getInstruction<ReferenceInstruction>(objectIndex).reference
-
-        addInstructionsWithLabels(
-            objectIndex + 1,
-            """
-                invoke-static { v${objectInstruction.registerA} }, ${LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR}->hideChannelTab(Ljava/lang/String;)Z
-                move-result v${objectInstruction.registerA}
-                if-eqz v${objectInstruction.registerA}, :ignore
-                invoke-interface { v$iteratorRegister }, Ljava/util/Iterator;->remove()V
-                goto :next_iterator
-                :ignore
-                iget-object v${objectInstruction.registerA}, v${objectInstruction.registerB}, $objectReference
-                """,
-            ExternalLabel("next_iterator", getInstruction(iteratorIndex))
-        )
     }
 
     // endregion

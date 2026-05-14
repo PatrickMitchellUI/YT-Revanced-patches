@@ -34,7 +34,8 @@ internal val BytecodePatchContext.reelPlaybackRepeatMethod by getting {
     firstImmutableMethodDeclaratively {
         returnType("V")
         instructions(
-            "Reels[%s] Playback Time: %d ms"(),
+            method { toString() == "Lj\$/time/Instant;->toEpochMilli()J" },
+            "r_tr"(),
         )
     }
 }

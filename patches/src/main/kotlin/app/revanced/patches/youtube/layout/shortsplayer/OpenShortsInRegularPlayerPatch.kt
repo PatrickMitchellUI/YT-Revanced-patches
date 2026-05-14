@@ -14,6 +14,7 @@ import app.revanced.patches.shared.misc.settings.preference.ListPreference
 import app.revanced.patches.youtube.layout.player.fullscreen.openVideosFullscreenHookPatch
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
 import app.revanced.patches.youtube.misc.navigation.navigationBarHookPatch
+import app.revanced.patches.youtube.misc.playservice.is_21_20_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
@@ -75,7 +76,7 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
             navigate(it.method).to(it[1]).original()
         }
 
-        shortsPlaybackIntentMethod.addInstructionsWithLabels(
+        (if (is_21_20_or_greater) shortsPlaybackIntentMethod else shortsPlaybackIntentLegacyMethod).addInstructionsWithLabels(
             0,
             """
                 move-object/from16 v0, p1
