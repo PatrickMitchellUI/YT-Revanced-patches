@@ -397,12 +397,12 @@ However, enabling this will also log some user data such as your IP address."</s
             <!-- Translations should lanaguge similar to revanced_hide_upload_time_user_dialog_message -->
             <string name="revanced_hide_view_count_user_dialog_message">"Limitations:
 • Shorts shelves, channel pages, and search results may still show view counts.
-• This feature does not work with automotive form factor."</string>
+• This feature does not work with automotive layout."</string>
             <string name="revanced_hide_upload_time_title">Hide upload time</string>
             <!-- Translations should lanaguge similar to revanced_hide_view_count_user_dialog_message -->
             <string name="revanced_hide_upload_time_user_dialog_message">"Limitations:
 • Shorts shelves, channel pages, and search results may still show upload times.
-• This feature does not work with automotive form factor."</string>
+• This feature does not work with automotive layout."</string>
             <string name="revanced_hide_keyword_content_screen_title">Hide keyword content</string>
             <string name="revanced_hide_keyword_content_screen_summary">Hide feed and search videos using keyword filters</string>
             <string name="revanced_hide_keyword_content_home_title">Hide Home videos by keywords</string>
@@ -480,7 +480,7 @@ Limitations:
             <string name="revanced_external_downloader_title">Show external download button</string>
             <!-- 'Download action button' should be translated using the same wording as the translation of 'revanced_hide_download_button_title'. -->
             <string name="revanced_external_downloader_action_button_title">Override Download action button</string>
-            <string name="revanced_external_downloader_action_button_summary">Routes the Download button to your external downloader instead of the native in-app downloader</string>
+            <string name="revanced_external_downloader_action_button_summary">Replaces YouTube\'s built-in download function with your chosen third-party downloading app</string>
             <string name="revanced_external_downloader_name_title">Downloader package name</string>
             <string name="revanced_external_downloader_name_summary">Package name of your installed external downloader app</string>
             <string name="revanced_external_downloader_other_item_hint">Enter the package name</string>
@@ -1072,7 +1072,7 @@ Changes include:
 • Account switch button may not appear on the Library tab."</string>
         </patch>
         <patch id="layout.formfactor.changeFormFactorPatch">
-            <string name="revanced_change_form_factor_title">Layout form factor</string>
+            <string name="revanced_change_form_factor_title">Device layout</string>
             <string name="revanced_change_form_factor_entry_1">Default</string>
             <string name="revanced_change_form_factor_entry_2">Phone</string>
             <string name="revanced_change_form_factor_entry_3">Tablet</string>
