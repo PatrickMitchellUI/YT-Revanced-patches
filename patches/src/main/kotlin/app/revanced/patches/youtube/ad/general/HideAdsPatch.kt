@@ -63,7 +63,6 @@ private val hideAdsResourcePatch = resourcePatch {
             SwitchPreference("revanced_hide_player_popup_ads", summaryKey = null),
             SwitchPreference("revanced_hide_self_sponsor_ads", summaryKey = null),
             SwitchPreference("revanced_hide_shopping_links", summaryKey = null),
-            SwitchPreference("revanced_hide_view_products_banner", summaryKey = null),
             SwitchPreference("revanced_hide_youtube_premium_promotions", summaryKey = null)
         )
 

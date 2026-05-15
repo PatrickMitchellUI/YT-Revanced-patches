@@ -61,7 +61,6 @@ public final class ShortsFilter extends Filter {
     private final StringFilterGroup autoDubbedLabel;
     private final StringFilterGroup subscribeButton;
     private final StringFilterGroup joinButton;
-    private final StringFilterGroup paidPromotionLabel;
     private final StringFilterGroup shelfHeaderIdentifier;
     private final StringFilterGroup shelfHeaderPath;
 
@@ -171,11 +170,6 @@ public final class ShortsFilter extends Filter {
                 "shorts_info_panel_overview"
         );
 
-        StringFilterGroup stickers = new StringFilterGroup(
-                Settings.HIDE_SHORTS_STICKERS,
-                "stickers_layer.e"
-        );
-
         StringFilterGroup likeFountain = new StringFilterGroup(
                 Settings.HIDE_SHORTS_LIKE_FOUNTAIN,
                 "like_fountain.e"
@@ -222,12 +216,6 @@ public final class ShortsFilter extends Filter {
         subscribeButton = new StringFilterGroup(
                 Settings.HIDE_SHORTS_SUBSCRIBE_BUTTON,
                 "subscribe_button"
-        );
-
-        paidPromotionLabel = new StringFilterGroup(
-                Settings.HIDE_PAID_PROMOTION_LABEL,
-                "reel_player_disclosure.e",
-                "shorts_disclosures.e"
         );
 
         shortsActionBar = new StringFilterGroup(
@@ -290,10 +278,10 @@ public final class ShortsFilter extends Filter {
         );
 
         addPathCallbacks(
-                shortsCompactFeedVideo, shelfHeaderPath, joinButton, subscribeButton, paidPromotionLabel,
-                livePreview, suggestedAction, pausedOverlayButtons, channelBar, infoPanel, previewComment,
-                autoDubbedLabel, fullVideoLinkLabel, videoTitle, soundButton, stickers, useButtons,
-                reelCarousel, reelSoundMetadata, likeFountain, likeButton, dislikeButton, shortsActionBar
+                shortsCompactFeedVideo, shelfHeaderPath, joinButton, subscribeButton, livePreview,
+                suggestedAction, pausedOverlayButtons, channelBar, infoPanel, previewComment,
+                autoDubbedLabel, fullVideoLinkLabel, videoTitle, soundButton, useButtons, likeFountain,
+                reelCarousel, reelSoundMetadata, likeButton, dislikeButton, shortsActionBar
         );
 
         //
@@ -431,8 +419,7 @@ public final class ShortsFilter extends Filter {
         }
 
         if (contentType == FilterContentType.PATH) {
-            if (matchedGroup == subscribeButton || matchedGroup == joinButton
-                    || matchedGroup == paidPromotionLabel || matchedGroup == autoDubbedLabel) {
+            if (matchedGroup == subscribeButton || matchedGroup == joinButton || matchedGroup == autoDubbedLabel) {
                 // Selectively filter to avoid false positive filtering of other subscribe/join buttons.
                 return path.startsWith(REEL_CHANNEL_BAR_PATH) || path.startsWith(REEL_METAPANEL_PATH)
                         || path.startsWith(REEL_PLAYER_OVERLAY_PATH);
