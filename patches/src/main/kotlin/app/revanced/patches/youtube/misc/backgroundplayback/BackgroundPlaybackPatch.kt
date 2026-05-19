@@ -16,6 +16,7 @@ import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
 import app.revanced.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.revanced.patches.youtube.misc.playservice.is_20_29_or_greater
+import app.revanced.patches.youtube.misc.playservice.is_21_04_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
@@ -138,6 +139,12 @@ val removeBackgroundPlaybackRestrictionsPatch = bytecodePatch(
             // Client flag that interferes with background playback of some video types.
             // Exact purpose is not clear and it's used in ~ 100 locations.
             newPlayerTypeEnumFeatureFlagMethodMatch.addBackgroundPlaybackFeatureFlagHook(false)
+        }
+
+        if (is_21_04_or_greater) {
+            // If newPlayerTypeEnumFeatureFlagMethodMatch is present and forced off then this flag
+            // must also be disabled, otherwise the player is a black screen with no buttons and no playback.
+            newPlayerOverlaysFeatureFlagMethodMatch.addBackgroundPlaybackFeatureFlagHook(false)
         }
     }
 }

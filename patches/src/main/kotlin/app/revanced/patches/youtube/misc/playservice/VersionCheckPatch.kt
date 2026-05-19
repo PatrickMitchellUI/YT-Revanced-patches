@@ -42,6 +42,8 @@ var is_21_02_or_greater: Boolean by Delegates.notNull()
     private set
 var is_21_03_or_greater: Boolean by Delegates.notNull()
     private set
+var is_21_04_or_greater: Boolean by Delegates.notNull()
+    private set
 var is_21_05_or_greater: Boolean by Delegates.notNull()
     private set
 var is_21_06_or_greater: Boolean by Delegates.notNull()
@@ -93,6 +95,7 @@ val versionCheckPatch = resourcePatch(
         is_20_49_or_greater = 255005000 <= playStoreServicesVersion
         is_21_02_or_greater = 260305000 <= playStoreServicesVersion
         is_21_03_or_greater = 260405000 <= playStoreServicesVersion
+        is_21_04_or_greater = 260505000 <= playStoreServicesVersion
         is_21_05_or_greater = 260605000 <= playStoreServicesVersion
         is_21_06_or_greater = 260705000 <= playStoreServicesVersion
         is_21_07_or_greater = 260805000 <= playStoreServicesVersion

@@ -90,3 +90,7 @@ internal val BytecodePatchContext.pipInputConsumerFeatureFlagMethodMatch by comp
 internal val BytecodePatchContext.newPlayerTypeEnumFeatureFlagMethodMatch by composingFirstMethod {
     instructions(45698813L())
 }
+
+internal val BytecodePatchContext.newPlayerOverlaysFeatureFlagMethodMatch by composingFirstMethod {
+    instructions(45752335L())
+}
