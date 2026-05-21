@@ -103,6 +103,30 @@ public class SpoofVideoStreamsPatch {
      * Injection point.
      *
      * Blocks /get_watch requests by returning an unreachable URI.
+     * Used by the newer request builder present in YouTube 21.21+ and YouTube Music 9.19+.
+     */
+    public static Uri.Builder blockGetWatchRequest(Uri.Builder playerRequestBuilder) {
+        if (SPOOF_STREAMING_DATA) {
+            try {
+                String path = playerRequestBuilder.build().getPath();
+
+                if (path != null && path.contains("get_watch")) {
+                    Logger.printDebug(() -> "Blocking 'get_watch' by returning internet connection check uri");
+
+                    return INTERNET_CONNECTION_CHECK_URI.buildUpon();
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "blockGetWatchRequest failure", ex);
+            }
+        }
+
+        return playerRequestBuilder;
+    }
+
+    /**
+     * Injection point.
+     *
+     * Blocks /get_watch requests by returning an unreachable URI.
      * /att/get requests are used to obtain a PoToken challenge.
      * See: <a href="https://github.com/FreeTubeApp/FreeTube/blob/4b7208430bc1032019a35a35eb7c8a84987ddbd7/src/botGuardScript.js#L15">botGuardScript.js#L15</a>
      * <p>

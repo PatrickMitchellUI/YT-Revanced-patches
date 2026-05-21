@@ -17,6 +17,7 @@ import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
 import app.revanced.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.revanced.patches.youtube.misc.playservice.is_20_29_or_greater
 import app.revanced.patches.youtube.misc.playservice.is_21_04_or_greater
+import app.revanced.patches.youtube.misc.playservice.is_21_21_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
@@ -133,7 +134,9 @@ val removeBackgroundPlaybackRestrictionsPatch = bytecodePatch(
         kidsBackgroundPlaybackPolicyControllerMethod.addBackgroundPlaybackIsPatchEnabledHook()
 
         // Fix PiP buttons not working after locking/unlocking device screen.
-        pipInputConsumerFeatureFlagMethodMatch.addBackgroundPlaybackFeatureFlagHook(false)
+        if (!is_21_21_or_greater) {
+            pipInputConsumerFeatureFlagMethodMatch.addBackgroundPlaybackFeatureFlagHook(false)
+        }
 
         if (is_20_29_or_greater) {
             // Client flag that interferes with background playback of some video types.

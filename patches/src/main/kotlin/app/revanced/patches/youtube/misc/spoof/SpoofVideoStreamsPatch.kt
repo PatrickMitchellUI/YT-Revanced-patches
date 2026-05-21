@@ -9,6 +9,7 @@ import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.shared.misc.spoof.spoofVideoStreamsPatch
 import app.revanced.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.revanced.patches.youtube.misc.playservice.is_20_39_or_greater
+import app.revanced.patches.youtube.misc.playservice.is_21_21_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
@@ -25,6 +26,7 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
     fixParsePlaybackResponseFeatureFlag = { true },
     fixMediaSessionFeatureFlag = { is_20_39_or_greater },
     fixReelItemWatchResponseFeatureFlag = { is_20_31_or_greater },
+    useNewRequestBuilderFingerprint = { is_21_21_or_greater },
     block = {
         compatibleWith(
             "com.google.android.youtube"(

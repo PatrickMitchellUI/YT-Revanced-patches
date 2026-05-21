@@ -37,6 +37,7 @@ internal fun spoofVideoStreamsPatch(
     fixParsePlaybackResponseFeatureFlag: BytecodePatchBuilder.() -> Boolean = { false },
     fixMediaSessionFeatureFlag: BytecodePatchBuilder.() -> Boolean = { false },
     fixReelItemWatchResponseFeatureFlag: BytecodePatchBuilder.() -> Boolean = { false },
+    useNewRequestBuilderFingerprint: BytecodePatchBuilder.() -> Boolean = { false },
     block: BytecodePatchBuilder.() -> Unit,
     executeBlock: BytecodePatchContext.() -> Unit = {},
 ) = bytecodePatch(
@@ -82,17 +83,32 @@ internal fun spoofVideoStreamsPatch(
 
         // region Block /get_watch requests to fall back to /player requests.
 
-        buildPlayerRequestURIMethodMatch.method.apply {
-            val invokeToStringIndex = buildPlayerRequestURIMethodMatch[0]
-            val uriRegister = getInstruction<FiveRegisterInstruction>(invokeToStringIndex).registerC
+        if (useNewRequestBuilderFingerprint()) {
+            buildPlayerRequestURIBuilderMethodMatch.method.apply {
+                val index = buildPlayerRequestURIBuilderMethodMatch[-1]
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
 
-            addInstructions(
-                invokeToStringIndex,
-                """
-                    invoke-static { v$uriRegister }, $EXTENSION_CLASS_DESCRIPTOR->blockGetWatchRequest(Landroid/net/Uri;)Landroid/net/Uri;
-                    move-result-object v$uriRegister
-                """,
-            )
+                addInstructionsAtControlFlowLabel(
+                    index,
+                    """
+                        invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->blockGetWatchRequest(Landroid/net/Uri${'$'}Builder;)Landroid/net/Uri${'$'}Builder;
+                        move-result-object v$register
+                    """,
+                )
+            }
+        } else {
+            buildPlayerRequestURIMethodMatch.method.apply {
+                val invokeToStringIndex = buildPlayerRequestURIMethodMatch[0]
+                val uriRegister = getInstruction<FiveRegisterInstruction>(invokeToStringIndex).registerC
+
+                addInstructions(
+                    invokeToStringIndex,
+                    """
+                        invoke-static { v$uriRegister }, $EXTENSION_CLASS_DESCRIPTOR->blockGetWatchRequest(Landroid/net/Uri;)Landroid/net/Uri;
+                        move-result-object v$uriRegister
+                    """,
+                )
+            }
         }
 
         // endregion

@@ -14,6 +14,7 @@ import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patcher.returnType
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
+import app.revanced.patches.youtube.misc.playservice.is_21_21_or_greater
 import app.revanced.util.addInstructionsAtControlFlowLabel
 import app.revanced.util.cloneMutableAndPreserveParameters
 import app.revanced.util.findInstructionIndicesReversedOrThrow
@@ -50,9 +51,15 @@ enum class Endpoint(
     NEXT(BytecodePatchContext::nextEndpointParentMethod::get),
     PLAYER(BytecodePatchContext::playerEndpointParentMethod::get),
     REEL(
-        BytecodePatchContext::reelCreateItemsEndpointConstructorMethod::get,
-        BytecodePatchContext::reelItemWatchEndpointConstructorMethod::get,
-        BytecodePatchContext::reelWatchSequenceEndpointConstructorMethod::get,
+        // 21.21+ removed "reel/create_reel_items" and the replacement isn't clear.
+        *(arrayOf<BytecodePatchContext.() -> Method>(
+            BytecodePatchContext::reelItemWatchEndpointConstructorMethod::get,
+            BytecodePatchContext::reelWatchSequenceEndpointConstructorMethod::get,
+        ) + if (!is_21_21_or_greater) {
+            arrayOf<BytecodePatchContext.() -> Method>(BytecodePatchContext::reelCreateItemsEndpointConstructorMethod::get)
+        } else {
+            emptyArray<BytecodePatchContext.() -> Method>()
+        })
     ),
     SEARCH(BytecodePatchContext::searchRequestBuildParametersMethod::get)
 }

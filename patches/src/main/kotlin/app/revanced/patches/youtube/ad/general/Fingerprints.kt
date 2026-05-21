@@ -48,15 +48,14 @@ internal val BytecodePatchContext.getPremiumViewMethodMatch by composingFirstMet
     )
 }
 
-internal val BytecodePatchContext.playerOverlayTimelyShelfMethod by gettingFirstMethodDeclaratively {
+internal val BytecodePatchContext.playerOverlayTimelyShelfMethodMatch by composingFirstMethod {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returnType("V")
     parameterTypes("Ljava/lang/Object;")
     instructions(
         "player_overlay_timely_shelf"(),
-        "innertube_cue_range"(),
-        "Null id"(),
-        "Null onExitActions"()
+        afterAtMost(5, method { name == "equals" && definingClass == "Ljava/lang/String;" }),
+        after(Opcode.MOVE_RESULT()),
     )
 }
 

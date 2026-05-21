@@ -132,17 +132,22 @@ val hideAdsPatch = bytecodePatch(
 
         // Hide player overlay view. This can be hidden with a regular litho filter
         // but an empty space remains.
-        playerOverlayTimelyShelfMethod.addInstructionsWithLabels(
-            0,
-            """
-                invoke-static {}, ${EXTENSION_CLASS_DESCRIPTOR}->hideAds()Z
-                move-result v0
-                if-eqz v0, :show
-                return-void
-                :show
-                nop
-            """
-        )
+        playerOverlayTimelyShelfMethodMatch.method.apply {
+            val index = playerOverlayTimelyShelfMethodMatch[-1]
+            val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+            addInstructionsWithLabels(
+                index + 1,
+                """
+                    invoke-static { v$register }, ${EXTENSION_CLASS_DESCRIPTOR}->allowAds(Z)Z
+                    move-result v0
+                    if-nez v0, :show
+                    return-void
+                    :show
+                    nop
+                """
+            )
+        }
 
 
         // Hide end screen store banner.

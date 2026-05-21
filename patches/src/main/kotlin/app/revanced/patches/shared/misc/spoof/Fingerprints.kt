@@ -42,6 +42,17 @@ internal val BytecodePatchContext.buildPlayerRequestURIMethodMatch by composingF
     )
 }
 
+// 21.21+
+internal val BytecodePatchContext.buildPlayerRequestURIBuilderMethodMatch by composingFirstMethod("key", "asig") {
+    accessFlags(AccessFlags.PRIVATE, AccessFlags.FINAL)
+    returnType($$"Landroid/net/Uri$Builder;")
+    parameterTypes()
+    instructions(
+        method { name == "appendQueryParameter" && definingClass == $$"Landroid/net/Uri$Builder;" },
+        Opcode.RETURN_OBJECT(),
+    )
+}
+
 internal val BytecodePatchContext.buildRequestMethodMatch by composingFirstMethod {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.STATIC)
     returnType("Lorg/chromium/net/UrlRequest") // UrlRequest; or UrlRequest$Builder;
