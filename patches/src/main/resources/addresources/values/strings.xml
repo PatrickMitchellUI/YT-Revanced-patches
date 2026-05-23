@@ -208,7 +208,7 @@ However, enabling this will also log some user data such as your IP address."</s
             <string name="revanced_sanitize_sharing_links_summary">Removes tracking query parameters from shared links</string>
             <string name="revanced_replace_music_with_youtube_title">Change share links to youtube.com</string>
             <string name="revanced_replace_links_with_shortener_title">Change share links to youtu.be</string>
-            <string name="revanced_replace_links_with_shortener_summary">Forces live streams and Shorts to use the shortened youtu.be URL format</string>
+            <string name="revanced_replace_links_with_shortener_summary">Forces videos to use the shortened youtu.be URL format</string>
         </patch>
         <patch id="layout.hide.general.hideLayoutComponentsPatch">
             <string name="revanced_custom_filter_screen_title">Custom filter</string>
