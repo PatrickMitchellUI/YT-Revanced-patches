@@ -14,7 +14,7 @@ public class ReloadVideoButton {
     private static PlayerControlButton instance;
 
     /**
-     * injection point.
+     * Injection point.
      */
     public static void initializeButton(View controlsView) {
         try {
