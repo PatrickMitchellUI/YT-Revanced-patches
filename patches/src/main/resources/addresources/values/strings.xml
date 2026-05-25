@@ -556,7 +556,7 @@ Verify the package name is correct and the app is installed"</string>
             <string name="revanced_swipe_brightness_sensitivity_title">Brightness swipe sensitivity</string>
             <string name="revanced_swipe_brightness_sensitivity_summary">Higher values require more swiping per brightness step</string>
             <string name="revanced_swipe_speed_title">Enable speed gesture</string>
-            <string name="revanced_swipe_speed_summary">Swipe horizontally in the upper zone to change playback speed</string>
+            <string name="revanced_swipe_speed_summary">Swipe horizontally in the upper zone of the fullscreen mode to change playback speed</string>
             <string name="revanced_swipe_speed_sensitivity_title">Speed swipe sensitivity</string>
             <string name="revanced_swipe_speed_sensitivity_summary">Higher values require more swiping per speed step</string>
             <string name="revanced_swipe_speed_zone_height_title">Speed zone height</string>
