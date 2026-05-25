@@ -36,7 +36,7 @@ private val downloadsResourcePatch = resourcePatch {
                 key = "revanced_external_downloader_screen",
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
-                    SwitchPreference("revanced_external_downloader", summaryKey = null),
+                    SwitchPreference("revanced_external_downloader"),
                     SwitchPreference("revanced_external_downloader_action_button"),
                     TextPreference(
                         "revanced_external_downloader_name",

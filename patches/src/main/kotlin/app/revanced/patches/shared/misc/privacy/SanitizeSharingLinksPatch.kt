@@ -48,7 +48,7 @@ internal fun sanitizeSharingLinksPatch(
         preferenceScreen.addPreferences(
             if (replaceMusicLinksWithYouTube || replaceLinksWithShortener) {
                 val preferences = mutableSetOf<BasePreference>(sanitizePreference)
-                if (replaceMusicLinksWithYouTube) preferences += SwitchPreference("revanced_replace_music_with_youtube", summaryKey = null)
+                if (replaceMusicLinksWithYouTube) preferences += SwitchPreference("revanced_replace_music_with_youtube")
                 if (replaceLinksWithShortener) preferences += SwitchPreference("revanced_replace_links_with_shortener")
 
                 PreferenceCategory(

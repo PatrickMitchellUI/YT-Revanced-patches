@@ -101,12 +101,6 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
 ) {
     addResources("youtube", "layout.hide.general.hideLayoutComponentsPatch")
 
-    PreferenceScreen.ADS.addPreferences(
-        // Uses horizontal shelf and a buffer, which requires managing in a single place in the code
-        // to ensure the generic "hide horizontal shelves" doesn't hide when it should show.
-        SwitchPreference("revanced_hide_creator_store_shelf", summaryKey = null)
-    )
-
     PreferenceScreen.PLAYER.addPreferences(
         PreferenceScreenPreference(
             key = "revanced_hide_description_components_screen",
@@ -260,10 +254,7 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
             )
         ),
         SwitchPreference("revanced_hide_floating_microphone_button"),
-        SwitchPreference(
-            key = "revanced_hide_horizontal_shelves",
-            tag = "app.revanced.extension.shared.settings.preference.BulletPointSwitchPreference",
-        ),
+        SwitchPreference("revanced_hide_horizontal_shelves"),
         SwitchPreference("revanced_hide_hyped_label", summaryKey = null),
         SwitchPreference("revanced_hide_image_shelf"),
         SwitchPreference("revanced_hide_latest_videos_button"),
@@ -273,7 +264,7 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
         SwitchPreference("revanced_hide_playables"),
         SwitchPreference("revanced_hide_search_term_thumbnails"),
         SwitchPreference("revanced_hide_show_more_button"),
-        SwitchPreference("revanced_hide_surveys", summaryKey = null),
+        SwitchPreference("revanced_hide_surveys"),
         SwitchPreference("revanced_hide_ticket_shelf", summaryKey = null),
         SwitchPreference("revanced_hide_upload_time", summaryKey = null),
         SwitchPreference("revanced_hide_video_recommendation_labels"),

@@ -15,6 +15,7 @@ import app.revanced.patches.all.misc.resources.addResourcesPatch
 import app.revanced.patches.shared.misc.litho.filter.addLithoFilter
 import app.revanced.patches.shared.misc.mapping.ResourceType
 import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
+import app.revanced.patches.shared.misc.settings.preference.PreferenceCategory
 import app.revanced.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.youtube.misc.engagement.engagementPanelHookPatch
@@ -27,11 +28,11 @@ import app.revanced.patches.youtube.misc.playservice.is_21_05_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
+import app.revanced.util.addInstructionsAtControlFlowLabel
 import app.revanced.util.findElementByAttributeValueOrThrow
 import app.revanced.util.forEachInstructionAsSequence
 import app.revanced.util.indexOfFirstInstructionOrThrow
 import app.revanced.util.removeFromParent
-import app.revanced.util.addInstructionsAtControlFlowLabel
 import app.revanced.util.returnLate
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
@@ -62,13 +63,18 @@ private val hideShortsComponentsResourcePatch = resourcePatch {
         addResources("youtube", "layout.hide.shorts.hideShortsComponentsResourcePatch")
 
         PreferenceScreen.SHORTS.addPreferences(
-            SwitchPreference("revanced_hide_shorts_channel", summaryKey = null),
-            SwitchPreference("revanced_hide_shorts_home", summaryKey = null),
-            SwitchPreference("revanced_hide_shorts_search", summaryKey = null),
-            SwitchPreference("revanced_hide_shorts_subscriptions", summaryKey = null),
-            SwitchPreference("revanced_hide_shorts_video_description", summaryKey = null),
-            SwitchPreference("revanced_hide_shorts_history", summaryKey = null),
-            SwitchPreference("revanced_disable_shorts_double_tap_to_like", summaryKey = null),
+            PreferenceCategory(
+                titleKey = "revanced_hide_shorts_category_title",
+                preferences = setOf(
+                    SwitchPreference("revanced_hide_shorts_channel", summaryKey = null),
+                    SwitchPreference("revanced_hide_shorts_home", summaryKey = null),
+                    SwitchPreference("revanced_hide_shorts_search", summaryKey = null),
+                    SwitchPreference("revanced_hide_shorts_subscriptions", summaryKey = null),
+                    SwitchPreference("revanced_hide_shorts_video_description", summaryKey = null),
+                    SwitchPreference("revanced_hide_shorts_history", summaryKey = null),
+                    SwitchPreference("revanced_disable_shorts_double_tap_to_like", summaryKey = null)
+                )
+            ),
 
             PreferenceScreenPreference(
                 key = "revanced_shorts_player_screen",
@@ -90,7 +96,10 @@ private val hideShortsComponentsResourcePatch = resourcePatch {
                     // Upper and middle area of the player.
                     SwitchPreference("revanced_hide_shorts_join_button", summaryKey = null),
                     SwitchPreference("revanced_hide_shorts_subscribe_button", summaryKey = null),
-                    SwitchPreference("revanced_hide_shorts_paused_overlay_buttons", summaryKey = null),
+                    SwitchPreference(
+                        "revanced_hide_shorts_paused_overlay_buttons",
+                        summaryKey = null
+                    ),
 
                     // Suggested actions.
                     SwitchPreference("revanced_hide_shorts_preview_comment", summaryKey = null),
@@ -114,9 +123,15 @@ private val hideShortsComponentsResourcePatch = resourcePatch {
                     SwitchPreference("revanced_hide_shorts_location_label", summaryKey = null),
                     SwitchPreference("revanced_hide_shorts_channel_bar", summaryKey = null),
                     SwitchPreference("revanced_hide_shorts_info_panel", summaryKey = null),
-                    SwitchPreference("revanced_hide_shorts_full_video_link_label", summaryKey = null),
+                    SwitchPreference(
+                        "revanced_hide_shorts_full_video_link_label",
+                        summaryKey = null
+                    ),
                     SwitchPreference("revanced_hide_shorts_video_title", summaryKey = null),
-                    SwitchPreference("revanced_hide_shorts_sound_metadata_label", summaryKey = null),
+                    SwitchPreference(
+                        "revanced_hide_shorts_sound_metadata_label",
+                        summaryKey = null
+                    ),
                     SwitchPreference("revanced_hide_shorts_navigation_bar", summaryKey = null),
                 ),
             )

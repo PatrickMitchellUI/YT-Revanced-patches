@@ -56,6 +56,7 @@ private val hideAdsResourcePatch = resourcePatch {
         addResources("youtube", "ad.general.hideAdsResourcePatch")
 
         PreferenceScreen.ADS.addPreferences(
+            SwitchPreference("revanced_hide_creator_store_shelf", summaryKey = null),
             SwitchPreference("revanced_hide_end_screen_store_banner", summaryKey = null),
             SwitchPreference("revanced_hide_general_ads", summaryKey = null),
             SwitchPreference("revanced_hide_merchandise_banners", summaryKey = null),

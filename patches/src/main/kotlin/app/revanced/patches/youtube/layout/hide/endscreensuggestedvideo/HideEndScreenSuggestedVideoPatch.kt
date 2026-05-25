@@ -44,7 +44,7 @@ val hideEndScreenSuggestedVideoPatch = bytecodePatch(
         )
 
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("revanced_hide_end_screen_suggested_video", summaryKey = null),
+            SwitchPreference("revanced_hide_end_screen_suggested_video"),
         )
 
         val endScreenMethod = removeOnLayoutChangeListenerMethodMatch.getMethodReferenceAtInstructionIndex(1)
