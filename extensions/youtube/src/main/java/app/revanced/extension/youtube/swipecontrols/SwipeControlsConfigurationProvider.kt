@@ -23,7 +23,7 @@ class SwipeControlsConfigurationProvider {
      * Returns true if either volume or brightness controls are enabled and the video is in fullscreen mode.
      */
     val enableSwipeControls: Boolean
-        get() = (enableVolumeControls || enableBrightnessControl) && (isFullscreenVideo || isVideoSliding)
+        get() = (enableVolumeControls || enableBrightnessControl || enableSpeedGestureControl) && (isFullscreenVideo || isVideoSliding)
 
     /**
      * Indicates whether swipe controls for adjusting volume are enabled.
@@ -94,6 +94,40 @@ class SwipeControlsConfigurationProvider {
             return sensitivity
         }
 
+    /**
+     * The sensitivity of brightness swipe gestures, determining how much brightness changes per swipe.
+     * Resets to default if set to 0, as it would disable swiping.
+     */
+    val brightnessSwipeSensitivity: Int
+        get() {
+            val sensitivity = Settings.SWIPE_BRIGHTNESS_SENSITIVITY.get()
+
+            if (sensitivity < 1) {
+                return Settings.SWIPE_BRIGHTNESS_SENSITIVITY.resetToDefault()
+            }
+
+            return sensitivity
+        }
+
+    /**
+     * Indicates whether the horizontal swipe gesture for playback speed control is enabled.
+     */
+    val enableSpeedGestureControl = Settings.SWIPE_SPEED.get()
+
+    /**
+     * The sensitivity of speed swipe gestures, controlling how much physical movement is needed per step.
+     * Resets to default if below 1 to guard against direct SharedPreferences manipulation.
+     */
+    val speedSwipeSensitivity: Int
+        get() {
+            val sensitivity = Settings.SWIPE_SPEED_SENSITIVITY.get()
+
+            if (sensitivity < 1) {
+                return Settings.SWIPE_SPEED_SENSITIVITY.resetToDefault()
+            }
+
+            return sensitivity
+        }
     //endregion
 
     //region overlay adjustments
@@ -137,6 +171,12 @@ class SwipeControlsConfigurationProvider {
      */
     val overlayVolumeProgressColor: Int
         get() = getSettingColor(Settings.SWIPE_OVERLAY_VOLUME_COLOR)
+
+    /**
+     * The color of the progress indicator in the overlay for playback speed.
+     */
+    val overlaySpeedProgressColor: Int
+        get() = getSettingColor(Settings.SWIPE_OVERLAY_SPEED_COLOR)
 
     private fun getSettingColor(setting: StringSetting): Int {
         return try {

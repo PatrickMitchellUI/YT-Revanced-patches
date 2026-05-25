@@ -8,6 +8,7 @@ import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
 import app.revanced.patches.shared.misc.settings.preference.InputType
 import app.revanced.patches.shared.misc.settings.preference.ListPreference
+import app.revanced.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.shared.misc.settings.preference.TextPreference
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
@@ -50,14 +51,40 @@ private val swipeControlsResourcePatch = resourcePatch {
         PreferenceScreen.SWIPE_CONTROLS.addPreferences(
             SwitchPreference("revanced_swipe_brightness"),
             SwitchPreference("revanced_swipe_volume"),
+            SwitchPreference("revanced_swipe_speed"),
+            NonInteractivePreference(
+                key = "revanced_swipe_zone_width",
+                tag = "app.revanced.extension.shared.settings.preference.SeekBarPreference",
+            ),
+            NonInteractivePreference(
+                key = "revanced_swipe_speed_zone_height",
+                tag = "app.revanced.extension.shared.settings.preference.SeekBarPreference",
+            ),
+            NonInteractivePreference(
+                key = "revanced_swipe_zone_preview",
+                summaryKey = null,
+                tag = "app.revanced.extension.youtube.settings.preference.SwipeZonePreference",
+            ),
+            NonInteractivePreference(
+                key = "revanced_swipe_brightness_sensitivity",
+                tag = "app.revanced.extension.shared.settings.preference.SeekBarPreference",
+            ),
+            NonInteractivePreference(
+                key = "revanced_swipe_volume_sensitivity",
+                tag = "app.revanced.extension.shared.settings.preference.SeekBarPreference",
+            ),
+            NonInteractivePreference(
+                key = "revanced_swipe_speed_sensitivity",
+                tag = "app.revanced.extension.shared.settings.preference.SeekBarPreference",
+            ),
             SwitchPreference("revanced_swipe_press_to_engage"),
             SwitchPreference("revanced_swipe_haptic_feedback", summaryKey = null),
             SwitchPreference("revanced_swipe_save_and_restore_brightness"),
             SwitchPreference("revanced_swipe_lowest_value_enable_auto_brightness"),
             ListPreference("revanced_swipe_overlay_style"),
-            TextPreference(
-                "revanced_swipe_overlay_background_opacity",
-                inputType = InputType.NUMBER
+            NonInteractivePreference(
+                key = "revanced_swipe_overlay_background_opacity",
+                tag = "app.revanced.extension.shared.settings.preference.SeekBarPreference",
             ),
             TextPreference(
                 "revanced_swipe_overlay_progress_brightness_color",
@@ -69,10 +96,17 @@ private val swipeControlsResourcePatch = resourcePatch {
                 tag = "app.revanced.extension.shared.settings.preference.ColorPickerWithOpacitySliderPreference",
                 inputType = InputType.TEXT_CAP_CHARACTERS,
             ),
-            TextPreference("revanced_swipe_text_overlay_size", inputType = InputType.NUMBER),
+            TextPreference(
+                "revanced_swipe_overlay_progress_speed_color",
+                tag = "app.revanced.extension.shared.settings.preference.ColorPickerWithOpacitySliderPreference",
+                inputType = InputType.TEXT_CAP_CHARACTERS,
+            ),
+            NonInteractivePreference(
+                key = "revanced_swipe_text_overlay_size",
+                tag = "app.revanced.extension.shared.settings.preference.SeekBarPreference",
+            ),
             TextPreference("revanced_swipe_overlay_timeout", inputType = InputType.NUMBER),
             TextPreference("revanced_swipe_threshold", inputType = InputType.NUMBER),
-            TextPreference("revanced_swipe_volume_sensitivity", inputType = InputType.NUMBER),
         )
 
         copyResources(
@@ -88,6 +122,7 @@ private val swipeControlsResourcePatch = resourcePatch {
                 "revanced_ic_sc_volume_low.xml",
                 "revanced_ic_sc_volume_mute.xml",
                 "revanced_ic_sc_volume_normal.xml",
+                "revanced_ic_sc_speed.xml",
             ),
         )
     }

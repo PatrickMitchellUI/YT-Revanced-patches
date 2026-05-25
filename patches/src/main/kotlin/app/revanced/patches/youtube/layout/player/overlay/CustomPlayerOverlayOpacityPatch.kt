@@ -6,8 +6,7 @@ import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
 import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
-import app.revanced.patches.shared.misc.settings.preference.InputType
-import app.revanced.patches.shared.misc.settings.preference.TextPreference
+import app.revanced.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.revanced.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
 import app.revanced.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
 import app.revanced.patches.youtube.misc.settings.settingsPatch
@@ -44,7 +43,10 @@ val customPlayerOverlayOpacityPatch = bytecodePatch(
         addResources("youtube", "layout.player.overlay.customPlayerOverlayOpacityResourcePatch")
 
         addPlayerOverlayPreferences(
-            TextPreference("revanced_player_overlay_opacity", inputType = InputType.NUMBER),
+            NonInteractivePreference(
+                key = "revanced_player_overlay_opacity",
+                tag = "app.revanced.extension.shared.settings.preference.SeekBarPreference",
+            )
         )
 
         createPlayerOverviewMethodMatch.let {

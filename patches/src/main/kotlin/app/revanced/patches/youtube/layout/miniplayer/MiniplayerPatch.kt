@@ -15,6 +15,7 @@ import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
 import app.revanced.patches.shared.misc.settings.preference.InputType
 import app.revanced.patches.shared.misc.settings.preference.ListPreference
+import app.revanced.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.revanced.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.shared.misc.settings.preference.TextPreference
@@ -81,7 +82,10 @@ val miniplayerPatch = bytecodePatch(
             SwitchPreference("revanced_miniplayer_hide_subtext", summaryKey = null),
             SwitchPreference("revanced_miniplayer_hide_overlay_buttons", summaryKey = null),
             TextPreference("revanced_miniplayer_width_dip", inputType = InputType.NUMBER),
-            TextPreference("revanced_miniplayer_opacity", inputType = InputType.NUMBER)
+            NonInteractivePreference(
+                key = "revanced_miniplayer_opacity",
+                tag = "app.revanced.extension.shared.settings.preference.SeekBarPreference",
+            )
         )
 
         PreferenceScreen.PLAYER.addPreferences(
