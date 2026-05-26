@@ -328,6 +328,7 @@ However, enabling this will also log some user data such as your IP address."</s
             <string name="revanced_hide_explore_course_section_title">Hide \'Explore this course\' section</string>
             <string name="revanced_hide_explore_podcast_section_title">Hide \'Explore the podcast\' section</string>
             <string name="revanced_hide_podcast_section_title">Hide \'Explore the podcast\'</string>
+            <string name="revanced_hide_featured_channels_section_title">Hide Featured channels</string>
             <string name="revanced_hide_featured_links_section_title">Hide Featured links section</string>
             <string name="revanced_hide_featured_places_section_title">Hide \'Featured places\' section</string>
             <string name="revanced_hide_featured_videos_section_title">Hide Featured videos section</string>
