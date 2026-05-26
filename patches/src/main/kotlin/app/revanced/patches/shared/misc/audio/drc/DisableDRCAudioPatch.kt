@@ -1,5 +1,6 @@
 package app.revanced.patches.shared.misc.audio.drc
 
+import app.revanced.patcher.extensions.addInstructions
 import app.revanced.patcher.extensions.addInstructionsWithLabels
 import app.revanced.patcher.extensions.getInstruction
 import app.revanced.patcher.classDef
@@ -18,6 +19,7 @@ import app.revanced.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
@@ -27,9 +29,11 @@ private const val EXTENSION_CLASS = "Lapp/revanced/extension/shared/patches/Disa
 internal fun disableDRCAudioPatch(
     block: BytecodePatchBuilder.() -> Unit,
     preferenceScreen: BasePreferenceScreen.Screen,
+    useLegacyNormalizationFlag: BytecodePatchBuilder.() -> Boolean,
+    useNormalizationFlag: BytecodePatchBuilder.() -> Boolean,
 ) = bytecodePatch(
     name = "Disable DRC audio",
-    description = "Adds an option to disable dynamic range compression (DRC).",
+    description = "Adds an option to disable DRC (Dynamic Range Compression) audio.",
 ) {
     block()
 
@@ -93,10 +97,41 @@ internal fun disableDRCAudioPatch(
             }
         }
 
-        // If this flag is enabled, the DRC level will depend on other values besides loudnessDb.
-        volumeNormalizationConfigMethodMatch.method.insertLiteralOverride(
-            45425391L,
-            "$EXTENSION_CLASS->disableDrcAudioFeatureFlag(Z)Z",
-        )
+        val setConfigDisabledMethod = "$EXTENSION_CLASS->disableDrcAudioConfig(Z)Z"
+
+        if (useLegacyNormalizationFlag()) {
+            // If this flag is enabled, the DRC level will depend on other values besides loudnessDb.
+            volumeNormalizationConfigLegacyMethodMatch.method.insertLiteralOverride(
+                45425391L,
+                setConfigDisabledMethod,
+            )
+        }
+
+        if (useNormalizationFlag()) {
+            volumeNormalizationConfigMethodMatch.method.insertLiteralOverride(
+                45784793L,
+                setConfigDisabledMethod,
+            )
+
+            // Removed again in later app targets (e.g. YouTube 21.25), so only override if present.
+            optionalVolumeNormalizationConfigMethodMatch.methodOrNull?.apply {
+                val moveResultIndex = optionalVolumeNormalizationConfigMethodMatch[3]
+                val moveResultRegister =
+                    getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
+
+                addInstructionsAtControlFlowLabel(
+                    moveResultIndex + 1,
+                    """
+                        invoke-static { v$moveResultRegister }, $EXTENSION_CLASS->enableDrcAudioConfig(Z)Z
+                        move-result v$moveResultRegister
+                    """,
+                )
+
+                insertLiteralOverride(
+                    45785775L,
+                    setConfigDisabledMethod,
+                )
+            }
+        }
     }
 }

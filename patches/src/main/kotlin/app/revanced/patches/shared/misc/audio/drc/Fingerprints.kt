@@ -48,8 +48,26 @@ internal val BytecodePatchContext.compressionRatioMethodMatch by getting {
     }
 }
 
-internal val BytecodePatchContext.volumeNormalizationConfigMethodMatch by composingFirstMethod {
-    returnType("V")
-    parameterTypes("F")
+// YouTube 21.18 and lower, Music 9.18 and lower.
+internal val BytecodePatchContext.volumeNormalizationConfigLegacyMethodMatch by composingFirstMethod {
     instructions(45425391L())
+}
+
+// YouTube 21.19+, Music 9.19+
+internal val BytecodePatchContext.volumeNormalizationConfigMethodMatch by composingFirstMethod {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+    returnType("Z")
+    parameterTypes()
+    instructions(45784793L())
+}
+
+// YouTube 21.19+, Music 9.20+. Removed again in later versions (e.g. YouTube 21.25), so matched optionally.
+internal val BytecodePatchContext.optionalVolumeNormalizationConfigMethodMatch by composingFirstMethod {
+    instructions(
+        45785775L(),
+        afterAtMost(2, Opcode.MOVE_RESULT()),
+        method { toString() == "Lj$/util/Optional;->isEmpty()Z" },
+        after(Opcode.MOVE_RESULT()),
+        afterAtMost(5, 45783491L()),
+    )
 }

@@ -2,6 +2,8 @@ package app.revanced.patches.youtube.video.audio
 
 import app.revanced.patches.shared.misc.audio.drc.disableDRCAudioPatch
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
+import app.revanced.patches.youtube.misc.playservice.is_21_19_or_greater
+import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
 
@@ -11,6 +13,7 @@ val disableDRCAudioPatch = disableDRCAudioPatch(
         dependsOn(
             sharedExtensionPatch,
             settingsPatch,
+            versionCheckPatch,
         )
 
         compatibleWith(
@@ -26,4 +29,6 @@ val disableDRCAudioPatch = disableDRCAudioPatch(
         )
     },
     preferenceScreen = PreferenceScreen.VIDEO,
+    useLegacyNormalizationFlag = { !is_21_19_or_greater },
+    useNormalizationFlag = { is_21_19_or_greater },
 )
