@@ -3,10 +3,13 @@ package app.revanced.patches.shared.layout.theme
 import app.revanced.patcher.patch.BytecodePatchBuilder
 import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patcher.patch.PatchException
+import app.revanced.patcher.patch.ResourcePatchContext
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patcher.patch.resourcePatch
 import app.revanced.patcher.patch.stringOption
 import app.revanced.util.childElementsSequence
+import app.revanced.util.forEachChildElement
+import org.w3c.dom.Element
 import java.util.*
 
 internal const val THEME_COLOR_OPTION_DESCRIPTION =
@@ -134,5 +137,48 @@ internal fun baseThemeResourcePatch(
                 }
             }
         }
+
+        val isMaterialYouDark = darkColor!!.startsWith("@android:color/system_")
+
+        arrayOf(
+            "new_content_dot_background.xml",
+            "new_content_dot_background_cairo.xml",
+            "new_content_count_background.xml",
+            "new_content_count_background_cairo.xml"
+        ).forEach { fileName ->
+            patchDotColor(
+                "drawable-night-anydpi-v31",
+                fileName,
+                if (isMaterialYouDark) "@android:color/system_accent1_100" else null
+            )
+        }
     }
+}
+
+fun ResourcePatchContext.patchDotColor(targetDir: String, fileName: String, colorValue: String?) {
+    try {
+        val resDir = get("res")
+        val sourceFile = listOf(
+            "drawable", "drawable-anydpi-v26", "drawable-anydpi", "drawable-v24", "drawable-v31"
+        ).firstNotNullOfOrNull { dir ->
+            resDir.resolve("$dir/$fileName").takeIf { it.exists() }
+        } ?: return
+
+        val targetDirFile = resDir.resolve(targetDir)
+        val targetFile = targetDirFile.resolve(fileName)
+
+        if (!targetDirFile.exists()) targetDirFile.mkdirs()
+        if (!targetFile.exists()) sourceFile.copyTo(targetFile)
+
+        if (colorValue == null) return
+
+        document("res/$targetDir/$fileName").use { document ->
+            val shapeNode = document.getElementsByTagName("shape").item(0) as? Element ?: return@use
+            shapeNode.forEachChildElement { node ->
+                if (node.nodeName == "solid" && node.hasAttribute("android:color")) {
+                    node.setAttribute("android:color", colorValue)
+                }
+            }
+        }
+    } catch (_: Exception) {}
 }
