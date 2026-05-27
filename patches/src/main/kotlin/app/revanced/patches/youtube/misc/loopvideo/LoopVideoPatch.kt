@@ -11,6 +11,7 @@ import app.revanced.patches.youtube.misc.loopvideo.button.loopVideoButtonPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.video.information.playerStatusMethod
 import app.revanced.patches.youtube.video.information.videoInformationPatch
+import app.revanced.patches.youtube.video.information.videoTimeHook
 import app.revanced.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -48,6 +49,8 @@ val loopVideoPatch = bytecodePatch(
         PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("revanced_loop_video", summaryKey = null),
         )
+
+        videoTimeHook(EXTENSION_CLASS_DESCRIPTOR, "videoTimeChanged")
 
         playerStatusMethod.apply {
             // Add call to start playback again, but must happen before "Exit fullscreen" patch call.

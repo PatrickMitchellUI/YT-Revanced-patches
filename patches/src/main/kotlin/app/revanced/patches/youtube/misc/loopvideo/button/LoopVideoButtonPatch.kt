@@ -21,7 +21,8 @@ private val loopVideoButtonResourcePatch = resourcePatch {
             ResourceGroup(
                 "drawable",
                 "revanced_loop_video_button_on.xml",
-                "revanced_loop_video_button_off.xml"
+                "revanced_loop_video_button_off.xml",
+                "revanced_loop_video_button_range.xml"
             )
         )
 

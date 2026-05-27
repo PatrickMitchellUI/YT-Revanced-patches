@@ -423,6 +423,9 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final BooleanSetting ANNOUNCEMENTS = new BooleanSetting("revanced_announcements", TRUE);
     public static final IntegerSetting ANNOUNCEMENT_LAST_ID = new IntegerSetting("revanced_announcement_last_id", -1, false, false);
     public static final BooleanSetting REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS = new BooleanSetting("revanced_remove_background_playback_restrictions", TRUE, true);
+    // This following feature require the app reloading, to ensure
+    // stock repeat logic is disabled and hidden, once the
+    // LOOP_VIDEO_BUTTON will be visible.
     public static final BooleanSetting LOOP_VIDEO = new BooleanSetting("revanced_loop_video", FALSE);
     public static final BooleanSetting LOOP_VIDEO_BUTTON = new BooleanSetting("revanced_loop_video_button", FALSE);
     public static final BooleanSetting PAUSE_ON_AUDIO_INTERRUPT = new BooleanSetting("revanced_pause_on_audio_interrupt", FALSE, true);

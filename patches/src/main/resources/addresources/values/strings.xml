@@ -1293,6 +1293,15 @@ Tap here to learn more about DeArrow"</string>
             <string name="revanced_loop_video_button_title">Show loop video button</string>
             <string name="revanced_loop_video_button_toast_on">Loop video is on</string>
             <string name="revanced_loop_video_button_toast_off">Loop video is off</string>
+            <string name="revanced_loop_video_range_dialog_title">Loop range</string>
+            <string name="revanced_loop_video_range_label_start">Start</string>
+            <string name="revanced_loop_video_range_label_end">End</string>
+            <string name="revanced_loop_video_range_hint_start">[hh:]mm:ss</string>
+            <string name="revanced_loop_video_range_hint_end">[hh:]mm:ss (empty = video end)</string>
+            <string name="revanced_loop_video_range_set">Set</string>
+            <string name="revanced_loop_video_range_clear">Clear</string>
+            <string name="revanced_loop_video_range_toast_on">Looping %1$s - %2$s</string>
+            <string name="revanced_loop_video_range_invalid_time">Invalid time range</string>
         </patch>
         <patch id="misc.audiofocus.pauseOnAudioInterruptPatch">
             <string name="revanced_pause_on_audio_interrupt_title">Pause on audio interrupt</string>

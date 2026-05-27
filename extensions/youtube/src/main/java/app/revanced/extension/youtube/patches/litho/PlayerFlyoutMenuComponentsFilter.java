@@ -29,6 +29,12 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
         }
     }
 
+    private final ByteArrayFilterGroup flyoutLoopVideoButton = new ByteArrayFilterGroup(
+            null,
+            "yt_outline_arrow_repeat_1_",
+            "yt_outline_experimental_repeat1_",
+            "yt_outline_experimental_play_circle_black_"
+    );
     private final ByteArrayFilterGroupList flyoutFilterGroupList = new ByteArrayFilterGroupList();
     private final StringFilterGroup audioTrackMenuFooter;
     private final StringFilterGroup divider;
@@ -99,12 +105,6 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
                         "yt_outline_experimental_ambient_mode_"
                 ),
                 new ByteArrayFilterGroup(
-                        Settings.HIDE_PLAYER_FLYOUT_LOOP_VIDEO,
-                        "yt_outline_arrow_repeat_1_",
-                        "yt_outline_experimental_repeat1_",
-                        "yt_outline_experimental_play_circle_black_"
-                ),
-                new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_STABLE_VOLUME,
                         "volume_stable_",
                         "yt_fill_experimental_stable_volume_",
@@ -163,6 +163,12 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
         // 21.x+ fix.
         if (VersionCheckPatch.IS_20_31_OR_GREATER && path.contains("bottom_sheet_list_option.e")) {
             return false;
+        }
+
+        if (Settings.HIDE_PLAYER_FLYOUT_LOOP_VIDEO.get() || Settings.LOOP_VIDEO_BUTTON.get()) {
+            if (flyoutLoopVideoButton.check(buffer).isFiltered()) {
+                return true;
+            }
         }
 
         return flyoutFilterGroupList.check(buffer).isFiltered();
