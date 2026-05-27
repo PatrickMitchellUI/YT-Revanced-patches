@@ -14,7 +14,8 @@ internal val BytecodePatchContext.tabLayoutTextMethodMatch by composingFirstMeth
     instructions(
         anyOf(
             "FEmusic_search" { equals(it) }, // 8.49 and lower. Must use custom comparison block, otherwise string is added to stringsList for lookup
-            "FEsearch" { equals(it) } // 8.50+
+            "FEsearch" { equals(it) }, // 8.50+
+            allOf(Opcode.NEW_INSTANCE(), type("Ljava/util/ArrayList;")) // 9.21+
         ),
         // Hide navigation label.
         ResourceType.ID("text1"),
