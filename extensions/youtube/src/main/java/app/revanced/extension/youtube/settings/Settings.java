@@ -206,6 +206,7 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final BooleanSetting HIDE_QUICK_ACTIONS_PLAYLIST_BUTTON = new BooleanSetting("revanced_hide_quick_actions_playlist_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
     public static final BooleanSetting HIDE_QUICK_ACTIONS_SAVE_BUTTON = new BooleanSetting("revanced_hide_quick_actions_save_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
     public static final BooleanSetting HIDE_QUICK_ACTIONS_SHARE_BUTTON = new BooleanSetting("revanced_hide_quick_actions_share_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
+    public static final IntegerSetting QUICK_ACTIONS_TOP_MARGIN = new IntegerSetting("revanced_quick_actions_top_margin", 0, true);
     public static final BooleanSetting HIDE_PLAYER_RELATED_VIDEOS_OVERLAY = new BooleanSetting("revanced_hide_player_related_videos_overlay", FALSE, true);
     public static final BooleanSetting HIDE_SETTINGS_BUTTON = new BooleanSetting("revanced_hide_settings_button", FALSE, true);
     public static final BooleanSetting HIDE_SUBSCRIBERS_COMMUNITY_GUIDELINES = new BooleanSetting("revanced_hide_subscribers_community_guidelines", TRUE);
@@ -661,6 +662,8 @@ public class Settings extends YouTubeAndMusicSettings {
                 1, 20, 1, ""));
         SeekBarPreference.register(new SeekBarConfig(SWIPE_SPEED_ZONE_HEIGHT,
                 5, 75, 1, "%"));
+        SeekBarPreference.register(new SeekBarConfig(QUICK_ACTIONS_TOP_MARGIN,
+                0, 32, 1, "dp"));
     }
 
     private static void applyOldSbOpacityToColor(StringSetting colorSetting, FloatSetting opacitySetting) {
