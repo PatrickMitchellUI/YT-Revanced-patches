@@ -1,12 +1,18 @@
 package app.revanced.patches.youtube.misc.loopvideo.button
 
+import app.revanced.patcher.extensions.InstructionExtensions.addInstruction
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patcher.patch.resourcePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
+import app.revanced.patches.youtube.layout.autocaptions.startVideoInformerMethod
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
-import app.revanced.patches.youtube.misc.playercontrols.*
+import app.revanced.patches.youtube.misc.playercontrols.addBottomControl
+import app.revanced.patches.youtube.misc.playercontrols.initializeBottomControl
+import app.revanced.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
+import app.revanced.patches.youtube.misc.playercontrols.playerControlsPatch
+import app.revanced.patches.youtube.misc.playercontrols.playerControlsResourcePatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
 import app.revanced.util.ResourceGroup
@@ -54,5 +60,11 @@ internal val loopVideoButtonPatch = bytecodePatch(
         // Initialize the button using standard approach.
         initializeBottomControl(LOOP_VIDEO_BUTTON_CLASS_DESCRIPTOR)
         injectVisibilityCheckCall(LOOP_VIDEO_BUTTON_CLASS_DESCRIPTOR)
+        startVideoInformerMethod.apply {
+            addInstruction(
+                0,
+                "invoke-static { }, $LOOP_VIDEO_BUTTON_CLASS_DESCRIPTOR->resetLoopButton()V"
+            )
+        }
     }
 }

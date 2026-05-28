@@ -48,6 +48,7 @@ val loopVideoPatch = bytecodePatch(
 
         PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("revanced_loop_video", summaryKey = null),
+            SwitchPreference("revanced_do_not_remember_loop_video")
         )
 
         videoTimeHook(EXTENSION_CLASS_DESCRIPTOR, "videoTimeChanged")

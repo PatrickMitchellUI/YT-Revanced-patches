@@ -64,6 +64,15 @@ public class LoopVideoButton {
     }
 
     /**
+     * Injection point.
+     */
+    public static void resetLoopButton() {
+        if (Settings.LOOP_VIDEO_BUTTON.get() && Settings.DO_NOT_REMEMBER_LOOP_VIDEO.get()) {
+            Settings.LOOP_VIDEO.save(false);
+        }
+    }
+
+    /**
      * Short click: toggle loop on/off. Turning off also clears any active range.
      */
     private static void handleShortClick(View buttonView) {

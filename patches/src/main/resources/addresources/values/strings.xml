@@ -1288,6 +1288,8 @@ Tap here to learn more about DeArrow"</string>
         </patch>
         <patch id="misc.loopvideo.loopVideoPatch">
             <string name="revanced_loop_video_title">Enable loop video</string>
+            <string name="revanced_do_not_remember_loop_video_title">Don\'t remember loop video</string>
+            <string name="revanced_do_not_remember_loop_video_summary">Prevent loop video current state from being saved for subsequent videos</string>
         </patch>
         <patch id="misc.loopvideo.button.loopVideoButtonPatch">
             <string name="revanced_loop_video_button_title">Show loop video button</string>
