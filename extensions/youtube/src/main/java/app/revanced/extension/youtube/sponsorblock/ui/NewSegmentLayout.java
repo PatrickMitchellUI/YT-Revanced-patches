@@ -18,6 +18,7 @@ import android.widget.ImageButton;
 
 import app.revanced.extension.shared.Logger;
 import app.revanced.extension.shared.ui.Dim;
+import app.revanced.extension.shared.ui.ViewAnimations;
 import app.revanced.extension.shared.ResourceType;
 import app.revanced.extension.youtube.patches.VideoInformation;
 import app.revanced.extension.youtube.settings.Settings;
@@ -262,6 +263,14 @@ public final class NewSegmentLayout extends FrameLayout {
         Settings.SB_NEW_SEGMENT_PANEL_POSITION.save(
                 (long) Float.floatToIntBits(getTranslationX() / parent.getWidth()) << 32
                         | (Float.floatToIntBits(getTranslationY() / parent.getHeight()) & 0xFFFFFFFFL));
+    }
+
+    void showWithAnimation() {
+        ViewAnimations.fadeIn(this, 100);
+    }
+
+    void hideWithAnimation() {
+        ViewAnimations.fadeOut(this, 100);
     }
 
     @FunctionalInterface
