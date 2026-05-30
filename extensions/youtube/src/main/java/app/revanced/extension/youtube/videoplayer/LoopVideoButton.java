@@ -40,6 +40,8 @@ public class LoopVideoButton {
             ResourceType.DRAWABLE, "revanced_loop_video_button_off");
     private static final int LOOP_VIDEO_RANGE = Utils.getResourceIdentifierOrThrow(
             ResourceType.DRAWABLE, "revanced_loop_video_button_range");
+    private static final String videoRangeInvalidTimeStringName =
+            "revanced_loop_video_range_invalid_time";
 
     /**
      * Injection point.
@@ -63,13 +65,20 @@ public class LoopVideoButton {
         }
     }
 
+    public static void setLoopButton(boolean newState) {
+        Settings.LOOP_VIDEO.save(newState);
+
+        if (!newState) {
+            LoopVideoPatch.clearRange();
+        }
+    }
+
     /**
      * Injection point.
      */
     public static void resetLoopButton() {
         if (Settings.LOOP_VIDEO_BUTTON.get() && Settings.DO_NOT_REMEMBER_LOOP_VIDEO.get()) {
-            Settings.LOOP_VIDEO.save(false);
-            LoopVideoPatch.clearRange();
+            setLoopButton(false);
         }
     }
 
@@ -81,11 +90,7 @@ public class LoopVideoButton {
         Utils.verifyOnMainThread();
 
         final boolean newState = !Settings.LOOP_VIDEO.get();
-        Settings.LOOP_VIDEO.save(newState);
-
-        if (!newState) {
-            LoopVideoPatch.clearRange();
-        }
+        setLoopButton(newState);
 
         Utils.showToastShort(str(newState
                 ? "revanced_loop_video_button_toast_on"
@@ -151,7 +156,7 @@ public class LoopVideoButton {
     private static void applyRange(String startInput, String endInput, long videoLengthMs) {
         final long startMs = parseTime(startInput);
         if (startMs < 0) {
-            Utils.showToastShort(str("revanced_loop_video_range_invalid_time"));
+            Utils.showToastShort(str(videoRangeInvalidTimeStringName));
             return;
         }
 
@@ -159,14 +164,14 @@ public class LoopVideoButton {
         boolean endIsVideoEnd = endInput.trim().isEmpty();
         if (endIsVideoEnd) {
             if (videoLengthMs <= 0) {
-                Utils.showToastShort(str("revanced_loop_video_range_invalid_time"));
+                Utils.showToastShort(str(videoRangeInvalidTimeStringName));
                 return;
             }
             endMs = videoLengthMs;
         } else {
             final long parsed = parseTime(endInput);
             if (parsed < 0) {
-                Utils.showToastShort(str("revanced_loop_video_range_invalid_time"));
+                Utils.showToastShort(str(videoRangeInvalidTimeStringName));
                 return;
             }
             if (videoLengthMs > 0 && parsed >= videoLengthMs) {
@@ -178,8 +183,13 @@ public class LoopVideoButton {
         }
 
         if (endMs <= startMs) {
-            Utils.showToastShort(str("revanced_loop_video_range_invalid_time"));
+            Utils.showToastShort(str(videoRangeInvalidTimeStringName));
             return;
+        }
+
+        // Resets the loop range state, if set, to avoid possible errors
+        if (!LoopVideoPatch.rangeVideoId.isEmpty()) {
+            setLoopButton(false);
         }
 
         LoopVideoPatch.setRange(startMs, endMs, endIsVideoEnd);
@@ -189,17 +199,17 @@ public class LoopVideoButton {
         updateButtonIcon();
     }
 
+    private static int getTargetIcon() {
+        if (!Settings.LOOP_VIDEO.get()) return LOOP_VIDEO_OFF;
+        if (LoopVideoPatch.isRangeActive()) return LOOP_VIDEO_RANGE;
+        return LOOP_VIDEO_ON;
+    }
+
     /**
      * Called when the range is cleared externally (video change or "Clear" button).
      */
     public static void onRangeCleared() {
         Utils.runOnMainThread(LoopVideoButton::updateButtonIcon);
-    }
-
-    private static int getTargetIcon() {
-        if (!Settings.LOOP_VIDEO.get()) return LOOP_VIDEO_OFF;
-        if (LoopVideoPatch.isRangeActive()) return LOOP_VIDEO_RANGE;
-        return LOOP_VIDEO_ON;
     }
 
     private static void updateButtonIcon() {
