@@ -45,7 +45,10 @@ internal val BytecodePatchContext.backgroundPlaybackManagerShortsMethod by getti
     accessFlags(AccessFlags.PUBLIC, AccessFlags.STATIC)
     returnType("Z")
     parameterTypes("L")
-    instructions(151635310L())
+    instructions(
+        151635310L(),
+        afterAtMost(8, Opcode.IGET_BOOLEAN()),
+    )
 }
 
 internal fun BytecodePatchContext.getEngagementPanelControllerMethodMatch() = firstMethodComposite {
