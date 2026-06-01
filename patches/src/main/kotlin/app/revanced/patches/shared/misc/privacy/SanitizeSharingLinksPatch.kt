@@ -62,6 +62,12 @@ internal fun sanitizeSharingLinksPatch(
             },
         )
 
+        fun patchLogic(urlStringRegister: Int): String {
+            return """
+                invoke-static { v$urlStringRegister }, $EXTENSION_CLASS_DESCRIPTOR->sanitize(Ljava/lang/String;)Ljava/lang/String;
+                move-result-object v$urlStringRegister
+            """
+        }
 
         fun CompositeMatch.hookUrlString(matchIndex: Int) {
             val index = get(matchIndex)
@@ -69,10 +75,7 @@ internal fun sanitizeSharingLinksPatch(
 
             method.addInstructions(
                 index + 1,
-                """
-                    invoke-static { v$urlRegister }, $EXTENSION_CLASS_DESCRIPTOR->sanitize(Ljava/lang/String;)Ljava/lang/String;
-                    move-result-object v$urlRegister
-                """
+                patchLogic(urlRegister)
             )
         }
 
@@ -82,10 +85,7 @@ internal fun sanitizeSharingLinksPatch(
 
             method.addInstructionsAtControlFlowLabel(
                 index,
-                """
-                    invoke-static { v$urlRegister }, $EXTENSION_CLASS_DESCRIPTOR->sanitize(Ljava/lang/String;)Ljava/lang/String;
-                    move-result-object v$urlRegister
-                """
+                patchLogic(urlRegister)
             )
         }
 
