@@ -43,19 +43,26 @@ public final class SanitizeSharingLinksPatch {
             return originalURL;
         }
 
+        boolean urlChangesApplied = false;
+
         if (BaseSettings.SANITIZE_SHARING_LINKS.get()) {
             url = sanitizer.returnSanitizedURLFromURI(url);
+            urlChangesApplied = true;
         }
 
         if (BaseSettings.REPLACE_MUSIC_LINKS_WITH_YOUTUBE.get()) {
             url = url.replace("music.youtube.com", "youtube.com");
+            urlChangesApplied = true;
         }
 
         if (BaseSettings.REPLACE_LINKS_WITH_SHORTENER.get()) {
             url = replaceWithShortenedUrl(url);
+            urlChangesApplied = true;
         }
 
-        return url;
+        // If no sanitize/replace option is enabled, return the original text unchanged so that
+        // opening the system share sheet (and other passthrough cases) is not broken.
+        return urlChangesApplied ? url : originalURL;
     }
 
     private static final String timeQueryTagName = "t";
