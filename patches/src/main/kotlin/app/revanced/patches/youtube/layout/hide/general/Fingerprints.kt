@@ -211,6 +211,29 @@ internal val BytecodePatchContext.liveChatDonatorsBarMethodMatch by composingFir
         after(Opcode.MOVE_RESULT_OBJECT()),
     )
 }
+
+internal val BytecodePatchContext.thumbnailAndEmojiPickerContainerMethodMatch by composingFirstMethod {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+    returnType("Landroid/view/View;")
+    parameterTypes()
+    instructions(
+        ResourceType.ID("thumbnail_and_emoji_picker_container"),
+        allOf(Opcode.INVOKE_VIRTUAL(), method { name == "findViewById" }),
+        after(Opcode.MOVE_RESULT_OBJECT()),
+    )
+}
+
+internal val BytecodePatchContext.inlineExtraButtonsContainerMethodMatch by composingFirstMethod {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+    returnType("Landroid/view/ViewGroup;")
+    parameterTypes()
+    instructions(
+        ResourceType.ID("inline_extra_buttons_container"),
+        allOf(Opcode.INVOKE_VIRTUAL(), method { name == "findViewById" }),
+        after(Opcode.MOVE_RESULT_OBJECT()),
+    )
+}
+
 internal val BytecodePatchContext.filterBarHeightMethodMatch by composingFirstMethod {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
     instructions(
@@ -470,4 +493,52 @@ internal val BytecodePatchContext.createSearchSuggestionsMethodMatch by composin
         method("parse"),
         afterAtMost(20, 0L()),
     )
+}
+
+internal val BytecodePatchContext.accountMenuMethodMatch by getting {
+    firstMethodComposite {
+        returnType("V")
+        instructions(
+            Opcode.INVOKE_STATIC(),
+            after(Opcode.MOVE_RESULT_OBJECT()),
+            after(Opcode.INVOKE_STATIC()),
+            after(Opcode.IGET()),
+            after(Opcode.AND_INT_LIT16()),
+        )
+    }
+} using {
+    firstImmutableMethodDeclaratively {
+        instructions(ResourceType.LAYOUT("account_compact_link"))
+    }
+}
+
+internal val BytecodePatchContext.accountMenuLegacyMethodMatch by getting {
+    firstMethodComposite {
+        returnType("V")
+        instructions(
+            Opcode.INVOKE_STATIC(),
+            after(Opcode.MOVE_RESULT_OBJECT()),
+            after(Opcode.INVOKE_STATIC()),
+            after(Opcode.IGET()),
+            after(Opcode.AND_INT_LIT16()),
+        )
+    }
+} using {
+    firstImmutableMethodDeclaratively {
+        instructions(ResourceType.LAYOUT("compact_link"))
+    }
+}
+
+internal val BytecodePatchContext.accountListMethodMatch by getting {
+    firstMethodComposite {
+        accessFlags(AccessFlags.PROTECTED, AccessFlags.FINAL, AccessFlags.SYNTHETIC)
+        returnType("V")
+        instructions(
+            ResourceType.ATTR("ytCallToAction"),
+        )
+    }
+} using {
+    firstImmutableMethodDeclaratively {
+        instructions(ResourceType.LAYOUT("compact_list_item"))
+    }
 }

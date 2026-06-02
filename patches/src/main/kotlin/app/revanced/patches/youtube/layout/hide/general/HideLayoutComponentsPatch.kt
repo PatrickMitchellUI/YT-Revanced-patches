@@ -154,6 +154,7 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
                 SwitchPreference("revanced_hide_comments_community_guidelines", summaryKey = null),
                 SwitchPreference("revanced_hide_comments_create_a_short_button", summaryKey = null),
                 SwitchPreference("revanced_hide_comments_emoji_and_timestamp_buttons", summaryKey = null),
+                SwitchPreference("revanced_hide_comments_live_chat_donators_bar", summaryKey = null),
                 SwitchPreference("revanced_hide_comments_preview_comment"),
                 SwitchPreference("revanced_hide_comments_thanks_button", summaryKey = null),
                 SwitchPreference("revanced_sanitize_comments_category_bar"),
@@ -166,7 +167,6 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
         SwitchPreference("revanced_hide_emergency_box", summaryKey = null),
         SwitchPreference("revanced_hide_info_panels"),
         SwitchPreference("revanced_hide_join_membership_button", summaryKey = null),
-        SwitchPreference("revanced_hide_live_chat_donators_bar", summaryKey = null),
         SwitchPreference("revanced_hide_live_chat_replay_button"),
         SwitchPreference("revanced_hide_medical_panels", summaryKey = null),
         SwitchPreference("revanced_hide_subscribers_community_guidelines", summaryKey = null),
@@ -251,6 +251,18 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
                 SwitchPreference("revanced_hide_feed_flyout_menu", summaryKey = null),
                 TextPreference(
                     "revanced_hide_feed_flyout_menu_filter_strings",
+                    inputType = InputType.TEXT_MULTI_LINE
+                ),
+            )
+        ),
+        PreferenceCategory(
+            titleKey = null,
+            sorting = Sorting.UNSORTED,
+            tag = "app.revanced.extension.shared.settings.preference.NoTitlePreferenceCategory",
+            preferences = setOf(
+                SwitchPreference("revanced_hide_account_menu", summaryKey = null),
+                TextPreference(
+                    "revanced_hide_account_menu_filter_strings",
                     inputType = InputType.TEXT_MULTI_LINE
                 ),
             )
@@ -459,9 +471,70 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
 
     liveChatDonatorsBarMethodMatch.method.injectHideViewCall(
         liveChatDonatorsBarMethodMatch[-1],
-        LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR,
+        COMMENTS_FILTER_CLASS_NAME,
         "hideLiveChatDonatorsBar"
     )
+
+    // endregion
+
+    // region Hide live chat emoji button
+
+    thumbnailAndEmojiPickerContainerMethodMatch.method.injectHideViewCall(
+        thumbnailAndEmojiPickerContainerMethodMatch[-1],
+        COMMENTS_FILTER_CLASS_NAME,
+        "hideLiveChatEmojiButton"
+    )
+
+    // endregion
+
+    // region Hide live chat thanks button
+
+    inlineExtraButtonsContainerMethodMatch.method.injectHideViewCall(
+        inlineExtraButtonsContainerMethodMatch[-1],
+        COMMENTS_FILTER_CLASS_NAME,
+        "hideLiveChatThanksButton"
+    )
+
+    // endregion
+
+    // region Hide account menu
+
+    accountMenuMethodMatch.methodOrNull?.apply {
+        val targetIndex = accountMenuMethodMatch[2]
+        val targetInstruction = getInstruction<FiveRegisterInstruction>(targetIndex)
+
+        addInstruction(
+            targetIndex + 1,
+            "invoke-static { v${targetInstruction.registerC}, v${targetInstruction.registerD} }, " +
+                    "$LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideAccountBottomItemModern(Landroid/view/View;Ljava/lang/CharSequence;)V"
+        )
+    }
+
+    accountMenuLegacyMethodMatch.methodOrNull?.apply {
+        val targetIndex = accountMenuLegacyMethodMatch[2]
+        val targetInstruction = getInstruction<FiveRegisterInstruction>(targetIndex)
+
+        addInstruction(
+            targetIndex + 1,
+            "invoke-static { v${targetInstruction.registerC}, v${targetInstruction.registerD} }, " +
+                    "$LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideAccountBottomItemLegacy(Landroid/view/View;Ljava/lang/CharSequence;)V"
+        )
+    }
+
+    accountListMethodMatch.methodOrNull?.apply {
+        val literalIndex = accountListMethodMatch[0]
+        val targetIndex = indexOfFirstInstructionOrThrow(literalIndex) {
+            opcode == Opcode.INVOKE_VIRTUAL &&
+                    methodReference?.name == "setText"
+        }
+        val targetInstruction = getInstruction<FiveRegisterInstruction>(targetIndex)
+
+        addInstruction(
+            targetIndex + 1,
+            "invoke-static { v${targetInstruction.registerC}, v${targetInstruction.registerD} }, " +
+                    "$LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideAccountTopItem(Landroid/view/View;Ljava/lang/CharSequence;)V"
+        )
+    }
 
     // endregion
 

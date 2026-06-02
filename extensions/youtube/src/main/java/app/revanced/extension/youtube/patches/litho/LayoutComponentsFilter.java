@@ -10,6 +10,7 @@ import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -537,26 +538,6 @@ public final class LayoutComponentsFilter extends Filter {
     /**
      * Injection point.
      */
-    public static void hideLiveChatDonatorsBar(View view) {
-        if (view == null || !Settings.HIDE_LIVE_CHAT_DONATORS_BAR.get()) {
-            return;
-        }
-
-        view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                view.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-
-                if (view.getParent() instanceof RecyclerView shelfContainerRecycleView) {
-                    shelfContainerRecycleView.setVisibility(RecyclerView.GONE);
-                }
-            }
-        });
-    }
-
-    /**
-     * Injection point.
-     */
     public static boolean hideFloatingMicrophoneButton(final boolean original) {
         return original || Settings.HIDE_FLOATING_MICROPHONE_BUTTON.get();
     }
@@ -900,5 +881,63 @@ public final class LayoutComponentsFilter extends Filter {
             Logger.printDebug(() -> "Remove search suggestion: " + searchTerm);
         }
         return isSearchHistory;
+    }
+
+    private static final List<String> accountMenuFilterStrings = getFilterStrings(Settings.HIDE_ACCOUNT_MENU_FILTER_STRINGS);
+    // Start from the highest depth to avoid hiding the wrong parent first.
+    private static final int[] accountBottomItemModernDepths = new int[]{4, 3};
+    private static final int[] accountBottomItemLegacyDepths = new int[]{3, 2};
+    // Top items ("for you" tab) use the same depths as the legacy bottom items.
+    private static final int[] accountTopItemDepths = new int[]{3, 2};
+
+    /**
+     * Injection point.
+     */
+    public static void hideAccountBottomItemModern(View view, CharSequence menuTitleCharSequence) {
+        hideAccountItem(view, menuTitleCharSequence, accountBottomItemModernDepths);
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideAccountTopItem(View view, CharSequence menuTitleCharSequence) {
+        hideAccountItem(view, menuTitleCharSequence, accountTopItemDepths);
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideAccountBottomItemLegacy(View view, CharSequence menuTitleCharSequence) {
+        hideAccountItem(view, menuTitleCharSequence, accountBottomItemLegacyDepths);
+    }
+
+    private static void hideAccountItem(View textView, CharSequence menuTitleCharSequence, int[] depths) {
+        if (!Settings.HIDE_ACCOUNT_MENU.get() || menuTitleCharSequence == null) return;
+        if (accountMenuFilterStrings.isEmpty()) return;
+
+        String menuTitleString = menuTitleCharSequence.toString();
+
+        boolean matches = false;
+        for (String filter : accountMenuFilterStrings) {
+            if (menuTitleString.equalsIgnoreCase(filter)) {
+                matches = true;
+                break;
+            }
+        }
+        if (!matches) return;
+
+        // Not all versions have the same depth. So perform a scan
+        // along all available depths, to find the right one.
+        for (int depth : depths) {
+            ViewParent parent = Utils.getParentView(textView, depth);
+            if (parent instanceof View current) {
+                Utils.hideViewByLayoutParams(current);
+                current.setVisibility(View.GONE);
+                if (current.getLayoutParams() instanceof ViewGroup.MarginLayoutParams marginParams) {
+                    marginParams.setMargins(0, 0, 0, 0);
+                    current.setLayoutParams(marginParams);
+                }
+            }
+        }
     }
 }
