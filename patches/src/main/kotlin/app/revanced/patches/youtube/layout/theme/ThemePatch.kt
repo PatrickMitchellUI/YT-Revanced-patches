@@ -96,7 +96,9 @@ val themePatch = baseThemePatch(
                     ).forEach { stylesPath ->
                         try {
                             document(stylesPath).use { document ->
-                                val resourcesNode = document.getElementsByTagName("resources").item(0) as? Element ?: return@use
+                                val resourcesNode =
+                                    document.getElementsByTagName("resources").item(0) as? Element
+                                        ?: return@use
                                 var themeNode: Element? = null
 
                                 resourcesNode.forEachChildElement { node ->
@@ -132,8 +134,10 @@ val themePatch = baseThemePatch(
                         }
                     }
 
-                    val isMaterialYouDark = darkThemeBackgroundColorOption.value!!.startsWith("@android:color/system_")
-                    val isMaterialYouLight = lightThemeBackgroundColor!!.startsWith("@android:color/system_")
+                    val isMaterialYouDark =
+                        darkThemeBackgroundColorOption.value!!.startsWith("@android:color/system_")
+                    val isMaterialYouLight =
+                        lightThemeBackgroundColor!!.startsWith("@android:color/system_")
 
                     // YouTube applies CairoLightThemeUpdates/CairoDarkThemeUpdates to the context theme
                     // before Cairo renders, so ?ytRedIndicator in Cairo drawables resolves
@@ -159,38 +163,87 @@ val themePatch = baseThemePatch(
                             )
                         }
 
+                        fun patchCountTextColor(resPath: String, color: String) {
+                            val resDir = get("res")
+                            val sourceFile =
+                                listOf("layout-v31", "layout-v26", "layout").firstNotNullOfOrNull {
+                                    resDir.resolve("$it/new_content_count.xml")
+                                        .takeIf { f -> f.exists() }
+                                } ?: return
+                            val targetFile = resDir.resolve(resPath)
+                            targetFile.parentFile?.mkdirs()
+                            val patchedXml = sourceFile.readText().replace(
+                                Regex("""android:textColor="[^"]+""""),
+                                """android:textColor="$color""""
+                            )
+                            targetFile.writeText(patchedXml)
+                        }
+
                         if (isMaterialYouDark) {
-                            createNotifDrawable("drawable/morphe_notif_dot_dark.xml", "@android:color/system_accent1_100", "oval")
-                            createNotifDrawable("drawable/morphe_notif_count_dark.xml", "@android:color/system_accent1_100", "rectangle", hasCorners = true)
+                            createNotifDrawable(
+                                "drawable/revanced_notif_dot_dark.xml",
+                                "@android:color/system_accent1_100",
+                                "oval"
+                            )
+                            createNotifDrawable(
+                                "drawable/revanced_notif_count_dark.xml",
+                                "@android:color/system_accent1_100",
+                                "rectangle",
+                                hasCorners = true
+                            )
+                            patchCountTextColor(
+                                "layout-v31/new_content_count.xml",
+                                "@android:color/system_neutral1_900"
+                            )
                         }
                         if (isMaterialYouLight) {
-                            createNotifDrawable("drawable/morphe_notif_dot_light.xml", "@android:color/system_accent1_200", "oval")
-                            createNotifDrawable("drawable/morphe_notif_count_light.xml", "@android:color/system_accent1_100", "rectangle", hasCorners = true)
+                            createNotifDrawable(
+                                "drawable/revanced_notif_dot_light.xml",
+                                "@android:color/system_accent1_200",
+                                "oval"
+                            )
+                            createNotifDrawable(
+                                "drawable/revanced_notif_count_light.xml",
+                                "@android:color/system_accent1_100",
+                                "rectangle",
+                                hasCorners = true
+                            )
+                            patchCountTextColor(
+                                "layout-v31/new_content_count.xml",
+                                "@android:color/system_neutral1_900"
+                            )
                         }
 
                         document("res/values/styles.xml").use { doc ->
-                            val resources = doc.getElementsByTagName("resources").item(0) as? Element ?: return@use
+                            val resources =
+                                doc.getElementsByTagName("resources").item(0) as? Element
+                                    ?: return@use
 
                             resources.forEachChildElement { style ->
                                 if (style.nodeName != "style") return@forEachChildElement
 
-                                val overrides: Map<String, String> = when (style.getAttribute("name")) {
-                                    "PivotBar.Dark" -> if (isMaterialYouDark) mapOf(
-                                        "dotBackground" to "@drawable/morphe_notif_dot_dark",
-                                        "countBackground" to "@drawable/morphe_notif_count_dark"
-                                    ) else return@forEachChildElement
-                                    "PivotBar.Default" -> if (isMaterialYouLight) mapOf(
-                                        "dotBackground" to "@drawable/morphe_notif_dot_light",
-                                        "countBackground" to "@drawable/morphe_notif_count_light"
-                                    ) else return@forEachChildElement
-                                    "CairoLightThemeUpdates" -> if (isMaterialYouLight) mapOf(
-                                        "ytRedIndicator" to "@android:color/system_accent1_200"
-                                    ) else return@forEachChildElement
-                                    "CairoDarkThemeUpdates" -> if (isMaterialYouDark) mapOf(
-                                        "ytRedIndicator" to "@android:color/system_accent1_100"
-                                    ) else return@forEachChildElement
-                                    else -> return@forEachChildElement
-                                }
+                                val overrides: Map<String, String> =
+                                    when (style.getAttribute("name")) {
+                                        "PivotBar.Dark" -> if (isMaterialYouDark) mapOf(
+                                            "dotBackground" to "@drawable/revanced_notif_dot_dark",
+                                            "countBackground" to "@drawable/revanced_notif_count_dark"
+                                        ) else return@forEachChildElement
+
+                                        "PivotBar.Default" -> if (isMaterialYouLight) mapOf(
+                                            "dotBackground" to "@drawable/revanced_notif_dot_light",
+                                            "countBackground" to "@drawable/revanced_notif_count_light"
+                                        ) else return@forEachChildElement
+
+                                        "CairoLightThemeUpdates" -> if (isMaterialYouLight) mapOf(
+                                            "ytRedIndicator" to "@android:color/system_accent1_200"
+                                        ) else return@forEachChildElement
+
+                                        "CairoDarkThemeUpdates" -> if (isMaterialYouDark) mapOf(
+                                            "ytRedIndicator" to "@android:color/system_accent1_100"
+                                        ) else return@forEachChildElement
+
+                                        else -> return@forEachChildElement
+                                    }
 
                                 overrides.forEach { (attrName, attrValue) ->
                                     var found = false
@@ -283,7 +336,9 @@ val themePatch = baseThemePatch(
                 ).forEach { stylesPath ->
                     try {
                         document(stylesPath).use { document ->
-                            val resourcesNode = document.getElementsByTagName("resources").item(0) as? Element ?: return@use
+                            val resourcesNode =
+                                document.getElementsByTagName("resources").item(0) as? Element
+                                    ?: return@use
                             var themeNode: Element? = null
 
                             resourcesNode.forEachChildElement { node ->
@@ -319,8 +374,10 @@ val themePatch = baseThemePatch(
                     }
                 }
 
-                val isMaterialYouDark = darkThemeBackgroundColorOption.value!!.startsWith("@android:color/system_")
-                val isMaterialYouLight = lightThemeBackgroundColor!!.startsWith("@android:color/system_")
+                val isMaterialYouDark =
+                    darkThemeBackgroundColorOption.value!!.startsWith("@android:color/system_")
+                val isMaterialYouLight =
+                    lightThemeBackgroundColor!!.startsWith("@android:color/system_")
 
                 // YouTube applies CairoLightThemeUpdates/CairoDarkThemeUpdates to the context theme
                 // before Cairo renders, so ?ytRedIndicator in Cairo drawables resolves
@@ -339,24 +396,67 @@ val themePatch = baseThemePatch(
                         else ""
                         file.writeText(
                             "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
-                            "<shape android:shape=\"$shape\"\n" +
-                            "  xmlns:android=\"http://schemas.android.com/apk/res/android\">\n" +
-                            "    <solid android:color=\"$color\" />$cornersLine\n" +
-                            "</shape>"
+                                    "<shape android:shape=\"$shape\"\n" +
+                                    "  xmlns:android=\"http://schemas.android.com/apk/res/android\">\n" +
+                                    "    <solid android:color=\"$color\" />$cornersLine\n" +
+                                    "</shape>"
                         )
                     }
 
+                    fun patchCountTextColor(resPath: String, color: String) {
+                        val resDir = get("res")
+                        val sourceFile =
+                            listOf("layout-v31", "layout-v26", "layout").firstNotNullOfOrNull {
+                                resDir.resolve("$it/new_content_count.xml")
+                                    .takeIf { f -> f.exists() }
+                            } ?: return
+                        val targetFile = resDir.resolve(resPath)
+                        targetFile.parentFile?.mkdirs()
+                        val patchedXml = sourceFile.readText().replace(
+                            Regex("""android:textColor="[^"]+""""),
+                            """android:textColor="$color""""
+                        )
+                        targetFile.writeText(patchedXml)
+                    }
+
                     if (isMaterialYouDark) {
-                        createNotifDrawable("drawable/revanced_notif_dot_dark.xml", "@android:color/system_accent1_100", "oval")
-                        createNotifDrawable("drawable/revanced_notif_count_dark.xml", "@android:color/system_accent1_100", "rectangle", hasCorners = true)
+                        createNotifDrawable(
+                            "drawable/revanced_notif_dot_dark.xml",
+                            "@android:color/system_accent1_100",
+                            "oval"
+                        )
+                        createNotifDrawable(
+                            "drawable/revanced_notif_count_dark.xml",
+                            "@android:color/system_accent1_100",
+                            "rectangle",
+                            hasCorners = true
+                        )
+                        patchCountTextColor(
+                            "layout-v31/new_content_count.xml",
+                            "@android:color/system_neutral1_900"
+                        )
                     }
                     if (isMaterialYouLight) {
-                        createNotifDrawable("drawable/revanced_notif_dot_light.xml", "@android:color/system_accent1_200", "oval")
-                        createNotifDrawable("drawable/revanced_notif_count_light.xml", "@android:color/system_accent1_100", "rectangle", hasCorners = true)
+                        createNotifDrawable(
+                            "drawable/revanced_notif_dot_light.xml",
+                            "@android:color/system_accent1_200",
+                            "oval"
+                        )
+                        createNotifDrawable(
+                            "drawable/revanced_notif_count_light.xml",
+                            "@android:color/system_accent1_100",
+                            "rectangle",
+                            hasCorners = true
+                        )
+                        patchCountTextColor(
+                            "layout-v31/new_content_count.xml",
+                            "@android:color/system_neutral1_900"
+                        )
                     }
 
                     document("res/values/styles.xml").use { doc ->
-                        val resources = doc.getElementsByTagName("resources").item(0) as? Element ?: return@use
+                        val resources =
+                            doc.getElementsByTagName("resources").item(0) as? Element ?: return@use
 
                         resources.forEachChildElement { style ->
                             if (style.nodeName != "style") return@forEachChildElement
@@ -366,16 +466,20 @@ val themePatch = baseThemePatch(
                                     "dotBackground" to "@drawable/revanced_notif_dot_dark",
                                     "countBackground" to "@drawable/revanced_notif_count_dark"
                                 ) else return@forEachChildElement
+
                                 "PivotBar.Default" -> if (isMaterialYouLight) mapOf(
                                     "dotBackground" to "@drawable/revanced_notif_dot_light",
                                     "countBackground" to "@drawable/revanced_notif_count_light"
                                 ) else return@forEachChildElement
+
                                 "CairoLightThemeUpdates" -> if (isMaterialYouLight) mapOf(
                                     "ytRedIndicator" to "@android:color/system_accent1_200"
                                 ) else return@forEachChildElement
+
                                 "CairoDarkThemeUpdates" -> if (isMaterialYouDark) mapOf(
                                     "ytRedIndicator" to "@android:color/system_accent1_100"
                                 ) else return@forEachChildElement
+
                                 else -> return@forEachChildElement
                             }
 
@@ -449,7 +553,7 @@ val themePatch = baseThemePatch(
                 "20.37.48",
                 "20.45.36",
                 "20.47.62",
-            "20.51.39"
+                "20.51.39"
             ),
         )
     },
