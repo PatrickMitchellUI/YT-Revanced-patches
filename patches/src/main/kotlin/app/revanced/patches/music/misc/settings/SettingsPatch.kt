@@ -13,9 +13,18 @@ import app.revanced.patches.music.playservice.versionCheckPatch
 import app.revanced.patches.shared.boldIconsFeatureFlagMethodMatch
 import app.revanced.patches.shared.googleApiActivityOnCreateMethod
 import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
-import app.revanced.patches.shared.misc.settings.preference.*
+import app.revanced.patches.shared.misc.settings.preference.BasePreference
+import app.revanced.patches.shared.misc.settings.preference.BasePreferenceScreen
+import app.revanced.patches.shared.misc.settings.preference.InputType
+import app.revanced.patches.shared.misc.settings.preference.IntentPreference
+import app.revanced.patches.shared.misc.settings.preference.NonInteractivePreference
+import app.revanced.patches.shared.misc.settings.preference.PreferenceScreenPreference
+import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
+import app.revanced.patches.shared.misc.settings.preference.TextPreference
 import app.revanced.patches.shared.misc.settings.settingsPatch
 import app.revanced.patches.youtube.misc.settings.modifyActivityForSettingsInjection
+import app.revanced.util.ResourceGroup
+import app.revanced.util.copyResources
 import app.revanced.util.copyXmlNode
 import app.revanced.util.inputStreamFromBundledResource
 import app.revanced.util.insertLiteralOverride
@@ -41,6 +50,26 @@ private val settingsResourcePatch = resourcePatch {
     )
 
     apply {
+        copyResources(
+            "settings",
+            ResourceGroup(
+                "drawable",
+                "revanced_settings_screen_00_about.xml",
+                "revanced_settings_screen_00_about_bold.xml",
+                "revanced_settings_screen_01_ads.xml",
+                "revanced_settings_screen_01_ads_bold.xml",
+                "revanced_settings_screen_04_general.xml",
+                "revanced_settings_screen_04_general_bold.xml",
+                "revanced_settings_screen_05_player.xml",
+                "revanced_settings_screen_05_player_bold.xml",
+                "revanced_settings_screen_11_misc.xml",
+                "revanced_settings_screen_11_misc_bold.xml"
+            ),
+            ResourceGroup(
+                "layout",
+                "revanced_preference_with_icon.xml"
+            )
+        )
 
         // Set the style for the ReVanced settings to follow the style of the music settings,
         // namely: action bar height, menu item padding and remove horizontal dividers.
@@ -89,12 +118,16 @@ val settingsPatch = bytecodePatch(
         preferences += NonInteractivePreference(
             key = "revanced_settings_music_screen_0_about",
             summaryKey = null,
+            icon = "@drawable/revanced_settings_screen_00_about",
+            iconBold = "@drawable/revanced_settings_screen_00_about_bold",
+            layout = "@layout/revanced_preference_with_icon",
             tag = "app.revanced.extension.shared.settings.preference.ReVancedAboutPreference",
             selectable = true,
         )
 
         PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("revanced_settings_search_history", summaryKey = null)
+            SwitchPreference("revanced_settings_search_history", summaryKey = null),
+            SwitchPreference("revanced_show_menu_icons")
         )
 
         if (is_8_40_or_greater) {
@@ -148,19 +181,31 @@ fun newIntent(settingsName: String) = IntentPreference.Intent(
 object PreferenceScreen : BasePreferenceScreen() {
     val ADS = Screen(
         key = "revanced_settings_music_screen_1_ads",
-        summaryKey = null
+        summaryKey = null,
+        icon = "@drawable/revanced_settings_screen_01_ads",
+        iconBold = "@drawable/revanced_settings_screen_01_ads_bold",
+        layout = "@layout/revanced_preference_with_icon"
     )
     val GENERAL = Screen(
         key = "revanced_settings_music_screen_2_general",
-        summaryKey = null
+        summaryKey = null,
+        icon = "@drawable/revanced_settings_screen_04_general",
+        iconBold = "@drawable/revanced_settings_screen_04_general_bold",
+        layout = "@layout/revanced_preference_with_icon"
     )
     val PLAYER = Screen(
         key = "revanced_settings_music_screen_3_player",
-        summaryKey = null
+        summaryKey = null,
+        icon = "@drawable/revanced_settings_screen_05_player",
+        iconBold = "@drawable/revanced_settings_screen_05_player_bold",
+        layout = "@layout/revanced_preference_with_icon"
     )
     val MISC = Screen(
         key = "revanced_settings_music_screen_4_misc",
-        summaryKey = null
+        summaryKey = null,
+        icon = "@drawable/revanced_settings_screen_11_misc",
+        iconBold = "@drawable/revanced_settings_screen_11_misc_bold",
+        layout = "@layout/revanced_preference_with_icon"
     )
 
     override fun commit(screen: PreferenceScreenPreference) {

@@ -12,7 +12,6 @@ import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patcher.returnType
 import app.revanced.util.getting
 import app.revanced.util.using
-import com.android.tools.smali.dexlib2.AccessFlags
 
 internal val BytecodePatchContext.searchTypeaheadListDefaultPresentationConstructorMethod by getting {
     firstMethodDeclaratively {
