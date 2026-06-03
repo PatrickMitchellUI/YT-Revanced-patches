@@ -231,7 +231,27 @@ internal val BytecodePatchContext.miniplayerOnCloseHandlerMethod by gettingFirst
     )
 }
 
-internal val BytecodePatchContext.miniplayerSetIconsMethod by gettingFirstMethodDeclaratively {
+// 21.17+
+internal val BytecodePatchContext.miniplayerSetIconsMethodMatch by getting {
+    firstMethodComposite {
+        returnType("V")
+        parameterTypes("Landroid/graphics/drawable/Drawable;", "I")
+        instructions(
+            method { toString() == "Landroid/widget/ImageView;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V" },
+        )
+    }
+} using {
+    firstImmutableMethodDeclaratively {
+        accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+        returnType("Landroid/graphics/drawable/Drawable;")
+        instructions(
+            ResourceType.DRAWABLE("floatybar_progress_circle_autonav"),
+        )
+    }
+}
+
+// 21.16 and lower
+internal val BytecodePatchContext.miniplayerSetIconsLegacyMethod by gettingFirstMethodDeclaratively {
     returnType("V")
     parameterTypes("I", "Ljava/lang/Runnable;")
     instructions(

@@ -9,6 +9,7 @@ import static app.revanced.extension.youtube.patches.MiniplayerPatch.MiniplayerT
 import static app.revanced.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MODERN_3;
 import static app.revanced.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MODERN_4;
 
+import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,9 +18,11 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import app.revanced.extension.shared.Logger;
+import app.revanced.extension.shared.ResourceType;
 import app.revanced.extension.shared.Utils;
 import app.revanced.extension.shared.settings.Setting;
 import app.revanced.extension.youtube.settings.Settings;
@@ -149,6 +152,15 @@ public final class MiniplayerPatch {
 
     private static final boolean MINIPLAYER_HORIZONTAL_DRAG_ENABLED =
             DRAG_AND_DROP_ENABLED && !Settings.MINIPLAYER_DISABLE_HORIZONTAL_DRAG.get();
+
+    private static final Map<Integer, String> MINIMAL_PLAYER_DRAWABLES = Map.of(
+            Utils.getResourceIdentifier(ResourceType.STRING, "accessibility_pause"),
+            "yt_fill_pause_vd_theme_24",
+            Utils.getResourceIdentifier(ResourceType.STRING, "accessibility_play"),
+            "yt_fill_play_arrow_vd_theme_24",
+            Utils.getResourceIdentifier(ResourceType.STRING, "accessibility_replay"),
+            "yt_outline_replay_arrow_vd_theme_24"
+    );
 
     private static final int OPACITY_LEVEL;
 
@@ -390,6 +402,26 @@ public final class MiniplayerPatch {
         }
 
         return original;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void overrideMiniplayerActionButtonDrawable(ImageView view, int contentDescriptionId) {
+        if (!VersionCheckPatch.IS_21_17_OR_GREATER || CURRENT_TYPE != MINIMAL) {
+            return;
+        }
+
+        String drawableName = MINIMAL_PLAYER_DRAWABLES.get(contentDescriptionId);
+        if (drawableName != null) {
+            final int drawableId = Utils.getResourceIdentifier(ResourceType.DRAWABLE, drawableName);
+            if (drawableId != 0) {
+                Drawable drawable = Utils.getContext().getDrawable(drawableId);
+                if (drawable != null) {
+                    view.setImageDrawable(drawable);
+                }
+            }
+        }
     }
 
     /**

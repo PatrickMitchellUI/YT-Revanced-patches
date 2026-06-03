@@ -309,24 +309,37 @@ val miniplayerPatch = bytecodePatch(
 
         // region fix minimal miniplayer using the wrong pause/play bold icons.
 
-        // 21.17+ removed the code to set the non-bold miniplayer pause/play icon,
-        // and removed the non-bold yt_fill_pause_white_36 icons.
-        if (is_20_31_or_greater && !is_21_17_or_greater) {
-            miniplayerSetIconsMethod.apply {
-                findInstructionIndicesReversedOrThrow {
-                    val reference = methodReference
-                    opcode == Opcode.INVOKE_INTERFACE &&
-                            reference?.returnType == "Z" && reference.parameterTypes.isEmpty()
-                }.forEach { index ->
-                    val register = getInstruction<OneRegisterInstruction>(index + 1).registerA
+        if (is_20_31_or_greater) {
+            if (is_21_17_or_greater) {
+                // 21.17+ removed the code to set the non-bold miniplayer pause/play icon,
+                // and removed the non-bold yt_fill_pause_white_36 icons.
+                miniplayerSetIconsMethodMatch.method.apply {
+                    val setImageDrawableIndex = miniplayerSetIconsMethodMatch[0]
 
-                    addInstructions(
-                        index + 2,
-                        """
-                            invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->allowBoldIcons(Z)Z
-                            move-result v$register
-                        """,
+                    addInstruction(
+                        setImageDrawableIndex + 1,
+                        "invoke-static { p0, p2 }, $EXTENSION_CLASS_DESCRIPTOR->" +
+                                "overrideMiniplayerActionButtonDrawable(Landroid/widget/ImageView;I)V",
                     )
+                }
+            } else {
+                // Fix bold icons always shown for 20.31 to 21.16.
+                miniplayerSetIconsLegacyMethod.apply {
+                    findInstructionIndicesReversedOrThrow {
+                        val reference = methodReference
+                        opcode == Opcode.INVOKE_INTERFACE &&
+                                reference?.returnType == "Z" && reference.parameterTypes.isEmpty()
+                    }.forEach { index ->
+                        val register = getInstruction<OneRegisterInstruction>(index + 1).registerA
+
+                        addInstructions(
+                            index + 2,
+                            """
+                                invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->allowBoldIcons(Z)Z
+                                move-result v$register
+                            """,
+                        )
+                    }
                 }
             }
         }
