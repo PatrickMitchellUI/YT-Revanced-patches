@@ -39,7 +39,7 @@ public final class SanitizeSharingLinksPatch {
         }
 
         String host = Uri.parse(url).getHost();
-        if (host == null || (!host.equals("youtube.com") && !host.endsWith(".youtube.com"))) {
+        if (host == null || (!host.equals("youtube.com") && !host.endsWith(".youtube.com") && !host.equals("youtu.be"))) {
             return originalURL;
         }
 
