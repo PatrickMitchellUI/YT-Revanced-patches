@@ -169,6 +169,7 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
         SwitchPreference("revanced_hide_join_membership_button", summaryKey = null),
         SwitchPreference("revanced_hide_live_chat_replay_button"),
         SwitchPreference("revanced_hide_medical_panels", summaryKey = null),
+        SwitchPreference("revanced_hide_snackbar", summaryKey = null),
         SwitchPreference("revanced_hide_subscribers_community_guidelines", summaryKey = null),
         SwitchPreference("revanced_hide_timed_reactions"),
         SwitchPreference("revanced_hide_video_title")
@@ -920,6 +921,48 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
                         if-nez v$freeRegister, :hidden
                     """,
                 ExternalLabel("hidden", getInstruction(jumpIndex))
+            )
+        }
+    }
+
+    // endregion
+
+    // region Hide snackbar
+
+    lithoSnackbarLayoutMethodMatch.let {
+        it.method.apply {
+            val insertIndex = it[0]
+            val register = getInstruction<TwoRegisterInstruction>(insertIndex).registerA
+            addInstruction(
+                insertIndex,
+                "invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideLithoSnackBar(Landroid/widget/FrameLayout;)V"
+            )
+        }
+    }
+
+    bottomUIContainerMethod.addInstructionsWithLabels(
+        0,
+        """
+            invoke-static {}, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideSnackbar()Z
+            move-result v0
+            if-eqz v0, :show
+            return-void
+            :show
+            nop
+        """
+    )
+
+    listOf(
+        quantumSnackbarMethodMatch,
+        materialSnackbarMethodMatch,
+        appSnackbarMethodMatch,
+        youTubeSnackbarMethodMatch,
+        mealbarMethodMatch,
+    ).forEach {
+        it.method.apply {
+            addInstruction(
+                it[0] + 1,
+                "invoke-static { p0 }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->handleLegacySnackbar(Landroid/view/View;)V"
             )
         }
     }

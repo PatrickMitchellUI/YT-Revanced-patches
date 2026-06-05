@@ -7,6 +7,7 @@ import app.revanced.patcher.allOf
 import app.revanced.patcher.anyField
 import app.revanced.patcher.composingFirstMethod
 import app.revanced.patcher.custom
+import app.revanced.patcher.definingClass
 import app.revanced.patcher.field
 import app.revanced.patcher.firstImmutableMethodDeclaratively
 import app.revanced.patcher.firstMethodComposite
@@ -541,4 +542,79 @@ internal val BytecodePatchContext.accountListMethodMatch by getting {
     firstImmutableMethodDeclaratively {
         instructions(ResourceType.LAYOUT("compact_list_item"))
     }
+}
+
+internal val BytecodePatchContext.bottomUIContainerMethod by gettingFirstMethodDeclaratively {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+    returnType("V")
+    definingClass("Lcom/google/android/apps/youtube/app/common/ui/bottomui/BottomUiContainer;")
+    parameterTypes("Landroid/view/View;", "L")
+    instructions(
+        method { name == "removeAllViews" && definingClass == "Lcom/google/android/apps/youtube/app/common/ui/bottomui/BottomUiContainer;" },
+    )
+}
+
+internal val BytecodePatchContext.lithoSnackbarLayoutMethodMatch by composingFirstMethod(
+    "instance_action_bar_color",
+    "instance_status_bar_color",
+    "instance_activated_text_color",
+    "instance_secondary_text_color",
+) {
+    returnType("Landroid/view/View;")
+    parameterTypes("Landroid/view/LayoutInflater;", "Landroid/view/ViewGroup;", "Landroid/os/Bundle;")
+
+    var methodDefiningClass = ""
+    custom {
+        methodDefiningClass = definingClass
+        true
+    }
+
+    instructions(
+        allOf(Opcode.IPUT_OBJECT(), field { definingClass == methodDefiningClass && type == "Landroid/widget/FrameLayout;" }),
+    )
+}
+
+internal val BytecodePatchContext.materialSnackbarMethodMatch by composingFirstMethod {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
+    definingClass("Lcom/google/android/material/snackbar/Snackbar\$SnackbarLayout;")
+    parameterTypes("Landroid/content/Context;", "Landroid/util/AttributeSet;")
+    instructions(
+        allOf(Opcode.INVOKE_DIRECT(), method { name == "<init>" }),
+    )
+}
+
+internal val BytecodePatchContext.appSnackbarMethodMatch by composingFirstMethod {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
+    definingClass("Lcom/google/android/apps/youtube/app/common/ui/bottomui/AppSnackbar;")
+    parameterTypes("Landroid/content/Context;")
+    instructions(
+        allOf(Opcode.INVOKE_DIRECT(), method { name == "<init>" }),
+    )
+}
+
+internal val BytecodePatchContext.youTubeSnackbarMethodMatch by composingFirstMethod {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
+    definingClass("Lcom/google/android/apps/youtube/app/common/ui/bottomui/YouTubeSnackbar;")
+    parameterTypes("Landroid/content/Context;", "Landroid/util/AttributeSet;", "I")
+    instructions(
+        allOf(Opcode.INVOKE_DIRECT(), method { name == "<init>" }),
+    )
+}
+
+internal val BytecodePatchContext.mealbarMethodMatch by composingFirstMethod {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
+    definingClass("Lcom/google/android/apps/youtube/app/common/ui/bottomui/Mealbar;")
+    parameterTypes("Landroid/content/Context;", "Landroid/util/AttributeSet;", "I")
+    instructions(
+        allOf(Opcode.INVOKE_DIRECT(), method { name == "<init>" }),
+    )
+}
+
+internal val BytecodePatchContext.quantumSnackbarMethodMatch by composingFirstMethod {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
+    definingClass("Lcom/google/android/libraries/quantum/snackbar/Snackbar;")
+    parameterTypes("Landroid/content/Context;", "Landroid/util/AttributeSet;")
+    instructions(
+        allOf(Opcode.INVOKE_DIRECT(), method { name == "<init>" }),
+    )
 }

@@ -314,6 +314,7 @@ However, enabling this will also log some user data such as your IP address."</s
             <string name="revanced_hide_live_chat_replay_button_title">Hide \'Live chat replay\' button</string>
             <string name="revanced_hide_live_chat_replay_button_summary">Hides the chat replay button in the fullscreen mode</string>
             <string name="revanced_hide_medical_panels_title">Hide medical panels</string>
+            <string name="revanced_hide_snackbar_title">Hide snackbar</string>
             <string name="revanced_hide_subscribers_community_guidelines_title">Hide subscribers guidelines</string>
             <string name="revanced_hide_timed_reactions_title">Hide timed reactions</string>
             <string name="revanced_hide_timed_reactions_summary">Hides the feature that allows users to react with emojis in the comments section and live chat</string>
