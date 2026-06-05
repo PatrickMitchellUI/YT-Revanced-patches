@@ -2,11 +2,13 @@ package app.revanced.patches.youtube.layout.player.fullscreen
 
 import app.revanced.patcher.accessFlags
 import app.revanced.patcher.afterAtMost
+import app.revanced.patcher.allOf
 import app.revanced.patcher.composingFirstMethod
 import app.revanced.patcher.definingClass
 import app.revanced.patcher.gettingFirstMethodDeclaratively
 import app.revanced.patcher.instructions
 import app.revanced.patcher.invoke
+import app.revanced.patcher.method
 import app.revanced.patcher.name
 import app.revanced.patcher.parameterTypes
 import app.revanced.patcher.patch.BytecodePatchContext
@@ -34,4 +36,20 @@ internal val BytecodePatchContext.openVideosFullscreenHookPatchExtensionMethod b
     accessFlags(AccessFlags.PRIVATE, AccessFlags.STATIC)
     returnType("Z")
     parameterTypes()
+}
+
+internal val BytecodePatchContext.adPlayerFullscreenMethodMatch by composingFirstMethod {
+    instructions(
+        "Ad player fullscreen state entity is null in onSuccess on exit"(),
+        afterAtMost(10, method { name == "getFullscreenForced" && returnType == "Ljava/lang/Boolean;" && parameterTypes.isEmpty() }),
+        afterAtMost(10, allOf(Opcode.INVOKE_VIRTUAL(), method { returnType == "V" && parameterTypes.isEmpty() })),
+    )
+}
+
+internal val BytecodePatchContext.nextGenWatchLayoutFullscreenConstructorMethodMatch by composingFirstMethod {
+    definingClass("Lcom/google/android/apps/youtube/app/watch/nextgenwatch/ui/NextGenWatchLayout;")
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
+    instructions(
+        Opcode.CHECK_CAST(),
+    )
 }
