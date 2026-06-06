@@ -7,7 +7,6 @@ import app.revanced.util.getting
 import app.revanced.util.using
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.ClassDef
 
 internal val BytecodePatchContext.miniPlayerConstructorMethodMatch by composingFirstMethod(
     "sharedToggleMenuItemMutations"
@@ -40,4 +39,97 @@ internal val BytecodePatchContext.minimizedPlayerMethod by gettingFirstMethodDec
     returnType("V")
     parameterTypes("L", "L")
     instructions("w_st"())
+}
+
+internal val BytecodePatchContext.interactionLoggingEnumMethod by composingFirstMethod {
+    returnType("v")
+    instructions(
+        "INTERACTION_LOGGING_GESTURE_TYPE_SWIPE"(),
+        allOf(Opcode.SPUT_OBJECT(), field { definingClass == "this" })
+    )
+}
+
+internal val BytecodePatchContext.musicActivityWidgetMethod by composingFirstMethod {
+    definingClass("Lcom/google/android/apps/youtube/music/activities/MusicActivity;")
+    name("onCreate")
+    instructions(
+        "widget_key"(),
+        afterAtMost(5, Opcode.IGET_OBJECT()),
+        afterAtMost(
+            3,
+            allOf(
+                Opcode.INVOKE_INTERFACE(),
+                method { parameterTypes.isEmpty() && returnType == "Ljava/lang/Object;" })
+        ),
+        afterAtMost(3, Opcode.CHECK_CAST()),
+        afterAtMost(3, Opcode.SGET_OBJECT()),
+        afterAtMost(3, Opcode.NEW_INSTANCE()),
+        afterAtMost(3, 79500L()),
+        afterAtMost(3, allOf(Opcode.INVOKE_STATIC(), method { parameterTypes == listOf("I") })),
+        afterAtMost(
+            3,
+            allOf(
+                Opcode.INVOKE_DIRECT(),
+                method { name == "<init>" && parameterTypes == listOf("L") })
+        ),
+        afterAtMost(
+            3,
+            allOf(
+                Opcode.INVOKE_INTERFACE(),
+                method { parameterTypes == listOf("L", "L", "L") && returnType == "V" })
+        ),
+    )
+}
+
+// 9.03+
+internal val BytecodePatchContext.miniPlayerDefaultTextMethod by gettingFirstMethodDeclaratively {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+    returnType("V")
+    parameterTypes()
+    instructions(ResourceType.STRING("mini_player_default_text"))
+}
+
+// 9.02 and lower.
+internal val BytecodePatchContext.miniPlayerDefaultTextLegacyMethod by composingFirstMethod {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+    returnType("V")
+    parameterTypes("Ljava/lang/Object;")
+    instructions(
+        Opcode.IF_NE(),
+        after(ResourceType.STRING("mini_player_default_text"))
+    )
+}
+
+// 9.02+
+internal val BytecodePatchContext.playerPageBehaviorMethod by gettingFirstMethodDeclaratively {
+    definingClass("Lcom/google/android/apps/youtube/music/watchpage/ui/PlayerPageBehavior;")
+    accessFlags(AccessFlags.FINAL)
+    returnType("V")
+    parameterTypes()
+    instructions(
+        Opcode.CONST_4(),
+        after(Opcode.IPUT_BOOLEAN()),
+        after(Opcode.RETURN_VOID())
+    )
+}
+
+/**
+ * Matches the watch-while layout's onFinishInflate() method.
+ * definingClass uses a contains match, covering class renames across builds:
+ *   <= 8.x: MppWatchWhileLayout
+ *   >= 9.x: WatchWhileLayout
+ */
+internal val BytecodePatchContext.watchWhileLayoutMethod by composingFirstMethod {
+    definingClass("WatchWhileLayout;")
+    name("onFinishInflate")
+    returnType("V")
+    instructions(
+        // <= 8.x: MppPlayerPageBehavior
+        // >= 9.x: PlayerPageBehavior
+        allOf(
+            Opcode.IPUT_OBJECT(),
+            field { definingClass.endsWith("PlayerPageBehavior;") }
+        ),
+        afterAtMost(3, Opcode.NEW_INSTANCE())
+    )
 }
