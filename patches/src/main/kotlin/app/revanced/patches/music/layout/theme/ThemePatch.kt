@@ -4,8 +4,6 @@ import app.revanced.patches.music.misc.extension.sharedExtensionPatch
 import app.revanced.patches.shared.layout.theme.THEME_DEFAULT_DARK_COLOR_NAMES
 import app.revanced.patches.shared.layout.theme.baseThemePatch
 import app.revanced.patches.shared.layout.theme.baseThemeResourcePatch
-import app.revanced.patches.shared.layout.theme.darkThemeBackgroundColorOption
-import app.revanced.patches.shared.misc.settings.overrideThemeColors
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/revanced/extension/music/patches/theme/ThemePatch;"
@@ -37,13 +35,6 @@ val themePatch = baseThemePatch(
                 "8.47.56",
                 "9.13.50"
             )
-        )
-    },
-
-    executeBlock = {
-        overrideThemeColors(
-            null,
-            darkThemeBackgroundColorOption.value!!
         )
     }
 )

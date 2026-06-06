@@ -114,13 +114,7 @@ fun settingsPatch(
 
     afterDependents {
         fun Node.addPreference(preference: BasePreference) {
-            preference.serialize(ownerDocument) { resource ->
-                // TODO: Currently, resources can only be added to "values", which may not be the correct place.
-                //  It may be necessary to ask for the desired resourceValue in the future.
-                addResource("values", resource)
-            }.let { preferenceNode ->
-                insertFirst(preferenceNode)
-            }
+            insertFirst(preference.serialize(ownerDocument) { _ ->  })
         }
 
         // Add the root preference to an existing fragment if needed.
