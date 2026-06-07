@@ -57,7 +57,7 @@ val hideVideoActionButtonsPatch = resourcePatch(
                 listOf(
                     SwitchPreference("revanced_hide_hype_button", summaryKey = null),
                     SwitchPreference("revanced_hide_ask_button", summaryKey = null),
-                    SwitchPreference("revanced_hide_clip_button", summaryKey = null),
+                    SwitchPreference("revanced_hide_clip_button"),
                     SwitchPreference("revanced_hide_promote_button", summaryKey = null),
                     SwitchPreference("revanced_hide_report_button", summaryKey = null),
                     SwitchPreference("revanced_hide_shop_button", summaryKey = null),

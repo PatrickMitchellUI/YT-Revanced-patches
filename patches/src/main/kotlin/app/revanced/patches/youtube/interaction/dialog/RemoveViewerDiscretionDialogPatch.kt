@@ -46,7 +46,7 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
         addResources("youtube", "interaction.dialog.removeViewerDiscretionDialogPatch")
 
         PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("revanced_remove_viewer_discretion_dialog", summaryKey = null),
+            SwitchPreference("revanced_remove_viewer_discretion_dialog"),
         )
 
         allowControversialContentMethodMatch.let {

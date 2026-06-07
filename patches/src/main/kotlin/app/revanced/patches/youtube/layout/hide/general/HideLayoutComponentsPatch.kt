@@ -139,7 +139,11 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
                     sorting = Sorting.UNSORTED,
                     tag = "app.revanced.extension.shared.settings.preference.NoTitlePreferenceCategory",
                     preferences = setOf(
-                        SwitchPreference("revanced_hide_comments_carousel", summaryKey = null),
+                        SwitchPreference(
+                            "revanced_hide_comments_carousel",
+                            tag =
+                                "app.revanced.extension.shared.settings.preference.BulletPointSwitchPreference"
+                        ),
                         TextPreference(
                             "revanced_hide_comments_carousel_filter_strings",
                             inputType = InputType.TEXT_MULTI_LINE
@@ -281,9 +285,15 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
         SwitchPreference("revanced_hide_show_more_button"),
         SwitchPreference("revanced_hide_surveys"),
         SwitchPreference("revanced_hide_ticket_shelf", summaryKey = null),
-        SwitchPreference("revanced_hide_upload_time", summaryKey = null),
+        SwitchPreference(
+            "revanced_hide_upload_time",
+            tag = "app.revanced.extension.shared.settings.preference.BulletPointSwitchPreference"
+        ),
         SwitchPreference("revanced_hide_video_recommendation_labels"),
-        SwitchPreference("revanced_hide_view_count", summaryKey = null),
+        SwitchPreference(
+            "revanced_hide_view_count",
+            tag = "app.revanced.extension.shared.settings.preference.BulletPointSwitchPreference",
+        ),
         SwitchPreference("revanced_hide_visual_spacer", summaryKey = null),
         SwitchPreference("revanced_hide_youtube_doodles"),
     )

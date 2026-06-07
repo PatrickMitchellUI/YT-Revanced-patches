@@ -72,7 +72,7 @@ val navigationBarPatch = bytecodePatch(
             SwitchPreference("revanced_hide_create_button", summaryKey = null),
             SwitchPreference("revanced_hide_subscriptions_button", summaryKey = null),
             SwitchPreference("revanced_hide_notifications_button", summaryKey = null),
-            SwitchPreference("revanced_switch_create_with_notifications_button", summaryKey = null),
+            SwitchPreference("revanced_switch_create_with_notifications_button"),
             SwitchPreference("revanced_hide_navigation_button_labels", summaryKey = null),
             SwitchPreference("revanced_narrow_navigation_buttons"),
         )

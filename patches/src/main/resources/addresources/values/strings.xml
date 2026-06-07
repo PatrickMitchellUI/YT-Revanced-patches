@@ -299,6 +299,7 @@ However, enabling this will also log some user data such as your IP address."</s
             <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
             <string name="revanced_hide_youtube_doodles_title">Hide YouTube Doodles</string>
             <string name="revanced_hide_youtube_doodles_summary">Hides seasonal and event-based animations on the YouTube logo</string>
+            <string name="revanced_hide_youtube_doodles_user_dialog_message">Showing YouTube Doodles may prevent custom headers from displaying.</string>
             <string name="revanced_hide_channel_bar_title">Hide channel bar</string>
             <string name="revanced_hide_channel_watermark_title">Hide channel watermark</string>
             <string name="revanced_hide_crowdfunding_box_title">Hide crowdfunding box</string>
@@ -381,11 +382,9 @@ However, enabling this will also log some user data such as your IP address."</s
             <string name="revanced_comments_screen_title">Comments</string>
             <string name="revanced_comments_screen_summary">Hide or show comments section components</string>
             <string name="revanced_hide_comments_carousel_title">Enable comments carousel filter</string>
-            <string name="revanced_hide_comments_carousel_user_dialog_message">"Note:
-
-• Enter the exact name of the carousel item (e.g. Ask, Hype this video, Listen on YouTube Music, etc.).
-• Hiding carousel items may have unintended side effects.
-• If all carousel items are hidden, the entire comments section will also be hidden."</string>
+            <string name="revanced_hide_comments_carousel_summary">"• Be sure to enter the exact name of the carousel item (e.g. Ask, Hype this video, Listen on YouTube Music, etc.)
+• Hiding carousel items may have unintended side effects
+• If all carousel items are hidden, the entire comments section will also be hidden"</string>
             <string name="revanced_hide_comments_carousel_filter_strings_title">Comments carousel filter</string>
             <string name="revanced_hide_comments_carousel_filter_strings_summary">Enter the comments carousel names to filter by, one per line</string>
             <string name="revanced_hide_comments_ai_chat_summary_title">Hide AI chat summary</string>
@@ -402,13 +401,13 @@ However, enabling this will also log some user data such as your IP address."</s
             <string name="revanced_sanitize_comments_category_bar_title">Sanitize category bar</string>
             <string name="revanced_sanitize_comments_category_bar_summary">Hides all comment sorting options except \'Top\' and \'Newest\'</string>
             <string name="revanced_hide_view_count_title">Hide view count</string>
-            <!-- Translations should lanaguge similar to revanced_hide_upload_time_user_dialog_message -->
-            <string name="revanced_hide_view_count_user_dialog_message">"Limitations:
-• Shorts shelves, channel pages, and search results may still show view counts.
-• This feature does not work with automotive layout."</string>
+            <!-- Translations should lanaguge similar to revanced_hide_upload_time_summary -->
+            <string name="revanced_hide_view_count_summary">"Limitations:
+• Shorts shelves, channel pages, and search results may still show view counts
+• This feature does not work with automotive layout"</string>
             <string name="revanced_hide_upload_time_title">Hide upload time</string>
-            <!-- Translations should lanaguge similar to revanced_hide_view_count_user_dialog_message -->
-            <string name="revanced_hide_upload_time_user_dialog_message">"Limitations:
+            <!-- Translations should lanaguge similar to revanced_hide_view_count_summary -->
+            <string name="revanced_hide_upload_time_summary">"Limitations:
 • Shorts shelves, channel pages, and search results may still show upload times.
 • This feature does not work with automotive layout."</string>
             <string name="revanced_hide_keyword_content_screen_title">Hide keyword content</string>
@@ -465,7 +464,7 @@ Limitations:
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
             <string name="revanced_remove_viewer_discretion_dialog_title">Remove viewer discretion dialog</string>
-            <string name="revanced_remove_viewer_discretion_dialog_user_dialog_message">This does not bypass the age restriction. It just accepts it automatically.</string>
+            <string name="revanced_remove_viewer_discretion_dialog_summary">This does not bypass the age restriction. It just accepts it automatically.</string>
         </patch>
         <patch id="interaction.reload.reloadVideoResourcePatch">
             <string name="revanced_reload_video_button_title">Show reload video button</string>
@@ -628,7 +627,7 @@ Verify the package name is correct and the app is installed"</string>
             <string name="revanced_hide_ask_button_title">Hide Ask button</string>
             <!-- 'Clip' should be translated with the same localized wording that YouTube displays. -->
             <string name="revanced_hide_clip_button_title">Hide Clip button</string>
-            <string name="revanced_hide_clip_button_user_dialog_message">Hiding may not work for some user accounts.</string>
+            <string name="revanced_hide_clip_button_summary">Hiding may not work for some user accounts.</string>
             <!-- 'Shop' should be translated with the same localized wording that YouTube displays. -->
             <string name="revanced_hide_shop_button_title">Hide Shop button</string>
             <!-- 'Save' should be translated with the same localized wording that YouTube displays. -->
@@ -648,7 +647,7 @@ Verify the package name is correct and the app is installed"</string>
             <string name="revanced_hide_notifications_button_title">Hide Notifications button</string>
             <!-- 'Notifications' should be translated using the same localized wording YouTube displays the tab. -->
             <string name="revanced_switch_create_with_notifications_button_title">Swap Create button with Notifications button</string>
-            <string name="revanced_switch_create_with_notifications_button_user_dialog_message">If changing this setting does not take effect, try switching to Incognito mode.</string>
+            <string name="revanced_switch_create_with_notifications_button_summary">If changing this setting does not take effect, try switching to Incognito mode.</string>
             <string name="revanced_hide_navigation_button_labels_title">Hide navigation button labels</string>
             <string name="revanced_narrow_navigation_buttons_title">Enable narrow navigation buttons</string>
             <string name="revanced_narrow_navigation_buttons_summary">Reduces the horizontal spacing between buttons</string>
@@ -803,7 +802,12 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android >Reel\
             <string name="revanced_hide_autoplay_preview_summary">Hides the upcoming video preview in fullscreen before autoplay begins</string>
         </patch>
         <patch id="layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch">
-            <string name="revanced_hide_end_screen_suggested_video_title">Hides the suggested video overlay that appear after the video ends</string>
+            <string name="revanced_hide_end_screen_suggested_video_title">Hide end screen suggested video</string>
+            <string name="revanced_hide_end_screen_suggested_video_summary">"Hides the suggested video overlay that appears after the video ends
+
+
+This setting only works if autoplay is turned off. You can change it in YouTube:
+Settings → Playback (or Autoplay) → Autoplay next video"</string>
         </patch>
         <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
             <string name="revanced_hide_player_related_videos_overlay_title">Hide \'More videos\' overlay</string>
@@ -1187,9 +1191,7 @@ Limitation: Using the back button on the toolbar may not work"</string>
         </patch>
         <patch id="layout.miniplayer.miniplayerPatch">
             <string name="revanced_miniplayer_disable_resuming_title">Disable resuming miniplayer</string>
-            <string name="revanced_miniplayer_disable_resuming_summary">Prevents the \'Continue watching\' miniplayer from appearing on app startup</string>
-            <string name="revanced_miniplayer_disable_resuming_user_dialog_message">"• 'Continue watching' is a YouTube Premium feature
-• This setting cannot force on this Premium feature"</string>
+            <string name="revanced_miniplayer_disable_resuming_summary">Disables the \'Continue watching\' miniplayer, a YouTube Premium feature that appears on app startup</string>
             <string name="revanced_miniplayer_screen_title">Miniplayer</string>
             <string name="revanced_miniplayer_screen_summary">Change the style of the in-app minimized player</string>
             <string name="revanced_miniplayer_type_title">Miniplayer type</string>
