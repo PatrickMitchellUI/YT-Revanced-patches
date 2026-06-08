@@ -185,14 +185,14 @@ MicroG க்கான பேட்டரி மேம்படுத்தல�
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_button_success">URL கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது</string>
-            <string name="revanced_share_copy_url_button_timestamp_success">நேர முத்திரையுடன் URL நகலெடுக்கப்பட்டது</string>
-            <string name="revanced_copy_video_url_button_title">வீடியோ URL ஐ நகலெடு பொத்தானைக் காட்டு</string>
-            <string name="revanced_copy_video_url_button_summary_on">வீடியோ URL ஐ நகலெடு பொத்தான் காட்டப்பட்டுள்ளது. வீடியோ URL ஐ நகலெடுக்கத் தட்டவும். நேர முத்திரையுடன் நகலெடுக்க, தட்டிப் பிடிக்கவும்</string>
-            <string name="revanced_copy_video_url_button_summary_off">வீடியோ URL ஐ நகலெடு பொத்தான் காட்டப்படவில்லை</string>
-            <string name="revanced_copy_video_url_button_timestamp_title">நேர முத்திரை URL ஐ நகலெடு பொத்தானைக் காட்டு</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_on">நேர முத்திரை URL ஐ நகலெடு பொத்தான் காட்டப்பட்டுள்ளது. நேர முத்திரையுடன் வீடியோ URL ஐ நகலெடுக்கத் தட்டவும். நேர முத்திரை இல்லாமல் நகலெடுக்க, தட்டிப் பிடிக்கவும்</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_off">நேர முத்திரை URL ஐ நகலெடு பொத்தான் காட்டப்படவில்லை</string>
+            <string name="revanced_share_copy_link_button_success">URL கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது</string>
+            <string name="revanced_share_copy_link_with_timestamp_button_success">நேர முத்திரையுடன் URL நகலெடுக்கப்பட்டது</string>
+            <string name="revanced_copy_video_link_button_title">வீடியோ URL ஐ நகலெடு பொத்தானைக் காட்டு</string>
+            <string name="revanced_copy_video_link_button_summary_on">வீடியோ URL ஐ நகலெடு பொத்தான் காட்டப்பட்டுள்ளது. வீடியோ URL ஐ நகலெடுக்கத் தட்டவும். நேர முத்திரையுடன் நகலெடுக்க, தட்டிப் பிடிக்கவும்</string>
+            <string name="revanced_copy_video_link_button_summary_off">வீடியோ URL ஐ நகலெடு பொத்தான் காட்டப்படவில்லை</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_title">நேர முத்திரை URL ஐ நகலெடு பொத்தானைக் காட்டு</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_on">நேர முத்திரை URL ஐ நகலெடு பொத்தான் காட்டப்பட்டுள்ளது. நேர முத்திரையுடன் வீடியோ URL ஐ நகலெடுக்கத் தட்டவும். நேர முத்திரை இல்லாமல் நகலெடுக்க, தட்டிப் பிடிக்கவும்</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_off">நேர முத்திரை URL ஐ நகலெடு பொத்தான் காட்டப்படவில்லை</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch"/>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">

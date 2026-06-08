@@ -22,12 +22,12 @@ public class CopyVideoURLButton {
             // The default mode is set by the 'Copy timestamp' setting.
             instance = new PlayerControlButton(
                     controlsView,
-                    "revanced_copy_video_url_button",
+                    "revanced_copy_video_link_button",
                     null,
-                    Settings.COPY_VIDEO_URL_BUTTON::get,
-                    view -> CopyVideoURLPatch.copyURL(Settings.COPY_VIDEO_URL_BUTTON_TIMESTAMP.get()),
+                    Settings.COPY_VIDEO_LINK_BUTTON::get,
+                    view -> CopyVideoURLPatch.copyURL(Settings.COPY_VIDEO_LINK_WITH_TIMESTAMP_BUTTON.get()),
                     view -> {
-                        CopyVideoURLPatch.copyURL(!Settings.COPY_VIDEO_URL_BUTTON_TIMESTAMP.get());
+                        CopyVideoURLPatch.copyURL(!Settings.COPY_VIDEO_LINK_WITH_TIMESTAMP_BUTTON.get());
                         return true;
                     }
             );

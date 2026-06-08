@@ -189,14 +189,14 @@ MicroG සඳහා බැටරි ප්‍රශස්තකරණය අක�
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_button_success">URL ක්ලිප්බෝඩ් එකට පිටපත් කරන ලදි</string>
-            <string name="revanced_share_copy_url_button_timestamp_success">වේලා මුද්‍රාව සමඟ URL පිටපත් කරන ලදි</string>
-            <string name="revanced_copy_video_url_button_title">වීඩියෝ URL පිටපත් කිරීමේ බොත්තම පෙන්වන්න</string>
-            <string name="revanced_copy_video_url_button_summary_on">වීඩියෝ URL පිටපත් කිරීමේ බොත්තම පෙන්වා ඇත. වීඩියෝ URL පිටපත් කිරීමට තට්ටු කරන්න. වේලා මුද්‍රාව සමඟ පිටපත් කිරීමට තට්ටු කර අල්ලාගෙන සිටින්න</string>
-            <string name="revanced_copy_video_url_button_summary_off">වීඩියෝ URL පිටපත් කිරීමේ බොත්තම පෙන්වා නැත</string>
-            <string name="revanced_copy_video_url_button_timestamp_title">වේලා මුද්‍රාව URL පිටපත් කිරීමේ බොත්තම පෙන්වන්න</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_on">වේලා මුද්‍රාව URL පිටපත් කිරීමේ බොත්තම පෙන්වා ඇත. වේලා මුද්‍රාව සමඟ වීඩියෝ URL පිටපත් කිරීමට තට්ටු කරන්න. වේලා මුද්‍රාව නොමැතිව පිටපත් කිරීමට තට්ටු කර අල්ලාගෙන සිටින්න</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_off">වේලා මුද්‍රාව URL පිටපත් කිරීමේ බොත්තම පෙන්වා නැත</string>
+            <string name="revanced_share_copy_link_button_success">URL ක්ලිප්බෝඩ් එකට පිටපත් කරන ලදි</string>
+            <string name="revanced_share_copy_link_with_timestamp_button_success">වේලා මුද්‍රාව සමඟ URL පිටපත් කරන ලදි</string>
+            <string name="revanced_copy_video_link_button_title">වීඩියෝ URL පිටපත් කිරීමේ බොත්තම පෙන්වන්න</string>
+            <string name="revanced_copy_video_link_button_summary_on">වීඩියෝ URL පිටපත් කිරීමේ බොත්තම පෙන්වා ඇත. වීඩියෝ URL පිටපත් කිරීමට තට්ටු කරන්න. වේලා මුද්‍රාව සමඟ පිටපත් කිරීමට තට්ටු කර අල්ලාගෙන සිටින්න</string>
+            <string name="revanced_copy_video_link_button_summary_off">වීඩියෝ URL පිටපත් කිරීමේ බොත්තම පෙන්වා නැත</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_title">වේලා මුද්‍රාව URL පිටපත් කිරීමේ බොත්තම පෙන්වන්න</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_on">වේලා මුද්‍රාව URL පිටපත් කිරීමේ බොත්තම පෙන්වා ඇත. වේලා මුද්‍රාව සමඟ වීඩියෝ URL පිටපත් කිරීමට තට්ටු කරන්න. වේලා මුද්‍රාව නොමැතිව පිටපත් කිරීමට තට්ටු කර අල්ලාගෙන සිටින්න</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_off">වේලා මුද්‍රාව URL පිටපත් කිරීමේ බොත්තම පෙන්වා නැත</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch"/>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">

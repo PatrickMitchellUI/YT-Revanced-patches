@@ -39,7 +39,7 @@ private val copyVideoURLResourcePatch = resourcePatch {
 }
 
 @Suppress("unused")
-val copyVideoURLButtonPatch = bytecodePatch(
+val copyVideoLinkButtonPatch = bytecodePatch(
     name = "Copy video URL",
     description = "Adds an option to display a button in the video player to copy the video URL.",
 ) {
@@ -65,8 +65,8 @@ val copyVideoURLButtonPatch = bytecodePatch(
 
     apply {
         addPlayerOverlayPreferences(
-            SwitchPreference("revanced_copy_video_url_button"),
-            SwitchPreference("revanced_copy_video_url_button_timestamp"),
+            SwitchPreference("revanced_copy_video_link_button"),
+            SwitchPreference("revanced_copy_video_link_with_timestamp_button"),
         )
 
         val buttonDescriptor = "Lapp/revanced/extension/youtube/videoplayer/CopyVideoURLButton;"

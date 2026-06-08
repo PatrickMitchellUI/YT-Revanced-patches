@@ -5,16 +5,15 @@ import app.revanced.patcher.extensions.InstructionExtensions.addInstructions
 import app.revanced.patcher.extensions.InstructionExtensions.getInstruction
 import app.revanced.patcher.patch.PatchException
 import app.revanced.patcher.patch.resourcePatch
-import app.revanced.patcher.patch.stringOption
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
-import app.revanced.patches.shared.layout.theme.THEME_COLOR_OPTION_DESCRIPTION
 import app.revanced.patches.shared.layout.theme.THEME_DEFAULT_DARK_COLOR_NAMES
 import app.revanced.patches.shared.layout.theme.THEME_DEFAULT_LIGHT_COLOR_NAMES
 import app.revanced.patches.shared.layout.theme.baseThemePatch
 import app.revanced.patches.shared.layout.theme.baseThemeResourcePatch
 import app.revanced.patches.shared.layout.theme.createNotifDrawable
 import app.revanced.patches.shared.layout.theme.darkThemeBackgroundColorOption
+import app.revanced.patches.shared.layout.theme.lightThemeBackgroundColorOption
 import app.revanced.patches.shared.layout.theme.patchCountTextColor
 import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
 import app.revanced.patches.shared.misc.settings.preference.InputType
@@ -39,36 +38,20 @@ import org.w3c.dom.Element
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/revanced/extension/youtube/patches/theme/ThemePatch;"
 
-
-val lightThemeBackgroundColor by stringOption(
-    key = "lightThemeBackgroundColor",
-    default = "@android:color/white",
-    values = mapOf(
-        "White" to "@android:color/white",
-        "Material You (Neutral)" to "@android:color/system_neutral1_100",
-        "Material You - Primary" to "@android:color/system_accent1_200",
-        "Material You - Secondary" to "@android:color/system_accent2_200",
-        "Material You - Tertiary" to "@android:color/system_accent3_200",
-        "Catppuccin (Latte)" to "#E6E9EF",
-        "Light pink" to "#FCCFF3",
-        "Light blue" to "#D1E0FF",
-        "Light green" to "#CCFFCC",
-        "Light yellow" to "#FDFFCC",
-        "Light orange" to "#FFE6CC",
-        "Light red" to "#FFD6D6",
-    ),
-    title = "Light theme background color",
-    description = THEME_COLOR_OPTION_DESCRIPTION
-)
-
 val themePatch = baseThemePatch(
     extensionClassDescriptor = EXTENSION_CLASS_DESCRIPTOR,
+    includeLightThemeOption = true,
 
     block = {
         val themeResourcePatch = resourcePatch {
+            lightThemeBackgroundColorOption()
+            darkThemeBackgroundColorOption()
             dependsOn(resourceMappingPatch)
 
             apply {
+                val lightThemeBackgroundColor = lightThemeBackgroundColorOption.value!!
+                val darkThemeBackgroundColor = darkThemeBackgroundColorOption.value!!
+
                 fun addColorResource(
                     resourceFile: String,
                     colorName: String,
@@ -158,9 +141,9 @@ val themePatch = baseThemePatch(
 
                         val stylesFile = "res/values/styles.xml"
                         if (get(stylesFile).exists()) {
-                            document(stylesFile).use { doc ->
+                            document(stylesFile).use { document ->
                                 val resources =
-                                    doc.getElementsByTagName("resources").item(0) as? Element
+                                    document.getElementsByTagName("resources").item(0) as? Element
                                         ?: return@use
 
                                 resources.forEachChildElement { style ->
@@ -189,7 +172,7 @@ val themePatch = baseThemePatch(
                                             }
                                         }
                                         if (!found) {
-                                            style.appendChild(doc.createElement("item").apply {
+                                            style.appendChild(document.createElement("item").apply {
                                                 setAttribute("name", attrName)
                                                 textContent = attrValue
                                             })
@@ -206,12 +189,12 @@ val themePatch = baseThemePatch(
                 addColorResource(
                     "res/values/colors.xml",
                     splashBackgroundColorKey,
-                    lightThemeBackgroundColor!!,
+                    lightThemeBackgroundColor,
                 )
                 addColorResource(
                     "res/values-night/colors.xml",
                     splashBackgroundColorKey,
-                    darkThemeBackgroundColorOption.value!!,
+                    darkThemeBackgroundColor
                 )
 
                 // Edit splash screen files and change the background color.
@@ -220,17 +203,16 @@ val themePatch = baseThemePatch(
                     "res/drawable-sw600dp/quantum_launchscreen_youtube.xml",
                 ).forEach editSplashScreen@{ resourceFileName ->
                     document(resourceFileName).use { document ->
-                        document.getElementsByTagName(
-                            "layer-list",
-                        ).item(0).forEachChildElement { node ->
-                            if (node.hasAttribute("android:drawable")) {
-                                node.setAttribute(
-                                    "android:drawable",
-                                    "@color/$splashBackgroundColorKey",
-                                )
-                                return@editSplashScreen
+                        document.getElementsByTagName("layer-list").item(0)
+                            .forEachChildElement { node ->
+                                if (node.hasAttribute("android:drawable")) {
+                                    node.setAttribute(
+                                        "android:drawable",
+                                        "@color/$splashBackgroundColorKey",
+                                    )
+                                    return@editSplashScreen
+                                }
                             }
-                        }
 
                         throw PatchException("Failed to modify launch screen")
                     }
@@ -313,7 +295,7 @@ val themePatch = baseThemePatch(
                 val isMaterialYouDark =
                     darkThemeBackgroundColorOption.value!!.startsWith("@android:color/system_")
                 val isMaterialYouLight =
-                    lightThemeBackgroundColor!!.startsWith("@android:color/system_")
+                    lightThemeBackgroundColor.startsWith("@android:color/system_")
 
                 // YouTube applies CairoLightThemeUpdates/CairoDarkThemeUpdates to the context theme
                 // before Cairo renders, so ?ytRedIndicator in Cairo drawables resolves
@@ -446,7 +428,7 @@ val themePatch = baseThemePatch(
             seekbarColorPatch,
             versionCheckPatch,
             baseThemeResourcePatch(
-                lightColorReplacement = { lightThemeBackgroundColor!! },
+                lightColorReplacement = { lightThemeBackgroundColorOption.value!! },
                 getDarkColorNames = {
                     THEME_DEFAULT_DARK_COLOR_NAMES + if (is_21_06_or_greater)
                         setOf(

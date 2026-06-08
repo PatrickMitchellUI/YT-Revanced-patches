@@ -189,14 +189,14 @@ MicroG کے لیے بیٹری آپٹیمائزیشنز کو غیر فعال کر
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_button_success">یو آر ایل کلپ بورڈ پر کاپی ہو گیا</string>
-            <string name="revanced_share_copy_url_button_timestamp_success">ٹائم اسٹیمپ کے ساتھ یو آر ایل کاپی ہو گیا</string>
-            <string name="revanced_copy_video_url_button_title">ویڈیو یو آر ایل کاپی کرنے کا بٹن دکھائیں</string>
-            <string name="revanced_copy_video_url_button_summary_on">ویڈیو یو آر ایل کاپی کرنے کا بٹن دکھایا گیا ہے۔ ویڈیو یو آر ایل کاپی کرنے کے لیے تھپتھپائیں۔ ٹائم اسٹیمپ کے ساتھ کاپی کرنے کے لیے دبا کر رکھیں</string>
-            <string name="revanced_copy_video_url_button_summary_off">ویڈیو یو آر ایل کاپی کرنے کا بٹن نہیں دکھایا گیا</string>
-            <string name="revanced_copy_video_url_button_timestamp_title">ٹائم اسٹیمپ یو آر ایل کاپی کرنے کا بٹن دکھائیں</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_on">ٹائم اسٹیمپ یو آر ایل کاپی کرنے کا بٹن دکھایا گیا ہے۔ ٹائم اسٹیمپ کے ساتھ ویڈیو یو آر ایل کاپی کرنے کے لیے تھپتھپائیں۔ ٹائم اسٹیمپ کے بغیر کاپی کرنے کے لیے دبا کر رکھیں</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_off">ٹائم اسٹیمپ یو آر ایل کاپی کرنے کا بٹن نہیں دکھایا گیا</string>
+            <string name="revanced_share_copy_link_button_success">یو آر ایل کلپ بورڈ پر کاپی ہو گیا</string>
+            <string name="revanced_share_copy_link_with_timestamp_button_success">ٹائم اسٹیمپ کے ساتھ یو آر ایل کاپی ہو گیا</string>
+            <string name="revanced_copy_video_link_button_title">ویڈیو یو آر ایل کاپی کرنے کا بٹن دکھائیں</string>
+            <string name="revanced_copy_video_link_button_summary_on">ویڈیو یو آر ایل کاپی کرنے کا بٹن دکھایا گیا ہے۔ ویڈیو یو آر ایل کاپی کرنے کے لیے تھپتھپائیں۔ ٹائم اسٹیمپ کے ساتھ کاپی کرنے کے لیے دبا کر رکھیں</string>
+            <string name="revanced_copy_video_link_button_summary_off">ویڈیو یو آر ایل کاپی کرنے کا بٹن نہیں دکھایا گیا</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_title">ٹائم اسٹیمپ یو آر ایل کاپی کرنے کا بٹن دکھائیں</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_on">ٹائم اسٹیمپ یو آر ایل کاپی کرنے کا بٹن دکھایا گیا ہے۔ ٹائم اسٹیمپ کے ساتھ ویڈیو یو آر ایل کاپی کرنے کے لیے تھپتھپائیں۔ ٹائم اسٹیمپ کے بغیر کاپی کرنے کے لیے دبا کر رکھیں</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_off">ٹائم اسٹیمپ یو آر ایل کاپی کرنے کا بٹن نہیں دکھایا گیا</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch"/>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">

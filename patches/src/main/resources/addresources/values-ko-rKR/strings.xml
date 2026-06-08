@@ -609,14 +609,14 @@ YouTube Premium 사용자라면 이 설정은 필요하지 않을 수 있습니�
             <string name="revanced_hide_video_ads_summary_off">동영상 광고가 표시됩니다</string>
         </patch>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_button_success">URL을 클립보드에 복사하였습니다</string>
-            <string name="revanced_share_copy_url_button_timestamp_success">타임스탬프가 표기된 URL을 클립보드에 복사하였습니다</string>
-            <string name="revanced_copy_video_url_button_title">동영상 URL 복사 버튼 표시하기</string>
-            <string name="revanced_copy_video_url_button_summary_on">동영상 URL 복사 버튼이 표시됩니다\n\n• 버튼을 탭하여 동영상 URL을 복사할 수 있습니다\n• 길게 탭하면 타임스탬프가 표기된 동영상 URL이 복사됩니다</string>
-            <string name="revanced_copy_video_url_button_summary_off">동영상 URL 복사 버튼이 표시되지 않습니다</string>
-            <string name="revanced_copy_video_url_button_timestamp_title">타임스탬프 URL 복사 버튼 표시하기</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_on">타임스탬프가 표기된 URL 복사 버튼이 표시됩니다\n\n• 버튼을 탭하여 타임스탬프가 표기된 동영상 URL을 복사할 수 있습니다\n• 길게 탭하면 타임스탬프가 표기되지 않은 동영상 URL이 복사됩니다</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_off">타임스탬프가 표기된 URL 복사 버튼이 표시되지 않습니다</string>
+            <string name="revanced_share_copy_link_button_success">URL을 클립보드에 복사하였습니다</string>
+            <string name="revanced_share_copy_link_with_timestamp_button_success">타임스탬프가 표기된 URL을 클립보드에 복사하였습니다</string>
+            <string name="revanced_copy_video_link_button_title">동영상 URL 복사 버튼 표시하기</string>
+            <string name="revanced_copy_video_link_button_summary_on">동영상 URL 복사 버튼이 표시됩니다\n\n• 버튼을 탭하여 동영상 URL을 복사할 수 있습니다\n• 길게 탭하면 타임스탬프가 표기된 동영상 URL이 복사됩니다</string>
+            <string name="revanced_copy_video_link_button_summary_off">동영상 URL 복사 버튼이 표시되지 않습니다</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_title">타임스탬프 URL 복사 버튼 표시하기</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_on">타임스탬프가 표기된 URL 복사 버튼이 표시됩니다\n\n• 버튼을 탭하여 타임스탬프가 표기된 동영상 URL을 복사할 수 있습니다\n• 길게 탭하면 타임스탬프가 표기되지 않은 동영상 URL이 복사됩니다</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_off">타임스탬프가 표기된 URL 복사 버튼이 표시되지 않습니다</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
             <string name="revanced_remove_viewer_discretion_dialog_title">시청 경고 다이얼로그 제거하기</string>

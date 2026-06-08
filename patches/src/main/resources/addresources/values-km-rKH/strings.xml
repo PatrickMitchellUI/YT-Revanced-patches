@@ -189,14 +189,14 @@ Second \"item\" text"</string>
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_button_success">URL ត្រូវបានចម្លងទៅក្ដារតម្បៀតខ្ទាស់</string>
-            <string name="revanced_share_copy_url_button_timestamp_success">URL ដែលមានត្រាពេលវេលាត្រូវបានចម្លង</string>
-            <string name="revanced_copy_video_url_button_title">បង្ហាញប៊ូតុងចម្លង URL វីដេអូ</string>
-            <string name="revanced_copy_video_url_button_summary_on">ប៊ូតុងចម្លង URL វីដេអូត្រូវបានបង្ហាញ។ ចុចដើម្បីចម្លង URL វីដេអូ។ ចុចឱ្យជាប់ដើម្បីចម្លងជាមួយត្រាពេលវេលា</string>
-            <string name="revanced_copy_video_url_button_summary_off">ប៊ូតុងចម្លង URL វីដេអូមិនត្រូវបានបង្ហាញទេ</string>
-            <string name="revanced_copy_video_url_button_timestamp_title">បង្ហាញប៊ូតុងចម្លង URL ត្រាពេលវេលា</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_on">ប៊ូតុងចម្លង URL ត្រាពេលវេលាត្រូវបានបង្ហាញ។ ចុចដើម្បីចម្លង URL វីដេអូជាមួយត្រាពេលវេលា។ ចុចឱ្យជាប់ដើម្បីចម្លងដោយគ្មានត្រាពេលវេលា</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_off">ប៊ូតុងចម្លង URL ត្រាពេលវេលាមិនត្រូវបានបង្ហាញទេ</string>
+            <string name="revanced_share_copy_link_button_success">URL ត្រូវបានចម្លងទៅក្ដារតម្បៀតខ្ទាស់</string>
+            <string name="revanced_share_copy_link_with_timestamp_button_success">URL ដែលមានត្រាពេលវេលាត្រូវបានចម្លង</string>
+            <string name="revanced_copy_video_link_button_title">បង្ហាញប៊ូតុងចម្លង URL វីដេអូ</string>
+            <string name="revanced_copy_video_link_button_summary_on">ប៊ូតុងចម្លង URL វីដេអូត្រូវបានបង្ហាញ។ ចុចដើម្បីចម្លង URL វីដេអូ។ ចុចឱ្យជាប់ដើម្បីចម្លងជាមួយត្រាពេលវេលា</string>
+            <string name="revanced_copy_video_link_button_summary_off">ប៊ូតុងចម្លង URL វីដេអូមិនត្រូវបានបង្ហាញទេ</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_title">បង្ហាញប៊ូតុងចម្លង URL ត្រាពេលវេលា</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_on">ប៊ូតុងចម្លង URL ត្រាពេលវេលាត្រូវបានបង្ហាញ។ ចុចដើម្បីចម្លង URL វីដេអូជាមួយត្រាពេលវេលា។ ចុចឱ្យជាប់ដើម្បីចម្លងដោយគ្មានត្រាពេលវេលា</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_off">ប៊ូតុងចម្លង URL ត្រាពេលវេលាមិនត្រូវបានបង្ហាញទេ</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch"/>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">

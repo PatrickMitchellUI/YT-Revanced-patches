@@ -601,14 +601,14 @@ Second \"item\" text"</string>
             <string name="revanced_hide_video_ads_summary_off">Видео рекламите се показват.</string>
         </patch>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_button_success">Връзката е копирана в клипборда.</string>
-            <string name="revanced_share_copy_url_button_timestamp_success">URL адрес с отметка за време, копиран в клипборда.</string>
-            <string name="revanced_copy_video_url_button_title">Показване на бутона за копиране на URL адреса на видеоклипа</string>
-            <string name="revanced_copy_video_url_button_summary_on">Бутонът за копиране на URL адрес на видео е показан. Докоснете, за да копирате URL адреса на видеото. Докоснете и задръжте, за да копирате с времева отметка</string>
-            <string name="revanced_copy_video_url_button_summary_off">Бутонът за копиране на URL адрес на видео не е показан</string>
-            <string name="revanced_copy_video_url_button_timestamp_title">Показване на бутона за копиране на URL адреса на времевия отпечатък на видеоклипа</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_on">Бутонът за копиране на URL адрес с времева отметка е показан. Докоснете, за да копирате URL адрес на видео с времева отметка. Докоснете и задръжте, за да копирате без времева отметка</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_off">Бутонът за копиране на URL адрес с времева отметка не е показан</string>
+            <string name="revanced_share_copy_link_button_success">Връзката е копирана в клипборда.</string>
+            <string name="revanced_share_copy_link_with_timestamp_button_success">URL адрес с отметка за време, копиран в клипборда.</string>
+            <string name="revanced_copy_video_link_button_title">Показване на бутона за копиране на URL адреса на видеоклипа</string>
+            <string name="revanced_copy_video_link_button_summary_on">Бутонът за копиране на URL адрес на видео е показан. Докоснете, за да копирате URL адреса на видеото. Докоснете и задръжте, за да копирате с времева отметка</string>
+            <string name="revanced_copy_video_link_button_summary_off">Бутонът за копиране на URL адрес на видео не е показан</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_title">Показване на бутона за копиране на URL адреса на времевия отпечатък на видеоклипа</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_on">Бутонът за копиране на URL адрес с времева отметка е показан. Докоснете, за да копирате URL адрес на видео с времева отметка. Докоснете и задръжте, за да копирате без времева отметка</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_off">Бутонът за копиране на URL адрес с времева отметка не е показан</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
             <string name="revanced_remove_viewer_discretion_dialog_title">Прозорец за възрастово ограничение</string>

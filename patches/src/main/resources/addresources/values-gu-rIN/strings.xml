@@ -181,14 +181,14 @@ Second \"item\" text"</string>
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_button_success">URL ક્લિપબોર્ડ પર કૉપિ કરવામાં આવ્યું</string>
-            <string name="revanced_share_copy_url_button_timestamp_success">ટાઇમસ્ટેમ્પ સાથેનું URL કૉપિ કરવામાં આવ્યું</string>
-            <string name="revanced_copy_video_url_button_title">વીડિયો URL કૉપિ કરો બટન બતાવો</string>
-            <string name="revanced_copy_video_url_button_summary_on">વીડિયો URL કૉપિ કરો બટન બતાવવામાં આવ્યું છે. વીડિયો URL કૉપિ કરવા માટે ટેપ કરો. ટાઇમસ્ટેમ્પ સાથે કૉપિ કરવા માટે ટેપ કરીને પકડી રાખો</string>
-            <string name="revanced_copy_video_url_button_summary_off">વીડિયો URL કૉપિ કરો બટન બતાવવામાં આવ્યું નથી</string>
-            <string name="revanced_copy_video_url_button_timestamp_title">ટાઇમસ્ટેમ્પ URL કૉપિ કરો બટન બતાવો</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_on">ટાઇમસ્ટેમ્પ URL કૉપિ કરો બટન બતાવવામાં આવ્યું છે. ટાઇમસ્ટેમ્પ સાથે વીડિયો URL કૉપિ કરવા માટે ટેપ કરો. ટાઇમસ્ટેમ્પ વિના કૉપિ કરવા માટે ટેપ કરીને પકડી રાખો</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_off">ટાઇમસ્ટેમ્પ URL કૉપિ કરો બટન બતાવવામાં આવ્યું નથી</string>
+            <string name="revanced_share_copy_link_button_success">URL ક્લિપબોર્ડ પર કૉપિ કરવામાં આવ્યું</string>
+            <string name="revanced_share_copy_link_with_timestamp_button_success">ટાઇમસ્ટેમ્પ સાથેનું URL કૉપિ કરવામાં આવ્યું</string>
+            <string name="revanced_copy_video_link_button_title">વીડિયો URL કૉપિ કરો બટન બતાવો</string>
+            <string name="revanced_copy_video_link_button_summary_on">વીડિયો URL કૉપિ કરો બટન બતાવવામાં આવ્યું છે. વીડિયો URL કૉપિ કરવા માટે ટેપ કરો. ટાઇમસ્ટેમ્પ સાથે કૉપિ કરવા માટે ટેપ કરીને પકડી રાખો</string>
+            <string name="revanced_copy_video_link_button_summary_off">વીડિયો URL કૉપિ કરો બટન બતાવવામાં આવ્યું નથી</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_title">ટાઇમસ્ટેમ્પ URL કૉપિ કરો બટન બતાવો</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_on">ટાઇમસ્ટેમ્પ URL કૉપિ કરો બટન બતાવવામાં આવ્યું છે. ટાઇમસ્ટેમ્પ સાથે વીડિયો URL કૉપિ કરવા માટે ટેપ કરો. ટાઇમસ્ટેમ્પ વિના કૉપિ કરવા માટે ટેપ કરીને પકડી રાખો</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_off">ટાઇમસ્ટેમ્પ URL કૉપિ કરો બટન બતાવવામાં આવ્યું નથી</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch"/>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">

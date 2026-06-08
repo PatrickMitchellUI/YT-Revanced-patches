@@ -593,14 +593,14 @@ Begrænsninger:
             <string name="revanced_hide_video_ads_summary_off">Videoannoncer vises</string>
         </patch>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_button_success">URL kopieret til udklipsholder</string>
-            <string name="revanced_share_copy_url_button_timestamp_success">URL med tidsstempel kopieret</string>
-            <string name="revanced_copy_video_url_button_title">Vis kopiér video URL knap</string>
-            <string name="revanced_copy_video_url_button_summary_on">Kopier video-URL-knap vises. Tryk for at kopiere video-URL. Tryk og hold nede for at kopiere med tidsstempel</string>
-            <string name="revanced_copy_video_url_button_summary_off">Kopier video-URL-knap vises ikke</string>
-            <string name="revanced_copy_video_url_button_timestamp_title">Vis kopi tidsstempel URL knap</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_on">Kopier tidsstempel-URL-knap vises. Tryk for at kopiere video-URL med tidsstempel. Tryk og hold nede for at kopiere uden tidsstempel</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_off">Kopier tidsstempel-URL-knap vises ikke</string>
+            <string name="revanced_share_copy_link_button_success">URL kopieret til udklipsholder</string>
+            <string name="revanced_share_copy_link_with_timestamp_button_success">URL med tidsstempel kopieret</string>
+            <string name="revanced_copy_video_link_button_title">Vis kopiér video URL knap</string>
+            <string name="revanced_copy_video_link_button_summary_on">Kopier video-URL-knap vises. Tryk for at kopiere video-URL. Tryk og hold nede for at kopiere med tidsstempel</string>
+            <string name="revanced_copy_video_link_button_summary_off">Kopier video-URL-knap vises ikke</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_title">Vis kopi tidsstempel URL knap</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_on">Kopier tidsstempel-URL-knap vises. Tryk for at kopiere video-URL med tidsstempel. Tryk og hold nede for at kopiere uden tidsstempel</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_off">Kopier tidsstempel-URL-knap vises ikke</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
             <string name="revanced_remove_viewer_discretion_dialog_title">Fjern visningsdialog</string>

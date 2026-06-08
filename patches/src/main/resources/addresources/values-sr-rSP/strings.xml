@@ -607,14 +607,14 @@ Second \"item\" text"</string>
             <string name="revanced_hide_video_ads_summary_off">Видео огласи су приказани</string>
         </patch>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_button_success">Линк је копиран у привремену меморију</string>
-            <string name="revanced_share_copy_url_button_timestamp_success">Линк с временском ознаком је копиран</string>
-            <string name="revanced_copy_video_url_button_title">Прикажи дугме за копирање линка видеа</string>
-            <string name="revanced_copy_video_url_button_summary_on">Дугме за копирање URL адресе видеа је приказано. Додирните да бисте копирали URL адресу видеа. Додирните и задржите да бисте копирали са временском ознаком</string>
-            <string name="revanced_copy_video_url_button_summary_off">Дугме за копирање URL адресе видеа није приказано</string>
-            <string name="revanced_copy_video_url_button_timestamp_title">Прикажи дугме за копирање линка видеа с временском ознаком</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_on">Дугме за копирање URL адресе са временском ознаком је приказано. Додирните да бисте копирали URL адресу видеа са временском ознаком. Додирните и задржите да бисте копирали без временске ознаке</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_off">Дугме за копирање URL адресе са временском ознаком није приказано</string>
+            <string name="revanced_share_copy_link_button_success">Линк је копиран у привремену меморију</string>
+            <string name="revanced_share_copy_link_with_timestamp_button_success">Линк с временском ознаком је копиран</string>
+            <string name="revanced_copy_video_link_button_title">Прикажи дугме за копирање линка видеа</string>
+            <string name="revanced_copy_video_link_button_summary_on">Дугме за копирање URL адресе видеа је приказано. Додирните да бисте копирали URL адресу видеа. Додирните и задржите да бисте копирали са временском ознаком</string>
+            <string name="revanced_copy_video_link_button_summary_off">Дугме за копирање URL адресе видеа није приказано</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_title">Прикажи дугме за копирање линка видеа с временском ознаком</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_on">Дугме за копирање URL адресе са временском ознаком је приказано. Додирните да бисте копирали URL адресу видеа са временском ознаком. Додирните и задржите да бисте копирали без временске ознаке</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_off">Дугме за копирање URL адресе са временском ознаком није приказано</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
             <string name="revanced_remove_viewer_discretion_dialog_title">Уклони дијалог о дискрецији гледаоца</string>

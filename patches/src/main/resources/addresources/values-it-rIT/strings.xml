@@ -607,14 +607,14 @@ Note:
             <string name="revanced_hide_video_ads_summary_off">Le pubblicità del video sono visibili</string>
         </patch>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_button_success">URL copiato negli appunti</string>
-            <string name="revanced_share_copy_url_button_timestamp_success">URL con timestamp copiato</string>
-            <string name="revanced_copy_video_url_button_title">Mostra il pulsante Copia URL Video</string>
-            <string name="revanced_copy_video_url_button_summary_on">Il pulsante Copia URL video è visualizzato. Tocca per copiare l\'URL del video. Tieni premuto per copiare con timestamp</string>
-            <string name="revanced_copy_video_url_button_summary_off">Il pulsante Copia URL video non è visualizzato</string>
-            <string name="revanced_copy_video_url_button_timestamp_title">Mostra il pulsante Copia URL Video con Timestamp</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_on">Il pulsante Copia URL con timestamp è visualizzato. Tocca per copiare l\'URL del video con timestamp. Tieni premuto per copiare senza timestamp</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_off">Il pulsante Copia URL con timestamp non è visualizzato</string>
+            <string name="revanced_share_copy_link_button_success">URL copiato negli appunti</string>
+            <string name="revanced_share_copy_link_with_timestamp_button_success">URL con timestamp copiato</string>
+            <string name="revanced_copy_video_link_button_title">Mostra il pulsante Copia URL Video</string>
+            <string name="revanced_copy_video_link_button_summary_on">Il pulsante Copia URL video è visualizzato. Tocca per copiare l\'URL del video. Tieni premuto per copiare con timestamp</string>
+            <string name="revanced_copy_video_link_button_summary_off">Il pulsante Copia URL video non è visualizzato</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_title">Mostra il pulsante Copia URL Video con Timestamp</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_on">Il pulsante Copia URL con timestamp è visualizzato. Tocca per copiare l\'URL del video con timestamp. Tieni premuto per copiare senza timestamp</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_off">Il pulsante Copia URL con timestamp non è visualizzato</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
             <string name="revanced_remove_viewer_discretion_dialog_title">Rimuovi la finestra sulla discrezione dello spettatore</string>

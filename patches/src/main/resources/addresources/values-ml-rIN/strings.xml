@@ -189,14 +189,14 @@ MicroG-യുടെ ബാറ്ററി ഒപ്റ്റിമൈസേഷ�
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_button_success">URL ക്ലിപ്‌ബോർഡിലേക്ക് പകർത്തി</string>
-            <string name="revanced_share_copy_url_button_timestamp_success">ടൈംസ്റ്റാമ്പോടുകൂടിയ URL പകർത്തി</string>
-            <string name="revanced_copy_video_url_button_title">വീഡിയോ URL കോപ്പി ബട്ടൺ കാണിക്കുക</string>
-            <string name="revanced_copy_video_url_button_summary_on">വീഡിയോ URL കോപ്പി ബട്ടൺ കാണിക്കുന്നു. വീഡിയോ URL കോപ്പി ചെയ്യാൻ ടാപ്പുചെയ്യുക. ടൈംസ്റ്റാമ്പോടുകൂടി കോപ്പി ചെയ്യാൻ ടാപ്പുചെയ്ത് പിടിക്കുക</string>
-            <string name="revanced_copy_video_url_button_summary_off">വീഡിയോ URL കോപ്പി ബട്ടൺ കാണിക്കുന്നില്ല</string>
-            <string name="revanced_copy_video_url_button_timestamp_title">ടൈംസ്റ്റാമ്പ് URL കോപ്പി ബട്ടൺ കാണിക്കുക</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_on">ടൈംസ്റ്റാമ്പ് URL കോപ്പി ബട്ടൺ കാണിക്കുന്നു. ടൈംസ്റ്റാമ്പോടുകൂടിയ വീഡിയോ URL കോപ്പി ചെയ്യാൻ ടാപ്പുചെയ്യുക. ടൈംസ്റ്റാമ്പ് ഇല്ലാതെ കോപ്പി ചെയ്യാൻ ടാപ്പുചെയ്ത് പിടിക്കുക</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_off">ടൈംസ്റ്റാമ്പ് URL കോപ്പി ബട്ടൺ കാണിക്കുന്നില്ല</string>
+            <string name="revanced_share_copy_link_button_success">URL ക്ലിപ്‌ബോർഡിലേക്ക് പകർത്തി</string>
+            <string name="revanced_share_copy_link_with_timestamp_button_success">ടൈംസ്റ്റാമ്പോടുകൂടിയ URL പകർത്തി</string>
+            <string name="revanced_copy_video_link_button_title">വീഡിയോ URL കോപ്പി ബട്ടൺ കാണിക്കുക</string>
+            <string name="revanced_copy_video_link_button_summary_on">വീഡിയോ URL കോപ്പി ബട്ടൺ കാണിക്കുന്നു. വീഡിയോ URL കോപ്പി ചെയ്യാൻ ടാപ്പുചെയ്യുക. ടൈംസ്റ്റാമ്പോടുകൂടി കോപ്പി ചെയ്യാൻ ടാപ്പുചെയ്ത് പിടിക്കുക</string>
+            <string name="revanced_copy_video_link_button_summary_off">വീഡിയോ URL കോപ്പി ബട്ടൺ കാണിക്കുന്നില്ല</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_title">ടൈംസ്റ്റാമ്പ് URL കോപ്പി ബട്ടൺ കാണിക്കുക</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_on">ടൈംസ്റ്റാമ്പ് URL കോപ്പി ബട്ടൺ കാണിക്കുന്നു. ടൈംസ്റ്റാമ്പോടുകൂടിയ വീഡിയോ URL കോപ്പി ചെയ്യാൻ ടാപ്പുചെയ്യുക. ടൈംസ്റ്റാമ്പ് ഇല്ലാതെ കോപ്പി ചെയ്യാൻ ടാപ്പുചെയ്ത് പിടിക്കുക</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_off">ടൈംസ്റ്റാമ്പ് URL കോപ്പി ബട്ടൺ കാണിക്കുന്നില്ല</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch"/>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">

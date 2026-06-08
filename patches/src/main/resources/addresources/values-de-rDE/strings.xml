@@ -597,14 +597,14 @@ Einschränkungen:
             <string name="revanced_hide_video_ads_summary_off">Video-Anzeigen werden angezeigt</string>
         </patch>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_button_success">URL in Zwischenablage kopiert</string>
-            <string name="revanced_share_copy_url_button_timestamp_success">URL mit Zeitstempel kopiert</string>
-            <string name="revanced_copy_video_url_button_title">Video-URL-Schaltfläche kopieren anzeigen</string>
-            <string name="revanced_copy_video_url_button_summary_on">Schaltfläche „Video-URL kopieren“ wird angezeigt. Tippen, um Video-URL zu kopieren. Tippen und halten, um mit Zeitstempel zu kopieren.</string>
-            <string name="revanced_copy_video_url_button_summary_off">Schaltfläche „Video-URL kopieren“ wird nicht angezeigt</string>
-            <string name="revanced_copy_video_url_button_timestamp_title">Schaltfläche „URL mit Zeitstempel kopieren“ anzeigen</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_on">Schaltfläche „URL mit Zeitstempel kopieren“ wird angezeigt. Tippen, um Video-URL mit Zeitstempel zu kopieren. Tippen und halten, um ohne Zeitstempel zu kopieren.</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_off">Schaltfläche „URL mit Zeitstempel kopieren“ wird nicht angezeigt</string>
+            <string name="revanced_share_copy_link_button_success">URL in Zwischenablage kopiert</string>
+            <string name="revanced_share_copy_link_with_timestamp_button_success">URL mit Zeitstempel kopiert</string>
+            <string name="revanced_copy_video_link_button_title">Video-URL-Schaltfläche kopieren anzeigen</string>
+            <string name="revanced_copy_video_link_button_summary_on">Schaltfläche „Video-URL kopieren“ wird angezeigt. Tippen, um Video-URL zu kopieren. Tippen und halten, um mit Zeitstempel zu kopieren.</string>
+            <string name="revanced_copy_video_link_button_summary_off">Schaltfläche „Video-URL kopieren“ wird nicht angezeigt</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_title">Schaltfläche „URL mit Zeitstempel kopieren“ anzeigen</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_on">Schaltfläche „URL mit Zeitstempel kopieren“ wird angezeigt. Tippen, um Video-URL mit Zeitstempel zu kopieren. Tippen und halten, um ohne Zeitstempel zu kopieren.</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_off">Schaltfläche „URL mit Zeitstempel kopieren“ wird nicht angezeigt</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
             <string name="revanced_remove_viewer_discretion_dialog_title">Diskretion des Betrachters entfernen</string>

@@ -187,14 +187,14 @@ MicroG အတွက် ဘက်ထရီ အကောင်းဆုံးပ�
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_button_success">URL ကို ကလစ်ဘုတ်သို့ ကူးယူခဲ့သည်</string>
-            <string name="revanced_share_copy_url_button_timestamp_success">အချိန်တံဆိပ်ပါသော URL ကို ကူးယူခဲ့သည်</string>
-            <string name="revanced_copy_video_url_button_title">ဗီဒီယို URL ကူးယူရန် ခလုတ်ကို ပြသပါ</string>
-            <string name="revanced_copy_video_url_button_summary_on">ဗီဒီယို URL ကူးယူရန် ခလုတ်ကို ပြသထားသည်။ ဗီဒီယို URL ကို ကူးယူရန် နှိပ်ပါ။ အချိန်တံဆိပ်ဖြင့် ကူးယူရန် နှိပ်၍ ဖိထားပါ</string>
-            <string name="revanced_copy_video_url_button_summary_off">ဗီဒီယို URL ကူးယူရန် ခလုတ်ကို မပြသထားပါ</string>
-            <string name="revanced_copy_video_url_button_timestamp_title">အချိန်တံဆိပ် URL ကူးယူရန် ခလုတ်ကို ပြသပါ</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_on">အချိန်တံဆိပ် URL ကူးယူရန် ခလုတ်ကို ပြသထားသည်။ အချိန်တံဆိပ်ပါသော ဗီဒီယို URL ကို ကူးယူရန် နှိပ်ပါ။ အချိန်တံဆိပ်မပါဘဲ ကူးယူရန် နှိပ်၍ ဖိထားပါ</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_off">အချိန်တံဆိပ် URL ကူးယူရန် ခလုတ်ကို မပြသထားပါ</string>
+            <string name="revanced_share_copy_link_button_success">URL ကို ကလစ်ဘုတ်သို့ ကူးယူခဲ့သည်</string>
+            <string name="revanced_share_copy_link_with_timestamp_button_success">အချိန်တံဆိပ်ပါသော URL ကို ကူးယူခဲ့သည်</string>
+            <string name="revanced_copy_video_link_button_title">ဗီဒီယို URL ကူးယူရန် ခလုတ်ကို ပြသပါ</string>
+            <string name="revanced_copy_video_link_button_summary_on">ဗီဒီယို URL ကူးယူရန် ခလုတ်ကို ပြသထားသည်။ ဗီဒီယို URL ကို ကူးယူရန် နှိပ်ပါ။ အချိန်တံဆိပ်ဖြင့် ကူးယူရန် နှိပ်၍ ဖိထားပါ</string>
+            <string name="revanced_copy_video_link_button_summary_off">ဗီဒီယို URL ကူးယူရန် ခလုတ်ကို မပြသထားပါ</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_title">အချိန်တံဆိပ် URL ကူးယူရန် ခလုတ်ကို ပြသပါ</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_on">အချိန်တံဆိပ် URL ကူးယူရန် ခလုတ်ကို ပြသထားသည်။ အချိန်တံဆိပ်ပါသော ဗီဒီယို URL ကို ကူးယူရန် နှိပ်ပါ။ အချိန်တံဆိပ်မပါဘဲ ကူးယူရန် နှိပ်၍ ဖိထားပါ</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_off">အချိန်တံဆိပ် URL ကူးယူရန် ခလုတ်ကို မပြသထားပါ</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch"/>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">

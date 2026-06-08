@@ -600,14 +600,14 @@ Məhdudiyyətlər:
             <string name="revanced_hide_video_ads_summary_off">Video reklamlar göstərilir</string>
         </patch>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_button_success">URL buferə köçürüldü</string>
-            <string name="revanced_share_copy_url_button_timestamp_success">Vaxt möhürlü URL köçürüldü</string>
-            <string name="revanced_copy_video_url_button_title">Video URL-i köçürmə düyməsin göstər</string>
-            <string name="revanced_copy_video_url_button_summary_on">Video URL-ini kopyala düyməsi görünür. Video URL-ini kopyalamaq üçün toxunun. Zaman nişanı ilə kopyalamaq üçün toxunub saxlayın</string>
-            <string name="revanced_copy_video_url_button_summary_off">Video URL-ini kopyala düyməsi görünmür</string>
-            <string name="revanced_copy_video_url_button_timestamp_title">Vaxt möhürü URL köçür düyməsi göstər</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_on">Zaman nişanı URL-ini kopyala düyməsi görünür. Zaman nişanı ilə video URL-ini kopyalamaq üçün toxunun. Zaman nişanı olmadan kopyalamaq üçün toxunub saxlayın</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_off">Zaman nişanı URL-ini kopyala düyməsi görünmür</string>
+            <string name="revanced_share_copy_link_button_success">URL buferə köçürüldü</string>
+            <string name="revanced_share_copy_link_with_timestamp_button_success">Vaxt möhürlü URL köçürüldü</string>
+            <string name="revanced_copy_video_link_button_title">Video URL-i köçürmə düyməsin göstər</string>
+            <string name="revanced_copy_video_link_button_summary_on">Video URL-ini kopyala düyməsi görünür. Video URL-ini kopyalamaq üçün toxunun. Zaman nişanı ilə kopyalamaq üçün toxunub saxlayın</string>
+            <string name="revanced_copy_video_link_button_summary_off">Video URL-ini kopyala düyməsi görünmür</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_title">Vaxt möhürü URL köçür düyməsi göstər</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_on">Zaman nişanı URL-ini kopyala düyməsi görünür. Zaman nişanı ilə video URL-ini kopyalamaq üçün toxunun. Zaman nişanı olmadan kopyalamaq üçün toxunub saxlayın</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_off">Zaman nişanı URL-ini kopyala düyməsi görünmür</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
             <string name="revanced_remove_viewer_discretion_dialog_title">İzləyici mülahizə dialoqun sil</string>

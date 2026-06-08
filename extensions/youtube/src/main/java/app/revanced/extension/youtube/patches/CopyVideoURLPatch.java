@@ -36,8 +36,8 @@ public class CopyVideoURLPatch {
             // Unfortunately this will show 2 toasts on Android 13+, but no way around this.
             if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2 || (withTimestamp && currentVideoTimeInSeconds > 0)) {
                 Utils.showToastShort(withTimestamp && currentVideoTimeInSeconds > 0
-                        ? str("revanced_share_copy_url_button_timestamp_success")
-                        : str("revanced_share_copy_url_button_success"));
+                        ? str("revanced_share_copy_link_with_timestamp_button_success")
+                        : str("revanced_share_copy_link_button_success"));
             }
         } catch (Exception e) {
             Logger.printException(() -> "Failed to generate video URL", e);

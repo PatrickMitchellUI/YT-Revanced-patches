@@ -236,14 +236,14 @@ Second \"item\" text"</string>
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_button_success">URL در کلیپ‌بورد کپی شد</string>
-            <string name="revanced_share_copy_url_button_timestamp_success">URL به همراه برچسب زمانی کپی شد</string>
-            <string name="revanced_copy_video_url_button_title">نمایش دکمه کپی کردن URL ویدئو</string>
-            <string name="revanced_copy_video_url_button_summary_on">دکمه کپی کردن URL ویدئو نمایش داده می‌شود. برای کپی کردن URL ویدئو ضربه بزنید. برای کپی کردن با برچسب زمانی، ضربه زده و نگه دارید</string>
-            <string name="revanced_copy_video_url_button_summary_off">دکمه کپی کردن URL ویدئو نمایش داده نمی‌شود</string>
-            <string name="revanced_copy_video_url_button_timestamp_title">نمایش دکمه کپی کردن URL با برچسب زمانی</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_on">دکمه کپی کردن URL با برچسب زمانی نمایش داده می‌شود. برای کپی کردن URL ویدئو با برچسب زمانی ضربه بزنید. برای کپی کردن بدون برچسب زمانی، ضربه زده و نگه دارید</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_off">دکمه کپی کردن URL با برچسب زمانی نمایش داده نمی‌شود</string>
+            <string name="revanced_share_copy_link_button_success">URL در کلیپ‌بورد کپی شد</string>
+            <string name="revanced_share_copy_link_with_timestamp_button_success">URL به همراه برچسب زمانی کپی شد</string>
+            <string name="revanced_copy_video_link_button_title">نمایش دکمه کپی کردن URL ویدئو</string>
+            <string name="revanced_copy_video_link_button_summary_on">دکمه کپی کردن URL ویدئو نمایش داده می‌شود. برای کپی کردن URL ویدئو ضربه بزنید. برای کپی کردن با برچسب زمانی، ضربه زده و نگه دارید</string>
+            <string name="revanced_copy_video_link_button_summary_off">دکمه کپی کردن URL ویدئو نمایش داده نمی‌شود</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_title">نمایش دکمه کپی کردن URL با برچسب زمانی</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_on">دکمه کپی کردن URL با برچسب زمانی نمایش داده می‌شود. برای کپی کردن URL ویدئو با برچسب زمانی ضربه بزنید. برای کپی کردن بدون برچسب زمانی، ضربه زده و نگه دارید</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_off">دکمه کپی کردن URL با برچسب زمانی نمایش داده نمی‌شود</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch"/>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">

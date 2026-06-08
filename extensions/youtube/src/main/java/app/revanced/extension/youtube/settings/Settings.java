@@ -163,8 +163,8 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final BooleanSetting HIDE_SUBSCRIBE_BUTTON_IN_CHANNEL_PAGE = new BooleanSetting("revanced_hide_subscribe_button_in_channel_page", FALSE);
 
     // Player
-    public static final BooleanSetting COPY_VIDEO_URL_BUTTON = new BooleanSetting("revanced_copy_video_url_button", FALSE);
-    public static final BooleanSetting COPY_VIDEO_URL_BUTTON_TIMESTAMP = new BooleanSetting("revanced_copy_video_url_button_timestamp", TRUE);
+    public static final BooleanSetting COPY_VIDEO_LINK_BUTTON = new BooleanSetting("revanced_copy_video_link_button", FALSE);
+    public static final BooleanSetting COPY_VIDEO_LINK_WITH_TIMESTAMP_BUTTON = new BooleanSetting("revanced_copy_video_link_with_timestamp_button", TRUE);
     public static final BooleanSetting DISABLE_AUTO_CAPTIONS = new BooleanSetting("revanced_disable_auto_captions", FALSE, true);
     public static final BooleanSetting DISABLE_CHAPTER_SKIP_DOUBLE_TAP = new BooleanSetting("revanced_disable_chapter_skip_double_tap", FALSE);
     public static final BooleanSetting DISABLE_HAPTIC_FEEDBACK_CHAPTERS = new BooleanSetting("revanced_disable_haptic_feedback_chapters", FALSE);
@@ -541,6 +541,8 @@ public class Settings extends YouTubeAndMusicSettings {
     // Deprecated migrations
     private static final BooleanSetting DEPRECATED_COPY_VIDEO_URL = new BooleanSetting("revanced_copy_video_url", FALSE);
     private static final BooleanSetting DEPRECATED_COPY_VIDEO_URL_TIMESTAMP = new BooleanSetting("revanced_copy_video_url_timestamp", TRUE);
+    private static final BooleanSetting DEPRECATED_COPY_VIDEO_URL_BUTTON = new BooleanSetting("revanced_copy_video_url_button", FALSE);
+    private static final BooleanSetting DEPRECATED_COPY_VIDEO_URL_BUTTON_TIMESTAMP = new BooleanSetting("revanced_copy_video_url_button_timestamp", TRUE);
     private static final BooleanSetting DEPRECATED_RELOAD_VIDEO = new BooleanSetting("revanced_reload_video", FALSE);
 
     private static final StringSetting DEPRECATED_SEEKBAR_CUSTOM_COLOR_PRIMARY = new StringSetting("revanced_seekbar_custom_color_value", "#FF0033");
@@ -559,8 +561,10 @@ public class Settings extends YouTubeAndMusicSettings {
     static {
         // region Migration
 
-        migrateOldSettingToNew(DEPRECATED_COPY_VIDEO_URL, COPY_VIDEO_URL_BUTTON);
-        migrateOldSettingToNew(DEPRECATED_COPY_VIDEO_URL_TIMESTAMP, COPY_VIDEO_URL_BUTTON_TIMESTAMP);
+        migrateOldSettingToNew(DEPRECATED_COPY_VIDEO_URL, DEPRECATED_COPY_VIDEO_URL_BUTTON);
+        migrateOldSettingToNew(DEPRECATED_COPY_VIDEO_URL_TIMESTAMP, DEPRECATED_COPY_VIDEO_URL_BUTTON_TIMESTAMP);
+        migrateOldSettingToNew(DEPRECATED_COPY_VIDEO_URL_BUTTON, COPY_VIDEO_LINK_BUTTON);
+        migrateOldSettingToNew(DEPRECATED_COPY_VIDEO_URL_BUTTON_TIMESTAMP, COPY_VIDEO_LINK_WITH_TIMESTAMP_BUTTON);
         migrateOldSettingToNew(DEPRECATED_RELOAD_VIDEO, RELOAD_VIDEO_BUTTON);
 
         // 20.37+ YT removed parts of the code for the legacy tablet miniplayer.

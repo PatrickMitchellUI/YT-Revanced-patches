@@ -187,14 +187,14 @@ MicroG కోసం బ్యాటరీ ఆప్టిమైజేషన్�
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_button_success">URL క్లిప్‌బోర్డ్‌కు కాపీ చేయబడింది.</string>
-            <string name="revanced_share_copy_url_button_timestamp_success">టైమ్‌స్టాంప్‌తో కూడిన URL కాపీ చేయబడింది.</string>
-            <string name="revanced_copy_video_url_button_title">వీడియో URL కాపీ బటన్‌ను చూపించు.</string>
-            <string name="revanced_copy_video_url_button_summary_on">వీడియో URL కాపీ బటన్ చూపబడింది. వీడియో URLని కాపీ చేయడానికి నొక్కండి. టైమ్‌స్టాంప్‌తో కాపీ చేయడానికి నొక్కి పట్టుకోండి.</string>
-            <string name="revanced_copy_video_url_button_summary_off">వీడియో URL కాపీ బటన్ చూపబడలేదు.</string>
-            <string name="revanced_copy_video_url_button_timestamp_title">టైమ్‌స్టాంప్ URL కాపీ బటన్‌ను చూపించు.</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_on">టైమ్‌స్టాంప్ URL కాపీ బటన్ చూపబడింది. టైమ్‌స్టాంప్‌తో వీడియో URLని కాపీ చేయడానికి నొక్కండి. టైమ్‌స్టాంప్ లేకుండా కాపీ చేయడానికి నొక్కి పట్టుకోండి.</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_off">టైమ్‌స్టాంప్ URL కాపీ బటన్ చూపబడలేదు.</string>
+            <string name="revanced_share_copy_link_button_success">URL క్లిప్‌బోర్డ్‌కు కాపీ చేయబడింది.</string>
+            <string name="revanced_share_copy_link_with_timestamp_button_success">టైమ్‌స్టాంప్‌తో కూడిన URL కాపీ చేయబడింది.</string>
+            <string name="revanced_copy_video_link_button_title">వీడియో URL కాపీ బటన్‌ను చూపించు.</string>
+            <string name="revanced_copy_video_link_button_summary_on">వీడియో URL కాపీ బటన్ చూపబడింది. వీడియో URLని కాపీ చేయడానికి నొక్కండి. టైమ్‌స్టాంప్‌తో కాపీ చేయడానికి నొక్కి పట్టుకోండి.</string>
+            <string name="revanced_copy_video_link_button_summary_off">వీడియో URL కాపీ బటన్ చూపబడలేదు.</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_title">టైమ్‌స్టాంప్ URL కాపీ బటన్‌ను చూపించు.</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_on">టైమ్‌స్టాంప్ URL కాపీ బటన్ చూపబడింది. టైమ్‌స్టాంప్‌తో వీడియో URLని కాపీ చేయడానికి నొక్కండి. టైమ్‌స్టాంప్ లేకుండా కాపీ చేయడానికి నొక్కి పట్టుకోండి.</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_off">టైమ్‌స్టాంప్ URL కాపీ బటన్ చూపబడలేదు.</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch"/>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">

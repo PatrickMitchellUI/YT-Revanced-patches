@@ -609,14 +609,14 @@ Second \"item\" text"</string>
             <string name="revanced_hide_video_ads_summary_off">Εμφανίζονται</string>
         </patch>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_button_success">Η διεύθυνση URL αντιγράφηκε στο πρόχειρο</string>
-            <string name="revanced_share_copy_url_button_timestamp_success">Η διεύθυνση URL αντιγράφηκε με χρονική σήμανση</string>
-            <string name="revanced_copy_video_url_button_title">Εμφάνιση κουμπιού αντιγραφής URL του βίντεο</string>
-            <string name="revanced_copy_video_url_button_summary_on">Το κουμπί αντιγραφής URL βίντεο εμφανίζεται. Πατήστε για να αντιγράψετε τη διεύθυνση URL του βίντεο, ή πατήστε παρατεταμένα για να αντιγράψετε τη διεύθυνση URL με χρονική σήμανση</string>
-            <string name="revanced_copy_video_url_button_summary_off">Το κουμπί αντιγραφής URL βίντεο δεν εμφανίζεται</string>
-            <string name="revanced_copy_video_url_button_timestamp_title">Εμφάνιση κουμπιού αντιγραφής URL με χρονική σήμανση</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_on">Το κουμπί αντιγραφής URL με χρονική σήμανση εμφανίζεται. Πατήστε για να αντιγράψετε τη διεύθυνση URL του βίντεο με χρονική σήμανση, ή πατήστε παρατεταμένα για να αντιγράψετε τη διεύθυνση URL χωρίς χρονική σήμανση</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_off">Το κουμπί αντιγραφής URL με χρονική σήμανση δεν εμφανίζεται</string>
+            <string name="revanced_share_copy_link_button_success">Η διεύθυνση URL αντιγράφηκε στο πρόχειρο</string>
+            <string name="revanced_share_copy_link_with_timestamp_button_success">Η διεύθυνση URL αντιγράφηκε με χρονική σήμανση</string>
+            <string name="revanced_copy_video_link_button_title">Εμφάνιση κουμπιού αντιγραφής URL του βίντεο</string>
+            <string name="revanced_copy_video_link_button_summary_on">Το κουμπί αντιγραφής URL βίντεο εμφανίζεται. Πατήστε για να αντιγράψετε τη διεύθυνση URL του βίντεο, ή πατήστε παρατεταμένα για να αντιγράψετε τη διεύθυνση URL με χρονική σήμανση</string>
+            <string name="revanced_copy_video_link_button_summary_off">Το κουμπί αντιγραφής URL βίντεο δεν εμφανίζεται</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_title">Εμφάνιση κουμπιού αντιγραφής URL με χρονική σήμανση</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_on">Το κουμπί αντιγραφής URL με χρονική σήμανση εμφανίζεται. Πατήστε για να αντιγράψετε τη διεύθυνση URL του βίντεο με χρονική σήμανση, ή πατήστε παρατεταμένα για να αντιγράψετε τη διεύθυνση URL χωρίς χρονική σήμανση</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_off">Το κουμπί αντιγραφής URL με χρονική σήμανση δεν εμφανίζεται</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
             <string name="revanced_remove_viewer_discretion_dialog_title">Παράθυρο ηλικιακού περιορισμού</string>

@@ -607,14 +607,14 @@ Limitações:
             <string name="revanced_hide_video_ads_summary_off">Anúncios de vídeo são visíveis</string>
         </patch>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_button_success">URL copiado</string>
-            <string name="revanced_share_copy_url_button_timestamp_success">URL com timestamp copiado</string>
-            <string name="revanced_copy_video_url_button_title">Mostrar botão de URL de vídeo copiado</string>
-            <string name="revanced_copy_video_url_button_summary_on">O botão \"Copiar URL do vídeo\" está exibido. Toque para copiar o URL do vídeo. Toque e segure para copiar com carimbo de data/hora</string>
-            <string name="revanced_copy_video_url_button_summary_off">O botão \"Copiar URL do vídeo\" não está exibido</string>
-            <string name="revanced_copy_video_url_button_timestamp_title">Mostrar botão de copiar URL com carimbo de data/hora</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_on">O botão \"Copiar URL com carimbo de data/hora\" está exibido. Toque para copiar o URL do vídeo com carimbo de data/hora. Toque e segure para copiar sem carimbo de data/hora</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_off">O botão \"Copiar URL com carimbo de data/hora\" não está exibido</string>
+            <string name="revanced_share_copy_link_button_success">URL copiado</string>
+            <string name="revanced_share_copy_link_with_timestamp_button_success">URL com timestamp copiado</string>
+            <string name="revanced_copy_video_link_button_title">Mostrar botão de URL de vídeo copiado</string>
+            <string name="revanced_copy_video_link_button_summary_on">O botão \"Copiar URL do vídeo\" está exibido. Toque para copiar o URL do vídeo. Toque e segure para copiar com carimbo de data/hora</string>
+            <string name="revanced_copy_video_link_button_summary_off">O botão \"Copiar URL do vídeo\" não está exibido</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_title">Mostrar botão de copiar URL com carimbo de data/hora</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_on">O botão \"Copiar URL com carimbo de data/hora\" está exibido. Toque para copiar o URL do vídeo com carimbo de data/hora. Toque e segure para copiar sem carimbo de data/hora</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_off">O botão \"Copiar URL com carimbo de data/hora\" não está exibido</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
             <string name="revanced_remove_viewer_discretion_dialog_title">Remover diálogo discreto do visualizador</string>

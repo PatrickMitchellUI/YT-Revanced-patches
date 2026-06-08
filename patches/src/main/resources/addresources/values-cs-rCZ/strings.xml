@@ -607,14 +607,14 @@ Omezení:
             <string name="revanced_hide_video_ads_summary_off">Reklamy ve videu jsou zobrazeny</string>
         </patch>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_button_success">URL zkopírováno do schránky</string>
-            <string name="revanced_share_copy_url_button_timestamp_success">Adresa URL s časovým razítkem zkopírována</string>
-            <string name="revanced_copy_video_url_button_title">Zobrazit tlačítko pro kopírování adresy URL videa</string>
-            <string name="revanced_copy_video_url_button_summary_on">Tlačítko Kopírovat URL videa je zobrazeno. Klepnutím zkopírujete URL videa. Klepnutím a podržením zkopírujete s časovou značkou</string>
-            <string name="revanced_copy_video_url_button_summary_off">Tlačítko Kopírovat URL videa není zobrazeno</string>
-            <string name="revanced_copy_video_url_button_timestamp_title">Zobrazit tlačítko pro kopírování adresy URL videa s časovým razítkem</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_on">Tlačítko Kopírovat URL s časovou značkou je zobrazeno. Klepnutím zkopírujete URL videa s časovou značkou. Klepnutím a podržením zkopírujete bez časové značky</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_off">Tlačítko Kopírovat URL s časovou značkou není zobrazeno</string>
+            <string name="revanced_share_copy_link_button_success">URL zkopírováno do schránky</string>
+            <string name="revanced_share_copy_link_with_timestamp_button_success">Adresa URL s časovým razítkem zkopírována</string>
+            <string name="revanced_copy_video_link_button_title">Zobrazit tlačítko pro kopírování adresy URL videa</string>
+            <string name="revanced_copy_video_link_button_summary_on">Tlačítko Kopírovat URL videa je zobrazeno. Klepnutím zkopírujete URL videa. Klepnutím a podržením zkopírujete s časovou značkou</string>
+            <string name="revanced_copy_video_link_button_summary_off">Tlačítko Kopírovat URL videa není zobrazeno</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_title">Zobrazit tlačítko pro kopírování adresy URL videa s časovým razítkem</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_on">Tlačítko Kopírovat URL s časovou značkou je zobrazeno. Klepnutím zkopírujete URL videa s časovou značkou. Klepnutím a podržením zkopírujete bez časové značky</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_off">Tlačítko Kopírovat URL s časovou značkou není zobrazeno</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
             <string name="revanced_remove_viewer_discretion_dialog_title">Odstranit dialog s upozorněním na věkové omezení</string>

@@ -607,14 +607,14 @@ YouTube Premium ユーザーの場合、この設定は必要ない可能性が�
             <string name="revanced_hide_video_ads_summary_off">動画広告は表示されます</string>
         </patch>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_button_success">URL をクリップボードにコピーしました</string>
-            <string name="revanced_share_copy_url_button_timestamp_success">タイムスタンプ付きの URL をコピーしました</string>
-            <string name="revanced_copy_video_url_button_title">「動画の URL をコピー」ボタンを表示</string>
-            <string name="revanced_copy_video_url_button_summary_on">プレーヤー オーバーレイに「動画の URL をコピー」ボタンが表示されます。タップすると動画の URL が、長押しするとタイムスタンプ付きの URL がそれぞれコピーされます</string>
-            <string name="revanced_copy_video_url_button_summary_off">プレーヤー オーバーレイに「動画の URL をコピー」ボタンは表示されません</string>
-            <string name="revanced_copy_video_url_button_timestamp_title">「タイムスタンプ付き URL をコピー」ボタンを表示</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_on">プレーヤー オーバーレイに「タイムスタンプ付き URL をコピー」ボタンが表示されます。タップするとタイムスタンプ付きの動画の URL が、長押しするとタイムスタンプなしの URL がそれぞれコピーされます</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_off">プレーヤー オーバーレイに「タイムスタンプ付き URL をコピー」ボタンは表示されません</string>
+            <string name="revanced_share_copy_link_button_success">URL をクリップボードにコピーしました</string>
+            <string name="revanced_share_copy_link_with_timestamp_button_success">タイムスタンプ付きの URL をコピーしました</string>
+            <string name="revanced_copy_video_link_button_title">「動画の URL をコピー」ボタンを表示</string>
+            <string name="revanced_copy_video_link_button_summary_on">プレーヤー オーバーレイに「動画の URL をコピー」ボタンが表示されます。タップすると動画の URL が、長押しするとタイムスタンプ付きの URL がそれぞれコピーされます</string>
+            <string name="revanced_copy_video_link_button_summary_off">プレーヤー オーバーレイに「動画の URL をコピー」ボタンは表示されません</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_title">「タイムスタンプ付き URL をコピー」ボタンを表示</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_on">プレーヤー オーバーレイに「タイムスタンプ付き URL をコピー」ボタンが表示されます。タップするとタイムスタンプ付きの動画の URL が、長押しするとタイムスタンプなしの URL がそれぞれコピーされます</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_off">プレーヤー オーバーレイに「タイムスタンプ付き URL をコピー」ボタンは表示されません</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
             <string name="revanced_remove_viewer_discretion_dialog_title">「ご自身の責任」ダイアログを削除</string>

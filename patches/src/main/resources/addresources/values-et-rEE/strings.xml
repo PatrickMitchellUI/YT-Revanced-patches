@@ -605,14 +605,14 @@ Piirangud:
             <string name="revanced_hide_video_ads_summary_off">Videoreklaamid on kuvatud</string>
         </patch>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_button_success">URL kopeeritud lõikelauale</string>
-            <string name="revanced_share_copy_url_button_timestamp_success">Ajatempliga URL kopeeritud</string>
-            <string name="revanced_copy_video_url_button_title">Kuva video URL-i kopeerimise nupp</string>
-            <string name="revanced_copy_video_url_button_summary_on">Video URL-i kopeerimise nupp on nähtav. Puudutage video URL-i kopeerimiseks. Puudutage ja hoidke all, et kopeerida ajatempliga</string>
-            <string name="revanced_copy_video_url_button_summary_off">Video URL-i kopeerimise nupp ei ole nähtav</string>
-            <string name="revanced_copy_video_url_button_timestamp_title">Kuva ajatempliga URL-i kopeerimise nupp</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_on">Ajatempliga URL-i kopeerimise nupp on nähtav. Puudutage video URL-i ajatempliga kopeerimiseks. Puudutage ja hoidke all, et kopeerida ilma ajatemplita</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_off">Ajatempliga URL-i kopeerimise nupp ei ole nähtav</string>
+            <string name="revanced_share_copy_link_button_success">URL kopeeritud lõikelauale</string>
+            <string name="revanced_share_copy_link_with_timestamp_button_success">Ajatempliga URL kopeeritud</string>
+            <string name="revanced_copy_video_link_button_title">Kuva video URL-i kopeerimise nupp</string>
+            <string name="revanced_copy_video_link_button_summary_on">Video URL-i kopeerimise nupp on nähtav. Puudutage video URL-i kopeerimiseks. Puudutage ja hoidke all, et kopeerida ajatempliga</string>
+            <string name="revanced_copy_video_link_button_summary_off">Video URL-i kopeerimise nupp ei ole nähtav</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_title">Kuva ajatempliga URL-i kopeerimise nupp</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_on">Ajatempliga URL-i kopeerimise nupp on nähtav. Puudutage video URL-i ajatempliga kopeerimiseks. Puudutage ja hoidke all, et kopeerida ilma ajatemplita</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_off">Ajatempliga URL-i kopeerimise nupp ei ole nähtav</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
             <string name="revanced_remove_viewer_discretion_dialog_title">Eemalda vaataja arvamuse dialoog</string>

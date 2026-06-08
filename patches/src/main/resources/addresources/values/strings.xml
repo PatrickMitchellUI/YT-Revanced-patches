@@ -455,12 +455,12 @@ Limitations:
             <string name="revanced_hide_video_ads_title">Hide video ads</string>
         </patch>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_button_success">URL copied to clipboard</string>
-            <string name="revanced_share_copy_url_button_timestamp_success">URL with timestamp copied</string>
-            <string name="revanced_copy_video_url_button_title">Show copy video URL button</string>
-            <string name="revanced_copy_video_url_button_summary">Tap to copy the video URL, tap and hold to copy with timestamp</string>
-            <string name="revanced_copy_video_url_button_timestamp_title">Copy timestamp by default</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary">Reverses the tap and tap-and-hold actions of \'Copy video URL\' button</string>
+            <string name="revanced_share_copy_link_button_success">URL copied to clipboard</string>
+            <string name="revanced_share_copy_link_with_timestamp_button_success">URL with timestamp copied</string>
+            <string name="revanced_copy_video_link_button_title">Show copy video URL button</string>
+            <string name="revanced_copy_video_link_button_summary">Tap to copy the video URL, tap and hold to copy with timestamp</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_title">Copy timestamp by default</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary">Reverses the tap and tap-and-hold actions of \'Copy video URL\' button</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
             <string name="revanced_remove_viewer_discretion_dialog_title">Remove viewer discretion dialog</string>

@@ -601,14 +601,14 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
             <string name="revanced_hide_video_ads_summary_off">ভিডিও বিজ্ঞাপন প্রদর্শিত হয়েছে</string>
         </patch>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_button_success">ক্লিপবোর্ডে URL অনুলিপি করা হয়েছে</string>
-            <string name="revanced_share_copy_url_button_timestamp_success">টাইমস্ট্যাম্প সহ URL অনুলিপি করা হয়েছে</string>
-            <string name="revanced_copy_video_url_button_title">ভিডিও URL অনুলিপি বোতাম দেখান</string>
-            <string name="revanced_copy_video_url_button_summary_on">ভিডিও ইউআরএল কপি বোতাম দেখানো আছে। ভিডিও ইউআরএল কপি করতে ট্যাপ করুন। টাইমস্ট্যাম্প সহ কপি করতে ট্যাপ করে ধরে রাখুন</string>
-            <string name="revanced_copy_video_url_button_summary_off">ভিডিও ইউআরএল কপি বোতাম দেখানো নেই</string>
-            <string name="revanced_copy_video_url_button_timestamp_title">টাইমস্ট্যাম্প URL অনুলিপি বোতাম দেখান</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_on">টাইমস্ট্যাম্প ইউআরএল কপি বোতাম দেখানো আছে। টাইমস্ট্যাম্প সহ ভিডিও ইউআরএল কপি করতে ট্যাপ করুন। টাইমস্ট্যাম্প ছাড়া কপি করতে ট্যাপ করে ধরে রাখুন</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_off">টাইমস্ট্যাম্প ইউআরএল কপি বোতাম দেখানো নেই</string>
+            <string name="revanced_share_copy_link_button_success">ক্লিপবোর্ডে URL অনুলিপি করা হয়েছে</string>
+            <string name="revanced_share_copy_link_with_timestamp_button_success">টাইমস্ট্যাম্প সহ URL অনুলিপি করা হয়েছে</string>
+            <string name="revanced_copy_video_link_button_title">ভিডিও URL অনুলিপি বোতাম দেখান</string>
+            <string name="revanced_copy_video_link_button_summary_on">ভিডিও ইউআরএল কপি বোতাম দেখানো আছে। ভিডিও ইউআরএল কপি করতে ট্যাপ করুন। টাইমস্ট্যাম্প সহ কপি করতে ট্যাপ করে ধরে রাখুন</string>
+            <string name="revanced_copy_video_link_button_summary_off">ভিডিও ইউআরএল কপি বোতাম দেখানো নেই</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_title">টাইমস্ট্যাম্প URL অনুলিপি বোতাম দেখান</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_on">টাইমস্ট্যাম্প ইউআরএল কপি বোতাম দেখানো আছে। টাইমস্ট্যাম্প সহ ভিডিও ইউআরএল কপি করতে ট্যাপ করুন। টাইমস্ট্যাম্প ছাড়া কপি করতে ট্যাপ করে ধরে রাখুন</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_off">টাইমস্ট্যাম্প ইউআরএল কপি বোতাম দেখানো নেই</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
             <string name="revanced_remove_viewer_discretion_dialog_title">দর্শকের বিচক্ষণতা ডায়ালগ সরান</string>

@@ -607,14 +607,14 @@ Rajoitukset:
             <string name="revanced_hide_video_ads_summary_off">Videomainokset näytetään</string>
         </patch>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_button_success">URL-osoite kopioitiin leikepöydälle</string>
-            <string name="revanced_share_copy_url_button_timestamp_success">Aikaleimattu URL-osoite kopioitiin</string>
-            <string name="revanced_copy_video_url_button_title">Näytä videon URL-osoitteen kopiointipainike</string>
-            <string name="revanced_copy_video_url_button_summary_on">Kopioi videon URL -painike näytetään. Napauta kopioidaksesi videon URL:n. Paina pitkään kopioidaksesi aikaleimalla.</string>
-            <string name="revanced_copy_video_url_button_summary_off">Kopioi videon URL -painiketta ei näytetä</string>
-            <string name="revanced_copy_video_url_button_timestamp_title">Näytä videon aikaleimatun URL-osoitteen kopiointipainike</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_on">Kopioi aikaleiman URL -painike näytetään. Napauta kopioidaksesi videon URL:n aikaleimalla. Paina pitkään kopioidaksesi ilman aikaleimaa.</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_off">Kopioi aikaleiman URL -painiketta ei näytetä</string>
+            <string name="revanced_share_copy_link_button_success">URL-osoite kopioitiin leikepöydälle</string>
+            <string name="revanced_share_copy_link_with_timestamp_button_success">Aikaleimattu URL-osoite kopioitiin</string>
+            <string name="revanced_copy_video_link_button_title">Näytä videon URL-osoitteen kopiointipainike</string>
+            <string name="revanced_copy_video_link_button_summary_on">Kopioi videon URL -painike näytetään. Napauta kopioidaksesi videon URL:n. Paina pitkään kopioidaksesi aikaleimalla.</string>
+            <string name="revanced_copy_video_link_button_summary_off">Kopioi videon URL -painiketta ei näytetä</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_title">Näytä videon aikaleimatun URL-osoitteen kopiointipainike</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_on">Kopioi aikaleiman URL -painike näytetään. Napauta kopioidaksesi videon URL:n aikaleimalla. Paina pitkään kopioidaksesi ilman aikaleimaa.</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_off">Kopioi aikaleiman URL -painiketta ei näytetä</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
             <string name="revanced_remove_viewer_discretion_dialog_title">Poista katsojan harkinta -valintaikkuna</string>

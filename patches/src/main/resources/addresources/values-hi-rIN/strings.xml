@@ -191,14 +191,14 @@ MicroG के लिए बैटरी अनुकूलन अक्षम �
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
         <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
-            <string name="revanced_share_copy_url_button_success">यूआरएल क्लिपबोर्ड पर कॉपी किया गया</string>
-            <string name="revanced_share_copy_url_button_timestamp_success">टाइमस्टैंप के साथ यूआरएल कॉपी किया गया</string>
-            <string name="revanced_copy_video_url_button_title">वीडियो यूआरएल कॉपी बटन दिखाएँ</string>
-            <string name="revanced_copy_video_url_button_summary_on">वीडियो यूआरएल कॉपी बटन दिखाया गया है। वीडियो यूआरएल कॉपी करने के लिए टैप करें। टाइमस्टैंप के साथ कॉपी करने के लिए टैप करके रखें</string>
-            <string name="revanced_copy_video_url_button_summary_off">वीडियो यूआरएल कॉपी बटन नहीं दिखाया गया है</string>
-            <string name="revanced_copy_video_url_button_timestamp_title">टाइमस्टैंप यूआरएल कॉपी बटन दिखाएँ</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_on">टाइमस्टैंप यूआरएल कॉपी बटन दिखाया गया है। टाइमस्टैंप के साथ वीडियो यूआरएल कॉपी करने के लिए टैप करें। टाइमस्टैंप के बिना कॉपी करने के लिए टैप करके रखें</string>
-            <string name="revanced_copy_video_url_button_timestamp_summary_off">टाइमस्टैंप यूआरएल कॉपी बटन नहीं दिखाया गया है</string>
+            <string name="revanced_share_copy_link_button_success">यूआरएल क्लिपबोर्ड पर कॉपी किया गया</string>
+            <string name="revanced_share_copy_link_with_timestamp_button_success">टाइमस्टैंप के साथ यूआरएल कॉपी किया गया</string>
+            <string name="revanced_copy_video_link_button_title">वीडियो यूआरएल कॉपी बटन दिखाएँ</string>
+            <string name="revanced_copy_video_link_button_summary_on">वीडियो यूआरएल कॉपी बटन दिखाया गया है। वीडियो यूआरएल कॉपी करने के लिए टैप करें। टाइमस्टैंप के साथ कॉपी करने के लिए टैप करके रखें</string>
+            <string name="revanced_copy_video_link_button_summary_off">वीडियो यूआरएल कॉपी बटन नहीं दिखाया गया है</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_title">टाइमस्टैंप यूआरएल कॉपी बटन दिखाएँ</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_on">टाइमस्टैंप यूआरएल कॉपी बटन दिखाया गया है। टाइमस्टैंप के साथ वीडियो यूआरएल कॉपी करने के लिए टैप करें। टाइमस्टैंप के बिना कॉपी करने के लिए टैप करके रखें</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary_off">टाइमस्टैंप यूआरएल कॉपी बटन नहीं दिखाया गया है</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch"/>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">
