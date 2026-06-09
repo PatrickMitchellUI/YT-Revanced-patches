@@ -23,6 +23,7 @@ import app.revanced.patcher.parameterTypes
 import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patcher.returnType
 import app.revanced.patcher.type
+import app.revanced.patches.music.layout.compactheader.chipCloud
 import app.revanced.patches.shared.misc.mapping.ResourceType
 import app.revanced.patches.youtube.layout.buttons.navigation.wideSearchbarLayoutMethod
 import app.revanced.util.getting
@@ -616,5 +617,17 @@ internal val BytecodePatchContext.quantumSnackbarMethodMatch by composingFirstMe
     parameterTypes("Landroid/content/Context;", "Landroid/util/AttributeSet;")
     instructions(
         allOf(Opcode.INVOKE_DIRECT(), method { name == "<init>" }),
+    )
+}
+
+internal val BytecodePatchContext.syncButtonMethodMatch by composingFirstMethod {
+    accessFlags(AccessFlags.PROTECTED, AccessFlags.FINAL)
+    instructions(
+        ResourceType.LAYOUT("sync_button"),
+        allOf(
+            Opcode.INVOKE_VIRTUAL(),
+            method { name == "inflate" && returnType == "Landroid/view/View;" }
+        ),
+        after(Opcode.MOVE_RESULT_OBJECT())
     )
 }

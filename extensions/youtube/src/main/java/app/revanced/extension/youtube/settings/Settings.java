@@ -214,6 +214,7 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final BooleanSetting HIDE_SETTINGS_BUTTON = new BooleanSetting("revanced_hide_settings_button", FALSE, true);
     public static final BooleanSetting HIDE_SNACKBAR = new BooleanSetting("revanced_hide_snackbar", FALSE, true);
     public static final BooleanSetting HIDE_SUBSCRIBERS_COMMUNITY_GUIDELINES = new BooleanSetting("revanced_hide_subscribers_community_guidelines", TRUE);
+    public static final BooleanSetting HIDE_SYNC_BUTTON = new BooleanSetting("revanced_hide_sync_button", FALSE, true);
     public static final BooleanSetting HIDE_TIMED_REACTIONS = new BooleanSetting("revanced_hide_timed_reactions", TRUE);
     public static final BooleanSetting HIDE_VIDEO_TITLE = new BooleanSetting("revanced_hide_video_title", FALSE);
     public static final BooleanSetting OPEN_SYSTEM_SHARE_SHEET = new BooleanSetting("revanced_open_system_share_sheet", FALSE, true);

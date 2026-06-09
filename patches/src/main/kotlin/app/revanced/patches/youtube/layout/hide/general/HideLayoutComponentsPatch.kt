@@ -25,6 +25,7 @@ import app.revanced.patches.shared.misc.settings.preference.PreferenceScreenPref
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.shared.misc.settings.preference.TextPreference
 import app.revanced.patches.youtube.layout.hide.shelves.hideHorizontalShelvesPatch
+import app.revanced.patches.youtube.layout.shortsautoplay.reelEnumConstructorMethodMatch
 import app.revanced.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.revanced.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.revanced.patches.youtube.misc.litho.node.hookTreeNodeElementPatch
@@ -175,6 +176,7 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
         SwitchPreference("revanced_hide_medical_panels", summaryKey = null),
         SwitchPreference("revanced_hide_snackbar", summaryKey = null),
         SwitchPreference("revanced_hide_subscribers_community_guidelines", summaryKey = null),
+        SwitchPreference("revanced_hide_sync_button"),
         SwitchPreference("revanced_hide_timed_reactions"),
         SwitchPreference("revanced_hide_video_title")
     )
@@ -975,6 +977,18 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
                 "invoke-static { p0 }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->handleLegacySnackbar(Landroid/view/View;)V"
             )
         }
+    }
+
+    // endregion
+
+    // region hide sync button
+
+    syncButtonMethodMatch.let {
+        it.method.injectHideViewCall(
+            it[-1],
+            LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR,
+            "hideSyncButton"
+        )
     }
 
     // endregion
