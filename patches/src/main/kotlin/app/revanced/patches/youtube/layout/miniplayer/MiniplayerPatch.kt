@@ -352,8 +352,6 @@ val miniplayerPatch = bytecodePatch(
             miniplayerModernExpandButtonMethodMatch to "hideMiniplayerExpandClose",
             miniplayerModernCloseButtonMethodMatch to "hideMiniplayerExpandClose",
             miniplayerModernActionButtonMethodMatch to "hideMiniplayerActionButton",
-            miniplayerModernRewindButtonMethodMatch to "hideMiniplayerRewindForward",
-            miniplayerModernForwardButtonMethodMatch to "hideMiniplayerRewindForward",
             miniplayerModernOverlayViewMethodMatch to "adjustMiniplayerOpacity",
         ).forEach { (match, methodName) ->
             match.method.apply {

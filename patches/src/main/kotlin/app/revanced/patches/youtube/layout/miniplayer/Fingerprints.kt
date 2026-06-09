@@ -99,36 +99,12 @@ internal val BytecodePatchContext.miniplayerModernExpandButtonMethodMatch by get
     }
 } using { miniplayerModernAddViewListenerMethod }
 
-internal val BytecodePatchContext.miniplayerModernForwardButtonMethodMatch by getting {
-    firstMethodComposite {
-        accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-        returnType("L")
-        parameterTypes()
-        instructions(
-            ResourceType.ID("modern_miniplayer_forward_button"),
-            afterAtMost(5, Opcode.MOVE_RESULT_OBJECT()),
-        )
-    }
-} using { miniplayerModernAddViewListenerMethod }
-
 internal val BytecodePatchContext.miniplayerModernOverlayViewMethodMatch by getting {
     firstMethodComposite {
         accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
         parameterTypes()
         instructions(
             ResourceType.ID("scrim_overlay"),
-            afterAtMost(5, Opcode.MOVE_RESULT_OBJECT()),
-        )
-    }
-} using { miniplayerModernAddViewListenerMethod }
-
-internal val BytecodePatchContext.miniplayerModernRewindButtonMethodMatch by getting {
-    firstMethodComposite {
-        accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-        returnType("L")
-        parameterTypes()
-        instructions(
-            ResourceType.ID("modern_miniplayer_rewind_button"),
             afterAtMost(5, Opcode.MOVE_RESULT_OBJECT()),
         )
     }
