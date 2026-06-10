@@ -12,6 +12,7 @@ import app.revanced.patcher.returnType
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
 import app.revanced.patches.shared.misc.settings.preference.ListPreference
+import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.youtube.misc.contexthook.Endpoint
 import app.revanced.patches.youtube.misc.contexthook.addClientFormFactorHook
 import app.revanced.patches.youtube.misc.contexthook.hookClientContextPatch
@@ -56,6 +57,7 @@ val changeFormFactorPatch = bytecodePatch(
 
         PreferenceScreen.GENERAL.addPreferences(
             ListPreference("revanced_change_form_factor"),
+            SwitchPreference("revanced_tablet_layout_in_player"),
         )
 
         val formFactorEnumConstructorClass = formFactorEnumConstructorMethod.definingClass
