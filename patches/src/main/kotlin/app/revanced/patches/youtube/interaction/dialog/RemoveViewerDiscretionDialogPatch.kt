@@ -1,8 +1,8 @@
 package app.revanced.patches.youtube.interaction.dialog
 
-import app.revanced.patcher.extensions.addInstructionsWithLabels
-import app.revanced.patcher.immutableClassDef
-import app.revanced.patcher.invoke
+import app.revanced.com.android.tools.smali.dexlib2.mutable.MutableMethod
+import app.revanced.patcher.extensions.addInstructions
+import app.revanced.patcher.extensions.getInstruction
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
@@ -10,9 +10,9 @@ import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
-import app.revanced.util.findInstructionIndicesReversedOrThrow
-import app.revanced.util.getMethodReferenceAtInstructionIndex
-import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/revanced/extension/youtube/patches/RemoveViewerDiscretionDialogPatch;"
@@ -49,37 +49,68 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
             SwitchPreference("revanced_remove_viewer_discretion_dialog"),
         )
 
-        allowControversialContentMethodMatch.let {
-            val allowControversialContentMethod = it.getMethodReferenceAtInstructionIndex(2)
-
-            allowControversialContentMethod.apply {
-                findInstructionIndicesReversedOrThrow(Opcode.RETURN).forEach { index ->
-                    addInstructionsWithLabels(
-                        index,
-                        """
-                            invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->hideViewDiscretionDialog()Z
-                            move-result v0
-                            if-eqz v0, :show_controversial_content_confirmation_box
-                            return v0
-                            :show_controversial_content_confirmation_box
-                            nop
-                        """,
-                    )
-                }
+        fun applyPatch(instructionIndex: Int, instructionRegister: Int, method: MutableMethod, isBoolWrapper: Boolean) {
+            val (firstSmali, lastSmali) = if (isBoolWrapper) {
+                """
+                    invoke-virtual { v$instructionRegister }, Ljava/lang/Boolean;->booleanValue()Z
+                    move-result v$instructionRegister
+                """ to """
+                    invoke-static { v$instructionRegister }, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+                    move-result-object v$instructionRegister
+                """
+            } else {
+                "" to ""
             }
 
-            allowControversialContentMethod.immutableClassDef.allowAdultContentMethod().addInstructionsWithLabels(
-                0,
+            method.addInstructions(
+                instructionIndex,
                 """
-                    invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->hideViewDiscretionDialog()Z
-                    move-result v0
-                    if-eqz v0, :show_adult_content_confirmation_box
-                    sget-object v0, Ljava/lang/Boolean;->TRUE:Ljava/lang/Boolean;
-                    return-object v0
-                    :show_adult_content_confirmation_box
-                    nop
-                """,
+                    $firstSmali
+                    invoke-static { v$instructionRegister }, $EXTENSION_CLASS_DESCRIPTOR->hideViewDiscretionDialog(Z)Z
+                    move-result v$instructionRegister
+                    $lastSmali
+                """
             )
         }
+
+        // region skip discretion dialog
+
+        val skipDialogMatch = skipDialogMethodMatch(adultContentRunnableMethodMatch.method)
+        skipDialogMatch.let { match ->
+            listOf(match[3], match[1]).forEach { instructionIndex ->
+                val instructionRegister = match.method
+                    .getInstruction<OneRegisterInstruction>(instructionIndex).registerA
+                applyPatch(instructionIndex + 1, instructionRegister, match.method, false)
+            }
+        }
+
+        offlineModeMethodMatch.classDef.offlineModeConstructorMethod().let { method ->
+            applyPatch(1, 6, method, true)
+        }
+
+        // endregion
+
+        // region unlock related videos for restricted videos
+
+        val firstFieldReference = adultContentSetPropertiesMethodMatch.method
+            .getInstruction<ReferenceInstruction>(adultContentSetPropertiesMethodMatch[0])
+            .reference.toString()
+        val secondFieldReference = adultContentSetPropertiesMethodMatch.method
+            .getInstruction<ReferenceInstruction>(adultContentSetPropertiesMethodMatch[2])
+            .reference.toString()
+
+        unlockRelatedVideosMethodMatch(
+            skipDialogMatch.method.definingClass,
+            firstFieldReference,
+            secondFieldReference,
+        ).let { match ->
+            listOf(match[1], match[0]).forEach { instructionIndex ->
+                val instructionRegister = match.method
+                    .getInstruction<TwoRegisterInstruction>(instructionIndex).registerA
+                applyPatch(instructionIndex, instructionRegister, match.method, false)
+            }
+        }
+
+        // endregion
     }
 }
