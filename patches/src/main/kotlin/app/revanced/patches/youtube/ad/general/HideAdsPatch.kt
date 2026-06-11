@@ -192,6 +192,22 @@ val hideAdsPatch = bytecodePatch(
             )
         }
 
+        // Hide paid promotion label in modern miniplayer.
+
+        miniplayerPaidPromotionLabelMethodMatch.let {
+            it.method.apply {
+                val insertIndex = it[-1]
+                val viewRegister = getInstruction<FiveRegisterInstruction>(insertIndex).registerC
+
+                injectHideViewCall(
+                    insertIndex,
+                    viewRegister,
+                    EXTENSION_CLASS_DESCRIPTOR,
+                    "hideMiniplayerPaidPromotionLabelView",
+                )
+            }
+        }
+
         setOf(
             Endpoint.BROWSE,
             Endpoint.SEARCH,

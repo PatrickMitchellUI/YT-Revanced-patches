@@ -79,7 +79,6 @@ val miniplayerPatch = bytecodePatch(
             SwitchPreference("revanced_miniplayer_disable_drag_and_drop"),
             SwitchPreference("revanced_miniplayer_disable_horizontal_drag"),
             SwitchPreference("revanced_miniplayer_disable_rounded_corners", summaryKey = null),
-            SwitchPreference("revanced_miniplayer_hide_subtext", summaryKey = null),
             SwitchPreference("revanced_miniplayer_hide_overlay_buttons", summaryKey = null),
             TextPreference("revanced_miniplayer_width_dip", inputType = InputType.NUMBER),
             NonInteractivePreference(
@@ -363,13 +362,6 @@ val miniplayerPatch = bytecodePatch(
                 )
             }
         }
-
-        miniplayerModernAddViewListenerMethod
-            .addInstruction(
-                0,
-                "invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->" +
-                        "hideMiniplayerSubTexts(Landroid/view/View;)V",
-            )
 
         // endregion
     }

@@ -59,3 +59,10 @@ internal val BytecodePatchContext.playerOverlayTimelyShelfMethodMatch by composi
     )
 }
 
+internal val BytecodePatchContext.miniplayerPaidPromotionLabelMethodMatch by composingFirstMethod {
+    instructions(
+        ResourceType.ID("modern_miniplayer_subtitle_text"),
+        after(Opcode.INVOKE_VIRTUAL()),
+    )
+}
+
