@@ -69,6 +69,10 @@ public final class SanitizeSharingLinksPatch {
 
     private static String replaceWithShortenedUrl(String url) {
         try {
+            // Invite and post links are not videos and must not be turned into youtu.be links.
+            if (url.contains("/sharing/invite/") || url.contains("/post/")) {
+                return url;
+            }
             Uri uri = Uri.parse(url);
             List<String> segments = uri.getPathSegments();
             int segmentsSize = segments.size();
