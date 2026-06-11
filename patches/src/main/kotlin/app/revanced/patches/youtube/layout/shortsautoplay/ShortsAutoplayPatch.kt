@@ -15,6 +15,7 @@ import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
 import app.revanced.patches.youtube.misc.playservice.is_21_10_or_greater
+import app.revanced.patches.youtube.misc.playservice.is_21_17_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
@@ -52,7 +53,6 @@ val shortsAutoplayPatch = bytecodePatch(
             "20.31.42",
             "20.37.48",
             "20.45.36",
-            "20.47.62",
             "20.51.39"
         ),
     )
@@ -62,9 +62,6 @@ val shortsAutoplayPatch = bytecodePatch(
 
         PreferenceScreen.SHORTS.addPreferences(
             SwitchPreference("revanced_shorts_autoplay"),
-        )
-
-        PreferenceScreen.SHORTS.addPreferences(
             SwitchPreference("revanced_shorts_autoplay_background"),
         )
 
@@ -120,6 +117,9 @@ val shortsAutoplayPatch = bytecodePatch(
                 )
             }
         }
+
+
+        if (is_21_17_or_greater) return@apply
 
         // As of YouTube 20.09, Google has removed the code for 'Autoplay' and 'Pause' from this method.
         // Manually restore the removed 'Autoplay' code.
