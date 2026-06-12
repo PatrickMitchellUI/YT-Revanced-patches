@@ -63,6 +63,7 @@ internal val BytecodePatchContext.miniplayerPaidPromotionLabelMethodMatch by com
     instructions(
         ResourceType.ID("modern_miniplayer_subtitle_text"),
         after(Opcode.INVOKE_VIRTUAL()),
+        after(Opcode.MOVE_RESULT_OBJECT()),
     )
 }
 

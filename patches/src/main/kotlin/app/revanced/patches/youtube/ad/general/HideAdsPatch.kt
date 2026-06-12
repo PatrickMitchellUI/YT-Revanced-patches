@@ -33,6 +33,7 @@ import app.revanced.util.forEachInstructionAsSequence
 import app.revanced.util.injectHideViewCall
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
@@ -192,15 +193,15 @@ val hideAdsPatch = bytecodePatch(
             )
         }
 
-        // Hide paid promotion label in modern miniplayer.
+        // Hide paid promotion label in miniplayer.
 
         miniplayerPaidPromotionLabelMethodMatch.let {
             it.method.apply {
                 val insertIndex = it[-1]
-                val viewRegister = getInstruction<FiveRegisterInstruction>(insertIndex).registerC
+                val viewRegister = getInstruction<OneRegisterInstruction>(insertIndex).registerA
 
                 injectHideViewCall(
-                    insertIndex,
+                    insertIndex + 1,
                     viewRegister,
                     EXTENSION_CLASS_DESCRIPTOR,
                     "hideMiniplayerPaidPromotionLabelView",
