@@ -40,9 +40,3 @@ internal val BytecodePatchContext.shortsPlaybackIntentLegacyMethod by gettingFir
         "reels_fragment_descriptor"(),
     )
 }
-
-internal val BytecodePatchContext.exitVideoPlayerMethod by gettingFirstMethodDeclaratively {
-    returnType("V")
-    parameterTypes()
-    instructions(ResourceType.ID("mdx_drawer_layout"))
-}

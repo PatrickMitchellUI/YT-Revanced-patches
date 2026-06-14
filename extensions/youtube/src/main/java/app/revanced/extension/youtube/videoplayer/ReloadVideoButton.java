@@ -5,7 +5,7 @@ import android.view.View;
 import androidx.annotation.Nullable;
 
 import app.revanced.extension.shared.Logger;
-import app.revanced.extension.youtube.patches.ReloadVideoPatch;
+import app.revanced.extension.youtube.patches.LoadVideoPatch;
 import app.revanced.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -23,7 +23,7 @@ public class ReloadVideoButton {
                     "revanced_reload_video_button",
                     null,
                     Settings.RELOAD_VIDEO_BUTTON::get,
-                    v -> ReloadVideoPatch.reloadVideo(),
+                    v -> LoadVideoPatch.reloadVideo(),
                     null
             );
         } catch (Exception ex) {

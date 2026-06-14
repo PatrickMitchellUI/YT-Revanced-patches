@@ -26,6 +26,7 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 import com.android.tools.smali.dexlib2.util.MethodUtil
 
 private val reloadVideoResourcePatch = resourcePatch {
@@ -64,10 +65,10 @@ private const val EXTENSION_BUTTON_DESCRIPTOR =
     "Lapp/revanced/extension/youtube/videoplayer/ReloadVideoButton;"
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
-    "Lapp/revanced/extension/youtube/patches/ReloadVideoPatch;"
+    "Lapp/revanced/extension/youtube/patches/LoadVideoPatch;"
 
 private const val EXTENSION_PLAYER_INTERFACE =
-    "Lapp/revanced/extension/youtube/patches/ReloadVideoPatch\$PlayerInterface;"
+    "Lapp/revanced/extension/youtube/patches/LoadVideoPatch\$PlayerInterface;"
 
 @Suppress("unused")
 val reloadVideoButtonPatch = bytecodePatch(
@@ -105,6 +106,8 @@ val reloadVideoButtonPatch = bytecodePatch(
 
         val dismissPlayerInnerMethod =
             miniAppOpenYtContentCommandEndpointMethodMatch.getMethodReferenceAtInstructionIndex(2)
+        val openNewVideoParcelableMethod = openNewVideoIntentParcelableMethod
+        val openNewVideoParcelableDefiningClass = openNewVideoParcelableMethod.definingClass
 
         dismissPlayerInnerMethod.classDef.apply {
             // Add interface and helper methods to allow extension code to call obfuscated methods.
@@ -126,6 +129,28 @@ val reloadVideoButtonPatch = bytecodePatch(
                         """
                             invoke-virtual { p0 }, $dismissPlayerInnerMethod
                             return-void
+                        """
+                    )
+                }
+            )
+
+            methods.add(
+                ImmutableMethod(
+                    dismissPlayerInnerMethod.definingClass,
+                    "patch_getIntentParcelable",
+                    listOf(ImmutableMethodParameter("Landroid/content/Intent;", null, null)),
+                    "Landroid/os/Parcelable;",
+                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                    null,
+                    null,
+                    MutableMethodImplementation(3),
+                ).toMutable().apply {
+                    addInstructions(
+                        0,
+                        """
+                            invoke-static { p1 }, $openNewVideoParcelableDefiningClass->${openNewVideoParcelableMethod.name}(Landroid/content/Intent;)$openNewVideoParcelableDefiningClass
+                            move-result-object v0
+                            return-object v0
                         """
                     )
                 }

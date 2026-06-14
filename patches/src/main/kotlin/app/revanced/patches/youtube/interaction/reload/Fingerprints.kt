@@ -29,3 +29,15 @@ internal val BytecodePatchContext.miniAppOpenYtContentCommandEndpointMethodMatch
         instructions(" for MiniAppOpenYTContentCommand: "(String::contains))
     }
 }
+
+internal val BytecodePatchContext.openNewVideoIntentParcelableMethod by gettingFirstMethodDeclaratively {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL)
+    returnType("L")
+    parameterTypes("Landroid/content/Intent;")
+    instructions(
+        "android.intent.extra.inventory_identifier"(),
+        "http"(),
+        "vnd.youtube"(),
+        "No video id in the Uri: "(),
+    )
+}

@@ -3,8 +3,6 @@ package app.revanced.extension.youtube.patches;
 import static app.revanced.extension.youtube.shared.NavigationBar.NavigationButton;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
 
 import java.lang.ref.WeakReference;
 
@@ -76,25 +74,13 @@ public class OpenShortsInRegularPlayerPatch {
                 return false; // Always use Shorts player for the Shorts nav button.
             }
 
+            Logger.printDebug(() -> "Setting back button override and opening Shorts intent");
             overrideBackPressToExit = true;
 
             final boolean forceFullScreen = (type == ShortsPlayerType.REGULAR_PLAYER_FULLSCREEN);
             OpenVideosFullscreenHookPatch.setOpenNextVideoFullscreen(forceFullScreen);
 
-            // Can use the application context and add intent flags of
-            // FLAG_ACTIVITY_NEW_TASK and FLAG_ACTIVITY_CLEAR_TOP
-            // But the activity context seems to fix random app crashes
-            // if Shorts URLs are opened outside the app.
-            var context = mainActivityRef.get();
-
-            Intent videoPlayerIntent = new Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse("https://youtube.com/watch?v=" + videoId)
-            );
-            videoPlayerIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            videoPlayerIntent.setPackage(context.getPackageName());
-
-            context.startActivity(videoPlayerIntent);
+            LoadVideoPatch.openVideo(videoId);
             return true;
         } catch (Exception ex) {
             OpenVideosFullscreenHookPatch.setOpenNextVideoFullscreen(null);
