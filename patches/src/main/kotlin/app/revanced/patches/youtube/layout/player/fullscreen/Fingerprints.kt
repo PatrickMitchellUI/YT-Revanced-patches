@@ -1,10 +1,12 @@
 package app.revanced.patches.youtube.layout.player.fullscreen
 
 import app.revanced.patcher.accessFlags
+import app.revanced.patcher.after
 import app.revanced.patcher.afterAtMost
 import app.revanced.patcher.allOf
 import app.revanced.patcher.composingFirstMethod
 import app.revanced.patcher.definingClass
+import app.revanced.patcher.field
 import app.revanced.patcher.gettingFirstMethodDeclaratively
 import app.revanced.patcher.instructions
 import app.revanced.patcher.invoke
@@ -51,5 +53,31 @@ internal val BytecodePatchContext.nextGenWatchLayoutFullscreenConstructorMethodM
     accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
     instructions(
         Opcode.CHECK_CAST(),
+    )
+}
+
+internal val BytecodePatchContext.playerDragGestureTypeMethodMatch by composingFirstMethod {
+    accessFlags(AccessFlags.PRIVATE, AccessFlags.STATIC)
+    returnType("Ljava/lang/String;")
+    parameterTypes("I")
+    "FULLSCREEN_DRAGGED_DOWN"()
+    "MAXIMIZED_PULLED_UP"()
+}
+
+internal val BytecodePatchContext.playerDragGestureInitMethodMatch by composingFirstMethod {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+    returnType("I")
+    parameterTypes("I", "I", "I", "I")
+    instructions(
+        Opcode.IGET_OBJECT(),
+        after(Opcode.IF_EQZ()),
+        after(Opcode.INVOKE_VIRTUAL()),
+        after(Opcode.IGET()),
+        after(Opcode.IF_NE()),
+        after(Opcode.IGET()),
+        after(Opcode.IF_NE()),
+        after(Opcode.CONST_4()),
+        after(Opcode.RETURN()),
+        after(allOf(Opcode.IGET_OBJECT(), field { type.endsWith("/NextGenWatchLayout;") })),
     )
 }
