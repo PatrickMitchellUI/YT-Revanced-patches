@@ -30,6 +30,9 @@ public final class NavigationBarPatch {
         }
     };
 
+    private static final boolean HIDE_TOOLBAR_CAST_BUTTON
+            = Settings.HIDE_TOOLBAR_CAST_BUTTON.get();
+
     private static final boolean SWITCH_CREATE_WITH_NOTIFICATIONS_BUTTON
             = Settings.SWITCH_CREATE_WITH_NOTIFICATIONS_BUTTON.get();
 
@@ -131,6 +134,24 @@ public final class NavigationBarPatch {
     }
 
     // Toolbar
+
+    /**
+     * Injection point.
+     */
+    public static boolean hideCastButton(boolean original) {
+        return !HIDE_TOOLBAR_CAST_BUTTON && original;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideCastButton(MenuItem menuItem) {
+        if (HIDE_TOOLBAR_CAST_BUTTON) {
+            menuItem.setVisible(false);
+            menuItem.setEnabled(false);
+        }
+    }
+
 
     public static void hideCreateButton(String enumString, View view) {
         if (!Settings.HIDE_TOOLBAR_CREATE_BUTTON.get())

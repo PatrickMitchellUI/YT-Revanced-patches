@@ -3,6 +3,8 @@ package app.revanced.patches.youtube.layout.buttons.navigation
 import app.revanced.patcher.*
 import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patches.shared.misc.mapping.ResourceType
+import app.revanced.util.getting
+import app.revanced.util.using
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -18,6 +20,25 @@ internal val BytecodePatchContext.createPivotBarMethodMatch by composingFirstMet
         Opcode.RETURN_VOID(),
     )
 }
+
+internal val BytecodePatchContext.castMenuItemInitializeMethodMatch by composingFirstMethod {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+    returnType("V")
+    instructions(
+        ResourceType.LAYOUT("castmediaroutebutton"),
+        method { name == "setShowAsAction" }
+    )
+}
+
+internal val BytecodePatchContext.castMenuItemVisibilityMethodMatch by getting {
+    firstMethodComposite {
+        accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+        returnType("V")
+        instructions(
+            method { name == "setVisible" }
+        )
+    }
+} using { castMenuItemInitializeMethodMatch.method }
 
 internal val BytecodePatchContext.animatedNavigationTabsFeatureFlagMethodMatch by composingFirstMethod {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
