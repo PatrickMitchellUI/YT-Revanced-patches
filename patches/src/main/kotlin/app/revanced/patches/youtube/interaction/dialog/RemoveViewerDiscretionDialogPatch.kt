@@ -48,26 +48,12 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
             SwitchPreference("revanced_remove_viewer_discretion_dialog"),
         )
 
-        fun applyPatch(instructionIndex: Int, instructionRegister: Int, method: MutableMethod, isBoolWrapper: Boolean) {
-            val (firstSmali, lastSmali) = if (isBoolWrapper) {
-                """
-                    invoke-virtual { v$instructionRegister }, Ljava/lang/Boolean;->booleanValue()Z
-                    move-result v$instructionRegister
-                """ to """
-                    invoke-static { v$instructionRegister }, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
-                    move-result-object v$instructionRegister
-                """
-            } else {
-                "" to ""
-            }
-
+        fun applyPatch(instructionIndex: Int, instructionRegister: Int, method: MutableMethod) {
             method.addInstructions(
                 instructionIndex,
                 """
-                    $firstSmali
                     invoke-static { v$instructionRegister }, $EXTENSION_CLASS_DESCRIPTOR->hideViewDiscretionDialog(Z)Z
                     move-result v$instructionRegister
-                    $lastSmali
                 """
             )
         }
@@ -79,12 +65,8 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
             listOf(match[3], match[1]).forEach { instructionIndex ->
                 val instructionRegister = match.method
                     .getInstruction<OneRegisterInstruction>(instructionIndex).registerA
-                applyPatch(instructionIndex + 1, instructionRegister, match.method, false)
+                applyPatch(instructionIndex + 1, instructionRegister, match.method)
             }
-        }
-
-        offlineModeMethodMatch.classDef.offlineModeConstructorMethod().let { method ->
-            applyPatch(1, 6, method, true)
         }
 
         // endregion
@@ -106,7 +88,7 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
             listOf(match[1], match[0]).forEach { instructionIndex ->
                 val instructionRegister = match.method
                     .getInstruction<TwoRegisterInstruction>(instructionIndex).registerA
-                applyPatch(instructionIndex, instructionRegister, match.method, false)
+                applyPatch(instructionIndex, instructionRegister, match.method)
             }
         }
 

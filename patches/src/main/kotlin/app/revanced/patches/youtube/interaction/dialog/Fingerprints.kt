@@ -69,23 +69,6 @@ internal fun BytecodePatchContext.skipDialogMethodMatch(adultContentRunnableMeth
         )
     }
 
-// The class holding the constructor that receives the age-restriction flag.
-internal val BytecodePatchContext.offlineModeMethodMatch by composingFirstMethod {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.STATIC)
-    returnType("L")
-    parameterTypes("Ljava/lang/String;", "L")
-    "Null videoId"()
-    "Null offlineModeType"()
-}
-
-context(_: BytecodePatchContext)
-internal fun ClassDef.offlineModeConstructorMethod() = firstMethodDeclaratively {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
-    returnType("V")
-    custom { parameters.count() >= 6 }
-}
-// endregion
-
 // region unlock related videos for restricted videos
 internal fun BytecodePatchContext.unlockRelatedVideosMethodMatch(
     definingClass: String,
