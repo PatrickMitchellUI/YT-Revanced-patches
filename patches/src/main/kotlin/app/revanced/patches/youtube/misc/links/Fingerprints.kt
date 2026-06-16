@@ -1,36 +1,43 @@
 package app.revanced.patches.youtube.misc.links
 
-import app.revanced.patcher.*
+import app.revanced.patcher.accessFlags
+import app.revanced.patcher.after
+import app.revanced.patcher.allOf
+import app.revanced.patcher.composingFirstMethod
+import app.revanced.patcher.gettingFirstMethodDeclaratively
+import app.revanced.patcher.instructions
+import app.revanced.patcher.invoke
+import app.revanced.patcher.method
+import app.revanced.patcher.parameterTypes
 import app.revanced.patcher.patch.BytecodePatchContext
+import app.revanced.patcher.returnType
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
 
-/**
- * 20.36 and lower.
- */
-internal val BytecodePatchContext.abUriParserLegacyMethodMatch by composingFirstMethod {
+internal val BytecodePatchContext.commentUriIntentMethodMatch by composingFirstMethod {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returnType("Ljava/lang/Object;")
-    parameterTypes("Ljava/lang/Object;")
+    returnType("V")
+    parameterTypes("L", "Ljava/util/Map;")
+    "parentCsn"()
+    "URL_KEY"()
+    "navigation_endpoint"()
+    "WEB_VIEW_BOTTOM_SHEET_TAG"()
     instructions(
-        "Found entityKey=`"(),
-        "that does not contain a PlaylistVideoEntityId"(String::contains),
-        method { toString() == "Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;" },
+        "android.intent.action.VIEW"(),
+        after(
+            allOf(
+                Opcode.INVOKE_DIRECT(),
+                method { toString() == "Landroid/content/Intent;-><init>(Ljava/lang/String;Landroid/net/Uri;)V" },
+            ),
+        ),
     )
 }
 
-/**
- * 20.37+
- */
-internal val BytecodePatchContext.abUriParserMethodMatch by composingFirstMethod {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returnType("Ljava/lang/Object;")
-    parameterTypes("Ljava/lang/Object;")
-    instructions(
-        // Method is a switch statement of unrelated code,
-        // and there's no strings or anything unique to match to.
-        method { toString() == "Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;" },
-        method { toString() == "Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;" },
-        method { toString() == "Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;" },
-        method { toString() == "Ljava/util/List;->get(I)Ljava/lang/Object;" },
-    )
+internal val BytecodePatchContext.descriptionUriIntentMethod by gettingFirstMethodDeclaratively {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.STATIC)
+    returnType("Z")
+    parameterTypes("Landroid/content/Context;", "Landroid/net/Uri;")
+    "android.intent.action.VIEW"()
+    "text/html"()
+    "Activity not found to view uri"()
 }
