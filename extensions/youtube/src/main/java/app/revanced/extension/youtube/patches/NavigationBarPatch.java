@@ -7,6 +7,7 @@ import static app.revanced.extension.youtube.shared.NavigationBar.NavigationButt
 import android.os.Build;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.EnumMap;
@@ -152,6 +153,16 @@ public final class NavigationBarPatch {
         }
     }
 
+    /**
+     * Injection point.
+     */
+    public static void hideChatButton(String enumString, View parentView) {
+        if (!Settings.HIDE_TOOLBAR_CHAT_BUTTON.get())
+            return;
+
+        hideViewUnderCondition(isChatButton(enumString), parentView);
+    }
+
 
     public static void hideCreateButton(String enumString, View view) {
         if (!Settings.HIDE_TOOLBAR_CREATE_BUTTON.get())
@@ -180,6 +191,10 @@ public final class NavigationBarPatch {
                         ? MenuItem.SHOW_AS_ACTION_NEVER
                         : original
         );
+    }
+
+    private static boolean isChatButton(String enumString) {
+        return "MESSAGE_BUBBLE_OVERLAP".equals(enumString); // Chat button.
     }
 
     private static boolean isCreateButton(String enumString) {

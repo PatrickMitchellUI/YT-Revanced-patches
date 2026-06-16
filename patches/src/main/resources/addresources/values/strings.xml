@@ -668,6 +668,7 @@ Verify the package name is correct and the app is installed"</string>
             <string name="revanced_toolbar_screen_title">Toolbar</string>
             <string name="revanced_toolbar_screen_summary">Hide or change toolbar components</string>
             <string name="revanced_hide_toolbar_cast_button_title">Hide Cast button</string>
+            <string name="revanced_hide_toolbar_chat_button_title">Hide Chat button</string>
             <string name="revanced_hide_toolbar_create_button_title">Hide Create button</string>
             <string name="revanced_hide_toolbar_notification_button_title">Hide Notifications button</string>
             <string name="revanced_hide_toolbar_search_button_title">Hide Search button</string>

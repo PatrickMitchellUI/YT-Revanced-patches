@@ -191,6 +191,7 @@ val navigationBarPatch = bytecodePatch(
 
         val toolbarPreferences = mutableSetOf(
             SwitchPreference("revanced_hide_toolbar_cast_button", summaryKey = null),
+            SwitchPreference("revanced_hide_toolbar_chat_button", summaryKey = null),
             SwitchPreference("revanced_hide_toolbar_create_button", summaryKey = null),
             SwitchPreference("revanced_hide_toolbar_notification_button", summaryKey = null),
             SwitchPreference("revanced_hide_toolbar_search_button", summaryKey = null)
@@ -210,6 +211,7 @@ val navigationBarPatch = bytecodePatch(
         hookToolbar("${EXTENSION_CLASS_DESCRIPTOR}->hideCreateButton")
         hookToolbar("${EXTENSION_CLASS_DESCRIPTOR}->hideNotificationButton")
         hookToolbar("${EXTENSION_CLASS_DESCRIPTOR}->hideSearchButton")
+        hookToolbar("${EXTENSION_CLASS_DESCRIPTOR}->hideChatButton")
 
         // Hide cast button.
         castMenuItemInitializeMethodMatch.let {
