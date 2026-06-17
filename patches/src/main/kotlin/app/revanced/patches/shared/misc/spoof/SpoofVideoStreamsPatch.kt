@@ -90,9 +90,9 @@ internal fun spoofVideoStreamsPatch(
 
                 addInstructionsAtControlFlowLabel(
                     index,
-                    """
-                        invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->blockGetWatchRequest(Landroid/net/Uri${'$'}Builder;)Landroid/net/Uri${'$'}Builder;
-                        move-result-object v$register
+                    $$"""
+                        invoke-static { v$$register }, $$EXTENSION_CLASS_DESCRIPTOR->blockGetWatchRequest(Landroid/net/Uri$Builder;)Landroid/net/Uri$Builder;
+                        move-result-object v$$register
                     """,
                 )
             }

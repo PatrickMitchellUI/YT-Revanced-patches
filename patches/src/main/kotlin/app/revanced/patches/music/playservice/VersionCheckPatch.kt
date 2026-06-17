@@ -32,6 +32,8 @@ var is_9_19_or_greater: Boolean by Delegates.notNull()
     private set
 var is_9_20_or_greater: Boolean by Delegates.notNull()
     private set
+var is_9_24_or_greater: Boolean by Delegates.notNull()
+    private set
 
 val versionCheckPatch = resourcePatch(
     description = "Uses the Play Store service version to find the major/minor version of the YouTube Music target app."
@@ -55,5 +57,6 @@ val versionCheckPatch = resourcePatch(
         is_9_03_or_greater = 260300000 <= playStoreServicesVersion
         is_9_19_or_greater = 261930000 <= playStoreServicesVersion
         is_9_20_or_greater = 262030000 <= playStoreServicesVersion
+        is_9_24_or_greater = 262430000 <= playStoreServicesVersion
     }
 }
