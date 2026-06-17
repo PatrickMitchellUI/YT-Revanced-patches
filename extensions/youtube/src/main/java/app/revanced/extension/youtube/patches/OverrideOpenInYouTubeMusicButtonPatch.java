@@ -40,6 +40,7 @@ public class OverrideOpenInYouTubeMusicButtonPatch {
     public static @Nullable Intent overrideSetData(@Nullable Intent intent, @Nullable Uri uri) {
         if (intent == null || uri == null || !overrideButton) return intent;
 
+
         String uriString = uri.toString();
         if (uriString.contains(YOUTUBE_MUSIC_PACKAGE_NAME)) {
             if ("market".equals(uri.getScheme()) || uriString.contains("play.google.com/store/apps")) {

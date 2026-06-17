@@ -188,6 +188,7 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
                 SwitchPreference("revanced_hide_keyword_content_home", summaryKey = null),
                 SwitchPreference("revanced_hide_keyword_content_subscriptions", summaryKey = null),
                 SwitchPreference("revanced_hide_keyword_content_search", summaryKey = null),
+                SwitchPreference("revanced_hide_keyword_content_comments", summaryKey = null),
                 TextPreference(
                     "revanced_hide_keyword_content_phrases",
                     inputType = InputType.TEXT_MULTI_LINE
