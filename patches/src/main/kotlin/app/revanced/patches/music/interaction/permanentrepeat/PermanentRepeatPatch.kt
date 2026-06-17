@@ -31,7 +31,8 @@ val permanentRepeatPatch = bytecodePatch(
             "8.37.56",
             "8.44.54",
             "8.47.56",
-            "9.13.50"
+            "9.13.50",
+            "9.15.51"
         ),
     )
 
