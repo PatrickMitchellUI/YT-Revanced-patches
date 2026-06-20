@@ -21,6 +21,7 @@ import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
 import app.revanced.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.revanced.patches.youtube.misc.playertype.playerTypeHookPatch
+import app.revanced.patches.youtube.misc.playservice.is_21_25_or_greater
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
 import app.revanced.patches.youtube.shared.rollingNumberTextViewAnimationUpdateMethodMatch
@@ -248,7 +249,8 @@ val returnYouTubeDislikePatch = bytecodePatch(
 
         // Rolling Number text views use the measured width of the raw string for layout.
         // Modify the measure text calculation to include the left drawable separator if needed.
-        rollingNumberMeasureAnimatedTextMethodMatch.let {
+        // 21.25+ removed the method and doesn't seem to have a replacement.
+        if (!is_21_25_or_greater) rollingNumberMeasureAnimatedTextMethodMatch.let {
             // Additional check to verify the opcodes are at the start of the method
             if (it[0] != 0) throw PatchException("Unexpected opcode location")
             val endIndex = it[-1]

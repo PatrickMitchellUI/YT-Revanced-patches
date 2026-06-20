@@ -16,6 +16,7 @@ import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
 import app.revanced.patches.youtube.misc.playservice.is_21_10_or_greater
 import app.revanced.patches.youtube.misc.playservice.is_21_17_or_greater
+import app.revanced.patches.youtube.misc.playservice.is_21_25_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
@@ -90,7 +91,14 @@ val shortsAutoplayPatch = bytecodePatch(
         reelPlaybackRepeatMethod.apply {
             // The behavior enums are looked up from an ordinal value to an enum type.
 
-            val match = if (is_21_10_or_greater) {
+            val match = if (is_21_25_or_greater) {
+                method {
+                    returnType == reelEnumClass &&
+                            parameterTypes.size == 2 &&
+                            parameterTypes[0].startsWith("L") &&
+                            parameterTypes[1].startsWith("L")
+                }
+            } else if (is_21_10_or_greater) {
                 method {
                     returnType == reelEnumClass &&
                             parameterTypes.size == 1 &&

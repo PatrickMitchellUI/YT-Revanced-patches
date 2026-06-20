@@ -448,7 +448,23 @@ internal val BytecodePatchContext.contextualMenuItemBuilderMethodMatch by compos
     )
 }
 
+// 21.25+
 internal val BytecodePatchContext.channelTabBuilderMethod by gettingFirstMethodDeclaratively {
+    returnType("Landroid/view/View;")
+    parameterTypes(
+        "Ljava/lang/CharSequence;",
+        "Ljava/lang/CharSequence;",
+        "Z",
+        "L",
+        "Z"
+    )
+    custom {
+        !AccessFlags.STATIC.isSet(accessFlags)
+    }
+}
+
+// 21.24 and older
+internal val BytecodePatchContext.channelTabBuilderLegacyMethod by gettingFirstMethodDeclaratively {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returnType("Landroid/view/View;")
     parameterTypes(
