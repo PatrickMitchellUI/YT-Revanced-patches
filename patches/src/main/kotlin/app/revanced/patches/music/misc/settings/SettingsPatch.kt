@@ -127,7 +127,7 @@ val settingsPatch = bytecodePatch(
 
         PreferenceScreen.GENERAL.addPreferences(
             SwitchPreference("revanced_settings_search_history", summaryKey = null),
-            SwitchPreference("revanced_show_menu_icons")
+            SwitchPreference("revanced_show_menu_icons", summaryKey = null)
         )
 
         if (is_8_40_or_greater) {
