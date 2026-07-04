@@ -176,7 +176,7 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
         SwitchPreference("revanced_hide_medical_panels", summaryKey = null),
         SwitchPreference("revanced_hide_snackbar", summaryKey = null),
         SwitchPreference("revanced_hide_subscribers_community_guidelines", summaryKey = null),
-        SwitchPreference("revanced_hide_sync_button"),
+        SwitchPreference("revanced_hide_sync_button", summaryKey = null),
         SwitchPreference("revanced_hide_timed_reactions"),
         SwitchPreference("revanced_hide_video_title")
     )
