@@ -5,11 +5,9 @@ import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
 import app.revanced.patches.shared.misc.litho.filter.addLithoFilter
 import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
-import app.revanced.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.revanced.patches.shared.misc.settings.preference.PreferenceCategory
 import app.revanced.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
-import app.revanced.patches.youtube.layout.buttons.music.quickActionsMarginPatch
 import app.revanced.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.revanced.patches.youtube.misc.playservice.is_20_22_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
@@ -25,7 +23,6 @@ val hideVideoActionButtonsPatch = resourcePatch(
         lithoFilterPatch,
         addResourcesPatch,
         versionCheckPatch,
-        quickActionsMarginPatch,
     )
 
     compatibleWith(
@@ -81,10 +78,6 @@ val hideVideoActionButtonsPatch = resourcePatch(
                     PreferenceCategory(
                         titleKey = "revanced_fullscreen_buttons",
                         preferences = setOf(
-                            NonInteractivePreference(
-                                key = "revanced_quick_actions_top_margin",
-                                tag = "app.revanced.extension.shared.settings.preference.SeekBarPreference"
-                            ),
                             SwitchPreference("revanced_hide_quick_actions", summaryKey = null),
                             SwitchPreference("revanced_hide_quick_actions_ask_button", summaryKey = null),
                             SwitchPreference("revanced_hide_quick_actions_comments_button", summaryKey = null),
