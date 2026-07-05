@@ -27,14 +27,6 @@ internal val BytecodePatchContext.kidsBackgroundPlaybackPolicyControllerMethod b
     returnType("V")
     parameterTypes("I", "L", "Z")
     opcodes(
-        Opcode.IGET,
-        Opcode.IF_NE,
-        Opcode.IGET_OBJECT,
-        Opcode.IF_NE,
-        Opcode.IGET_BOOLEAN,
-        Opcode.IF_EQ,
-        Opcode.GOTO,
-        Opcode.RETURN_VOID,
         Opcode.SGET_OBJECT,
         Opcode.CONST_4,
         Opcode.IF_NE,
