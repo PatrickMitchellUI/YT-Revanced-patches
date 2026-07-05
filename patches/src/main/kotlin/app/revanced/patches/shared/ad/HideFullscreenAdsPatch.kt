@@ -57,10 +57,11 @@ internal fun hideFullscreenAdsPatch(
         }
 
         lithoDialogBuilderMethodMatch.let {
-            it.method.cloneMutableAndPreserveParameters().apply {
-                // Find the class name of the custom dialog
-                val dialogClass = getInstruction(it[0]).methodReference!!.definingClass
+            // Find the class name of the custom dialog from the original method, before
+            // cloneMutableAndPreserveParameters() shifts the fingerprint match indexes.
+            val dialogClass = it.method.getInstruction(it[0]).methodReference!!.definingClass
 
+            it.method.cloneMutableAndPreserveParameters().apply {
                 // The dialog can be closed after dialog.show(),
                 // and it is better to close the dialog after the layout of the dialog has changed
                 val insertIndex = indexOfFirstInstructionReversedOrThrow {
