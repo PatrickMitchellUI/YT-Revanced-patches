@@ -42,10 +42,10 @@ internal val BytecodePatchContext.minimizedPlayerMethod by gettingFirstMethodDec
 }
 
 internal val BytecodePatchContext.interactionLoggingEnumMethod by composingFirstMethod {
-    returnType("v")
+    returnType("V")
     instructions(
         "INTERACTION_LOGGING_GESTURE_TYPE_SWIPE"(),
-        allOf(Opcode.SPUT_OBJECT(), field { definingClass == "this" })
+        Opcode.SPUT_OBJECT()
     )
 }
 
@@ -70,13 +70,13 @@ internal val BytecodePatchContext.musicActivityWidgetMethod by composingFirstMet
             3,
             allOf(
                 Opcode.INVOKE_DIRECT(),
-                method { name == "<init>" && parameterTypes == listOf("L") })
+                method { name == "<init>" && parameterTypes.size == 1 })
         ),
         afterAtMost(
             3,
             allOf(
                 Opcode.INVOKE_INTERFACE(),
-                method { parameterTypes == listOf("L", "L", "L") && returnType == "V" })
+                method { parameterTypes.size == 3 && returnType == "V" })
         ),
     )
 }
@@ -96,7 +96,7 @@ internal val BytecodePatchContext.miniPlayerDefaultTextLegacyMethod by composing
     parameterTypes("Ljava/lang/Object;")
     instructions(
         Opcode.IF_NE(),
-        after(ResourceType.STRING("mini_player_default_text"))
+        afterAtMost(50, ResourceType.STRING("mini_player_default_text"))
     )
 }
 
