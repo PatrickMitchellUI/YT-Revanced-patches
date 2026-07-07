@@ -73,7 +73,8 @@ val changeHeaderPatch = changeHeaderPatch(
             "8.44.54",
             "8.47.56",
             "9.13.50",
-            "9.15.51"
+            "9.15.51",
+            "9.24.51"
         ),
     ),
     resourcesAppId = "music",
