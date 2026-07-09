@@ -64,7 +64,7 @@ val pauseOnAudioInterruptPatch = bytecodePatch(
         audioFocusChangeListenerMethod.addInstructions(
             0,
             """
-                invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->overrideAudioFocusChange(I)I
+                invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS_DESCRIPTOR->overrideAudioFocusChange(I)I
                 move-result p1
             """,
         )
