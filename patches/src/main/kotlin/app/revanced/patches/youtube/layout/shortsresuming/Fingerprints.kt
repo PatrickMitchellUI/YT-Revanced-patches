@@ -28,16 +28,18 @@ internal val BytecodePatchContext.userWasInShortsEvaluateMethodMatch by composin
         allOf(
             Opcode.INVOKE_DIRECT_RANGE(),
             method {
-                name == "<init>" && parameterTypes.zip(method1ParametersPrefix)
-                    .all { (a, b) -> a.startsWith(b) }
+                name == "<init>" && parameterTypes.size == method1ParametersPrefix.size &&
+                    parameterTypes.zip(method1ParametersPrefix)
+                        .all { (a, b) -> a.startsWith(b) }
             }
         ),
         afterAtMost(
             50, allOf(
                 Opcode.INVOKE_DIRECT_RANGE(),
                 method {
-                    name == "<init>" && parameterTypes.zip(method2ParametersPrefix)
-                        .all { (a, b) -> a.startsWith(b) }
+                    name == "<init>" && parameterTypes.size == method2ParametersPrefix.size &&
+                        parameterTypes.zip(method2ParametersPrefix)
+                            .all { (a, b) -> a.startsWith(b) }
                 }
             )
         )
