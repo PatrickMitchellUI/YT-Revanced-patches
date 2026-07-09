@@ -7,6 +7,8 @@ import app.revanced.patcher.anyOf
 import app.revanced.patcher.composingFirstMethod
 import app.revanced.patcher.custom
 import app.revanced.patcher.extensions.instructions
+import app.revanced.patcher.extensions.instructionsOrNull
+import app.revanced.patcher.extensions.string
 import app.revanced.patcher.field
 import app.revanced.patcher.firstImmutableMethodDeclaratively
 import app.revanced.patcher.firstMethodComposite
@@ -40,11 +42,17 @@ internal val BytecodePatchContext.playbackSpeedOnItemClickMethod by getting {
 } using { playbackSpeedOnItemClickParentMethodMatch.immutableMethod }
 
 internal val BytecodePatchContext.playerControllerSetTimeReferenceMethodMatch by
-composingFirstMethod("Media progress reported outside media playback: ") {
+composingFirstMethod {
     opcodes(
         Opcode.INVOKE_DIRECT_RANGE,
         Opcode.IGET_OBJECT,
     )
+    // YT version 21.15 and on appends "%s" to this log string, we match the stable prefix so both 20.x and 21.x resolve.
+    custom {
+        instructionsOrNull?.any {
+            it.string?.startsWith("Media progress reported outside media playback:") == true
+        } == true
+    }
 }
 
 internal val BytecodePatchContext.playVideoCheckVideoStreamingDataResponseMethod by gettingFirstImmutableMethodDeclaratively {
