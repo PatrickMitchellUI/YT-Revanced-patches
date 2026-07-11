@@ -140,8 +140,8 @@ val hideAdsPatch = bytecodePatch(
                 index + 1,
                 """
                     invoke-static { v$register }, ${EXTENSION_CLASS_DESCRIPTOR}->allowAds(Z)Z
-                    move-result v0
-                    if-nez v0, :show
+                    move-result v$register
+                    if-nez v$register, :show
                     return-void
                     :show
                     nop
