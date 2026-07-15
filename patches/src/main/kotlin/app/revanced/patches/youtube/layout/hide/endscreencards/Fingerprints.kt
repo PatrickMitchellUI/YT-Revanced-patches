@@ -48,7 +48,6 @@ internal val BytecodePatchContext.layoutVideoMethodMatch by composingFirstMethod
 }
 
 internal val BytecodePatchContext.showEndscreenCardsMethod by gettingFirstMethodDeclaratively {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returnType("V")
     parameterTypes("L")
     instructions(
