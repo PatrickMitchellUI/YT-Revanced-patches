@@ -230,8 +230,8 @@ internal fun baseThemeResourcePatch(
             val darkCountBgColor = "@android:color/system_accent1_100"
             val darkCountTextColor = "@android:color/system_neutral1_900"
 
-            createNotifDrawable(resDir, "drawable/morphe_notif_dot_dark.xml", darkDotColor, "oval")
-            createNotifDrawable(resDir, "drawable/morphe_notif_count_dark.xml", darkCountBgColor, "rectangle", hasCorners = true)
+            createNotifDrawable(resDir, "drawable/revanced_notif_dot_dark.xml", darkDotColor, "oval")
+            createNotifDrawable(resDir, "drawable/revanced_notif_count_dark.xml", darkCountBgColor, "rectangle", hasCorners = true)
             patchCountTextColor(resDir, darkCountTextColor)
 
             val ytmDrawables = listOf(
@@ -277,8 +277,8 @@ internal fun baseThemeResourcePatch(
 
                         val overrides: Map<String, String> = when (style.getAttribute("name")) {
                             "PivotBar.Dark" -> mapOf(
-                                "dotBackground" to "@drawable/morphe_notif_dot_dark",
-                                "countBackground" to "@drawable/morphe_notif_count_dark"
+                                "dotBackground" to "@drawable/revanced_notif_dot_dark",
+                                "countBackground" to "@drawable/revanced_notif_count_dark"
                             )
                             "CairoDarkThemeUpdates" -> mapOf(
                                 "ytRedIndicator" to darkDotColor

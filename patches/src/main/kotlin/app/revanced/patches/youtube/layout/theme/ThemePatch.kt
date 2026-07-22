@@ -126,13 +126,13 @@ val themePatch = baseThemePatch(
 
                         createNotifDrawable(
                             resDir,
-                            "drawable/morphe_notif_dot_light.xml",
+                            "drawable/revanced_notif_dot_light.xml",
                             lightDotColor,
                             "oval"
                         )
                         createNotifDrawable(
                             resDir,
-                            "drawable/morphe_notif_count_light.xml",
+                            "drawable/revanced_notif_count_light.xml",
                             lightCountBgColor,
                             "rectangle",
                             hasCorners = true
@@ -152,8 +152,8 @@ val themePatch = baseThemePatch(
                                     val overrides: Map<String, String> =
                                         when (style.getAttribute("name")) {
                                             "PivotBar.Default" -> mapOf(
-                                                "dotBackground" to "@drawable/morphe_notif_dot_light",
-                                                "countBackground" to "@drawable/morphe_notif_count_light"
+                                                "dotBackground" to "@drawable/revanced_notif_dot_light",
+                                                "countBackground" to "@drawable/revanced_notif_count_light"
                                             )
 
                                             "CairoLightThemeUpdates" -> mapOf(
