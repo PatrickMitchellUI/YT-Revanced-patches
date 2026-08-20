@@ -16,14 +16,17 @@ public class ImportExportPreference extends Preference implements Preference.OnP
         super(context, attrs, defStyleAttr, defStyleRes);
         init();
     }
+
     public ImportExportPreference(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
+
     public ImportExportPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
+
     public ImportExportPreference(Context context) {
         super(context);
         init();
@@ -36,8 +39,9 @@ public class ImportExportPreference extends Preference implements Preference.OnP
     @Override
     public boolean onPreferenceClick(Preference preference) {
         try {
-            if (AbstractPreferenceFragment.instance != null) {
-                AbstractPreferenceFragment.instance.showImportExportTextDialog();
+            AbstractPreferenceFragment fragment = AbstractPreferenceFragment.instance.get();
+            if (fragment != null) {
+                fragment.showImportExportTextDialog();
             }
         } catch (Exception ex) {
             Logger.printException(() -> "onPreferenceClick failure", ex);

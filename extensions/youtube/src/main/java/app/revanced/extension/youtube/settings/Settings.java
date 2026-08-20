@@ -48,7 +48,6 @@ import app.revanced.extension.youtube.patches.AlternativeThumbnailsPatch.StillIm
 import app.revanced.extension.youtube.patches.AlternativeThumbnailsPatch.ThumbnailOption;
 import app.revanced.extension.youtube.patches.AlternativeThumbnailsPatch.ThumbnailStillTime;
 import app.revanced.extension.youtube.patches.ChangeFormFactorPatch.TabletLayoutInPlayerAvailability;
-import app.revanced.extension.youtube.patches.MiniplayerPatch;
 import app.revanced.extension.youtube.patches.VersionCheckPatch;
 import app.revanced.extension.youtube.patches.litho.LayoutComponentsFilter.ExpandableCardStyle;
 import app.revanced.extension.youtube.sponsorblock.SponsorBlockSettings;

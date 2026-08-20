@@ -11,18 +11,77 @@ import androidx.annotation.Nullable;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.Deque;
+import java.util.Objects;
+import java.util.concurrent.ConcurrentLinkedDeque;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import app.revanced.extension.shared.settings.BaseSettings;
-import app.revanced.extension.shared.settings.preference.LogBufferManager;
 
 /**
  * ReVanced specific logger. Logging is done to standard device log (accessible through ADB),
- * and additionally accessible through {@link LogBufferManager}.
- *
+ * and additionally accessible through {@link #getLogBuffer()}.
+ * <p>
  * All methods are thread safe, and are safe to call even
  * if {@link Utils#getContext()} is not available.
  */
+@SuppressWarnings("unused")
 public class Logger {
+
+    /** Maximum byte size of all buffer entries. Must be less than Android's 1 MB Binder transaction limit. */
+    private static final int BUFFER_MAX_BYTES = 900_000;
+    /** Limit number of log lines. */
+    private static final int BUFFER_MAX_SIZE = 10_000;
+
+    private static final Deque<String> logBuffer = new ConcurrentLinkedDeque<>();
+    private static final AtomicInteger logBufferByteSize = new AtomicInteger();
+
+    public static String getFilteredLogs() {
+        StringBuilder filteredOutput = new StringBuilder(logBufferByteSize.get());
+
+        for (String log : logBuffer) {
+            filteredOutput.append(log).append('\n');
+        }
+
+        return filteredOutput.toString().trim();
+    }
+
+    private static void appendToLogBuffer(String message) {
+        Objects.requireNonNull(message);
+
+        // It's very important that no Settings are used in this method,
+        // as this code is used when a context is not set and thus referencing
+        // a setting will crash the app.
+        logBuffer.addLast(message);
+        int newSize = logBufferByteSize.addAndGet(message.length());
+
+        // Remove the oldest entries if over the log size limits.
+        while (newSize > BUFFER_MAX_BYTES || logBuffer.size() > BUFFER_MAX_SIZE) {
+            String removed = logBuffer.pollFirst();
+            if (removed == null) {
+                // Thread race of two different calls to this method, and the other thread won.
+                return;
+            }
+
+            newSize = logBufferByteSize.addAndGet(-removed.length());
+        }
+    }
+
+    public static Deque<String> getLogBuffer() {
+        return logBuffer;
+    }
+
+    public static void clearLogBufferData() {
+        // Cannot simply clear the log buffer because there is no
+        // write lock for both the deque and the atomic int.
+        // Instead, pop off log entries and decrement the size one by one.
+        while (!logBuffer.isEmpty()) {
+            String removed = logBuffer.pollFirst();
+            if (removed != null) {
+                logBufferByteSize.addAndGet(-removed.length());
+            }
+        }
+    }
 
     /**
      * Log messages using lambdas.
@@ -45,7 +104,7 @@ public class Logger {
     /**
      * Log tag prefix. Only used for system logging.
      */
-    private static final String REVANCED_LOG_TAG_PREFIX = "revanced: ";
+    private static final String REVANCED_LOG_TAG_PREFIX = "ReVanced: ";
 
     private static final String LOGGER_CLASS_NAME = Logger.class.getName();
 
@@ -76,9 +135,9 @@ public class Logger {
     }
 
     /**
-     * Internal method to handle logging to Android Log and {@link LogBufferManager}.
-     * Appends the log message, stack trace (if enabled), and exception (if present) to logBuffer
-     * with class name but without 'revanced:' prefix.
+     * Internal method to handle logging to Android Log and internally to appends the log message,
+     * stack trace (if enabled), and exception (if present) to logBuffer with class name but
+     * without 'ReVanced:' prefix.
      *
      * @param logLevel          The log level.
      * @param message           Log message object.
@@ -114,9 +173,9 @@ public class Logger {
             logText += stackTrace.substring(loggerBegins);
         }
 
-        // Do not include "revanced:" prefix in clipboard logs.
+        // Do not include "ReVanced:" prefix in clipboard logs.
         String managerToastString = className + ": " + logText;
-        LogBufferManager.appendToLogBuffer(managerToastString);
+        appendToLogBuffer(managerToastString);
 
         String logTag = REVANCED_LOG_TAG_PREFIX + className;
         switch (logLevel) {
