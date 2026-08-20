@@ -85,9 +85,7 @@ internal fun disableDRCAudioPatch(
                         return-void
                     """,
                 )
-            }
-
-            classDef.methods.add(helperMethod)
+            }.also(classDef.methods::add)
 
             findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
                 addInstructionsAtControlFlowLabel(
