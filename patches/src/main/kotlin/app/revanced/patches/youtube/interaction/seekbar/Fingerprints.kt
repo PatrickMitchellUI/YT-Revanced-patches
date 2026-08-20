@@ -23,7 +23,6 @@ import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patcher.returnType
 import app.revanced.patcher.type
 import app.revanced.util.getting
-import app.revanced.util.literal
 import app.revanced.util.using
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -36,7 +35,6 @@ private val BytecodePatchContext.swipingUpGestureParentMethod by gettingFirstImm
     )
 }
 
-
 internal val BytecodePatchContext.showSwipingUpGuideMethod by getting {
     firstMethodDeclaratively {
         accessFlags(AccessFlags.FINAL)
@@ -45,7 +43,6 @@ internal val BytecodePatchContext.showSwipingUpGuideMethod by getting {
         instructions(1L())
     }
 } using { swipingUpGestureParentMethod }
-
 
 internal val BytecodePatchContext.allowSwipingUpGestureMethod by getting {
     firstMethodDeclaratively {
@@ -111,13 +108,13 @@ internal val BytecodePatchContext.slideToSeekMethodMatch by composingFirstMethod
     accessFlags(AccessFlags.PRIVATE, AccessFlags.FINAL)
     returnType("V")
     parameterTypes("Landroid/view/View;", "F")
-    opcodes(
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT,
-        Opcode.IF_EQZ,
-        Opcode.GOTO_16,
+    instructions(
+        Opcode.INVOKE_VIRTUAL(),
+        after(Opcode.MOVE_RESULT()),
+        after(Opcode.IF_EQZ()),
+        after(Opcode.GOTO_16()),
+        67108864L(),
     )
-    literal { 67108864 }
 }
 
 internal val BytecodePatchContext.fullscreenLargeSeekbarFeatureFlagMethodMatch by composingFirstMethod {
@@ -134,7 +131,7 @@ internal val BytecodePatchContext.videoStreamingDataAllowSeekingMethod by gettin
         instructions(
             8L(),
             after(Opcode.IF_EQ()),
-            after(1L()) // Another method in the same class almost matches this but uses 0 here.
+            after(1L()), // Another method in the same class almost matches this but uses 0 here.
         )
     }
 } using {

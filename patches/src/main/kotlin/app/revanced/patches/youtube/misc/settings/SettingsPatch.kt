@@ -357,6 +357,7 @@ internal fun BytecodePatchContext.modifyActivityForSettingsInjection(
         val invokeFinishOpcode = if (isYouTubeMusic) "invoke-super" else "invoke-virtual"
 
         addInstructions(
+            0,
             """
                 invoke-static {}, $extensionClassType->$extensionMethodName()Z
                 move-result v0

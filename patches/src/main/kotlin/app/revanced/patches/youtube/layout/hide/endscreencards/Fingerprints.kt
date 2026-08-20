@@ -2,6 +2,7 @@ package app.revanced.patches.youtube.layout.hide.endscreencards
 
 import app.revanced.patcher.*
 import app.revanced.patcher.patch.BytecodePatchContext
+import app.revanced.patches.shared.misc.mapping.ResourceType
 import app.revanced.util.literal
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -10,41 +11,36 @@ internal val BytecodePatchContext.layoutCircleMethodMatch by composingFirstMetho
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     parameterTypes()
     returnType("Landroid/view/View;")
-    opcodes(
-        Opcode.CONST,
-        Opcode.CONST_4,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT_OBJECT,
-        Opcode.CHECK_CAST,
+    instructions(
+        ResourceType.LAYOUT("endscreen_element_layout_circle"),
+        afterAtMost(10, Opcode.INVOKE_VIRTUAL()),
+        after(Opcode.MOVE_RESULT_OBJECT()),
+        after(Opcode.CHECK_CAST()),
     )
-    literal { layoutCircle }
 }
 
 internal val BytecodePatchContext.layoutIconMethodMatch by composingFirstMethod {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     parameterTypes()
     returnType("Landroid/view/View;")
-    opcodes(
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT_OBJECT,
-        Opcode.CHECK_CAST,
-
-        )
-    literal { layoutIcon }
+    instructions(
+        ResourceType.LAYOUT("endscreen_element_layout_icon"),
+        afterAtMost(10, Opcode.INVOKE_VIRTUAL()),
+        after(Opcode.MOVE_RESULT_OBJECT()),
+        after(Opcode.CHECK_CAST()),
+    )
 }
 
 internal val BytecodePatchContext.layoutVideoMethodMatch by composingFirstMethod {
     accessFlags(AccessFlags.PUBLIC)
     parameterTypes()
     returnType("Landroid/view/View;")
-    opcodes(
-        Opcode.CONST,
-        Opcode.CONST_4,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT_OBJECT,
-        Opcode.CHECK_CAST,
+    instructions(
+        ResourceType.LAYOUT("endscreen_element_layout_video"),
+        afterAtMost(10, Opcode.INVOKE_VIRTUAL()),
+        after(Opcode.MOVE_RESULT_OBJECT()),
+        after(Opcode.CHECK_CAST()),
     )
-    literal { layoutVideo }
 }
 
 internal val BytecodePatchContext.showEndscreenCardsMethod by gettingFirstMethodDeclaratively {

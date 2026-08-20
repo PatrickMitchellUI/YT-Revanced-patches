@@ -2,18 +2,18 @@ package app.revanced.patches.youtube.layout.hide.infocards
 
 import app.revanced.patcher.*
 import app.revanced.patcher.patch.BytecodePatchContext
+import app.revanced.patches.shared.misc.mapping.ResourceType
 import app.revanced.util.getting
 import app.revanced.util.using
-import app.revanced.util.literal
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 internal val BytecodePatchContext.infoCardsIncognitoMethod by getting {
     firstMethodDeclaratively {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returnType("Ljava/lang/Boolean;")
-    parameterTypes("L", "J")
-    instructions("vibrator"())
+        accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+        returnType("Ljava/lang/Boolean;")
+        parameterTypes("L", "J")
+        instructions("vibrator"())
     }
 } using {
     firstImmutableMethodDeclaratively {
@@ -27,10 +27,10 @@ internal val BytecodePatchContext.infoCardsIncognitoMethod by getting {
 
 internal val BytecodePatchContext.infoCardsMethodCallMethodMatch by
     composingFirstMethod("Missing ControlsOverlayPresenter for InfoCards to work.") {
-        opcodes(
-            Opcode.INVOKE_VIRTUAL,
-            Opcode.IGET_OBJECT,
-            Opcode.INVOKE_INTERFACE,
+        instructions(
+            Opcode.INVOKE_VIRTUAL(),
+            after(Opcode.IGET_OBJECT()),
+            after(Opcode.INVOKE_INTERFACE()),
+            ResourceType.ID("info_cards_drawer_header"),
         )
-        literal { drawerResourceId }
     }

@@ -60,7 +60,7 @@ val enableSlideToSeekPatch = bytecodePatch(
                         """
                             invoke-static { v$register }, $extensionMethodDescriptor
                             move-result v$register
-                       """,
+                       """
                     )
                 }
 

@@ -10,7 +10,6 @@ import app.revanced.patcher.firstMethod
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
-import app.revanced.patches.shared.misc.mapping.ResourceType
 import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
@@ -29,9 +28,6 @@ import app.revanced.util.getReference
 import app.revanced.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-
-internal var prefBackgroundAndOfflineCategoryId = -1L
-    private set
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/revanced/extension/youtube/patches/BackgroundPlaybackPatch;"
@@ -73,9 +69,6 @@ val removeBackgroundPlaybackRestrictionsPatch = bytecodePatch(
         PreferenceScreen.MISC.addPreferences(
             SwitchPreference("revanced_remove_background_playback_restrictions", summaryKey = null),
         )
-
-        prefBackgroundAndOfflineCategoryId =
-            ResourceType.STRING["pref_background_and_offline_category"]
 
         arrayOf(
             backgroundPlaybackManagerMethod to "isBackgroundPlaybackAllowed",

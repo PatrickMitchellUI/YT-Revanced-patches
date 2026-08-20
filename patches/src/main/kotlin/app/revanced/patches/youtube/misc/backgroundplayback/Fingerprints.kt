@@ -2,7 +2,7 @@ package app.revanced.patches.youtube.misc.backgroundplayback
 
 import app.revanced.patcher.*
 import app.revanced.patcher.patch.BytecodePatchContext
-import app.revanced.util.literal
+import app.revanced.patches.shared.misc.mapping.ResourceType
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -43,33 +43,33 @@ internal val BytecodePatchContext.backgroundPlaybackSettingsMethod by gettingFir
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returnType("Ljava/lang/String;")
     parameterTypes()
-    opcodes(
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT,
-        Opcode.IF_EQZ,
-        Opcode.IF_NEZ,
-        Opcode.GOTO,
+    instructions(
+        Opcode.INVOKE_VIRTUAL(),
+        after(Opcode.MOVE_RESULT()),
+        after(Opcode.INVOKE_VIRTUAL()),
+        after(Opcode.MOVE_RESULT()),
+        after(Opcode.IF_EQZ()),
+        after(Opcode.IF_NEZ()),
+        after(Opcode.GOTO()),
+        ResourceType.STRING("pref_background_and_offline_category"),
     )
-    literal { prefBackgroundAndOfflineCategoryId }
 }
 
 internal val BytecodePatchContext.kidsBackgroundPlaybackPolicyControllerMethod by gettingFirstMethodDeclaratively {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returnType("V")
     parameterTypes("I", "L", "L")
-    opcodes(
-        Opcode.CONST_4,
-        Opcode.IF_NE,
-        Opcode.SGET_OBJECT,
-        Opcode.IF_NE,
-        Opcode.IGET,
-        Opcode.CONST_4,
-        Opcode.IF_NE,
-        Opcode.IGET_OBJECT,
+    instructions(
+        5L(),
+        after(Opcode.CONST_4()),
+        after(Opcode.IF_NE()),
+        after(Opcode.SGET_OBJECT()),
+        after(Opcode.IF_NE()),
+        after(Opcode.IGET()),
+        after(Opcode.CONST_4()),
+        after(Opcode.IF_NE()),
+        after(Opcode.IGET_OBJECT()),
     )
-    literal { 5 }
 }
 
 internal val BytecodePatchContext.shortsBackgroundPlaybackFeatureFlagMethodMatch by composingFirstMethod {

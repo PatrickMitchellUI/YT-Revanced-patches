@@ -8,12 +8,8 @@ import app.revanced.patches.all.misc.resources.addResourcesPatch
 import app.revanced.patches.music.misc.extension.sharedExtensionPatch
 import app.revanced.patches.music.misc.settings.PreferenceScreen
 import app.revanced.patches.music.misc.settings.settingsPatch
-import app.revanced.patches.shared.misc.mapping.ResourceType
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-
-internal var chipCloud = -1L
-    private set
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/revanced/extension/music/patches/HideCategoryBarPatch;"
@@ -47,8 +43,6 @@ val hideCategoryBarPatch = bytecodePatch(
         PreferenceScreen.GENERAL.addPreferences(
             SwitchPreference("revanced_music_hide_category_bar", summaryKey = null),
         )
-
-        chipCloud = ResourceType.LAYOUT["chip_cloud"]
 
         chipCloudMethodMatch.let {
             val targetIndex = it[-1]

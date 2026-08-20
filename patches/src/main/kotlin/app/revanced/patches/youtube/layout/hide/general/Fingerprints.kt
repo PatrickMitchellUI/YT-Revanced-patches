@@ -23,7 +23,6 @@ import app.revanced.patcher.parameterTypes
 import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patcher.returnType
 import app.revanced.patcher.type
-import app.revanced.patches.music.layout.compactheader.chipCloud
 import app.revanced.patches.shared.misc.mapping.ResourceType
 import app.revanced.patches.youtube.layout.buttons.navigation.wideSearchbarLayoutMethod
 import app.revanced.util.getting

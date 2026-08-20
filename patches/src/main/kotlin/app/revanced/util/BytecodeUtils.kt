@@ -882,7 +882,7 @@ fun Method.cloneMutable(
 
             // Handle `this`.
             if (isNotStatic) {
-                addInstructions(insertIndex++, "move-object/from16 v$destReg, p$pReg")
+                addInstructions(insertIndex++, "move-object/from16 v$destReg, p0")
                 addedInstructions++
                 destReg += 1
                 pReg += 1

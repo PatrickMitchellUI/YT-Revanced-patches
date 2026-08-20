@@ -5,31 +5,19 @@ import app.revanced.patcher.extensions.addInstruction
 import app.revanced.patcher.extensions.addInstructionsWithLabels
 import app.revanced.patcher.extensions.getInstruction
 import app.revanced.patcher.patch.bytecodePatch
-import app.revanced.patcher.patch.resourcePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
 import app.revanced.patches.shared.misc.litho.filter.addLithoFilter
-import app.revanced.patches.shared.misc.mapping.ResourceType
 import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
 import app.revanced.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
+import app.revanced.util.findFreeRegister
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-
-internal var drawerResourceId = -1L
-    private set
-
-private val hideInfoCardsResourcePatch = resourcePatch {
-    dependsOn(resourceMappingPatch)
-
-    apply {
-        drawerResourceId = ResourceType.ID["info_cards_drawer_header"]
-    }
-}
 
 @Suppress("unused")
 val hideInfoCardsPatch = bytecodePatch(
@@ -39,7 +27,7 @@ val hideInfoCardsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         lithoFilterPatch,
-        hideInfoCardsResourcePatch,
+        resourceMappingPatch,
         settingsPatch,
         addResourcesPatch,
     )
@@ -79,16 +67,16 @@ val hideInfoCardsPatch = bytecodePatch(
 
         // Edit: This old non-litho code may be obsolete and no longer used by any supported versions.
         infoCardsMethodCallMethodMatch.let {
-            val invokeInterfaceIndex = it[-1]
+            val invokeInterfaceIndex = it[2]
             it.method.apply {
-                val register = implementation!!.registerCount - 1
+                val freeRegister = findFreeRegister(invokeInterfaceIndex)
 
                 addInstructionsWithLabels(
                     invokeInterfaceIndex,
                     """
                         invoke-static {}, Lapp/revanced/extension/youtube/patches/HideInfoCardsPatch;->hideInfoCardsMethodCall()Z
-                        move-result v$register
-                        if-nez v$register, :hide_info_cards
+                        move-result v$freeRegister
+                        if-nez v$freeRegister, :hide_info_cards
                     """,
                     ExternalLabel(
                         "hide_info_cards",

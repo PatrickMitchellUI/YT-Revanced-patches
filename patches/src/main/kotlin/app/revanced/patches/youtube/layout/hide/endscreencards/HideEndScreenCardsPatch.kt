@@ -7,7 +7,6 @@ import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patcher.patch.resourcePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
-import app.revanced.patches.shared.misc.mapping.ResourceType
 import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
@@ -15,13 +14,6 @@ import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-
-internal var layoutCircle = -1L
-    private set
-internal var layoutIcon = -1L
-    private set
-internal var layoutVideo = -1L
-    private set
 
 private val hideEndScreenCardsResourcePatch = resourcePatch {
     dependsOn(
@@ -37,11 +29,6 @@ private val hideEndScreenCardsResourcePatch = resourcePatch {
             SwitchPreference("revanced_hide_end_screen_cards", summaryKey = null),
         )
 
-        fun idOf(name: String) = ResourceType.LAYOUT["endscreen_element_layout_$name"]
-
-        layoutCircle = idOf("circle")
-        layoutIcon = idOf("icon")
-        layoutVideo = idOf("video")
     }
 }
 

@@ -17,7 +17,7 @@ import app.revanced.extension.shared.Utils;
 import app.revanced.extension.shared.settings.BaseActivityHook;
 
 /**
- * Hooks {@link com.google.android.gms.common.api.GoogleApiActivity}
+ * Hooks {@code com.google.android.gms.common.api.GoogleApiActivity}
  * to inject a custom {@link MusicPreferenceFragment} with a toolbar and search.
  */
 @SuppressWarnings("deprecation")

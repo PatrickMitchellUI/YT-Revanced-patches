@@ -20,17 +20,6 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-internal var playerOverlayChip = -1L
-    private set
-internal var historyMenuItem = -1L
-    private set
-internal var offlineSettingsMenuItem = -1L
-    private set
-internal var searchButton = -1L
-    private set
-internal var topBarMenuItemImageView = -1L
-    private set
-
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/revanced/extension/music/patches/HideButtonsPatch;"
 
@@ -59,11 +48,9 @@ val hideButtonsPatch = bytecodePatch(
     )
 
     apply {
-        playerOverlayChip = ResourceType.ID["player_overlay_chip"]
-        historyMenuItem = ResourceType.ID["history_menu_item"]
-        offlineSettingsMenuItem = ResourceType.ID["offline_settings_menu_item"]
-        searchButton = ResourceType.LAYOUT["search_button"]
-        topBarMenuItemImageView = ResourceType.ID["top_bar_menu_item_image_view"]
+        val playerOverlayChip = ResourceType.ID["player_overlay_chip"]
+        val searchButton = ResourceType.LAYOUT["search_button"]
+        val topBarMenuItemImageView = ResourceType.ID["top_bar_menu_item_image_view"]
 
         addResources("music", "layout.buttons.hideButtons")
 
@@ -76,11 +63,11 @@ val hideButtonsPatch = bytecodePatch(
 
         // Region for hide history button in the top bar.
         arrayOf(
-            historyMenuItemMethodMatch,
-            historyMenuItemOfflineTabMethodMatch,
-        ).forEach { match ->
+            historyMenuItemMethodMatch to 1,
+            historyMenuItemOfflineTabMethodMatch to 0,
+        ).forEach { (match, matchIndex) ->
             match.method.apply {
-                val targetIndex = match[0]
+                val targetIndex = match[matchIndex]
                 val targetRegister = getInstruction<FiveRegisterInstruction>(targetIndex).registerD
 
                 addInstructions(

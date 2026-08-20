@@ -3,7 +3,7 @@ package app.revanced.patches.music.layout.buttons
 import app.revanced.patcher.*
 import app.revanced.patcher.extensions.instructions
 import app.revanced.patcher.patch.BytecodePatchContext
-import app.revanced.util.literal
+import app.revanced.patches.shared.misc.mapping.ResourceType
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -15,18 +15,18 @@ internal val BytecodePatchContext.mediaRouteButtonMethod by gettingFirstMethodDe
 internal val BytecodePatchContext.playerOverlayChipMethod by gettingFirstMethodDeclaratively {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returnType("L")
-    instructions(playerOverlayChip())
+    instructions(ResourceType.ID("player_overlay_chip"))
 }
 
 internal val BytecodePatchContext.historyMenuItemMethodMatch by composingFirstMethod {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returnType("V")
     parameterTypes("Landroid/view/Menu;")
-    opcodes(
-        Opcode.INVOKE_INTERFACE,
-        Opcode.RETURN_VOID,
+    instructions(
+        ResourceType.ID("history_menu_item"),
+        after(method("setVisible")),
+        after(Opcode.RETURN_VOID()),
     )
-    literal { historyMenuItem }
     custom { immutableClassDef.methods.count() == 5 || immutableClassDef.methods.count() == 4 }
 }
 
@@ -34,13 +34,12 @@ internal val BytecodePatchContext.historyMenuItemOfflineTabMethodMatch by compos
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returnType("V")
     parameterTypes("Landroid/view/Menu;")
-    opcodes(
-        Opcode.INVOKE_INTERFACE,
-        Opcode.RETURN_VOID,
+    instructions(
+        ResourceType.ID("history_menu_item"),
+        ResourceType.ID("offline_settings_menu_item"),
+        method("setVisible"),
+        after(Opcode.RETURN_VOID()),
     )
-
-    val match = indexedMatcher(items = unorderedAllOf(historyMenuItem(), offlineSettingsMenuItem()))
-    custom { match(instructions) }
 }
 
 internal val BytecodePatchContext.searchActionViewMethod by gettingFirstMethodDeclaratively {
@@ -48,12 +47,12 @@ internal val BytecodePatchContext.searchActionViewMethod by gettingFirstMethodDe
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returnType("Landroid/view/View;")
     parameterTypes()
-    literal { searchButton }
+    instructions(ResourceType.LAYOUT("search_button"))
 }
 
 internal val BytecodePatchContext.topBarMenuItemImageViewMethod by gettingFirstMethodDeclaratively {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returnType("Landroid/view/View;")
     parameterTypes()
-    literal { topBarMenuItemImageView }
+    instructions(ResourceType.ID("top_bar_menu_item_image_view"))
 }

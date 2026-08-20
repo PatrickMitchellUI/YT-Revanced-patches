@@ -48,7 +48,7 @@ val disableVideoCodecsPatch = bytecodePatch(
                 }
 
                 val reference = instruction.methodReference
-                if (reference?.definingClass == "Landroid/view/Display\$HdrCapabilities;" && reference.name == "getSupportedHdrTypes") {
+                if (reference?.definingClass == $$"Landroid/view/Display$HdrCapabilities;" && reference.name == "getSupportedHdrTypes") {
                     return@match instruction to instructionIndex
                 }
                 return@match null

@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 
 import app.revanced.extension.shared.Logger;
 import app.revanced.extension.music.settings.Settings;
+import app.revanced.extension.shared.Utils;
 
 @SuppressWarnings("unused")
 public final class ChangeStartPagePatch {
@@ -52,6 +53,41 @@ public final class ChangeStartPagePatch {
 
     private static final String ACTION_MAIN = "android.intent.action.MAIN";
 
+    private static final String SETTINGS_CLASS = "com.google.android.apps.youtube.music.settings.SettingsCompatActivity";
+    private static final String SETTINGS_ATTRIBUTION_FRAGMENT_KEY = ":android:show_fragment";
+    private static final String SETTINGS_ATTRIBUTION_FRAGMENT_VALUE = "com.google.android.apps.youtube.music.settings.fragment.SettingsHeadersFragment";
+    private static final String SETTINGS_ATTRIBUTION_HEADER_KEY = ":android:no_headers";
+    private static final int SETTINGS_ATTRIBUTION_HEADER_VALUE = 1;
+
+    private static void openSearch() {
+        Activity activity = Utils.getActivity();
+        if (activity == null) return;
+
+        Intent intent = new Intent();
+        setSearchIntent(activity, intent);
+        activity.startActivity(intent);
+    }
+
+    private static void openSetting() {
+        Activity activity = Utils.getActivity();
+        if (activity == null) return;
+
+        Intent intent = new Intent();
+        intent.setPackage(activity.getPackageName());
+        intent.setClassName(activity, SETTINGS_CLASS);
+        intent.putExtra(SETTINGS_ATTRIBUTION_FRAGMENT_KEY, SETTINGS_ATTRIBUTION_FRAGMENT_VALUE);
+        intent.putExtra(SETTINGS_ATTRIBUTION_HEADER_KEY, SETTINGS_ATTRIBUTION_HEADER_VALUE);
+        activity.startActivity(intent);
+    }
+
+    private static void setSearchIntent(Activity activity, Intent intent) {
+        intent.setAction(SHORTCUT_ACTION);
+        intent.setClassName(activity, SHORTCUT_CLASS_DESCRIPTOR);
+        intent.setPackage(activity.getPackageName());
+        intent.putExtra(SHORTCUT_TYPE, SHORTCUT_TYPE_SEARCH);
+        intent.putExtra(SHORTCUT_ACTION, SHORTCUT_ID_SEARCH);
+    }
+
     public static String overrideBrowseId(@Nullable String original) {
         var startPage = Settings.CHANGE_START_PAGE.get();
 
@@ -86,11 +122,7 @@ public final class ChangeStartPagePatch {
             Logger.printDebug(() -> "Cold start: Launching search activity directly");
             var searchIntent = new Intent();
 
-            searchIntent.setAction(SHORTCUT_ACTION);
-            searchIntent.setClassName(activity, SHORTCUT_CLASS_DESCRIPTOR);
-            searchIntent.setPackage(activity.getPackageName());
-            searchIntent.putExtra(SHORTCUT_TYPE, SHORTCUT_TYPE_SEARCH);
-            searchIntent.putExtra(SHORTCUT_ACTION, SHORTCUT_ID_SEARCH);
+            setSearchIntent(activity, searchIntent);
 
             activity.startActivity(searchIntent);
         }

@@ -26,9 +26,6 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 internal const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/revanced/extension/shared/spoof/SpoofVideoStreamsPatch;"
 
-private lateinit var buildRequestMethod: MutableMethod
-private var buildRequestMethodURLRegister = -1
-
 internal fun spoofVideoStreamsPatch(
     extensionClassDescriptor: String,
     getMainActivityOnCreateMethod: BytecodePatchContext.() -> MutableMethod,
@@ -116,10 +113,8 @@ internal fun spoofVideoStreamsPatch(
         // region Get replacement streams at player requests.
 
         buildRequestMethodMatch.method.apply {
-            buildRequestMethod = this
-
             val newRequestBuilderIndex = buildRequestMethodMatch[0]
-            buildRequestMethodURLRegister = getInstruction<FiveRegisterInstruction>(newRequestBuilderIndex).registerD
+            val buildRequestMethodURLRegister = getInstruction<FiveRegisterInstruction>(newRequestBuilderIndex).registerD
             val freeRegister = findFreeRegister(newRequestBuilderIndex, buildRequestMethodURLRegister)
 
             addInstructions(
@@ -213,16 +208,19 @@ internal fun spoofVideoStreamsPatch(
 
         // region block getAtt request
 
-        buildRequestMethod.apply {
-            val insertIndex = indexOfNewUrlRequestBuilderInstruction(this)
+        buildRequestMethodMatch.let {
+            it.method.apply {
+                val insertIndex = indexOfNewUrlRequestBuilderInstruction(this)
+                val register = getInstruction<FiveRegisterInstruction>(it[0]).registerD
 
-            addInstructions(
-                insertIndex,
-                """
-                    invoke-static { v$buildRequestMethodURLRegister }, $EXTENSION_CLASS_DESCRIPTOR->blockGetAttRequest(Ljava/lang/String;)Ljava/lang/String;
-                    move-result-object v$buildRequestMethodURLRegister
-                """,
-            )
+                addInstructions(
+                    insertIndex,
+                    """
+                        invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->blockGetAttRequest(Ljava/lang/String;)Ljava/lang/String;
+                        move-result-object v$register
+                    """,
+                )
+            }
         }
 
         // endregion
