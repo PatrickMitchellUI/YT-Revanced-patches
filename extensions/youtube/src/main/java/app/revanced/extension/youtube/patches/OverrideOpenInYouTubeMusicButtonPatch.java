@@ -2,9 +2,7 @@ package app.revanced.extension.youtube.patches;
 
 
 import android.content.Intent;
-import android.net.Uri;
-
-import androidx.annotation.Nullable;
+import android.content.pm.PackageManager;
 
 import app.revanced.extension.shared.Utils;
 import app.revanced.extension.youtube.settings.Settings;
@@ -13,49 +11,47 @@ import app.revanced.extension.youtube.settings.Settings;
 public class OverrideOpenInYouTubeMusicButtonPatch {
 
     private static final String YOUTUBE_MUSIC_PACKAGE_NAME = "com.google.android.apps.youtube.music";
+    private static final String REVANCED_EXTRA_FLAG = "ReVanced";
 
-    private static final Boolean overrideButton = Settings.OVERRIDE_OPEN_IN_YOUTUBE_MUSIC_BUTTON.get();
+    public static Intent overrideSetPackage(Intent intent, String packageName) {
+        if (intent == null) return null;
 
-    private static final String overridePackageName = getOverridePackageName();
+        if (!Settings.OVERRIDE_OPEN_IN_YOUTUBE_MUSIC_BUTTON.get()) {
+            return intent.setPackage(packageName);
+        }
 
-    @SuppressWarnings("SameReturnValue")
-    public static String getOverridePackageName() {
-        return ""; // Value is replaced during patching.
-    }
-
-    public static @Nullable Intent overrideSetPackage(@Nullable Intent intent, @Nullable String packageName) {
-        if (intent == null || !overrideButton) return intent;
+        if (intent.getBooleanExtra(REVANCED_EXTRA_FLAG, false)) {
+            return intent;
+        }
 
         if (YOUTUBE_MUSIC_PACKAGE_NAME.equals(packageName)) {
-            if (Utils.isNotEmpty(overridePackageName) && Utils.isPackageEnabled(overridePackageName)) {
-                return intent.setPackage(overridePackageName);
-            }
+            String target = Settings.OVERRIDE_OPEN_IN_YOUTUBE_MUSIC_BUTTON_TARGET_PACKAGE_NAME.get().trim();
 
+            if (Utils.isNotEmpty(target) && isAppInstalled(target)) {
+                PackageManager pm = Utils.getContext().getPackageManager();
+                Intent launchIntent = pm.getLaunchIntentForPackage(target);
+
+                if (launchIntent != null) {
+                    intent.setAction(launchIntent.getAction());
+                    intent.setComponent(launchIntent.getComponent());
+                    intent.setPackage(target);
+                    intent.putExtra(REVANCED_EXTRA_FLAG, true);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    return intent;
+                }
+            }
             return intent.setPackage(null);
         }
 
         return intent.setPackage(packageName);
     }
 
-    public static @Nullable Intent overrideSetData(@Nullable Intent intent, @Nullable Uri uri) {
-        if (intent == null || uri == null || !overrideButton) return intent;
 
-
-        String uriString = uri.toString();
-        if (uriString.contains(YOUTUBE_MUSIC_PACKAGE_NAME)) {
-            if ("market".equals(uri.getScheme()) || uriString.contains("play.google.com/store/apps")) {
-                intent.setData(Uri.parse("https://music.youtube.com/"));
-
-                if (Utils.isNotEmpty(overridePackageName) && Utils.isPackageEnabled(overridePackageName)) {
-                    intent.setPackage(overridePackageName);
-                } else {
-                    intent.setPackage(null);
-                }
-
-                return intent;
-            }
+    private static boolean isAppInstalled(String packageName) {
+        try {
+            return Utils.getContext().getPackageManager().getLaunchIntentForPackage(packageName) != null;
+        } catch (Exception e) {
+            return false;
         }
-
-        return intent.setData(uri);
     }
 }
