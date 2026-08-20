@@ -1186,11 +1186,6 @@ public class Utils {
             return;
         }
 
-        String revancedLocale = Utils.getContext().getResources().getConfiguration().locale.getLanguage();
-        if (revancedLocale.equals(Locale.ENGLISH.getLanguage())) {
-            return;
-        }
-
         for (int i = 0, prefCount = group.getPreferenceCount(); i < prefCount; i++) {
             Preference pref = group.getPreference(i);
             pref.setSingleLineTitle(false);

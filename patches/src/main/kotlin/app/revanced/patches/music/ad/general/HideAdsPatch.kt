@@ -18,61 +18,62 @@ private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/revanced/extension/music/patches/HideAdsPatch;"
 
 @Suppress("unused")
-val hideMusicAdsPatch = bytecodePatch(
-    name = "Hide ads",
-    description = "Adds options to hide ads such as the fullscreen Premium popup and \"Get Music Premium\" label.",
-) {
-    dependsOn(
-        sharedExtensionPatch,
-        hideFullscreenAdsPatch(PreferenceScreen.ADS),
-        settingsPatch,
-        addResourcesPatch,
-    )
-
-    compatibleWith(
-        "com.google.android.apps.youtube.music"(
-            "7.29.52",
-            "8.37.56",
-            "8.44.54",
-            "8.47.56",
-            "9.13.50",
-            "9.15.51",
-            "9.24.51"
-        ),
-    )
-
-    apply {
-        addResources("music", "ad.general.hideAdsPatch")
-
-        PreferenceScreen.ADS.addPreferences(
-            SwitchPreference("revanced_music_hide_get_premium_label", summaryKey = null),
+val hideMusicAdsPatch =
+    bytecodePatch(
+        name = "Hide ads",
+        description = "Adds options to hide ads such as the fullscreen Premium popup and \"Get Music Premium\" label.",
+    ) {
+        dependsOn(
+            sharedExtensionPatch,
+            hideFullscreenAdsPatch(PreferenceScreen.ADS),
+            settingsPatch,
+            addResourcesPatch,
         )
 
-        // Hide 'Get Music Premium' label
-        hideGetPremiumMethodMatch.let {
-            val insertIndex = it[-1]
+        compatibleWith(
+            "com.google.android.apps.youtube.music"(
+                "7.29.52",
+                "8.37.56",
+                "8.44.54",
+                "8.47.56",
+                "9.13.50",
+                "9.15.51",
+                "9.24.51",
+            ),
+        )
 
-            it.method.apply {
-                val setVisibilityInstruction = getInstruction<FiveRegisterInstruction>(insertIndex)
-                val getPremiumViewRegister = setVisibilityInstruction.registerC
-                val visibilityRegister = setVisibilityInstruction.registerD
+        apply {
+            addResources("music", "ad.general.hideAdsPatch")
 
-                replaceInstruction(
-                    insertIndex,
-                    "const/16 v$visibilityRegister, 0x8",
-                )
+            PreferenceScreen.ADS.addPreferences(
+                SwitchPreference("revanced_music_hide_get_premium_label", summaryKey = null),
+            )
 
-                addInstruction(
-                    insertIndex + 1,
-                    "invoke-virtual {v$getPremiumViewRegister, v$visibilityRegister}, " +
+            // Hide 'Get Music Premium' label.
+            hideGetPremiumMethodMatch.let {
+                val insertIndex = it[-1]
+
+                it.method.apply {
+                    val setVisibilityInstruction = getInstruction<FiveRegisterInstruction>(insertIndex)
+                    val getPremiumViewRegister = setVisibilityInstruction.registerC
+                    val visibilityRegister = setVisibilityInstruction.registerD
+
+                    replaceInstruction(
+                        insertIndex,
+                        "const/16 v$visibilityRegister, 0x8",
+                    )
+
+                    addInstruction(
+                        insertIndex + 1,
+                        "invoke-virtual {v$getPremiumViewRegister, v$visibilityRegister}, " +
                             "Landroid/view/View;->setVisibility(I)V",
-                )
+                    )
+                }
             }
-        }
 
-        membershipSettingsMethod.addInstructionsWithLabels(
-            0,
-            """
+            membershipSettingsMethod.addInstructionsWithLabels(
+                0,
+                """
                 invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->hideGetPremiumLabel()Z
                 move-result v0
                 if-eqz v0, :show
@@ -81,6 +82,6 @@ val hideMusicAdsPatch = bytecodePatch(
                 :show
                 nop
             """,
-        )
+            )
+        }
     }
-}
