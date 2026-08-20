@@ -11,38 +11,39 @@ private const val EXTENSION_CLASS_DESCRIPTOR_PREFIX =
 private const val EXTENSION_CLASS_DESCRIPTOR = "$EXTENSION_CLASS_DESCRIPTOR_PREFIX;"
 
 @Suppress("unused")
-val spoofWiFiConnectionPatch = bytecodePatch(
-    name = "Spoof Wi-Fi connection",
-    description = "Spoofs an existing Wi-Fi connection.",
-    use = false,
-) {
-    extendWith("extensions/all/misc/connectivity/wifi/spoof/spoof-wifi.rve")
+val spoofWiFiConnectionPatch =
+    bytecodePatch(
+        name = "Spoof Wi-Fi connection",
+        description = "Spoofs an existing Wi-Fi connection.",
+        use = false,
+    ) {
+        extendWith("extensions/all/misc/connectivity/wifi/spoof/spoof-wifi.rve")
 
-    dependsOn(
-        bytecodePatch {
-            apply {
-                forEachInstructionAsSequence(
-                    match = { classDef, _, instruction, instructionIndex ->
-                        filterMapInstruction35c<MethodCall>(
-                            EXTENSION_CLASS_DESCRIPTOR_PREFIX,
-                            classDef,
-                            instruction,
-                            instructionIndex,
-                        )
-                    },
-                    transform = { method, entry ->
-                        val (methodType, instruction, instructionIndex) = entry
-                        methodType.replaceInvokeVirtualWithExtension(
-                            EXTENSION_CLASS_DESCRIPTOR,
-                            method,
-                            instruction,
-                            instructionIndex,
-                        )
-                    })
-            }
-        },
-    )
-}
+        dependsOn(
+            bytecodePatch {
+                apply {
+                    forEachInstructionAsSequence(
+                        match = { classDef, _, instruction, instructionIndex ->
+                            filterMapInstruction35c<MethodCall>(
+                                EXTENSION_CLASS_DESCRIPTOR_PREFIX,
+                                classDef,
+                                instruction,
+                                instructionIndex,
+                            )
+                        },
+                        transform = { method, entry ->
+                            val (methodType, _, instructionIndex) = entry
+                            methodType.replaceInvokeVirtualWithExtension(
+                                EXTENSION_CLASS_DESCRIPTOR,
+                                method,
+                                instructionIndex,
+                            )
+                        },
+                    )
+                }
+            },
+        )
+    }
 
 // Information about method calls we want to replace.
 @Suppress("unused")
@@ -50,7 +51,7 @@ private enum class MethodCall(
     override val definedClassName: String,
     override val methodName: String,
     override val methodParams: Array<String>,
-    override val returnType: String,
+    override val methodReturnType: String,
 ) : IMethodCall {
     GetSystemService1(
         "Landroid/content/Context;",
