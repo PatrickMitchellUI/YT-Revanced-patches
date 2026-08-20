@@ -1,7 +1,13 @@
 package app.revanced.patches.youtube.interaction.downloads
 
-import app.revanced.patcher.*
+import app.revanced.patcher.accessFlags
+import app.revanced.patcher.anyOf
+import app.revanced.patcher.gettingFirstMethodDeclaratively
+import app.revanced.patcher.instructions
+import app.revanced.patcher.invoke
+import app.revanced.patcher.parameterTypes
 import app.revanced.patcher.patch.BytecodePatchContext
+import app.revanced.patcher.returnType
 import com.android.tools.smali.dexlib2.AccessFlags
 
 internal val BytecodePatchContext.offlineVideoEndpointMethod by gettingFirstMethodDeclaratively {
@@ -14,6 +20,9 @@ internal val BytecodePatchContext.offlineVideoEndpointMethod by gettingFirstMeth
         "L",
     )
     instructions(
-        "Unsupported Offline Video Action: "(String::startsWith),
+        anyOf(
+            "Unsupported Offline Video Action: " { equals(it) }, // 21.14 and lower
+            "Unsupported Offline Video Action: %s" { equals(it) } // 21.15+
+        )
     )
 }
