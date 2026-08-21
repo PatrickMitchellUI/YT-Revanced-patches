@@ -413,7 +413,7 @@ However, enabling this will also log some user data such as your IP address."</s
             <string name="revanced_hide_upload_time_summary">"Limitations:
 • Shorts shelves, channel pages, and search results may still show upload times.
 • This feature does not work with automotive layout."</string>
-            <string name="revanced_hide_keyword_content_screen_title">Hide keyword content</string>
+            <string name="revanced_hide_keyword_content_screen_title">Keyword filter</string>
             <string name="revanced_hide_keyword_content_screen_summary">Hide feed and search videos using keyword filters</string>
             <string name="revanced_hide_keyword_content_home_title">Hide Home videos by keywords</string>
             <string name="revanced_hide_keyword_content_search_title">Hide search results by keywords</string>
@@ -460,7 +460,7 @@ Limitations:
         </patch>
         <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">URL copied to clipboard</string>
-            <string name="revanced_share_copy_link_with_timestamp_button_success">URL with timestamp copied</string>
+            <string name="revanced_share_copy_link_with_timestamp_button_success">URL with timestamp copied to clipboard</string>
             <string name="revanced_copy_video_link_button_title">Show copy video URL button</string>
             <string name="revanced_copy_video_link_button_summary">Tap to copy the video URL, tap and hold to copy with timestamp</string>
             <string name="revanced_copy_video_link_with_timestamp_button_title">Copy timestamp by default</string>
@@ -472,7 +472,7 @@ Limitations:
         </patch>
         <patch id="interaction.reload.reloadVideoButtonPatch">
             <string name="revanced_reload_video_button_title">Show reload video button</string>
-            <string name="revanced_dismiss_player_not_available_toast">Video id is unavailable. Please manually reopen the video.</string>
+            <string name="revanced_dismiss_player_not_available_toast">Video ID is unavailable. Please reload the video manually.</string>
         </patch>
         <patch id="layout.hide.signintotv.disableSignInToTVPopupPatch">
             <string name="revanced_disable_sign_in_to_tv_popup_title">Disable \'Sign in to TV\' popup</string>
@@ -587,8 +587,8 @@ Verify the package name is correct and the app is installed"</string>
         <patch id="layout.buttons.action.hideButtonsPatch">
             <string name="revanced_action_buttons_screen_title">Action buttons</string>
             <string name="revanced_action_buttons_screen_summary">Hide or show action buttons in fullscreen and portrait</string>
-            <string name="revanced_portrait_buttons">Portrait buttons</string>
-            <string name="revanced_fullscreen_buttons">Fullscreen buttons</string>
+            <string name="revanced_quick_actions_screen_title">Quick actions</string>
+            <string name="revanced_quick_actions_screen_summary">Hide or show fullscreen quick actions related components</string>
             <string name="revanced_hide_quick_actions_title">Hide action bar</string>
             <string name="revanced_hide_quick_actions_ask_button_title">Hide Ask button</string>
             <string name="revanced_hide_quick_actions_comments_button_title">Hide Comments button</string>
@@ -680,7 +680,7 @@ Verify the package name is correct and the app is installed"</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">Flyout menu</string>
-            <string name="revanced_hide_player_flyout_summary">Hide or show player flyout menu items</string>
+            <string name="revanced_hide_player_flyout_summary">Hide or show flyout menu items</string>
             <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
             <string name="revanced_hide_player_flyout_captions_title">Hide Captions menu</string>
             <string name="revanced_hide_player_flyout_captions_footer_title">Hide Captions menu footer</string>
@@ -721,6 +721,8 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android >Reel\
             <string name="revanced_overlay_buttons_screen_summary">Hide or show overlay buttons related components</string>
         </patch>
         <patch id="layout.buttons.overlay.hidePlayerOverlayButtonsPatch">
+            <string name="revanced_overlay_buttons_screen_title">Overlay buttons</string>
+            <string name="revanced_overlay_buttons_screen_summary">Hide or show overlay buttons related components</string>
             <string name="revanced_hide_autoplay_button_title">Hide Autoplay button</string>
             <!-- This button does not display any text, but 'Captions' should be translated using the same wording used as the translation of 'revanced_hide_player_flyout_captions_title'. -->
             <string name="revanced_hide_captions_button_title">Hide Captions button</string>
@@ -1383,7 +1385,7 @@ Tap here to learn more about DeArrow"</string>
             <string name="revanced_remember_video_quality_toast_shorts">Changed Shorts %1$s quality to: %2$s</string>
         </patch>
         <patch id="video.speed.button.playbackSpeedButtonPatch">
-            <string name="revanced_playback_speed_dialog_button_title">Show speed dialog button</string>
+            <string name="revanced_playback_speed_dialog_button_title">Show playback speed button</string>
             <string name="revanced_playback_speed_dialog_button_summary">Tap and hold to reset speed to default</string>
         </patch>
         <patch id="video.quality.button.videoQualityDialogButtonPatch">
@@ -1395,10 +1397,10 @@ Tap here to learn more about DeArrow"</string>
             <string name="revanced_restore_old_speed_menu_title">Restore old playback speed menu</string>
             <string name="revanced_custom_playback_speeds_title">Custom playback speeds</string>
             <string name="revanced_custom_playback_speeds_summary">Add or change the custom playback speeds</string>
-            <string name="revanced_custom_playback_speeds_invalid">Custom speeds must be less than %s</string>
+            <string name="revanced_custom_playback_speeds_invalid">Custom playback speed must be less than %s</string>
             <string name="revanced_custom_playback_speeds_parse_exception">Invalid custom playback speeds</string>
             <string name="revanced_custom_playback_speeds_auto">Auto</string>
-            <string name="revanced_speed_tap_and_hold_title">Custom tap and hold speed</string>
+            <string name="revanced_speed_tap_and_hold_title">Custom tap and hold playback speed</string>
             <string name="revanced_speed_tap_and_hold_summary">"Playback speed between 0-8
 
 Set to 0, to disable tap and hold speed"</string>
@@ -1409,7 +1411,7 @@ Set to 0, to disable tap and hold speed"</string>
             <string name="revanced_remember_playback_speed_last_selected_toast_title">Show toast on playback speed changes</string>
             <string name="revanced_remember_playback_speed_last_selected_toast_summary">Shows a notification when a new default playback speed is saved</string>
             <string name="revanced_playback_speed_default_title">Default playback speed</string>
-            <string name="revanced_remember_playback_speed_toast">Changed default speed to: %s</string>
+            <string name="revanced_remember_playback_speed_toast">Changed default playback speed to: %s</string>
         </patch>
         <patch id="video.codecs.disableVideoCodecsPatch">
             <string name="revanced_disable_hdr_video_title">Disable HDR video</string>

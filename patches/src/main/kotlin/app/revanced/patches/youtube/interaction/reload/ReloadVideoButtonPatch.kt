@@ -16,7 +16,6 @@ import app.revanced.patches.youtube.misc.playercontrols.addTopControl
 import app.revanced.patches.youtube.misc.playercontrols.initializeTopControl
 import app.revanced.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
 import app.revanced.patches.youtube.misc.playercontrols.playerControlsPatch
-import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
 import app.revanced.patches.youtube.shared.mainActivityOnCreateMethod
 import app.revanced.patches.youtube.video.information.videoInformationPatch
@@ -63,8 +62,8 @@ private const val EXTENSION_BUTTON_DESCRIPTOR =
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/revanced/extension/youtube/patches/LoadVideoPatch;"
 
-private const val EXTENSION_PLAYER_INTERFACE =
-    "Lapp/revanced/extension/youtube/patches/LoadVideoPatch\$PlayerInterface;"
+private const val EXTENSION_PLAYER_INTERFACE_CLASS_DESCRIPTOR =
+    $$"Lapp/revanced/extension/youtube/patches/LoadVideoPatch$PlayerInterface;"
 
 @Suppress("unused")
 val reloadVideoButtonPatch =
@@ -78,6 +77,7 @@ val reloadVideoButtonPatch =
             playerControlsPatch,
             videoInformationPatch,
             playerOverlayButtonsSettingsPatch,
+            addResourcesPatch,
         )
 
         compatibleWith(
@@ -115,7 +115,7 @@ val reloadVideoButtonPatch =
 
             dismissPlayerInnerMethod.classDef.apply {
                 // Add interface and helper methods to allow extension code to call obfuscated methods.
-                interfaces.add(EXTENSION_PLAYER_INTERFACE)
+                interfaces.add(EXTENSION_PLAYER_INTERFACE_CLASS_DESCRIPTOR)
                 // Add methods to access obfuscated player methods.
                 methods.add(
                     ImmutableMethod(
@@ -168,7 +168,7 @@ val reloadVideoButtonPatch =
 
                         addInstruction(
                             index,
-                            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS_DESCRIPTOR->initialize($EXTENSION_PLAYER_INTERFACE)V",
+                            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS_DESCRIPTOR->initialize($EXTENSION_PLAYER_INTERFACE_CLASS_DESCRIPTOR)V",
                         )
                     }
             }

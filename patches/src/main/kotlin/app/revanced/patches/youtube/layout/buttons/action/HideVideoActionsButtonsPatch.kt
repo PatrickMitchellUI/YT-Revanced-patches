@@ -1,31 +1,46 @@
 package app.revanced.patches.youtube.layout.buttons.action
 
-import app.revanced.patcher.patch.resourcePatch
+import app.revanced.patcher.extensions.addInstruction
+import app.revanced.patcher.extensions.getInstruction
+import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
+import app.revanced.patches.music.misc.extension.sharedExtensionPatch
 import app.revanced.patches.shared.misc.litho.filter.addLithoFilter
 import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
-import app.revanced.patches.shared.misc.settings.preference.PreferenceCategory
 import app.revanced.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.youtube.misc.litho.filter.lithoFilterPatch
-import app.revanced.patches.youtube.misc.playservice.is_20_22_or_greater
-import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
+import app.revanced.patches.youtube.misc.litho.node.hookTreeNodeElementPatch
+import app.revanced.patches.youtube.misc.litho.node.hookTreeNodeResult
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
+import app.revanced.patches.youtube.misc.settings.settingsPatch
+import app.revanced.patches.youtube.video.information.videoInformationPatch
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+
+private const val VIDEO_ACTION_BUTTON_FILTER_CLASS_DESCRIPTOR =
+    "Lapp/revanced/extension/youtube/patches/litho/VideoActionButtonsFilter;"
+
+private const val QUICK_ACTION_BUTTON_FILTER_CLASS_DESCRIPTOR =
+    "Lapp/morphe/extension/youtube/patches/litho/VideoActionButtonsFilter;"
 
 @Suppress("unused")
 val hideVideoActionButtonsPatch =
-    resourcePatch(
+    bytecodePatch(
         name = "Hide video action buttons",
         description =
             "Adds options to hide quick actions and video action buttons " +
                 "(such as the Download button) in fullscreen and portrait modes.",
     ) {
         dependsOn(
+            settingsPatch,
+            sharedExtensionPatch,
             resourceMappingPatch,
             lithoFilterPatch,
+            videoInformationPatch,
+            hookTreeNodeElementPatch,
+            quickActionsMarginPatch,
             addResourcesPatch,
-            versionCheckPatch,
         )
 
         compatibleWith(
@@ -87,7 +102,22 @@ val hideVideoActionButtonsPatch =
                 ),
             )
 
-            addLithoFilter("Lapp/revanced/extension/youtube/patches/litho/VideoActionButtonsFilter;")
-            addLithoFilter("Lapp/revanced/extension/youtube/patches/litho/QuickActionButtonsFilter;")
+            addLithoFilter(VIDEO_ACTION_BUTTON_FILTER_CLASS_DESCRIPTOR)
+            addLithoFilter(QUICK_ACTION_BUTTON_FILTER_CLASS_DESCRIPTOR)
+
+            hookTreeNodeResult("$VIDEO_ACTION_BUTTON_FILTER_CLASS_DESCRIPTOR->onLazilyConvertedElementLoaded")
+
+            parseWatchNextResponseMethodMatch.let {
+                it.method.apply {
+                    val index = it[5]
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                    addInstruction(
+                        index + 1,
+                        "invoke-static { v$register }, $VIDEO_ACTION_BUTTON_FILTER_CLASS_DESCRIPTOR->" +
+                            "onSingleColumnWatchNextResultsLoaded(Lcom/google/protobuf/MessageLite;)V",
+                    )
+                }
+            }
         }
     }
