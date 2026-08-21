@@ -188,7 +188,7 @@ MicroG සඳහා බැටරි ප්‍රශස්තකරණය අක�
             <string name="revanced_hide_youtube_premium_promotions_summary_off">YouTube Premium ප්‍රවර්ධන පෙන්වා ඇත</string>
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
-        <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
+        <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">URL ක්ලිප්බෝඩ් එකට පිටපත් කරන ලදි</string>
             <string name="revanced_share_copy_link_with_timestamp_button_success">වේලා මුද්‍රාව සමඟ URL පිටපත් කරන ලදි</string>
             <string name="revanced_copy_video_link_button_title">වීඩියෝ URL පිටපත් කිරීමේ බොත්තම පෙන්වන්න</string>

@@ -180,7 +180,7 @@ Imikhawulo:
             <string name="revanced_hide_youtube_premium_promotions_summary_off">Amaphromoshini we-YouTube Premium abonisiwe</string>
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
-        <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
+        <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">I-URL ikopishwe ebhodini lokunamathisela</string>
             <string name="revanced_share_copy_link_with_timestamp_button_success">I-URL enesikhathi ikopishwe</string>
             <string name="revanced_copy_video_link_button_title">Bonisa inkinobho yokukopisha i-URL yevidiyo</string>

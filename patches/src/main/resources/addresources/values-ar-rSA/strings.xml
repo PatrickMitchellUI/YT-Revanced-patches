@@ -598,7 +598,7 @@ Second \"item\" text"</string>
             <string name="revanced_hide_video_ads_summary_on">تم إخفاء إعلانات الفيديو</string>
             <string name="revanced_hide_video_ads_summary_off">يتم عرض إعلانات الفيديو</string>
         </patch>
-        <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
+        <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">تم نسخ URL إلى الحافظة</string>
             <string name="revanced_share_copy_link_with_timestamp_button_success">تم نسخ عنوان URL مع الطابع الزمني</string>
             <string name="revanced_copy_video_link_button_title">عرض زر نسخ عنوان URL للفيديو</string>

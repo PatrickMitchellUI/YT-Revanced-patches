@@ -188,7 +188,7 @@ Beperkings:
             <string name="revanced_hide_youtube_premium_promotions_summary_off">YouTube Premium-promosies word gewys</string>
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
-        <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
+        <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">URL na knipbord gekopieer</string>
             <string name="revanced_share_copy_link_with_timestamp_button_success">URL met tydstempel gekopieer</string>
             <string name="revanced_copy_video_link_button_title">Wys kopieervideo-URL-knoppie</string>

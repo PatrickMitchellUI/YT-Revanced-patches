@@ -188,7 +188,7 @@ MicroG үчүн батареяны оптималдаштырууну өчүрү
             <string name="revanced_hide_youtube_premium_promotions_summary_off">YouTube Premium промоакциялары көрсөтүлгөн</string>
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
-        <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
+        <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">URL алмашуу буферине көчүрүлдү</string>
             <string name="revanced_share_copy_link_with_timestamp_button_success">Убакыт белгиси менен URL көчүрүлдү</string>
             <string name="revanced_copy_video_link_button_title">Видеонун URL дарегин көчүрүү баскычын көрсөтүү</string>

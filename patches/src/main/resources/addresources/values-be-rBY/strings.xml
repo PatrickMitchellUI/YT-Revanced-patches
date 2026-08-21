@@ -600,7 +600,7 @@ Second \"item\" text"</string>
             <string name="revanced_hide_video_ads_summary_on">Відэарэклама схаваная</string>
             <string name="revanced_hide_video_ads_summary_off">Паказваецца відэарэклама</string>
         </patch>
-        <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
+        <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">URL скапіраваны ў буфер абмену</string>
             <string name="revanced_share_copy_link_with_timestamp_button_success">URL-адрас з пазнакай часу скапіраваны</string>
             <string name="revanced_copy_video_link_button_title">Паказаць кнопку скапіравання URL відэа</string>

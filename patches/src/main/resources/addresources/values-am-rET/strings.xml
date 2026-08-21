@@ -188,7 +188,7 @@ Second \"item\" text"</string>
             <string name="revanced_hide_youtube_premium_promotions_summary_off">YouTube Premium ማስተዋወቂያዎች ይታያሉ</string>
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
-        <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
+        <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">URL ወደ ቅንጥብ ሰሌዳ ተቀድቷል</string>
             <string name="revanced_share_copy_link_with_timestamp_button_success">URL ከሰዓት ማህተም ጋር ተቀድቷል</string>
             <string name="revanced_copy_video_link_button_title">የቪዲዮ URL መቅጃ ቁልፍን አሳይ</string>

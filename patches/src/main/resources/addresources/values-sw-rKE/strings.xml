@@ -188,7 +188,7 @@ Mapungufu:
             <string name="revanced_hide_youtube_premium_promotions_summary_off">Matangazo ya YouTube Premium yameonyeshwa</string>
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
-        <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
+        <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">URL imenakiliwa kwenye ubao klipu</string>
             <string name="revanced_share_copy_link_with_timestamp_button_success">URL yenye muhuri wa muda imenakiliwa</string>
             <string name="revanced_copy_video_link_button_title">Onyesha kitufe cha kunakili URL ya video</string>

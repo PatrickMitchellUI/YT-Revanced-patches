@@ -183,7 +183,7 @@ Ograničenja:
             <string name="revanced_hide_youtube_premium_promotions_summary_off">Promocije za YouTube Premium su prikazane</string>
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
-        <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
+        <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">URL kopiran u međuspremnik</string>
             <string name="revanced_share_copy_link_with_timestamp_button_success">URL s vremenskom oznakom kopiran</string>
             <string name="revanced_copy_video_link_button_title">Prikaži gumb za kopiranje URL-a videozapisa</string>

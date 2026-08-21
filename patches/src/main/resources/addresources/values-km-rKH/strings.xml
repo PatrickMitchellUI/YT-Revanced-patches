@@ -188,7 +188,7 @@ Second \"item\" text"</string>
             <string name="revanced_hide_youtube_premium_promotions_summary_off">ការផ្សព្វផ្សាយ YouTube Premium ត្រូវបានបង្ហាញ</string>
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
-        <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
+        <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">URL ត្រូវបានចម្លងទៅក្ដារតម្បៀតខ្ទាស់</string>
             <string name="revanced_share_copy_link_with_timestamp_button_success">URL ដែលមានត្រាពេលវេលាត្រូវបានចម្លង</string>
             <string name="revanced_copy_video_link_button_title">បង្ហាញប៊ូតុងចម្លង URL វីដេអូ</string>

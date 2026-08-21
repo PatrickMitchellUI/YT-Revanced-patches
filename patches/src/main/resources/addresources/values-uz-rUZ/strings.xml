@@ -176,7 +176,7 @@ Cheklovlar:
             <string name="revanced_hide_youtube_premium_promotions_summary_off">YouTube Premium aksiyalari koʻrsatilgan</string>
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
-        <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
+        <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">URL manzili buferga nusxalandi</string>
             <string name="revanced_share_copy_link_with_timestamp_button_success">Vaqt tamgʻasi bilan URL manzili nusxalandi</string>
             <string name="revanced_copy_video_link_button_title">Video URL manzilini nusxalash tugmasini koʻrsatish</string>

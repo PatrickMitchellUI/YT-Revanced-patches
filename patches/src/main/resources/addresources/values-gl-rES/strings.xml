@@ -188,7 +188,7 @@ Limitacións:
             <string name="revanced_hide_youtube_premium_promotions_summary_off">As promocións de YouTube Premium están visibles</string>
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
-        <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
+        <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">URL copiada ao portapapeis</string>
             <string name="revanced_share_copy_link_with_timestamp_button_success">URL con marca de tempo copiada</string>
             <string name="revanced_copy_video_link_button_title">Mostrar o botón de copiar URL do vídeo</string>

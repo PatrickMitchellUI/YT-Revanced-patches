@@ -607,7 +607,7 @@ Kısıtlamalar:
             <string name="revanced_hide_video_ads_summary_on">Video reklamları gizli</string>
             <string name="revanced_hide_video_ads_summary_off">Video reklamları görünür</string>
         </patch>
-        <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
+        <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">URL panoya kopyalandı</string>
             <string name="revanced_share_copy_link_with_timestamp_button_success">Zaman damgalı URL kopyalandı</string>
             <string name="revanced_copy_video_link_button_title">Video URL\'sini kopyalama düğmesini göster</string>

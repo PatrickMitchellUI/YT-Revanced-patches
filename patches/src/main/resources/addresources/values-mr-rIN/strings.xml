@@ -188,7 +188,7 @@ MicroG साठी बॅटरी ऑप्टिमायझेशन अक�
             <string name="revanced_hide_youtube_premium_promotions_summary_off">YouTube Premium च्या जाहिराती दिसत आहेत</string>
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
-        <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
+        <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">URL क्लिपबोर्डवर कॉपी केली</string>
             <string name="revanced_share_copy_link_with_timestamp_button_success">टाइमस्टॅम्पसह URL कॉपी केली</string>
             <string name="revanced_copy_video_link_button_title">व्हिडिओ URL कॉपी करा बटण दाखवा</string>

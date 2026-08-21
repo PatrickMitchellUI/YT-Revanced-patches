@@ -606,7 +606,7 @@ YouTube Premium ユーザーの場合、この設定は必要ない可能性が�
             <string name="revanced_hide_video_ads_summary_on">動画広告は表示されません</string>
             <string name="revanced_hide_video_ads_summary_off">動画広告は表示されます</string>
         </patch>
-        <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
+        <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">URL をクリップボードにコピーしました</string>
             <string name="revanced_share_copy_link_with_timestamp_button_success">タイムスタンプ付きの URL をコピーしました</string>
             <string name="revanced_copy_video_link_button_title">「動画の URL をコピー」ボタンを表示</string>

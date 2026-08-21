@@ -606,7 +606,7 @@ Limitações:
             <string name="revanced_hide_video_ads_summary_on">Anúncios de vídeo estão escondidos</string>
             <string name="revanced_hide_video_ads_summary_off">Anúncios de vídeo são visíveis</string>
         </patch>
-        <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
+        <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">URL copiado</string>
             <string name="revanced_share_copy_link_with_timestamp_button_success">URL com timestamp copiado</string>
             <string name="revanced_copy_video_link_button_title">Mostrar botão de URL de vídeo copiado</string>

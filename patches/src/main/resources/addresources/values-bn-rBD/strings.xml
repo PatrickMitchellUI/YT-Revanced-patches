@@ -600,7 +600,7 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
             <string name="revanced_hide_video_ads_summary_on">ভিডিও বিজ্ঞাপন লুকিয়ে রয়েছে</string>
             <string name="revanced_hide_video_ads_summary_off">ভিডিও বিজ্ঞাপন প্রদর্শিত হয়েছে</string>
         </patch>
-        <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
+        <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">ক্লিপবোর্ডে URL অনুলিপি করা হয়েছে</string>
             <string name="revanced_share_copy_link_with_timestamp_button_success">টাইমস্ট্যাম্প সহ URL অনুলিপি করা হয়েছে</string>
             <string name="revanced_copy_video_link_button_title">ভিডিও URL অনুলিপি বোতাম দেখান</string>

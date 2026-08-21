@@ -604,7 +604,7 @@ Piirangud:
             <string name="revanced_hide_video_ads_summary_on">Videoreklaamid on peidetud</string>
             <string name="revanced_hide_video_ads_summary_off">Videoreklaamid on kuvatud</string>
         </patch>
-        <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
+        <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">URL kopeeritud lõikelauale</string>
             <string name="revanced_share_copy_link_with_timestamp_button_success">Ajatempliga URL kopeeritud</string>
             <string name="revanced_copy_video_link_button_title">Kuva video URL-i kopeerimise nupp</string>

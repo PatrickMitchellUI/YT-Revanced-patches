@@ -456,7 +456,7 @@ Limitations:
         <patch id="ad.video.videoAdsPatch">
             <string name="revanced_hide_video_ads_title">Hide video ads</string>
         </patch>
-        <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
+        <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">URL copied to clipboard</string>
             <string name="revanced_share_copy_link_with_timestamp_button_success">URL with timestamp copied</string>
             <string name="revanced_copy_video_link_button_title">Show copy video URL button</string>
@@ -468,7 +468,7 @@ Limitations:
             <string name="revanced_remove_viewer_discretion_dialog_title">Remove viewer discretion dialog</string>
             <string name="revanced_remove_viewer_discretion_dialog_summary">This does not bypass the age restriction. It just accepts it automatically.</string>
         </patch>
-        <patch id="interaction.reload.reloadVideoResourcePatch">
+        <patch id="interaction.reload.reloadVideoButtonPatch">
             <string name="revanced_reload_video_button_title">Show reload video button</string>
             <string name="revanced_dismiss_player_not_available_toast">Video id is unavailable. Please manually reopen the video.</string>
         </patch>

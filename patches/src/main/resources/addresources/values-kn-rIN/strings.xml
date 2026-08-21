@@ -196,7 +196,7 @@ Second \"item\" text"</string>
             <string name="revanced_hide_youtube_premium_promotions_summary_off">YouTube Premium ಪ್ರಚಾರಗಳನ್ನು ತೋರಿಸಲಾಗಿದೆ</string>
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
-        <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
+        <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">URL ಕ್ಲಿಪ್‌ಬೋರ್ಡ್‌ಗೆ ನಕಲಿಸಲಾಗಿದೆ</string>
             <string name="revanced_share_copy_link_with_timestamp_button_success">ಸಮಯದ ಮುದ್ರೆಯೊಂದಿಗೆ URL ನಕಲಿಸಲಾಗಿದೆ</string>
             <string name="revanced_copy_video_link_button_title">ವೀಡಿಯೊ URL ನಕಲಿಸುವ ಬಟನ್ ತೋರಿಸಿ</string>

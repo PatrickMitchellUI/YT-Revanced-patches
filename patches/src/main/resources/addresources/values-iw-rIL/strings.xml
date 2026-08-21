@@ -600,7 +600,7 @@ Second \"item\" text"</string>
             <string name="revanced_hide_video_ads_summary_on">מודעות סרטון מוסתרות</string>
             <string name="revanced_hide_video_ads_summary_off">מודעות סרטון מוצגות</string>
         </patch>
-        <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
+        <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">כתובת URL הועתקה אל הלוח</string>
             <string name="revanced_share_copy_link_with_timestamp_button_success">כתובת URL עם חותמת זמן הועתקה</string>
             <string name="revanced_copy_video_link_button_title">הצג לחצן העתקת כתובת ה-URL של הסרטון</string>

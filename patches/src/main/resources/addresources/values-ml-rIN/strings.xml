@@ -188,7 +188,7 @@ MicroG-യുടെ ബാറ്ററി ഒപ്റ്റിമൈസേഷ�
             <string name="revanced_hide_youtube_premium_promotions_summary_off">YouTube Premium പ്രൊമോഷനുകൾ കാണിക്കുന്നു</string>
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
-        <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
+        <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">URL ക്ലിപ്‌ബോർഡിലേക്ക് പകർത്തി</string>
             <string name="revanced_share_copy_link_with_timestamp_button_success">ടൈംസ്റ്റാമ്പോടുകൂടിയ URL പകർത്തി</string>
             <string name="revanced_copy_video_link_button_title">വീഡിയോ URL കോപ്പി ബട്ടൺ കാണിക്കുക</string>

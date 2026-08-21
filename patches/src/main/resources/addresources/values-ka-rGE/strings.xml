@@ -186,7 +186,7 @@ MicroG-ისთვის ბატარეის ოპტიმიზაც�
             <string name="revanced_hide_youtube_premium_promotions_summary_off">YouTube Premium-ის აქციები ნაჩვენებია</string>
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
-        <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
+        <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">URL ბუფერში დაკოპირებულია</string>
             <string name="revanced_share_copy_link_with_timestamp_button_success">URL დროის ნიშნულით დაკოპირებულია</string>
             <string name="revanced_copy_video_link_button_title">ვიდეო URL-ის კოპირების ღილაკის ჩვენება</string>

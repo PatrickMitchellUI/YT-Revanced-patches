@@ -599,7 +599,7 @@ Məhdudiyyətlər:
             <string name="revanced_hide_video_ads_summary_on">Video reklamlar gizlədilir</string>
             <string name="revanced_hide_video_ads_summary_off">Video reklamlar göstərilir</string>
         </patch>
-        <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
+        <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">URL buferə köçürüldü</string>
             <string name="revanced_share_copy_link_with_timestamp_button_success">Vaxt möhürlü URL köçürüldü</string>
             <string name="revanced_copy_video_link_button_title">Video URL-i köçürmə düyməsin göstər</string>

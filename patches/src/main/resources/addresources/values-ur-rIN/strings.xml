@@ -188,7 +188,7 @@ MicroG کے لیے بیٹری آپٹیمائزیشنز کو غیر فعال کر
             <string name="revanced_hide_youtube_premium_promotions_summary_off">YouTube Premium پروموشنز دکھائے گئے ہیں</string>
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
-        <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
+        <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">یو آر ایل کلپ بورڈ پر کاپی ہو گیا</string>
             <string name="revanced_share_copy_link_with_timestamp_button_success">ٹائم اسٹیمپ کے ساتھ یو آر ایل کاپی ہو گیا</string>
             <string name="revanced_copy_video_link_button_title">ویڈیو یو آر ایل کاپی کرنے کا بٹن دکھائیں</string>

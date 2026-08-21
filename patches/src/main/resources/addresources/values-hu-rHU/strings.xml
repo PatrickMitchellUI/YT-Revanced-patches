@@ -600,7 +600,7 @@ Korlátozások:
             <string name="revanced_hide_video_ads_summary_on">A videó hirdetések el vannak rejtve</string>
             <string name="revanced_hide_video_ads_summary_off">A videó hirdetések láthatók</string>
         </patch>
-        <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
+        <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">Az URL a vágólapra másolva</string>
             <string name="revanced_share_copy_link_with_timestamp_button_success">Az URL időbélyeggel a vágólapra másolva</string>
             <string name="revanced_copy_video_link_button_title">A videó URL másolása gomb megjelenítése</string>

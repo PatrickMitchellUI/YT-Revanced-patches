@@ -184,7 +184,7 @@ MicroG க்கான பேட்டரி மேம்படுத்தல�
             <string name="revanced_hide_youtube_premium_promotions_summary_off">YouTube Premium விளம்பரங்கள் காட்டப்பட்டுள்ளன</string>
         </patch>
         <patch id="ad.video.videoAdsPatch"/>
-        <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
+        <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">URL கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது</string>
             <string name="revanced_share_copy_link_with_timestamp_button_success">நேர முத்திரையுடன் URL நகலெடுக்கப்பட்டது</string>
             <string name="revanced_copy_video_link_button_title">வீடியோ URL ஐ நகலெடு பொத்தானைக் காட்டு</string>

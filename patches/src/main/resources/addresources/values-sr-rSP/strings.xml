@@ -606,7 +606,7 @@ Second \"item\" text"</string>
             <string name="revanced_hide_video_ads_summary_on">Видео огласи су скривени</string>
             <string name="revanced_hide_video_ads_summary_off">Видео огласи су приказани</string>
         </patch>
-        <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
+        <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">Линк је копиран у привремену меморију</string>
             <string name="revanced_share_copy_link_with_timestamp_button_success">Линк с временском ознаком је копиран</string>
             <string name="revanced_copy_video_link_button_title">Прикажи дугме за копирање линка видеа</string>

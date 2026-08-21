@@ -601,7 +601,7 @@ Ierobežojumi:
             <string name="revanced_hide_video_ads_summary_on">Video reklāmas ir paslēptas</string>
             <string name="revanced_hide_video_ads_summary_off">Video reklāmas ir redzamas</string>
         </patch>
-        <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
+        <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">URL kopēts starpliktuvē</string>
             <string name="revanced_share_copy_link_with_timestamp_button_success">URL ar laika zīmi kopēts</string>
             <string name="revanced_copy_video_link_button_title">Rādīt video URL kopēšanas pogu</string>

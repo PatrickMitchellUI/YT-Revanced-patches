@@ -600,7 +600,7 @@ Apribojimai:
             <string name="revanced_hide_video_ads_summary_on">Vaizdo įrašų reklamos yra paslėptos</string>
             <string name="revanced_hide_video_ads_summary_off">Vaizdo įrašų reklamos yra rodomos</string>
         </patch>
-        <patch id="interaction.copyvideourl.copyVideoURLResourcePatch">
+        <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">URL nukopijuotas į iškarpinę</string>
             <string name="revanced_share_copy_link_with_timestamp_button_success">URL su laiko žyma nukopijuotas</string>
             <string name="revanced_copy_video_link_button_title">Rodyti kopijuoti vaizdo įrašo URL mygtuką</string>
