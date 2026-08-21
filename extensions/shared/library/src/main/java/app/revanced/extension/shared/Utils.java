@@ -24,37 +24,13 @@ import android.preference.Preference;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.util.Pair;
-import android.view.Gravity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-import android.view.Window;
-import android.view.WindowManager;
+import android.view.*;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Toast;
-
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
-import java.text.Bidi;
-import java.text.Collator;
-import java.text.Normalizer;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.concurrent.Callable;
-import java.util.concurrent.Future;
-import java.util.concurrent.SynchronousQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-import java.util.regex.Pattern;
-
 import app.revanced.extension.shared.settings.AppLanguage;
 import app.revanced.extension.shared.settings.BaseSettings;
 import app.revanced.extension.shared.settings.BooleanSetting;
@@ -62,7 +38,16 @@ import app.revanced.extension.shared.settings.StringSetting;
 import app.revanced.extension.shared.settings.preference.ReVancedAboutPreference;
 import app.revanced.extension.shared.ui.Dim;
 
+import java.lang.ref.WeakReference;
+import java.text.Bidi;
+import java.text.Collator;
+import java.text.Normalizer;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.Pattern;
+
 public class Utils {
+    private static WeakReference<Activity> activityRef = new WeakReference<>(null);
 
     @SuppressLint("StaticFieldLeak")
     static volatile Context context;
@@ -476,6 +461,15 @@ public class Utils {
         System.exit(0);
     }
 
+    public static Activity getActivity() {
+        return activityRef.get();
+    }
+
+    public static void setActivity(Activity appActivity) {
+        Logger.printInfo(() -> "Set activity: " + appActivity);
+        activityRef = new WeakReference<>(appActivity);
+    }
+
     public static Context getContext() {
         if (context == null) {
             Logger.printException(() -> "Context is not set by extension hook, returning null",  null);
@@ -489,6 +483,10 @@ public class Utils {
         Logger.printInfo(() -> "Set context: " + appContext);
         // Must initially set context to check the app language.
         context = appContext;
+
+        if (appContext instanceof Activity activity) {
+            setActivity(activity);
+        }
 
         AppLanguage language = BaseSettings.REVANCED_LANGUAGE.get();
         if (language != AppLanguage.DEFAULT) {

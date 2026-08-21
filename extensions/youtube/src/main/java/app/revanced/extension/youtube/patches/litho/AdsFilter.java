@@ -1,22 +1,20 @@
 package app.revanced.extension.youtube.patches.litho;
 
-import static app.revanced.extension.shared.ByteTrieSearch.convertStringsToBytes;
-import static app.revanced.extension.shared.StringRef.str;
-
-import android.view.KeyEvent;
 import android.view.View;
+import app.revanced.extension.shared.ByteTrieSearch;
+import app.revanced.extension.shared.Logger;
+import app.revanced.extension.shared.StringTrieSearch;
+import app.revanced.extension.shared.Utils;
+import app.revanced.extension.shared.patches.litho.BufferAsciiStrings;
+import app.revanced.extension.shared.patches.litho.ByteArrayFilterGroup;
+import app.revanced.extension.shared.patches.litho.ConversionContext.ContextInterface;
+import app.revanced.extension.shared.patches.litho.Filter;
+import app.revanced.extension.shared.patches.litho.StringFilterGroup;
+import app.revanced.extension.youtube.settings.Settings;
 
 import java.util.List;
 
-import app.revanced.extension.shared.ByteTrieSearch;
-import app.revanced.extension.shared.ConversionContext.ContextInterface;
-import app.revanced.extension.shared.patches.litho.Filter;
-import app.revanced.extension.shared.Logger;
-import app.revanced.extension.shared.Utils;
-import app.revanced.extension.shared.StringTrieSearch;
-import app.revanced.extension.shared.patches.litho.FilterGroup.ByteArrayFilterGroup;
-import app.revanced.extension.shared.patches.litho.FilterGroup.StringFilterGroup;
-import app.revanced.extension.youtube.settings.Settings;
+import static app.revanced.extension.shared.ByteTrieSearch.convertStringsToBytes;
 
 @SuppressWarnings("unused")
 public final class AdsFilter extends Filter {
@@ -169,9 +167,14 @@ public final class AdsFilter extends Filter {
                               String accessibility,
                               String path,
                               byte[] buffer,
+                              BufferAsciiStrings asciiStrings,
                               StringFilterGroup matchedGroup,
                               FilterContentType contentType,
                               int contentIndex) {
+        if (contentType == FilterContentType.IDENTIFIER) {
+            return true;
+        }
+        
         if (matchedGroup == buyMovieAd) {
             return contentIndex == 0 && buyMovieAdBuffer.check(buffer).isFiltered();
         }

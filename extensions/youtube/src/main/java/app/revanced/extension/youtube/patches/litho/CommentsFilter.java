@@ -1,25 +1,23 @@
 package app.revanced.extension.youtube.patches.litho;
 
-import static app.revanced.extension.shared.Utils.getFilterStrings;
-
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
-
 import androidx.annotation.NonNull;
+import app.revanced.extension.shared.Logger;
+import app.revanced.extension.shared.innertube.NextResponseOuterClass.NewElement;
+import app.revanced.extension.shared.patches.litho.BufferAsciiStrings;
+import app.revanced.extension.shared.patches.litho.ConversionContext.ContextInterface;
+import app.revanced.extension.shared.patches.litho.Filter;
+import app.revanced.extension.shared.patches.litho.StringFilterGroup;
+import app.revanced.extension.youtube.settings.Settings;
+import app.revanced.extension.youtube.shared.PlayerType;
 
 import java.util.List;
 
-import app.revanced.extension.shared.ConversionContext.ContextInterface;
-import app.revanced.extension.shared.Logger;
-import app.revanced.extension.shared.innertube.NextResponseOuterClass;
-import app.revanced.extension.shared.innertube.NextResponseOuterClass.NewElement;
-import app.revanced.extension.shared.patches.litho.Filter;
-import app.revanced.extension.shared.patches.litho.FilterGroup.*;
-import app.revanced.extension.youtube.settings.Settings;
-import app.revanced.extension.youtube.shared.PlayerType;
+import static app.revanced.extension.shared.Utils.getFilterStrings;
 
 @SuppressWarnings("unused")
 public final class CommentsFilter extends Filter {
@@ -111,6 +109,7 @@ public final class CommentsFilter extends Filter {
                               String accessibility,
                               String path,
                               byte[] buffer,
+                              BufferAsciiStrings asciiStrings,
                               StringFilterGroup matchedGroup,
                               FilterContentType contentType,
                               int contentIndex) {

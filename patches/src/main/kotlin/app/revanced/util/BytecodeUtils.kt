@@ -1014,7 +1014,12 @@ val Method.p0Register: Int
         return totalRegs - paramRegs
     }
 
-private const val RETURN_TYPE_MISMATCH = "Mismatch between override type and Method return type"
+fun Method.fiveRegisterInstructionRegistersAsString(index: Int) =
+    with(getInstruction<FiveRegisterInstruction>(index)) {
+        arrayOf(registerC, registerD, registerE, registerF, registerG)
+            .take(registerCount)
+            .joinToString(", ") { "v$it" }
+    }
 
 /**
  * Overrides the first instruction of a method with returning the default value for the type (or `void`).

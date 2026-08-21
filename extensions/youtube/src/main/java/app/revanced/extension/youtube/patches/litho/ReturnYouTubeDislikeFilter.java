@@ -3,21 +3,18 @@ package app.revanced.extension.youtube.patches.litho;
 import androidx.annotation.GuardedBy;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
-import java.util.LinkedHashSet;
-import java.util.Map;
-
-import app.revanced.extension.shared.ConversionContext;
-import app.revanced.extension.shared.ConversionContext.ContextInterface;
 import app.revanced.extension.shared.Logger;
 import app.revanced.extension.shared.TrieSearch;
 import app.revanced.extension.shared.Utils;
-import app.revanced.extension.shared.patches.litho.Filter;
-import app.revanced.extension.shared.patches.litho.FilterGroup.*;
-import app.revanced.extension.shared.patches.litho.FilterGroupList.ByteArrayFilterGroupList;
+import app.revanced.extension.shared.patches.litho.*;
+import app.revanced.extension.shared.patches.litho.ConversionContext.ContextInterface;
+import app.revanced.extension.shared.patches.litho.FilterGroup.FilterGroupResult;
 import app.revanced.extension.youtube.patches.ReturnYouTubeDislikePatch;
 import app.revanced.extension.youtube.patches.VideoInformation;
 import app.revanced.extension.youtube.settings.Settings;
+
+import java.util.LinkedHashSet;
+import java.util.Map;
 
 /**
  * Searches for video IDs in the proto buffer of Shorts dislike.
@@ -95,6 +92,7 @@ public final class ReturnYouTubeDislikeFilter extends Filter {
                               String accessibility,
                               String path,
                               byte[] buffer,
+                              BufferAsciiStrings asciiStrings,
                               StringFilterGroup matchedGroup,
                               FilterContentType contentType,
                               int contentIndex) {

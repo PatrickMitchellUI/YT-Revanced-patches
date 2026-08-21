@@ -1,6 +1,6 @@
 package app.revanced.extension.youtube.patches.litho;
 
-import app.revanced.extension.shared.patches.litho.FilterGroup.StringFilterGroup;
+import app.revanced.extension.shared.patches.litho.StringFilterGroup;
 import app.revanced.extension.youtube.settings.Settings;
 import app.revanced.extension.shared.patches.litho.Filter;
 

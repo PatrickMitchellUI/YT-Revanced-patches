@@ -6,6 +6,7 @@ import app.revanced.patcher.definingClass
 import app.revanced.patcher.gettingFirstMethodDeclaratively
 import app.revanced.patcher.instructions
 import app.revanced.patcher.invoke
+import app.revanced.patcher.method
 import app.revanced.patcher.name
 import app.revanced.patcher.parameterTypes
 import app.revanced.patcher.patch.BytecodePatchContext
@@ -20,12 +21,12 @@ internal val BytecodePatchContext.googleApiActivityOnCreateMethod by gettingFirs
 }
 
 internal val BytecodePatchContext.castContextFetchMethod by gettingFirstMethodDeclaratively(
-    "Error fetching CastContext."
+    "Error fetching CastContext.",
 )
 
 internal val BytecodePatchContext.primeMethod by gettingFirstMethodDeclaratively(
     "com.android.vending",
-    "com.google.android.GoogleCamera"
+    "com.google.android.GoogleCamera",
 )
 
 // Flag is present in YouTube 20.23, but bold icons are missing and forcing them crashes the app.

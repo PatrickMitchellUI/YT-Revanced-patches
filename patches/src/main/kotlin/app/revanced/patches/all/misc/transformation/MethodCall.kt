@@ -3,6 +3,7 @@ package app.revanced.patches.all.misc.transformation
 import app.revanced.com.android.tools.smali.dexlib2.mutable.MutableMethod
 import app.revanced.patcher.extensions.getInstruction
 import app.revanced.patcher.extensions.replaceInstruction
+import app.revanced.util.fiveRegisterInstructionRegistersAsString
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.ClassDef
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
@@ -36,12 +37,7 @@ interface IMethodCall {
         method: MutableMethod,
         instructionIndex: Int,
     ) {
-        val registers =
-            with(method.getInstruction<FiveRegisterInstruction>(instructionIndex)) {
-                arrayOf(registerC, registerD, registerE, registerF, registerG)
-                    .take(registerCount)
-                    .joinToString(", ") { "v$it" }
-            }
+        val registers = method.fiveRegisterInstructionRegistersAsString(instructionIndex)
         val replacementMethod =
             "$methodName(${definedClassName}${methodParams.joinToString(separator = "")})$methodReturnType"
 

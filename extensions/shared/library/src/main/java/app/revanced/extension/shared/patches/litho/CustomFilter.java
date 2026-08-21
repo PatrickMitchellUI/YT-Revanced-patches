@@ -1,25 +1,20 @@
 package app.revanced.extension.shared.patches.litho;
 
-import static app.revanced.extension.shared.StringRef.str;
-
 import androidx.annotation.NonNull;
-
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import app.revanced.extension.shared.ConversionContext.ContextInterface;
+import app.revanced.extension.shared.ByteTrieSearch;
 import app.revanced.extension.shared.Logger;
 import app.revanced.extension.shared.StringTrieSearch;
 import app.revanced.extension.shared.Utils;
-import app.revanced.extension.shared.ByteTrieSearch;
-import app.revanced.extension.shared.patches.litho.FilterGroup.StringFilterGroup;
+import app.revanced.extension.shared.patches.litho.ConversionContext.ContextInterface;
+import app.revanced.extension.shared.settings.BooleanSetting;
+import app.revanced.extension.shared.settings.StringSetting;
 import app.revanced.extension.shared.settings.YouTubeAndMusicSettings;
 
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import static app.revanced.extension.shared.StringRef.str;
 
 /**
  * Allows custom filtering using a path and optionally a proto buffer string.
@@ -41,7 +36,7 @@ import app.revanced.extension.shared.settings.YouTubeAndMusicSettings;
  * string. This is not common to use because most components do not have an accessibility string.
  *
  * <code>$</code> Buffer string. Any string that must appear inside the protocol buffer.
- * Buffer strings are case-sensitive. May contain uni-code characters, spaces,
+ * Buffer strings are case-sensitive. May contain Unicode characters, spaces,
  * and any syntax characters as the entire string is matched exactly as-is.
  * </pre>
  *
@@ -68,15 +63,33 @@ import app.revanced.extension.shared.settings.YouTubeAndMusicSettings;
  * Hides videos by the channel MrBeast (but not videos that just use MrBeast in the title),
  * by using a channel specific string.
  * </pre>
+ *
+ * <p>The {@link BooleanSetting} gates the filter, the {@link StringSetting}
+ * stores the newline-separated filter expressions, and the string resource key is used for the
+ * "invalid syntax" toast (so localized copy can differ per app).
  */
 @SuppressWarnings("unused")
-public final class CustomFilter extends Filter {
+public class CustomFilter extends Filter {
 
-    private static void showInvalidSyntaxToast(String expression) {
-        Utils.showToastLong(str("revanced_custom_filter_toast_invalid_syntax", expression));
+    private final BooleanSetting filterEnabledSetting = YouTubeAndMusicSettings.CUSTOM_FILTER;
+    private final StringSetting filterStringsSetting = YouTubeAndMusicSettings.CUSTOM_FILTER_STRINGS;
+
+    protected CustomFilter() {
+        Collection<CustomFilterGroup> groups = parseCustomFilterGroups();
+
+        if (!groups.isEmpty()) {
+            CustomFilterGroup[] groupsArray = groups.toArray(new CustomFilterGroup[0]);
+            Logger.printDebug(() -> "Using custom filters: " + Arrays.toString(groupsArray));
+            addPathCallbacks(groupsArray);
+        }
     }
 
-    private static class CustomFilterGroup extends StringFilterGroup {
+    private void showInvalidSyntaxToast(String expression) {
+        String invalidSyntaxToastKey = "revanced_custom_filter_toast_invalid_syntax";
+        Utils.showToastLong(str(invalidSyntaxToastKey, expression));
+    }
+
+    private final class CustomFilterGroup extends StringFilterGroup {
         /**
          * Optional character for the path that indicates the custom filter path must match the start.
          * Must be the first character of the expression.
@@ -98,109 +111,13 @@ public final class CustomFilter extends Filter {
          */
         static final String SYNTAX_BUFFER_SYMBOL = "$";
 
-        /**
-         * @return the parsed objects
-         */
-        @NonNull
-        @SuppressWarnings("ConstantConditions")
-        static Collection<CustomFilterGroup> parseCustomFilterGroups() {
-            String rawCustomFilterText = YouTubeAndMusicSettings.CUSTOM_FILTER_STRINGS.get();
-            if (rawCustomFilterText.isBlank()) {
-                return Collections.emptyList();
-            }
-
-            // Map key is the full path including optional special characters (^, #, &),
-            // any accessibility pattern, and the optional buffer symbol ($),
-            // but does not contain any buffer patterns.
-            Map<String, CustomFilterGroup> result = new HashMap<>();
-
-            Pattern pattern = Pattern.compile(
-                    "^(" // Map key group.
-                            // Optional starts with.
-                            + "(\\Q" + SYNTAX_STARTS_WITH + "\\E?)"
-                            // Path string.
-                            + "([^" + Pattern.quote(SYNTAX_ACCESSIBILITY_SYMBOL + SYNTAX_BUFFER_SYMBOL) + "]*)"
-                            // Optional accessibility string.
-                            + "(?:\\Q" + SYNTAX_ACCESSIBILITY_SYMBOL + "\\E([^" + Pattern.quote(SYNTAX_BUFFER_SYMBOL) + "]*))?"
-                            // Optional buffer symbol.
-                            + "(\\Q" + SYNTAX_BUFFER_SYMBOL + "\\E?)"
-                            + ")" // end map key group
-                            // Buffer pattern.
-                            + "(.*)$"
-            );
-
-            for (String expression : rawCustomFilterText.split("\n")) {
-                if (expression.isBlank()) continue;
-
-                Matcher matcher = pattern.matcher(expression);
-                if (!matcher.matches()) {
-                    showInvalidSyntaxToast(expression);
-                    continue;
-                }
-
-                final String mapKey = matcher.group(1);
-                final boolean pathStartsWith = !matcher.group(2).isEmpty();
-                final String path = matcher.group(3);
-                final String accessibility = matcher.group(4); // null if not present
-                final boolean hasBufferSymbol = !matcher.group(5).isEmpty();
-                final String buffer = hasBufferSymbol ? matcher.group(6) : null;
-
-                if (path.isBlank()
-                        || path.contains(SYNTAX_STARTS_WITH)
-                        || (accessibility != null && accessibility.isEmpty())
-                        || (hasBufferSymbol && (buffer == null || buffer.isEmpty()))) {
-                    showInvalidSyntaxToast(expression);
-                    continue;
-                }
-
-                // Split path components.
-                String[] allComponents = path.split(Pattern.quote(SYNTAX_PATH_AND_SYMBOL), -1);
-                final String firstComponent = allComponents[0];
-                final String[] extraComponents = allComponents.length > 1
-                        ? Arrays.copyOfRange(allComponents, 1, allComponents.length)
-                        : new String[0];
-
-                // Validate no component is blank (e.g. "A&&B")
-                boolean blankComponent = false;
-                for (String component : allComponents) {
-                    if (component.isBlank()) {
-                        blankComponent = true;
-                        break;
-                    }
-                }
-                if (blankComponent) {
-                    showInvalidSyntaxToast(expression);
-                    continue;
-                }
-
-                // Use one group object for all expressions with the same path.
-                // This ensures the buffer is searched exactly once
-                // when multiple paths are used with different buffer strings.
-                CustomFilterGroup group = result.get(mapKey);
-                if (group == null) {
-                    group = new CustomFilterGroup(pathStartsWith, firstComponent, extraComponents);
-                    result.put(mapKey, group);
-                }
-
-                if (accessibility != null) {
-                    group.addAccessibilityString(accessibility);
-                }
-
-                if (buffer != null) {
-                    group.addBufferString(buffer);
-                }
-            }
-
-            return result.values();
-        }
-
         final boolean startsWith;
         final String[] extraPathComponents;
         StringTrieSearch accessibilitySearch;
         ByteTrieSearch bufferSearch;
 
         CustomFilterGroup(boolean startsWith, String firstComponent, String[] extraPathComponents) {
-            super(YouTubeAndMusicSettings.CUSTOM_FILTER, firstComponent);
+            super(filterEnabledSetting, firstComponent);
             this.startsWith = startsWith;
             this.extraPathComponents = extraPathComponents;
         }
@@ -250,26 +167,114 @@ public final class CustomFilter extends Filter {
         }
     }
 
-    public CustomFilter() {
-        Collection<CustomFilterGroup> groups = CustomFilterGroup.parseCustomFilterGroups();
-
-        if (!groups.isEmpty()) {
-            CustomFilterGroup[] groupsArray = groups.toArray(new CustomFilterGroup[0]);
-            Logger.printDebug(() -> "Using Custom filters: " + Arrays.toString(groupsArray));
-            addPathCallbacks(groupsArray);
+    /**
+     * @return the parsed objects
+     */
+    @NonNull
+    @SuppressWarnings("ConstantConditions")
+    private Collection<CustomFilterGroup> parseCustomFilterGroups() {
+        String rawCustomFilterText = filterStringsSetting.get();
+        if (rawCustomFilterText.isBlank()) {
+            return Collections.emptyList();
         }
+
+        // Map key is the full path including optional special characters (^, #, &),
+        // any accessibility pattern, and the optional buffer symbol ($),
+        // but does not contain any buffer patterns.
+        Map<String, CustomFilterGroup> result = new HashMap<>();
+
+        Pattern pattern = Pattern.compile(
+                "^(" // Map key group.
+                        // Optional starts with.
+                        + "(\\Q" + CustomFilterGroup.SYNTAX_STARTS_WITH + "\\E?)"
+                        // Path string.
+                        + "([^" + Pattern.quote(CustomFilterGroup.SYNTAX_ACCESSIBILITY_SYMBOL
+                        + CustomFilterGroup.SYNTAX_BUFFER_SYMBOL) + "]*)"
+                        // Optional accessibility string.
+                        + "(?:\\Q" + CustomFilterGroup.SYNTAX_ACCESSIBILITY_SYMBOL + "\\E([^"
+                        + Pattern.quote(CustomFilterGroup.SYNTAX_BUFFER_SYMBOL) + "]*))?"
+                        // Optional buffer symbol.
+                        + "(\\Q" + CustomFilterGroup.SYNTAX_BUFFER_SYMBOL + "\\E?)"
+                        + ")" // end map key group
+                        // Buffer pattern.
+                        + "(.*)$"
+        );
+
+        for (String expression : rawCustomFilterText.split("\n")) {
+            if (expression.isBlank()) continue;
+
+            Matcher matcher = pattern.matcher(expression);
+            if (!matcher.matches()) {
+                showInvalidSyntaxToast(expression);
+                continue;
+            }
+
+            final String mapKey = matcher.group(1);
+            final boolean pathStartsWith = !matcher.group(2).isEmpty();
+            final String path = matcher.group(3);
+            final String accessibility = matcher.group(4); // null if not present
+            final boolean hasBufferSymbol = !matcher.group(5).isEmpty();
+            final String buffer = hasBufferSymbol ? matcher.group(6) : null;
+
+            if (path.isBlank()
+                    || path.contains(CustomFilterGroup.SYNTAX_STARTS_WITH)
+                    || (accessibility != null && accessibility.isEmpty())
+                    || (hasBufferSymbol && (buffer == null || buffer.isEmpty()))) {
+                showInvalidSyntaxToast(expression);
+                continue;
+            }
+
+            // Split path components.
+            String[] allComponents = path.split(Pattern.quote(CustomFilterGroup.SYNTAX_PATH_AND_SYMBOL), -1);
+            final String firstComponent = allComponents[0];
+            final String[] extraComponents = allComponents.length > 1
+                    ? Arrays.copyOfRange(allComponents, 1, allComponents.length)
+                    : new String[0];
+
+            // Validate no component is blank (e.g. "A&&B")
+            boolean blankComponent = false;
+            for (String component : allComponents) {
+                if (component.isBlank()) {
+                    blankComponent = true;
+                    break;
+                }
+            }
+            if (blankComponent) {
+                showInvalidSyntaxToast(expression);
+                continue;
+            }
+
+            // Use one group object for all expressions with the same path.
+            // This ensures the buffer is searched exactly once
+            // when multiple paths are used with different buffer strings.
+            CustomFilterGroup group = result.get(mapKey);
+            if (group == null) {
+                group = new CustomFilterGroup(pathStartsWith, firstComponent, extraComponents);
+                result.put(mapKey, group);
+            }
+
+            if (accessibility != null) {
+                group.addAccessibilityString(accessibility);
+            }
+
+            if (buffer != null) {
+                group.addBufferString(buffer);
+            }
+        }
+
+        return result.values();
     }
 
     @Override
-    public boolean isFiltered(
-            ContextInterface contextInterface,
-            String identifier,
-            String accessibility,
-            String path,
-            byte[] buffer,
-            StringFilterGroup matchedGroup,
-            FilterContentType contentType,
-            int contentIndex) {
+    public boolean isFiltered(ContextInterface contextInterface,
+                              String identifier,
+                              String accessibility,
+                              String path,
+                              byte[] buffer,
+                              BufferAsciiStrings asciiStrings,
+                              StringFilterGroup matchedGroup,
+                              FilterContentType contentType,
+                              int contentIndex) {
         // All callbacks are custom filter groups.
         CustomFilterGroup custom = (CustomFilterGroup) matchedGroup;
 
@@ -284,17 +289,13 @@ public final class CustomFilter extends Filter {
                 return false;
             }
         }
-        
+
         // Check accessibility string if specified.
         if (custom.accessibilitySearch != null && !custom.accessibilitySearch.matches(accessibility)) {
             return false;
         }
 
         // Check buffer if specified.
-        if (custom.bufferSearch != null && !custom.bufferSearch.matches(buffer)) {
-            return false;
-        }
-
-        return true; // All custom filter conditions passed.
+        return custom.bufferSearch == null || custom.bufferSearch.matches(buffer); // All custom filter conditions passed.
     }
 }

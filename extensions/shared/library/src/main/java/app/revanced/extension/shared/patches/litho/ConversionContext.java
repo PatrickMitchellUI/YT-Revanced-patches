@@ -1,4 +1,4 @@
-package app.revanced.extension.shared;
+package app.revanced.extension.shared.patches.litho;
 
 public final class ConversionContext {
     public static final String ELEMENT_IDENTIFIER_COMPONENT = "ComponentType";

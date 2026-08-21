@@ -1,15 +1,13 @@
 package app.revanced.extension.youtube.patches.litho;
 
-import static app.revanced.extension.youtube.patches.LayoutReloadObserverPatch.isActionBarVisible;
-
-import app.revanced.extension.shared.ConversionContext.ContextInterface;
-import app.revanced.extension.shared.patches.litho.Filter;
+import app.revanced.extension.shared.patches.litho.*;
+import app.revanced.extension.shared.patches.litho.ConversionContext.ContextInterface;
 import app.revanced.extension.youtube.settings.Settings;
-import app.revanced.extension.shared.patches.litho.FilterGroup.*;
-import app.revanced.extension.shared.patches.litho.FilterGroupList.ByteArrayFilterGroupList;
 import app.revanced.extension.youtube.shared.EngagementPanel;
 import app.revanced.extension.youtube.shared.PlayerType;
 import app.revanced.extension.youtube.shared.ShortsPlayerState;
+
+import static app.revanced.extension.youtube.patches.LayoutReloadObserverPatch.isActionBarVisible;
 
 @SuppressWarnings("unused")
 public final class DescriptionComponentsFilter extends Filter {
@@ -168,14 +166,15 @@ public final class DescriptionComponentsFilter extends Filter {
     }
 
     @Override
-   public boolean isFiltered(ContextInterface contextInterface,
-                       String identifier,
-                       String accessibility,
-                       String path,
-                       byte[] buffer,
-                       StringFilterGroup matchedGroup,
-                       FilterContentType contentType,
-                       int contentIndex) {
+    public boolean isFiltered(ContextInterface contextInterface,
+                              String identifier,
+                              String accessibility,
+                              String path,
+                              byte[] buffer,
+                              BufferAsciiStrings asciiStrings,
+                              StringFilterGroup matchedGroup,
+                              FilterContentType contentType,
+                              int contentIndex) {
         // Immediately after the layout is refreshed, litho components are updated before the UI is drawn.
         // In this case, EngagementPanel.isDescription() cannot be used, and isActionBarVisible.get() should be used.
         if (!EngagementPanel.isDescription() && !(PlayerType.getCurrent().isMaximizedOrFullscreen() || isActionBarVisible.get() || ShortsPlayerState.isOpen())) {

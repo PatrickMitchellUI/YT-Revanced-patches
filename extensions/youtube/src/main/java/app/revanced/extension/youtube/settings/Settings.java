@@ -201,7 +201,7 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final BooleanSetting HIDE_VIDEO_TITLE = new BooleanSetting("revanced_hide_video_title", FALSE);
     public static final BooleanSetting OPEN_SYSTEM_SHARE_SHEET = new BooleanSetting("revanced_open_system_share_sheet", FALSE, true);
     public static final BooleanSetting OPEN_VIDEOS_FULLSCREEN_PORTRAIT = new BooleanSetting("revanced_open_videos_fullscreen_portrait", FALSE);
-
+    public static final BooleanSetting SANITIZE_VIDEO_SUBTITLE = new BooleanSetting("revanced_sanitize_video_subtitle", FALSE);
     // Overlay buttons
     public static final BooleanSetting COPY_VIDEO_LINK_BUTTON = new BooleanSetting("revanced_copy_video_link_button", FALSE);
     public static final BooleanSetting COPY_VIDEO_LINK_WITH_TIMESTAMP_BUTTON = new BooleanSetting("revanced_copy_video_link_with_timestamp_button", TRUE);
@@ -295,20 +295,24 @@ public class Settings extends YouTubeAndMusicSettings {
 
     // Action buttons
     public static final BooleanSetting DISABLE_LIKE_SUBSCRIBE_GLOW = new BooleanSetting("revanced_disable_like_subscribe_glow", FALSE);
-    public static final BooleanSetting HIDE_ASK_BUTTON = new BooleanSetting("revanced_hide_ask_button", FALSE);
-    public static final BooleanSetting HIDE_CLIP_BUTTON = new BooleanSetting("revanced_hide_clip_button", FALSE);
-    public static final BooleanSetting HIDE_COMMENTS_BUTTON = new BooleanSetting("revanced_hide_comments_button", FALSE);
-    public static final BooleanSetting HIDE_DOWNLOAD_BUTTON = new BooleanSetting("revanced_hide_download_button", FALSE);
-    public static final BooleanSetting HIDE_HYPE_BUTTON = new BooleanSetting("revanced_hide_hype_button", FALSE);
-    public static final BooleanSetting HIDE_LIKE_DISLIKE_BUTTON = new BooleanSetting("revanced_hide_like_dislike_button", FALSE);
-    public static final BooleanSetting HIDE_PROMOTE_BUTTON = new BooleanSetting("revanced_hide_promote_button", FALSE);
-    public static final BooleanSetting HIDE_REMIX_BUTTON = new BooleanSetting("revanced_hide_remix_button", FALSE);
-    public static final BooleanSetting HIDE_REPORT_BUTTON = new BooleanSetting("revanced_hide_report_button", FALSE);
-    public static final BooleanSetting HIDE_SAVE_BUTTON = new BooleanSetting("revanced_hide_save_button", FALSE);
-    public static final BooleanSetting HIDE_SHARE_BUTTON = new BooleanSetting("revanced_hide_share_button", FALSE);
-    public static final BooleanSetting HIDE_SHOP_BUTTON = new BooleanSetting("revanced_hide_shop_button", TRUE);
-    public static final BooleanSetting HIDE_STOP_ADS_BUTTON = new BooleanSetting("revanced_hide_stop_ads_button", TRUE);
-    public static final BooleanSetting HIDE_THANKS_BUTTON = new BooleanSetting("revanced_hide_thanks_button", TRUE);
+    public static final BooleanSetting HIDE_ACTION_BAR = new BooleanSetting("revanced_hide_action_bar", FALSE);
+    public static final BooleanSetting HIDE_ASK_BUTTON = new BooleanSetting("revanced_hide_ask_button", FALSE, true, parentNot(HIDE_ACTION_BAR));
+    public static final BooleanSetting HIDE_CLIP_BUTTON = new BooleanSetting("revanced_hide_clip_button", FALSE, true, parentNot(HIDE_ACTION_BAR));
+    public static final BooleanSetting HIDE_COMMENTS_BUTTON = new BooleanSetting("revanced_hide_comments_button", FALSE, true, parentNot(HIDE_ACTION_BAR));
+    public static final BooleanSetting HIDE_CONNECT_BUTTON = new BooleanSetting("revanced_hide_connect_button", FALSE, true, parentNot(HIDE_ACTION_BAR));
+    public static final BooleanSetting HIDE_DOWNLOAD_BUTTON = new BooleanSetting("revanced_hide_download_button", FALSE, true, parentNot(HIDE_ACTION_BAR));
+    public static final BooleanSetting HIDE_HYPE_BUTTON = new BooleanSetting("revanced_hide_hype_button", FALSE, true, parentNot(HIDE_ACTION_BAR));
+    public static final BooleanSetting HIDE_LIKE_DISLIKE_BUTTON = new BooleanSetting("revanced_hide_like_dislike_button", FALSE, true, parentNot(HIDE_ACTION_BAR));
+    public static final BooleanSetting HIDE_MORE_BUTTON = new BooleanSetting("revanced_hide_more_button", FALSE, true, parentNot(HIDE_ACTION_BAR));
+    public static final BooleanSetting HIDE_PROMOTE_BUTTON = new BooleanSetting("revanced_hide_promote_button", FALSE, true, parentNot(HIDE_ACTION_BAR));
+    public static final BooleanSetting HIDE_REMIX_BUTTON = new BooleanSetting("revanced_hide_remix_button", FALSE, true, parentNot(HIDE_ACTION_BAR));
+    public static final BooleanSetting HIDE_REPORT_BUTTON = new BooleanSetting("revanced_hide_report_button", FALSE, true, parentNot(HIDE_ACTION_BAR));
+    public static final BooleanSetting HIDE_SAVE_BUTTON = new BooleanSetting("revanced_hide_save_button", FALSE, true, parentNot(HIDE_ACTION_BAR));
+    public static final BooleanSetting HIDE_SHARE_BUTTON = new BooleanSetting("revanced_hide_share_button", FALSE, true, parentNot(HIDE_ACTION_BAR));
+    public static final BooleanSetting HIDE_SHOP_BUTTON = new BooleanSetting("revanced_hide_shop_button", FALSE, true, parentNot(HIDE_ACTION_BAR));
+    public static final BooleanSetting HIDE_STOP_ADS_BUTTON = new BooleanSetting("revanced_hide_stop_ads_button", FALSE, true, parentNot(HIDE_ACTION_BAR));
+    public static final BooleanSetting HIDE_THANKS_BUTTON = new BooleanSetting("revanced_hide_thanks_button", FALSE, true, parentNot(HIDE_ACTION_BAR));
+
 
     // Player flyout menu items
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_ADDITIONAL_SETTINGS = new BooleanSetting("revanced_hide_player_flyout_additional_settings", FALSE);

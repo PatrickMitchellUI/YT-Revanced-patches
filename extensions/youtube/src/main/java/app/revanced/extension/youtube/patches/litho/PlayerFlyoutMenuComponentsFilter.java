@@ -1,10 +1,7 @@
 package app.revanced.extension.youtube.patches.litho;
 
-import app.revanced.extension.shared.ConversionContext.ContextInterface;
-import app.revanced.extension.shared.patches.litho.Filter;
-import app.revanced.extension.shared.patches.litho.FilterGroup.ByteArrayFilterGroup;
-import app.revanced.extension.shared.patches.litho.FilterGroup.StringFilterGroup;
-import app.revanced.extension.shared.patches.litho.FilterGroupList.ByteArrayFilterGroupList;
+import app.revanced.extension.shared.patches.litho.*;
+import app.revanced.extension.shared.patches.litho.ConversionContext.ContextInterface;
 import app.revanced.extension.shared.settings.BaseSettings;
 import app.revanced.extension.shared.settings.Setting;
 import app.revanced.extension.shared.spoof.SpoofVideoStreamsPatch;
@@ -134,6 +131,7 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
                               String accessibility,
                               String path,
                               byte[] buffer,
+                              BufferAsciiStrings asciiStrings,
                               StringFilterGroup matchedGroup,
                               FilterContentType contentType,
                               int contentIndex) {

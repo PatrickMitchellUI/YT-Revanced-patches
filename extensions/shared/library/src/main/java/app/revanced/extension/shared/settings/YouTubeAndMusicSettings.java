@@ -15,4 +15,5 @@ public class YouTubeAndMusicSettings extends BaseSettings {
     // Miscellaneous
     public static final BooleanSetting DEBUG_PROTOCOLBUFFER = new BooleanSetting("revanced_debug_protocolbuffer", FALSE, false,
             "revanced_debug_protocolbuffer_user_dialog_message", parent(BaseSettings.DEBUG));
+    public static final BooleanSetting DEBUG_SPANNABLE = new BooleanSetting("revanced_debug_spannable", FALSE, parent(DEBUG));
 }

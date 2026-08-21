@@ -1,37 +1,29 @@
 package app.revanced.extension.youtube.patches.litho;
 
-import static app.revanced.extension.shared.Utils.getFilterStrings;
-import static app.revanced.extension.youtube.shared.NavigationBar.NavigationButton;
-
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
-import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.Nullable;
+import app.revanced.extension.shared.Logger;
+import app.revanced.extension.shared.StringTrieSearch;
+import app.revanced.extension.shared.Utils;
+import app.revanced.extension.shared.patches.litho.*;
+import app.revanced.extension.shared.patches.litho.ConversionContext.ContextInterface;
+import app.revanced.extension.youtube.patches.ChangeHeaderPatch;
+import app.revanced.extension.youtube.settings.Settings;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import app.revanced.extension.shared.ConversionContext.ContextInterface;
-import app.revanced.extension.shared.Logger;
-import app.revanced.extension.shared.StringTrieSearch;
-import app.revanced.extension.shared.Utils;
-import app.revanced.extension.shared.patches.litho.Filter;
-import app.revanced.extension.shared.patches.litho.FilterGroup.ByteArrayFilterGroup;
-import app.revanced.extension.shared.patches.litho.FilterGroup.StringFilterGroup;
-import app.revanced.extension.shared.patches.litho.FilterGroupList.ByteArrayFilterGroupList;
-import app.revanced.extension.shared.patches.litho.FilterGroupList.StringFilterGroupList;
-import app.revanced.extension.youtube.patches.ChangeHeaderPatch;
-import app.revanced.extension.youtube.settings.Settings;
+import static app.revanced.extension.shared.Utils.getFilterStrings;
+import static app.revanced.extension.youtube.shared.NavigationBar.NavigationButton;
 
 @SuppressWarnings("unused")
 public final class LayoutComponentsFilter extends Filter {
@@ -404,6 +396,7 @@ public final class LayoutComponentsFilter extends Filter {
                               String accessibility,
                               String path,
                               byte[] buffer,
+                              BufferAsciiStrings asciiStrings,
                               StringFilterGroup matchedGroup,
                               FilterContentType contentType,
                               int contentIndex) {

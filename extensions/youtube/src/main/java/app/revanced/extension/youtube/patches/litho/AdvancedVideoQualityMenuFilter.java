@@ -1,9 +1,9 @@
 package app.revanced.extension.youtube.patches.litho;
 
-import app.revanced.extension.shared.ConversionContext;
-import app.revanced.extension.shared.ConversionContext.ContextInterface;
+import app.revanced.extension.shared.patches.litho.BufferAsciiStrings;
+import app.revanced.extension.shared.patches.litho.ConversionContext.ContextInterface;
 import app.revanced.extension.shared.patches.litho.Filter;
-import app.revanced.extension.shared.patches.litho.FilterGroup.StringFilterGroup;
+import app.revanced.extension.shared.patches.litho.StringFilterGroup;
 import app.revanced.extension.youtube.patches.playback.quality.AdvancedVideoQualityMenuPatch;
 import app.revanced.extension.youtube.settings.Settings;
 
@@ -28,6 +28,7 @@ public final class AdvancedVideoQualityMenuFilter extends Filter {
                               String accessibility,
                               String path,
                               byte[] buffer,
+                              BufferAsciiStrings asciiStrings,
                               StringFilterGroup matchedGroup,
                               FilterContentType contentType,
                               int contentIndex) {

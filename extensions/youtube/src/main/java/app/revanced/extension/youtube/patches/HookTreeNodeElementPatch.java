@@ -1,12 +1,12 @@
 package app.revanced.extension.youtube.patches;
 
 
-import static app.revanced.extension.shared.ConversionContext.ELEMENT_IDENTIFIER_COMPONENT;
-import static app.revanced.extension.shared.ConversionContext.ELEMENT_IDENTIFIER_LAZILY;
+import static app.revanced.extension.shared.patches.litho.ConversionContext.ELEMENT_IDENTIFIER_COMPONENT;
+import static app.revanced.extension.shared.patches.litho.ConversionContext.ELEMENT_IDENTIFIER_LAZILY;
 
 import java.util.List;
 
-import app.revanced.extension.shared.ConversionContext.ContextInterface;
+import app.revanced.extension.shared.patches.litho.ConversionContext.ContextInterface;
 import app.revanced.extension.shared.Logger;
 import app.revanced.extension.shared.Utils;
 

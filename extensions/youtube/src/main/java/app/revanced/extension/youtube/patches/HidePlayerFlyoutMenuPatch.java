@@ -1,8 +1,8 @@
 package app.revanced.extension.youtube.patches;
 
 
-import static app.revanced.extension.shared.ConversionContext.ELEMENT_IDENTIFIER_COMPONENT;
-import static app.revanced.extension.shared.ConversionContext.ELEMENT_IDENTIFIER_CONTAINER;
+import static app.revanced.extension.shared.patches.litho.ConversionContext.ELEMENT_IDENTIFIER_COMPONENT;
+import static app.revanced.extension.shared.patches.litho.ConversionContext.ELEMENT_IDENTIFIER_CONTAINER;
 
 import android.view.View;
 import android.widget.ListView;
@@ -11,7 +11,6 @@ import java.util.List;
 
 import app.revanced.extension.shared.Logger;
 import app.revanced.extension.shared.Utils;
-import app.revanced.extension.shared.innertube.NextResponseOuterClass;
 import app.revanced.extension.shared.innertube.NextResponseOuterClass.NewElement;
 import app.revanced.extension.youtube.settings.Settings;
 

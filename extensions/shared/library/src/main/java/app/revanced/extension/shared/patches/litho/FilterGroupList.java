@@ -1,16 +1,15 @@
 package app.revanced.extension.shared.patches.litho;
 
 import androidx.annotation.NonNull;
-import app.revanced.extension.shared.ByteTrieSearch;
-import app.revanced.extension.shared.StringTrieSearch;
-import app.revanced.extension.shared.TrieSearch;
-import app.revanced.extension.shared.patches.litho.FilterGroup.ByteArrayFilterGroup;
-import app.revanced.extension.shared.patches.litho.FilterGroup.StringFilterGroup;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Spliterator;
+import java.util.function.Consumer;
+
+import app.revanced.extension.shared.TrieSearch;
 
 public abstract class FilterGroupList<V, T extends FilterGroup<V>> implements Iterable<T> {
 
@@ -44,6 +43,17 @@ public abstract class FilterGroupList<V, T extends FilterGroup<V>> implements It
         return filterGroups.iterator();
     }
 
+    @Override
+    public void forEach(@NonNull Consumer<? super T> action) {
+        filterGroups.forEach(action);
+    }
+
+    @NonNull
+    @Override
+    public Spliterator<T> spliterator() {
+        return filterGroups.spliterator();
+    }
+
     public FilterGroup.FilterGroupResult check(V stack) {
         FilterGroup.FilterGroupResult result = new FilterGroup.FilterGroupResult();
         search.matches(stack, result);
@@ -52,21 +62,4 @@ public abstract class FilterGroupList<V, T extends FilterGroup<V>> implements It
     }
 
     protected abstract TrieSearch<V> createSearchGraph();
-
-    public static final class StringFilterGroupList extends FilterGroupList<String, StringFilterGroup> {
-        protected StringTrieSearch createSearchGraph() {
-            return new StringTrieSearch();
-        }
-    }
-
-    /**
-     * If searching for a single byte pattern, then it is slightly better to use
-     * {@link ByteArrayFilterGroup#check(byte[])} as it uses BMH which is faster
-     * than a prefix tree to search for only 1 pattern.
-     */
-    public static final class ByteArrayFilterGroupList extends FilterGroupList<byte[], ByteArrayFilterGroup> {
-        protected ByteTrieSearch createSearchGraph() {
-            return new ByteTrieSearch();
-        }
-    }
 }

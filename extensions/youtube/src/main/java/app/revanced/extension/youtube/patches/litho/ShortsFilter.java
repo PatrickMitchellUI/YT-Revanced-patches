@@ -1,31 +1,23 @@
 package app.revanced.extension.youtube.patches.litho;
 
-import static app.revanced.extension.shared.ByteTrieSearch.convertStringsToBytes;
-import static app.revanced.extension.shared.ConversionContext.*;
-import static app.revanced.extension.youtube.patches.LayoutReloadObserverPatch.isActionBarVisible;
-import static app.revanced.extension.youtube.shared.NavigationBar.NavigationButton;
-
 import android.view.View;
-
 import app.revanced.extension.shared.ByteTrieSearch;
-import app.revanced.extension.shared.ConversionContext;
-import app.revanced.extension.shared.patches.litho.Filter;
-import app.revanced.extension.shared.patches.litho.FilterGroup.*;
-import app.revanced.extension.shared.patches.litho.FilterGroup.ByteArrayFilterGroup;
-import app.revanced.extension.shared.patches.litho.FilterGroupList.ByteArrayFilterGroupList;
-import app.revanced.extension.shared.patches.litho.FilterGroupList.StringFilterGroupList;
-
+import app.revanced.extension.shared.Logger;
+import app.revanced.extension.shared.patches.litho.*;
+import app.revanced.extension.youtube.settings.Settings;
+import app.revanced.extension.youtube.shared.EngagementPanel;
+import app.revanced.extension.youtube.shared.NavigationBar;
+import app.revanced.extension.youtube.shared.PlayerType;
 import com.google.android.libraries.youtube.rendering.ui.pivotbar.PivotBar;
 
 import java.lang.ref.WeakReference;
 import java.util.Arrays;
 import java.util.List;
 
-import app.revanced.extension.shared.Logger;
-import app.revanced.extension.youtube.settings.Settings;
-import app.revanced.extension.youtube.shared.EngagementPanel;
-import app.revanced.extension.youtube.shared.NavigationBar;
-import app.revanced.extension.youtube.shared.PlayerType;
+import static app.revanced.extension.shared.ByteTrieSearch.convertStringsToBytes;
+import static app.revanced.extension.shared.patches.litho.ConversionContext.ContextInterface;
+import static app.revanced.extension.youtube.patches.LayoutReloadObserverPatch.isActionBarVisible;
+import static app.revanced.extension.youtube.shared.NavigationBar.NavigationButton;
 
 @SuppressWarnings({"unused", "FieldCanBeLocal"})
 public final class ShortsFilter extends Filter {
@@ -402,6 +394,7 @@ public final class ShortsFilter extends Filter {
                               String accessibility,
                               String path,
                               byte[] buffer,
+                              BufferAsciiStrings asciiStrings,
                               StringFilterGroup matchedGroup,
                               FilterContentType contentType,
                               int contentIndex) {

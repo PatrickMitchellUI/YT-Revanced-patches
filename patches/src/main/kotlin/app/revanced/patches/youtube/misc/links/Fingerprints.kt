@@ -27,7 +27,7 @@ internal val BytecodePatchContext.commentUriIntentMethodMatch by composingFirstM
         after(
             allOf(
                 Opcode.INVOKE_DIRECT(),
-                method { toString() == "Landroid/content/Intent;-><init>(Ljava/lang/String;Landroid/net/Uri;)V" },
+                after(method { toString() == "Landroid/content/Intent;-><init>(Ljava/lang/String;Landroid/net/Uri;)V" }),
             ),
         ),
     )

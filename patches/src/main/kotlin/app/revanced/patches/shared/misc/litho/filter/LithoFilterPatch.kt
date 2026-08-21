@@ -6,7 +6,6 @@ import app.revanced.patcher.extensions.addInstructions
 import app.revanced.patcher.extensions.fieldReference
 import app.revanced.patcher.extensions.getInstruction
 import app.revanced.patcher.extensions.methodReference
-import app.revanced.patcher.extensions.removeInstruction
 import app.revanced.patcher.extensions.removeInstructions
 import app.revanced.patcher.firstClassDef
 import app.revanced.patcher.patch.BytecodePatchBuilder
@@ -98,7 +97,7 @@ internal fun lithoFilterPatch(
 
             addInstructions(
                 0,
-                "new-array v1, v1, [Lapp/revanced/extension/shared/patches/litho/Filter;"
+                "new-array v1, v1, [Lapp/revanced/extension/shared/patches/litho/Filter;",
             )
 
             // Fill the array with the filters added during patching.
@@ -129,16 +128,18 @@ internal fun lithoFilterPatch(
         val emptyComponentField = firstClassDef(builderMethodDescriptor.returnType).fields.single()
 
         // Find the method call that gets the value of 'buttonViewModel.accessibilityId'.
-        val accessibilityIdMethod = accessibilityIdMethodMatch.let {
-            it.method.getInstruction<ReferenceInstruction>(it[0]).methodReference!!
-        }
+        val accessibilityIdMethod =
+            accessibilityIdMethodMatch.let {
+                it.method.getInstruction<ReferenceInstruction>(it[0]).methodReference!!
+            }
 
         // There's a method in the same class that gets the value of 'buttonViewModel.accessibilityText'.
         // As this class is abstract, another method that uses a method call is used.
-        val accessibilityTextMethod = getAccessibilityTextMethodMatch(accessibilityIdMethod).let {
-            // Find the method call that gets the value of 'buttonViewModel.accessibilityText'.
-            it.method.getInstruction<ReferenceInstruction>(it[0]).methodReference
-        }
+        val accessibilityTextMethod =
+            getAccessibilityTextMethodMatch(accessibilityIdMethod).let {
+                // Find the method call that gets the value of 'buttonViewModel.accessibilityText'.
+                it.method.getInstruction<ReferenceInstruction>(it[0]).methodReference
+            }
 
         getComponentCreateMethodMatch(accessibilityIdMethod).let {
             val insertIndex = it[2]
@@ -149,21 +150,24 @@ internal fun lithoFilterPatch(
                 it.method.getInstruction<OneRegisterInstruction>(buttonViewModelIndex).registerA
             val accessibilityIdIndex = buttonViewModelIndex + 2
 
-            val registerProvider = it.method.getFreeRegisterProvider(
-                insertIndex, 3, buttonViewModelRegister
-            )
+            val registerProvider =
+                it.method.getFreeRegisterProvider(
+                    insertIndex,
+                    3,
+                    buttonViewModelRegister,
+                )
             val contextRegister = registerProvider.getFreeRegister()
             val bufferRegister = registerProvider.getFreeRegister()
             val freeRegister = registerProvider.getFreeRegister()
 
-
             // Find a free register to store the accessibilityId and accessibilityText.
             // This is before the insertion index.
-            val accessibilityRegisterProvider = it.method.getFreeRegisterProvider(
-                nullCheckIndex,
-                2,
-                registerProvider.getUsedAndUnAvailableRegisters()
-            )
+            val accessibilityRegisterProvider =
+                it.method.getFreeRegisterProvider(
+                    nullCheckIndex,
+                    2,
+                    registerProvider.getUsedAndUnAvailableRegisters(),
+                )
             val accessibilityIdRegister = accessibilityRegisterProvider.getFreeRegister()
             val accessibilityTextRegister = accessibilityRegisterProvider.getFreeRegister()
 
@@ -200,7 +204,7 @@ internal fun lithoFilterPatch(
         
                     :unfiltered
                     nop
-                """
+                """,
             )
 
             // If there is text related to accessibility, get the accessibilityId and accessibilityText.
@@ -214,7 +218,7 @@ internal fun lithoFilterPatch(
                     # Get accessibilityText
                     invoke-interface { v$buttonViewModelRegister }, $accessibilityTextMethod
                     move-result-object v$accessibilityTextRegister
-                """
+                """,
             )
 
             // If there is no accessibility-related text,
@@ -224,25 +228,27 @@ internal fun lithoFilterPatch(
                 """
                     const-string v$accessibilityIdRegister, ""
                     const-string v$accessibilityTextRegister, ""
-                """
+                """,
             )
         }
 
         if (getExtractIdentifierFromBuffer()) {
             lithoFilterInitMethod.apply {
-                val index = indexOfFirstInstruction {
-                    fieldReference?.name == "EXTRACT_IDENTIFIER_FROM_BUFFER"
-                }
+                val index =
+                    indexOfFirstInstruction {
+                        fieldReference?.name == "EXTRACT_IDENTIFIER_FROM_BUFFER"
+                    }
 
-                val freeRegister = getFreeRegisterProvider(index, 1)
-                    .getFreeRegister()
+                val freeRegister =
+                    getFreeRegisterProvider(index, 1)
+                        .getFreeRegister()
 
                 addInstructions(
                     index + 1,
                     """
                         const/4 v$freeRegister, 0x1
                         sput-boolean v$freeRegister, ${EXTENSION_CLASS_DESCRIPTOR}->EXTRACT_IDENTIFIER_FROM_BUFFER:Z
-                    """
+                    """,
                 )
             }
         }

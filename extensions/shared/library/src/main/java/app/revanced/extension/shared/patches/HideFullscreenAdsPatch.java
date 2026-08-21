@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 
 import app.revanced.extension.shared.Logger;
 import app.revanced.extension.shared.Utils;
-import app.revanced.extension.shared.patches.litho.FilterGroup.ByteArrayFilterGroup;
+import app.revanced.extension.shared.patches.litho.ByteArrayFilterGroup;
 import app.revanced.extension.shared.settings.YouTubeAndMusicSettings;
 
 @SuppressWarnings("unused")

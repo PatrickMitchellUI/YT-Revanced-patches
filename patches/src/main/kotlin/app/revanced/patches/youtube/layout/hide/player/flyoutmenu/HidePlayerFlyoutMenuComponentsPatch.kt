@@ -17,6 +17,7 @@ import app.revanced.patches.youtube.misc.protobuf.hookElement
 import app.revanced.patches.youtube.misc.protobuf.hookProtobufElementParserPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
+import app.revanced.util.fiveRegisterInstructionRegistersAsString
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
@@ -106,12 +107,7 @@ val hidePlayerFlyoutMenuComponentsPatch =
                 extensionMethod: String,
             ) {
                 method.apply {
-                    val registers =
-                        with(getInstruction<FiveRegisterInstruction>(index)) {
-                            arrayOf(registerC, registerD, registerE, registerF, registerG)
-                                .take(registerCount)
-                                .joinToString(", ") { "v$it" }
-                        }
+                    val registers = fiveRegisterInstructionRegistersAsString(index)
 
                     replaceInstruction(
                         index,

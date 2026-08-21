@@ -1,11 +1,15 @@
 package app.revanced.extension.youtube.patches.litho;
 
-import static app.revanced.extension.shared.StringRef.str;
-import static app.revanced.extension.youtube.shared.NavigationBar.NavigationButton;
-import static java.lang.Character.UnicodeBlock.*;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import app.revanced.extension.shared.*;
+import app.revanced.extension.shared.patches.litho.BufferAsciiStrings;
+import app.revanced.extension.shared.patches.litho.ConversionContext.ContextInterface;
+import app.revanced.extension.shared.patches.litho.Filter;
+import app.revanced.extension.shared.patches.litho.StringFilterGroup;
+import app.revanced.extension.youtube.settings.Settings;
+import app.revanced.extension.youtube.shared.NavigationBar;
+import app.revanced.extension.youtube.shared.PlayerType;
 
 import java.nio.charset.StandardCharsets;
 import java.util.LinkedHashMap;
@@ -13,18 +17,9 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 
-import app.revanced.extension.shared.ConversionContext;
-import app.revanced.extension.shared.ConversionContext.ContextInterface;
-import app.revanced.extension.shared.Logger;
-import app.revanced.extension.shared.Utils;
-import app.revanced.extension.shared.ByteTrieSearch;
-import app.revanced.extension.shared.StringTrieSearch;
-import app.revanced.extension.shared.TrieSearch;
-import app.revanced.extension.shared.patches.litho.Filter;
-import app.revanced.extension.shared.patches.litho.FilterGroup.*;
-import app.revanced.extension.youtube.settings.Settings;
-import app.revanced.extension.youtube.shared.NavigationBar;
-import app.revanced.extension.youtube.shared.PlayerType;
+import static app.revanced.extension.shared.StringRef.str;
+import static app.revanced.extension.youtube.shared.NavigationBar.NavigationButton;
+import static java.lang.Character.UnicodeBlock.*;
 
 /**
  * <pre>
@@ -574,6 +569,7 @@ public final class KeywordContentFilter extends Filter {
                               String accessibility,
                               String path,
                               byte[] buffer,
+                              BufferAsciiStrings asciiStrings,
                               StringFilterGroup matchedGroup,
                               FilterContentType contentType,
                               int contentIndex) {

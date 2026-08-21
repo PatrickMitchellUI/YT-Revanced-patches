@@ -322,6 +322,8 @@ However, enabling this will also log some user data such as your IP address."</s
             <string name="revanced_hide_timed_reactions_summary">Hides the feature that allows users to react with emojis in the comments section and live chat</string>
             <string name="revanced_hide_video_title_title">Hide video title</string>
             <string name="revanced_hide_video_title_summary">Hides the video title in the fullscreen mode</string>
+            <string name="revanced_sanitize_video_subtitle_title">Sanitize video subtitle</string>
+            <string name="revanced_sanitize_video_subtitle_summary">Sanitizes phrases like \'#\', \'Fundraiser\', \'Shop\', and \'products\' from video subtitle</string>
             <string name="revanced_hide_ai_generated_video_summary_section_title">Hide \'AI-generated video summary\' section</string>
             <string name="revanced_hide_ask_section_title">Hide Ask section</string>
             <string name="revanced_hide_attributes_section_title">Hide Attributes section</string>
@@ -603,6 +605,7 @@ Verify the package name is correct and the app is installed"</string>
             <string name="revanced_quick_actions_top_margin_summary">Set the top margin of the quick actions bar (0-32 dp)</string>
             <string name="revanced_disable_like_subscribe_glow_title">Disable Like and Subscribe glow</string>
             <string name="revanced_disable_like_subscribe_glow_summary">Prevents the Like and Subscribe buttons from glowing when a creator mentions them</string>
+            <string name="revanced_hide_action_bar_title">Hide action bar</string>
             <string name="revanced_hide_like_dislike_button_title">Hide Like and Dislike button</string>
             <!-- 'Share' should be translated with the same localized wording that YouTube displays. -->
             <string name="revanced_hide_share_button_title">Hide Share button</string>

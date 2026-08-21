@@ -1,8 +1,9 @@
 package app.revanced.extension.youtube.patches.litho;
 
-import app.revanced.extension.shared.ConversionContext.ContextInterface;
+import app.revanced.extension.shared.patches.litho.BufferAsciiStrings;
+import app.revanced.extension.shared.patches.litho.ConversionContext.ContextInterface;
 import app.revanced.extension.shared.patches.litho.Filter;
-import app.revanced.extension.shared.patches.litho.FilterGroup.*;
+import app.revanced.extension.shared.patches.litho.StringFilterGroup;
 import app.revanced.extension.youtube.patches.playback.speed.CustomPlaybackSpeedPatch;
 import app.revanced.extension.youtube.settings.Settings;
 
@@ -44,6 +45,7 @@ public final class PlaybackSpeedMenuFilter extends Filter {
                               String accessibility,
                               String path,
                               byte[] buffer,
+                              BufferAsciiStrings asciiStrings,
                               StringFilterGroup matchedGroup,
                               FilterContentType contentType,
                               int contentIndex) {

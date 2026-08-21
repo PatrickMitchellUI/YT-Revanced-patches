@@ -1,18 +1,15 @@
 package app.revanced.extension.youtube.patches.litho;
 
-import static app.revanced.extension.youtube.patches.LayoutReloadObserverPatch.isActionBarVisible;
-
-import app.revanced.extension.shared.ConversionContext.ContextInterface;
-import app.revanced.extension.shared.patches.litho.Filter;
-import app.revanced.extension.shared.patches.litho.FilterGroup.ByteArrayFilterGroup;
-import app.revanced.extension.shared.patches.litho.FilterGroup.StringFilterGroup;
-import app.revanced.extension.shared.patches.litho.FilterGroupList.ByteArrayFilterGroupList;
+import app.revanced.extension.shared.patches.litho.*;
+import app.revanced.extension.shared.patches.litho.ConversionContext.ContextInterface;
 import app.revanced.extension.youtube.settings.Settings;
 import app.revanced.extension.youtube.shared.EngagementPanel;
 import app.revanced.extension.youtube.shared.NavigationBar;
 import app.revanced.extension.youtube.shared.NavigationBar.NavigationButton;
 import app.revanced.extension.youtube.shared.PlayerType;
 import app.revanced.extension.youtube.shared.ShortsPlayerState;
+
+import static app.revanced.extension.youtube.patches.LayoutReloadObserverPatch.isActionBarVisible;
 
 @SuppressWarnings("unused")
 public final class HorizontalShelvesFilter extends Filter {
@@ -84,6 +81,7 @@ public final class HorizontalShelvesFilter extends Filter {
                               String accessibility,
                               String path,
                               byte[] buffer,
+                              BufferAsciiStrings asciiStrings,
                               StringFilterGroup matchedGroup,
                               FilterContentType contentType,
                               int contentIndex) {
