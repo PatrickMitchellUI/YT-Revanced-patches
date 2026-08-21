@@ -1,6 +1,6 @@
-package app.revanced.extension.youtube.patches;
+package app.revanced.extension.shared.patches;
 
-import app.revanced.extension.youtube.settings.Settings;
+import app.revanced.extension.shared.settings.YouTubeAndMusicSettings;
 
 @SuppressWarnings("unused")
 public class RemoveViewerDiscretionDialogPatch {
@@ -9,7 +9,7 @@ public class RemoveViewerDiscretionDialogPatch {
      * Injection point.
      */
     public static boolean hideViewDiscretionDialog(boolean originalValue) {
-        if (Settings.REMOVE_VIEWER_DISCRETION_DIALOG.get()) {
+        if (YouTubeAndMusicSettings.REMOVE_VIEWER_DISCRETION_DIALOG.get()) {
             return true;
         }
         return originalValue;

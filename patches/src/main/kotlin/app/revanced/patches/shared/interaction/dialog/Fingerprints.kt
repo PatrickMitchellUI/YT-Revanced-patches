@@ -1,4 +1,4 @@
-package app.revanced.patches.youtube.interaction.dialog
+package app.revanced.patches.shared.interaction.dialog
 
 import app.revanced.patcher.accessFlags
 import app.revanced.patcher.after
@@ -44,7 +44,7 @@ internal val BytecodePatchContext.adultContentSetPropertiesMethodMatch by compos
         Opcode.IGET_BOOLEAN(),
         after("allowAdultContent"()),
         afterAtMost(2, Opcode.IGET_BOOLEAN()),
-        after("allowControversialContent"())
+        after("allowControversialContent"()),
     )
 }
 
@@ -57,15 +57,18 @@ internal fun BytecodePatchContext.skipDialogMethodMatch(adultContentRunnableMeth
         instructions(
             allOf(
                 Opcode.INVOKE_VIRTUAL(),
-                method { toString() == "Ljava/lang/Boolean;->booleanValue()Z" }),
+                method { toString() == "Ljava/lang/Boolean;->booleanValue()Z" },
+            ),
             after(Opcode.MOVE_RESULT()),
             after(2, Opcode.INVOKE_VIRTUAL()),
             after(Opcode.MOVE_RESULT()),
             after(
-                3, allOf(
+                3,
+                allOf(
                     Opcode.INVOKE_DIRECT(),
-                    method { name == "<init>" && definingClass == adultContentRunnableMethod.definingClass }
-                ))
+                    method { name == "<init>" && definingClass == adultContentRunnableMethod.definingClass },
+                ),
+            ),
         )
     }
 
