@@ -1,47 +1,11 @@
 package app.revanced.extension.youtube.settings;
 
-import static java.lang.Boolean.FALSE;
-import static java.lang.Boolean.TRUE;
-import static app.revanced.extension.shared.settings.Setting.migrateOldSettingToNew;
-import static app.revanced.extension.shared.settings.Setting.parent;
-import static app.revanced.extension.shared.settings.Setting.parentNot;
-import static app.revanced.extension.shared.settings.Setting.parentsAll;
-import static app.revanced.extension.shared.settings.Setting.parentsAny;
-import static app.revanced.extension.youtube.patches.ChangeFormFactorPatch.FormFactor;
-import static app.revanced.extension.youtube.patches.ChangeHeaderPatch.HeaderLogo;
-import static app.revanced.extension.youtube.patches.ChangeStartPagePatch.ChangeStartPageTypeAvailability;
-import static app.revanced.extension.youtube.patches.ChangeStartPagePatch.StartPage;
-import static app.revanced.extension.youtube.patches.ExitFullscreenPatch.FullscreenMode;
-import static app.revanced.extension.youtube.patches.MiniplayerPatch.MiniplayerAnyModernAvailability;
-import static app.revanced.extension.youtube.patches.MiniplayerPatch.MiniplayerHideOverlayButtonsAvailability;
-import static app.revanced.extension.youtube.patches.MiniplayerPatch.MiniplayerOverlayOpacityAvailability;
-import static app.revanced.extension.youtube.patches.MiniplayerPatch.MiniplayerHorizontalDragAvailability;
-import static app.revanced.extension.youtube.patches.MiniplayerPatch.MiniplayerType;
-import static app.revanced.extension.youtube.patches.OpenShortsInRegularPlayerPatch.ShortsPlayerType;
-import static app.revanced.extension.youtube.patches.litho.PlayerFlyoutMenuComponentsFilter.HideAudioFlyoutMenuAvailability;
-import static app.revanced.extension.youtube.patches.spoof.SpoofVideoStreamsPatch.SpoofClientAv1Availability;
-import static app.revanced.extension.youtube.patches.theme.ThemePatch.SplashScreenAnimationStyle;
-import static app.revanced.extension.youtube.sponsorblock.SegmentPlaybackController.SponsorBlockDuration;
-import static app.revanced.extension.youtube.sponsorblock.objects.CategoryBehaviour.IGNORE;
-import static app.revanced.extension.youtube.sponsorblock.objects.CategoryBehaviour.MANUAL_SKIP;
-import static app.revanced.extension.youtube.sponsorblock.objects.CategoryBehaviour.SKIP_AUTOMATICALLY;
-import static app.revanced.extension.youtube.sponsorblock.objects.CategoryBehaviour.SKIP_AUTOMATICALLY_ONCE;
-
 import android.graphics.Color;
-
 import app.revanced.extension.shared.Logger;
 import app.revanced.extension.shared.Utils;
-import app.revanced.extension.shared.settings.BaseSettings;
-import app.revanced.extension.shared.settings.BooleanSetting;
-import app.revanced.extension.shared.settings.EnumSetting;
-import app.revanced.extension.shared.settings.FloatSetting;
-import app.revanced.extension.shared.settings.IntegerSetting;
-import app.revanced.extension.shared.settings.LongSetting;
-import app.revanced.extension.shared.settings.Setting;
-import app.revanced.extension.shared.settings.StringSetting;
+import app.revanced.extension.shared.settings.*;
 import app.revanced.extension.shared.settings.preference.SeekBarPreference;
 import app.revanced.extension.shared.settings.preference.SeekBarPreference.SeekBarConfig;
-import app.revanced.extension.shared.settings.YouTubeAndMusicSettings;
 import app.revanced.extension.shared.spoof.ClientType;
 import app.revanced.extension.youtube.patches.AlternativeThumbnailsPatch.DeArrowAvailability;
 import app.revanced.extension.youtube.patches.AlternativeThumbnailsPatch.StillImagesAvailability;
@@ -52,6 +16,22 @@ import app.revanced.extension.youtube.patches.VersionCheckPatch;
 import app.revanced.extension.youtube.patches.litho.LayoutComponentsFilter.ExpandableCardStyle;
 import app.revanced.extension.youtube.sponsorblock.SponsorBlockSettings;
 import app.revanced.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeOverlayStyle;
+
+import static app.revanced.extension.shared.settings.Setting.*;
+import static app.revanced.extension.youtube.patches.ChangeFormFactorPatch.FormFactor;
+import static app.revanced.extension.youtube.patches.ChangeHeaderPatch.HeaderLogo;
+import static app.revanced.extension.youtube.patches.ChangeStartPagePatch.ChangeStartPageTypeAvailability;
+import static app.revanced.extension.youtube.patches.ChangeStartPagePatch.StartPage;
+import static app.revanced.extension.youtube.patches.ExitFullscreenPatch.FullscreenMode;
+import static app.revanced.extension.youtube.patches.MiniplayerPatch.*;
+import static app.revanced.extension.youtube.patches.OpenShortsInRegularPlayerPatch.ShortsPlayerType;
+import static app.revanced.extension.youtube.patches.litho.PlayerFlyoutMenuComponentsFilter.HideAudioFlyoutMenuAvailability;
+import static app.revanced.extension.youtube.patches.spoof.SpoofVideoStreamsPatch.SpoofClientAv1Availability;
+import static app.revanced.extension.youtube.patches.theme.ThemePatch.SplashScreenAnimationStyle;
+import static app.revanced.extension.youtube.sponsorblock.SegmentPlaybackController.SponsorBlockDuration;
+import static app.revanced.extension.youtube.sponsorblock.objects.CategoryBehaviour.*;
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
 
 @SuppressWarnings("deprecation")
 public class Settings extends YouTubeAndMusicSettings {
@@ -373,7 +353,6 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final BooleanSetting HIDE_TOOLBAR_CHAT_BUTTON = new BooleanSetting("revanced_hide_toolbar_chat_button", FALSE, true);
     public static final BooleanSetting HIDE_TOOLBAR_CREATE_BUTTON = new BooleanSetting("revanced_hide_toolbar_create_button", TRUE, true);
     public static final BooleanSetting HIDE_TOOLBAR_NOTIFICATION_BUTTON = new BooleanSetting("revanced_hide_toolbar_notification_button", FALSE, true);
-    public static final BooleanSetting HIDE_TOOLBAR_SEARCH_BUTTON = new BooleanSetting("revanced_hide_toolbar_search_button", FALSE, true);
     public static final BooleanSetting WIDE_SEARCHBAR = new BooleanSetting("revanced_wide_searchbar", FALSE, true);
 
     // Shorts

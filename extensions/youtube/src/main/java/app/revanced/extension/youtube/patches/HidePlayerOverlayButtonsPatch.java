@@ -1,15 +1,14 @@
 package app.revanced.extension.youtube.patches;
 
-import static app.revanced.extension.shared.Utils.getResourceIdentifierOrThrow;
-
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
 import app.revanced.extension.shared.Logger;
 import app.revanced.extension.shared.ResourceType;
 import app.revanced.extension.shared.Utils;
 import app.revanced.extension.youtube.settings.Settings;
+
+import static app.revanced.extension.shared.Utils.getResourceIdentifierOrThrow;
 
 @SuppressWarnings("unused")
 public final class HidePlayerOverlayButtonsPatch {
@@ -119,9 +118,7 @@ public final class HidePlayerOverlayButtonsPatch {
             return;
         }
 
-        Utils.runOnMainThread(() -> {
-            hideView(parentView, PLAYER_OVERFLOW_BUTTON_ID);
-        });
+        Utils.runOnMainThread(() -> hideView(parentView, PLAYER_OVERFLOW_BUTTON_ID));
     }
 
     /**

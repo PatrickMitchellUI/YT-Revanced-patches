@@ -1,22 +1,21 @@
 package app.revanced.extension.youtube.patches;
 
-import static app.revanced.extension.shared.Utils.hideViewUnderCondition;
-import static app.revanced.extension.youtube.patches.VersionCheckPatch.IS_20_45_OR_GREATER;
-import static app.revanced.extension.youtube.shared.NavigationBar.NavigationButton;
-
 import android.os.Build;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.util.EnumMap;
-import java.util.Map;
-
 import app.revanced.extension.shared.Logger;
 import app.revanced.extension.shared.Utils;
 import app.revanced.extension.shared.ui.Dim;
 import app.revanced.extension.youtube.settings.Settings;
+
+import java.util.EnumMap;
+import java.util.Map;
+
+import static app.revanced.extension.shared.Utils.hideViewUnderCondition;
+import static app.revanced.extension.youtube.patches.VersionCheckPatch.IS_20_45_OR_GREATER;
+import static app.revanced.extension.youtube.shared.NavigationBar.NavigationButton;
 
 @SuppressWarnings("unused")
 public final class NavigationBarPatch {
@@ -30,9 +29,6 @@ public final class NavigationBarPatch {
             put(NavigationButton.SUBSCRIPTIONS, Settings.HIDE_SUBSCRIPTIONS_BUTTON.get());
         }
     };
-
-    private static final boolean HIDE_TOOLBAR_CAST_BUTTON
-            = Settings.HIDE_TOOLBAR_CAST_BUTTON.get();
 
     private static final boolean SWITCH_CREATE_WITH_NOTIFICATIONS_BUTTON
             = Settings.SWITCH_CREATE_WITH_NOTIFICATIONS_BUTTON.get();
@@ -136,6 +132,35 @@ public final class NavigationBarPatch {
 
     // Toolbar
 
+    private static final String[] CHAT_BUTTON_ENUMS = {
+            "MESSAGE_BUBBLE_OVERLAP"
+    };
+
+    private static final String[] CREATE_BUTTON_ENUMS = {
+            "CREATION_ENTRY", // Phone layout.
+            "FAB_CAMERA" // Tablet layout.
+    };
+
+    private static final String[] NOTIFICATION_BUTTON_ENUMS = {
+            "TAB_ACTIVITY_CAIRO", // New layout.
+            "TAB_ACTIVITY" // Old layout.
+    };
+
+    private static final String[] SEARCH_BUTTON_ENUMS = {
+            "SEARCH_CAIRO", // New layout.
+            "SEARCH_BOLD", // Shorts.
+            "SEARCH" // Old layout.
+    };
+
+    private static final boolean HIDE_TOOLBAR_CAST_BUTTON = Settings.HIDE_TOOLBAR_CAST_BUTTON.get();
+
+    private static final boolean HIDE_TOOLBAR_CHAT_BUTTON = Settings.HIDE_TOOLBAR_CHAT_BUTTON.get();
+
+    private static final boolean HIDE_TOOLBAR_CREATE_BUTTON = Settings.HIDE_TOOLBAR_CREATE_BUTTON.get();
+
+    private static final boolean HIDE_TOOLBAR_NOTIFICATION_BUTTON = Settings.HIDE_TOOLBAR_NOTIFICATION_BUTTON.get();
+
+
     /**
      * Injection point.
      */
@@ -156,61 +181,25 @@ public final class NavigationBarPatch {
     /**
      * Injection point.
      */
-    public static void hideChatButton(String enumString, View parentView) {
-        if (!Settings.HIDE_TOOLBAR_CHAT_BUTTON.get())
-            return;
-
-        hideViewUnderCondition(isChatButton(enumString), parentView);
+    public static void hideChatButton(String enumName, View parentView, ImageView imageView) {
+        final boolean shouldHide = HIDE_TOOLBAR_CHAT_BUTTON && Utils.equalsAny(enumName, CHAT_BUTTON_ENUMS);
+        Utils.hideViewUnderCondition(shouldHide, parentView);
     }
 
-
-    public static void hideCreateButton(String enumString, View view) {
-        if (!Settings.HIDE_TOOLBAR_CREATE_BUTTON.get())
-            return;
-
-        hideViewUnderCondition(isCreateButton(enumString), view);
+    /**
+     * Injection point.
+     */
+    public static void hideCreateButton(String enumName, View parentView, ImageView imageView) {
+        final boolean shouldHide = HIDE_TOOLBAR_CREATE_BUTTON && Utils.equalsAny(enumName, CREATE_BUTTON_ENUMS);
+        Utils.hideViewUnderCondition(shouldHide, parentView);
     }
 
-    public static void hideNotificationButton(String enumString, View view) {
-        if (!Settings.HIDE_TOOLBAR_NOTIFICATION_BUTTON.get())
-            return;
-
-        hideViewUnderCondition(isNotificationButton(enumString), view);
-    }
-
-    public static void hideSearchButton(String enumString, View view) {
-        if (!Settings.HIDE_TOOLBAR_SEARCH_BUTTON.get())
-            return;
-
-        hideViewUnderCondition(isSearchButton(enumString), view);
-    }
-
-    public static void hideSearchButton(MenuItem menuItem, int original) {
-        menuItem.setShowAsAction(
-                Settings.HIDE_TOOLBAR_SEARCH_BUTTON.get()
-                        ? MenuItem.SHOW_AS_ACTION_NEVER
-                        : original
-        );
-    }
-
-    private static boolean isChatButton(String enumString) {
-        return "MESSAGE_BUBBLE_OVERLAP".equals(enumString); // Chat button.
-    }
-
-    private static boolean isCreateButton(String enumString) {
-        return "CREATION_ENTRY".equals(enumString) // Create button for Phone layout.
-                || "FAB_CAMERA".equals(enumString); // Create button for Tablet layout.
-    }
-
-    private static boolean isNotificationButton(String enumString) {
-        return "TAB_ACTIVITY".equals(enumString) // Notification button.
-                || "TAB_ACTIVITY_CAIRO".equals(enumString); // Notification button (New layout).
-    }
-
-    private static boolean isSearchButton(String enumString) {
-        return "SEARCH".equals(enumString) // Search button.
-                || "SEARCH_CAIRO".equals(enumString) // Search button (New layout).
-                || "SEARCH_BOLD".equals(enumString); // Search button (Shorts).
+    /**
+     * Injection point.
+     */
+    public static void hideNotificationButton(String enumName, View parentView, ImageView imageView) {
+        boolean shouldHide = HIDE_TOOLBAR_NOTIFICATION_BUTTON && Utils.equalsAny(enumName, NOTIFICATION_BUTTON_ENUMS);
+        Utils.hideViewUnderCondition(shouldHide, parentView);
     }
 
     // Wide searchbar

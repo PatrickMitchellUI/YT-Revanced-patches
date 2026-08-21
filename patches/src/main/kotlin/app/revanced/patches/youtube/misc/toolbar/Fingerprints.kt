@@ -1,4 +1,4 @@
-package app.revanced.patches.youtube.layout.toolbar
+package app.revanced.patches.youtube.misc.toolbar
 
 import app.revanced.patcher.accessFlags
 import app.revanced.patcher.definingClass

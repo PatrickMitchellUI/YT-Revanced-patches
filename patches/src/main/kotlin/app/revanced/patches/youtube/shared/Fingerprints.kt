@@ -21,8 +21,6 @@ import app.revanced.patcher.parameterTypes
 import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patcher.returnType
 import app.revanced.patches.shared.misc.mapping.ResourceType
-import app.revanced.util.getting
-import app.revanced.util.using
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -51,41 +49,43 @@ internal val BytecodePatchContext.backgroundPlaybackManagerShortsMethod by getti
     )
 }
 
-internal fun BytecodePatchContext.getEngagementPanelControllerMethodMatch() = firstMethodComposite {
-    returnType("L")
-    parameterTypes("L", "L", "Z", "Z")
-    instructions(
-        "EngagementPanelController: cannot show EngagementPanel before EngagementPanelController.init() has been called."(),
-        method { toString() == "Lj$/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;" },
-        method { toString() == "Lj$/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;" },
-        afterAtMost(4, Opcode.CHECK_CAST()),
-        after(Opcode.IF_EQZ()),
-        after(Opcode.IGET_OBJECT()),
-        45615449L(),
-        method { toString() == "Ljava/util/ArrayDeque;->iterator()Ljava/util/Iterator;" },
-        afterAtMost(10, allOf(Opcode.IGET_OBJECT(), field { type == "Ljava/lang/String;" }))
-    )
-}
+internal fun BytecodePatchContext.getEngagementPanelControllerMethodMatch() =
+    firstMethodComposite {
+        returnType("L")
+        parameterTypes("L", "L", "Z", "Z")
+        instructions(
+            "EngagementPanelController: cannot show EngagementPanel before EngagementPanelController.init() has been called."(),
+            method { toString() == "Lj$/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;" },
+            method { toString() == "Lj$/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;" },
+            afterAtMost(4, Opcode.CHECK_CAST()),
+            after(Opcode.IF_EQZ()),
+            after(Opcode.IGET_OBJECT()),
+            45615449L(),
+            method { toString() == "Ljava/util/ArrayDeque;->iterator()Ljava/util/Iterator;" },
+            afterAtMost(10, allOf(Opcode.IGET_OBJECT(), field { type == "Ljava/lang/String;" })),
+        )
+    }
 
+internal fun BytecodePatchContext.getLayoutConstructorMethodMatch() =
+    firstMethodComposite {
+        accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+        returnType("V")
+        parameterTypes()
 
-internal fun BytecodePatchContext.getLayoutConstructorMethodMatch() = firstMethodComposite {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returnType("V")
-    parameterTypes()
+        val methodParameterTypePrefixes = listOf("Landroid/view/View;", "I")
 
-    val methodParameterTypePrefixes = listOf("Landroid/view/View;", "I")
-
-    instructions(
-        159962L(),
-        ResourceType.ID("player_control_previous_button_touch_area"),
-        ResourceType.ID("player_control_next_button_touch_area"),
-        method {
-            parameterTypes.size == 2 &&
-                    parameterTypes.zip(methodParameterTypePrefixes)
+        instructions(
+            159962L(),
+            ResourceType.ID("player_control_previous_button_touch_area"),
+            ResourceType.ID("player_control_next_button_touch_area"),
+            method {
+                parameterTypes.size == 2 &&
+                    parameterTypes
+                        .zip(methodParameterTypePrefixes)
                         .all { (a, b) -> a.startsWith(b) }
-        },
-    )
-}
+            },
+        )
+    }
 
 internal val BytecodePatchContext.mainActivityConstructorMethod by gettingFirstImmutableMethodDeclaratively {
     definingClass(YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE)
@@ -129,8 +129,8 @@ internal val BytecodePatchContext.rollingNumberTextViewAnimationUpdateMethodMatc
     )
     custom {
         immutableClassDef.superclass == "Landroid/support/v7/widget/AppCompatTextView;" ||
-                immutableClassDef.superclass ==
-                "Lcom/google/android/libraries/youtube/rendering/ui/spec/typography/YouTubeAppCompatTextView;"
+            immutableClassDef.superclass ==
+            "Lcom/google/android/libraries/youtube/rendering/ui/spec/typography/YouTubeAppCompatTextView;"
     }
 }
 
@@ -147,7 +147,6 @@ internal fun BytecodePatchContext.getSeekbarOnDrawMethodMatch() =
             after(Opcode.MOVE_RESULT()),
         )
     }
-
 
 internal val BytecodePatchContext.subtitleButtonControllerMethod by gettingFirstMethodDeclaratively {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
@@ -188,22 +187,24 @@ internal val BytecodePatchContext.videoQualityChangedMethodMatch by composingFir
     )
 }
 
-
-internal fun BytecodePatchContext.getToolBarButtonMethodMatch() = firstMethodComposite {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returnType("V")
-    instructions(
-        ResourceType.ID("menu_item_view"),
-        allOf(Opcode.INVOKE_INTERFACE(), method { returnType == "I" }),
-        after(Opcode.MOVE_RESULT()),
-        afterAtMost(6, allOf(Opcode.IGET_OBJECT(), field { type == "Landroid/widget/ImageView;" })),
-        afterAtMost(
-            8,
-            method { name == "getDrawable" && definingClass == "Landroid/content/res/Resources;" }),
-        afterAtMost(
-            4,
-            method { name == "setImageDrawable" && definingClass == "Landroid/widget/ImageView;" }),
-    )
-    // 20.37+ has second parameter of "Landroid/content/Context;"
-    custom { parameterTypes.count() in 1..2 && parameterTypes.first() == "Landroid/view/MenuItem;" }
-}
+internal fun BytecodePatchContext.getToolbarButtonMethodMatch() =
+    firstMethodComposite {
+        accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+        returnType("V")
+        instructions(
+            ResourceType.ID("menu_item_view"),
+            allOf(Opcode.INVOKE_INTERFACE(), method { returnType == "I" }),
+            after(Opcode.MOVE_RESULT()),
+            afterAtMost(6, allOf(Opcode.IGET_OBJECT(), field { type == "Landroid/widget/ImageView;" })),
+            afterAtMost(
+                8,
+                method { name == "getDrawable" && definingClass == "Landroid/content/res/Resources;" },
+            ),
+            afterAtMost(
+                4,
+                method { name == "setImageDrawable" && definingClass == "Landroid/widget/ImageView;" },
+            ),
+        )
+        // 20.37+ has second parameter of "Landroid/content/Context;"
+        custom { parameterTypes.count() in 1..2 && parameterTypes.first() == "Landroid/view/MenuItem;" }
+    }

@@ -11,17 +11,12 @@ public class ToolbarPatch {
     /**
      * Injection point.
      */
-    public static void hookToolbar(Enum<?> buttonEnum, ImageView imageView) {
-        final String enumString = buttonEnum.name();
-        if (enumString.isEmpty() ||
-                imageView == null ||
-                !(imageView.getParent() instanceof View view)) {
-            return;
+    public static void hookToolbar(Enum<?> iconEnum, ImageView imageView) {
+        if (iconEnum != null && imageView.getParent() instanceof View view) {
+            String enumName = iconEnum.name();
+            Logger.printDebug(() -> "enum: " + enumName);
+            hookToolbar(enumName, view);
         }
-
-        Logger.printDebug(() -> "enumString: " + enumString);
-
-        hookToolbar(enumString, view);
     }
 
     /**

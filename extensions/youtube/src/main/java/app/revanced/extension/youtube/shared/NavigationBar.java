@@ -1,29 +1,23 @@
 package app.revanced.extension.youtube.shared;
 
-import static app.revanced.extension.youtube.shared.NavigationBar.NavigationButton.CREATE;
-
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.FrameLayout;
-
 import androidx.annotation.Nullable;
-
-import java.lang.ref.WeakReference;
-import java.util.Arrays;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
-import java.util.WeakHashMap;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
-
 import app.revanced.extension.shared.Logger;
 import app.revanced.extension.shared.ResourceType;
 import app.revanced.extension.shared.Utils;
 import app.revanced.extension.shared.settings.BaseSettings;
 import app.revanced.extension.youtube.patches.VersionCheckPatch;
 import app.revanced.extension.youtube.settings.Settings;
+
+import java.lang.ref.WeakReference;
+import java.util.*;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
+
+import static app.revanced.extension.youtube.shared.NavigationBar.NavigationButton.CREATE;
 
 @SuppressWarnings("unused")
 public final class NavigationBar {
