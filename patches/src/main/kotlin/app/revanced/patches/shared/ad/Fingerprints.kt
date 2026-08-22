@@ -1,11 +1,17 @@
 package app.revanced.patches.shared.ad
 
 import app.revanced.patcher.*
+import app.revanced.patcher.immutableClassDef
+import app.revanced.patcher.instructions
+import app.revanced.patcher.parameterTypes
 import app.revanced.patcher.patch.BytecodePatchContext
+import app.revanced.patcher.returnType
 import app.revanced.patches.shared.misc.mapping.ResourceType
+import app.revanced.util.getting
+import app.revanced.util.using
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.ClassDef
+import com.google.common.util.concurrent.Striped.custom
 
 internal val BytecodePatchContext.interstitialsContainerMethodMatch by composingFirstMethod("overlay_controller_param") {
     returnType("V")
@@ -20,25 +26,24 @@ internal val BytecodePatchContext.lithoDialogBuilderMethodMatch by composingFirs
     parameterTypes("[B", "L")
     instructions(
         allOf(Opcode.INVOKE_VIRTUAL(), method("show")),
-        ResourceType.STYLE("SlidingDialogAnimation")
+        ResourceType.STYLE("SlidingDialogAnimation"),
     )
 }
 
-internal val BytecodePatchContext.customDialogOnBackPressedParentMethodMatch by gettingFirstMethodDeclaratively {
-    returnType("V")
-    parameterTypes("L")
-    custom { immutableClassDef.superclass == "Landroid/app/Dialog;" }
-    instructions(
-        method { toString() == "Landroid/app/Dialog;->onBackPressed()V" },
-    )
-}
-
-context(_: BytecodePatchContext)
-internal fun ClassDef.customDialogOnBackPressedMethod() = firstMethodDeclaratively {
-    name("onBackPressed")
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returnType("V")
-    parameterTypes()
+internal val BytecodePatchContext.customDialogOnBackPressedMethod by getting {
+    firstMethodDeclaratively {
+        name("onBackPressed")
+        accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+        returnType("V")
+        parameterTypes()
+    }
+} using {
+    firstImmutableMethodDeclaratively {
+        returnType("V")
+        parameterTypes("L")
+        instructions(method { toString() == "Landroid/app/Dialog;->onBackPressed()V" })
+        custom { immutableClassDef.superclass == "Landroid/app/Dialog;" }
+    }
 }
 
 internal val BytecodePatchContext.fullscreenAdsCloseDialogMethod by gettingFirstMethodDeclaratively {

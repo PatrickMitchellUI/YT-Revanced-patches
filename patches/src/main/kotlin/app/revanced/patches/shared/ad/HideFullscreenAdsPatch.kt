@@ -26,71 +26,72 @@ internal const val EXTENSION_CLASS_DESCRIPTOR =
 /**
  * Patch shared with YouTube and YT Music.
  */
-internal fun hideFullscreenAdsPatch(
-    preferenceScreen: BasePreferenceScreen.Screen,
-) = bytecodePatch(
-    description = "Adds an option to hide fullscreen ads.",
-) {
-    dependsOn(
-        addResourcesPatch,
-        resourceMappingPatch,
-    )
-
-    apply {
-        addResources("shared", "ad.hideFullscreenAdsPatch")
-
-        preferenceScreen.addPreferences(
-            SwitchPreference("revanced_hide_fullscreen_ads", summaryKey = null),
+internal fun hideFullscreenAdsPatch(preferenceScreen: BasePreferenceScreen.Screen) =
+    bytecodePatch(
+        description = "Adds an option to hide fullscreen ads.",
+    ) {
+        dependsOn(
+            addResourcesPatch,
+            resourceMappingPatch,
         )
 
-        // Non-litho view, used in some old clients.
-        interstitialsContainerMethodMatch.let {
-            it.method.apply {
-                val viewIndex = it[0] + 2
-                val register = getInstruction<OneRegisterInstruction>(viewIndex).registerA
+        apply {
+            addResources("shared", "ad.hideFullscreenAdsPatch")
 
-                addInstruction(
-                    viewIndex + 1,
-                    "invoke-static { v$register }, ${EXTENSION_CLASS_DESCRIPTOR}->hideFullscreenAds(Landroid/view/View;)V",
-                )
-            }
-        }
+            preferenceScreen.addPreferences(
+                SwitchPreference("revanced_hide_fullscreen_ads", summaryKey = null),
+            )
 
-        lithoDialogBuilderMethodMatch.let {
-            // Find the class name of the custom dialog from the original method, before
-            // cloneMutableAndPreserveParameters() shifts the fingerprint match indexes.
-            val dialogClass = it.method.getInstruction(it[0]).methodReference!!.definingClass
+            // Non-litho view, used in some old clients.
+            interstitialsContainerMethodMatch.let {
+                it.method.apply {
+                    val viewIndex = it[0] + 2
+                    val register = getInstruction<OneRegisterInstruction>(viewIndex).registerA
 
-            it.method.cloneMutableAndPreserveParameters().apply {
-                // The dialog can be closed after dialog.show(),
-                // and it is better to close the dialog after the layout of the dialog has changed
-                val insertIndex = indexOfFirstInstructionReversedOrThrow {
-                    opcode == Opcode.IPUT_OBJECT && fieldReference?.type == dialogClass
+                    addInstruction(
+                        viewIndex + 1,
+                        "invoke-static { v$register }, ${EXTENSION_CLASS_DESCRIPTOR}->hideFullscreenAds(Landroid/view/View;)V",
+                    )
                 }
-                val insertRegister =
-                    getInstruction<TwoRegisterInstruction>(insertIndex).registerA
-                val freeRegister = findFreeRegister(insertIndex, insertRegister)
+            }
 
-                addInstructionsAtControlFlowLabel(
-                    insertIndex,
-                    """
+            lithoDialogBuilderMethodMatch.let {
+                // Find the class name of the custom dialog from the original method, before
+                // cloneMutableAndPreserveParameters() shifts the fingerprint match indexes.
+                val dialogClass =
+                    it.method
+                        .getInstruction(it[0])
+                        .methodReference!!
+                        .definingClass
+
+                it.method.cloneMutableAndPreserveParameters().apply {
+                    // The dialog can be closed after dialog.show(),
+                    // and it is better to close the dialog after the layout of the dialog has changed
+                    val insertIndex =
+                        indexOfFirstInstructionReversedOrThrow {
+                            opcode == Opcode.IPUT_OBJECT && fieldReference?.type == dialogClass
+                        }
+                    val insertRegister =
+                        getInstruction<TwoRegisterInstruction>(insertIndex).registerA
+                    val freeRegister = findFreeRegister(insertIndex, insertRegister)
+
+                    addInstructionsAtControlFlowLabel(
+                        insertIndex,
+                        """
                         move-object/from16 v$freeRegister, p1
                         invoke-static { v$insertRegister, v$freeRegister }, ${EXTENSION_CLASS_DESCRIPTOR}->closeFullscreenAd(Ljava/lang/Object;[B)V
-                    """
-                )
+                    """,
+                    )
+                }
             }
-        }
 
-        // Set close dialog method.
-        val customDialogOnBackPressedMethod =
-            customDialogOnBackPressedParentMethodMatch.immutableClassDef.customDialogOnBackPressedMethod()
-
-        fullscreenAdsCloseDialogMethod.addInstructions(
-            0,
-            """
+            // Set close dialog method.
+            fullscreenAdsCloseDialogMethod.addInstructions(
+                0,
+                """
                 check-cast p0, ${customDialogOnBackPressedMethod.definingClass}
                 invoke-virtual { p0 }, $customDialogOnBackPressedMethod
-            """
-        )
+            """,
+            )
+        }
     }
-}
