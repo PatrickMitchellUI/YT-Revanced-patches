@@ -46,12 +46,13 @@ internal val BytecodePatchContext.reelPlaybackMethodMatch by composingFirstMetho
     returnType("V")
 
     val methodParametersPrefix = listOf("I", "L", "L")
+
     instructions(
         field { definingClass == "Ljava/util/concurrent/TimeUnit;" && name == "MILLISECONDS" },
         afterAtMost(
             15,
             method {
-                name == "<init>" &&
+                name == "<init>" && parameterTypes.size == methodParametersPrefix.size &&
                     parameterTypes.zip(methodParametersPrefix).all { (a, b) -> a.startsWith(b) }
             },
         ),

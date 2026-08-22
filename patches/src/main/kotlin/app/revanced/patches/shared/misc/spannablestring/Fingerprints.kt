@@ -24,7 +24,10 @@ internal val BytecodePatchContext.buildSpannableStringMethodMatch by composingFi
 
     instructions(
         method { toString() == "Landroid/text/SpannableString;->valueOf(Ljava/lang/CharSequence;)Landroid/text/SpannableString;" },
-        method { returnType == "V" && parameterTypes.zip(methodParameters).all { (a, b) -> a.startsWith(b) } },
+        method {
+            returnType == "V" && parameterTypes.size == methodParameters.size &&
+                parameterTypes.zip(methodParameters).all { (a, b) -> a.startsWith(b) }
+        },
         "Failed to set PB Style Run Extension in TextComponentSpec."(String::startsWith),
     )
     instructions(method("setSpan"))
