@@ -42,18 +42,18 @@ internal val BytecodePatchContext.playbackSpeedOnItemClickMethod by getting {
 } using { playbackSpeedOnItemClickParentMethodMatch.immutableMethod }
 
 internal val BytecodePatchContext.playerControllerSetTimeReferenceMethodMatch by
-composingFirstMethod {
-    opcodes(
-        Opcode.INVOKE_DIRECT_RANGE,
-        Opcode.IGET_OBJECT,
-    )
-    // YT version 21.15 and on appends "%s" to this log string, we match the stable prefix so both 20.x and 21.x resolve.
-    custom {
-        instructionsOrNull?.any {
-            it.string?.startsWith("Media progress reported outside media playback:") == true
-        } == true
+    composingFirstMethod {
+        opcodes(
+            Opcode.INVOKE_DIRECT_RANGE,
+            Opcode.IGET_OBJECT,
+        )
+        // YT version 21.15 and on appends "%s" to this log string, we match the stable prefix so both 20.x and 21.x resolve.
+        custom {
+            instructionsOrNull?.any {
+                it.string?.startsWith("Media progress reported outside media playback:") == true
+            } == true
+        }
     }
-}
 
 internal val BytecodePatchContext.playVideoCheckVideoStreamingDataResponseMethod by gettingFirstImmutableMethodDeclaratively {
     instructions("playVideo called on player response with no videoStreamingData."())
@@ -66,8 +66,8 @@ internal val BytecodePatchContext.seekMethod by getting {
                 // 20.xx
                 "Attempting to seek during an ad" { equals(it) }, // Must use custom comparison block, otherwise string is added to stringsList for lookup
                 // 21.02+
-                "currentPositionMs." { equals(it) }
-            )
+                "currentPositionMs." { equals(it) },
+            ),
         )
     }
 } using { playVideoCheckVideoStreamingDataResponseMethod }
@@ -78,15 +78,13 @@ internal val BytecodePatchContext.videoLengthMethodMatch by getting {
         parameterTypes()
         instructions(
             method {
-                definingClass == "Landroid/graphics/Rect;" && name == "set"
-                        && parameterTypes.size == 1 && parameterTypes[0] == "Landroid/graphics/Rect;"
+                definingClass == "Landroid/graphics/Rect;" && name == "set" &&
+                    parameterTypes.size == 1 && parameterTypes[0] == "Landroid/graphics/Rect;"
             },
-
             method { returnType == "J" },
             afterAtMost(5, method { returnType == "J" }),
             afterAtMost(10, method { returnType == "J" }),
             afterAtMost(10, method { returnType == "J" }),
-
             method { returnType == "Z" && parameterTypes.isEmpty() },
             afterAtMost(8, Opcode.CMP_LONG()),
         )
@@ -199,7 +197,7 @@ internal val BytecodePatchContext.playbackStartDescriptorToStringMethodMatch by 
         method { toString() == "Ljava/util/Locale;->getDefault()Ljava/util/Locale;" },
         // First method call after Locale is the video ID.
         method { returnType == "Ljava/lang/String;" && parameterTypes.isEmpty() },
-        "PlaybackStartDescriptor:"(String::startsWith)
+        "PlaybackStartDescriptor:"(String::startsWith),
     )
 }
 
@@ -242,7 +240,6 @@ internal val BytecodePatchContext.setVideoQualityMethod by getting {
     }
 } using { videoQualitySetterMethod }
 
-
 internal val BytecodePatchContext.channelIdMethod by gettingFirstMethodDeclaratively {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returnType("V")
@@ -253,15 +250,24 @@ internal val BytecodePatchContext.channelIdMethod by gettingFirstMethodDeclarati
 }
 
 context(_: BytecodePatchContext)
-internal fun ClassDef.getVideoTimeMethodMatch() = firstMethodComposite {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returnType("V")
-    parameterTypes()
-    instructions(
-        method { // getVideoTime()
-            definingClass == type &&
+internal fun ClassDef.getVideoTimeMethodMatch() =
+    firstMethodComposite {
+        accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+        returnType("V")
+        parameterTypes()
+
+        var methodDefiningClass = ""
+        custom {
+            methodDefiningClass = definingClass
+            true
+        }
+
+        instructions(
+            method {
+                // getVideoTime()
+                definingClass == methodDefiningClass &&
                     returnType == "J" && parameterTypes.isEmpty()
-        },
-        afterAtMost(5, 69L()),
-    )
-}
+            },
+            afterAtMost(5, 69L()),
+        )
+    }
