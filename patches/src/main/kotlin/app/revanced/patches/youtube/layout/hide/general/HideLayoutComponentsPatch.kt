@@ -2,17 +2,7 @@ package app.revanced.patches.youtube.layout.hide.general
 
 import app.revanced.com.android.tools.smali.dexlib2.mutable.MutableMethod.Companion.toMutable
 import app.revanced.patcher.classDef
-import app.revanced.patcher.extensions.ExternalLabel
-import app.revanced.patcher.extensions.addInstruction
-import app.revanced.patcher.extensions.addInstructions
-import app.revanced.patcher.extensions.addInstructionsWithLabels
-import app.revanced.patcher.extensions.fieldReference
-import app.revanced.patcher.extensions.getInstruction
-import app.revanced.patcher.extensions.instructions
-import app.revanced.patcher.extensions.instructionsOrNull
-import app.revanced.patcher.extensions.methodReference
-import app.revanced.patcher.extensions.removeInstruction
-import app.revanced.patcher.extensions.replaceInstruction
+import app.revanced.patcher.extensions.*
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.shared.layout.hide.general.hideLayoutComponentsPatch
 import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
@@ -819,28 +809,28 @@ val hideLayoutComponentsPatch =
             }
         }
 
-        // Experimental app targets have a second bottom sheet menu item builder method.
-        // Hook it as well if present, skipping if it resolves to the method already hooked above.
-        bottomSheetMenuItemBuilderWithToStringMethod?.let { method ->
-            if (method.toString() != bottomSheetMenuItemBuilderMethodMatch.method.toString()) {
-                method.apply {
-                    val moveResultIndex =
-                        indexOfFirstInstructionOrThrow {
-                            opcode == Opcode.INVOKE_STATIC && methodReference?.let { reference ->
-                                reference.returnType == "Ljava/lang/CharSequence;" &&
-                                    reference.parameterTypes.size == 1
-                            } == true
-                        } + 1
-                    val register = getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
+        // TODO: Refactor when ReVanced Patcher supports matching multiple methods in sequence.
+        arrayOf(
+            getBottomSheetMenuItemBuilderWithToStringMethod(true),
+            getBottomSheetMenuItemBuilderWithToStringMethod(false),
+        ).forEach { method ->
+            method?.apply {
+                val moveResultIndex =
+                    indexOfFirstInstructionOrThrow {
+                        opcode == Opcode.INVOKE_STATIC && methodReference?.let { reference ->
+                            reference.returnType == "Ljava/lang/CharSequence;" &&
+                                reference.parameterTypes.size == 1
+                        } == true
+                    } + 1
+                val register = getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
 
-                    addInstructions(
-                        moveResultIndex + 1,
-                        """
+                addInstructions(
+                    moveResultIndex + 1,
+                    """
                         invoke-static { v$register }, ${LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR}->hideFlyoutMenu(Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
                         move-result-object v$register
                     """,
-                    )
-                }
+                )
             }
         }
 

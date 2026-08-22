@@ -12,8 +12,8 @@ import app.revanced.patcher.field
 import app.revanced.patcher.firstImmutableMethodDeclaratively
 import app.revanced.patcher.firstMethodComposite
 import app.revanced.patcher.firstMethodDeclaratively
+import app.revanced.patcher.firstMethodDeclarativelyOrNull
 import app.revanced.patcher.gettingFirstMethodDeclaratively
-import app.revanced.patcher.gettingFirstMethodDeclarativelyOrNull
 import app.revanced.patcher.immutableClassDef
 import app.revanced.patcher.instructions
 import app.revanced.patcher.invoke
@@ -30,7 +30,6 @@ import app.revanced.util.using
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-
 internal val BytecodePatchContext.hideShowMoreButtonSetViewMethodMatch by composingFirstMethod {
     returnType("V")
 
@@ -43,11 +42,13 @@ internal val BytecodePatchContext.hideShowMoreButtonSetViewMethodMatch by compos
         ResourceType.ID("link_text_start"),
         allOf(
             Opcode.IPUT_OBJECT(),
-            field { type == "Landroid/widget/TextView;" && definingClass == methodDefiningClass }),
+            field { type == "Landroid/widget/TextView;" && definingClass == methodDefiningClass },
+        ),
         ResourceType.ID("expand_button_container"),
         allOf(
             Opcode.IPUT_OBJECT(),
-            field { type == "Landroid/view/View;" && definingClass == methodDefiningClass })
+            field { type == "Landroid/view/View;" && definingClass == methodDefiningClass },
+        ),
     )
 }
 
@@ -68,8 +69,8 @@ internal val BytecodePatchContext.hideShowMoreButtonMethod by getting {
                 Opcode.INVOKE_VIRTUAL(),
                 method {
                     toString() == "Landroid/view/View;->setContentDescription(Ljava/lang/CharSequence;)V"
-                }
-            )
+                },
+            ),
         )
     }
 } using { hideShowMoreButtonSetViewMethodMatch.method }
@@ -84,8 +85,8 @@ internal val BytecodePatchContext.hideSubscribedChannelsBarConstructorMethodMatc
         afterAtMost(3, Opcode.MOVE_RESULT_OBJECT()),
         afterAtMost(
             5,
-            allOf(Opcode.NEW_INSTANCE(), type($$"Landroid/widget/LinearLayout$LayoutParams;"))
-        )
+            allOf(Opcode.NEW_INSTANCE(), type($$"Landroid/widget/LinearLayout$LayoutParams;")),
+        ),
     )
     custom { immutableClassDef.anyField { type == "Landroid/support/v7/widget/RecyclerView;" } }
 }
@@ -100,8 +101,8 @@ internal val BytecodePatchContext.hideSubscribedChannelsBarConstructorLegacyMeth
         afterAtMost(3, Opcode.MOVE_RESULT_OBJECT()),
         afterAtMost(
             5,
-            allOf(Opcode.NEW_INSTANCE(), type($$"Landroid/widget/LinearLayout$LayoutParams;"))
-        )
+            allOf(Opcode.NEW_INSTANCE(), type($$"Landroid/widget/LinearLayout$LayoutParams;")),
+        ),
     )
 }
 
@@ -112,7 +113,7 @@ internal val BytecodePatchContext.hideSubscribedChannelsBarLandscapeMethodMatch 
         instructions(
             ResourceType.DIMEN("parent_view_width_in_wide_mode"),
             allOf(Opcode.INVOKE_VIRTUAL(), method("getDimensionPixelSize")),
-            after(Opcode.MOVE_RESULT())
+            after(Opcode.MOVE_RESULT()),
         )
     }
 } using { hideSubscribedChannelsBarConstructorMethodMatch.immutableMethod }
@@ -124,7 +125,7 @@ internal val BytecodePatchContext.hideSubscribedChannelsBarLandscapeLegacyMethod
         instructions(
             ResourceType.DIMEN("parent_view_width_in_wide_mode"),
             allOf(Opcode.INVOKE_VIRTUAL(), method("getDimensionPixelSize")),
-            after(Opcode.MOVE_RESULT())
+            after(Opcode.MOVE_RESULT()),
         )
     }
 } using { hideSubscribedChannelsBarConstructorLegacyMethodMatch.immutableMethod }
@@ -140,11 +141,11 @@ internal val BytecodePatchContext.parseElementFromBufferMethodMatch by composing
         allOf(
             Opcode.INVOKE_STATIC(),
             method {
-                returnType.startsWith("L") && parameterTypes.size == 1
-                        && parameterTypes[0].startsWith("L")
-            }
+                returnType.startsWith("L") && parameterTypes.size == 1 &&
+                    parameterTypes[0].startsWith("L")
+            },
         ),
-        afterAtMost(4, Opcode.RETURN_OBJECT())
+        afterAtMost(4, Opcode.RETURN_OBJECT()),
     )
 }
 
@@ -182,8 +183,8 @@ internal val BytecodePatchContext.albumCardsMethodMatch by composingFirstMethod 
             5,
             allOf(
                 Opcode.INVOKE_VIRTUAL(),
-                method { name == "inflate" && returnType == "Landroid/view/View;" }
-            )
+                method { name == "inflate" && returnType == "Landroid/view/View;" },
+            ),
         ),
         after(Opcode.MOVE_RESULT_OBJECT()),
     )
@@ -195,7 +196,7 @@ internal val BytecodePatchContext.crowdfundingBoxMethodMatch by composingFirstMe
         ResourceType.LAYOUT("donation_companion"),
         allOf(
             Opcode.INVOKE_VIRTUAL(),
-            method { name == "inflate" && returnType == "Landroid/view/View;" }
+            method { name == "inflate" && returnType == "Landroid/view/View;" },
         ),
         after(Opcode.MOVE_RESULT_OBJECT()),
     )
@@ -207,7 +208,7 @@ internal val BytecodePatchContext.liveChatDonatorsBarMethodMatch by composingFir
         ResourceType.LAYOUT("live_chat_ticker_item"),
         allOf(
             Opcode.INVOKE_VIRTUAL(),
-            method { name == "inflate" && returnType == "Landroid/view/View;" }
+            method { name == "inflate" && returnType == "Landroid/view/View;" },
         ),
         after(Opcode.MOVE_RESULT_OBJECT()),
     )
@@ -241,7 +242,7 @@ internal val BytecodePatchContext.filterBarHeightMethodMatch by composingFirstMe
         ResourceType.DIMEN("filter_bar_height"),
         allOf(
             Opcode.INVOKE_VIRTUAL(),
-            method { name == "getDimensionPixelSize" && returnType == "I" }
+            method { name == "getDimensionPixelSize" && returnType == "I" },
         ),
         after(Opcode.MOVE_RESULT()),
     )
@@ -250,19 +251,20 @@ internal val BytecodePatchContext.filterBarHeightMethodMatch by composingFirstMe
 /**
  * 20.10+
  */
-internal fun BytecodePatchContext.getRelatedChipCloudMethodMatch() = firstMethodComposite {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
-    instructions(
-        ResourceType.ID("related_chip_cloud"),
-        allOf(Opcode.INVOKE_VIRTUAL(), method { name == "findViewById" }),
-        45682279L(),
-        allOf(
-            Opcode.INVOKE_VIRTUAL(),
-            method { name == "getDimensionPixelSize" && returnType == "I" }
-        ),
-        after(Opcode.MOVE_RESULT()),
-    )
-}
+internal fun BytecodePatchContext.getRelatedChipCloudMethodMatch() =
+    firstMethodComposite {
+        accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
+        instructions(
+            ResourceType.ID("related_chip_cloud"),
+            allOf(Opcode.INVOKE_VIRTUAL(), method { name == "findViewById" }),
+            45682279L(),
+            allOf(
+                Opcode.INVOKE_VIRTUAL(),
+                method { name == "getDimensionPixelSize" && returnType == "I" },
+            ),
+            after(Opcode.MOVE_RESULT()),
+        )
+    }
 
 internal val BytecodePatchContext.searchResultsChipBarMethodMatch by composingFirstMethod {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
@@ -270,7 +272,8 @@ internal val BytecodePatchContext.searchResultsChipBarMethodMatch by composingFi
         ResourceType.DIMEN("bar_container_height"),
         allOf(
             Opcode.INVOKE_VIRTUAL(),
-            method { name == "getDimensionPixelSize" && returnType == "I" }),
+            method { name == "getDimensionPixelSize" && returnType == "I" },
+        ),
         after(Opcode.MOVE_RESULT()),
     )
 }
@@ -285,7 +288,7 @@ internal val BytecodePatchContext.showFloatingMicrophoneButtonMethodMatch by get
         parameterTypes(
             "Landroid/view/View;",
             "Lcom/google/android/libraries/quantum/fab/FloatingActionButton;",
-            "Landroid/view/ViewStub;"
+            "Landroid/view/ViewStub;",
         )
         instructions(Opcode.IGET_BOOLEAN())
     }
@@ -314,7 +317,6 @@ internal val BytecodePatchContext.showFloatingMicrophoneButtonLegacyMethod by co
     )
 }
 
-
 internal val BytecodePatchContext.hideViewCountMethodMatch by composingFirstMethod(
     "Has attachmentRuns but drawableRequester is missing.",
 ) {
@@ -335,10 +337,11 @@ internal val BytecodePatchContext.searchBoxTypingStringMethodMatch by composingF
         allOf(Opcode.IGET_OBJECT(), field { type == "Ljava/util/Collection;" }),
         afterAtMost(
             5,
-            method { toString() == "Ljava/util/ArrayList;-><init>(Ljava/util/Collection;)V" }),
+            method { toString() == "Ljava/util/ArrayList;-><init>(Ljava/util/Collection;)V" },
+        ),
         allOf(Opcode.IGET_OBJECT(), field { type == "Ljava/lang/String;" }),
         afterAtMost(5, method { toString() == "Ljava/lang/String;->isEmpty()Z" }),
-        ResourceType.DIMEN("suggestion_category_divider_height")
+        ResourceType.DIMEN("suggestion_category_divider_height"),
     )
 }
 
@@ -357,10 +360,12 @@ internal val BytecodePatchContext.searchSuggestionEndpointMethodMatch by getting
         instructions(
             allOf(
                 Opcode.IGET_OBJECT(),
-                field { definingClass == methodDefiningClass && type == "Ljava/lang/String;" }),
+                field { definingClass == methodDefiningClass && type == "Ljava/lang/String;" },
+            ),
             allOf(
                 Opcode.INVOKE_STATIC(),
-                method { toString() == "Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z" }),
+                method { toString() == "Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z" },
+            ),
         )
     }
 } using {
@@ -379,7 +384,7 @@ internal val BytecodePatchContext.latestVideosContentPillMethodMatch by composin
         method {
             toString() == "Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;"
         },
-        after(Opcode.MOVE_RESULT_OBJECT())
+        after(Opcode.MOVE_RESULT_OBJECT()),
     )
 }
 
@@ -392,10 +397,9 @@ internal val BytecodePatchContext.latestVideosBarMethodMatch by composingFirstMe
         method {
             toString() == "Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;"
         },
-        after(Opcode.MOVE_RESULT_OBJECT())
+        after(Opcode.MOVE_RESULT_OBJECT()),
     )
 }
-
 
 internal val BytecodePatchContext.bottomSheetMenuItemBuilderMethodMatch by composingFirstMethod {
     returnType("L")
@@ -405,33 +409,39 @@ internal val BytecodePatchContext.bottomSheetMenuItemBuilderMethodMatch by compo
             Opcode.INVOKE_STATIC(),
             method {
                 returnType == "Ljava/lang/CharSequence;" &&
-                        parameterTypes.size == 1 && parameterTypes[0].startsWith("L")
-            }
+                    parameterTypes.size == 1 && parameterTypes[0].startsWith("L")
+            },
         ),
         after(Opcode.MOVE_RESULT_OBJECT()),
-        "Text missing for BottomSheetMenuItem."()
+        "Text missing for BottomSheetMenuItem."(),
     )
 }
 
-// Experimental app targets have a second bottom sheet menu item builder method that is otherwise
-// identical, but additionally calls toString() on the text. Matched optionally as it is absent on
-// current targets. Replaces the need for matchAll(), which the patcher does not yet support.
-internal val BytecodePatchContext.bottomSheetMenuItemBuilderWithToStringMethod by gettingFirstMethodDeclarativelyOrNull {
-    returnType("L")
-    parameterTypes("L")
-    instructions(
-        allOf(
-            Opcode.INVOKE_STATIC(),
-            method {
-                returnType == "Ljava/lang/CharSequence;" &&
-                        parameterTypes.size == 1 && parameterTypes[0].startsWith("L")
-            }
-        ),
-        after(Opcode.MOVE_RESULT_OBJECT()),
-        method { name == "toString" },
-        "Text missing for BottomSheetMenuItem."()
-    )
-}
+// New app versions have a second bottom sheet menu item builder method that is otherwise
+// identical, but additionally calls toString() on the text.
+// TODO: Refactor when ReVanced Patcher supports matching multiple methods in sequence.
+internal fun BytecodePatchContext.getBottomSheetMenuItemBuilderWithToStringMethod(withToString: Boolean) =
+    firstMethodDeclarativelyOrNull {
+        returnType("L")
+        parameterTypes("L")
+
+        val predicates =
+            arrayOf(
+                allOf(
+                    Opcode.INVOKE_STATIC(),
+                    method {
+                        returnType == "Ljava/lang/CharSequence;" &&
+                            parameterTypes.size == 1 && parameterTypes[0].startsWith("L")
+                    },
+                ),
+                after(Opcode.MOVE_RESULT_OBJECT()),
+            )
+
+        instructions(
+            if (withToString) predicates + method { name == "toString" } else predicates,
+            "Text missing for BottomSheetMenuItem."(),
+        )
+    }
 
 internal val BytecodePatchContext.contextualMenuItemBuilderMethodMatch by composingFirstMethod {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL, AccessFlags.SYNTHETIC)
@@ -441,7 +451,7 @@ internal val BytecodePatchContext.contextualMenuItemBuilderMethodMatch by compos
         allOf(Opcode.CHECK_CAST(), type("Landroid/widget/TextView;")),
         afterAtMost(
             5,
-            method { toString() == "Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V" }
+            method { toString() == "Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V" },
         ),
         ResourceType.DIMEN("poster_art_width_default"),
     )
@@ -455,7 +465,7 @@ internal val BytecodePatchContext.channelTabBuilderMethod by gettingFirstMethodD
         "Ljava/lang/CharSequence;",
         "Z",
         "L",
-        "Z"
+        "Z",
     )
     custom {
         !AccessFlags.STATIC.isSet(accessFlags)
@@ -470,19 +480,19 @@ internal val BytecodePatchContext.channelTabBuilderLegacyMethod by gettingFirstM
         "Ljava/lang/CharSequence;",
         "Ljava/lang/CharSequence;",
         "Z",
-        "L"
+        "L",
     )
 }
 
 internal val BytecodePatchContext.channelTabRendererMethod by gettingFirstMethodDeclaratively(
-    "TabRenderer.content contains SectionListRenderer but the tab does not have a section list controller."
+    "TabRenderer.content contains SectionListRenderer but the tab does not have a section list controller.",
 ) {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returnType("V")
     parameterTypes(
         "L",
         "Ljava/util/List;",
-        "I"
+        "I",
     )
 }
 
@@ -566,7 +576,9 @@ internal val BytecodePatchContext.bottomUIContainerMethod by gettingFirstMethodD
     definingClass("Lcom/google/android/apps/youtube/app/common/ui/bottomui/BottomUiContainer;")
     parameterTypes("Landroid/view/View;", "L")
     instructions(
-        method { name == "removeAllViews" && definingClass == "Lcom/google/android/apps/youtube/app/common/ui/bottomui/BottomUiContainer;" },
+        method {
+            name == "removeAllViews" && definingClass == "Lcom/google/android/apps/youtube/app/common/ui/bottomui/BottomUiContainer;"
+        },
     )
 }
 
@@ -586,7 +598,10 @@ internal val BytecodePatchContext.lithoSnackbarLayoutMethodMatch by composingFir
     }
 
     instructions(
-        allOf(Opcode.IPUT_OBJECT(), field { definingClass == methodDefiningClass && type == "Landroid/widget/FrameLayout;" }),
+        allOf(
+            Opcode.IPUT_OBJECT(),
+            field { definingClass == methodDefiningClass && type == "Landroid/widget/FrameLayout;" },
+        ),
     )
 }
 
@@ -641,8 +656,8 @@ internal val BytecodePatchContext.syncButtonMethodMatch by composingFirstMethod 
         ResourceType.LAYOUT("sync_button"),
         allOf(
             Opcode.INVOKE_VIRTUAL(),
-            method { name == "inflate" && returnType == "Landroid/view/View;" }
+            method { name == "inflate" && returnType == "Landroid/view/View;" },
         ),
-        after(Opcode.MOVE_RESULT_OBJECT())
+        after(Opcode.MOVE_RESULT_OBJECT()),
     )
 }
