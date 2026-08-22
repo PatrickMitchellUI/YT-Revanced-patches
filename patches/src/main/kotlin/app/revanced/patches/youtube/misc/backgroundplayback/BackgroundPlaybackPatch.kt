@@ -33,68 +33,69 @@ private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/revanced/extension/youtube/patches/BackgroundPlaybackPatch;"
 
 @Suppress("unused")
-val removeBackgroundPlaybackRestrictionsPatch = bytecodePatch(
-    name = "Remove background playback restrictions",
-    description = "Removes restrictions on background playback, including playing kids videos in the background.",
-) {
-    dependsOn(
-        resourceMappingPatch,
-        addResourcesPatch,
-        sharedExtensionPatch,
-        playerTypeHookPatch,
-        videoInformationPatch,
-        settingsPatch,
-        versionCheckPatch,
-    )
-
-    compatibleWith(
-        "com.google.android.youtube"(
-            "20.14.43",
-            "20.21.37",
-            "20.26.46",
-            "20.31.42",
-            "20.37.48",
-            "20.45.36",
-            "20.51.39"
-        ),
-    )
-
-    apply {
-        addResources("youtube", "misc.backgroundplayback.backgroundPlaybackPatch")
-
-        PreferenceScreen.SHORTS.addPreferences(
-            SwitchPreference("revanced_shorts_disable_background_playback", summaryKey = null),
+val removeBackgroundPlaybackRestrictionsPatch =
+    bytecodePatch(
+        name = "Remove background playback restrictions",
+        description = "Removes restrictions on background playback, including playing kids videos in the background.",
+    ) {
+        dependsOn(
+            resourceMappingPatch,
+            addResourcesPatch,
+            sharedExtensionPatch,
+            playerTypeHookPatch,
+            videoInformationPatch,
+            settingsPatch,
+            versionCheckPatch,
         )
 
-        PreferenceScreen.MISC.addPreferences(
-            SwitchPreference("revanced_remove_background_playback_restrictions", summaryKey = null),
+        compatibleWith(
+            "com.google.android.youtube"(
+                "20.14.43",
+                "20.21.37",
+                "20.26.46",
+                "20.31.42",
+                "20.37.48",
+                "20.45.36",
+                "20.51.39",
+            ),
         )
 
-        arrayOf(
-            backgroundPlaybackManagerMethod to "isBackgroundPlaybackAllowed",
-            backgroundPlaybackManagerShortsMethod to "isBackgroundShortsPlaybackAllowed",
-        ).forEach { (method, integrationsMethod) ->
-            method.apply {
-                findInstructionIndicesReversedOrThrow(Opcode.RETURN).forEach { index ->
-                    val register = getInstruction<OneRegisterInstruction>(index).registerA
+        apply {
+            addResources("youtube", "misc.backgroundplayback.backgroundPlaybackPatch")
 
-                    addInstructionsAtControlFlowLabel(
-                        index,
-                        """
+            PreferenceScreen.SHORTS.addPreferences(
+                SwitchPreference("revanced_shorts_disable_background_playback", summaryKey = null),
+            )
+
+            PreferenceScreen.MISC.addPreferences(
+                SwitchPreference("revanced_remove_background_playback_restrictions", summaryKey = null),
+            )
+
+            arrayOf(
+                backgroundPlaybackManagerMethod to "isBackgroundPlaybackAllowed",
+                backgroundPlaybackManagerShortsMethod to "isBackgroundShortsPlaybackAllowed",
+            ).forEach { (method, integrationsMethod) ->
+                method.apply {
+                    findInstructionIndicesReversedOrThrow(Opcode.RETURN).forEach { index ->
+                        val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                        addInstructionsAtControlFlowLabel(
+                            index,
+                            """
                             invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->$integrationsMethod(Z)Z
                             move-result v$register 
-                        """
-                    )
+                        """,
+                        )
+                    }
                 }
             }
-        }
 
-        fun MutableMethod.addBackgroundPlaybackIsPatchEnabledHook() {
-            val returnInstruction = if (returnType == "Z") "return v0" else "return-void"
+            fun MutableMethod.addBackgroundPlaybackIsPatchEnabledHook() {
+                val returnInstruction = if (returnType == "Z") "return v0" else "return-void"
 
-            addInstructionsWithLabels(
-                0,
-                """
+                addInstructionsWithLabels(
+                    0,
+                    """
                     invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->isPatchEnabled()Z
                     move-result v0
                     if-eqz v0, :disabled
@@ -102,45 +103,45 @@ val removeBackgroundPlaybackRestrictionsPatch = bytecodePatch(
                     :disabled
                     nop
                 """,
-            )
-        }
-
-        fun CompositeMatch.addBackgroundPlaybackFeatureFlagHook(enable: Boolean) {
-            val methodName = if (enable) "enableFeatureFlag" else "disableFeatureFlag"
-            method.insertLiteralOverride(this[0], "$EXTENSION_CLASS_DESCRIPTOR->$methodName(Z)Z")
-        }
-
-        // Enable background playback option in YouTube settings
-        backgroundPlaybackSettingsMethod.apply {
-            val booleanCalls = instructions.filter {
-                it.methodReference?.returnType == "Z"
+                )
             }
 
-            firstMethod(booleanCalls[1].methodReference!!)
-                .addBackgroundPlaybackIsPatchEnabledHook()
-        }
+            fun CompositeMatch.addBackgroundPlaybackFeatureFlagHook(enable: Boolean) {
+                val methodName = if (enable) "enableFeatureFlag" else "disableFeatureFlag"
+                method.insertLiteralOverride(this[0], "$EXTENSION_CLASS_DESCRIPTOR->$methodName(Z)Z")
+            }
 
-        // Force allowing background play for Shorts.
-        shortsBackgroundPlaybackFeatureFlagMethodMatch.addBackgroundPlaybackFeatureFlagHook(true)
+            // Enable background playback option in YouTube settings
+            backgroundPlaybackSettingsMethod.apply {
+                val booleanCall =
+                    instructions.first {
+                        it.methodReference?.returnType == "Z"
+                    }
 
-        // Force allowing background play for videos labeled for kids.
-        kidsBackgroundPlaybackPolicyControllerMethod.addBackgroundPlaybackIsPatchEnabledHook()
+                firstMethod(booleanCall.methodReference!!).addBackgroundPlaybackIsPatchEnabledHook()
+            }
 
-        // Fix PiP buttons not working after locking/unlocking device screen.
-        if (!is_21_21_or_greater) {
-            pipInputConsumerFeatureFlagMethodMatch.addBackgroundPlaybackFeatureFlagHook(false)
-        }
+            // Force allowing background play for Shorts.
+            shortsBackgroundPlaybackFeatureFlagMethodMatch.addBackgroundPlaybackFeatureFlagHook(true)
 
-        if (is_20_29_or_greater) {
-            // Client flag that interferes with background playback of some video types.
-            // Exact purpose is not clear and it's used in ~ 100 locations.
-            newPlayerTypeEnumFeatureFlagMethodMatch.addBackgroundPlaybackFeatureFlagHook(false)
-        }
+            // Force allowing background play for videos labeled for kids.
+            kidsBackgroundPlaybackPolicyControllerMethod.addBackgroundPlaybackIsPatchEnabledHook()
 
-        if (is_21_04_or_greater) {
-            // If newPlayerTypeEnumFeatureFlagMethodMatch is present and forced off then this flag
-            // must also be disabled, otherwise the player is a black screen with no buttons and no playback.
-            newPlayerOverlaysFeatureFlagMethodMatch.addBackgroundPlaybackFeatureFlagHook(false)
+            // Fix PiP buttons not working after locking/unlocking device screen.
+            if (!is_21_21_or_greater) {
+                pipInputConsumerFeatureFlagMethodMatch.addBackgroundPlaybackFeatureFlagHook(false)
+            }
+
+            if (is_20_29_or_greater) {
+                // Client flag that interferes with background playback of some video types.
+                // Exact purpose is not clear and it's used in ~ 100 locations.
+                newPlayerTypeEnumFeatureFlagMethodMatch.addBackgroundPlaybackFeatureFlagHook(false)
+            }
+
+            if (is_21_04_or_greater) {
+                // If newPlayerTypeEnumFeatureFlagMethodMatch is present and forced off then this flag
+                // must also be disabled, otherwise the player is a black screen with no buttons and no playback.
+                newPlayerOverlaysFeatureFlagMethodMatch.addBackgroundPlaybackFeatureFlagHook(false)
+            }
         }
     }
-}
