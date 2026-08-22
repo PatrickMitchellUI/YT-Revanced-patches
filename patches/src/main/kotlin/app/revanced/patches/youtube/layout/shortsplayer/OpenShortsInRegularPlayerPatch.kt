@@ -2,6 +2,8 @@ package app.revanced.patches.youtube.layout.shortsplayer
 
 import app.revanced.patcher.extensions.addInstruction
 import app.revanced.patcher.extensions.addInstructionsWithLabels
+import app.revanced.patcher.extensions.getInstruction
+import app.revanced.patcher.extensions.methodReference
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
@@ -22,55 +24,56 @@ private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/revanced/extension/youtube/patches/OpenShortsInRegularPlayerPatch;"
 
 @Suppress("unused")
-val openShortsInRegularPlayerPatch = bytecodePatch(
-    name = "Open Shorts in regular player",
-    description = "Adds options to open Shorts in the regular video player.",
-) {
-    dependsOn(
-        sharedExtensionPatch,
-        settingsPatch,
-        addResourcesPatch,
-        openVideosFullscreenHookPatch,
-        reloadVideoButtonPatch,
-        navigationBarHookPatch,
-        versionCheckPatch,
-        resourceMappingPatch,
-    )
-
-    compatibleWith(
-        "com.google.android.youtube"(
-            "20.14.43",
-            "20.21.37",
-            "20.26.46",
-            "20.31.42",
-            "20.37.48",
-            "20.45.36",
-            "20.51.39"
-        ),
-    )
-
-    apply {
-        addResources("youtube", "layout.shortsplayer.shortsPlayerTypePatch")
-
-        PreferenceScreen.SHORTS.addPreferences(
-            ListPreference("revanced_shorts_player_type"),
+val openShortsInRegularPlayerPatch =
+    bytecodePatch(
+        name = "Open Shorts in regular player",
+        description = "Adds options to open Shorts in the regular video player.",
+    ) {
+        dependsOn(
+            sharedExtensionPatch,
+            settingsPatch,
+            addResourcesPatch,
+            openVideosFullscreenHookPatch,
+            reloadVideoButtonPatch,
+            navigationBarHookPatch,
+            versionCheckPatch,
+            resourceMappingPatch,
         )
 
-        // Activity is used as the context to launch an Intent.
-        mainActivityOnCreateMethod.addInstruction(
-            0,
-            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS_DESCRIPTOR->" +
+        compatibleWith(
+            "com.google.android.youtube"(
+                "20.14.43",
+                "20.21.37",
+                "20.26.46",
+                "20.31.42",
+                "20.37.48",
+                "20.45.36",
+                "20.51.39",
+            ),
+        )
+
+        apply {
+            addResources("youtube", "layout.shortsplayer.shortsPlayerTypePatch")
+
+            PreferenceScreen.SHORTS.addPreferences(
+                ListPreference("revanced_shorts_player_type"),
+            )
+
+            // Activity is used as the context to launch an Intent.
+            mainActivityOnCreateMethod.addInstruction(
+                0,
+                "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS_DESCRIPTOR->" +
                     "setMainActivity(Landroid/app/Activity;)V",
-        )
+            )
 
+            val playbackStartVideoIdMethod =
+                playbackStartDescriptorToStringMethodMatch.let {
+                    it.method.getInstruction(it[1]).methodReference
+                }
 
-        val playbackStartVideoIdMethod = playbackStartDescriptorToStringMethodMatch.let {
-            navigate(it.method).to(it[1]).original()
-        }
-
-        (if (is_21_20_or_greater) shortsPlaybackIntentMethod else shortsPlaybackIntentLegacyMethod).addInstructionsWithLabels(
-            0,
-            """
+            (if (is_21_20_or_greater) shortsPlaybackIntentMethod else shortsPlaybackIntentLegacyMethod).addInstructionsWithLabels(
+                0,
+                """
                 move-object/from16 v0, p1
                 
                 invoke-virtual { v0 }, $playbackStartVideoIdMethod
@@ -82,7 +85,7 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
                 
                 :disabled
                 nop
-            """
-        )
+            """,
+            )
+        }
     }
-}
