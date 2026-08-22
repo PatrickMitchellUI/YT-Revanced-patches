@@ -77,10 +77,7 @@ internal val BytecodePatchContext.videoLengthMethodMatch by getting {
         returnType("V")
         parameterTypes()
         instructions(
-            method {
-                definingClass == "Landroid/graphics/Rect;" && name == "set" &&
-                    parameterTypes.size == 1 && parameterTypes[0] == "Landroid/graphics/Rect;"
-            },
+            method { toString() == "Landroid/graphics/Rect;->set(Landroid/graphics/Rect;)V" },
             method { returnType == "J" },
             afterAtMost(5, method { returnType == "J" }),
             afterAtMost(10, method { returnType == "J" }),
