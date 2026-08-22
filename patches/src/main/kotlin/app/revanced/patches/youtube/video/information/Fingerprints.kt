@@ -48,11 +48,7 @@ internal val BytecodePatchContext.playerControllerSetTimeReferenceMethodMatch by
             Opcode.IGET_OBJECT,
         )
         // YT version 21.15 and on appends "%s" to this log string, we match the stable prefix so both 20.x and 21.x resolve.
-        custom {
-            instructionsOrNull?.any {
-                it.string?.startsWith("Media progress reported outside media playback:") == true
-            } == true
-        }
+        instructions("Media progress reported outside media playback:" { equals(it) })
     }
 
 internal val BytecodePatchContext.playVideoCheckVideoStreamingDataResponseMethod by gettingFirstImmutableMethodDeclaratively {
