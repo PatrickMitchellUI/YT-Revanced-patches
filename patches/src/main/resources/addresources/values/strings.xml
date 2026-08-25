@@ -554,7 +554,7 @@ Verify the package name is correct and the app is installed"</string>
             <string name="revanced_swipe_threshold_title">Swipe magnitude threshold</string>
             <string name="revanced_swipe_threshold_summary">Set the required swipe distance before an adjustment triggers</string>
             <string name="revanced_swipe_volume_sensitivity_title">Volume swipe sensitivity</string>
-            <string name="revanced_swipe_volume_sensitivity_summary">Adjust how the volume changes during a swipe</string>
+            <string name="revanced_swipe_volume_sensitivity_summary">Higher values increase the volume change per swipe</string>
             <string name="revanced_swipe_brightness_sensitivity_title">Brightness swipe sensitivity</string>
             <string name="revanced_swipe_brightness_sensitivity_summary">Higher values require more swiping per brightness step</string>
             <string name="revanced_swipe_speed_title">Enable speed gesture</string>
