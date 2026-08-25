@@ -7,13 +7,13 @@ import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-private const val EXTENSION_CLASS =
-    "Lapp/revanced/extension/youtube/patches/QuickActionsMarginPatch;"
+private const val EXTENSION_CLASS_DESCRIPTOR =
+    "Lapp/revanced/extension/youtube/patches/SetQuickActionsMarginPatch;"
 
 @Suppress("unused")
-val quickActionsMarginPatch =
+val setQuickActionsMarginPatch =
     bytecodePatch(
-        description = "Injects a configurable top margin into the quick actions container view.",
+        description = "Set top margin of the quick actions container view.",
     ) {
         dependsOn(
             sharedExtensionPatch,
@@ -29,7 +29,7 @@ val quickActionsMarginPatch =
 
                     addInstruction(
                         checkCastIndex + 1,
-                        "invoke-static { v$insertRegister }, $EXTENSION_CLASS->setQuickActionsMargin(Landroid/view/View;)V",
+                        "invoke-static { v$insertRegister }, $EXTENSION_CLASS_DESCRIPTOR->setQuickActionsMargin(Landroid/view/View;)V",
                     )
                 }
             }

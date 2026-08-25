@@ -41,7 +41,7 @@ val hideVideoActionButtonsPatch =
             lithoFilterPatch,
             videoInformationPatch,
             hookTreeNodeElementPatch,
-            quickActionsMarginPatch,
+            setQuickActionsMarginPatch,
             addResourcesPatch,
         )
 
