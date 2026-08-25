@@ -3,6 +3,7 @@ package app.revanced.patches.youtube.layout.theme
 import app.revanced.patcher.extensions.InstructionExtensions.addInstructions
 import app.revanced.patcher.extensions.InstructionExtensions.getInstruction
 import app.revanced.patcher.patch.PatchException
+import app.revanced.patcher.patch.ResourcePatchContext
 import app.revanced.patcher.patch.resourcePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
@@ -17,489 +18,281 @@ import app.revanced.patches.youtube.misc.playservice.is_21_08_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
+import app.revanced.util.childElementsSequence
 import app.revanced.util.forEachChildElement
 import app.revanced.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
+import org.w3c.dom.Document
 import org.w3c.dom.Element
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/revanced/extension/youtube/patches/theme/ThemePatch;"
+private const val SPLASH_BACKGROUND_COLOR = "revanced_splash_background_color"
+
+private val lightThemeStyleFiles =
+    arrayOf(
+        "res/values/styles.xml",
+        "res/values-v27/styles.xml",
+        "res/values-v31/styles.xml",
+    )
+
+private val notificationColorThemePatch =
+    resourcePatch {
+        dependsOn(resourceMappingPatch)
+
+        apply {
+            val lightThemeBackgroundColor = lightThemeBackgroundColorOption.value!!
+            val darkThemeBackgroundColor = darkThemeBackgroundColorOption.value!!
+
+            fun Element.setStyleItem(
+                document: Document,
+                name: String,
+                value: String,
+            ) {
+                val item =
+                    childElementsSequence().firstOrNull {
+                        it.nodeName == "item" && it.getAttribute("name") == name
+                    } ?: document.createElement("item").also {
+                        it.setAttribute("name", name)
+                        appendChild(it)
+                    }
+
+                item.textContent = value
+            }
+
+            fun ResourcePatchContext.addColorResource(
+                resourceFile: String,
+                colorName: String,
+                colorValue: String,
+            ) = document(resourceFile).use { document ->
+                val resources = document.getElementsByTagName("resources").item(0) as Element
+                resources.appendChild(
+                    document.createElement("color").apply {
+                        setAttribute("name", colorName)
+                        setAttribute("category", "color")
+                        textContent = colorValue
+                    },
+                )
+            }
+
+            fun ResourcePatchContext.patchSplashScreens() {
+                arrayOf(
+                    "res/drawable/quantum_launchscreen_youtube.xml",
+                    "res/drawable-sw600dp/quantum_launchscreen_youtube.xml",
+                ).forEach editSplashScreen@{ resourceFile ->
+                    document(resourceFile).use { document ->
+                        document
+                            .getElementsByTagName("layer-list")
+                            .item(0)
+                            .forEachChildElement { node ->
+                                if (node.hasAttribute("android:drawable")) {
+                                    node.setAttribute("android:drawable", "@color/$SPLASH_BACKGROUND_COLOR")
+                                    return@editSplashScreen
+                                }
+                            }
+
+                        throw PatchException("Failed to modify splash screen")
+                    }
+                }
+
+                // In 19.32+ the dark mode splash screen is white and fades to black without this override.
+                document("res/values-night/styles.xml").use { document ->
+                    val style =
+                        document.createElement("style").apply {
+                            setAttribute("name", "Theme.YouTube.Home")
+                            setAttribute("parent", "@style/Base.V27.Theme.YouTube.Home")
+                        }
+                    val splashColor = "@color/$SPLASH_BACKGROUND_COLOR"
+
+                    arrayOf(
+                        "android:navigationBarColor" to splashColor,
+                        "android:windowBackground" to splashColor,
+                        "android:colorBackground" to splashColor,
+                        "colorPrimaryDark" to splashColor,
+                        "android:windowLightStatusBar" to "false",
+                    ).forEach { (name, value) ->
+                        style.setStyleItem(document, name, value)
+                    }
+
+                    val resources = document.getElementsByTagName("resources").item(0) as Element
+                    resources.appendChild(style)
+                }
+            }
+
+            fun ResourcePatchContext.enableLightStatusBar() =
+                lightThemeStyleFiles.forEach { stylesFile ->
+                    runCatching {
+                        document(stylesFile).use { document ->
+                            val resources =
+                                document.getElementsByTagName("resources").item(0) as? Element
+                                    ?: return@use
+                            val theme =
+                                resources.childElementsSequence().firstOrNull {
+                                    it.nodeName == "style" && it.getAttribute("name") == "Theme.YouTube.Home"
+                                } ?: document.createElement("style").also {
+                                    it.setAttribute("name", "Theme.YouTube.Home")
+                                    it.setAttribute("parent", "@style/Base.V27.Theme.YouTube.Home")
+                                    resources.appendChild(it)
+                                }
+
+                            theme.setStyleItem(document, "android:windowLightStatusBar", "true")
+                        }
+                    }
+                }
+
+            fun ResourcePatchContext.patchMaterialYouNavigation(
+                useDarkTheme: Boolean,
+                useLightTheme: Boolean,
+            ) {
+                if (!useDarkTheme && !useLightTheme) return
+
+                val resDir = get("res")
+                val darkIndicatorColor = "@android:color/system_accent1_100"
+                val lightIndicatorColor = "@android:color/system_accent1_200"
+                val lightCountBackgroundColor = "@android:color/system_accent1_100"
+
+                if (useDarkTheme) {
+                    createNotificationDrawable(
+                        resDir,
+                        "drawable/revanced_notification_dot_dark.xml",
+                        darkIndicatorColor,
+                        "oval",
+                    )
+                    createNotificationDrawable(
+                        resDir,
+                        "drawable/revanced_notification_count_dark.xml",
+                        darkIndicatorColor,
+                        "rectangle",
+                        hasCorners = true,
+                    )
+                }
+
+                if (useLightTheme) {
+                    createNotificationDrawable(
+                        resDir,
+                        "drawable/revanced_notification_dot_light.xml",
+                        lightIndicatorColor,
+                        "oval",
+                    )
+                    createNotificationDrawable(
+                        resDir,
+                        "drawable/revanced_notification_count_light.xml",
+                        lightCountBackgroundColor,
+                        "rectangle",
+                        hasCorners = true,
+                    )
+                }
+
+                patchCountTextColor(resDir, "@android:color/system_neutral1_900")
+
+                val stylesFile = "res/values/styles.xml"
+                if (!get(stylesFile).exists()) return
+
+                document(stylesFile).use { document ->
+                    val resources = document.getElementsByTagName("resources").item(0) as? Element ?: return@use
+
+                    resources.forEachChildElement { style ->
+                        if (style.nodeName != "style") return@forEachChildElement
+
+                        when (style.getAttribute("name")) {
+                            "PivotBar.Dark" -> {
+                                if (!useDarkTheme) return@forEachChildElement
+                                style.setStyleItem(document, "dotBackground", "@drawable/revanced_notification_dot_dark")
+                                style.setStyleItem(document, "countBackground", "@drawable/revanced_notification_count_dark")
+                            }
+
+                            "PivotBar.Default" -> {
+                                if (!useLightTheme) return@forEachChildElement
+                                style.setStyleItem(document, "dotBackground", "@drawable/revanced_notification_dot_light")
+                                style.setStyleItem(document, "countBackground", "@drawable/revanced_notification_count_light")
+                            }
+
+                            "CairoDarkThemeUpdates" -> {
+                                if (useDarkTheme) {
+                                    style.setStyleItem(document, "ytRedIndicator", darkIndicatorColor)
+                                }
+                            }
+
+                            "CairoLightThemeUpdates" -> {
+                                if (useLightTheme) {
+                                    style.setStyleItem(document, "ytRedIndicator", lightIndicatorColor)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            addColorResource(
+                "res/values/colors.xml",
+                SPLASH_BACKGROUND_COLOR,
+                lightThemeBackgroundColor,
+            )
+            addColorResource(
+                "res/values-night/colors.xml",
+                SPLASH_BACKGROUND_COLOR,
+                darkThemeBackgroundColor,
+            )
+
+            patchSplashScreens()
+            enableLightStatusBar()
+            patchMaterialYouNavigation(
+                useDarkTheme = darkThemeBackgroundColor.startsWith("@android:color/system_"),
+                useLightTheme = lightThemeBackgroundColor.startsWith("@android:color/system_"),
+            )
+        }
+    }
+
+private val themeColorResourcePatch =
+    baseThemeResourcePatch(
+        lightColorReplacement = { lightThemeBackgroundColorOption.value!! },
+        getDarkColorNames = {
+            THEME_DEFAULT_DARK_COLOR_NAMES +
+                if (is_21_06_or_greater) {
+                    setOf(
+                        // yt_ref_color_constants_baseline_black_black0
+                        // yt_ref_color_constants_baseline_black_black1
+                        // yt_ref_color_constants_baseline_black_black3
+                        "yt_sys_color_baseline_dark_menu_background",
+                        "yt_sys_color_baseline_dark_raised_background",
+                        "yt_sys_color_baseline_dark_base_background",
+                        "yt_sys_color_baseline_dark_static_black",
+                        "yt_sys_color_baseline_light_inverted_background",
+                        "yt_sys_color_baseline_light_static_black",
+                        // 21.17+
+                        "yt_sys_color_baseline_mobile_dark_default_base_background",
+                    )
+                } else {
+                    emptySet()
+                }
+        },
+        getLightColorNames = {
+            THEME_DEFAULT_LIGHT_COLOR_NAMES +
+                if (is_21_06_or_greater) {
+                    setOf(
+                        "yt_sys_color_baseline_light_base_background",
+                        "yt_sys_color_baseline_light_raised_background",
+                    )
+                } else {
+                    emptySet()
+                }
+        },
+    )
 
 val themePatch =
     baseThemePatch(
         extensionClassDescriptor = EXTENSION_CLASS_DESCRIPTOR,
         includeLightThemeOption = true,
         block = {
-            val themeResourcePatch =
-                resourcePatch {
-                    lightThemeBackgroundColorOption()
-                    darkThemeBackgroundColorOption()
-                    dependsOn(resourceMappingPatch)
-
-                    apply {
-                        val lightThemeBackgroundColor = lightThemeBackgroundColorOption.value!!
-                        val darkThemeBackgroundColor = darkThemeBackgroundColorOption.value!!
-
-                        fun addColorResource(
-                            resourceFile: String,
-                            colorName: String,
-                            colorValue: String,
-                        ) {
-                            document(resourceFile).use { document ->
-                                val resourcesNode =
-                                    document.getElementsByTagName("resources").item(0) as Element
-
-                                resourcesNode.appendChild(
-                                    document.createElement("color").apply {
-                                        setAttribute("name", colorName)
-                                        setAttribute("category", "color")
-                                        textContent = colorValue
-                                    },
-                                )
-                            }
-
-                            arrayOf(
-                                "res/values/styles.xml",
-                                "res/values-v27/styles.xml",
-                                "res/values-v31/styles.xml",
-                            ).forEach { stylesPath ->
-                                try {
-                                    document(stylesPath).use { document ->
-                                        val resourcesNode =
-                                            document.getElementsByTagName("resources").item(0) as? Element
-                                                ?: return@use
-                                        var themeNode: Element? = null
-
-                                        resourcesNode.forEachChildElement { node ->
-                                            if (node.nodeName == "style" && node.getAttribute("name") == "Theme.YouTube.Home") {
-                                                themeNode = node
-                                            }
-                                        }
-
-                                        if (themeNode == null) {
-                                            themeNode =
-                                                document.createElement("style").apply {
-                                                    setAttribute("name", "Theme.YouTube.Home")
-                                                    setAttribute("parent", "@style/Base.V27.Theme.YouTube.Home")
-                                                    resourcesNode.appendChild(this)
-                                                }
-                                        }
-
-                                        var hasLightStatusBar = false
-                                        themeNode!!.forEachChildElement { node ->
-                                            if (node.nodeName == "item" && node.getAttribute("name") == "android:windowLightStatusBar") {
-                                                node.textContent = "true"
-                                                hasLightStatusBar = true
-                                            }
-                                        }
-
-                                        if (!hasLightStatusBar) {
-                                            val styleItem = document.createElement("item")
-                                            styleItem.setAttribute("name", "android:windowLightStatusBar")
-                                            styleItem.textContent = "true"
-                                            themeNode.appendChild(styleItem)
-                                        }
-                                    }
-                                } catch (_: Exception) {
-                                }
-                            }
-
-                            val isMaterialYouLight =
-                                lightThemeBackgroundColor!!.startsWith("@android:color/system_")
-
-                            if (isMaterialYouLight) {
-                                val resDir = get("res")
-                                val lightDotColor = "@android:color/system_accent1_200"
-                                val lightCountBgColor = "@android:color/system_accent1_100"
-                                val lightCountTextColor = "@android:color/system_neutral1_900"
-
-                                createNotifDrawable(
-                                    resDir,
-                                    "drawable/revanced_notif_dot_light.xml",
-                                    lightDotColor,
-                                    "oval",
-                                )
-                                createNotifDrawable(
-                                    resDir,
-                                    "drawable/revanced_notif_count_light.xml",
-                                    lightCountBgColor,
-                                    "rectangle",
-                                    hasCorners = true,
-                                )
-                                patchCountTextColor(resDir, lightCountTextColor)
-
-                                val stylesFile = "res/values/styles.xml"
-                                if (get(stylesFile).exists()) {
-                                    document(stylesFile).use { document ->
-                                        val resources =
-                                            document.getElementsByTagName("resources").item(0) as? Element
-                                                ?: return@use
-
-                                        resources.forEachChildElement { style ->
-                                            if (style.nodeName != "style") return@forEachChildElement
-
-                                            val overrides: Map<String, String> =
-                                                when (style.getAttribute("name")) {
-                                                    "PivotBar.Default" -> {
-                                                        mapOf(
-                                                            "dotBackground" to "@drawable/revanced_notif_dot_light",
-                                                            "countBackground" to "@drawable/revanced_notif_count_light",
-                                                        )
-                                                    }
-
-                                                    "CairoLightThemeUpdates" -> {
-                                                        mapOf(
-                                                            "ytRedIndicator" to lightDotColor,
-                                                        )
-                                                    }
-
-                                                    else -> {
-                                                        return@forEachChildElement
-                                                    }
-                                                }
-
-                                            overrides.forEach { (attrName, attrValue) ->
-                                                var found = false
-                                                style.forEachChildElement { item ->
-                                                    if (item.nodeName == "item" && item.getAttribute("name") == attrName) {
-                                                        item.textContent = attrValue
-                                                        found = true
-                                                    }
-                                                }
-                                                if (!found) {
-                                                    style.appendChild(
-                                                        document.createElement("item").apply {
-                                                            setAttribute("name", attrName)
-                                                            textContent = attrValue
-                                                        },
-                                                    )
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-
-                        // Add a dynamic background color to the colors.xml file.
-                        val splashBackgroundColorKey = "revanced_splash_background_color"
-                        addColorResource(
-                            "res/values/colors.xml",
-                            splashBackgroundColorKey,
-                            lightThemeBackgroundColor,
-                        )
-                        addColorResource(
-                            "res/values-night/colors.xml",
-                            splashBackgroundColorKey,
-                            darkThemeBackgroundColor,
-                        )
-
-                        // Edit splash screen files and change the background color.
-                        arrayOf(
-                            "res/drawable/quantum_launchscreen_youtube.xml",
-                            "res/drawable-sw600dp/quantum_launchscreen_youtube.xml",
-                        ).forEach editSplashScreen@{ resourceFileName ->
-                            document(resourceFileName).use { document ->
-                                document
-                                    .getElementsByTagName("layer-list")
-                                    .item(0)
-                                    .forEachChildElement { node ->
-                                        if (node.hasAttribute("android:drawable")) {
-                                            node.setAttribute(
-                                                "android:drawable",
-                                                "@color/$splashBackgroundColorKey",
-                                            )
-                                            return@editSplashScreen
-                                        }
-                                    }
-
-                                throw PatchException("Failed to modify launch screen")
-                            }
-                        }
-
-                        // Fix the splash screen dark mode background color.
-                        // In 19.32+ the dark mode splash screen is white and fades to black.
-                        document("res/values-night/styles.xml").use { document ->
-                            // Create a night mode specific override for the splash screen background.
-                            val style = document.createElement("style")
-                            style.setAttribute("name", "Theme.YouTube.Home")
-                            style.setAttribute("parent", "@style/Base.V27.Theme.YouTube.Home")
-
-                            // Fix status and navigation bar showing white on some Android devices,
-                            // such as SDK 28 Android 10 medium tablet.
-                            val colorSplashBackgroundColor = "@color/$splashBackgroundColorKey"
-                            arrayOf(
-                                "android:navigationBarColor" to colorSplashBackgroundColor,
-                                "android:windowBackground" to colorSplashBackgroundColor,
-                                "android:colorBackground" to colorSplashBackgroundColor,
-                                "colorPrimaryDark" to colorSplashBackgroundColor,
-                                "android:windowLightStatusBar" to "false",
-                            ).forEach { (name, value) ->
-                                val styleItem = document.createElement("item")
-                                styleItem.setAttribute("name", name)
-                                styleItem.textContent = value
-                                style.appendChild(styleItem)
-                            }
-
-                            val resourcesNode =
-                                document.getElementsByTagName("resources").item(0) as Element
-                            resourcesNode.appendChild(style)
-                        }
-
-                        arrayOf(
-                            "res/values/styles.xml",
-                            "res/values-v27/styles.xml",
-                            "res/values-v31/styles.xml",
-                        ).forEach { stylesPath ->
-                            try {
-                                document(stylesPath).use { document ->
-                                    val resourcesNode =
-                                        document.getElementsByTagName("resources").item(0) as? Element
-                                            ?: return@use
-                                    var themeNode: Element? = null
-
-                                    resourcesNode.forEachChildElement { node ->
-                                        if (node.nodeName == "style" && node.getAttribute("name") == "Theme.YouTube.Home") {
-                                            themeNode = node
-                                        }
-                                    }
-
-                                    if (themeNode == null) {
-                                        themeNode =
-                                            document.createElement("style").apply {
-                                                setAttribute("name", "Theme.YouTube.Home")
-                                                setAttribute("parent", "@style/Base.V27.Theme.YouTube.Home")
-                                                resourcesNode.appendChild(this)
-                                            }
-                                    }
-
-                                    var hasLightStatusBar = false
-                                    themeNode!!.forEachChildElement { node ->
-                                        if (node.nodeName == "item" && node.getAttribute("name") == "android:windowLightStatusBar") {
-                                            node.textContent = "true"
-                                            hasLightStatusBar = true
-                                        }
-                                    }
-
-                                    if (!hasLightStatusBar) {
-                                        val styleItem = document.createElement("item")
-                                        styleItem.setAttribute("name", "android:windowLightStatusBar")
-                                        styleItem.textContent = "true"
-                                        themeNode.appendChild(styleItem)
-                                    }
-                                }
-                            } catch (_: Exception) {
-                            }
-                        }
-
-                        val isMaterialYouDark =
-                            darkThemeBackgroundColorOption.value!!.startsWith("@android:color/system_")
-                        val isMaterialYouLight =
-                            lightThemeBackgroundColor.startsWith("@android:color/system_")
-
-                        // YouTube applies CairoLightThemeUpdates/CairoDarkThemeUpdates to the context theme
-                        // before Cairo renders, so ?ytRedIndicator in Cairo drawables resolves
-                        // from the style - not from night mode resource qualifiers.
-                        if (isMaterialYouDark || isMaterialYouLight) {
-                            fun createNotifDrawable(
-                                resPath: String,
-                                color: String,
-                                shape: String,
-                                hasCorners: Boolean = false,
-                            ) {
-                                val file = get("res").resolve(resPath)
-                                file.parentFile?.mkdirs()
-                                val cornersLine =
-                                    if (hasCorners) {
-                                        "\n    <corners android:radius=\"@dimen/new_content_count_radius\" />"
-                                    } else {
-                                        ""
-                                    }
-                                file.writeText(
-                                    "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
-                                        "<shape android:shape=\"$shape\"\n" +
-                                        "  xmlns:android=\"http://schemas.android.com/apk/res/android\">\n" +
-                                        "    <solid android:color=\"$color\" />$cornersLine\n" +
-                                        "</shape>",
-                                )
-                            }
-
-                            fun patchCountTextColor(
-                                resPath: String,
-                                color: String,
-                            ) {
-                                val resDir = get("res")
-                                val sourceFile =
-                                    listOf("layout-v31", "layout-v26", "layout").firstNotNullOfOrNull {
-                                        resDir
-                                            .resolve("$it/new_content_count.xml")
-                                            .takeIf { f -> f.exists() }
-                                    } ?: return
-                                val targetFile = resDir.resolve(resPath)
-                                targetFile.parentFile?.mkdirs()
-                                val patchedXml =
-                                    sourceFile.readText().replace(
-                                        Regex("""android:textColor="[^"]+""""),
-                                        """android:textColor="$color"""",
-                                    )
-                                targetFile.writeText(patchedXml)
-                            }
-
-                            if (isMaterialYouDark) {
-                                createNotifDrawable(
-                                    "drawable/revanced_notif_dot_dark.xml",
-                                    "@android:color/system_accent1_100",
-                                    "oval",
-                                )
-                                createNotifDrawable(
-                                    "drawable/revanced_notif_count_dark.xml",
-                                    "@android:color/system_accent1_100",
-                                    "rectangle",
-                                    hasCorners = true,
-                                )
-                                patchCountTextColor(
-                                    "layout-v31/new_content_count.xml",
-                                    "@android:color/system_neutral1_900",
-                                )
-                            }
-                            if (isMaterialYouLight) {
-                                createNotifDrawable(
-                                    "drawable/revanced_notif_dot_light.xml",
-                                    "@android:color/system_accent1_200",
-                                    "oval",
-                                )
-                                createNotifDrawable(
-                                    "drawable/revanced_notif_count_light.xml",
-                                    "@android:color/system_accent1_100",
-                                    "rectangle",
-                                    hasCorners = true,
-                                )
-                                patchCountTextColor(
-                                    "layout-v31/new_content_count.xml",
-                                    "@android:color/system_neutral1_900",
-                                )
-                            }
-
-                            document("res/values/styles.xml").use { doc ->
-                                val resources =
-                                    doc.getElementsByTagName("resources").item(0) as? Element ?: return@use
-
-                                resources.forEachChildElement { style ->
-                                    if (style.nodeName != "style") return@forEachChildElement
-
-                                    val overrides: Map<String, String> =
-                                        when (style.getAttribute("name")) {
-                                            "PivotBar.Dark" -> {
-                                                if (isMaterialYouDark) {
-                                                    mapOf(
-                                                        "dotBackground" to "@drawable/revanced_notif_dot_dark",
-                                                        "countBackground" to "@drawable/revanced_notif_count_dark",
-                                                    )
-                                                } else {
-                                                    return@forEachChildElement
-                                                }
-                                            }
-
-                                            "PivotBar.Default" -> {
-                                                if (isMaterialYouLight) {
-                                                    mapOf(
-                                                        "dotBackground" to "@drawable/revanced_notif_dot_light",
-                                                        "countBackground" to "@drawable/revanced_notif_count_light",
-                                                    )
-                                                } else {
-                                                    return@forEachChildElement
-                                                }
-                                            }
-
-                                            "CairoLightThemeUpdates" -> {
-                                                if (isMaterialYouLight) {
-                                                    mapOf(
-                                                        "ytRedIndicator" to "@android:color/system_accent1_200",
-                                                    )
-                                                } else {
-                                                    return@forEachChildElement
-                                                }
-                                            }
-
-                                            "CairoDarkThemeUpdates" -> {
-                                                if (isMaterialYouDark) {
-                                                    mapOf(
-                                                        "ytRedIndicator" to "@android:color/system_accent1_100",
-                                                    )
-                                                } else {
-                                                    return@forEachChildElement
-                                                }
-                                            }
-
-                                            else -> {
-                                                return@forEachChildElement
-                                            }
-                                        }
-
-                                    overrides.forEach { (attrName, attrValue) ->
-                                        var found = false
-                                        style.forEachChildElement { item ->
-                                            if (item.nodeName == "item" && item.getAttribute("name") == attrName) {
-                                                item.textContent = attrValue
-                                                found = true
-                                            }
-                                        }
-                                        if (!found) {
-                                            style.appendChild(
-                                                doc.createElement("item").apply {
-                                                    setAttribute("name", attrName)
-                                                    textContent = attrValue
-                                                },
-                                            )
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
             dependsOn(
-                sharedExtensionPatch,
-                settingsPatch,
                 addResourcesPatch,
                 seekbarColorPatch,
+                settingsPatch,
+                sharedExtensionPatch,
                 versionCheckPatch,
-                baseThemeResourcePatch(
-                    lightColorReplacement = { lightThemeBackgroundColorOption.value!! },
-                    getDarkColorNames = {
-                        THEME_DEFAULT_DARK_COLOR_NAMES +
-                            if (is_21_06_or_greater) {
-                                setOf(
-                                    // yt_ref_color_constants_baseline_black_black0
-                                    // yt_ref_color_constants_baseline_black_black1
-                                    // yt_ref_color_constants_baseline_black_black3
-                                    "yt_sys_color_baseline_dark_menu_background",
-                                    "yt_sys_color_baseline_dark_raised_background",
-                                    "yt_sys_color_baseline_dark_base_background",
-                                    "yt_sys_color_baseline_dark_static_black",
-                                    "yt_sys_color_baseline_light_inverted_background",
-                                    "yt_sys_color_baseline_light_static_black",
-                                    // 21.17+
-                                    "yt_sys_color_baseline_mobile_dark_default_base_background",
-                                )
-                            } else {
-                                emptySet()
-                            }
-                    },
-                    getLightColorNames = {
-                        THEME_DEFAULT_LIGHT_COLOR_NAMES +
-                            if (is_21_06_or_greater) {
-                                setOf(
-                                    "yt_sys_color_baseline_light_base_background",
-                                    "yt_sys_color_baseline_light_raised_background",
-                                )
-                            } else {
-                                emptySet()
-                            }
-                    },
-                ),
-                themeResourcePatch,
+                themeColorResourcePatch,
+                notificationColorThemePatch,
             )
 
             compatibleWith(
@@ -520,34 +313,29 @@ val themePatch =
 
             PreferenceScreen.GENERAL.addPreferences(
                 SwitchPreference("revanced_gradient_loading_screen"),
+                ListPreference("revanced_splash_screen_animation_style"),
             )
-
-            val preferences =
-                mutableSetOf(
-                    SwitchPreference("revanced_seekbar_custom_color", summaryKey = null),
-                    TextPreference(
-                        "revanced_seekbar_custom_color_primary",
-                        tag = "app.revanced.extension.shared.settings.preference.ColorPickerPreference",
-                        inputType = InputType.TEXT_CAP_CHARACTERS,
-                    ),
-                    TextPreference(
-                        "revanced_seekbar_custom_color_accent",
-                        tag = "app.revanced.extension.shared.settings.preference.ColorPickerPreference",
-                        inputType = InputType.TEXT_CAP_CHARACTERS,
-                    ),
-                )
 
             PreferenceScreen.SEEKBAR.addPreferences(
                 PreferenceCategory(
                     titleKey = null,
                     sorting = Sorting.UNSORTED,
                     tag = "app.revanced.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                    preferences = preferences,
+                    preferences =
+                        setOf(
+                            SwitchPreference("revanced_seekbar_custom_color", summaryKey = null),
+                            TextPreference(
+                                "revanced_seekbar_custom_color_primary",
+                                tag = "app.revanced.extension.shared.settings.preference.ColorPickerPreference",
+                                inputType = InputType.TEXT_CAP_CHARACTERS,
+                            ),
+                            TextPreference(
+                                "revanced_seekbar_custom_color_accent",
+                                tag = "app.revanced.extension.shared.settings.preference.ColorPickerPreference",
+                                inputType = InputType.TEXT_CAP_CHARACTERS,
+                            ),
+                        ),
                 ),
-            )
-
-            PreferenceScreen.GENERAL.addPreferences(
-                ListPreference("revanced_splash_screen_animation_style"),
             )
 
             useGradientLoadingScreenMethodMatch.method.insertLiteralOverride(
@@ -568,24 +356,24 @@ val themePatch =
                 "$EXTENSION_CLASS_DESCRIPTOR->getLoadingScreenType(I)I",
             )
 
-            showSplashScreen1MethodMatch.let {
-                it.method.apply {
-                    val index = it[-1]
+            showSplashScreen1MethodMatch.let { match ->
+                match.method.apply {
+                    val index = match[-1]
                     val register = getInstruction<OneRegisterInstruction>(index).registerA
 
                     addInstructions(
                         index + 1,
                         """
-                        invoke-static { v$register }, ${EXTENSION_CLASS_DESCRIPTOR}->showSplashScreen(Z)Z
+                        invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->showSplashScreen(Z)Z
                         move-result v$register
                     """,
                     )
                 }
             }
 
-            showSplashScreen2MethodMatch.let {
-                val insertIndex = it[1]
-                it.method.apply {
+            showSplashScreen2MethodMatch.let { match ->
+                val insertIndex = match[1]
+                match.method.apply {
                     val insertInstruction = getInstruction<TwoRegisterInstruction>(insertIndex)
                     val registerA = insertInstruction.registerA
                     val registerB = insertInstruction.registerB
@@ -593,7 +381,7 @@ val themePatch =
                     addInstructions(
                         insertIndex,
                         """
-                        invoke-static { v$registerA, v$registerB }, ${EXTENSION_CLASS_DESCRIPTOR}->showSplashScreen(II)I
+                        invoke-static { v$registerA, v$registerB }, $EXTENSION_CLASS_DESCRIPTOR->showSplashScreen(II)I
                         move-result v$registerA
                     """,
                     )

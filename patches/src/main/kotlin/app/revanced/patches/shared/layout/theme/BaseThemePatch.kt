@@ -3,7 +3,6 @@ package app.revanced.patches.shared.layout.theme
 import app.revanced.patcher.patch.BytecodePatchBuilder
 import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patcher.patch.PatchException
-import app.revanced.patcher.patch.ResourcePatchContext
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patcher.patch.resourcePatch
 import app.revanced.patcher.patch.stringOption
@@ -17,25 +16,37 @@ import java.util.*
 internal const val THEME_COLOR_OPTION_DESCRIPTION =
     "Can be a hex color (#RRGGBB) or a color resource reference."
 
-internal val THEME_DEFAULT_DARK_COLOR_NAMES = setOf(
-    "yt_black0", "yt_black1", "yt_black2", "yt_black3", "yt_black4",
-    "yt_black1_opacity95", "yt_black1_opacity98",
-    "yt_status_bar_background_dark", "material_grey_850",
-    "yt_sys_color_baseline_mobile_dark_default_base_background",
-    "yt_sys_color_baseline_mobile_dark_default_raised_background"
-)
+internal val THEME_DEFAULT_DARK_COLOR_NAMES =
+    setOf(
+        "yt_black0",
+        "yt_black1",
+        "yt_black2",
+        "yt_black3",
+        "yt_black4",
+        "yt_black1_opacity95",
+        "yt_black1_opacity98",
+        "yt_status_bar_background_dark",
+        "material_grey_850",
+        "yt_sys_color_baseline_mobile_dark_default_base_background",
+        "yt_sys_color_baseline_mobile_dark_default_raised_background",
+    )
 
-internal val THEME_DEFAULT_LIGHT_COLOR_NAMES = setOf(
-    "yt_white1", "yt_white2", "yt_white3", "yt_white4",
-    "yt_white1_opacity95", "yt_white1_opacity98",
-    "yt_sys_color_baseline_mobile_light_default_base_background",
-    "yt_sys_color_baseline_mobile_light_default_raised_background",
-)
+internal val THEME_DEFAULT_LIGHT_COLOR_NAMES =
+    setOf(
+        "yt_white1",
+        "yt_white2",
+        "yt_white3",
+        "yt_white4",
+        "yt_white1_opacity95",
+        "yt_white1_opacity98",
+        "yt_sys_color_baseline_mobile_light_default_base_background",
+        "yt_sys_color_baseline_mobile_light_default_raised_background",
+    )
 
 /**
  * Common utility to generate a notification shape drawable.
  */
-fun createNotifDrawable(
+fun createNotificationDrawable(
     resDir: File,
     resPath: String,
     color: String,
@@ -44,31 +55,38 @@ fun createNotifDrawable(
 ) {
     val file = resDir.resolve(resPath)
     file.parentFile?.mkdirs()
-    val cornersLine = if (hasCorners)
-        "\n    <corners android:radius=\"@dimen/new_content_count_radius\" />"
-    else ""
+    val cornersLine =
+        if (hasCorners) {
+            "\n    <corners android:radius=\"@dimen/new_content_count_radius\" />"
+        } else {
+            ""
+        }
     file.writeText(
         "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
-                "<shape android:shape=\"$shape\"\n" +
-                "  xmlns:android=\"http://schemas.android.com/apk/res/android\">\n" +
-                "    <solid android:color=\"$color\" />$cornersLine\n" +
-                "</shape>"
+            "<shape android:shape=\"$shape\"\n" +
+            "  xmlns:android=\"http://schemas.android.com/apk/res/android\">\n" +
+            "    <solid android:color=\"$color\" />$cornersLine\n" +
+            "</shape>",
     )
 }
 
 /**
  * Common utility to patch the notification count text color across all API levels.
  */
-fun patchCountTextColor(resDir: File, color: String) {
+fun patchCountTextColor(
+    resDir: File,
+    color: String,
+) {
     val targetFolders = listOf("layout-v31", "layout-v26", "layout")
 
     targetFolders.forEach { folder ->
         val file = resDir.resolve("$folder/new_content_count.xml")
         if (file.exists()) {
-            val patchedXml = file.readText().replace(
-                Regex("""android:textColor="[^"]+""""),
-                """android:textColor="$color""""
-            )
+            val patchedXml =
+                file.readText().replace(
+                    Regex("""android:textColor="[^"]+""""),
+                    """android:textColor="$color"""",
+                )
             file.writeText(patchedXml)
         }
     }
@@ -107,50 +125,54 @@ internal fun validateColorName(colorString: String): Boolean {
 /**
  * Dark theme color option for YouTube and YT Music Theme patches.
  */
-internal val darkThemeBackgroundColorOption = stringOption(
-    name = "Dark theme background color",
-    description = THEME_COLOR_OPTION_DESCRIPTION,
-    default = "@android:color/black",
-    values = mapOf(
-        "Pure black" to "@android:color/black",
-        "Material You (Neutral)" to "@android:color/system_neutral1_900",
-        "Material You - Primary" to "@android:color/system_accent1_800",
-        "Material You - Secondary" to "@android:color/system_accent2_800",
-        "Material You - Tertiary" to "@android:color/system_accent3_800",
-        "Classic (old YouTube)" to "#212121",
-        "Catppuccin (Mocha)" to "#181825",
-        "Dark pink" to "#290025",
-        "Dark blue" to "#001029",
-        "Dark green" to "#002905",
-        "Dark yellow" to "#282900",
-        "Dark orange" to "#291800",
-        "Dark red" to "#290000",
+internal val darkThemeBackgroundColorOption =
+    stringOption(
+        name = "Dark theme background color",
+        description = THEME_COLOR_OPTION_DESCRIPTION,
+        default = "@android:color/black",
+        values =
+            mapOf(
+                "Pure black" to "@android:color/black",
+                "Material You (Neutral)" to "@android:color/system_neutral1_900",
+                "Material You - Primary" to "@android:color/system_accent1_800",
+                "Material You - Secondary" to "@android:color/system_accent2_800",
+                "Material You - Tertiary" to "@android:color/system_accent3_800",
+                "Classic (old YouTube)" to "#212121",
+                "Catppuccin (Mocha)" to "#181825",
+                "Dark pink" to "#290025",
+                "Dark blue" to "#001029",
+                "Dark green" to "#002905",
+                "Dark yellow" to "#282900",
+                "Dark orange" to "#291800",
+                "Dark red" to "#290000",
+            ),
     )
-)
 
 /**
  * Light theme color options for YouTube Theme patch.
  */
-internal val lightThemeBackgroundColorOption = stringOption(
-    key = "lightThemeBackgroundColor",
-    default = "@android:color/white",
-    values =  mapOf(
-        "White" to "@android:color/white",
-        "Material You (Neutral)" to "@android:color/system_neutral1_100",
-        "Material You - Primary" to "@android:color/system_accent1_200",
-        "Material You - Secondary" to "@android:color/system_accent2_200",
-        "Material You - Tertiary" to "@android:color/system_accent3_200",
-        "Catppuccin (Latte)" to "#E6E9EF",
-        "Light pink" to "#FCCFF3",
-        "Light blue" to "#D1E0FF",
-        "Light green" to "#CCFFCC",
-        "Light yellow" to "#FDFFCC",
-        "Light orange" to "#FFE6CC",
-        "Light red" to "#FFD6D6",
-    ),
-    title = "Light theme background color",
-    description = THEME_COLOR_OPTION_DESCRIPTION
-)
+internal val lightThemeBackgroundColorOption =
+    stringOption(
+        key = "lightThemeBackgroundColor",
+        default = "@android:color/white",
+        values =
+            mapOf(
+                "White" to "@android:color/white",
+                "Material You (Neutral)" to "@android:color/system_neutral1_100",
+                "Material You - Primary" to "@android:color/system_accent1_200",
+                "Material You - Secondary" to "@android:color/system_accent2_200",
+                "Material You - Tertiary" to "@android:color/system_accent3_200",
+                "Catppuccin (Latte)" to "#E6E9EF",
+                "Light pink" to "#FCCFF3",
+                "Light blue" to "#D1E0FF",
+                "Light green" to "#CCFFCC",
+                "Light yellow" to "#FDFFCC",
+                "Light orange" to "#FFE6CC",
+                "Light red" to "#FFD6D6",
+            ),
+        title = "Light theme background color",
+        description = THEME_COLOR_OPTION_DESCRIPTION,
+    )
 
 /**
  * Shared theme patch for YouTube and YT Music.
@@ -159,10 +181,11 @@ internal fun baseThemePatch(
     extensionClassDescriptor: String,
     includeLightThemeOption: Boolean = false,
     block: BytecodePatchBuilder.() -> Unit,
-    executeBlock: BytecodePatchContext.() -> Unit = {}
+    executeBlock: BytecodePatchContext.() -> Unit = {},
 ) = bytecodePatch(
     name = "Theme",
-    description = "Adds options for theming and applies a custom background theme " +
+    description =
+        "Adds options for theming and applies a custom background theme " +
             "(dark background theme defaults to pure black).",
 ) {
     darkThemeBackgroundColorOption()
@@ -177,9 +200,12 @@ internal fun baseThemePatch(
 
     apply {
         overrideThemeColors(
-            if (includeLightThemeOption)
-                lightThemeBackgroundColorOption.value!! else null,
-            darkThemeBackgroundColorOption.value!!
+            if (includeLightThemeOption) {
+                lightThemeBackgroundColorOption.value!!
+            } else {
+                null
+            },
+            darkThemeBackgroundColorOption.value!!,
         )
 
         executeBlock()
@@ -191,7 +217,7 @@ internal fun baseThemePatch(
 internal fun baseThemeResourcePatch(
     getDarkColorNames: () -> Set<String> = { THEME_DEFAULT_DARK_COLOR_NAMES },
     getLightColorNames: () -> Set<String> = { THEME_DEFAULT_LIGHT_COLOR_NAMES },
-    lightColorReplacement: (() -> String)? = null
+    lightColorReplacement: (() -> String)? = null,
 ) = resourcePatch {
     darkThemeBackgroundColorOption()
 
@@ -230,26 +256,28 @@ internal fun baseThemeResourcePatch(
             val darkCountBgColor = "@android:color/system_accent1_100"
             val darkCountTextColor = "@android:color/system_neutral1_900"
 
-            createNotifDrawable(resDir, "drawable/revanced_notif_dot_dark.xml", darkDotColor, "oval")
-            createNotifDrawable(resDir, "drawable/revanced_notif_count_dark.xml", darkCountBgColor, "rectangle", hasCorners = true)
+            createNotificationDrawable(resDir, "drawable/revanced_notif_dot_dark.xml", darkDotColor, "oval")
+            createNotificationDrawable(resDir, "drawable/revanced_notif_count_dark.xml", darkCountBgColor, "rectangle", hasCorners = true)
             patchCountTextColor(resDir, darkCountTextColor)
 
-            val ytmDrawables = listOf(
-                "new_content_dot_background.xml",
-                "new_content_dot_background_cairo.xml",
-                "new_content_count_background.xml",
-                "new_content_count_background_cairo.xml"
-            )
+            val ytmDrawables =
+                listOf(
+                    "new_content_dot_background.xml",
+                    "new_content_dot_background_cairo.xml",
+                    "new_content_count_background.xml",
+                    "new_content_count_background_cairo.xml",
+                )
             val ytmDrawableDirs = listOf("drawable", "drawable-anydpi-v26", "drawable-anydpi", "drawable-v24", "drawable-v31")
 
             ytmDrawables.forEach { fileName ->
                 ytmDrawableDirs.forEach { dirName ->
                     val file = resDir.resolve("$dirName/$fileName")
                     if (file.exists()) {
-                        val patchedXml = file.readText().replace(
-                            Regex("""<solid\s+android:color="[^"]+""""),
-                            """<solid android:color="$darkDotColor""""
-                        )
+                        val patchedXml =
+                            file.readText().replace(
+                                Regex("""<solid\s+android:color="[^"]+""""),
+                                """<solid android:color="$darkDotColor"""",
+                            )
                         file.writeText(patchedXml)
                     }
                 }
@@ -259,10 +287,11 @@ internal fun baseThemeResourcePatch(
             ytmLayoutDirs.forEach { dirName ->
                 val file = resDir.resolve("$dirName/new_content_count.xml")
                 if (file.exists()) {
-                    val patchedXml = file.readText().replace(
-                        Regex("""android:textColor="[^"]+""""),
-                        """android:textColor="$darkCountTextColor""""
-                    )
+                    val patchedXml =
+                        file.readText().replace(
+                            Regex("""android:textColor="[^"]+""""),
+                            """android:textColor="$darkCountTextColor"""",
+                        )
                     file.writeText(patchedXml)
                 }
             }
@@ -275,16 +304,25 @@ internal fun baseThemeResourcePatch(
                     resources.forEachChildElement { style ->
                         if (style.nodeName != "style") return@forEachChildElement
 
-                        val overrides: Map<String, String> = when (style.getAttribute("name")) {
-                            "PivotBar.Dark" -> mapOf(
-                                "dotBackground" to "@drawable/revanced_notif_dot_dark",
-                                "countBackground" to "@drawable/revanced_notif_count_dark"
-                            )
-                            "CairoDarkThemeUpdates" -> mapOf(
-                                "ytRedIndicator" to darkDotColor
-                            )
-                            else -> return@forEachChildElement
-                        }
+                        val overrides: Map<String, String> =
+                            when (style.getAttribute("name")) {
+                                "PivotBar.Dark" -> {
+                                    mapOf(
+                                        "dotBackground" to "@drawable/revanced_notif_dot_dark",
+                                        "countBackground" to "@drawable/revanced_notif_count_dark",
+                                    )
+                                }
+
+                                "CairoDarkThemeUpdates" -> {
+                                    mapOf(
+                                        "ytRedIndicator" to darkDotColor,
+                                    )
+                                }
+
+                                else -> {
+                                    return@forEachChildElement
+                                }
+                            }
 
                         overrides.forEach { (attrName, attrValue) ->
                             var found = false
@@ -295,10 +333,12 @@ internal fun baseThemeResourcePatch(
                                 }
                             }
                             if (!found) {
-                                style.appendChild(document.createElement("item").apply {
-                                    setAttribute("name", attrName)
-                                    textContent = attrValue
-                                })
+                                style.appendChild(
+                                    document.createElement("item").apply {
+                                        setAttribute("name", attrName)
+                                        textContent = attrValue
+                                    },
+                                )
                             }
                         }
                     }
