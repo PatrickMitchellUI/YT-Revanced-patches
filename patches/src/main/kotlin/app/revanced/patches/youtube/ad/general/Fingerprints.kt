@@ -16,20 +16,20 @@ internal val BytecodePatchContext.fullScreenEngagementAdContainerMethodMatch by 
         allOf(
             Opcode.INVOKE_VIRTUAL(),
             method {
-                name == "add" && returnType == "Z"
-                        && parameterTypes.size == 1 && parameterTypes[0] == "Ljava/lang/Object;"
-            }
+                name == "add" && returnType == "Z" &&
+                    parameterTypes.size == 1 && parameterTypes[0] == "Ljava/lang/Object;"
+            },
         ),
         allOf(
             Opcode.INVOKE_VIRTUAL(),
             method {
-                name == "add" && returnType == "Z"
-                        && parameterTypes.size == 1 && parameterTypes[0] == "Ljava/lang/Object;"
-            }
+                name == "add" && returnType == "Z" &&
+                    parameterTypes.size == 1 && parameterTypes[0] == "Ljava/lang/Object;"
+            },
         ),
         allOf(
             Opcode.INVOKE_VIRTUAL(),
-            method { name == "size" && returnType == "I" && parameterTypes.isEmpty() }
+            method { name == "size" && returnType == "I" && parameterTypes.isEmpty() },
         ),
     )
 }
@@ -44,7 +44,7 @@ internal val BytecodePatchContext.getPremiumViewMethodMatch by composingFirstMet
         Opcode.ADD_INT_2ADDR,
         Opcode.ADD_INT_2ADDR,
         Opcode.INVOKE_VIRTUAL,
-        Opcode.RETURN_VOID
+        Opcode.RETURN_VOID,
     )
 }
 
@@ -54,7 +54,7 @@ internal val BytecodePatchContext.playerOverlayTimelyShelfMethodMatch by composi
     parameterTypes("Ljava/lang/Object;")
     instructions(
         "player_overlay_timely_shelf"(),
-        afterAtMost(5, method { name == "equals" && definingClass == "Ljava/lang/String;" }),
+        afterAtMost(5, method("equals")),
         after(Opcode.MOVE_RESULT()),
     )
 }
@@ -66,4 +66,3 @@ internal val BytecodePatchContext.miniplayerPaidPromotionLabelMethodMatch by com
         after(Opcode.MOVE_RESULT_OBJECT()),
     )
 }
-

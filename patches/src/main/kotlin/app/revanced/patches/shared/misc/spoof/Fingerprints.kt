@@ -48,7 +48,7 @@ internal val BytecodePatchContext.buildPlayerRequestURIBuilderMethodMatch by com
     returnType($$"Landroid/net/Uri$Builder;")
     parameterTypes()
     instructions(
-        method { name == "appendQueryParameter" && definingClass == $$"Landroid/net/Uri$Builder;" },
+        method("appendQueryParameter"),
         Opcode.RETURN_OBJECT(),
     )
 }
@@ -208,13 +208,14 @@ internal val BytecodePatchContext.mediaSessionFeatureFlagMethodMatch by composin
     instructions(45640404L())
 }
 
-internal fun indexOfNewUrlRequestBuilderInstruction(method: Method) = method.indexOfFirstInstruction {
-    val reference = methodReference ?: return@indexOfFirstInstruction false
+internal fun indexOfNewUrlRequestBuilderInstruction(method: Method) =
+    method.indexOfFirstInstruction {
+        val reference = methodReference ?: return@indexOfFirstInstruction false
 
-    opcode == Opcode.INVOKE_VIRTUAL && reference.definingClass == "Lorg/chromium/net/CronetEngine;" &&
-        reference.name == "newUrlRequestBuilder" &&
-        reference.parameterTypes.size == 3 &&
-        reference.parameterTypes[0] == "Ljava/lang/String;" &&
-        reference.parameterTypes[1] == $$"Lorg/chromium/net/UrlRequest$Callback;" &&
-        reference.parameterTypes[2] == "Ljava/util/concurrent/Executor;"
-}
+        opcode == Opcode.INVOKE_VIRTUAL && reference.definingClass == "Lorg/chromium/net/CronetEngine;" &&
+            reference.name == "newUrlRequestBuilder" &&
+            reference.parameterTypes.size == 3 &&
+            reference.parameterTypes[0] == "Ljava/lang/String;" &&
+            reference.parameterTypes[1] == $$"Lorg/chromium/net/UrlRequest$Callback;" &&
+            reference.parameterTypes[2] == "Ljava/util/concurrent/Executor;"
+    }
