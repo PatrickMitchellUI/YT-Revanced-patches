@@ -852,31 +852,9 @@ val hideLayoutComponentsPatch =
         // region Hide channel tab
 
         if (is_21_20_or_greater) {
-            channelTabRendererMethod.classDef.methods
-                .first { candidate ->
-                    candidate.returnType == "V" &&
-                        candidate.parameterTypes.size == 2 &&
-                        candidate.parameterTypes[0].startsWith("L") &&
-                        candidate.parameterTypes[1] == "I" &&
-                        candidate.instructionsOrNull?.any {
-                            it.methodReference?.toString() == "Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z"
-                        } == true
-                }.apply {
-                    val builderMethod =
-                        if (is_21_25_or_greater) {
-                            channelTabBuilderMethod
-                        } else {
-                            channelTabBuilderLegacyMethod
-                        }
-
-                    val targetIndex =
-                        indexOfFirstInstructionReversedOrThrow {
-                            val reference = methodReference
-
-                            reference?.returnType == builderMethod.returnType &&
-                                reference.parameterTypes == builderMethod.parameterTypes
-                        }
-                    val objectIndex = indexOfFirstInstructionReversedOrThrow(targetIndex, Opcode.IGET_OBJECT)
+            channelTabRendererModernMethodMatch.let { match ->
+                match.method.apply {
+                    val objectIndex = match[0]
                     val register = getInstruction<TwoRegisterInstruction>(objectIndex).registerA
                     val insertIndex = objectIndex + 1
                     val free = findFreeRegister(insertIndex, register)
@@ -884,54 +862,39 @@ val hideLayoutComponentsPatch =
                     addInstructionsWithLabels(
                         insertIndex,
                         """
-                    invoke-static { v$register }, ${LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR}->hideChannelTab(Ljava/lang/String;)Z
-                    move-result v$free
-                    if-eqz v$free, :ignore
-                    return-void
-                    :ignore
-                    nop
-                """,
+                            invoke-static { v$register }, ${LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR}->hideChannelTab(Ljava/lang/String;)Z
+                            move-result v$free
+                            if-eqz v$free, :ignore
+                            return-void
+                            :ignore
+                            nop
+                        """,
                     )
                 }
+            }
         } else {
-            channelTabRendererMethod.apply {
-                val iteratorIndex =
-                    indexOfFirstInstructionReversedOrThrow {
-                        methodReference?.name == "hasNext"
-                    }
+            channelTabRendererLegacyMethodMatch.let { match ->
+                match.method.apply {
+                    val iteratorIndex = match[2]
+                    val iteratorRegister = getInstruction<FiveRegisterInstruction>(iteratorIndex).registerC
+                    val objectIndex = match[0]
+                    val objectInstruction = getInstruction<TwoRegisterInstruction>(objectIndex)
+                    val objectReference = getInstruction<ReferenceInstruction>(objectIndex).reference
 
-                val builderMethod = channelTabBuilderLegacyMethod
-                val iteratorRegister = getInstruction<FiveRegisterInstruction>(iteratorIndex).registerC
-                val targetIndex =
-                    indexOfFirstInstructionReversedOrThrow {
-                        val reference = methodReference
-
-                        opcode == Opcode.INVOKE_INTERFACE &&
-                            reference?.returnType == builderMethod.returnType &&
-                            reference.parameterTypes == builderMethod.parameterTypes
-                    }
-
-                val objectIndex =
-                    indexOfFirstInstructionReversedOrThrow(
-                        targetIndex,
-                        Opcode.IGET_OBJECT,
+                    addInstructionsWithLabels(
+                        objectIndex + 1,
+                        """
+                            invoke-static { v${objectInstruction.registerA} }, ${LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR}->hideChannelTab(Ljava/lang/String;)Z
+                            move-result v${objectInstruction.registerA}
+                            if-eqz v${objectInstruction.registerA}, :ignore
+                            invoke-interface { v$iteratorRegister }, Ljava/util/Iterator;->remove()V
+                            goto :next_iterator
+                            :ignore
+                            iget-object v${objectInstruction.registerA}, v${objectInstruction.registerB}, $objectReference
+                        """,
+                        ExternalLabel("next_iterator", getInstruction(iteratorIndex)),
                     )
-                val objectInstruction = getInstruction<TwoRegisterInstruction>(objectIndex)
-                val objectReference = getInstruction<ReferenceInstruction>(objectIndex).reference
-
-                addInstructionsWithLabels(
-                    objectIndex + 1,
-                    """
-                    invoke-static { v${objectInstruction.registerA} }, ${LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR}->hideChannelTab(Ljava/lang/String;)Z
-                    move-result v${objectInstruction.registerA}
-                    if-eqz v${objectInstruction.registerA}, :ignore
-                    invoke-interface { v$iteratorRegister }, Ljava/util/Iterator;->remove()V
-                    goto :next_iterator
-                    :ignore
-                    iget-object v${objectInstruction.registerA}, v${objectInstruction.registerB}, $objectReference
-                    """,
-                    ExternalLabel("next_iterator", getInstruction(iteratorIndex)),
-                )
+                }
             }
         }
 

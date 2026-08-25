@@ -25,6 +25,7 @@ import app.revanced.patcher.returnType
 import app.revanced.patcher.type
 import app.revanced.patches.shared.misc.mapping.ResourceType
 import app.revanced.patches.youtube.layout.buttons.navigation.wideSearchbarLayoutMethod
+import app.revanced.patches.youtube.misc.playservice.is_21_25_or_greater
 import app.revanced.util.getting
 import app.revanced.util.using
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -460,44 +461,51 @@ internal val BytecodePatchContext.contextualMenuItemBuilderMethodMatch by compos
     )
 }
 
-// 21.25+
-internal val BytecodePatchContext.channelTabBuilderMethod by gettingFirstMethodDeclaratively {
-    returnType("Landroid/view/View;")
-    parameterTypes(
-        "Ljava/lang/CharSequence;",
-        "Ljava/lang/CharSequence;",
-        "Z",
-        "L",
-        "Z",
-    )
-    custom {
-        !AccessFlags.STATIC.isSet(accessFlags)
-    }
-}
-
-// 21.24 and older
-internal val BytecodePatchContext.channelTabBuilderLegacyMethod by gettingFirstMethodDeclaratively {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returnType("Landroid/view/View;")
-    parameterTypes(
-        "Ljava/lang/CharSequence;",
-        "Ljava/lang/CharSequence;",
-        "Z",
-        "L",
-    )
-}
-
 internal val BytecodePatchContext.channelTabRendererMethod by gettingFirstMethodDeclaratively(
     "TabRenderer.content contains SectionListRenderer but the tab does not have a section list controller.",
 ) {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returnType("V")
-    parameterTypes(
-        "L",
-        "Ljava/util/List;",
-        "I",
-    )
+    parameterTypes("L", "Ljava/util/List;", "I")
 }
+
+internal val BytecodePatchContext.channelTabRendererModernMethodMatch by getting {
+    val builderParameterTypes = mutableListOf("Ljava/lang/CharSequence;", "Ljava/lang/CharSequence;", "Z", "L")
+    if (is_21_25_or_greater) builderParameterTypes += "Z"
+
+    firstMethodComposite {
+        returnType("V")
+        parameterTypes("L", "I")
+        instructions(
+            allOf(Opcode.IGET_OBJECT(), field { type == "Ljava/lang/String;" }),
+            after(method { returnType == "Landroid/view/View;" && parameterTypes == builderParameterTypes }),
+            after(method { toString() == "Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z" }),
+        )
+    }
+} using { channelTabRendererMethod }
+
+internal val BytecodePatchContext.channelTabRendererLegacyMethodMatch by getting {
+    firstMethodComposite {
+        accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+        returnType("V")
+        parameterTypes("L", "Ljava/util/List;", "I")
+
+        val methodParametersPrefix = mutableListOf("Ljava/lang/CharSequence;", "Ljava/lang/CharSequence;", "Z", "L")
+        instructions(
+            allOf(Opcode.IGET_OBJECT(), field { type == "Ljava/lang/String;" }),
+            after(
+                allOf(
+                    Opcode.INVOKE_INTERFACE(),
+                    method {
+                        returnType == "Landroid/view/View;" &&
+                            parameterTypes.zip(methodParametersPrefix).all { (a, b) -> a.startsWith(b) }
+                    },
+                ),
+            ),
+            after(method("hasNext")),
+        )
+    }
+} using { channelTabRendererMethod }
 
 internal val BytecodePatchContext.engagementPanelInformationButtonMethodMatch by composingFirstMethod {
     parameterTypes("Landroid/content/Context;")
