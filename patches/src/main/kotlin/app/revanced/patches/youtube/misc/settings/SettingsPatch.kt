@@ -8,7 +8,7 @@ import app.revanced.patcher.extensions.getInstruction
 import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patcher.patch.resourcePatch
-import app.revanced.patches.all.misc.fix.openurllinks.removeLinkVerification
+import app.revanced.patches.all.misc.links.disableAppLinksVerificationPatch
 import app.revanced.patches.all.misc.packagename.setOrGetFallbackPackageName
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
@@ -57,243 +57,250 @@ private const val YOUTUBE_ACTIVITY_HOOK_CLASS_DESCRIPTOR =
 
 private val preferences = mutableSetOf<BasePreference>()
 
-private val settingsResourcePatch = resourcePatch {
-    dependsOn(
-        resourceMappingPatch,
-        settingsPatch(
-            rootPreferences = listOf(
-                IntentPreference(
-                    titleKey = "revanced_settings_title",
-                    summaryKey = null,
-                    intent = newIntent("revanced_settings_intent"),
-                ) to "settings_fragment",
-
-                PreferenceCategory(
-                    titleKey = "revanced_settings_title",
-                    layout = "@layout/preference_group_title",
-                    preferences = setOf(
+private val settingsResourcePatch =
+    resourcePatch {
+        dependsOn(
+            resourceMappingPatch,
+            settingsPatch(
+                rootPreferences =
+                    listOf(
                         IntentPreference(
-                            titleKey = "revanced_settings_submenu_title",
+                            titleKey = "revanced_settings_title",
                             summaryKey = null,
-                            icon = "@drawable/revanced_settings_icon_dynamic",
-                            layout = "@layout/preference_with_icon",
                             intent = newIntent("revanced_settings_intent"),
-                        ),
+                        ) to "settings_fragment",
+                        PreferenceCategory(
+                            titleKey = "revanced_settings_title",
+                            layout = "@layout/preference_group_title",
+                            preferences =
+                                setOf(
+                                    IntentPreference(
+                                        titleKey = "revanced_settings_submenu_title",
+                                        summaryKey = null,
+                                        icon = "@drawable/revanced_settings_icon_dynamic",
+                                        layout = "@layout/preference_with_icon",
+                                        intent = newIntent("revanced_settings_intent"),
+                                    ),
+                                ),
+                        ) to "settings_fragment_cairo",
                     ),
-                ) to "settings_fragment_cairo",
-            ),
-            preferences = preferences,
-        ),
-    )
-
-    apply {
-        // Use same colors as stock YouTube.
-        overrideThemeColors("@color/yt_white1", "@color/yt_black3")
-
-        copyResources(
-            "settings",
-            ResourceGroup(
-                "drawable",
-                "revanced_settings_icon_dynamic.xml",
-                "revanced_settings_icon.xml",
-                "revanced_settings_icon_bold.xml",
-                "revanced_settings_screen_00_about.xml",
-                "revanced_settings_screen_00_about_bold.xml",
-                "revanced_settings_screen_01_ads.xml",
-                "revanced_settings_screen_01_ads_bold.xml",
-                "revanced_settings_screen_02_alt_thumbnails.xml",
-                "revanced_settings_screen_02_alt_thumbnails_bold.xml",
-                "revanced_settings_screen_03_feed.xml",
-                "revanced_settings_screen_03_feed_bold.xml",
-                "revanced_settings_screen_04_general.xml",
-                "revanced_settings_screen_04_general_bold.xml",
-                "revanced_settings_screen_05_player.xml",
-                "revanced_settings_screen_05_player_bold.xml",
-                "revanced_settings_screen_06_shorts.xml",
-                "revanced_settings_screen_06_shorts_bold.xml",
-                "revanced_settings_screen_07_seekbar.xml",
-                "revanced_settings_screen_07_seekbar_bold.xml",
-                "revanced_settings_screen_08_swipe_controls.xml",
-                "revanced_settings_screen_08_swipe_controls_bold.xml",
-                "revanced_settings_screen_09_return_youtube_dislike.xml",
-                "revanced_settings_screen_09_return_youtube_dislike_bold.xml",
-                "revanced_settings_screen_10_sponsorblock.xml",
-                "revanced_settings_screen_10_sponsorblock_bold.xml",
-                "revanced_settings_screen_11_misc.xml",
-                "revanced_settings_screen_11_misc_bold.xml",
-                "revanced_settings_screen_12_video.xml",
-                "revanced_settings_screen_12_video_bold.xml",
+                preferences = preferences,
             ),
         )
 
-        // Remove horizontal divider from the settings Preferences
-        // To better match the appearance of the stock YouTube settings.
-        document("res/values/styles.xml").use { document ->
-            val childNodes = document.childNodes
+        apply {
+            // Use same colors as stock YouTube.
+            overrideThemeColors("@color/yt_white1", "@color/yt_black3")
 
-            arrayOf(
-                "Theme.YouTube.Settings",
-                "Theme.YouTube.Settings.Dark",
-            ).forEach { value ->
-                val listDividerNode = document.createElement("item")
-                listDividerNode.setAttribute("name", "android:listDivider")
-                listDividerNode.appendChild(document.createTextNode("@null"))
+            copyResources(
+                "settings",
+                ResourceGroup(
+                    "drawable",
+                    "revanced_settings_icon_dynamic.xml",
+                    "revanced_settings_icon.xml",
+                    "revanced_settings_icon_bold.xml",
+                    "revanced_settings_screen_00_about.xml",
+                    "revanced_settings_screen_00_about_bold.xml",
+                    "revanced_settings_screen_01_ads.xml",
+                    "revanced_settings_screen_01_ads_bold.xml",
+                    "revanced_settings_screen_02_alt_thumbnails.xml",
+                    "revanced_settings_screen_02_alt_thumbnails_bold.xml",
+                    "revanced_settings_screen_03_feed.xml",
+                    "revanced_settings_screen_03_feed_bold.xml",
+                    "revanced_settings_screen_04_general.xml",
+                    "revanced_settings_screen_04_general_bold.xml",
+                    "revanced_settings_screen_05_player.xml",
+                    "revanced_settings_screen_05_player_bold.xml",
+                    "revanced_settings_screen_06_shorts.xml",
+                    "revanced_settings_screen_06_shorts_bold.xml",
+                    "revanced_settings_screen_07_seekbar.xml",
+                    "revanced_settings_screen_07_seekbar_bold.xml",
+                    "revanced_settings_screen_08_swipe_controls.xml",
+                    "revanced_settings_screen_08_swipe_controls_bold.xml",
+                    "revanced_settings_screen_09_return_youtube_dislike.xml",
+                    "revanced_settings_screen_09_return_youtube_dislike_bold.xml",
+                    "revanced_settings_screen_10_sponsorblock.xml",
+                    "revanced_settings_screen_10_sponsorblock_bold.xml",
+                    "revanced_settings_screen_11_misc.xml",
+                    "revanced_settings_screen_11_misc_bold.xml",
+                    "revanced_settings_screen_12_video.xml",
+                    "revanced_settings_screen_12_video_bold.xml",
+                ),
+            )
 
-                childNodes.findElementByAttributeValueOrThrow(
-                    "name",
-                    value,
-                ).appendChild(listDividerNode)
+            // Remove horizontal divider from the settings Preferences
+            // To better match the appearance of the stock YouTube settings.
+            document("res/values/styles.xml").use { document ->
+                val childNodes = document.childNodes
+
+                arrayOf(
+                    "Theme.YouTube.Settings",
+                    "Theme.YouTube.Settings.Dark",
+                ).forEach { value ->
+                    val listDividerNode = document.createElement("item")
+                    listDividerNode.setAttribute("name", "android:listDivider")
+                    listDividerNode.appendChild(document.createTextNode("@null"))
+
+                    childNodes
+                        .findElementByAttributeValueOrThrow(
+                            "name",
+                            value,
+                        ).appendChild(listDividerNode)
+                }
+            }
+
+            // Modify the manifest to enhance GoogleApiActivity behavior
+            document("AndroidManifest.xml").use { document ->
+                val node =
+                    document.childNodes.findElementByAttributeValueOrThrow(
+                        "android:name",
+                        "com.google.android.gms.common.api.GoogleApiActivity",
+                    )
+
+                // Prevents the activity from being recreated on configuration changes
+                // (e.g., screen rotation), preserving its current state and fragment.
+                node.setAttribute(
+                    "android:configChanges",
+                    "orientation|screenSize|keyboardHidden",
+                )
+
+                // Use same theme as other activities. The exiting theme causes the
+                // settings to fade in and not use a transition animation. A custom theme
+                // could be used to not show any transition to match the original YT settings
+                // submenu behavior.
+                node.setAttribute(
+                    "android:theme",
+                    "@style/Theme.AppCompat.DayNight.NoActionBar",
+                )
+
+                val mimeType = document.createElement("data")
+                mimeType.setAttribute("android:mimeType", "text/plain")
+
+                // Add a data intent filter with MIME type "text/plain".
+                // Some devices crash if undeclared data is passed to an intent,
+                // and this change appears to fix the issue.
+                val intentFilter = document.createElement("intent-filter")
+                intentFilter.appendChild(mimeType)
+
+                node.appendChild(intentFilter)
             }
         }
-
-        // Modify the manifest to enhance GoogleApiActivity behavior
-        document("AndroidManifest.xml").use { document ->
-            val node = document.childNodes.findElementByAttributeValueOrThrow(
-                "android:name",
-                "com.google.android.gms.common.api.GoogleApiActivity",
-            )
-
-            // Prevents the activity from being recreated on configuration changes
-            // (e.g., screen rotation), preserving its current state and fragment.
-            node.setAttribute(
-                "android:configChanges",
-                "orientation|screenSize|keyboardHidden",
-            )
-
-            // Use same theme as other activities. The exiting theme causes the
-            // settings to fade in and not use a transition animation. A custom theme
-            // could be used to not show any transition to match the original YT settings
-            // submenu behavior.
-            node.setAttribute(
-                "android:theme",
-                "@style/Theme.AppCompat.DayNight.NoActionBar"
-            )
-
-            val mimeType = document.createElement("data")
-            mimeType.setAttribute("android:mimeType", "text/plain")
-
-            // Add a data intent filter with MIME type "text/plain".
-            // Some devices crash if undeclared data is passed to an intent,
-            // and this change appears to fix the issue.
-            val intentFilter = document.createElement("intent-filter")
-            intentFilter.appendChild(mimeType)
-
-            node.appendChild(intentFilter)
-        }
     }
-}
 
-val settingsPatch = bytecodePatch(
-    description = "Adds settings for ReVanced to YouTube.",
-) {
-    dependsOn(
-        sharedExtensionPatch,
-        settingsResourcePatch,
-        addResourcesPatch,
-        versionCheckPatch,
-        fixPreferenceIconPatch,
-        fixPlaybackSpeedWhilePlayingPatch,
-        fixContentProviderPatch,
-        fixPipChatBarPatch,
-        removeLinkVerification,
-        // Currently there is no easy way to make a mandatory patch,
-        // so for now this is a dependent of this patch.
-        checkEnvironmentPatch,
-    )
-
-    apply {
-        addResources("youtube", "misc.settings.settingsPatch")
-
-        // Add an "about" preference to the top.
-        preferences += NonInteractivePreference(
-            key = "revanced_settings_screen_00_about",
-            icon = "@drawable/revanced_settings_screen_00_about",
-            iconBold = "@drawable/revanced_settings_screen_00_about_bold",
-            layout = "@layout/preference_with_icon",
-            summaryKey = null,
-            tag = "app.revanced.extension.shared.settings.preference.ReVancedAboutPreference",
-            selectable = true,
+val settingsPatch =
+    bytecodePatch(
+        description = "Adds settings for ReVanced to YouTube.",
+    ) {
+        dependsOn(
+            sharedExtensionPatch,
+            settingsResourcePatch,
+            addResourcesPatch,
+            versionCheckPatch,
+            fixPreferenceIconPatch,
+            fixPlaybackSpeedWhilePlayingPatch,
+            fixContentProviderPatch,
+            fixPipChatBarPatch,
+            disableAppLinksVerificationPatch,
+            // Currently there is no easy way to make a mandatory patch,
+            // so for now this is a dependent of this patch.
+            checkEnvironmentPatch,
         )
 
-        PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("revanced_restore_old_settings_menus", summaryKey = null),
-        )
+        apply {
+            addResources("youtube", "misc.settings.settingsPatch")
 
-        PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("revanced_settings_search_history", summaryKey = null),
-        )
+            // Add an "about" preference to the top.
+            preferences +=
+                NonInteractivePreference(
+                    key = "revanced_settings_screen_00_about",
+                    icon = "@drawable/revanced_settings_screen_00_about",
+                    iconBold = "@drawable/revanced_settings_screen_00_about_bold",
+                    layout = "@layout/preference_with_icon",
+                    summaryKey = null,
+                    tag = "app.revanced.extension.shared.settings.preference.ReVancedAboutPreference",
+                    selectable = true,
+                )
 
-        PreferenceScreen.GENERAL.addPreferences(
+            PreferenceScreen.GENERAL.addPreferences(
+                SwitchPreference("revanced_restore_old_settings_menus", summaryKey = null),
+            )
+
+            PreferenceScreen.GENERAL.addPreferences(
+                SwitchPreference("revanced_settings_search_history", summaryKey = null),
+            )
+
+            PreferenceScreen.GENERAL.addPreferences(
+                if (is_20_31_or_greater) {
+                    PreferenceCategory(
+                        titleKey = null,
+                        sorting = Sorting.UNSORTED,
+                        tag = "app.revanced.extension.shared.settings.preference.NoTitlePreferenceCategory",
+                        preferences =
+                            setOf(
+                                SwitchPreference("revanced_show_menu_icons", summaryKey = null),
+                                SwitchPreference("revanced_settings_disable_bold_icons", summaryKey = null),
+                            ),
+                    )
+                } else {
+                    SwitchPreference("revanced_show_menu_icons", summaryKey = null)
+                },
+            )
+
+            PreferenceScreen.MISC.addPreferences(
+                TextPreference(
+                    key = null,
+                    titleKey = "revanced_pref_import_export_title",
+                    summaryKey = "revanced_pref_import_export_summary",
+                    inputType = InputType.TEXT_MULTI_LINE,
+                    tag = "app.revanced.extension.shared.settings.preference.ImportExportPreference",
+                ),
+                ListPreference(
+                    key = "revanced_language",
+                    tag = "app.revanced.extension.shared.settings.preference.SortedListPreference",
+                ),
+            )
+
+            // Update shared dark mode status based on YT theme.
+            // This is needed because YT allows forcing light/dark mode
+            // which then differs from the system dark mode status.
+            setThemeMethod.apply {
+                findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
+                    addInstructionsAtControlFlowLabel(
+                        index,
+                        "invoke-static { v$register }, ${YOUTUBE_ACTIVITY_HOOK_CLASS_DESCRIPTOR}->updateLightDarkModeStatus(Ljava/lang/Enum;)V",
+                    )
+                }
+            }
+
+            // Add setting to force Cairo settings fragment on/off.
+            cairoFragmentConfigMethodMatch.method.insertLiteralOverride(
+                cairoFragmentConfigMethodMatch[0],
+                "$YOUTUBE_ACTIVITY_HOOK_CLASS_DESCRIPTOR->useCairoSettingsFragment(Z)Z",
+            )
+
+            // Bold icon resources are found starting in 20.23, but many YT icons are not bold.
+            // 20.31 is the first version that seems to have all the bold icons.
             if (is_20_31_or_greater) {
-                PreferenceCategory(
-                    titleKey = null,
-                    sorting = Sorting.UNSORTED,
-                    tag = "app.revanced.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                    preferences = setOf(
-                        SwitchPreference("revanced_show_menu_icons", summaryKey = null),
-                        SwitchPreference("revanced_settings_disable_bold_icons", summaryKey = null),
-                    ),
-                )
-            } else {
-                SwitchPreference("revanced_show_menu_icons", summaryKey = null)
-            },
-        )
-
-        PreferenceScreen.MISC.addPreferences(
-            TextPreference(
-                key = null,
-                titleKey = "revanced_pref_import_export_title",
-                summaryKey = "revanced_pref_import_export_summary",
-                inputType = InputType.TEXT_MULTI_LINE,
-                tag = "app.revanced.extension.shared.settings.preference.ImportExportPreference",
-            ),
-            ListPreference(
-                key = "revanced_language",
-                tag = "app.revanced.extension.shared.settings.preference.SortedListPreference",
-            ),
-        )
-
-        // Update shared dark mode status based on YT theme.
-        // This is needed because YT allows forcing light/dark mode
-        // which then differs from the system dark mode status.
-        setThemeMethod.apply {
-            findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
-                val register = getInstruction<OneRegisterInstruction>(index).registerA
-                addInstructionsAtControlFlowLabel(
-                    index,
-                    "invoke-static { v$register }, ${YOUTUBE_ACTIVITY_HOOK_CLASS_DESCRIPTOR}->updateLightDarkModeStatus(Ljava/lang/Enum;)V",
-                )
+                boldIconsFeatureFlagMethodMatch.let {
+                    it.method.insertLiteralOverride(
+                        it[0],
+                        "$YOUTUBE_ACTIVITY_HOOK_CLASS_DESCRIPTOR->useBoldIcons(Z)Z",
+                    )
+                }
             }
+
+            modifyActivityForSettingsInjection(
+                googleApiActivityOnCreateMethod,
+                YOUTUBE_ACTIVITY_HOOK_CLASS_DESCRIPTOR,
+                false,
+            )
         }
 
-        // Add setting to force Cairo settings fragment on/off.
-        cairoFragmentConfigMethodMatch.method.insertLiteralOverride(
-            cairoFragmentConfigMethodMatch[0],
-            "$YOUTUBE_ACTIVITY_HOOK_CLASS_DESCRIPTOR->useCairoSettingsFragment(Z)Z",
-        )
-
-        // Bold icon resources are found starting in 20.23, but many YT icons are not bold.
-        // 20.31 is the first version that seems to have all the bold icons.
-        if (is_20_31_or_greater) {
-            boldIconsFeatureFlagMethodMatch.let {
-                it.method.insertLiteralOverride(
-                    it[0],
-                    "$YOUTUBE_ACTIVITY_HOOK_CLASS_DESCRIPTOR->useBoldIcons(Z)Z",
-                )
-            }
+        afterDependents {
+            PreferenceScreen.close()
         }
-
-        modifyActivityForSettingsInjection(
-            googleApiActivityOnCreateMethod,
-            YOUTUBE_ACTIVITY_HOOK_CLASS_DESCRIPTOR,
-            false,
-        )
     }
-
-    afterDependents {
-        PreferenceScreen.close()
-    }
-}
 
 /**
  * Modifies the activity to show ReVanced settings instead of its original purpose.
@@ -330,16 +337,17 @@ internal fun BytecodePatchContext.modifyActivityForSettingsInjection(
         null,
         null,
         MutableMethodImplementation(3),
-    ).toMutable().apply {
-        addInstructions(
-            """
+    ).toMutable()
+        .apply {
+            addInstructions(
+                """
                 invoke-static { p1 }, $BASE_ACTIVITY_HOOK_CLASS_DESCRIPTOR->getAttachBaseContext(Landroid/content/Context;)Landroid/content/Context;
                 move-result-object p1
                 invoke-super { p0, p1 }, ${activityOnCreateMethod.classDef.superclass}->attachBaseContext(Landroid/content/Context;)V
                 return-void
             """,
-        )
-    }.let(activityOnCreateMethod.classDef.methods::add)
+            )
+        }.let(activityOnCreateMethod.classDef.methods::add)
 
     // Override finish() to intercept back gesture.
     ImmutableMethod(
@@ -351,14 +359,15 @@ internal fun BytecodePatchContext.modifyActivityForSettingsInjection(
         null,
         null,
         MutableMethodImplementation(3),
-    ).toMutable().apply {
-        // Slightly different hooks are needed, otherwise the back button can behave wrong.
-        val extensionMethodName = if (isYouTubeMusic) "handleFinish" else "handleBackPress"
-        val invokeFinishOpcode = if (isYouTubeMusic) "invoke-super" else "invoke-virtual"
+    ).toMutable()
+        .apply {
+            // Slightly different hooks are needed, otherwise the back button can behave wrong.
+            val extensionMethodName = if (isYouTubeMusic) "handleFinish" else "handleBackPress"
+            val invokeFinishOpcode = if (isYouTubeMusic) "invoke-super" else "invoke-virtual"
 
-        addInstructions(
-            0,
-            """
+            addInstructions(
+                0,
+                """
                 invoke-static {}, $extensionClassType->$extensionMethodName()Z
                 move-result v0
                 if-nez v0, :search_handled
@@ -366,114 +375,127 @@ internal fun BytecodePatchContext.modifyActivityForSettingsInjection(
                 :search_handled
                 return-void
             """,
-        )
-    }.let(activityOnCreateMethod.classDef.methods::add)
+            )
+        }.let(activityOnCreateMethod.classDef.methods::add)
 }
 
 /**
  * Creates an intent to open ReVanced settings.
  */
-fun newIntent(settingsName: String) = IntentPreference.Intent(
-    data = settingsName,
-    targetClass = "com.google.android.gms.common.api.GoogleApiActivity",
-) {
-    // The package name change has to be reflected in the intent.
-    setOrGetFallbackPackageName("com.google.android.youtube")
-}
+fun newIntent(settingsName: String) =
+    IntentPreference.Intent(
+        data = settingsName,
+        targetClass = "com.google.android.gms.common.api.GoogleApiActivity",
+    ) {
+        // The package name change has to be reflected in the intent.
+        setOrGetFallbackPackageName("com.google.android.youtube")
+    }
 
 object PreferenceScreen : BasePreferenceScreen() {
     // Sort screens in the root menu by key, to not scatter related items apart
     // (sorting key is set in revanced_prefs.xml).
     // If no preferences are added to a screen, the screen will not be added to the settings.
-    val ADS = Screen(
-        key = "revanced_settings_screen_01_ads",
-        summaryKey = null,
-        icon = "@drawable/revanced_settings_screen_01_ads",
-        iconBold = "@drawable/revanced_settings_screen_01_ads_bold",
-        layout = "@layout/preference_with_icon",
-    )
-    val ALTERNATIVE_THUMBNAILS = Screen(
-        key = "revanced_settings_screen_02_alt_thumbnails",
-        summaryKey = null,
-        icon = "@drawable/revanced_settings_screen_02_alt_thumbnails",
-        iconBold = "@drawable/revanced_settings_screen_02_alt_thumbnails_bold",
-        layout = "@layout/preference_with_icon",
-        sorting = Sorting.UNSORTED,
-    )
-    val FEED = Screen(
-        key = "revanced_settings_screen_03_feed",
-        summaryKey = null,
-        icon = "@drawable/revanced_settings_screen_03_feed",
-        iconBold = "@drawable/revanced_settings_screen_03_feed_bold",
-        layout = "@layout/preference_with_icon",
-    )
-    val GENERAL = Screen(
-        key = "revanced_settings_screen_04_general",
-        summaryKey = null,
-        icon = "@drawable/revanced_settings_screen_04_general",
-        iconBold = "@drawable/revanced_settings_screen_04_general_bold",
-        layout = "@layout/preference_with_icon",
-    )
-    val PLAYER = Screen(
-        key = "revanced_settings_screen_05_player",
-        summaryKey = null,
-        icon = "@drawable/revanced_settings_screen_05_player",
-        iconBold = "@drawable/revanced_settings_screen_05_player_bold",
-        layout = "@layout/preference_with_icon",
-    )
-    val SHORTS = Screen(
-        key = "revanced_settings_screen_06_shorts",
-        summaryKey = null,
-        icon = "@drawable/revanced_settings_screen_06_shorts",
-        iconBold = "@drawable/revanced_settings_screen_06_shorts_bold",
-        layout = "@layout/preference_with_icon",
-    )
-    val SEEKBAR = Screen(
-        key = "revanced_settings_screen_07_seekbar",
-        summaryKey = null,
-        icon = "@drawable/revanced_settings_screen_07_seekbar",
-        iconBold = "@drawable/revanced_settings_screen_07_seekbar_bold",
-        layout = "@layout/preference_with_icon",
-    )
-    val SWIPE_CONTROLS = Screen(
-        key = "revanced_settings_screen_08_swipe_controls",
-        summaryKey = null,
-        icon = "@drawable/revanced_settings_screen_08_swipe_controls",
-        iconBold = "@drawable/revanced_settings_screen_08_swipe_controls_bold",
-        layout = "@layout/preference_with_icon",
-        sorting = Sorting.UNSORTED,
-    )
-    val RETURN_YOUTUBE_DISLIKE = Screen(
-        key = "revanced_settings_screen_09_return_youtube_dislike",
-        summaryKey = null,
-        icon = "@drawable/revanced_settings_screen_09_return_youtube_dislike",
-        iconBold = "@drawable/revanced_settings_screen_09_return_youtube_dislike_bold",
-        layout = "@layout/preference_with_icon",
-        sorting = Sorting.UNSORTED,
-    )
-    val SPONSORBLOCK = Screen(
-        key = "revanced_settings_screen_10_sponsorblock",
-        summaryKey = null,
-        icon = "@drawable/revanced_settings_screen_10_sponsorblock",
-        iconBold = "@drawable/revanced_settings_screen_10_sponsorblock_bold",
-        layout = "@layout/preference_with_icon",
-        sorting = Sorting.UNSORTED,
-    )
-    val MISC = Screen(
-        key = "revanced_settings_screen_11_misc",
-        summaryKey = null,
-        icon = "@drawable/revanced_settings_screen_11_misc",
-        iconBold = "@drawable/revanced_settings_screen_11_misc_bold",
-        layout = "@layout/preference_with_icon",
-    )
-    val VIDEO = Screen(
-        key = "revanced_settings_screen_12_video",
-        summaryKey = null,
-        icon = "@drawable/revanced_settings_screen_12_video",
-        iconBold = "@drawable/revanced_settings_screen_12_video_bold",
-        layout = "@layout/preference_with_icon",
-        sorting = Sorting.BY_KEY,
-    )
+    val ADS =
+        Screen(
+            key = "revanced_settings_screen_01_ads",
+            summaryKey = null,
+            icon = "@drawable/revanced_settings_screen_01_ads",
+            iconBold = "@drawable/revanced_settings_screen_01_ads_bold",
+            layout = "@layout/preference_with_icon",
+        )
+    val ALTERNATIVE_THUMBNAILS =
+        Screen(
+            key = "revanced_settings_screen_02_alt_thumbnails",
+            summaryKey = null,
+            icon = "@drawable/revanced_settings_screen_02_alt_thumbnails",
+            iconBold = "@drawable/revanced_settings_screen_02_alt_thumbnails_bold",
+            layout = "@layout/preference_with_icon",
+            sorting = Sorting.UNSORTED,
+        )
+    val FEED =
+        Screen(
+            key = "revanced_settings_screen_03_feed",
+            summaryKey = null,
+            icon = "@drawable/revanced_settings_screen_03_feed",
+            iconBold = "@drawable/revanced_settings_screen_03_feed_bold",
+            layout = "@layout/preference_with_icon",
+        )
+    val GENERAL =
+        Screen(
+            key = "revanced_settings_screen_04_general",
+            summaryKey = null,
+            icon = "@drawable/revanced_settings_screen_04_general",
+            iconBold = "@drawable/revanced_settings_screen_04_general_bold",
+            layout = "@layout/preference_with_icon",
+        )
+    val PLAYER =
+        Screen(
+            key = "revanced_settings_screen_05_player",
+            summaryKey = null,
+            icon = "@drawable/revanced_settings_screen_05_player",
+            iconBold = "@drawable/revanced_settings_screen_05_player_bold",
+            layout = "@layout/preference_with_icon",
+        )
+    val SHORTS =
+        Screen(
+            key = "revanced_settings_screen_06_shorts",
+            summaryKey = null,
+            icon = "@drawable/revanced_settings_screen_06_shorts",
+            iconBold = "@drawable/revanced_settings_screen_06_shorts_bold",
+            layout = "@layout/preference_with_icon",
+        )
+    val SEEKBAR =
+        Screen(
+            key = "revanced_settings_screen_07_seekbar",
+            summaryKey = null,
+            icon = "@drawable/revanced_settings_screen_07_seekbar",
+            iconBold = "@drawable/revanced_settings_screen_07_seekbar_bold",
+            layout = "@layout/preference_with_icon",
+        )
+    val SWIPE_CONTROLS =
+        Screen(
+            key = "revanced_settings_screen_08_swipe_controls",
+            summaryKey = null,
+            icon = "@drawable/revanced_settings_screen_08_swipe_controls",
+            iconBold = "@drawable/revanced_settings_screen_08_swipe_controls_bold",
+            layout = "@layout/preference_with_icon",
+            sorting = Sorting.UNSORTED,
+        )
+    val RETURN_YOUTUBE_DISLIKE =
+        Screen(
+            key = "revanced_settings_screen_09_return_youtube_dislike",
+            summaryKey = null,
+            icon = "@drawable/revanced_settings_screen_09_return_youtube_dislike",
+            iconBold = "@drawable/revanced_settings_screen_09_return_youtube_dislike_bold",
+            layout = "@layout/preference_with_icon",
+            sorting = Sorting.UNSORTED,
+        )
+    val SPONSORBLOCK =
+        Screen(
+            key = "revanced_settings_screen_10_sponsorblock",
+            summaryKey = null,
+            icon = "@drawable/revanced_settings_screen_10_sponsorblock",
+            iconBold = "@drawable/revanced_settings_screen_10_sponsorblock_bold",
+            layout = "@layout/preference_with_icon",
+            sorting = Sorting.UNSORTED,
+        )
+    val MISC =
+        Screen(
+            key = "revanced_settings_screen_11_misc",
+            summaryKey = null,
+            icon = "@drawable/revanced_settings_screen_11_misc",
+            iconBold = "@drawable/revanced_settings_screen_11_misc_bold",
+            layout = "@layout/preference_with_icon",
+        )
+    val VIDEO =
+        Screen(
+            key = "revanced_settings_screen_12_video",
+            summaryKey = null,
+            icon = "@drawable/revanced_settings_screen_12_video",
+            iconBold = "@drawable/revanced_settings_screen_12_video_bold",
+            layout = "@layout/preference_with_icon",
+            sorting = Sorting.BY_KEY,
+        )
 
     override fun commit(screen: PreferenceScreenPreference) {
         preferences += screen
