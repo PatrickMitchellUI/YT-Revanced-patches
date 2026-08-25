@@ -2,14 +2,13 @@ package app.revanced.extension.shared.patches;
 
 import android.net.Uri;
 import android.text.TextUtils;
+import app.revanced.extension.shared.Logger;
+import app.revanced.extension.shared.privacy.LinkSanitizer;
+import app.revanced.extension.shared.settings.BaseSettings;
 
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import app.revanced.extension.shared.Logger;
-import app.revanced.extension.shared.privacy.LinkSanitizer;
-import app.revanced.extension.shared.settings.BaseSettings;
 
 /**
  * YouTube and YouTube Music.
@@ -27,10 +26,7 @@ public final class SanitizeSharingLinksPatch {
      * Injection point.
      */
     public static String sanitize(String originalURL) {
-        Matcher urlMatcher =
-                Pattern.
-                        compile("https?://[^\\s]+(?<![.!?,-])").
-                        matcher(originalURL);
+        Matcher urlMatcher = Pattern.compile("https?://\\S+(?<![.!?,-])").matcher(originalURL);
         String url;
         if (urlMatcher.find()) {
             url = urlMatcher.group();
