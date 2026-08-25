@@ -423,7 +423,7 @@ public class Settings extends YouTubeAndMusicSettings {
     // stock repeat logic is disabled and hidden, once the
     // LOOP_VIDEO_BUTTON will be visible.
     public static final BooleanSetting LOOP_VIDEO_BUTTON = new BooleanSetting("revanced_loop_video_button", FALSE);
-    public static final BooleanSetting LOOP_VIDEO = new BooleanSetting("revanced_loop_video", FALSE);
+    public static final BooleanSetting LOOP_VIDEO = new BooleanSetting("revanced_loop_video", FALSE, parent(LOOP_VIDEO_BUTTON));
     public static final BooleanSetting DO_NOT_REMEMBER_LOOP_VIDEO = new BooleanSetting("revanced_do_not_remember_loop_video", FALSE, parent(LOOP_VIDEO_BUTTON));
     public static final BooleanSetting PAUSE_ON_AUDIO_INTERRUPT = new BooleanSetting("revanced_pause_on_audio_interrupt", FALSE, true);
     public static final BooleanSetting BYPASS_URL_REDIRECTS = new BooleanSetting("revanced_bypass_url_redirects", TRUE);
