@@ -438,8 +438,11 @@ internal fun BytecodePatchContext.getBottomSheetMenuItemBuilderWithToStringMetho
             )
 
         instructions(
-            if (withToString) predicates + method { name == "toString" } else predicates,
-            "Text missing for BottomSheetMenuItem."(),
+            if (withToString) {
+                predicates + method { name == "toString" }
+            } else {
+                predicates
+            } + "Text missing for BottomSheetMenuItem."(),
         )
     }
 
