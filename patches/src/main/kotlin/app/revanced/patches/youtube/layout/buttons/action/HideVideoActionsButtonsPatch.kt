@@ -66,7 +66,7 @@ val hideVideoActionButtonsPatch =
                     preferences =
                         setOf(
                             PreferenceCategory(
-                                titleKey = "revanced_portrait_buttons",
+                                titleKey = "revanced_portrait_buttons_title",
                                 preferences =
                                     setOf(
                                         SwitchPreference("revanced_disable_like_subscribe_glow"),
@@ -90,7 +90,7 @@ val hideVideoActionButtonsPatch =
                                     ),
                             ),
                             PreferenceCategory(
-                                titleKey = "revanced_fullscreen_buttons",
+                                titleKey = "revanced_fullscreen_buttons_title",
                                 preferences =
                                     setOf(
                                         NonInteractivePreference(

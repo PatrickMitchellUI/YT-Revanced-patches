@@ -581,7 +581,7 @@ Verify the package name is correct and the app is installed"</string>
         <patch id="layout.buttons.action.hideVideoActionButtonsPatch">
             <string name="revanced_action_buttons_screen_title">Action buttons</string>
             <string name="revanced_action_buttons_screen_summary">Choose which action buttons appear in portrait and fullscreen modes</string>
-            <string name="revanced_portrait_buttons">Portrait buttons</string>
+            <string name="revanced_portrait_buttons_title">Portrait buttons</string>
             <string name="revanced_disable_like_subscribe_glow_title">Disable Like and Subscribe glow</string>
             <string name="revanced_disable_like_subscribe_glow_summary">Prevents the Like and Subscribe buttons from glowing when a creator mentions them</string>
             <string name="revanced_hide_action_bar_title">Hide action bar</string>
@@ -620,7 +620,7 @@ Verify the package name is correct and the app is installed"</string>
             <string name="revanced_hide_save_button_title">Hide Save button</string>
             <string name="revanced_hide_more_button_title">Hide More button</string>
 
-            <string name="revanced_fullscreen_buttons">Fullscreen buttons</string>
+            <string name="revanced_fullscreen_buttons_title">Fullscreen buttons</string>
             <string name="revanced_hide_quick_actions_title">Hide action bar</string>
             <string name="revanced_hide_quick_actions_ask_button_title">Hide Ask button</string>
             <string name="revanced_hide_quick_actions_comments_button_title">Hide Comments button</string>
