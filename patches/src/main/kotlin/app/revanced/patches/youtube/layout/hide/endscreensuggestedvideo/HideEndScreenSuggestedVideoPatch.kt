@@ -10,53 +10,53 @@ import app.revanced.patches.all.misc.resources.addResourcesPatch
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
-import app.revanced.util.getMethodReferenceAtInstructionIndex
+import app.revanced.util.getMethodReferenceAtMatchedInstructionIndex
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/revanced/extension/youtube/patches/HideEndScreenSuggestedVideoPatch;"
 
 @Suppress("unused")
-val hideEndScreenSuggestedVideoPatch = bytecodePatch(
-    name = "Hide end screen suggested video",
-    description = "Adds an option to hide the suggested video at the end of videos.",
-) {
-    dependsOn(
-        sharedExtensionPatch,
-        addResourcesPatch,
-    )
-
-    compatibleWith(
-        "com.google.android.youtube"(
-            "20.14.43",
-            "20.21.37",
-            "20.26.46",
-            "20.31.42",
-            "20.37.48",
-            "20.45.36",
-            "20.51.39"
-        ),
-    )
-
-    apply {
-        addResources(
-            "youtube",
-            "layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch"
+val hideEndScreenSuggestedVideoPatch =
+    bytecodePatch(
+        name = "Hide end screen suggested video",
+        description = "Adds an option to hide the suggested video at the end of videos.",
+    ) {
+        dependsOn(
+            sharedExtensionPatch,
+            addResourcesPatch,
         )
 
-        PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("revanced_hide_end_screen_suggested_video"),
+        compatibleWith(
+            "com.google.android.youtube"(
+                "20.14.43",
+                "20.21.37",
+                "20.26.46",
+                "20.31.42",
+                "20.37.48",
+                "20.45.36",
+                "20.51.39",
+            ),
         )
 
-        val endScreenMethod = removeOnLayoutChangeListenerMethodMatch.getMethodReferenceAtInstructionIndex(1)
+        apply {
+            addResources(
+                "youtube",
+                "layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch",
+            )
 
+            PreferenceScreen.PLAYER.addPreferences(
+                SwitchPreference("revanced_hide_end_screen_suggested_video"),
+            )
 
-        getEndScreenSuggestedVideoMethodMatch(autoNavStatusMethod).let { match ->
-            match.method.apply {
-                val autoNavField = getInstruction(match[0]).fieldReference!!
+            val endScreenMethod = removeOnLayoutChangeListenerMethodMatch.getMethodReferenceAtMatchedInstructionIndex(1)
 
-                addInstructionsWithLabels(
-                    0,
-                    """
+            getEndScreenSuggestedVideoMethodMatch(autoNavStatusMethod).let { match ->
+                match.method.apply {
+                    val autoNavField = getInstruction(match[0]).fieldReference!!
+
+                    addInstructionsWithLabels(
+                        0,
+                        """
                         invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->hideEndScreenSuggestedVideo()Z
                         move-result v0
                         if-eqz v0, :show_end_screen_recommendation
@@ -71,9 +71,9 @@ val hideEndScreenSuggestedVideoPatch = bytecodePatch(
                         if-nez v0, :show_end_screen_recommendation
                         return-void
                     """,
-                    ExternalLabel("show_end_screen_recommendation", getInstruction(0)),
-                )
+                        ExternalLabel("show_end_screen_recommendation", getInstruction(0)),
+                    )
+                }
             }
         }
     }
-}

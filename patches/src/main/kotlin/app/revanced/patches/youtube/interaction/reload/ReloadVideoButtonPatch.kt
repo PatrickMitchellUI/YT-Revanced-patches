@@ -21,7 +21,7 @@ import app.revanced.patches.youtube.shared.mainActivityOnCreateMethod
 import app.revanced.patches.youtube.video.information.videoInformationPatch
 import app.revanced.util.ResourceGroup
 import app.revanced.util.copyResources
-import app.revanced.util.getMethodReferenceAtInstructionIndex
+import app.revanced.util.getMethodReferenceAtMatchedInstructionIndex
 import app.revanced.util.indexOfFirstInstructionReversedOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -109,7 +109,7 @@ val reloadVideoButtonPatch =
             )
 
             val dismissPlayerInnerMethod =
-                miniAppOpenYtContentCommandEndpointMethodMatch.getMethodReferenceAtInstructionIndex(2)
+                miniAppOpenYtContentCommandEndpointMethodMatch.getMethodReferenceAtMatchedInstructionIndex(2)
             val openNewVideoParcelableMethod = openNewVideoIntentParcelableMethod
             val openNewVideoParcelableDefiningClass = openNewVideoParcelableMethod.definingClass
 

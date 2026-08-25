@@ -11,6 +11,7 @@ import app.revanced.patcher.name
 import app.revanced.patcher.parameterTypes
 import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patcher.returnType
+import app.revanced.util.getMethodReferenceAtMatchedInstructionIndex
 import app.revanced.util.getting
 import app.revanced.util.using
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -41,22 +42,23 @@ internal val BytecodePatchContext.removeOnLayoutChangeListenerMethodMatch by com
             3,
             allOf(
                 Opcode.INVOKE_VIRTUAL(),
-                method { returnType == "V" && parameterTypes.isEmpty() }
-            )
+                method { returnType == "V" && parameterTypes.isEmpty() },
+            ),
         ),
-        allOf(Opcode.INVOKE_VIRTUAL(), method {
-            name == "removeOnLayoutChangeListener" &&
+        allOf(
+            Opcode.INVOKE_VIRTUAL(),
+            method {
+                name == "removeOnLayoutChangeListener" &&
                     returnType == "V" &&
                     definingClass == "Lcom/google/android/apps/youtube/app/common/" +
                     "player/overlay/YouTubePlayerOverlaysLayout;"
-        }),
+            },
+        ),
     )
 }
 
 internal fun BytecodePatchContext.getEndScreenSuggestedVideoMethodMatch(autoNavStatusMethod: Method): CompositeMatch {
-    val endScreenMethod = removeOnLayoutChangeListenerMethodMatch.let {
-        firstMethod(it.method.getInstruction<ReferenceInstruction>(it[1]).methodReference!!)
-    }
+    val endScreenMethod = removeOnLayoutChangeListenerMethodMatch.getMethodReferenceAtMatchedInstructionIndex(1)
 
     return firstMethodComposite {
         name(endScreenMethod.name)
@@ -69,15 +71,15 @@ internal fun BytecodePatchContext.getEndScreenSuggestedVideoMethodMatch(autoNavS
                 Opcode.IGET_OBJECT(),
                 field {
                     definingClass == endScreenMethod.definingClass &&
-                            type == autoNavStatusMethod.definingClass
-                }
+                        type == autoNavStatusMethod.definingClass
+                },
             ),
             afterAtMost(
                 3,
                 allOf(
                     Opcode.INVOKE_VIRTUAL(),
-                    method { this == autoNavStatusMethod }
-                )
+                    method { this == autoNavStatusMethod },
+                ),
             ),
         )
     }

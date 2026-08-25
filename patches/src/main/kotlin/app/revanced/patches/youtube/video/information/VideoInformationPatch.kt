@@ -18,7 +18,7 @@ import app.revanced.patches.youtube.video.playerresponse.playerResponseMethodHoo
 import app.revanced.patches.youtube.video.videoid.*
 import app.revanced.util.addInstructionsAtControlFlowLabel
 import app.revanced.util.addStaticFieldToExtension
-import app.revanced.util.getMethodReferenceAtInstructionIndex
+import app.revanced.util.getMethodReferenceAtMatchedInstructionIndex
 import app.revanced.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -182,7 +182,7 @@ val videoInformationPatch =
         /*
          * Set the video time method
          */
-            timeMethod = playerControllerSetTimeReferenceMethodMatch.getMethodReferenceAtInstructionIndex(0)
+            timeMethod = playerControllerSetTimeReferenceMethodMatch.getMethodReferenceAtMatchedInstructionIndex(0)
 
         /*
          * Hook the user playback speed selection.

@@ -185,7 +185,7 @@ internal fun Method.findMethodFromToString(fieldName: String): MutableMethod {
  * @return The method invoked by the instruction at the given match instruction [index].
  */
 context(context: BytecodePatchContext)
-internal fun CompositeMatch.getMethodReferenceAtInstructionIndex(index: Int): MutableMethod =
+internal fun CompositeMatch.getMethodReferenceAtMatchedInstructionIndex(index: Int): MutableMethod =
     context.firstMethod(method.getInstruction(this[index]).methodReference!!)
 
 /**

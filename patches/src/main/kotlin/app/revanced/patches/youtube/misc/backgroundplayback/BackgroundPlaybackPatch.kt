@@ -24,7 +24,6 @@ import app.revanced.patches.youtube.shared.backgroundPlaybackManagerShortsMethod
 import app.revanced.patches.youtube.video.information.videoInformationPatch
 import app.revanced.util.addInstructionsAtControlFlowLabel
 import app.revanced.util.findInstructionIndicesReversedOrThrow
-import app.revanced.util.getReference
 import app.revanced.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -113,12 +112,12 @@ val removeBackgroundPlaybackRestrictionsPatch =
 
             // Enable background playback option in YouTube settings
             backgroundPlaybackSettingsMethod.apply {
-                val booleanCall =
+                val booleanCallInstruction =
                     instructions.first {
                         it.methodReference?.returnType == "Z"
                     }
 
-                firstMethod(booleanCall.methodReference!!).addBackgroundPlaybackIsPatchEnabledHook()
+                firstMethod(booleanCallInstruction.methodReference!!).addBackgroundPlaybackIsPatchEnabledHook()
             }
 
             // Force allowing background play for Shorts.
