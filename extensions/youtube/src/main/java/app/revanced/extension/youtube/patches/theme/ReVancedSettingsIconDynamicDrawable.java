@@ -51,6 +51,7 @@ public class ReVancedSettingsIconDynamicDrawable extends Drawable {
         icon.setColorFilter(colorFilter);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public int getOpacity() {
         return icon.getOpacity();
