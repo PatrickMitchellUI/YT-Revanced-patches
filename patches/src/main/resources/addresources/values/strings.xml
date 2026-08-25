@@ -142,9 +142,7 @@ Tap the continue button and allow optimization changes."</string>
             <string name="revanced_spoof_video_streams_screen_title">Spoof video streams</string>
             <string name="revanced_spoof_video_streams_screen_summary">Spoof the client video streams to prevent playback issues</string>
             <string name="revanced_spoof_video_streams_title">Spoof video streams</string>
-            <string name="revanced_spoof_video_streams_summary">"Fixes playback issues for most users by requesting a compatible video stream
-
-If you are a YouTube Premium user, this setting may not be required"</string>
+            <string name="revanced_spoof_video_streams_summary">Configure client spoofing to prevent playback issues</string>
             <string name="revanced_spoof_video_streams_user_dialog_message">Turning off this setting may cause playback issues.</string>
             <string name="revanced_spoof_video_streams_client_type_title">Default client</string>
 
@@ -166,7 +164,7 @@ If you are a YouTube Premium user, this setting may not be required"</string>
         </patch>
         <patch id="misc.debugging.enableDebuggingPatch">
             <string name="revanced_debug_screen_title">Debugging</string>
-            <string name="revanced_debug_screen_summary">Enable or disable debugging options</string>
+            <string name="revanced_debug_screen_summary">>Configure debugging options and diagnostic logs</string>
             <string name="revanced_debug_title">Enable debug logging</string>
             <string name="revanced_debug_stacktrace_title">Debug log stack traces</string>
             <string name="revanced_debug_stacktrace_summary">Includes stack traces in debug logs to help identify errors</string>
@@ -213,11 +211,11 @@ However, enabling this will also log some user data such as your IP address."</s
         </patch>
         <patch id="layout.hide.general.hideLayoutComponentsPatch">
             <string name="revanced_custom_filter_screen_title">Custom filter</string>
-            <string name="revanced_custom_filter_screen_summary">Configure custom filters to hide any component</string>
+            <string name="revanced_custom_filter_screen_summary">Choose which components to hide using custom filters</string>
             <string name="revanced_custom_filter_title">Enable custom filter</string>
             <string name="revanced_custom_filter_strings_title">Custom filter</string>
             <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
-            <string name="revanced_custom_filter_strings_summary">List of component path builder strings to filter separated by new line</string>
+            <string name="revanced_custom_filter_strings_summary">List of component path builder strings to filter, separated by new line</string>
             <string name="revanced_custom_filter_toast_invalid_syntax">Invalid custom filter: %s</string>
         </patch>
     </app>
@@ -354,20 +352,20 @@ However, enabling this will also log some user data such as your IP address."</s
             <string name="revanced_hide_video_details_section_title">Hide \'Video details\' section</string>
             <string name="revanced_hide_quizzes_section_title">Hide Quizzes section</string>
             <string name="revanced_hide_description_components_screen_title">Video description</string>
-            <string name="revanced_hide_description_components_screen_summary">Hide or show video description components</string>
+            <string name="revanced_hide_description_components_screen_summary">Choose which components appear in the video description</string>
 
             <string name="revanced_hide_filter_bar_screen_title">Filter bar</string>
-            <string name="revanced_hide_filter_bar_screen_summary">Hide or show the filter bar in feeds, related videos, search results, and watch history</string>
+            <string name="revanced_hide_filter_bar_screen_summary">Choose where to hide the scrolling category chips</string>
             <string name="revanced_hide_filter_bar_feed_in_feed_title">Hide in feeds</string>
             <string name="revanced_hide_filter_bar_feed_in_related_videos_title">Hide in related videos</string>
             <string name="revanced_hide_filter_bar_feed_in_search_title">Hide in search results</string>
             <string name="revanced_hide_filter_bar_feed_in_history_title">Hide in watch history</string>
 
             <string name="revanced_channel_screen_title">Channel page</string>
-            <string name="revanced_channel_screen_summary">Hide or show channel page components</string>
+            <string name="revanced_channel_screen_summary">Choose which components appear on channel page</string>
             <string name="revanced_hide_channel_tab_title">Enable channel tab filter</string>
             <string name="revanced_hide_channel_tab_filter_strings_title">Channel tab filter</string>
-            <string name="revanced_hide_channel_tab_filter_strings_summary">Enter the channel tab names to filter by, one per line</string>
+            <string name="revanced_hide_channel_tab_filter_strings_summary">Enter the channel tab names to filter by, separated by new lines</string>
             <!-- 'Community' should be translated with the same localized wording that YouTube displays. -->
             <string name="revanced_hide_community_button_title">Hide Community button</string>
             <!-- 'Join' should be translated with the same localized wording that YouTube displays. -->
@@ -383,13 +381,13 @@ However, enabling this will also log some user data such as your IP address."</s
             <string name="revanced_hide_subscribe_button_in_channel_page_title">Hide Subscribe button</string>
 
             <string name="revanced_comments_screen_title">Comments</string>
-            <string name="revanced_comments_screen_summary">Hide or show comments section components</string>
+            <string name="revanced_comments_screen_summary">Choose which components appear in the comments section</string>
             <string name="revanced_hide_comments_carousel_title">Enable comments carousel filter</string>
             <string name="revanced_hide_comments_carousel_summary">"• Be sure to enter the exact name of the carousel item (e.g. Ask, Hype this video, Listen on YouTube Music, etc.)
 • Hiding carousel items may have unintended side effects
 • If all carousel items are hidden, the entire comments section will also be hidden"</string>
             <string name="revanced_hide_comments_carousel_filter_strings_title">Comments carousel filter</string>
-            <string name="revanced_hide_comments_carousel_filter_strings_summary">Enter the comments carousel names to filter by, one per line</string>
+            <string name="revanced_hide_comments_carousel_filter_strings_summary">Enter the comments carousel names to filter by, separated by new lines</string>
             <string name="revanced_hide_comments_ai_chat_summary_title">Hide AI chat summary</string>
             <string name="revanced_hide_comments_channel_guidelines_title">Hide channel guidelines</string>
             <string name="revanced_hide_comments_by_members_header_title">Hide \'Comments by members\' header</string>
@@ -414,7 +412,7 @@ However, enabling this will also log some user data such as your IP address."</s
 • Shorts shelves, channel pages, and search results may still show upload times.
 • This feature does not work with automotive layout."</string>
             <string name="revanced_hide_keyword_content_screen_title">Keyword filter</string>
-            <string name="revanced_hide_keyword_content_screen_summary">Hide feed and search videos using keyword filters</string>
+            <string name="revanced_hide_keyword_content_screen_summary">Choose specific words or phrases to hide videos in feeds and search</string>
             <string name="revanced_hide_keyword_content_home_title">Hide Home videos by keywords</string>
             <string name="revanced_hide_keyword_content_search_title">Hide search results by keywords</string>
             <string name="revanced_hide_keyword_content_subscriptions_title">Hide Subscriptions videos by keywords</string>
@@ -422,13 +420,9 @@ However, enabling this will also log some user data such as your IP address."</s
             <string name="revanced_hide_keyword_content_phrases_title">Keywords to hide</string>
             <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
                  This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-            <string name="revanced_hide_keyword_content_phrases_summary">"Enter keywords and phrases to hide, separated by new lines
-
-Keywords can be any text shown in video titles or channel names
-
-Words with uppercase letters in the middle must match exactly (ie: iPhone, TikTok, LeBlanc)"</string>
+            <string name="revanced_hide_keyword_content_phrases_summary">"Enter keywords or channel names, separated by new lines. Words with uppercase letters in the middle must match exactly (ie: iPhone, TikTok, LeBlanc)</string>
             <string name="revanced_hide_keyword_content_about_title">About keyword filtering</string>
-            <string name="revanced_hide_keyword_content_about_summary">"Home/Subscriptions/Search/Comments results are filtered to hide content that matches keyword phrases
+            <string name="revanced_hide_keyword_content_about_summary">"Home / Subscriptions / Search results are filtered to hide content that matches keyword phrases
 
 Limitations:
 • Shorts cannot be hidden by channel name
@@ -461,7 +455,7 @@ Limitations:
         <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
             <string name="revanced_share_copy_link_button_success">URL copied to clipboard</string>
             <string name="revanced_share_copy_link_with_timestamp_button_success">URL with timestamp copied to clipboard</string>
-            <string name="revanced_copy_video_link_button_title">Show copy video URL button</string>
+            <string name="revanced_copy_video_link_button_title">Show Copy video URL button</string>
             <string name="revanced_copy_video_link_button_summary">Tap to copy the video URL, tap and hold to copy with timestamp</string>
             <string name="revanced_copy_video_link_with_timestamp_button_title">Copy timestamp by default</string>
             <string name="revanced_copy_video_link_with_timestamp_button_summary">Reverses the tap and tap-and-hold actions of \'Copy video URL\' button</string>
@@ -487,7 +481,7 @@ Limitations:
         </patch>
         <patch id="interaction.downloads.downloadsResourcePatch">
             <string name="revanced_external_downloader_screen_title">External downloads</string>
-            <string name="revanced_external_downloader_screen_summary">Settings for using an external downloader</string>
+            <string name="revanced_external_downloader_screen_summary">Choose which external app handles your downloads</string>
             <string name="revanced_external_downloader_title">Show external download button</string>
             <string name="revanced_external_downloader_summary">Shows an overlay button in video player that opens your external downloader</string>
 
@@ -511,7 +505,7 @@ Verify the package name is correct and the app is installed"</string>
         </patch>
         <patch id="interaction.seekbar.enableLivestreamSeekingPatch">
             <string name="revanced_enable_livestream_seeking_title">Enable livestream seeking</string>
-            <string name="revanced_enable_livestream_seeking_summary">Allows seeking on all livestreams</string>
+            <string name="revanced_enable_livestream_seeking_summary">Allows you to rewind live broadcasts up to 7 days into the past</string>
             <!-- 'Spoof video streams' should be the same translation used for 'revanced_spoof_video_streams_screen_title'. -->
             <string name="revanced_enable_livestream_seeking_user_dialog_message">Enabling this may cause unexpected livestream seeking behavior if \'Spoof video streams\' is not enabled.</string>
             <string name="revanced_increase_livestream_seeking_duration_title">Increase livestream seeking duration</string>
@@ -546,21 +540,21 @@ Verify the package name is correct and the app is installed"</string>
             <string name="revanced_swipe_overlay_timeout_title">Swipe overlay timeout</string>
             <string name="revanced_swipe_overlay_timeout_summary">The amount of milliseconds the overlay is visible</string>
             <string name="revanced_swipe_overlay_background_opacity_title">Swipe overlay background opacity</string>
-            <string name="revanced_swipe_overlay_background_opacity_summary">Opacity value between 0-100</string>
+            <string name="revanced_swipe_overlay_background_opacity_summary">Adjust the transparency level (0 is transparent, 100 is opaque)</string>
             <string name="revanced_swipe_overlay_background_opacity_invalid_toast">Swipe opacity must be between 0-100</string>
             <string name="revanced_swipe_overlay_progress_brightness_color_title">Swipe overlay brightness color</string>
-            <string name="revanced_swipe_overlay_progress_brightness_color_summary">The color of the progress bar for brightness controls</string>
+            <string name="revanced_swipe_overlay_progress_brightness_color_summary">Set the color of the brightness controls progress bar</string>
             <string name="revanced_swipe_overlay_progress_volume_color_title">Swipe overlay volume color</string>
-            <string name="revanced_swipe_overlay_progress_volume_color_summary">The color of the progress bar for volume controls</string>
+            <string name="revanced_swipe_overlay_progress_volume_color_summary">Set the color of the volume controls progress bar</string>
             <string name="revanced_swipe_overlay_progress_speed_color_title">Swipe overlay speed color</string>
             <string name="revanced_swipe_overlay_progress_speed_color_summary">Set the color of the playback speed controls progress bar</string>
             <string name="revanced_swipe_text_overlay_size_title">Swipe overlay text size</string>
-            <string name="revanced_swipe_text_overlay_size_summary">The text size for swipe overlay between 1-30</string>
+            <string name="revanced_swipe_text_overlay_size_summary">Adjust the size of the on-screen text (1-30)</string>
             <string name="revanced_swipe_text_overlay_size_invalid_toast">The text size must be between 1-30</string>
             <string name="revanced_swipe_threshold_title">Swipe magnitude threshold</string>
-            <string name="revanced_swipe_threshold_summary">The amount of threshold for swipe to occur</string>
+            <string name="revanced_swipe_threshold_summary">Set the required swipe distance before an adjustment triggers</string>
             <string name="revanced_swipe_volume_sensitivity_title">Volume swipe sensitivity</string>
-            <string name="revanced_swipe_volume_sensitivity_summary">Adjust how much the volume changes per swipe</string>
+            <string name="revanced_swipe_volume_sensitivity_summary">Adjust how the volume changes during a swipe</string>
             <string name="revanced_swipe_brightness_sensitivity_title">Brightness swipe sensitivity</string>
             <string name="revanced_swipe_brightness_sensitivity_summary">Higher values require more swiping per brightness step</string>
             <string name="revanced_swipe_speed_title">Enable speed gesture</string>
@@ -644,7 +638,7 @@ Verify the package name is correct and the app is installed"</string>
         </patch>
         <patch id="layout.buttons.navigation.navigationBarPatch">
             <string name="revanced_navigation_buttons_screen_title">Navigation buttons</string>
-            <string name="revanced_navigation_buttons_screen_summary">Hide or change navigation bar buttons</string>
+            <string name="revanced_navigation_buttons_screen_summary">Choose which buttons appear in the bottom navigation bar</string>
             <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
             <string name="revanced_hide_home_button_title">Hide Home button</string>
             <!-- 'Shorts' should be translated using the same localized wording YouTube displays the tab. -->
@@ -674,7 +668,7 @@ Verify the package name is correct and the app is installed"</string>
             <string name="revanced_disable_translucent_navigation_bar_dark_title">Disable dark translucent bar</string>
             <string name="revanced_disable_translucent_navigation_bar_dark_summary">Makes the navigation bar fully opaque in dark mode</string>
             <string name="revanced_toolbar_screen_title">Toolbar</string>
-            <string name="revanced_toolbar_screen_summary">Hide or change toolbar components</string>
+            <string name="revanced_toolbar_screen_summary">Choose which components appear in the toolbar</string>
             <string name="revanced_hide_toolbar_cast_button_title">Hide Cast button</string>
             <string name="revanced_hide_toolbar_chat_button_title">Hide Chat button</string>
             <string name="revanced_hide_toolbar_create_button_title">Hide Create button</string>
@@ -683,7 +677,7 @@ Verify the package name is correct and the app is installed"</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">Flyout menu</string>
-            <string name="revanced_hide_player_flyout_summary">Hide or show flyout menu items</string>
+            <string name="revanced_hide_player_flyout_summary">Choose which components appear in the flyout menu</string>
             <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
             <string name="revanced_hide_player_flyout_captions_title">Hide Captions menu</string>
             <string name="revanced_hide_player_flyout_captions_footer_title">Hide Captions menu footer</string>
@@ -719,13 +713,9 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android >Reel\
             <string name="revanced_hide_player_flyout_quality_footer_title">Hide Quality menu footer</string>
             <string name="revanced_hide_player_flyout_quality_header_title">Hide Quality menu header</string>
         </patch>
-        <patch id="layout.buttons.overlay.playerOverlayButtonsSettingsPatch">
-            <string name="revanced_overlay_buttons_screen_title">Overlay buttons</string>
-            <string name="revanced_overlay_buttons_screen_summary">Hide or show overlay buttons related components</string>
-        </patch>
         <patch id="layout.buttons.overlay.hidePlayerOverlayButtonsPatch">
             <string name="revanced_overlay_buttons_screen_title">Overlay buttons</string>
-            <string name="revanced_overlay_buttons_screen_summary">Hide or show overlay buttons related components</string>
+            <string name="revanced_overlay_buttons_screen_summary">Choose which buttons appear over the video player</string>
             <string name="revanced_hide_autoplay_button_title">Hide Autoplay button</string>
             <!-- This button does not display any text, but 'Captions' should be translated using the same wording used as the translation of 'revanced_hide_player_flyout_captions_title'. -->
             <string name="revanced_hide_captions_button_title">Hide Captions button</string>
@@ -759,7 +749,7 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android >Reel\
         </patch>
         <patch id="layout.hide.shorts.hideShortsComponentsResourcePatch">
             <string name="revanced_shorts_player_screen_title">Shorts player</string>
-            <string name="revanced_shorts_player_screen_summary">Hide or show Shorts player components</string>
+            <string name="revanced_shorts_player_screen_summary">Choose which components appear in the Shorts player</string>
             <string name="revanced_hide_shorts_category_title">Hide Shorts</string>
             <string name="revanced_hide_shorts_channel_title">Hide in channel page</string>
             <!-- 'Home' should be translated using the same localized wording YouTube displays for the Home tab. -->
@@ -911,11 +901,11 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
             <string name="revanced_sb_enable_auto_hide_skip_segment_button">Automatically hide Skip button</string>
             <string name="revanced_sb_enable_auto_hide_skip_segment_button_summary">Hides the Skip button after a few seconds instead of keeping it visible for the entire segment</string>
             <string name="revanced_sb_auto_hide_skip_button_duration">Skip button duration</string>
-            <string name="revanced_sb_auto_hide_skip_button_duration_summary">How long to show the skip and skip to highlight buttons before automatically hiding</string>
+            <string name="revanced_sb_auto_hide_skip_button_duration_summary">Set how long the Skip buttons remains visible</string>
             <string name="revanced_sb_general_skiptoast">Show undo skip toast</string>
             <string name="revanced_sb_general_skiptoast_summary">Shows a notification allowing you to tap to undo an automatic skip</string>
             <string name="revanced_sb_toast_on_skip_duration">Skip toast duration</string>
-            <string name="revanced_sb_toast_on_skip_duration_summary">How long to show the undo skip toast</string>
+            <string name="revanced_sb_toast_on_skip_duration_summary">Set how long the undo notification remains visible</string>
             <string name="revanced_sb_duration_1s">1 second</string>
             <string name="revanced_sb_duration_2s">2 seconds</string>
             <string name="revanced_sb_duration_3s">3 seconds</string>
@@ -932,7 +922,7 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
             <string name="revanced_sb_enable_create_segment">Show Create new segment button</string>
             <string name="revanced_sb_enable_create_segment_summary">Adds a button to the video player allowing you to submit new SponsorBlock segments</string>
             <string name="revanced_sb_general_adjusting">Time adjustment step</string>
-            <string name="revanced_sb_general_adjusting_summary">Seek amount of the time adjustment buttons (in milliseconds)</string>
+            <string name="revanced_sb_general_adjusting_summary">Set the number of milliseconds for the time adjustment buttons when creating new segments</string>
             <string name="revanced_sb_general_adjusting_invalid">Value must be a positive number</string>
             <string name="revanced_sb_guidelines_preference_title">Submission guidelines</string>
             <string name="revanced_sb_guidelines_preference_summary">Guidelines contain rules and tips for creating new segments</string>
@@ -946,7 +936,7 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
             <string name="revanced_sb_general_skipcount">Enable skip count tracking</string>
             <string name="revanced_sb_general_skipcount_summary">Sends skip counts to the SponsorBlock leaderboard to track how much time is saved</string>
             <string name="revanced_sb_general_min_duration">Minimum segment duration</string>
-            <string name="revanced_sb_general_min_duration_summary">Segments shorter than this value (in seconds) will not be shown or skipped</string>
+            <string name="revanced_sb_general_min_duration_summary">Set the minimum length required for a segment to be skipped, in seconds</string>
             <string name="revanced_sb_general_min_duration_invalid">Invalid time duration</string>
             <string name="revanced_sb_general_uuid">Your private user id</string>
             <string name="revanced_sb_general_uuid_summary">This should be kept private. This is like a password and should not be shared with anyone. If someone has this, they can impersonate you</string>
@@ -970,9 +960,9 @@ Your user id is like a password and it should never be shared.
             <string name="revanced_sb_settings_revanced_export_user_id_warning_dismiss">Do not show again</string>
             <string name="revanced_sb_diff_segments">Change segment behavior</string>
             <string name="revanced_sb_segments_sponsor">Sponsor</string>
-            <string name="revanced_sb_segments_sponsor_summary">Paid promotion, paid referrals and direct advertisements. Not for self-promotion or free shout-outs to causes/creators/websites/products they like</string>
+            <string name="revanced_sb_segments_sponsor_summary">Paid promotion, paid referrals and direct advertisements. Not for self-promotion or free shout-outs to causes, creators, websites and products they like</string>
             <string name="revanced_sb_segments_selfpromo">Unpaid / Self Promotion</string>
-            <string name="revanced_sb_segments_selfpromo_summary">Similar to Sponsor except for unpaid or self promotion. Includes sections about merchandise, donations, or information about who they collaborated with</string>
+            <string name="revanced_sb_segments_selfpromo_summary">Similar to Sponsor except for unpaid or self-promotion. Includes sections about merchandise, donations, or information about who they collaborated with</string>
             <string name="revanced_sb_segments_interaction">Interaction Reminder (Subscribe)</string>
             <string name="revanced_sb_segments_interaction_summary">A short reminder to like, subscribe or follow them in the middle of content. If it is long or about something specific, it should instead be under self promotion</string>
             <string name="revanced_sb_segments_highlight">Highlight</string>
@@ -988,7 +978,7 @@ Your user id is like a password and it should never be shared.
             <string name="revanced_sb_segments_filler">Tangent / Jokes</string>
             <string name="revanced_sb_segments_filler_summary">Tangential scenes or jokes that are not required to understand the main content of the video. Does not include sections providing context or background details</string>
             <string name="revanced_sb_segments_nomusic">Music: Non-Music Section</string>
-            <string name="revanced_sb_segments_nomusic_summary">Only for use in music videos. Sections of music videos without music, that are not already covered by another category</string>
+            <string name="revanced_sb_segments_nomusic_summary">Only for use in music videos. Sections of music videos without music that are not already covered by another category</string>
             <string name="revanced_sb_skip_button_compact">Skip</string>
             <string name="revanced_sb_skip_button_compact_highlight">Highlight</string>
             <string name="revanced_sb_skip_button_sponsor">Skip sponsor</string>
@@ -1161,9 +1151,9 @@ If later turned off, it is recommended to clear the app data to prevent UI bugs.
         </patch>
         <patch id="layout.buttons.music.overrideOpenInYouTubeMusicButtonPatch">
             <string name="revanced_override_open_in_youtube_music_button_title">Override \'Open in YouTube Music\' button</string>
-            <string name="revanced_override_open_in_youtube_music_button_summary">\'Open in YouTube Music\' button opens your target music app</string>
-            <string name="revanced_override_open_in_youtube_music_button_target_package_name_title">YouTube Music package name</string>
-            <string name="revanced_override_open_in_youtube_music_button_target_package_name_summary">The package name of the YouTube Music app to open when clicking the 'Open in YouTube Music' button</string>
+            <string name="revanced_override_open_in_youtube_music_button_summary">Opens your preferred music app instead of YouTube Music when tapping music buttons</string>
+            <string name="revanced_override_open_in_youtube_music_button_target_package_name_title">Music app package name</string>
+            <string name="revanced_override_open_in_youtube_music_button_target_package_name_summary">The package name of the music app to open when clicking the 'Open in YouTube Music' button</string>
         </patch>
         <patch id="layout.startpage.changeStartPagePatch">
             <string name="revanced_change_start_page_title">Start page</string>
@@ -1233,10 +1223,10 @@ Limitation: Using the back button on the toolbar may not work"</string>
             <string name="revanced_miniplayer_disable_horizontal_drag_summary">Prevents closing the miniplayer by swiping it horizontally off-screen</string>
             <string name="revanced_miniplayer_hide_overlay_buttons_title">Hide overlay buttons</string>
             <string name="revanced_miniplayer_width_dip_title">Default size</string>
-            <string name="revanced_miniplayer_width_dip_summary">Initial on screen size, in pixels</string>
+            <string name="revanced_miniplayer_width_dip_summary">Set the starting on-screen size, in pixels</string>
             <string name="revanced_miniplayer_width_dip_invalid_toast">Pixel size must be between %1$s and %2$s</string>
             <string name="revanced_miniplayer_opacity_title">Overlay opacity</string>
-            <string name="revanced_miniplayer_opacity_summary">Opacity value between 0-100, where 0 is transparent</string>
+            <string name="revanced_miniplayer_opacity_summary">Adjust the transparency level (0 is transparent, 100 is opaque)</string>
             <string name="revanced_miniplayer_opacity_invalid_toast">Miniplayer overlay opacity must be between 0-100</string>
         </patch>
         <patch id="layout.theme.themePatch">
@@ -1248,9 +1238,9 @@ Limitation: Using the back button on the toolbar may not work"</string>
             <string name="revanced_splash_screen_animation_style_entry_3">Monochrome</string>
             <string name="revanced_seekbar_custom_color_title">Enable custom seekbar color</string>
             <string name="revanced_seekbar_custom_color_primary_title">Seekbar color</string>
-            <string name="revanced_seekbar_custom_color_primary_summary">The color of the seekbar</string>
+            <string name="revanced_seekbar_custom_color_primary_summary">Set the primary color of the video progress bar</string>
             <string name="revanced_seekbar_custom_color_accent_title">Seekbar accent color</string>
-            <string name="revanced_seekbar_custom_color_accent_summary">The accent color of the seekbar</string>
+            <string name="revanced_seekbar_custom_color_accent_summary">Set the secondary color of the video progress bar</string>
             <string name="revanced_seekbar_custom_color_invalid">Invalid seekbar color value</string>
         </patch>
         <patch id="layout.branding.customBrandingPatch">
@@ -1296,7 +1286,7 @@ Tap here to learn more about DeArrow"</string>
             <string name="revanced_alt_thumbnail_dearrow_api_url_title">DeArrow API endpoint</string>
             <string name="revanced_alt_thumbnail_dearrow_api_url_summary">The URL of the DeArrow thumbnail cache endpoint</string>
             <string name="revanced_alt_thumbnail_stills_about_title">Still video captures</string>
-            <string name="revanced_alt_thumbnail_stills_about_summary">Still captures are taken from the beginning/middle/end of each video. These images are built into YouTube and no external API is used</string>
+            <string name="revanced_alt_thumbnail_stills_about_summary">Still captures are taken from the beginning, middle and end of each video. These images are built into YouTube and no external API is used</string>
             <string name="revanced_alt_thumbnail_stills_fast_title">Use fast still captures</string>
             <string name="revanced_alt_thumbnail_stills_fast_summary">Improves loading speeds by using medium-quality images. Live streams, unreleased and older videos may display blank thumbnails</string>
             <string name="revanced_alt_thumbnail_stills_time_title">Extract video frame from</string>
@@ -1343,7 +1333,7 @@ Tap here to learn more about DeArrow"</string>
         </patch>
         <patch id="misc.hapticfeedback.disableHapticFeedbackPatch">
             <string name="revanced_disable_haptic_feedback_title">Haptic feedback</string>
-            <string name="revanced_disable_haptic_feedback_summary">Change haptic feedback</string>
+            <string name="revanced_disable_haptic_feedback_summary">Choose which interactions trigger device vibration</string>
             <string name="revanced_disable_haptic_feedback_chapters_title">Disable chapters haptics</string>
             <string name="revanced_disable_haptic_feedback_precise_seeking_title">Disable precise seeking haptics</string>
             <string name="revanced_disable_haptic_feedback_seek_undo_title">Disable seek undo haptics</string>
@@ -1352,7 +1342,7 @@ Tap here to learn more about DeArrow"</string>
         </patch>
         <patch id="misc.medianotification.mediaNotificationControlsPatch">
             <string name="revanced_notification_media_screen_title">Notification media controls</string>
-            <string name="revanced_notification_media_screen_summary">Hide lock screen media control components</string>
+            <string name="revanced_notification_media_screen_summary">Customize the playback controls shown on your lock screen and notification panel</string>
             <string name="revanced_hide_notification_media_prev_next_title">Hide Prev &amp; Next buttons</string>
             <string name="revanced_hide_notification_media_prev_next_summary">Hides Previous and Next buttons in media notification, lock screen, and headphone controls</string>
             <string name="revanced_disable_notification_media_seekbar_title">Disable seekbar</string>
@@ -1399,14 +1389,12 @@ Tap here to learn more about DeArrow"</string>
             <string name="revanced_custom_speed_menu_title">Custom playback speed menu</string>
             <string name="revanced_restore_old_speed_menu_title">Restore old playback speed menu</string>
             <string name="revanced_custom_playback_speeds_title">Custom playback speeds</string>
-            <string name="revanced_custom_playback_speeds_summary">Add or change the custom playback speeds</string>
+            <string name="revanced_custom_playback_speeds_summary">Enter your preferred playback speed option</string>
             <string name="revanced_custom_playback_speeds_invalid">Custom playback speed must be less than %s</string>
             <string name="revanced_custom_playback_speeds_parse_exception">Invalid custom playback speeds</string>
             <string name="revanced_custom_playback_speeds_auto">Auto</string>
             <string name="revanced_speed_tap_and_hold_title">Custom tap and hold playback speed</string>
-            <string name="revanced_speed_tap_and_hold_summary">"Playback speed between 0-8
-
-Set to 0, to disable tap and hold speed"</string>
+            <string name="revanced_speed_tap_and_hold_summary">Set the speed multiplier when pressing and holding the screen, set to 0 to disable</string>
         </patch>
         <patch id="video.speed.remember.rememberPlaybackSpeedPatch">
             <string name="revanced_remember_playback_speed_last_selected_title">Remember playback speed</string>
@@ -1517,7 +1505,7 @@ Video playback with AV1 may stutter or drop frames."</string>
         </patch>
         <patch id="layout.navigationbar.navigationBarPatch">
             <string name="revanced_music_navigation_bar_screen_title">Navigation bar</string>
-            <string name="revanced_music_navigation_bar_screen_summary">Hide or change navigation bar buttons</string>
+            <string name="revanced_music_navigation_bar_screen_summary">Choose which buttons appear in the navigation bar</string>
             <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
             <string name="revanced_music_hide_navigation_bar_home_button_title">Hide Home button</string>
             <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
