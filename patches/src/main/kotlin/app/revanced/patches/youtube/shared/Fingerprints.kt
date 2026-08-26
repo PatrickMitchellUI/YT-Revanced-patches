@@ -163,7 +163,7 @@ internal val BytecodePatchContext.playbackSpeedOnItemClickParentMethodMatch by c
     returnType("L")
     parameterTypes("L", "Ljava/lang/String;")
     instructions(
-        method { name == "getSupportFragmentManager" },
+        method("getSupportFragmentManager"),
         after(Opcode.MOVE_RESULT_OBJECT()),
         after(method { returnType.startsWith("L") && parameterTypes == listOf("Ljava/lang/String;") }),
         after(Opcode.MOVE_RESULT_OBJECT()),

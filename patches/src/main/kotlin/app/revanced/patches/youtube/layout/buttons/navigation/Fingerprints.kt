@@ -26,7 +26,7 @@ internal val BytecodePatchContext.castMenuItemInitializeMethodMatch by composing
     returnType("V")
     instructions(
         ResourceType.LAYOUT("castmediaroutebutton"),
-        method { name == "setShowAsAction" }
+        method("setShowAsAction"),
     )
 }
 
@@ -35,7 +35,7 @@ internal val BytecodePatchContext.castMenuItemVisibilityMethodMatch by getting {
         accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
         returnType("V")
         instructions(
-            method { name == "setVisible" }
+            method("setVisible"),
         )
     }
 } using { castMenuItemInitializeMethodMatch.method }
@@ -66,7 +66,7 @@ internal val BytecodePatchContext.pivotBarStyleMethodMatch by composingFirstMeth
     opcodes(
         Opcode.INVOKE_STATIC,
         Opcode.MOVE_RESULT,
-        Opcode.XOR_INT_2ADDR
+        Opcode.XOR_INT_2ADDR,
     )
 }
 
@@ -76,7 +76,7 @@ internal val BytecodePatchContext.pivotBarChangedMethodMatch by composingFirstMe
     returnType("V")
     opcodes(
         Opcode.INVOKE_STATIC,
-        Opcode.MOVE_RESULT
+        Opcode.MOVE_RESULT,
     )
 }
 
@@ -116,7 +116,7 @@ internal val BytecodePatchContext.setWordmarkHeaderMethod by gettingFirstMethodD
     parameterTypes("Landroid/widget/ImageView;")
     instructions(
         ResourceType.ATTR("ytPremiumWordmarkHeader"),
-        ResourceType.ATTR("ytWordmarkHeader")
+        ResourceType.ATTR("ytWordmarkHeader"),
     )
 }
 

@@ -168,7 +168,6 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final BooleanSetting HIDE_INFO_CARDS = new BooleanSetting("revanced_hide_info_cards", FALSE);
     public static final BooleanSetting HIDE_INFO_PANELS = new BooleanSetting("revanced_hide_info_panels", TRUE);
     public static final BooleanSetting HIDE_JOIN_MEMBERSHIP_BUTTON = new BooleanSetting("revanced_hide_join_membership_button", TRUE, parentNot(HIDE_CHANNEL_BAR));
-    public static final BooleanSetting HIDE_COMMENTS_LIVE_CHAT_DONATORS_BAR = new BooleanSetting("revanced_hide_comments_live_chat_donators_bar", FALSE, true);
     public static final BooleanSetting HIDE_LIVE_CHAT_REPLAY_BUTTON = new BooleanSetting("revanced_hide_live_chat_replay_button", FALSE);
     public static final BooleanSetting HIDE_MEDICAL_PANELS = new BooleanSetting("revanced_hide_medical_panels", TRUE);
        public static final IntegerSetting QUICK_ACTIONS_TOP_MARGIN = new IntegerSetting("revanced_quick_actions_top_margin", 0, true);
@@ -240,9 +239,10 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final BooleanSetting HIDE_COMMENTS_CHANNEL_GUIDELINES = new BooleanSetting("revanced_hide_comments_channel_guidelines", TRUE);
     public static final BooleanSetting HIDE_COMMENTS_COMMUNITY_GUIDELINES = new BooleanSetting("revanced_hide_comments_community_guidelines", TRUE);
     public static final BooleanSetting HIDE_COMMENTS_CREATE_A_SHORT_BUTTON = new BooleanSetting("revanced_hide_comments_create_a_short_button", TRUE);
-    public static final BooleanSetting HIDE_COMMENTS_PREVIEW_COMMENT = new BooleanSetting("revanced_hide_comments_preview_comment", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_EMOJI_AND_TIMESTAMP_BUTTONS = new BooleanSetting("revanced_hide_comments_emoji_and_timestamp_buttons", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_INFO_BUTTON = new BooleanSetting("revanced_hide_comments_info_button", FALSE, true);
+    public static final BooleanSetting HIDE_COMMENTS_LIVE_CHAT_DONATORS_BAR = new BooleanSetting("revanced_hide_comments_live_chat_donators_bar", FALSE, true);
+    public static final BooleanSetting HIDE_COMMENTS_PREVIEW_COMMENT = new BooleanSetting("revanced_hide_comments_preview_comment", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_SECTION = new BooleanSetting("revanced_hide_comments_section", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_SECTION_IN_HOME_FEED = new BooleanSetting("revanced_hide_comments_section_in_home_feed", FALSE, parentNot(HIDE_COMMENTS_SECTION));
     public static final BooleanSetting HIDE_COMMENTS_THANKS_BUTTON = new BooleanSetting("revanced_hide_comments_thanks_button", TRUE);
@@ -419,9 +419,6 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final BooleanSetting ANNOUNCEMENTS = new BooleanSetting("revanced_announcements", TRUE);
     public static final IntegerSetting ANNOUNCEMENT_LAST_ID = new IntegerSetting("revanced_announcement_last_id", -1, false, false);
     public static final BooleanSetting REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS = new BooleanSetting("revanced_remove_background_playback_restrictions", TRUE, true);
-    // This following feature require the app reloading, to ensure
-    // stock repeat logic is disabled and hidden, once the
-    // LOOP_VIDEO_BUTTON will be visible.
     public static final BooleanSetting LOOP_VIDEO_BUTTON = new BooleanSetting("revanced_loop_video_button", FALSE);
     public static final BooleanSetting LOOP_VIDEO = new BooleanSetting("revanced_loop_video", FALSE);
     public static final BooleanSetting DO_NOT_REMEMBER_LOOP_VIDEO = new BooleanSetting("revanced_do_not_remember_loop_video", FALSE, parent(LOOP_VIDEO_BUTTON));

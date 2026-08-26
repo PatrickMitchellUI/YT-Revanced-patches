@@ -221,7 +221,7 @@ internal val BytecodePatchContext.thumbnailAndEmojiPickerContainerMethodMatch by
     parameterTypes()
     instructions(
         ResourceType.ID("thumbnail_and_emoji_picker_container"),
-        allOf(Opcode.INVOKE_VIRTUAL(), method { name == "findViewById" }),
+        allOf(Opcode.INVOKE_VIRTUAL(), method("findViewById")),
         after(Opcode.MOVE_RESULT_OBJECT()),
     )
 }
@@ -232,7 +232,7 @@ internal val BytecodePatchContext.inlineExtraButtonsContainerMethodMatch by comp
     parameterTypes()
     instructions(
         ResourceType.ID("inline_extra_buttons_container"),
-        allOf(Opcode.INVOKE_VIRTUAL(), method { name == "findViewById" }),
+        allOf(Opcode.INVOKE_VIRTUAL(), method("findViewById")),
         after(Opcode.MOVE_RESULT_OBJECT()),
     )
 }
@@ -257,7 +257,7 @@ internal fun BytecodePatchContext.getRelatedChipCloudMethodMatch() =
         accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
         instructions(
             ResourceType.ID("related_chip_cloud"),
-            allOf(Opcode.INVOKE_VIRTUAL(), method { name == "findViewById" }),
+            allOf(Opcode.INVOKE_VIRTUAL(), method("findViewById")),
             45682279L(),
             allOf(
                 Opcode.INVOKE_VIRTUAL(),
@@ -440,7 +440,7 @@ internal fun BytecodePatchContext.getBottomSheetMenuItemBuilderWithToStringMetho
 
         instructions(
             if (withToString) {
-                predicates + method { name == "toString" }
+                predicates + method("toString")
             } else {
                 predicates
             } + "Text missing for BottomSheetMenuItem."(),
@@ -536,12 +536,12 @@ internal val BytecodePatchContext.createSearchSuggestionsMethodMatch by composin
 internal val BytecodePatchContext.accountMenuMethodMatch by getting {
     firstMethodComposite {
         returnType("V")
-        instructions(
-            Opcode.INVOKE_STATIC(),
-            after(Opcode.MOVE_RESULT_OBJECT()),
-            after(Opcode.INVOKE_STATIC()),
-            after(Opcode.IGET()),
-            after(Opcode.AND_INT_LIT16()),
+        opcodes(
+            Opcode.INVOKE_STATIC,
+            Opcode.MOVE_RESULT_OBJECT,
+            Opcode.INVOKE_STATIC,
+            Opcode.IGET,
+            Opcode.AND_INT_LIT16,
         )
     }
 } using {
@@ -553,12 +553,12 @@ internal val BytecodePatchContext.accountMenuMethodMatch by getting {
 internal val BytecodePatchContext.accountMenuLegacyMethodMatch by getting {
     firstMethodComposite {
         returnType("V")
-        instructions(
-            Opcode.INVOKE_STATIC(),
-            after(Opcode.MOVE_RESULT_OBJECT()),
-            after(Opcode.INVOKE_STATIC()),
-            after(Opcode.IGET()),
-            after(Opcode.AND_INT_LIT16()),
+        opcodes(
+            Opcode.INVOKE_STATIC,
+            Opcode.MOVE_RESULT_OBJECT,
+            Opcode.INVOKE_STATIC,
+            Opcode.IGET,
+            Opcode.AND_INT_LIT16,
         )
     }
 } using {

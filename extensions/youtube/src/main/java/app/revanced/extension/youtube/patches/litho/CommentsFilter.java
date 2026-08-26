@@ -232,6 +232,26 @@ public final class CommentsFilter extends Filter {
     /**
      * Injection point.
      */
+    public static void hideLiveChatDonatorsBar(View view) {
+        if (view == null || !Settings.HIDE_COMMENTS_LIVE_CHAT_DONATORS_BAR.get()) {
+            return;
+        }
+
+        view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                view.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+
+                if (view.getParent() instanceof RecyclerView shelfContainerRecycleView) {
+                    shelfContainerRecycleView.setVisibility(RecyclerView.GONE);
+                }
+            }
+        });
+    }
+
+    /**
+     * Injection point.
+     */
     public static void hideLiveChatEmojiButton(View view) {
         if (Settings.HIDE_COMMENTS_EMOJI_AND_TIMESTAMP_BUTTONS.get() && view != null) {
             ViewGroup.LayoutParams lp = view.getLayoutParams();
@@ -257,25 +277,5 @@ public final class CommentsFilter extends Filter {
             }
             view.setVisibility(View.GONE);
         }
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void hideLiveChatDonatorsBar(View view) {
-        if (view == null || !Settings.HIDE_COMMENTS_LIVE_CHAT_DONATORS_BAR.get()) {
-            return;
-        }
-
-        view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                view.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-
-                if (view.getParent() instanceof RecyclerView shelfContainerRecycleView) {
-                    shelfContainerRecycleView.setVisibility(RecyclerView.GONE);
-                }
-            }
-        });
     }
 }

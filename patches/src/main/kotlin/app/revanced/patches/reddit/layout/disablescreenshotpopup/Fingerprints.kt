@@ -29,15 +29,15 @@ private val shouldShowBannerInstructions: BytecodePatchContextDeclarativePredica
         instructions(
             allOf(
                 Opcode.IGET_OBJECT(),
-                field { definingClass == methodDefiningClass && name == $$"$shouldShowBanner$delegate" }
+                field { definingClass == methodDefiningClass && name == $$"$shouldShowBanner$delegate" },
             ),
             afterAtMost(
                 3,
-                field { toString() == "Ljava/lang/Boolean;->TRUE:Ljava/lang/Boolean;" }
+                field { toString() == "Ljava/lang/Boolean;->TRUE:Ljava/lang/Boolean;" },
             ),
             afterAtMost(
                 3,
-                allOf(Opcode.INVOKE_INTERFACE(), method { name == "setValue" })
+                allOf(Opcode.INVOKE_INTERFACE(), method("setValue")),
             ),
         )
     }

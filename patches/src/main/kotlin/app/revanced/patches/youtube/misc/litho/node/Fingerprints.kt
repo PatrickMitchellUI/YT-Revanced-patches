@@ -22,7 +22,7 @@ internal val BytecodePatchContext.treeNodeResultListMethod by getting {
         accessFlags(AccessFlags.PRIVATE, AccessFlags.FINAL)
         returnType("Ljava/util/List;")
         instructions(
-            allOf(Opcode.INVOKE_STATIC(), method { name == "nCopies" })
+            allOf(Opcode.INVOKE_STATIC(), method("nCopies")),
         )
     }
 } using {
@@ -30,7 +30,7 @@ internal val BytecodePatchContext.treeNodeResultListMethod by getting {
         returnType("L")
         instructions(
             "Failed to parse Element proto."(),
-            "Cannot read theme key from model."()
+            "Cannot read theme key from model."(),
         )
     }
 }
