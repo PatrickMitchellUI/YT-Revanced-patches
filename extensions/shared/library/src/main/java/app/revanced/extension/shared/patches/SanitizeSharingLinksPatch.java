@@ -3,9 +3,10 @@ package app.revanced.extension.shared.patches;
 import android.net.Uri;
 import android.text.TextUtils;
 import app.revanced.extension.shared.Logger;
-import app.revanced.extension.shared.privacy.LinkSanitizer;
-import app.revanced.extension.shared.settings.BaseSettings;
+import app.revanced.extension.shared.settings.YouTubeAndMusicSettings;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,19 +16,24 @@ import java.util.regex.Pattern;
  */
 @SuppressWarnings("unused")
 public final class SanitizeSharingLinksPatch {
+    private static final Pattern urlPattern =
+            Pattern.compile("https?://\\S+(?<![.!?,-])");
+    private static final String googleHostName = "youtube.com";
 
-    private static final LinkSanitizer sanitizer = new LinkSanitizer(
+    private static final Collection<String> parametersToRemove = List.of(
             "si",
             "is", // New (localized?) tracking parameter.
             "feature" // Old tracking parameter name, and may be obsolete.
     );
+    private static final List<String> videoIdParameters =
+            Arrays.asList("v", "w", "s");
 
-    /**
-     * Injection point.
-     */
+
     public static String sanitize(String originalURL) {
-        Matcher urlMatcher = Pattern.compile("https?://\\S+(?<![.!?,-])").matcher(originalURL);
         String url;
+        boolean urlChangesApplied = false;
+
+        Matcher urlMatcher = urlPattern.matcher(originalURL);
         if (urlMatcher.find()) {
             url = urlMatcher.group();
         } else {
@@ -35,37 +41,63 @@ public final class SanitizeSharingLinksPatch {
         }
 
         String host = Uri.parse(url).getHost();
-        if (host == null || (!host.equals("youtube.com") && !host.endsWith(".youtube.com") && !host.equals("youtu.be"))) {
+        if (host == null || (!host.endsWith(googleHostName) && !host.equals("youtu.be"))) {
             return originalURL;
         }
 
-        boolean urlChangesApplied = false;
-
-        if (BaseSettings.SANITIZE_SHARING_LINKS.get()) {
-            url = sanitizer.returnSanitizedURLFromURI(url);
+        if (YouTubeAndMusicSettings.SANITIZE_SHARING_LINKS.get()) {
+            url = returnSanitizedURLFromURI(url);
             urlChangesApplied = true;
         }
 
-        if (BaseSettings.REPLACE_MUSIC_LINKS_WITH_YOUTUBE.get()) {
-            url = url.replace("music.youtube.com", "youtube.com");
+        if (YouTubeAndMusicSettings.REPLACE_MUSIC_LINKS_WITH_YOUTUBE.get()) {
+            url = url.replace("music.youtube.com", googleHostName);
             urlChangesApplied = true;
         }
 
-        if (BaseSettings.REPLACE_LINKS_WITH_SHORTENER.get()) {
-            url = replaceWithShortenedUrl(url);
+        if (YouTubeAndMusicSettings.REPLACE_LINKS_WITH_SHORTENER.get()) {
+            url = replaceWithShortenedURL(url);
             urlChangesApplied = true;
         }
 
-        // If no sanitize/replace option is enabled, return the original text unchanged so that
-        // opening the system share sheet (and other passthrough cases) is not broken.
-        return urlChangesApplied ? url : originalURL;
+        return !urlChangesApplied ? originalURL : url;
     }
 
-    private static final String timeQueryTagName = "t";
+    public static String returnSanitizedURLFromURI(String url) {
+        Uri uri = Uri.parse(url);
 
-    private static String replaceWithShortenedUrl(String url) {
         try {
-            // Invite and post links are not videos and must not be turned into youtu.be links.
+            Uri.Builder builder = uri.buildUpon().clearQuery();
+
+            if (!parametersToRemove.isEmpty()) {
+                for (String paramName : uri.getQueryParameterNames()) {
+                    if (!parametersToRemove.contains(paramName)) {
+                        for (String value : uri.getQueryParameters(paramName)) {
+                            builder.appendQueryParameter(paramName, value);
+                        }
+                    }
+                }
+            }
+
+            // Convert invite link to a common video link
+            String sanitizedURL =
+                    builder.build().toString().replaceAll(
+                            "sharing/invite/.+?\\?[a-zA-Z]=",
+                            "watch?v="
+                    );
+
+
+            Logger.printInfo(() -> "Sanitized URL: " + uri + " to: " + sanitizedURL);
+
+            return sanitizedURL;
+        } catch (Exception ex) {
+            Logger.printException(() -> "returnSanitizedURLFromURI failure: " + url, ex);
+            return url;
+        }
+    }
+
+    public static String replaceWithShortenedURL(String url) {
+        try {
             if (url.contains("/sharing/invite/") || url.contains("/post/")) {
                 return url;
             }
@@ -80,9 +112,9 @@ public final class SanitizeSharingLinksPatch {
             int maxGetVideoIDAttempts = 3;
             while (currentGetVideoIDAttempts <= maxGetVideoIDAttempts) {
                 videoId = switch (currentGetVideoIDAttempts) {
-                    case 0 -> uri.getQueryParameter("v");
-                    case 1 -> uri.getQueryParameter("w");
-                    case 2 -> uri.getQueryParameter("s");
+                    case 0 -> uri.getQueryParameter(videoIdParameters.get(0));
+                    case 1 -> uri.getQueryParameter(videoIdParameters.get(1));
+                    case 2 -> uri.getQueryParameter(videoIdParameters.get(2));
                     default -> segments.size() > 1 ? segments.get(1) : "";
                 };
                 if (!TextUtils.isEmpty(videoId)) {
@@ -92,19 +124,23 @@ public final class SanitizeSharingLinksPatch {
             }
             Uri.Builder finalURL =
                     new Uri.Builder()
-                    .scheme("https")
-                    .authority("youtu.be");
+                            .scheme("https")
+                            .authority("youtu.be")
+                            .appendPath(videoId);
             if (currentGetVideoIDAttempts < maxGetVideoIDAttempts + 1) {
-                finalURL.appendPath(videoId);
-                String timeQueryContent = uri.getQueryParameter(timeQueryTagName);
-                if (!TextUtils.isEmpty(timeQueryContent)) {
-                    finalURL.appendQueryParameter(timeQueryTagName, timeQueryContent);
+                for (String queryParameter : uri.getQueryParameterNames()) {
+                    if (videoIdParameters.contains(queryParameter)) {
+                        continue;
+                    }
+
+                    finalURL.appendQueryParameter(queryParameter, uri.getQueryParameter(queryParameter));
                 }
                 return finalURL.build().toString();
             }
+
             return url;
         } catch (Exception ex) {
-            Logger.printException(() -> "replaceWithShortenedUrl failure: " + url, ex);
+            Logger.printException(() -> "replaceWithShortenedURL failure: " + url, ex);
             return url;
         }
     }

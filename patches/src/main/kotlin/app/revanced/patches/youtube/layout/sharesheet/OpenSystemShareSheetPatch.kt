@@ -1,6 +1,6 @@
 package app.revanced.patches.youtube.layout.sharesheet
 
-import app.revanced.patcher.extensions.addInstructionsWithLabels
+import app.revanced.patcher.extensions.addInstruction
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
@@ -54,18 +54,9 @@ val openSystemShareSheetPatch =
 
             addRecyclerViewTreeHook(EXTENSION_CLASS_DESCRIPTOR)
 
-            queryIntentListMethod.addInstructionsWithLabels(
+            initializeShareSheetPanelContentMethod.addInstruction(
                 0,
-                """
-                invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->openSystemShareSheetEnabled()Z
-                move-result v0
-                if-eqz v0, :ignore
-                new-instance v0, Ljava/util/ArrayList;
-                invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
-                return-object v0
-                :ignore
-                nop
-            """,
+                "invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->openSystemShareSheet()V",
             )
 
             addLithoFilter(FILTER_CLASS_DESCRIPTOR)

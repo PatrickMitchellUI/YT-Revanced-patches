@@ -4,6 +4,7 @@ import app.revanced.extension.shared.patches.litho.BufferAsciiStrings;
 import app.revanced.extension.shared.patches.litho.ConversionContext.ContextInterface;
 import app.revanced.extension.shared.patches.litho.Filter;
 import app.revanced.extension.shared.patches.litho.StringFilterGroup;
+import app.revanced.extension.youtube.patches.OpenSystemShareSheetPatch;
 import app.revanced.extension.youtube.settings.Settings;
 
 /**
@@ -12,7 +13,6 @@ import app.revanced.extension.youtube.settings.Settings;
 @SuppressWarnings("unused")
 public final class OpenSystemShareSheetFilter extends Filter {
 
-    public static volatile boolean isShareSheetVisible;
 
     public OpenSystemShareSheetFilter() {
         addPathCallbacks(new StringFilterGroup(
@@ -31,7 +31,9 @@ public final class OpenSystemShareSheetFilter extends Filter {
                               StringFilterGroup matchedGroup,
                               FilterContentType contentType,
                               int contentIndex) {
-        isShareSheetVisible = true;
+
+        OpenSystemShareSheetPatch.closeLithoAppShareSheet();
+
         return false;
     }
 }
