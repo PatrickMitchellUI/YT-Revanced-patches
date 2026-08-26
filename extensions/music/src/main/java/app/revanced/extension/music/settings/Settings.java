@@ -1,16 +1,16 @@
 package app.revanced.extension.music.settings;
 
-import static java.lang.Boolean.FALSE;
-import static java.lang.Boolean.TRUE;
-import static app.revanced.extension.music.patches.ChangeHeaderPatch.*;
-import static app.revanced.extension.music.patches.ChangeStartPagePatch.*;
-import static app.revanced.extension.shared.settings.Setting.parent;
-import static app.revanced.extension.shared.settings.Setting.parentNot;
-
-import app.revanced.extension.shared.settings.YouTubeAndMusicSettings;
 import app.revanced.extension.shared.settings.BooleanSetting;
 import app.revanced.extension.shared.settings.EnumSetting;
+import app.revanced.extension.shared.settings.YouTubeAndMusicSettings;
 import app.revanced.extension.shared.spoof.ClientType;
+
+import static app.revanced.extension.music.patches.ChangeHeaderPatch.HeaderLogo;
+import static app.revanced.extension.music.patches.ChangeStartPagePatch.StartPage;
+import static app.revanced.extension.shared.settings.Setting.parent;
+import static app.revanced.extension.shared.settings.Setting.parentNot;
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
 
 public class Settings extends YouTubeAndMusicSettings {
 
@@ -36,8 +36,8 @@ public class Settings extends YouTubeAndMusicSettings {
 
     // Player
     public static final BooleanSetting CHANGE_MINIPLAYER_COLOR = new BooleanSetting("revanced_music_change_miniplayer_color", FALSE, true);
-    public static final BooleanSetting ENABLE_SWIPE_TO_DISMISS_MINIPLAYER = new BooleanSetting("revanced_music_enable_swipe_to_dismiss_miniplayer", FALSE, true);
     public static final BooleanSetting FORCIBLY_ENABLE_MINIPLAYER = new BooleanSetting("revanced_music_forcibly_enable_miniplayer", FALSE, true);
+    public static final BooleanSetting ENABLE_SWIPE_TO_DISMISS_MINIPLAYER = new BooleanSetting("revanced_music_enable_swipe_to_dismiss_miniplayer", FALSE, true);
     public static final BooleanSetting PERMANENT_REPEAT = new BooleanSetting("revanced_music_play_permanent_repeat", FALSE, true);
 
     // Miscellaneous

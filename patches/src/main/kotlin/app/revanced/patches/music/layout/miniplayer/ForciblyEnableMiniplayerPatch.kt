@@ -20,51 +20,53 @@ private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/revanced/extension/music/patches/ForciblyEnableMiniplayerPatch;"
 
 @Suppress("unused")
-val forciblyEnableMiniplayerPatch = bytecodePatch(
-    name = "Forcibly enable miniplayer",
-    description = "Adds an option to forcibly enable the miniplayer when switching between music videos, podcasts, or songs."
-) {
-    dependsOn(
-        sharedExtensionPatch,
-        settingsPatch,
-        addResourcesPatch,
-    )
-
-    compatibleWith(
-        "com.google.android.apps.youtube.music"(
-            "7.29.52",
-            "8.37.56",
-            "8.44.54",
-            "8.47.56",
-            "9.13.50",
-            "9.15.51",
-            "9.24.51"
-        ),
-    )
-
-    apply {
-        addResources("music", "layout.miniplayer.forciblyEnableMiniplayer")
-
-        PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("revanced_music_forcibly_enable_miniplayer")
+val forciblyEnableMiniplayerPatch =
+    bytecodePatch(
+        name = "Forcibly enable miniplayer",
+        description = "Adds an option to forcibly enable the miniplayer when switching between music videos, podcasts, or songs.",
+    ) {
+        dependsOn(
+            sharedExtensionPatch,
+            settingsPatch,
+            addResourcesPatch,
         )
 
-        minimizedPlayerMethod.apply {
-            val invokeIndex = indexOfFirstInstructionOrThrow {
-                opcode == Opcode.INVOKE_VIRTUAL && methodReference?.name == "booleanValue"
-            }
+        compatibleWith(
+            "com.google.android.apps.youtube.music"(
+                "7.29.52",
+                "8.37.56",
+                "8.44.54",
+                "8.47.56",
+                "9.13.50",
+                "9.15.51",
+                "9.24.51",
+            ),
+        )
 
-            val moveResultIndex = invokeIndex + 1
-            val moveResultInstr = getInstruction<OneRegisterInstruction>(moveResultIndex)
-            val targetRegister = moveResultInstr.registerA
+        apply {
+            addResources("music", "layout.miniplayer.forciblyEnableMiniplayerPatch")
 
-            addInstructions(
-                moveResultIndex + 1,
-                """
+            PreferenceScreen.PLAYER.addPreferences(
+                SwitchPreference("revanced_music_forcibly_enable_miniplayer"),
+            )
+
+            minimizedPlayerMethod.apply {
+                val invokeIndex =
+                    indexOfFirstInstructionOrThrow {
+                        opcode == Opcode.INVOKE_VIRTUAL && methodReference?.name == "booleanValue"
+                    }
+
+                val moveResultIndex = invokeIndex + 1
+                val moveResultInstr = getInstruction<OneRegisterInstruction>(moveResultIndex)
+                val targetRegister = moveResultInstr.registerA
+
+                addInstructions(
+                    moveResultIndex + 1,
+                    """
                     invoke-static { v$targetRegister }, $EXTENSION_CLASS_DESCRIPTOR->forciblyEnableMiniplayerPatch(Z)Z
                     move-result v$targetRegister
-                """
-            )
+                """,
+                )
+            }
         }
     }
-}

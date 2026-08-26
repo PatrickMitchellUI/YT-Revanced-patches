@@ -29,67 +29,73 @@ private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/revanced/extension/music/patches/ChangeMiniplayerColorPatch;"
 
 @Suppress("unused")
-val changeMiniplayerColorPatch = bytecodePatch(
-    name = "Change miniplayer color",
-    description = "Adds an option to change the miniplayer background color to match the fullscreen player.",
-) {
-    dependsOn(
-        sharedExtensionPatch,
-        settingsPatch,
-        addResourcesPatch,
-        resourceMappingPatch,
-    )
-
-    compatibleWith(
-        "com.google.android.apps.youtube.music"(
-            "7.29.52",
-            "8.37.56",
-            "8.44.54",
-            "8.47.56",
-            "9.13.50",
-            "9.15.51",
-            "9.24.51"
-        ),
-    )
-
-    apply {
-        addResources("music", "layout.miniplayer.changeMiniplayerColor")
-
-        PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("revanced_music_change_miniplayer_color"),
+val changeMiniplayerColorPatch =
+    bytecodePatch(
+        name = "Change miniplayer color",
+        description = "Adds an option to change the miniplayer background color to match the fullscreen player.",
+    ) {
+        dependsOn(
+            sharedExtensionPatch,
+            settingsPatch,
+            addResourcesPatch,
+            resourceMappingPatch,
         )
 
-        switchToggleColorMethodMatch.let {
-            val colorMathPlayerInvokeVirtualReference =
-                it.method.getInstruction(it[-1]).methodReference!!
-            val colorMathPlayerIGetReference = it.method.getInstruction(it[4]).fieldReference!!
+        compatibleWith(
+            "com.google.android.apps.youtube.music"(
+                "7.29.52",
+                "8.37.56",
+                "8.44.54",
+                "8.47.56",
+                "9.13.50",
+                "9.15.51",
+                "9.24.51",
+            ),
+        )
 
-            val colorGreyIndex =
-                miniPlayerConstructorMethodMatch.immutableMethod.indexOfFirstInstructionReversedOrThrow {
-                    methodReference?.name == "getColor"
-                }
-            val iPutIndex =
-                miniPlayerConstructorMethodMatch.immutableMethod.indexOfFirstInstructionOrThrow(
-                    colorGreyIndex,
-                    Opcode.IPUT,
-                )
-            val colorMathPlayerIPutReference = miniPlayerConstructorMethodMatch.immutableMethod
-                .getInstruction<ReferenceInstruction>(iPutIndex).reference
+        apply {
+            addResources("music", "layout.miniplayer.changeMiniplayerColorPatch")
 
-            miniPlayerConstructorMethodMatch.immutableClassDef.firstMethodDeclaratively {
-                accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-                returnType("V")
-                parameterTypes(
-                    parameterTypePrefixes = it.method.parameterTypes.map { type -> type.toString() }
-                        .toTypedArray(),
-                )
-            }.apply {
-                val insertIndex = indexOfFirstInstructionReversedOrThrow(Opcode.INVOKE_DIRECT)
-                val freeRegister = findFreeRegister(insertIndex)
+            PreferenceScreen.PLAYER.addPreferences(
+                SwitchPreference("revanced_music_change_miniplayer_color"),
+            )
 
-                addInstructionsAtControlFlowLabel(
-                    insertIndex,
-                    """
+            switchToggleColorMethodMatch.let {
+                val colorMathPlayerInvokeVirtualReference =
+                    it.method.getInstruction(it[-1]).methodReference!!
+                val colorMathPlayerIGetReference = it.method.getInstruction(it[4]).fieldReference!!
+
+                val colorGreyIndex =
+                    miniPlayerConstructorMethodMatch.immutableMethod.indexOfFirstInstructionReversedOrThrow {
+                        methodReference?.name == "getColor"
+                    }
+                val iPutIndex =
+                    miniPlayerConstructorMethodMatch.immutableMethod.indexOfFirstInstructionOrThrow(
+                        colorGreyIndex,
+                        Opcode.IPUT,
+                    )
+                val colorMathPlayerIPutReference =
+                    miniPlayerConstructorMethodMatch.immutableMethod
+                        .getInstruction<ReferenceInstruction>(iPutIndex)
+                        .reference
+
+                miniPlayerConstructorMethodMatch.immutableClassDef
+                    .firstMethodDeclaratively {
+                        accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+                        returnType("V")
+                        parameterTypes(
+                            parameterTypePrefixes =
+                                it.method.parameterTypes
+                                    .map { type -> type.toString() }
+                                    .toTypedArray(),
+                        )
+                    }.apply {
+                        val insertIndex = indexOfFirstInstructionReversedOrThrow(Opcode.INVOKE_DIRECT)
+                        val freeRegister = findFreeRegister(insertIndex)
+
+                        addInstructionsAtControlFlowLabel(
+                            insertIndex,
+                            """
                         invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->changeMiniplayerColor()Z
                         move-result v$freeRegister
                         if-eqz v$freeRegister, :off
@@ -101,8 +107,8 @@ val changeMiniplayerColorPatch = bytecodePatch(
                         :off
                         nop
                     """,
-                )
+                        )
+                    }
             }
         }
     }
-}

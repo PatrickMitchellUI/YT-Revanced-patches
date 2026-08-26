@@ -266,6 +266,7 @@ public class PlayerControlButton {
         View button = buttonRef.get();
         if (button instanceof ImageView imageButton) {
             imageButton.setImageResource(resourceId);
+            imageButton.setImageTintList(null);
         }
     }
 
