@@ -7,6 +7,7 @@ import app.revanced.patcher.allOf
 import app.revanced.patcher.composingFirstMethod
 import app.revanced.patcher.definingClass
 import app.revanced.patcher.field
+import app.revanced.patcher.firstMethodComposite
 import app.revanced.patcher.gettingFirstMethodDeclaratively
 import app.revanced.patcher.instructions
 import app.revanced.patcher.invoke
@@ -15,8 +16,10 @@ import app.revanced.patcher.name
 import app.revanced.patcher.parameterTypes
 import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patcher.returnType
+import app.revanced.patcher.type
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.Method
 
 /**
  * 19.46+
@@ -48,13 +51,14 @@ internal val BytecodePatchContext.adPlayerFullscreenMethodMatch by composingFirs
     )
 }
 
-internal val BytecodePatchContext.nextGenWatchLayoutFullscreenConstructorMethodMatch by composingFirstMethod {
-    definingClass("Lcom/google/android/apps/youtube/app/watch/nextgenwatch/ui/NextGenWatchLayout;")
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
-    instructions(
-        Opcode.CHECK_CAST(),
-    )
-}
+internal fun BytecodePatchContext.getNextGenWatchLayoutFullscreenConstructorMethodMatch(exitFullscreenMethodDefiningClass: String) =
+    firstMethodComposite {
+        definingClass("Lcom/google/android/apps/youtube/app/watch/nextgenwatch/ui/NextGenWatchLayout;")
+        accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
+        instructions(
+            allOf(Opcode.CHECK_CAST(), type(exitFullscreenMethodDefiningClass)),
+        )
+    }
 
 internal val BytecodePatchContext.playerDragGestureTypeMethodMatch by composingFirstMethod {
     accessFlags(AccessFlags.PRIVATE, AccessFlags.STATIC)
