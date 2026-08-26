@@ -15,50 +15,52 @@ private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/revanced/extension/youtube/patches/spoof/SpoofDeviceDimensionsPatch;"
 
 @Suppress("unused")
-val spoofDeviceDimensionsPatch = bytecodePatch(
-    name = "Spoof device dimensions",
-    description = "Adds an option to spoof the device dimensions which can unlock higher video qualities.",
-) {
-    dependsOn(
-        sharedExtensionPatch,
-        settingsPatch,
-        addResourcesPatch,
-    )
-
-    compatibleWith(
-        "com.google.android.youtube"(
-            "20.14.43",
-            "20.21.37",
-            "20.26.46",
-            "20.31.42",
-            "20.37.48",
-            "20.45.36",
-            "20.51.39"
-        ),
-    )
-
-    apply {
-        addResources("youtube", "misc.dimensions.spoof.spoofDeviceDimensionsPatch")
-
-        PreferenceScreen.MISC.addPreferences(
-            SwitchPreference("revanced_spoof_device_dimensions"),
+val spoofDeviceDimensionsPatch =
+    bytecodePatch(
+        name = "Spoof device dimensions",
+        description = "Adds an option to spoof the device dimensions which can unlock higher video qualities.",
+    ) {
+        dependsOn(
+            sharedExtensionPatch,
+            settingsPatch,
+            addResourcesPatch,
         )
 
-        // Override the parameters containing the dimensions.
-        deviceDimensionsModelToStringMethod.classDef.methods.firstMethod { name == "<init>" }
-            .addInstructions(
-                1, // Add after super call.
-                arrayOf(
-                    1 to "MinHeightOrWidth", // p1 = min height
-                    2 to "MaxHeightOrWidth", // p2 = max height
-                    3 to "MinHeightOrWidth", // p3 = min width
-                    4 to "MaxHeightOrWidth", // p4 = max width
-                ).map { (parameter, method) ->
-                    """
+        compatibleWith(
+            "com.google.android.youtube"(
+                "20.14.43",
+                "20.21.37",
+                "20.26.46",
+                "20.31.42",
+                "20.37.48",
+                "20.45.36",
+                "20.51.39",
+            ),
+        )
+
+        apply {
+            addResources("youtube", "misc.dimensions.spoof.spoofDeviceDimensionsPatch")
+
+            PreferenceScreen.MISC.addPreferences(
+                SwitchPreference("revanced_spoof_device_dimensions"),
+            )
+
+            // Override the parameters containing the dimensions.
+            deviceDimensionsModelToStringMethod.classDef.methods
+                .firstMethod("<init>")
+                .addInstructions(
+                    1, // Add after super call.
+                    arrayOf(
+                        1 to "MinHeightOrWidth", // p1 = min height
+                        2 to "MaxHeightOrWidth", // p2 = max height
+                        3 to "MinHeightOrWidth", // p3 = min width
+                        4 to "MaxHeightOrWidth", // p4 = max width
+                    ).map { (parameter, method) ->
+                        """
                     invoke-static { p$parameter }, $EXTENSION_CLASS_DESCRIPTOR->get$method(I)I
                     move-result p$parameter
                 """
-                }.joinToString("\n") { it },
-            )
+                    }.joinToString("\n") { it },
+                )
+        }
     }
-}

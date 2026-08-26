@@ -48,7 +48,7 @@ val openSystemShareSheetPatch =
         apply {
             addResources("youtube", "misc.sharesheet.openSystemShareSheetPatch")
 
-            PreferenceScreen.MISC.addPreferences(
+            PreferenceScreen.GENERAL.addPreferences(
                 SwitchPreference("revanced_open_system_share_sheet"),
             )
 

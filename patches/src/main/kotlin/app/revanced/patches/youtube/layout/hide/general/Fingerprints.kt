@@ -620,45 +620,35 @@ internal val BytecodePatchContext.materialSnackbarMethodMatch by composingFirstM
     accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
     definingClass("Lcom/google/android/material/snackbar/Snackbar\$SnackbarLayout;")
     parameterTypes("Landroid/content/Context;", "Landroid/util/AttributeSet;")
-    instructions(
-        allOf(Opcode.INVOKE_DIRECT(), method { name == "<init>" }),
-    )
+    instructions(method("<init>"))
 }
 
 internal val BytecodePatchContext.appSnackbarMethodMatch by composingFirstMethod {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
     definingClass("Lcom/google/android/apps/youtube/app/common/ui/bottomui/AppSnackbar;")
     parameterTypes("Landroid/content/Context;")
-    instructions(
-        allOf(Opcode.INVOKE_DIRECT(), method { name == "<init>" }),
-    )
+    instructions(method("<init>"))
 }
 
 internal val BytecodePatchContext.youTubeSnackbarMethodMatch by composingFirstMethod {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
     definingClass("Lcom/google/android/apps/youtube/app/common/ui/bottomui/YouTubeSnackbar;")
     parameterTypes("Landroid/content/Context;", "Landroid/util/AttributeSet;", "I")
-    instructions(
-        allOf(Opcode.INVOKE_DIRECT(), method { name == "<init>" }),
-    )
+    instructions(method("<init>"))
 }
 
 internal val BytecodePatchContext.mealbarMethodMatch by composingFirstMethod {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
     definingClass("Lcom/google/android/apps/youtube/app/common/ui/bottomui/Mealbar;")
     parameterTypes("Landroid/content/Context;", "Landroid/util/AttributeSet;", "I")
-    instructions(
-        allOf(Opcode.INVOKE_DIRECT(), method { name == "<init>" }),
-    )
+    instructions(method("<init>"))
 }
 
 internal val BytecodePatchContext.quantumSnackbarMethodMatch by composingFirstMethod {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
     definingClass("Lcom/google/android/libraries/quantum/snackbar/Snackbar;")
     parameterTypes("Landroid/content/Context;", "Landroid/util/AttributeSet;")
-    instructions(
-        allOf(Opcode.INVOKE_DIRECT(), method { name == "<init>" }),
-    )
+    instructions(method("<init>"))
 }
 
 internal val BytecodePatchContext.syncButtonMethodMatch by composingFirstMethod {

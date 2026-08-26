@@ -955,12 +955,10 @@ val hideLayoutComponentsPatch =
             youTubeSnackbarMethodMatch,
             mealbarMethodMatch,
         ).forEach {
-            it.method.apply {
-                addInstruction(
-                    it[0] + 1,
-                    "invoke-static { p0 }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->handleLegacySnackbar(Landroid/view/View;)V",
-                )
-            }
+            it.method.addInstruction(
+                it[0] + 1,
+                "invoke-static { p0 }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->handleLegacySnackbar(Landroid/view/View;)V",
+            )
         }
 
         // endregion
