@@ -1,30 +1,22 @@
 package app.revanced.extension.youtube.patches;
 
-import static app.revanced.extension.shared.StringRef.str;
-import static app.revanced.extension.youtube.patches.MiniplayerPatch.MiniplayerType.DEFAULT;
-import static app.revanced.extension.youtube.patches.MiniplayerPatch.MiniplayerType.DISABLED;
-import static app.revanced.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MINIMAL;
-import static app.revanced.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MODERN_1;
-import static app.revanced.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MODERN_2;
-import static app.revanced.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MODERN_3;
-import static app.revanced.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MODERN_4;
-
 import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
-
 import androidx.annotation.Nullable;
-
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-
 import app.revanced.extension.shared.Logger;
 import app.revanced.extension.shared.ResourceType;
 import app.revanced.extension.shared.Utils;
 import app.revanced.extension.shared.settings.Setting;
 import app.revanced.extension.youtube.settings.Settings;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+
+import static app.revanced.extension.shared.StringRef.str;
+import static app.revanced.extension.youtube.patches.MiniplayerPatch.MiniplayerType.*;
 
 @SuppressWarnings({"unused", "SpellCheckingInspection"})
 public final class MiniplayerPatch {
@@ -41,12 +33,6 @@ public final class MiniplayerPatch {
          * Unmodified type, and same as un-patched.
          */
         DEFAULT(null, null),
-        /**
-         * Exactly the same as MINIMAL and only here for migration of user settings.
-         * Eventually this should be deleted.
-         */
-        @Deprecated
-        PHONE(false, null),
         MINIMAL(false, null),
         TABLET(true, null),
         MODERN_1(null, 1),

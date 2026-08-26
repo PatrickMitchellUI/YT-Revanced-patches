@@ -29,9 +29,6 @@ import com.android.tools.smali.dexlib2.Opcode
 internal const val MINIPLAYER_MODERN_FEATURE_KEY = 45622882L
 
 internal const val MINIPLAYER_MODERN_TYPE_1_FEATURE_KEY = 45623000L
-internal const val MINIPLAYER_MODERN_TYPE_2_FEATURE_KEY = 45623273L
-internal const val MINIPLAYER_MODERN_TYPE_3_FEATURE_KEY = 45623076L
-internal const val MINIPLAYER_MODERN_TYPE_4_FEATURE_KEY = 45674402L
 internal const val MINIPLAYER_DOUBLE_TAP_FEATURE_KEY = 45628823L
 internal const val MINIPLAYER_DRAG_DROP_FEATURE_KEY = 45628752L
 internal const val MINIPLAYER_HORIZONTAL_DRAG_FEATURE_KEY = 45658112L
@@ -135,7 +132,7 @@ internal val BytecodePatchContext.miniplayerMinimumSizeMethodMatch by composingF
             // Default miniplayer height constant.
             128L(),
             128.0f.toRawBits().toLong()(), // 21.03+
-        )
+        ),
     )
 }
 
@@ -212,9 +209,7 @@ internal val BytecodePatchContext.miniplayerSetIconsMethodMatch by getting {
     firstMethodComposite {
         returnType("V")
         parameterTypes("Landroid/graphics/drawable/Drawable;", "I")
-        instructions(
-            method { toString() == "Landroid/widget/ImageView;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V" },
-        )
+        instructions(method("setImageDrawable"))
     }
 } using {
     firstImmutableMethodDeclaratively {
