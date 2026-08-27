@@ -5,10 +5,8 @@ import app.revanced.patcher.after
 import app.revanced.patcher.afterAtMost
 import app.revanced.patcher.allOf
 import app.revanced.patcher.composingFirstMethod
-import app.revanced.patcher.custom
 import app.revanced.patcher.definingClass
 import app.revanced.patcher.firstMethodComposite
-import app.revanced.patcher.firstMethodDeclaratively
 import app.revanced.patcher.instructions
 import app.revanced.patcher.invoke
 import app.revanced.patcher.method
@@ -18,7 +16,6 @@ import app.revanced.patcher.reference
 import app.revanced.patcher.returnType
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.ClassDef
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal val BytecodePatchContext.adultContentRunnableMethodMatch by composingFirstMethod {
@@ -49,7 +46,7 @@ internal val BytecodePatchContext.adultContentSetPropertiesMethodMatch by compos
 }
 
 // region skip discretion dialog
-internal fun BytecodePatchContext.skipDialogMethodMatch(adultContentRunnableMethod: MethodReference) =
+internal fun BytecodePatchContext.getSkipDialogMethodMatch(adultContentRunnableMethod: MethodReference) =
     firstMethodComposite {
         accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
         returnType("V")
@@ -73,7 +70,7 @@ internal fun BytecodePatchContext.skipDialogMethodMatch(adultContentRunnableMeth
     }
 
 // region unlock related videos for restricted videos
-internal fun BytecodePatchContext.unlockRelatedVideosMethodMatch(
+internal fun BytecodePatchContext.getUnlockRelatedVideosMethodMatch(
     definingClass: String,
     firstFieldReference: String,
     secondFieldReference: String,

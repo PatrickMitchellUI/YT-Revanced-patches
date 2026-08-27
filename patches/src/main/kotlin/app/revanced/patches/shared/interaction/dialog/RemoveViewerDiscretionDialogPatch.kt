@@ -48,28 +48,26 @@ internal fun removeViewerDiscretionDialogPatch(
             instructionIndex: Int,
             instructionRegister: Int,
             method: MutableMethod,
-        ) {
-            method.addInstructions(
-                instructionIndex,
-                """
-                    invoke-static { v$instructionRegister }, $EXTENSION_CLASS_DESCRIPTOR->hideViewDiscretionDialog(Z)Z
-                    move-result v$instructionRegister
-                """,
-            )
-        }
+        ) = method.addInstructions(
+            instructionIndex,
+            """
+                invoke-static { v$instructionRegister }, $EXTENSION_CLASS_DESCRIPTOR->hideViewDiscretionDialog(Z)Z
+                move-result v$instructionRegister
+            """,
+        )
 
         // region skip discretion dialog
 
-        val skipDialogMatch = skipDialogMethodMatch(adultContentRunnableMethodMatch.method)
-        skipDialogMatch.let { match ->
-            listOf(match[3], match[1]).forEach { instructionIndex ->
-                val instructionRegister =
-                    match.method
-                        .getInstruction<OneRegisterInstruction>(instructionIndex)
-                        .registerA
-                applyPatch(instructionIndex + 1, instructionRegister, match.method)
+        val skipDialogMatch =
+            getSkipDialogMethodMatch(adultContentRunnableMethodMatch.method).also { match ->
+                listOf(match[3], match[1]).forEach { instructionIndex ->
+                    val instructionRegister =
+                        match.method
+                            .getInstruction<OneRegisterInstruction>(instructionIndex)
+                            .registerA
+                    applyPatch(instructionIndex + 1, instructionRegister, match.method)
+                }
             }
-        }
 
         // endregion
 
@@ -86,7 +84,7 @@ internal fun removeViewerDiscretionDialogPatch(
                 .reference
                 .toString()
 
-        unlockRelatedVideosMethodMatch(
+        getUnlockRelatedVideosMethodMatch(
             skipDialogMatch.method.definingClass,
             firstFieldReference,
             secondFieldReference,
