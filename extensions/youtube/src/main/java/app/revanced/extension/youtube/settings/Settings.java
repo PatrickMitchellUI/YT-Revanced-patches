@@ -317,7 +317,7 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final BooleanSetting DISABLE_LAYOUT_UPDATES = new BooleanSetting("revanced_disable_layout_updates", FALSE, true, "revanced_disable_layout_updates_user_dialog_message");
     public static final BooleanSetting RESTORE_OLD_SETTINGS_MENUS = new BooleanSetting("revanced_restore_old_settings_menus", FALSE, true);
     public static final EnumSetting<FormFactor> CHANGE_FORM_FACTOR = new EnumSetting<>("revanced_change_form_factor", FormFactor.DEFAULT, true, "revanced_change_form_factor_user_dialog_message");
-    public static final BooleanSetting TABLET_LAYOUT_IN_PLAYER = new BooleanSetting("revanced_tablet_layout_in_player", false, true, new TabletLayoutInPlayerAvailability());
+    public static final BooleanSetting TABLET_LAYOUT_IN_PLAYER = new BooleanSetting("revanced_tablet_layout_in_player", FALSE, true, new TabletLayoutInPlayerAvailability());
     public static final BooleanSetting BYPASS_IMAGE_REGION_RESTRICTIONS = new BooleanSetting("revanced_bypass_image_region_restrictions", FALSE, true);
     public static final BooleanSetting GRADIENT_LOADING_SCREEN = new BooleanSetting("revanced_gradient_loading_screen", FALSE, true);
     public static final EnumSetting<SplashScreenAnimationStyle> SPLASH_SCREEN_ANIMATION_STYLE = new EnumSetting<>("revanced_splash_screen_animation_style", SplashScreenAnimationStyle.FPS_60_ONE_SECOND, true);
