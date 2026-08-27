@@ -1,11 +1,6 @@
 package app.revanced.patches.shared.layout.theme
 
-import app.revanced.patcher.patch.BytecodePatchBuilder
-import app.revanced.patcher.patch.BytecodePatchContext
-import app.revanced.patcher.patch.PatchException
-import app.revanced.patcher.patch.bytecodePatch
-import app.revanced.patcher.patch.resourcePatch
-import app.revanced.patcher.patch.stringOption
+import app.revanced.patcher.patch.*
 import app.revanced.patches.shared.misc.settings.overrideThemeColors
 import app.revanced.util.childElementsSequence
 import app.revanced.util.forEachChildElement
@@ -153,7 +148,7 @@ internal val darkThemeBackgroundColorOption =
  */
 internal val lightThemeBackgroundColorOption =
     stringOption(
-        key = "lightThemeBackgroundColor",
+        name = "Light theme background color",
         default = "@android:color/white",
         values =
             mapOf(
@@ -170,7 +165,6 @@ internal val lightThemeBackgroundColorOption =
                 "Light orange" to "#FFE6CC",
                 "Light red" to "#FFD6D6",
             ),
-        title = "Light theme background color",
         description = THEME_COLOR_OPTION_DESCRIPTION,
     )
 
@@ -219,8 +213,6 @@ internal fun baseThemeResourcePatch(
     getLightColorNames: () -> Set<String> = { THEME_DEFAULT_LIGHT_COLOR_NAMES },
     lightColorReplacement: (() -> String)? = null,
 ) = resourcePatch {
-    darkThemeBackgroundColorOption()
-
     apply {
         // After patch option validators are fixed https://github.com/ReVanced/revanced-patcher/issues/372
         // This should be changed to a patch option validator.
@@ -256,8 +248,14 @@ internal fun baseThemeResourcePatch(
             val darkCountBgColor = "@android:color/system_accent1_100"
             val darkCountTextColor = "@android:color/system_neutral1_900"
 
-            createNotificationDrawable(resDir, "drawable/revanced_notif_dot_dark.xml", darkDotColor, "oval")
-            createNotificationDrawable(resDir, "drawable/revanced_notif_count_dark.xml", darkCountBgColor, "rectangle", hasCorners = true)
+            createNotificationDrawable(resDir, "drawable/revanced_notification_dot_dark.xml", darkDotColor, "oval")
+            createNotificationDrawable(
+                resDir,
+                "drawable/revanced_notification_count_dark.xml",
+                darkCountBgColor,
+                "rectangle",
+                hasCorners = true,
+            )
             patchCountTextColor(resDir, darkCountTextColor)
 
             val ytmDrawables =
@@ -308,8 +306,8 @@ internal fun baseThemeResourcePatch(
                             when (style.getAttribute("name")) {
                                 "PivotBar.Dark" -> {
                                     mapOf(
-                                        "dotBackground" to "@drawable/revanced_notif_dot_dark",
-                                        "countBackground" to "@drawable/revanced_notif_count_dark",
+                                        "dotBackground" to "@drawable/revanced_notification_dot_dark",
+                                        "countBackground" to "@drawable/revanced_notification_count_dark",
                                     )
                                 }
 

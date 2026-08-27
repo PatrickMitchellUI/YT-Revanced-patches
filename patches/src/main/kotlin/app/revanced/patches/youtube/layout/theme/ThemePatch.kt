@@ -260,8 +260,6 @@ private val themeColorResourcePatch =
                         "yt_sys_color_baseline_dark_static_black",
                         "yt_sys_color_baseline_light_inverted_background",
                         "yt_sys_color_baseline_light_static_black",
-                        // 21.17+
-                        "yt_sys_color_baseline_mobile_dark_default_base_background",
                     )
                 } else {
                     emptySet()
