@@ -4,19 +4,14 @@ import app.revanced.patcher.firstImmutableClassDef
 import app.revanced.patcher.patch.PatchException
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patcher.patch.resourcePatch
-import app.revanced.patches.all.misc.resources.addResource
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
-import app.revanced.patches.shared.misc.extension.EXTENSION_CLASS_DESCRIPTOR
 import app.revanced.patches.shared.layout.branding.addBrandLicensePatch
+import app.revanced.patches.shared.misc.extension.EXTENSION_CLASS_DESCRIPTOR
 import app.revanced.patches.shared.misc.settings.preference.BasePreference
 import app.revanced.patches.shared.misc.settings.preference.PreferenceCategory
 import app.revanced.patches.shared.misc.settings.preference.PreferenceScreenPreference
-import app.revanced.util.ResourceGroup
-import app.revanced.util.copyResources
-import app.revanced.util.getNode
-import app.revanced.util.insertFirst
-import app.revanced.util.returnEarly
+import app.revanced.util.*
 import org.w3c.dom.Node
 
 private var lightThemeColor: String? = null
@@ -27,22 +22,26 @@ private var darkThemeColor: String? = null
  * By default, these colors are white and black, but instead can be set to the
  * same color the target app uses for its own settings.
  */
-fun overrideThemeColors(lightThemeColorString: String?, darkThemeColorString: String) {
+fun overrideThemeColors(
+    lightThemeColorString: String?,
+    darkThemeColorString: String,
+) {
     lightThemeColor = lightThemeColorString
     darkThemeColor = darkThemeColorString
 }
 
-private val settingsColorPatch = bytecodePatch {
-    afterDependents {
-        val extensionClassDef = firstImmutableClassDef(EXTENSION_CLASS_DESCRIPTOR)
-        if (lightThemeColor != null) {
-            extensionClassDef.getThemeLightColorResourceNameMethod().returnEarly(lightThemeColor!!)
-        }
-        if (darkThemeColor != null) {
-            extensionClassDef.getThemeDarkColorResourceNameMethod().returnEarly(darkThemeColor!!)
+private val settingsColorPatch =
+    bytecodePatch {
+        afterDependents {
+            val extensionClassDef = firstImmutableClassDef(EXTENSION_CLASS_DESCRIPTOR)
+            if (lightThemeColor != null) {
+                extensionClassDef.getThemeLightColorResourceNameMethod().returnEarly(lightThemeColor!!)
+            }
+            if (darkThemeColor != null) {
+                extensionClassDef.getThemeDarkColorResourceNameMethod().returnEarly(darkThemeColor!!)
+            }
         }
     }
-}
 
 /**
  * A resource patch that adds settings to a settings fragment.
@@ -114,7 +113,11 @@ fun settingsPatch(
 
     afterDependents {
         fun Node.addPreference(preference: BasePreference) {
-            insertFirst(preference.serialize(ownerDocument) { _ ->  })
+            preference
+                .serialize(ownerDocument) { _ ->
+                }.let { preferenceNode ->
+                    insertFirst(preferenceNode)
+                }
         }
 
         // Add the root preference to an existing fragment if needed.
@@ -144,7 +147,10 @@ fun settingsPatch(
         // there is no easy way to change to the Android default preference layout
         // after the preference is inflated.
         // Using two different preference files is the simplest and most robust solution.
-        fun removeIconsAndLayout(preferences: Collection<BasePreference>, removeAllIconsAndLayout: Boolean) {
+        fun removeIconsAndLayout(
+            preferences: Collection<BasePreference>,
+            removeAllIconsAndLayout: Boolean,
+        ) {
             preferences.forEach { preference ->
                 preference.icon = null
                 if (removeAllIconsAndLayout) {
