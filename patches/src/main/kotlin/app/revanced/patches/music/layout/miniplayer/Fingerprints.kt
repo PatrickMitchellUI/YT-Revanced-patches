@@ -9,7 +9,6 @@ import app.revanced.util.getting
 import app.revanced.util.using
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import org.stringtemplate.v4.compiler.Bytecode.instructions
 
 internal val BytecodePatchContext.miniPlayerConstructorMethodMatch by composingFirstMethod(
     "sharedToggleMenuItemMutations",

@@ -209,6 +209,35 @@ val navigationBarPatch =
             hookToolbar("${EXTENSION_CLASS_DESCRIPTOR}->hideNotificationButton")
             hookToolbar("${EXTENSION_CLASS_DESCRIPTOR}->hideChatButton")
 
+            // Hide cast button.
+            castMenuItemInitializeMethodMatch.let {
+                it.method.apply {
+                    val index = it[1]
+                    val menuItemRegister = getInstruction<FiveRegisterInstruction>(index).registerC
+
+                    addInstruction(
+                        index,
+                        "invoke-static { v$menuItemRegister }, " +
+                            "$EXTENSION_CLASS_DESCRIPTOR->hideCastButton(Landroid/view/MenuItem;)V",
+                    )
+                }
+            }
+
+            castMenuItemVisibilityMethodMatch.let {
+                it.method.apply {
+                    val index = it[0]
+                    val visibilityRegister = getInstruction<FiveRegisterInstruction>(index).registerD
+
+                    addInstructions(
+                        index,
+                        """
+                        invoke-static { v$visibilityRegister }, $EXTENSION_CLASS_DESCRIPTOR->hideCastButton(Z)Z
+                        move-result v$visibilityRegister
+                    """,
+                    )
+                }
+            }
+
             //
             // Wide searchbar.
             //

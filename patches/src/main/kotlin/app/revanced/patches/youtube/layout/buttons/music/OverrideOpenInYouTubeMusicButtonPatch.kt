@@ -89,6 +89,10 @@ val overrideOpenInYouTubeMusicButtonPatch =
                         index to "overrideSetData(Landroid/content/Intent;Landroid/net/Uri;)Landroid/content/Intent;"
                     }
 
+                    "setComponent" if reference.parameterTypes == listOf("Landroid/content/ComponentName;") -> {
+                        index to "overrideSetComponent(Landroid/content/Intent;Landroid/content/ComponentName;)Landroid/content/Intent;"
+                    }
+
                     else -> {
                         null
                     }
