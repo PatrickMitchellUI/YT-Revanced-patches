@@ -5,7 +5,6 @@ import app.revanced.patcher.extensions.addInstructions
 import app.revanced.patcher.extensions.fieldReference
 import app.revanced.patcher.extensions.getInstruction
 import app.revanced.patcher.extensions.methodReference
-import app.revanced.patcher.immutableClassDef
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
@@ -13,7 +12,7 @@ import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
 import app.revanced.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.util.addInstructionsAtControlFlowLabel
-import app.revanced.util.cloneMutableAndPreserveParameters
+import app.revanced.util.cloneParameters
 import app.revanced.util.findFreeRegister
 import app.revanced.util.indexOfFirstInstructionReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
@@ -64,7 +63,7 @@ internal fun hideFullscreenAdsPatch(preferenceScreen: BasePreferenceScreen.Scree
                         .methodReference!!
                         .definingClass
 
-                it.method.cloneMutableAndPreserveParameters().apply {
+                it.method.cloneParameters().apply {
                     // The dialog can be closed after dialog.show(),
                     // and it is better to close the dialog after the layout of the dialog has changed
                     val insertIndex =

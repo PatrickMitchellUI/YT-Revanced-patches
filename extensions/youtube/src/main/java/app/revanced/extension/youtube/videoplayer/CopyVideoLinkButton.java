@@ -13,7 +13,7 @@ import app.revanced.extension.youtube.settings.Settings;
 import static app.revanced.extension.shared.StringRef.str;
 
 @SuppressWarnings("unused")
-public class CopyVideoURLButton {
+public class CopyVideoLinkButton {
     @Nullable
     private static PlayerControlButton instance;
 
@@ -29,9 +29,9 @@ public class CopyVideoURLButton {
                     "revanced_copy_video_link_button",
                     null,
                     Settings.COPY_VIDEO_LINK_BUTTON::get,
-                    view -> copyURL(Settings.COPY_VIDEO_LINK_WITH_TIMESTAMP_BUTTON.get()),
+                    view -> copyLink(Settings.COPY_VIDEO_LINK_WITH_TIMESTAMP_BUTTON.get()),
                     view -> {
-                        copyURL(!Settings.COPY_VIDEO_LINK_WITH_TIMESTAMP_BUTTON.get());
+                        copyLink(!Settings.COPY_VIDEO_LINK_WITH_TIMESTAMP_BUTTON.get());
                         return true;
                     }
             );
@@ -61,7 +61,7 @@ public class CopyVideoURLButton {
         if (instance != null) instance.setVisibility(visible, animated);
     }
 
-    public static void copyURL(boolean withTimestamp) {
+    public static void copyLink(boolean withTimestamp) {
         try {
             StringBuilder builder = new StringBuilder("https://youtu.be/");
             builder.append(VideoInformation.getVideoId());
@@ -74,11 +74,11 @@ public class CopyVideoURLButton {
             if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2
                     || (withTimestamp && currentVideoTimeInSeconds > 0)) {
                 Utils.showToastShort(withTimestamp && currentVideoTimeInSeconds > 0
-                        ? str("revanced_share_copy_url_button_timestamp_success")
-                        : str("revanced_share_copy_url_button_success"));
+                        ? str("revanced_share_copy_link_button_timestamp_success")
+                        : str("revanced_share_copy_link_button_success"));
             }
         } catch (Exception e) {
-            Logger.printException(() -> "Failed to generate video URL", e);
+            Logger.printException(() -> "Failed to generate video link", e);
         }
     }
 

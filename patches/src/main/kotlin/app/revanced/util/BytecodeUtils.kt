@@ -825,7 +825,7 @@ private fun MutableMethod.checkReturnType(expectedTypes: Iterable<Class<*>>) {
  * **Fingerprint match indexes will be increased positively by [numberOfParameterRegistersLogical]**.
  */
 context(_: BytecodePatchContext)
-fun Method.cloneMutableAndPreserveParameters() = cloneMutableAndPreserveParameters(classDef)
+fun Method.cloneParameters() = cloneParameters(classDef)
 
 /**
  * Additional registers effectively take the place of the pX parameters (p0, p1, p2, etc.)
@@ -835,7 +835,7 @@ fun Method.cloneMutableAndPreserveParameters() = cloneMutableAndPreserveParamete
  *
  * **Fingerprint match indexes will be increased positively by [numberOfParameterRegistersLogical]**.
  */
-fun Method.cloneMutableAndPreserveParameters(mutableClassDef: MutableClassDef): MutableMethod {
+fun Method.cloneParameters(mutableClassDef: MutableClassDef): MutableMethod {
     check(!AccessFlags.STATIC.isSet(accessFlags) || parameters.isNotEmpty()) {
         "Static methods have no parameter registers to preserve"
     }
@@ -847,7 +847,7 @@ fun Method.cloneMutableAndPreserveParameters(mutableClassDef: MutableClassDef): 
 
     // Replace existing method with cloned with more registers.
     mutableClassDef.methods.apply {
-        remove(this@cloneMutableAndPreserveParameters)
+        remove(this@cloneParameters)
         add(clonedMethod)
     }
 

@@ -453,13 +453,13 @@ Limitations:
         <patch id="ad.video.videoAdsPatch">
             <string name="revanced_hide_video_ads_title">Hide video ads</string>
         </patch>
-        <patch id="interaction.copyvideourl.copyVideoURLButtonPatch">
-            <string name="revanced_share_copy_link_button_success">URL copied to clipboard</string>
-            <string name="revanced_share_copy_link_with_timestamp_button_success">URL with timestamp copied to clipboard</string>
-            <string name="revanced_copy_video_link_button_title">Show Copy video URL button</string>
-            <string name="revanced_copy_video_link_button_summary">Tap to copy the video URL, tap and hold to copy with timestamp</string>
+        <patch id="interaction.copyvideolink.copyVideoLinkButtonPatch">
+            <string name="revanced_share_copy_link_button_success">Link copied to clipboard</string>
+            <string name="revanced_share_copy_link_with_timestamp_button_success">Link with timestamp copied to clipboard</string>
+            <string name="revanced_copy_video_link_button_title">Show Copy video link button</string>
+            <string name="revanced_copy_video_link_button_summary">Tap to copy the video link, tap and hold to copy with timestamp</string>
             <string name="revanced_copy_video_link_with_timestamp_button_title">Copy timestamp by default</string>
-            <string name="revanced_copy_video_link_with_timestamp_button_summary">Reverses the tap and tap-and-hold actions of \'Copy video URL\' button</string>
+            <string name="revanced_copy_video_link_with_timestamp_button_summary">Reverses the tap and tap-and-hold actions of \'Copy video link\' button</string>
         </patch>
         <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
             <string name="revanced_remove_viewer_discretion_dialog_title">Remove viewer discretion dialog</string>
@@ -508,11 +508,15 @@ Verify the package name is correct and the app is installed"</string>
             <string name="revanced_enable_livestream_seeking_title">Enable livestream seeking</string>
             <string name="revanced_enable_livestream_seeking_summary">Allows you to rewind live broadcasts up to 7 days into the past</string>
             <!-- 'Spoof video streams' should be the same translation used for 'revanced_spoof_video_streams_screen_title'. -->
-            <string name="revanced_enable_livestream_seeking_user_dialog_message">Enabling this may cause unexpected livestream seeking behavior if \'Spoof video streams\' is not enabled.</string>
+            <string name="revanced_enable_livestream_seeking_user_dialog_message">"Enables seeking on livestreams, even those that normally restrict it
+
+Enabling this may cause unexpected livestream seeking behavior if \'Spoof video streams\' is not enabled."</string>
             <string name="revanced_increase_livestream_seeking_duration_title">Increase livestream seeking duration</string>
             <string name="revanced_increase_livestream_seeking_duration_summary">Increases the livestream seeking duration up to 7 days</string>
             <!-- 'Spoof video streams' should be the same translation used for 'revanced_spoof_video_streams_screen_title'. -->
-            <string name="revanced_increase_livestream_seeking_duration_user_dialog_message">This setting may cause unexpected behavior if \'Spoof video streams\' is not enabled.</string>
+            <string name="revanced_increase_livestream_seeking_duration_user_dialog_message">"Increases the seeking duration through livestreams up to 7 days into the past
+
+Enabling this may cause unexpected livestream seeking behavior if \'Spoof video streams\' is not enabled."</string>
 
         </patch>
         <patch id="interaction.seekbar.enableTapToSeekPatch">
@@ -1352,9 +1356,9 @@ Tap here to learn more about DeArrow"</string>
         <patch id="misc.gms.accountCredentialsInvalidTextPatch">
             <string name="microg_offline_account_login_error">If you recently changed your account login details, then uninstall and reinstall MicroG.</string>
         </patch>
-        <patch id="misc.links.bypassURLRedirectsPatch">
-            <string name="revanced_bypass_url_redirects_title">Bypass URL redirects</string>
-            <string name="revanced_bypass_url_redirects_summary">Opens the original URL directly, bypassing the tracking link (youtube.com/redirect)</string>
+        <patch id="misc.links.bypassLinkRedirectsPatch">
+            <string name="revanced_bypass_link_redirects_title">Bypass link redirects</string>
+            <string name="revanced_bypass_link_redirects_summary">Opens the original link directly, bypassing the tracking link (youtube.com/redirect)</string>
         </patch>
         <patch id="misc.links.openLinksExternallyPatch">
             <string name="revanced_external_browser_title">Open links in browser</string>

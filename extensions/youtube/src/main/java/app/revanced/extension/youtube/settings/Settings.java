@@ -39,7 +39,6 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final BooleanSetting ADVANCED_VIDEO_QUALITY_MENU = new BooleanSetting("revanced_advanced_video_quality_menu", TRUE);
     public static final BooleanSetting DISABLE_HDR_VIDEO = new BooleanSetting("revanced_disable_hdr_video", FALSE);
     public static final BooleanSetting FORCE_AVC_CODEC = new BooleanSetting("revanced_force_avc_codec", FALSE, true, "revanced_force_avc_codec_user_dialog_message");
-    public static final BooleanSetting INCREASE_LIVESTREAM_SEEKING_DURATION = new BooleanSetting("revanced_increase_livestream_seeking_duration", TRUE, "revanced_increase_livestream_seeking_duration_user_dialog_message");
     public static final BooleanSetting FORCE_ORIGINAL_AUDIO = new BooleanSetting("revanced_force_original_audio", TRUE, true);
     public static final BooleanSetting HIDE_PREMIUM_VIDEO_QUALITY = new BooleanSetting("revanced_hide_premium_video_quality", TRUE, true);
     public static final BooleanSetting PRIORITIZE_VIDEO_QUALITY = new BooleanSetting("revanced_prioritize_video_quality", TRUE, true);
@@ -332,6 +331,7 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final BooleanSetting CHANGE_START_PAGE_ALWAYS = new BooleanSetting("revanced_change_start_page_always", FALSE, true,
             new ChangeStartPageTypeAvailability());
     public static final StringSetting SPOOF_APP_VERSION_TARGET = new StringSetting("revanced_spoof_app_version_target", "20.05.46", true, parent(SPOOF_APP_VERSION));
+
     // Navigation buttons
     public static final BooleanSetting HIDE_HOME_BUTTON = new BooleanSetting("revanced_hide_home_button", FALSE, true);
     public static final BooleanSetting HIDE_CREATE_BUTTON = new BooleanSetting("revanced_hide_create_button", TRUE, true);
@@ -349,7 +349,6 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final BooleanSetting DISABLE_TRANSLUCENT_NAVIGATION_BAR_DARK = new BooleanSetting("revanced_disable_translucent_navigation_bar_dark", FALSE, true);
 
     // Toolbar
-    public static final BooleanSetting HIDE_TOOLBAR_CAST_BUTTON = new BooleanSetting("revanced_hide_toolbar_cast_button", TRUE, true);
     public static final BooleanSetting HIDE_TOOLBAR_CHAT_BUTTON = new BooleanSetting("revanced_hide_toolbar_chat_button", FALSE, true);
     public static final BooleanSetting HIDE_TOOLBAR_CREATE_BUTTON = new BooleanSetting("revanced_hide_toolbar_create_button", TRUE, true);
     public static final BooleanSetting HIDE_TOOLBAR_NOTIFICATION_BUTTON = new BooleanSetting("revanced_hide_toolbar_notification_button", FALSE, true);
@@ -409,6 +408,7 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final BooleanSetting FULLSCREEN_LARGE_SEEKBAR = new BooleanSetting("revanced_fullscreen_large_seekbar", FALSE);
     public static final BooleanSetting HIDE_TIMESTAMP = new BooleanSetting("revanced_hide_timestamp", FALSE);
     public static final BooleanSetting ENABLE_LIVESTREAM_SEEKING = new BooleanSetting("revanced_enable_livestream_seeking", TRUE, "revanced_enable_livestream_seeking_user_dialog_message");
+    public static final BooleanSetting INCREASE_LIVESTREAM_SEEKING_DURATION = new BooleanSetting("revanced_increase_livestream_seeking_duration", TRUE, "revanced_increase_livestream_seeking_duration_user_dialog_message");
     public static final BooleanSetting SLIDE_TO_SEEK = new BooleanSetting("revanced_slide_to_seek", FALSE, true);
     public static final BooleanSetting TAP_TO_SEEK = new BooleanSetting("revanced_tap_to_seek", FALSE);
     public static final BooleanSetting SEEKBAR_CUSTOM_COLOR = new BooleanSetting("revanced_seekbar_custom_color", FALSE, true);
@@ -423,7 +423,7 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final BooleanSetting LOOP_VIDEO = new BooleanSetting("revanced_loop_video", FALSE);
     public static final BooleanSetting DO_NOT_REMEMBER_LOOP_VIDEO = new BooleanSetting("revanced_do_not_remember_loop_video", FALSE, parent(LOOP_VIDEO_BUTTON));
     public static final BooleanSetting PAUSE_ON_AUDIO_INTERRUPT = new BooleanSetting("revanced_pause_on_audio_interrupt", FALSE, true);
-    public static final BooleanSetting BYPASS_URL_REDIRECTS = new BooleanSetting("revanced_bypass_url_redirects", TRUE);
+    public static final BooleanSetting BYPASS_LINK_REDIRECTS = new BooleanSetting("revanced_bypass_link_redirects", TRUE);
     public static final BooleanSetting EXTERNAL_BROWSER = new BooleanSetting("revanced_external_browser", TRUE, true);
     public static final BooleanSetting SPOOF_DEVICE_DIMENSIONS = new BooleanSetting("revanced_spoof_device_dimensions", FALSE, true,
             "revanced_spoof_device_dimensions_user_dialog_message");
@@ -531,9 +531,10 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final StringSetting SB_CATEGORY_UNSUBMITTED_COLOR = new StringSetting("sb_unsubmitted_color", "#FFFFFFFF", false, false);
 
     // Deprecated migrations
-    private static final BooleanSetting DEPRECATED_COPY_VIDEO_URL = new BooleanSetting("revanced_copy_video_url", FALSE);
-    private static final BooleanSetting DEPRECATED_COPY_VIDEO_URL_TIMESTAMP = new BooleanSetting("revanced_copy_video_url_timestamp", TRUE);
-    private static final BooleanSetting DEPRECATED_COPY_VIDEO_URL_BUTTON = new BooleanSetting("revanced_copy_video_url_button", FALSE);
+    private static final BooleanSetting DEPRECATED_BYPASS_URL_REDIRECTS = new BooleanSetting("revvanced_bypass_url_redirects", TRUE);
+    private static final BooleanSetting DEPRECATED_COPY_VIDEO_URL = new BooleanSetting("revanced_copy_video_url", FALSE, true);
+    private static final BooleanSetting DEPRECATED_COPY_VIDEO_URL_TIMESTAMP = new BooleanSetting("revanced_copy_video_url_timestamp", TRUE, true, parent(DEPRECATED_COPY_VIDEO_URL));
+    private static final BooleanSetting DEPRECATED_COPY_VIDEO_URL_BUTTON = new BooleanSetting("revanced_copy_video_url_button", FALSE, true);
     private static final BooleanSetting DEPRECATED_COPY_VIDEO_URL_BUTTON_TIMESTAMP = new BooleanSetting("revanced_copy_video_url_button_timestamp", TRUE);
     private static final BooleanSetting DEPRECATED_RELOAD_VIDEO = new BooleanSetting("revanced_reload_video", FALSE);
 
@@ -551,8 +552,7 @@ public class Settings extends YouTubeAndMusicSettings {
     private static final FloatSetting DEPRECATED_SB_CATEGORY_MUSIC_OFFTOPIC_OPACITY = new FloatSetting("sb_music_offtopic_opacity", 0.8f, false, false);
 
     static {
-        // region Migration
-
+        migrateOldSettingToNew(DEPRECATED_BYPASS_URL_REDIRECTS , BYPASS_LINK_REDIRECTS );
         migrateOldSettingToNew(DEPRECATED_COPY_VIDEO_URL, DEPRECATED_COPY_VIDEO_URL_BUTTON);
         migrateOldSettingToNew(DEPRECATED_COPY_VIDEO_URL_TIMESTAMP, DEPRECATED_COPY_VIDEO_URL_BUTTON_TIMESTAMP);
         migrateOldSettingToNew(DEPRECATED_COPY_VIDEO_URL_BUTTON, COPY_VIDEO_LINK_BUTTON);
@@ -633,13 +633,8 @@ public class Settings extends YouTubeAndMusicSettings {
         applyOldSbOpacityToColor(SB_CATEGORY_FILLER_COLOR, DEPRECATED_SB_CATEGORY_FILLER_OPACITY);
         applyOldSbOpacityToColor(SB_CATEGORY_MUSIC_OFFTOPIC_COLOR, DEPRECATED_SB_CATEGORY_MUSIC_OFFTOPIC_OPACITY);
 
-        // endregion
-
-        // region SB import/export callbacks
-
         Setting.addImportExportCallback(SponsorBlockSettings.SB_IMPORT_EXPORT_CALLBACK);
 
-        // endregion
     }
 
     // Register SeekBar UI configs so the single shared SeekBarPreference class knows the

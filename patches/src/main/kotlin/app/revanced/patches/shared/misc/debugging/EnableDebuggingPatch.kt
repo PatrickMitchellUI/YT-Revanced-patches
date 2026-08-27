@@ -1,27 +1,15 @@
 package app.revanced.patches.shared.misc.debugging
 
-import app.revanced.patcher.accessFlags
 import app.revanced.patcher.classDef
 import app.revanced.patcher.extensions.addInstructions
-import app.revanced.patcher.firstMethodDeclaratively
-import app.revanced.patcher.immutableClassDef
-import app.revanced.patcher.instructions
-import app.revanced.patcher.method
-import app.revanced.patcher.parameterTypes
 import app.revanced.patcher.patch.BytecodePatchBuilder
 import app.revanced.patcher.patch.BytecodePatchContext
-import app.revanced.patcher.patch.Patch
-import app.revanced.patcher.patch.PatchException
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patcher.patch.resourcePatch
-import app.revanced.patcher.returnType
 import app.revanced.patches.all.misc.resources.addResources
-import app.revanced.patches.all.misc.resources.addResourcesPatch
 import app.revanced.patches.shared.misc.settings.preference.*
 import app.revanced.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.revanced.util.*
-import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/revanced/extension/shared/patches/EnableDebuggingPatch;"
@@ -36,12 +24,11 @@ internal fun enableDebuggingPatch(
     hookLongFeatureFlag: BytecodePatchBuilder.() -> Boolean,
     hookDoubleFeatureFlag: BytecodePatchBuilder.() -> Boolean,
     preferenceScreen: BasePreferenceScreen.Screen,
-    additionalDebugPreferences: List<BasePreference> = emptyList()
+    additionalDebugPreferences: List<BasePreference> = emptyList(),
 ) = bytecodePatch(
     name = "Enable debugging",
     description = "Adds options for debugging and exporting ReVanced logs to the clipboard.",
 ) {
-
     dependsOn(
         resourcePatch {
             apply {
@@ -57,11 +44,11 @@ internal fun enableDebuggingPatch(
                         "revanced_settings_arrow_left_double.xml",
                         "revanced_settings_arrow_left_one.xml",
                         "revanced_settings_arrow_right_double.xml",
-                        "revanced_settings_arrow_right_one.xml"
-                    )
+                        "revanced_settings_arrow_right_one.xml",
+                    ),
                 )
             }
-        }
+        },
     )
 
     block()
@@ -71,41 +58,42 @@ internal fun enableDebuggingPatch(
 
         addResources("shared", "misc.debugging.enableDebuggingPatch")
 
-        val preferences = mutableSetOf<BasePreference>(
-            SwitchPreference("revanced_debug", summaryKey = null),
-        )
+        val preferences =
+            mutableSetOf<BasePreference>(
+                SwitchPreference("revanced_debug", summaryKey = null),
+            )
 
         preferences + additionalDebugPreferences
 
-        preferences += listOf(
-            SwitchPreference("revanced_debug_protocolbuffer"),
-            SwitchPreference("revanced_debug_stacktrace"),
-            SwitchPreference("revanced_debug_toast_on_error", summaryKey = null),
-            NonInteractivePreference(
-                "revanced_debug_export_logs",
-                tag = "app.revanced.extension.shared.settings.preference.ExportLogToClipboardPreference",
-                selectable = true
-            ),
-            NonInteractivePreference(
-                "revanced_debug_feature_flags_manager",
-                tag = "app.revanced.extension.shared.settings.preference.FeatureFlagsManagerPreference",
-                selectable = true
+        preferences +=
+            listOf(
+                SwitchPreference("revanced_debug_protocolbuffer"),
+                SwitchPreference("revanced_debug_stacktrace"),
+                SwitchPreference("revanced_debug_toast_on_error", summaryKey = null),
+                NonInteractivePreference(
+                    "revanced_debug_export_logs",
+                    tag = "app.revanced.extension.shared.settings.preference.ExportLogToClipboardPreference",
+                    selectable = true,
+                ),
+                NonInteractivePreference(
+                    "revanced_debug_feature_flags_manager",
+                    tag = "app.revanced.extension.shared.settings.preference.FeatureFlagsManagerPreference",
+                    selectable = true,
+                ),
             )
-        )
 
         preferenceScreen.addPreferences(
             PreferenceScreenPreference(
                 key = "revanced_debug_screen",
                 sorting = Sorting.UNSORTED,
                 preferences = preferences,
-            )
+            ),
         )
 
         experimentalBooleanFeatureFlagMethodMatch.let {
             it.method.apply {
                 // Not enough registers in the method. Clone the method and use the
                 // original method as an intermediate to call extension code.
-
 
                 // Copy the method.
                 val helperMethod = cloneMutable(name = "patch_getBooleanFeatureFlag")
@@ -126,14 +114,14 @@ internal fun enableDebuggingPatch(
                         
                         # Since the copied method (helper method) has already been invoked, it just returns.
                         return p0
-                    """
+                    """,
                 )
             }
         }
 
-        if (hookDoubleFeatureFlag())
+        if (hookDoubleFeatureFlag()) {
             // 21.06+ doesn't have enough registers and needs to also clone.
-            experimentalDoubleFeatureFlagMethod.cloneMutableAndPreserveParameters().apply {
+            experimentalDoubleFeatureFlagMethod.cloneParameters().apply {
                 val helperMethod = cloneMutable(name = "patch_getDoubleFeatureFlag")
 
                 classDef.methods.add(helperMethod)
@@ -154,12 +142,13 @@ internal fun enableDebuggingPatch(
 
                         # Since the copied method (helper method) has already been invoked, it just returns.
                         return-wide v0
-                    """
+                    """,
                 )
             }
+        }
 
-        if (hookLongFeatureFlag())
-            experimentalLongFeatureFlagMethod.cloneMutableAndPreserveParameters().apply {
+        if (hookLongFeatureFlag()) {
+            experimentalLongFeatureFlagMethod.cloneParameters().apply {
                 val helperMethod = cloneMutable(name = "patch_getLongFeatureFlag")
 
                 classDef.methods.add(helperMethod)
@@ -180,11 +169,12 @@ internal fun enableDebuggingPatch(
 
                         # Since the copied method (helper method) has already been invoked, it just returns.
                         return-wide v0
-                    """
+                    """,
                 )
             }
+        }
 
-        if (hookStringFeatureFlag())
+        if (hookStringFeatureFlag()) {
             experimentalStringFeatureFlagMethod.apply {
                 val helperMethod = cloneMutable(name = "patch_getStringFeatureFlag")
 
@@ -200,9 +190,10 @@ internal fun enableDebuggingPatch(
                         move-result-object p0
                         
                         return-object p0
-                    """
+                    """,
                 )
             }
+        }
 
         // There exists other experimental accessor methods for byte[]
         // and wrappers for obfuscated classes, but currently none of those are hooked.

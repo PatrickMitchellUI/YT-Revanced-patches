@@ -34,12 +34,8 @@ private val settingsColorPatch =
     bytecodePatch {
         afterDependents {
             val extensionClassDef = firstImmutableClassDef(EXTENSION_CLASS_DESCRIPTOR)
-            if (lightThemeColor != null) {
-                extensionClassDef.getThemeLightColorResourceNameMethod().returnEarly(lightThemeColor!!)
-            }
-            if (darkThemeColor != null) {
-                extensionClassDef.getThemeDarkColorResourceNameMethod().returnEarly(darkThemeColor!!)
-            }
+            lightThemeColor?.let { extensionClassDef.getThemeLightColorResourceNameMethod().returnEarly(it) }
+            darkThemeColor?.let { extensionClassDef.getThemeDarkColorResourceNameMethod().returnEarly(it) }
         }
     }
 

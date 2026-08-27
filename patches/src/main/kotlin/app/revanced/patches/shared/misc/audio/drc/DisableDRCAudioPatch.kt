@@ -1,18 +1,17 @@
 package app.revanced.patches.shared.misc.audio.drc
 
-import app.revanced.patcher.extensions.addInstructions
+import app.revanced.com.android.tools.smali.dexlib2.mutable.MutableMethod.Companion.toMutable
+import app.revanced.patcher.classDef
 import app.revanced.patcher.extensions.addInstructionsWithLabels
 import app.revanced.patcher.extensions.getInstruction
-import app.revanced.patcher.classDef
 import app.revanced.patcher.patch.BytecodePatchBuilder
 import app.revanced.patcher.patch.bytecodePatch
-import app.revanced.com.android.tools.smali.dexlib2.mutable.MutableMethod.Companion.toMutable
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
 import app.revanced.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.util.addInstructionsAtControlFlowLabel
-import app.revanced.util.cloneMutableAndPreserveParameters
+import app.revanced.util.cloneParameters
 import app.revanced.util.findInstructionIndicesReversedOrThrow
 import app.revanced.util.getReference
 import app.revanced.util.insertLiteralOverride
@@ -46,27 +45,31 @@ internal fun disableDRCAudioPatch(
             SwitchPreference("revanced_disable_drc_audio"),
         )
 
-        val formatField = compressionRatioMethodMatch.method
-            .getInstruction<ReferenceInstruction>(compressionRatioMethodMatch[0])
-            .getReference<FieldReference>()!!
-        val loudnessDbField = compressionRatioMethodMatch.method
-            .getInstruction<ReferenceInstruction>(compressionRatioMethodMatch[2])
-            .getReference<FieldReference>()!!
+        val formatField =
+            compressionRatioMethodMatch.method
+                .getInstruction<ReferenceInstruction>(compressionRatioMethodMatch[0])
+                .getReference<FieldReference>()!!
+        val loudnessDbField =
+            compressionRatioMethodMatch.method
+                .getInstruction<ReferenceInstruction>(compressionRatioMethodMatch[2])
+                .getReference<FieldReference>()!!
 
-        formatStreamModelConstructorMethod.cloneMutableAndPreserveParameters().apply {
-            val helperMethod = ImmutableMethod(
-                definingClass,
-                "patch_setLoudnessDb",
-                listOf(),
-                "V",
-                AccessFlags.PRIVATE.value or AccessFlags.FINAL.value,
-                null,
-                null,
-                MutableMethodImplementation(7),
-            ).toMutable().apply {
-                addInstructionsWithLabels(
-                    0,
-                    """
+        formatStreamModelConstructorMethod.cloneParameters().apply {
+            val helperMethod =
+                ImmutableMethod(
+                    definingClass,
+                    "patch_setLoudnessDb",
+                    listOf(),
+                    "V",
+                    AccessFlags.PRIVATE.value or AccessFlags.FINAL.value,
+                    null,
+                    null,
+                    MutableMethodImplementation(7),
+                ).toMutable()
+                    .apply {
+                        addInstructionsWithLabels(
+                            0,
+                            """
                         invoke-static {}, $EXTENSION_CLASS->disableDrcAudio()Z
                         move-result v0
                         if-eqz v0, :exit
@@ -84,8 +87,8 @@ internal fun disableDRCAudioPatch(
                         :exit
                         return-void
                     """,
-                )
-            }.also(classDef.methods::add)
+                        )
+                    }.also(classDef.methods::add)
 
             findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
                 addInstructionsAtControlFlowLabel(

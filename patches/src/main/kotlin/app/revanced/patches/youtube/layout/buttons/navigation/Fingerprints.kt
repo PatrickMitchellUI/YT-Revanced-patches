@@ -21,25 +21,6 @@ internal val BytecodePatchContext.createPivotBarMethodMatch by composingFirstMet
     )
 }
 
-internal val BytecodePatchContext.castMenuItemInitializeMethodMatch by composingFirstMethod {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returnType("V")
-    instructions(
-        ResourceType.LAYOUT("castmediaroutebutton"),
-        method("setShowAsAction"),
-    )
-}
-
-internal val BytecodePatchContext.castMenuItemVisibilityMethodMatch by getting {
-    firstMethodComposite {
-        accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-        returnType("V")
-        instructions(
-            method("setVisible"),
-        )
-    }
-} using { castMenuItemInitializeMethodMatch.method }
-
 internal val BytecodePatchContext.animatedNavigationTabsFeatureFlagMethodMatch by composingFirstMethod {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returnType("Z")

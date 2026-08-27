@@ -21,58 +21,60 @@ private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/revanced/extension/youtube/patches/EnableLivestreamSeekingPatch;"
 
 @Suppress("unused")
-val enableLivestreamSeekingPatch = bytecodePatch(
-    description = "Adds an option to enable seeking on live streams that have it disabled.",
-) {
-    dependsOn(
-        sharedExtensionPatch,
-        settingsPatch,
-        spoofVideoStreamsPatch,
-        addResourcesPatch,
-    )
-
-    apply {
-        addResources("youtube", "interaction.seekbar.enableLivestreamSeekingPatch")
-
-        PreferenceScreen.SEEKBAR.addPreferences(
-            PreferenceCategory(
-                titleKey = null,
-                sorting = Sorting.UNSORTED,
-                tag = "app.revanced.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                preferences = setOf(
-                    SwitchPreference("revanced_enable_livestream_seeking"),
-                    SwitchPreference("revanced_increase_livestream_seeking_duration")
-                )
-            )
+val enableLivestreamSeekingPatch =
+    bytecodePatch(
+        description = "Adds an option to enable seeking on livestreams that have it disabled.",
+    ) {
+        dependsOn(
+            sharedExtensionPatch,
+            settingsPatch,
+            spoofVideoStreamsPatch,
+            addResourcesPatch,
         )
 
-        videoStreamingDataAllowSeekingMethod.apply {
-            findInstructionIndicesReversedOrThrow(Opcode.RETURN).forEach { returnIndex ->
-                val returnRegister = getInstruction<OneRegisterInstruction>(returnIndex).registerA
+        apply {
+            addResources("youtube", "interaction.seekbar.enableLivestreamSeekingPatch")
 
-                addInstructionsAtControlFlowLabel(
-                    returnIndex,
-                    """
+            PreferenceScreen.SEEKBAR.addPreferences(
+                PreferenceCategory(
+                    titleKey = null,
+                    sorting = Sorting.UNSORTED,
+                    tag = "app.revanced.extension.shared.settings.preference.NoTitlePreferenceCategory",
+                    preferences =
+                        setOf(
+                            SwitchPreference("revanced_enable_livestream_seeking"),
+                            SwitchPreference("revanced_increase_livestream_seeking_duration"),
+                        ),
+                ),
+            )
+
+            videoStreamingDataAllowSeekingMethod.apply {
+                findInstructionIndicesReversedOrThrow(Opcode.RETURN).forEach { returnIndex ->
+                    val returnRegister = getInstruction<OneRegisterInstruction>(returnIndex).registerA
+
+                    addInstructionsAtControlFlowLabel(
+                        returnIndex,
+                        """
                         invoke-static { v$returnRegister }, $EXTENSION_CLASS_DESCRIPTOR->enableLivestreamSeeking(Z)Z
                         move-result v$returnRegister
-                    """
-                )
+                    """,
+                    )
+                }
             }
-        }
 
-        formatStreamModelMaxDvrDurationMethodMatch.let {
-            it.method.apply {
-                val index = it[-1]
-                val register = getInstruction<OneRegisterInstruction>(index).registerA
+            formatStreamModelMaxDvrDurationMethodMatch.let {
+                it.method.apply {
+                    val index = it[-1]
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
 
-                addInstructions(
-                    index,
-                    """
+                    addInstructions(
+                        index,
+                        """
                         invoke-static { v$register, v${register + 1} }, ${EXTENSION_CLASS_DESCRIPTOR}->overrideMaxSeekingDurationSeconds(D)D
                         move-result-wide v$register
-                    """
-                )
+                    """,
+                    )
+                }
             }
         }
     }
-}

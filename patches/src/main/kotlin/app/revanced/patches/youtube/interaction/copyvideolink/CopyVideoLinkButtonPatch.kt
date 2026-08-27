@@ -1,4 +1,4 @@
-package app.revanced.patches.youtube.interaction.copyvideourl
+package app.revanced.patches.youtube.interaction.copyvideolink
 
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patcher.patch.resourcePatch
@@ -18,7 +18,7 @@ import app.revanced.patches.youtube.video.information.videoInformationPatch
 import app.revanced.util.ResourceGroup
 import app.revanced.util.copyResources
 
-private val copyVideoURLButtonResourcePatch =
+private val copyVideoLinkButtonResourcePatch =
     resourcePatch {
         dependsOn(
             settingsPatch,
@@ -27,25 +27,25 @@ private val copyVideoURLButtonResourcePatch =
 
         apply {
             copyResources(
-                "copyvideourlbutton",
+                "copyvideolinkbutton",
                 ResourceGroup(
                     resourceDirectoryName = "drawable",
                     "revanced_yt_copy.xml",
                 ),
             )
 
-            addBottomControl("copyvideourlbutton")
+            addBottomControl("copyvideolinkbutton")
         }
     }
 
 @Suppress("unused")
 val copyVideoLinkButtonPatch =
     bytecodePatch(
-        name = "Copy video URL",
-        description = "Adds an option to display a button in the video player to copy the video URL.",
+        name = "Copy video link",
+        description = "Adds an option to display a button in the video player to copy video links.",
     ) {
         dependsOn(
-            copyVideoURLButtonResourcePatch,
+            copyVideoLinkButtonResourcePatch,
             playerOverlayButtonsSettingsPatch,
             playerControlsPatch,
             videoInformationPatch,
@@ -65,7 +65,7 @@ val copyVideoLinkButtonPatch =
         )
 
         apply {
-            addResources("youtube", "interaction.copyvideourl.copyVideoURLButtonPatch")
+            addResources("youtube", "interaction.copyvideelink.copyVideoLinkButtonPatch")
 
             addPlayerOverlayPreferences(
                 PreferenceCategory(
@@ -80,7 +80,7 @@ val copyVideoLinkButtonPatch =
                 ),
             )
 
-            val buttonDescriptor = "Lapp/revanced/extension/youtube/videoplayer/CopyVideoURLButton;"
+            val buttonDescriptor = "Lapp/revanced/extension/youtube/videoplayer/CopyVideoLinkButton;"
 
             initializeBottomControl(buttonDescriptor)
             injectVisibilityCheckCall(buttonDescriptor)
