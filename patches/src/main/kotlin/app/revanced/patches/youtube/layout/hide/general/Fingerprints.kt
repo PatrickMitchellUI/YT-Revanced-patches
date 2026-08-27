@@ -655,10 +655,7 @@ internal val BytecodePatchContext.syncButtonMethodMatch by composingFirstMethod 
     accessFlags(AccessFlags.PROTECTED, AccessFlags.FINAL)
     instructions(
         ResourceType.LAYOUT("sync_button"),
-        allOf(
-            Opcode.INVOKE_VIRTUAL(),
-            method { name == "inflate" && returnType == "Landroid/view/View;" },
-        ),
+        method("inflate"),
         after(Opcode.MOVE_RESULT_OBJECT()),
     )
 }
