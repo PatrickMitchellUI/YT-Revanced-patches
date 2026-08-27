@@ -28,18 +28,6 @@ internal val BytecodePatchContext.rollingNumberMeasureAnimatedTextMethodMatch by
     accessFlags(AccessFlags.PUBLIC, AccessFlags.STATIC)
     returnType("Lj\$/util/Optional;")
     parameterTypes("L", "Ljava/lang/String;", "L")
-    opcodes(
-        Opcode.IGET, // First instruction of method.
-        Opcode.IGET_OBJECT,
-        Opcode.IGET_OBJECT,
-        Opcode.CONST_HIGH16,
-        Opcode.INVOKE_STATIC,
-        Opcode.MOVE_RESULT,
-        Opcode.CONST_4,
-        Opcode.AGET,
-        Opcode.CONST_4,
-        Opcode.CONST_4, // Measured text width.
-    )
 }
 
 internal val BytecodePatchContext.rollingNumberMeasureStaticLabelMethodMatch by getting {
@@ -90,7 +78,7 @@ internal val BytecodePatchContext.rollingNumberTextViewMethod by gettingFirstMet
     )
     custom {
         immutableClassDef.superclass == "Landroid/support/v7/widget/AppCompatTextView;" || immutableClassDef.superclass ==
-                "Lcom/google/android/libraries/youtube/rendering/ui/spec/typography/YouTubeAppCompatTextView;"
+            "Lcom/google/android/libraries/youtube/rendering/ui/spec/typography/YouTubeAppCompatTextView;"
     }
 }
 
@@ -128,7 +116,6 @@ internal val BytecodePatchContext.textComponentFeatureFlagMethodMatch by composi
     instructions(45675738L())
 }
 
-
 internal val BytecodePatchContext.lithoSpannableStringCreationMethodMatch by composingFirstMethod {
     accessFlags(AccessFlags.PROTECTED, AccessFlags.FINAL)
     returnType("V")
@@ -139,17 +126,17 @@ internal val BytecodePatchContext.lithoSpannableStringCreationMethodMatch by com
             5,
             method {
                 toString() == "Landroid/text/SpannableString;-><init>(Ljava/lang/CharSequence;)V"
-            }
+            },
         ),
         afterAtMost(
             5,
             method {
                 toString() == "Landroid/text/SpannableString;->getSpans(IILjava/lang/Class;)[Ljava/lang/Object;"
-            }
+            },
         ),
         method {
             name == "addOnLayoutChangeListener" && parameterTypes.size == 1 &&
-                    parameterTypes.first() == $$"Landroid/view/View$OnLayoutChangeListener;"
-        }
+                parameterTypes.first() == $$"Landroid/view/View$OnLayoutChangeListener;"
+        },
     )
 }
