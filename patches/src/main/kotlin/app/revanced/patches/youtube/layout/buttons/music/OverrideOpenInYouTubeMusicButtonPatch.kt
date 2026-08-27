@@ -5,11 +5,10 @@ import app.revanced.patcher.extensions.methodReference
 import app.revanced.patcher.extensions.replaceInstruction
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patcher.patch.resourcePatch
-import app.revanced.patcher.patch.stringOption
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
-import app.revanced.patches.shared.misc.settings.preference.PreferenceCategory
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
+import app.revanced.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
 import app.revanced.util.asSequence
@@ -70,14 +69,9 @@ val overrideOpenInYouTubeMusicButtonPatch =
             addResources("youtube", "layout.buttons.music.overrideOpenInYouTubeMusicButtonPatch")
 
             PreferenceScreen.GENERAL.addPreferences(
-                PreferenceCategory(
-                    titleKey = null,
-                    tag = "app.revanced.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                    preferences =
-                        setOf(
-                            SwitchPreference(key = "revanced_override_open_in_youtube_music_button"),
-                            SwitchPreference(key = "revanced_override_open_in_youtube_music_button_target_package_name"),
-                        ),
+                noTitleUnsortedPreferenceCategory(
+                    SwitchPreference(key = "revanced_override_open_in_youtube_music_button"),
+                    SwitchPreference(key = "revanced_override_open_in_youtube_music_button_target_package_name"),
                 ),
             )
 

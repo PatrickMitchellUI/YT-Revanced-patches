@@ -5,9 +5,8 @@ import app.revanced.patcher.extensions.getInstruction
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
-import app.revanced.patches.shared.misc.settings.preference.PreferenceCategory
-import app.revanced.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
+import app.revanced.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
@@ -36,15 +35,9 @@ val enableLivestreamSeekingPatch =
             addResources("youtube", "interaction.seekbar.enableLivestreamSeekingPatch")
 
             PreferenceScreen.SEEKBAR.addPreferences(
-                PreferenceCategory(
-                    titleKey = null,
-                    sorting = Sorting.UNSORTED,
-                    tag = "app.revanced.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                    preferences =
-                        setOf(
-                            SwitchPreference("revanced_enable_livestream_seeking"),
-                            SwitchPreference("revanced_increase_livestream_seeking_duration"),
-                        ),
+                noTitleUnsortedPreferenceCategory(
+                    SwitchPreference("revanced_enable_livestream_seeking"),
+                    SwitchPreference("revanced_increase_livestream_seeking_duration"),
                 ),
             )
 

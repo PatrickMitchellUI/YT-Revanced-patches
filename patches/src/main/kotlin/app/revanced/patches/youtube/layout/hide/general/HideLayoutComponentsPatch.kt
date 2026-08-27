@@ -120,22 +120,16 @@ val hideLayoutComponentsPatch =
                 "revanced_comments_screen",
                 preferences =
                     setOf(
-                        PreferenceCategory(
-                            titleKey = null,
-                            sorting = Sorting.UNSORTED,
-                            tag = "app.revanced.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                            preferences =
-                                setOf(
-                                    SwitchPreference(
-                                        "revanced_hide_comments_carousel",
-                                        tag =
-                                            "app.revanced.extension.shared.settings.preference.BulletPointSwitchPreference",
-                                    ),
-                                    TextPreference(
-                                        "revanced_hide_comments_carousel_filter_strings",
-                                        inputType = InputType.TEXT_MULTI_LINE,
-                                    ),
-                                ),
+                        noTitleUnsortedPreferenceCategory(
+                            SwitchPreference(
+                                "revanced_hide_comments_carousel",
+                                tag =
+                                    "app.revanced.extension.shared.settings.preference.BulletPointSwitchPreference",
+                            ),
+                            TextPreference(
+                                "revanced_hide_comments_carousel_filter_strings",
+                                inputType = InputType.TEXT_MULTI_LINE,
+                            ),
                         ),
                         SwitchPreference("revanced_hide_comments_ai_chat_summary", summaryKey = null),
                         SwitchPreference("revanced_hide_comments_channel_guidelines", summaryKey = null),
@@ -206,18 +200,12 @@ val hideLayoutComponentsPatch =
                 key = "revanced_channel_screen",
                 preferences =
                     setOf(
-                        PreferenceCategory(
-                            titleKey = null,
-                            sorting = Sorting.UNSORTED,
-                            tag = "app.revanced.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                            preferences =
-                                setOf(
-                                    SwitchPreference("revanced_hide_channel_tab", summaryKey = null),
-                                    TextPreference(
-                                        "revanced_hide_channel_tab_filter_strings",
-                                        inputType = InputType.TEXT_MULTI_LINE,
-                                    ),
-                                ),
+                        noTitleUnsortedPreferenceCategory(
+                            SwitchPreference("revanced_hide_channel_tab", summaryKey = null),
+                            TextPreference(
+                                "revanced_hide_channel_tab_filter_strings",
+                                inputType = InputType.TEXT_MULTI_LINE,
+                            ),
                         ),
                         SwitchPreference("revanced_hide_community_button", summaryKey = null),
                         SwitchPreference("revanced_hide_join_button", summaryKey = null),
@@ -242,31 +230,19 @@ val hideLayoutComponentsPatch =
                     entryValuesKey = "revanced_hide_expandable_card_legacy_entry_values",
                 )
             },
-            PreferenceCategory(
-                titleKey = null,
-                sorting = Sorting.UNSORTED,
-                tag = "app.revanced.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                preferences =
-                    setOf(
-                        SwitchPreference("revanced_hide_feed_flyout_menu", summaryKey = null),
-                        TextPreference(
-                            "revanced_hide_feed_flyout_menu_filter_strings",
-                            inputType = InputType.TEXT_MULTI_LINE,
-                        ),
-                    ),
+            noTitleUnsortedPreferenceCategory(
+                SwitchPreference("revanced_hide_feed_flyout_menu", summaryKey = null),
+                TextPreference(
+                    "revanced_hide_feed_flyout_menu_filter_strings",
+                    inputType = InputType.TEXT_MULTI_LINE,
+                ),
             ),
-            PreferenceCategory(
-                titleKey = null,
-                sorting = Sorting.UNSORTED,
-                tag = "app.revanced.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                preferences =
-                    setOf(
-                        SwitchPreference("revanced_hide_account_menu", summaryKey = null),
-                        TextPreference(
-                            "revanced_hide_account_menu_filter_strings",
-                            inputType = InputType.TEXT_MULTI_LINE,
-                        ),
-                    ),
+            noTitleUnsortedPreferenceCategory(
+                SwitchPreference("revanced_hide_account_menu", summaryKey = null),
+                TextPreference(
+                    "revanced_hide_account_menu_filter_strings",
+                    inputType = InputType.TEXT_MULTI_LINE,
+                ),
             ),
             SwitchPreference("revanced_hide_floating_microphone_button"),
             SwitchPreference("revanced_hide_horizontal_shelves"),

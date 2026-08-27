@@ -16,17 +16,8 @@ import app.revanced.patches.shared.boldIconsFeatureFlagMethodMatch
 import app.revanced.patches.shared.googleApiActivityOnCreateMethod
 import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
 import app.revanced.patches.shared.misc.settings.overrideThemeColors
-import app.revanced.patches.shared.misc.settings.preference.BasePreference
-import app.revanced.patches.shared.misc.settings.preference.BasePreferenceScreen
-import app.revanced.patches.shared.misc.settings.preference.InputType
-import app.revanced.patches.shared.misc.settings.preference.IntentPreference
-import app.revanced.patches.shared.misc.settings.preference.ListPreference
-import app.revanced.patches.shared.misc.settings.preference.NonInteractivePreference
-import app.revanced.patches.shared.misc.settings.preference.PreferenceCategory
-import app.revanced.patches.shared.misc.settings.preference.PreferenceScreenPreference
+import app.revanced.patches.shared.misc.settings.preference.*
 import app.revanced.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
-import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
-import app.revanced.patches.shared.misc.settings.preference.TextPreference
 import app.revanced.patches.shared.misc.settings.settingsPatch
 import app.revanced.patches.youtube.misc.check.checkEnvironmentPatch
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
@@ -36,12 +27,7 @@ import app.revanced.patches.youtube.misc.fix.playbackspeed.fixPlaybackSpeedWhile
 import app.revanced.patches.youtube.misc.fix.preference.fixPreferenceIconPatch
 import app.revanced.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
-import app.revanced.util.ResourceGroup
-import app.revanced.util.addInstructionsAtControlFlowLabel
-import app.revanced.util.copyResources
-import app.revanced.util.findElementByAttributeValueOrThrow
-import app.revanced.util.findInstructionIndicesReversedOrThrow
-import app.revanced.util.insertLiteralOverride
+import app.revanced.util.*
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -231,15 +217,9 @@ val settingsPatch =
 
             PreferenceScreen.GENERAL.addPreferences(
                 if (is_20_31_or_greater) {
-                    PreferenceCategory(
-                        titleKey = null,
-                        sorting = Sorting.UNSORTED,
-                        tag = "app.revanced.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                        preferences =
-                            setOf(
-                                SwitchPreference("revanced_show_menu_icons", summaryKey = null),
-                                SwitchPreference("revanced_settings_disable_bold_icons", summaryKey = null),
-                            ),
+                    noTitleUnsortedPreferenceCategory(
+                        SwitchPreference("revanced_show_menu_icons", summaryKey = null),
+                        SwitchPreference("revanced_settings_disable_bold_icons", summaryKey = null),
                     )
                 } else {
                     SwitchPreference("revanced_show_menu_icons", summaryKey = null)

@@ -13,6 +13,7 @@ import app.revanced.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.revanced.patches.shared.misc.settings.preference.PreferenceCategory
 import app.revanced.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
+import app.revanced.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.revanced.util.addInstructionsAtControlFlowLabel
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -51,23 +52,17 @@ internal fun sanitizeSharingLinksPatch(
                 if (replaceMusicLinksWithYouTube) preferences += SwitchPreference("revanced_replace_music_with_youtube")
                 if (replaceLinksWithShortener) preferences += SwitchPreference("revanced_replace_links_with_shortener")
 
-                PreferenceCategory(
-                    titleKey = null,
-                    sorting = Sorting.UNSORTED,
-                    tag = "app.revanced.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                    preferences = preferences,
-                )
+                noTitleUnsortedPreferenceCategory(preferences)
             } else {
                 sanitizePreference
             },
         )
 
-        fun patchLogic(urlStringRegister: Int): String {
-            return """
+        fun patchLogic(urlStringRegister: Int): String =
+            """
                 invoke-static { v$urlStringRegister }, $EXTENSION_CLASS_DESCRIPTOR->sanitize(Ljava/lang/String;)Ljava/lang/String;
                 move-result-object v$urlStringRegister
             """
-        }
 
         fun CompositeMatch.hookUrlString(matchIndex: Int) {
             val index = get(matchIndex)
@@ -75,7 +70,7 @@ internal fun sanitizeSharingLinksPatch(
 
             method.addInstructions(
                 index + 1,
-                patchLogic(urlRegister)
+                patchLogic(urlRegister),
             )
         }
 
@@ -85,10 +80,9 @@ internal fun sanitizeSharingLinksPatch(
 
             method.addInstructionsAtControlFlowLabel(
                 index,
-                patchLogic(urlRegister)
+                patchLogic(urlRegister),
             )
         }
-
 
         // YouTube share sheet copy link.
         youTubeCopyTextMethodMatch.hookUrlString(0)

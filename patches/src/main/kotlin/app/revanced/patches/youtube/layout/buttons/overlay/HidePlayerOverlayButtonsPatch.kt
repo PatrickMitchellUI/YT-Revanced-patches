@@ -6,9 +6,8 @@ import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
 import app.revanced.patches.shared.misc.mapping.ResourceType
 import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
-import app.revanced.patches.shared.misc.settings.preference.PreferenceCategory
-import app.revanced.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
+import app.revanced.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
 import app.revanced.patches.youtube.misc.playservice.is_20_28_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
@@ -59,21 +58,15 @@ val hidePlayerOverlayButtonsPatch =
             addResources("youtube", "layout.buttons.overlay.hidePlayerOverlayButtonsPatch")
 
             addPlayerOverlayPreferences(
-                PreferenceCategory(
-                    titleKey = null,
-                    sorting = Sorting.UNSORTED,
-                    tag = "app.revanced.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                    preferences =
-                        setOf(
-                            SwitchPreference("revanced_hide_autoplay_button", summaryKey = null),
-                            SwitchPreference("revanced_hide_captions_button", summaryKey = null),
-                            SwitchPreference("revanced_hide_cast_button", summaryKey = null),
-                            SwitchPreference("revanced_hide_collapse_button", summaryKey = null),
-                            SwitchPreference("revanced_hide_fullscreen_button", summaryKey = null),
-                            SwitchPreference("revanced_hide_player_control_buttons_background"),
-                            SwitchPreference("revanced_hide_player_previous_next_buttons", summaryKey = null),
-                            SwitchPreference("revanced_hide_settings_button", summaryKey = null),
-                        ),
+                noTitleUnsortedPreferenceCategory(
+                    SwitchPreference("revanced_hide_autoplay_button", summaryKey = null),
+                    SwitchPreference("revanced_hide_captions_button", summaryKey = null),
+                    SwitchPreference("revanced_hide_cast_button", summaryKey = null),
+                    SwitchPreference("revanced_hide_collapse_button", summaryKey = null),
+                    SwitchPreference("revanced_hide_fullscreen_button", summaryKey = null),
+                    SwitchPreference("revanced_hide_player_control_buttons_background"),
+                    SwitchPreference("revanced_hide_player_previous_next_buttons", summaryKey = null),
+                    SwitchPreference("revanced_hide_settings_button", summaryKey = null),
                 ),
             )
 

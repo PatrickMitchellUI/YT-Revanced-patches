@@ -4,9 +4,8 @@ import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patcher.patch.resourcePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
-import app.revanced.patches.shared.misc.settings.preference.PreferenceCategory
-import app.revanced.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
+import app.revanced.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.revanced.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
 import app.revanced.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
 import app.revanced.patches.youtube.misc.playercontrols.addBottomControl
@@ -68,15 +67,9 @@ val copyVideoLinkButtonPatch =
             addResources("youtube", "interaction.copyvideelink.copyVideoLinkButtonPatch")
 
             addPlayerOverlayPreferences(
-                PreferenceCategory(
-                    titleKey = null,
-                    sorting = PreferenceScreenPreference.Sorting.UNSORTED,
-                    tag = "app.revanced.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                    preferences =
-                        setOf(
-                            SwitchPreference("revanced_copy_video_link_button"),
-                            SwitchPreference("revanced_copy_video_link_with_timestamp_button"),
-                        ),
+                noTitleUnsortedPreferenceCategory(
+                    SwitchPreference("revanced_copy_video_link_button"),
+                    SwitchPreference("revanced_copy_video_link_with_timestamp_button"),
                 ),
             )
 

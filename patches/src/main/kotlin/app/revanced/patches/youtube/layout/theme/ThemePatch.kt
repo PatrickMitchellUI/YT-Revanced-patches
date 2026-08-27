@@ -315,24 +315,18 @@ val themePatch =
             )
 
             PreferenceScreen.SEEKBAR.addPreferences(
-                PreferenceCategory(
-                    titleKey = null,
-                    sorting = Sorting.UNSORTED,
-                    tag = "app.revanced.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                    preferences =
-                        setOf(
-                            SwitchPreference("revanced_seekbar_custom_color", summaryKey = null),
-                            TextPreference(
-                                "revanced_seekbar_custom_color_primary",
-                                tag = "app.revanced.extension.shared.settings.preference.ColorPickerPreference",
-                                inputType = InputType.TEXT_CAP_CHARACTERS,
-                            ),
-                            TextPreference(
-                                "revanced_seekbar_custom_color_accent",
-                                tag = "app.revanced.extension.shared.settings.preference.ColorPickerPreference",
-                                inputType = InputType.TEXT_CAP_CHARACTERS,
-                            ),
-                        ),
+                noTitleUnsortedPreferenceCategory(
+                    SwitchPreference("revanced_seekbar_custom_color", summaryKey = null),
+                    TextPreference(
+                        "revanced_seekbar_custom_color_primary",
+                        tag = "app.revanced.extension.shared.settings.preference.ColorPickerPreference",
+                        inputType = InputType.TEXT_CAP_CHARACTERS,
+                    ),
+                    TextPreference(
+                        "revanced_seekbar_custom_color_accent",
+                        tag = "app.revanced.extension.shared.settings.preference.ColorPickerPreference",
+                        inputType = InputType.TEXT_CAP_CHARACTERS,
+                    ),
                 ),
             )
 

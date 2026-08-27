@@ -17,19 +17,31 @@ import org.w3c.dom.Document
 @Suppress("MemberVisibilityCanBePrivate")
 open class PreferenceCategory(
     key: String? = null,
-    titleKey: String? = "${key}_title",
+    titleKey: String? = if (key == null) null else "${key}_title",
     icon: String? = null,
     iconBold: String? = null,
     layout: String? = null,
     sorting: Sorting = Sorting.BY_TITLE,
     tag: String = "PreferenceCategory",
-    val preferences: Set<BasePreference>
+    val preferences: Set<BasePreference>,
 ) : BasePreference(sorting.appendSortType(key), titleKey, null, icon, iconBold, layout, tag) {
-
-    override fun serialize(ownerDocument: Document, resourceCallback: (BaseResource) -> Unit) =
-        super.serialize(ownerDocument, resourceCallback).apply {
-            preferences.forEach {
-                appendChild(it.serialize(ownerDocument, resourceCallback))
-            }
+    override fun serialize(
+        ownerDocument: Document,
+        resourceCallback: (BaseResource) -> Unit,
+    ) = super.serialize(ownerDocument, resourceCallback).apply {
+        preferences.forEach {
+            appendChild(it.serialize(ownerDocument, resourceCallback))
         }
+    }
 }
+
+internal fun noTitleUnsortedPreferenceCategory(vararg preferences: BasePreference) = noTitleUnsortedPreferenceCategory(preferences.toSet())
+
+internal fun noTitleUnsortedPreferenceCategory(preferences: Set<BasePreference>) =
+    PreferenceCategory(
+        key = null,
+        titleKey = null,
+        sorting = Sorting.UNSORTED,
+        tag = "app.revanced.extension.shared.settings.preference.NoTitlePreferenceCategory",
+        preferences = preferences,
+    )

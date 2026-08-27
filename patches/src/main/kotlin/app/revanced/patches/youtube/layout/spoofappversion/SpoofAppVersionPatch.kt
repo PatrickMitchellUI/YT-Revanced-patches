@@ -9,9 +9,8 @@ import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
 import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
 import app.revanced.patches.shared.misc.settings.preference.ListPreference
-import app.revanced.patches.shared.misc.settings.preference.PreferenceCategory
-import app.revanced.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
+import app.revanced.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
@@ -55,15 +54,9 @@ val spoofAppVersionPatch =
             PreferenceScreen.GENERAL.addPreferences(
                 // Group the switch and list preference together, since General menu is sorted by name
                 // and the preferences can be scattered apart with non English languages.
-                PreferenceCategory(
-                    titleKey = null,
-                    sorting = Sorting.UNSORTED,
-                    tag = "app.revanced.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                    preferences =
-                        setOf(
-                            SwitchPreference("revanced_spoof_app_version"),
-                            ListPreference("revanced_spoof_app_version_target"),
-                        ),
+                noTitleUnsortedPreferenceCategory(
+                    SwitchPreference("revanced_spoof_app_version"),
+                    ListPreference("revanced_spoof_app_version_target"),
                 ),
             )
 
@@ -71,7 +64,7 @@ val spoofAppVersionPatch =
              * If spoofing to target 19.20 or earlier the Library tab can crash due to
              * missing image resources. As a workaround, do not set an image in the
              * toolbar when the enum name is UNKNOWN.
-             */
+             **/
             // Method is shared and indexes may no longer be correct.
             getToolbarButtonMethodMatch().let {
                 val imageResourceIndex = it[2]
