@@ -11,6 +11,7 @@ import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
+import app.revanced.util.p0Register
 
 private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/revanced/extension/youtube/patches/PauseOnAudioInterruptPatch;"
 
@@ -26,12 +27,8 @@ val pauseOnAudioInterruptPatch = bytecodePatch(
 
     compatibleWith(
         "com.google.android.youtube"(
-            "20.14.43",
-            "20.21.37",
-            "20.26.46",
-            "20.31.42",
-            "20.37.48",
-            "20.40.45"
+            "20.40.45",
+            "21.36.47"
         ),
     )
 
@@ -59,12 +56,21 @@ val pauseOnAudioInterruptPatch = bytecodePatch(
         )
 
         // Also hook the audio focus change listener as a backup.
-        audioFocusChangeListenerMethod.addInstructions(
-            0,
-            """
-                invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->overrideAudioFocusChange(I)I
-                move-result p1
-            """,
-        )
+        audioFocusChangeListenerMethod.apply {
+            val register = p0Register + 1 // p1.
+            val invoke = if (register < 16) {
+                "invoke-static { v$register }"
+            } else {
+                "invoke-static/range { v$register .. v$register }"
+            }
+
+            addInstructions(
+                0,
+                """
+                    $invoke, $EXTENSION_CLASS_DESCRIPTOR->overrideAudioFocusChange(I)I
+                    move-result v$register
+                """,
+            )
+        }
     }
 }
