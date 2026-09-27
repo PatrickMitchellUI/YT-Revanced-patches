@@ -49,8 +49,6 @@ internal val BytecodePatchContext.backgroundPlaybackSettingsMethod by gettingFir
         Opcode.INVOKE_VIRTUAL,
         Opcode.MOVE_RESULT,
         Opcode.IF_EQZ,
-        Opcode.IF_NEZ,
-        Opcode.GOTO,
     )
     literal { prefBackgroundAndOfflineCategoryId }
 }
@@ -87,6 +85,34 @@ internal val BytecodePatchContext.pipInputConsumerFeatureFlagMethodMatch by comp
     )
 }
 
-internal val BytecodePatchContext.newPlayerTypeEnumFeatureFlagMethod by gettingFirstMethodDeclaratively {
-    instructions(45698813L())
+/**
+ * Error handler of storing that the background playback education was seen.
+ * The class gets the settings store in the 4th constructor parameter.
+ */
+internal val BytecodePatchContext.backgroundPlaybackInfoControllerMethod by gettingFirstImmutableMethodDeclaratively(
+    "Failed to store disableBackgroundAudioSettingsDialog.",
+) {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.STATIC)
+    returnType("V")
+    parameterTypes("Ljava/lang/Throwable;")
 }
+
+/**
+ * Returns true if the background playback education was not seen yet.
+ */
+internal fun BytecodePatchContext.getShowBackgroundPlaybackEducationMethod(settingsStoreType: String) =
+    firstMethodDeclaratively {
+        definingClass(settingsStoreType)
+        accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+        returnType("Z")
+        parameterTypes()
+        opcodes(
+            Opcode.CHECK_CAST,
+            Opcode.IGET_BOOLEAN,
+            Opcode.IF_NEZ,
+            Opcode.CONST_4,
+            Opcode.RETURN,
+            Opcode.CONST_4,
+            Opcode.RETURN,
+        )
+    }

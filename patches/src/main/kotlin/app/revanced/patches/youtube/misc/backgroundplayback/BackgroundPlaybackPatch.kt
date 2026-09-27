@@ -3,9 +3,12 @@ package app.revanced.patches.youtube.misc.backgroundplayback
 import app.revanced.patcher.extensions.getInstruction
 import app.revanced.patcher.extensions.instructions
 import app.revanced.patcher.extensions.methodReference
+import app.revanced.patcher.immutableClassDef
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
+import app.revanced.patches.shared.misc.featureflag.featureFlagOverridePatch
+import app.revanced.patches.shared.misc.featureflag.overrideBooleanFeatureFlag
 import app.revanced.patches.shared.misc.mapping.ResourceType
 import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
@@ -13,6 +16,7 @@ import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
 import app.revanced.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.revanced.patches.youtube.misc.playservice.is_19_34_or_greater
 import app.revanced.patches.youtube.misc.playservice.is_20_29_or_greater
+import app.revanced.patches.youtube.misc.playservice.is_21_36_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
@@ -41,16 +45,13 @@ val removeBackgroundPlaybackRestrictionsPatch = bytecodePatch(
         videoInformationPatch,
         settingsPatch,
         versionCheckPatch,
+        featureFlagOverridePatch,
     )
 
     compatibleWith(
         "com.google.android.youtube"(
-            "20.14.43",
-            "20.21.37",
-            "20.26.46",
-            "20.31.42",
-            "20.37.48",
-            "20.40.45"
+            "20.40.45",
+            "21.36.47"
         ),
     )
 
@@ -99,11 +100,19 @@ val removeBackgroundPlaybackRestrictionsPatch = bytecodePatch(
         // Force allowing background play for Shorts.
         shortsBackgroundPlaybackFeatureFlagMethod.returnEarly(true)
 
+        // Don't show the education of background playback, a notification and a dialog
+        // that YouTube shows Premium users once when leaving the app during playback.
+        val settingsStoreType = backgroundPlaybackInfoControllerMethod.immutableClassDef.methods.first {
+            it.name == "<init>"
+        }.parameterTypes[3].toString()
+        getShowBackgroundPlaybackEducationMethod(settingsStoreType).returnEarly(false)
+
         // Force allowing background play for videos labeled for kids.
         kidsBackgroundPlaybackPolicyControllerMethod.returnEarly()
 
         // Fix PiP buttons not working after locking/unlocking device screen.
-        if (is_19_34_or_greater) {
+        // Flag was removed in 21.36.
+        if (is_19_34_or_greater && !is_21_36_or_greater) {
             pipInputConsumerFeatureFlagMethodMatch.let {
                 it.method.insertLiteralOverride(
                     it[0],
@@ -112,10 +121,11 @@ val removeBackgroundPlaybackRestrictionsPatch = bytecodePatch(
             }
         }
 
-        if (is_20_29_or_greater) {
-            // Client flag that interferes with background playback of some video types.
-            // Exact purpose is not clear and it's used in ~ 100 locations.
-            newPlayerTypeEnumFeatureFlagMethod.returnLate(false)
+        // Client flag that interferes with background playback of some video types.
+        // Exact purpose is not clear and it's used in ~ 100 locations.
+        // 21.36 requires the flag, otherwise the player controls are not shown.
+        if (is_20_29_or_greater && !is_21_36_or_greater) {
+            overrideBooleanFeatureFlag(45698813L, false)
         }
     }
 }
