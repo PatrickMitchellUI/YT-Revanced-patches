@@ -109,16 +109,32 @@ public final class HidePlayerOverlayButtonsPatch {
     /**
      * Injection point.
      */
-    public static View hideFullscreenButton(View view) {
-        if (!Settings.HIDE_FULLSCREEN_BUTTON.get()) {
-            return view;
+    public static void hideFullscreenButton(View view) {
+        if (view == null || !Settings.HIDE_FULLSCREEN_BUTTON.get()) {
+            return;
         }
 
-        if (view != null) {
-            view.setVisibility(View.GONE);
+        // The button must stay visible: its visibility drives the ReVanced player buttons,
+        // and YouTube fades it back in anyway. Collapse it to a pixel instead
+        // (a zero size is treated as match constraint by ConstraintLayout).
+        view.addOnLayoutChangeListener((v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom) -> {
+            if (right - left > 1 || bottom - top > 1) {
+                collapseView(v);
+            }
+        });
+        collapseView(view);
+    }
+
+    private static void collapseView(View view) {
+        ViewGroup.LayoutParams params = view.getLayoutParams();
+        if (params == null || (params.width == 1 && params.height == 1)) {
+            return;
         }
 
-        return null;
+        params.width = 1;
+        params.height = 1;
+        // Called during layout, so post the change.
+        view.post(() -> view.setLayoutParams(params));
     }
 
     /**

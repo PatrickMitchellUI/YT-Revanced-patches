@@ -4,10 +4,14 @@ import app.revanced.patcher.extensions.*
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
+import app.revanced.patches.shared.misc.featureflag.featureFlagOverridePatch
+import app.revanced.patches.shared.misc.featureflag.overrideBooleanFeatureFlag
 import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
+import app.revanced.patches.youtube.misc.playercontrols.overlayFullscreenButtonMethodMatch
 import app.revanced.patches.youtube.misc.playservice.is_20_28_or_greater
+import app.revanced.patches.youtube.misc.playservice.is_21_36_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
@@ -33,16 +37,13 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
         addResourcesPatch,
         resourceMappingPatch, // Used for finding methods.
         versionCheckPatch,
+        featureFlagOverridePatch,
     )
 
     compatibleWith(
         "com.google.android.youtube"(
-            "20.14.43",
-            "20.21.37",
-            "20.26.46",
-            "20.31.42",
-            "20.37.48",
-            "20.40.45"
+            "20.40.45",
+            "21.36.47"
         ),
     )
 
@@ -85,7 +86,18 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
             """,
         )
 
-        if (is_20_28_or_greater) {
+        if (is_21_36_or_greater) {
+            // The flags are read inline at each call site.
+            arrayOf(
+                45690091L, // Cast button in the player.
+                45690090L, // Cast button in the feed.
+            ).forEach { flag ->
+                overrideBooleanFeatureFlag(
+                    flag,
+                    "$EXTENSION_CLASS_DESCRIPTOR->getCastButtonOverrideV2(Z)Z",
+                )
+            }
+        } else if (is_20_28_or_greater) {
             arrayOf(
                 castButtonPlayerFeatureFlagMethodMatch,
                 castButtonActionFeatureFlagMethodMatch, // Cast button in the feed.
@@ -166,7 +178,7 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
 
         // region Hide fullscreen button.
 
-        fullscreenButtonMethodMatch.let {
+        (if (is_21_36_or_greater) overlayFullscreenButtonMethodMatch else fullscreenButtonMethodMatch).let {
             it.method.apply {
                 // Youtube 21.x doesn't cast the fullscreen button to ImageView anymore,
                 // so match on move-result-object after findViewById instead of check-cast.
@@ -174,15 +186,11 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
                 val insertIndex = moveResultIndex + 1
                 val insertRegister = getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
 
-                addInstructionsWithLabels(
+                // Do not return early: the rest of the method registers the time bar and
+                // quick actions views with the overlay layout, and the seekbar is misplaced without it.
+                addInstruction(
                     insertIndex,
-                    """
-                        invoke-static { v$insertRegister }, ${EXTENSION_CLASS_DESCRIPTOR}->hideFullscreenButton(Landroid/view/View;)Landroid/view/View;
-                        move-result-object v$insertRegister
-                        if-nez v$insertRegister, :show
-                        return-void
-                    """,
-                    ExternalLabel("show", getInstruction(insertIndex))
+                    "invoke-static { v$insertRegister }, $EXTENSION_CLASS_DESCRIPTOR->hideFullscreenButton(Landroid/view/View;)V",
                 )
             }
         }
@@ -194,17 +202,29 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
         inflateControlsGroupLayoutStubMethodMatch.let {
             it.method.apply {
                 val insertIndex = it[-1] + 1
-                val freeRegister = findFreeRegister(insertIndex)
 
-                addInstructions(
-                    insertIndex,
-                    """
-                        # Move the inflated layout to a temporary register.
-                        # The result of the inflate method is by default not moved to a register after the method is called.
-                        move-result-object v$freeRegister
-                        invoke-static { v$freeRegister }, $EXTENSION_CLASS_DESCRIPTOR->hidePlayerControlButtonsBackground(Landroid/view/View;)V
-                    """,
-                )
+                if (getInstruction(insertIndex).opcode == Opcode.MOVE_RESULT_OBJECT) {
+                    // The inflated layout is already moved to a register.
+                    val register = getInstruction<OneRegisterInstruction>(insertIndex).registerA
+
+                    addInstructions(
+                        insertIndex + 1,
+                        "invoke-static { v$register }, " +
+                                "$EXTENSION_CLASS_DESCRIPTOR->hidePlayerControlButtonsBackground(Landroid/view/View;)V",
+                    )
+                } else {
+                    val freeRegister = findFreeRegister(insertIndex)
+
+                    addInstructions(
+                        insertIndex,
+                        """
+                            # Move the inflated layout to a temporary register.
+                            # The result of the inflate method is by default not moved to a register after the method is called.
+                            move-result-object v$freeRegister
+                            invoke-static { v$freeRegister }, $EXTENSION_CLASS_DESCRIPTOR->hidePlayerControlButtonsBackground(Landroid/view/View;)V
+                        """,
+                    )
+                }
             }
         }
 
