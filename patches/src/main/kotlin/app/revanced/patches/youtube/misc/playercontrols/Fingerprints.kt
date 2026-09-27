@@ -34,6 +34,16 @@ internal val ClassDef.motionEventMethodMatch by ClassDefComposing.composingFirst
     instructions(method("setTranslationY"))
 }
 
+internal val ClassDef.motionEventTranslationHelperMethodMatch by ClassDefComposing.composingFirstMethod {
+    returnType("V")
+    parameterTypes("Landroid/view/MotionEvent;")
+    instructions(
+        Opcode.INVOKE_INTERFACE(),
+        afterAtMost(5, Opcode.INVOKE_VIRTUAL()), // Calls setTranslationY.
+        after(Opcode.RETURN_VOID()),
+    )
+}
+
 internal val BytecodePatchContext.playerControlsExtensionHookListenersExistMethod by gettingFirstMethodDeclaratively {
     name("fullscreenButtonVisibilityCallbacksExist")
     definingClass(EXTENSION_CLASS_DESCRIPTOR)
@@ -83,6 +93,27 @@ internal val BytecodePatchContext.overlayViewInflateMethodMatch by composingFirs
 }
 
 /**
+ * 21.36 binds the visible fullscreen button here.
+ * The button of [overlayViewInflateMethodMatch] is in a container that is not laid out.
+ */
+internal val BytecodePatchContext.overlayFullscreenButtonMethodMatch by composingFirstMethod {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+    returnType("V")
+    parameterTypes("Landroid/view/View;")
+    instructions(
+        ResourceType.ID("fullscreen_button"),
+        after(method { name == "findViewById" }),
+        after(Opcode.MOVE_RESULT_OBJECT()),
+        after(
+            allOf(
+                Opcode.INVOKE_INTERFACE(),
+                method { parameterTypes.size == 1 && parameterTypes[0] == "Landroid/view/View;" },
+            ),
+        ),
+    )
+}
+
+/**
  * Resolves to the class found in [playerTopControlsInflateMethodMatch].
  */
 context(_: BytecodePatchContext)
@@ -92,37 +123,17 @@ internal fun ClassDef.getControlsOverlayVisibilityMethod() = firstMethodDeclarat
     parameterTypes("Z", "Z")
 }
 
-internal val BytecodePatchContext.playerBottomControlsExploderFeatureFlagMethod by gettingFirstMethodDeclaratively {
+/**
+ * 21.36 creates the background of the fullscreen button with insets for portrait and fullscreen.
+ */
+internal val BytecodePatchContext.fullscreenButtonBackgroundMethodMatch by composingFirstMethod {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returnType("Z")
-    parameterTypes()
-    instructions(45643739L())
-}
-
-internal val BytecodePatchContext.playerTopControlsExperimentalLayoutFeatureFlagMethod by gettingFirstMethodDeclaratively {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returnType("I")
-    parameterTypes()
-    instructions(45629424L())
-}
-
-internal val BytecodePatchContext.playerControlsLargeOverlayButtonsFeatureFlagMethod by gettingFirstMethodDeclaratively {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returnType("Z")
-    parameterTypes()
-    instructions(45709810L())
-}
-
-internal val BytecodePatchContext.playerControlsFullscreenLargeButtonsFeatureFlagMethod by gettingFirstMethodDeclaratively {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returnType("Z")
-    parameterTypes()
-    instructions(45686474L())
-}
-
-internal val BytecodePatchContext.playerControlsButtonStrokeFeatureFlagMethod by gettingFirstMethodDeclaratively {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returnType("Z")
-    parameterTypes()
-    instructions(45713296L())
+    returnType("Landroid/graphics/drawable/Drawable;")
+    parameterTypes("Z")
+    instructions(
+        ResourceType.DRAWABLE("player_button_circle_background"),
+        afterAtMost(2, method { name == "getDrawable" }),
+        after(Opcode.MOVE_RESULT_OBJECT()),
+        afterAtMost(2, allOf(Opcode.IGET(), field { definingClass == "Landroid/graphics/Rect;" })),
+    )
 }

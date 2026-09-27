@@ -2,32 +2,37 @@ package app.revanced.patches.youtube.misc.playercontrols
 
 import app.revanced.com.android.tools.smali.dexlib2.mutable.MutableMethod
 import app.revanced.patcher.extensions.addInstruction
+import app.revanced.patcher.extensions.addInstructions
 import app.revanced.patcher.extensions.getInstruction
 import app.revanced.patcher.immutableClassDef
 import app.revanced.patcher.patch.PatchException
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patcher.patch.resourcePatch
 import app.revanced.patcher.util.Document
+import app.revanced.patches.shared.misc.featureflag.featureFlagOverridePatch
+import app.revanced.patches.shared.misc.featureflag.overrideBooleanFeatureFlag
 import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
-import app.revanced.patches.youtube.misc.playservice.*
+import app.revanced.patches.youtube.misc.playservice.is_21_36_or_greater
+import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.util.*
-import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
+import org.w3c.dom.Element
 import org.w3c.dom.Node
 
 /**
- * Add a new top to the bottom of the YouTube player.
+ * Adds the controls of a layout file to the top of the YouTube player.
+ * Only works with SponsorBlock.
  *
  * @param resourceDirectoryName The name of the directory containing the hosting resource.
  */
 @Suppress("KDocUnresolvedReference")
-// Internal until this is modified to work with any patch (and not just SponsorBlock).
 internal lateinit var addTopControl: (String) -> Unit
     private set
 
 /**
- * Add a new bottom to the bottom of the YouTube player.
+ * Adds the controls of a layout file to the bottom of the YouTube player, left of the fullscreen button.
  *
  * @param resourceDirectoryName The name of the directory containing the hosting resource.
  */
@@ -36,42 +41,55 @@ lateinit var addBottomControl: (String) -> Unit
     private set
 
 internal val playerControlsResourcePatch = resourcePatch {
-    /**
-     * The element to the left of the element being added.
-     */
-    /**
-     * The element to the left of the element being added.
-     */
+    dependsOn(versionCheckPatch)
+
+    // Id of the element the next bottom control is added to the left of.
     var bottomLastLeftOf = "@id/fullscreen_button"
 
     lateinit var bottomTargetDocument: Document
 
     apply {
         val targetResourceName = "youtube_controls_bottom_ui_container.xml"
-
         bottomTargetDocument = document("res/layout/$targetResourceName")
 
-        val bottomTargetElement: Node = bottomTargetDocument.getElementsByTagName(
+        val bottomTargetElement: Node = sequenceOf(
             "android.support.constraint.ConstraintLayout",
-        ).item(0)
+            "androidx.constraintlayout.widget.ConstraintLayout", // 21.36
+        ).firstNotNullOfOrNull {
+            bottomTargetDocument.getElementsByTagName(it).item(0)
+        } ?: throw PatchException("Could not find the player controls container in $targetResourceName")
 
-        val bottomTargetDocumentChildNodes = bottomTargetDocument.childNodes
-        var bottomInsertBeforeNode: Node = bottomTargetDocumentChildNodes.findElementByAttributeValueOrThrow(
+        var bottomInsertBeforeNode: Node = bottomTargetDocument.childNodes.findElementByAttributeValueOrThrow(
             "android:inflatedId",
             bottomLastLeftOf,
         )
 
-        // Modify the fullscreen button stub attributes for correct positioning.
-        // The fullscreen button is lower than the ReVanced buttons (unpatched app bug).
-        // Issue is only present in later app targets, but this change seems to
-        // do no harm to earlier releases.
-        bottomTargetDocumentChildNodes.findElementByAttributeValueOrThrow(
+        // region Bottom button positions.
+
+        // All bottom buttons are 48 dp wide and tall with the icon in the center, moved up to the height
+        // of the fullscreen icon of the unpatched app. The fullscreen button of 21.36 is 48 dp tall
+        // and its padding is set by the background insets (see the extension).
+        val bottomControlMargin = if (is_21_36_or_greater) "6.0dip" else "3.0dip"
+
+        bottomTargetDocument.childNodes.findElementByAttributeValueOrThrow(
             "android:id",
             "@id/youtube_controls_fullscreen_button_stub",
         ).apply {
-            setAttribute("android:layout_marginBottom", "6.0dip")
             setAttribute("android:layout_width", "48.0dip")
+            setAttribute("android:layout_marginBottom", bottomControlMargin)
         }
+
+        if (!is_21_36_or_greater) {
+            document("res/layout/youtube_controls_fullscreen_button.xml").use { document ->
+                (document.getElementsByTagName("com.google.android.libraries.youtube.common.ui.TouchImageView")
+                    .item(0) as Element).apply {
+                    setAttribute("android:paddingTop", "19.0dip")
+                    setAttribute("android:paddingBottom", "19.0dip")
+                }
+            }
+        }
+
+        // endregion
 
         addTopControl = { resourceDirectoryName ->
             val resourceFileName = "host/layout/youtube_controls_layout.xml"
@@ -86,16 +104,11 @@ internal val playerControlsResourcePatch = resourcePatch {
                 document(hostingResourceStream),
                 document,
             ).use {
-                val element = document.childNodes.findElementByAttributeValueOrThrow(
+                // The title ends at the SponsorBlock voting button of the host layout.
+                document.childNodes.findElementByAttributeValueOrThrow(
                     "android:id",
                     "@id/player_video_heading",
-                )
-
-                // FIXME: This uses hard coded values that only works with SponsorBlock.
-                // If other top buttons are added by other patches, this code must be changed.
-                // voting button id from the voting button view from the youtube_controls_layout.xml host file
-                val votingButtonId = "@+id/revanced_sb_voting_button"
-                element.attributes.getNamedItem("android:layout_toStartOf").nodeValue = votingButtonId
+                ).attributes.getNamedItem("android:layout_toStartOf").nodeValue = "@+id/revanced_sb_voting_button"
             }
         }
 
@@ -110,19 +123,16 @@ internal val playerControlsResourcePatch = resourcePatch {
                 "android.support.constraint.ConstraintLayout",
             ).item(0).childNodes
 
-            // Copy the patch layout XML into the target layout file.
             for (index in sourceElements.length - 1 downTo 1) {
                 val element = sourceElements.item(index).cloneNode(true)
-
-                // If the element has no attributes there's no point adding it to the destination.
                 if (!element.hasAttributes()) continue
 
                 element.attributes.getNamedItem("yt:layout_constraintRight_toLeftOf").nodeValue = bottomLastLeftOf
                 bottomLastLeftOf = element.attributes.getNamedItem("android:id").nodeValue
+                (element as Element).setAttribute("android:layout_marginBottom", bottomControlMargin)
 
+                // Inserted in layout order to make debugging easier, the position comes from the constraints.
                 bottomTargetDocument.adoptNode(element)
-                // Elements do not need to be added in the layout order since a layout constraint is used,
-                // but in order is easier to make sense of while debugging.
                 bottomTargetElement.insertBefore(element, bottomInsertBeforeNode)
                 bottomInsertBeforeNode = element
             }
@@ -132,13 +142,11 @@ internal val playerControlsResourcePatch = resourcePatch {
     }
 
     afterDependents {
-        val childNodes = bottomTargetDocument.childNodes
-
         arrayOf(
             "@id/bottom_end_container",
             "@id/multiview_button",
         ).forEach {
-            childNodes.findElementByAttributeValue(
+            bottomTargetDocument.childNodes.findElementByAttributeValue(
                 "android:id",
                 it,
             )?.setAttribute("yt:layout_constraintRight_toLeftOf", bottomLastLeftOf)
@@ -190,8 +198,7 @@ fun injectVisibilityCheckCall(descriptor: String) {
         "invoke-static { p0 }, $descriptor->setVisibilityImmediate(Z)V",
     )
 
-    // Patch works without this hook, but it is needed to use the correct fade out animation
-    // duration when tapping the overlay to dismiss.
+    // Uses the fade out duration of tapping the overlay to dismiss it.
     visibilityNegatedImmediateMethod.addInstruction(
         visibilityNegatedImmediateInsertIndex++,
         "invoke-static { }, $descriptor->setVisibilityNegatedImmediate()V",
@@ -230,82 +237,86 @@ val playerControlsPatch = bytecodePatch(
         resourceMappingPatch, // Used to find methods.
         playerControlsOverlayVisibilityPatch,
         versionCheckPatch,
+        featureFlagOverridePatch,
     )
 
     apply {
-        playerBottomControlsInflateMethodMatch.method.apply {
-            inflateBottomControlMethod = this
+        // region Control inflation.
 
-            val inflateReturnObjectIndex = playerBottomControlsInflateMethodMatch[-1]
-            inflateBottomControlRegister = getInstruction<OneRegisterInstruction>(inflateReturnObjectIndex).registerA
-            inflateBottomControlInsertIndex = inflateReturnObjectIndex + 1
+        playerBottomControlsInflateMethodMatch.let {
+            inflateBottomControlMethod = it.method
+            inflateBottomControlRegister = it.method.getInstruction<OneRegisterInstruction>(it[-1]).registerA
+            inflateBottomControlInsertIndex = it[-1] + 1
         }
 
-        playerTopControlsInflateMethodMatch.method.apply {
-            inflateTopControlMethod = this
-
-            val inflateReturnObjectIndex = playerTopControlsInflateMethodMatch[-1]
-            inflateTopControlRegister = getInstruction<OneRegisterInstruction>(inflateReturnObjectIndex).registerA
-            inflateTopControlInsertIndex = inflateReturnObjectIndex + 1
+        playerTopControlsInflateMethodMatch.let {
+            inflateTopControlMethod = it.method
+            inflateTopControlRegister = it.method.getInstruction<OneRegisterInstruction>(it[-1]).registerA
+            inflateTopControlInsertIndex = it[-1] + 1
         }
+
+        // endregion
+
+        // region Visibility.
 
         visibilityMethod =
             playerTopControlsInflateMethodMatch.immutableClassDef.getControlsOverlayVisibilityMethod()
 
-        // Hook the fullscreen close button. Used to fix visibility
-        // when seeking and other situations.
-        overlayViewInflateMethodMatch.method.apply {
-            val index = overlayViewInflateMethodMatch[-1]
-            val register = getInstruction<OneRegisterInstruction>(index).registerA
+        // The ReVanced buttons follow the visibility of the fullscreen button.
+        val fullscreenButtonMatch =
+            if (is_21_36_or_greater) overlayFullscreenButtonMethodMatch else overlayViewInflateMethodMatch
+        fullscreenButtonMatch.let {
+            val index = if (is_21_36_or_greater) it[2] else it[-1]
+            val register = it.method.getInstruction<OneRegisterInstruction>(index).registerA
 
-            addInstruction(
+            it.method.addInstruction(
                 index + 1,
-                "invoke-static { v$register }, " +
-                    "$EXTENSION_CLASS_DESCRIPTOR->setFullscreenCloseButton(Landroid/view/View;)V",
+                "invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->setFullscreenCloseButton(Landroid/view/View;)V",
             )
         }
 
         visibilityImmediateCallbacksExistMethod = playerControlsExtensionHookListenersExistMethod
         visibilityImmediateMethod = playerControlsExtensionHookMethod
 
-        youtubeControlsOverlayMethod.immutableClassDef.motionEventMethodMatch.let {
-            visibilityNegatedImmediateMethod = it.method
-            visibilityNegatedImmediateInsertIndex = it[0] + 1
+        youtubeControlsOverlayMethod.immutableClassDef.let {
+            val match = if (is_21_36_or_greater) it.motionEventTranslationHelperMethodMatch else it.motionEventMethodMatch
+            visibilityNegatedImmediateMethod = match.method
+            visibilityNegatedImmediateInsertIndex = match[if (is_21_36_or_greater) 1 else 0] + 1
         }
 
-        // A/B test for a slightly different bottom overlay controls,
-        // that uses layout file youtube_video_exploder_controls_bottom_ui_container.xml
-        // The change to support this is simple and only requires adding buttons to both layout files,
-        // but for now force this different layout off since it's still an experimental test.
-        if (is_19_35_or_greater) {
-            playerBottomControlsExploderFeatureFlagMethod.returnLate(false)
-        }
+        // endregion
 
-        // A/B test of different top overlay controls. Two different layouts can be used:
-        // youtube_cf_navigation_improvement_controls_layout.xml
-        // youtube_cf_minimal_impact_controls_layout.xml
-        //
-        // Flag was removed in 20.19+
-        if (is_19_25_or_greater && !is_20_19_or_greater) {
-            playerTopControlsExperimentalLayoutFeatureFlagMethod.apply {
-                val index = indexOfFirstInstructionOrThrow(Opcode.MOVE_RESULT_OBJECT)
-                val register = getInstruction<OneRegisterInstruction>(index).registerA
+        // region Fullscreen button background.
 
-                addInstruction(index + 1, "const-string v$register, \"default\"")
+        if (is_21_36_or_greater) {
+            fullscreenButtonBackgroundMethodMatch.let {
+                val backgroundRegister = it.method.getInstruction<OneRegisterInstruction>(it[2]).registerA
+                val rectRegister = it.method.getInstruction<TwoRegisterInstruction>(it[-1]).registerB
+
+                it.method.addInstructions(
+                    it[2] + 1,
+                    """
+                        invoke-static { v$backgroundRegister }, $EXTENSION_CLASS_DESCRIPTOR->getFullscreenButtonBackground(Landroid/graphics/drawable/Drawable;)Landroid/graphics/drawable/Drawable;
+                        move-result-object v$backgroundRegister
+                        invoke-static { v$rectRegister }, $EXTENSION_CLASS_DESCRIPTOR->getFullscreenButtonBackgroundInsets(Landroid/graphics/Rect;)Landroid/graphics/Rect;
+                        move-result-object v$rectRegister
+                    """,
+                )
             }
         }
 
-        // Turn off a/b tests of ugly player buttons that don't match the style of custom player buttons.
-        if (is_20_20_or_greater) {
-            playerControlsFullscreenLargeButtonsFeatureFlagMethod.returnLate(false)
+        // endregion
 
-            if (is_20_28_or_greater) {
-                playerControlsLargeOverlayButtonsFeatureFlagMethod.returnLate(false)
-            }
+        // region Layout A/B tests.
 
-            if (is_20_30_or_greater) {
-                playerControlsButtonStrokeFeatureFlagMethod.returnLate(false)
-            }
-        }
+        // Different bottom controls layout (youtube_video_exploder_controls_bottom_ui_container.xml).
+        overrideBooleanFeatureFlag(45643739L, false)
+
+        // Button styles that do not match the ReVanced buttons.
+        overrideBooleanFeatureFlag(45686474L, false) // Fullscreen large buttons.
+        overrideBooleanFeatureFlag(45709810L, false) // Large overlay buttons.
+        overrideBooleanFeatureFlag(45713296L, false) // Button stroke.
+
+        // endregion
     }
 }
