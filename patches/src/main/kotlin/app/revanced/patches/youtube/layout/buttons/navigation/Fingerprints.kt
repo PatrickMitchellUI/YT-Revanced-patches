@@ -19,15 +19,6 @@ internal val BytecodePatchContext.createPivotBarMethodMatch by composingFirstMet
     )
 }
 
-internal val BytecodePatchContext.animatedNavigationTabsFeatureFlagMethodMatch by composingFirstMethod {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returnType("Z")
-    instructions(
-        45680008L(),
-    )
-}
-
-
 internal val BytecodePatchContext.pivotBarStyleMethodMatch by composingFirstMethod {
     definingClass("/PivotBar;")
     returnType("V")
@@ -46,36 +37,6 @@ internal val BytecodePatchContext.pivotBarChangedMethodMatch by composingFirstMe
     opcodes(
         Opcode.INVOKE_STATIC,
         Opcode.MOVE_RESULT
-    )
-}
-
-internal val BytecodePatchContext.translucentNavigationStatusBarFeatureFlagMethodMatch by composingFirstMethod {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returnType("Z")
-    instructions(
-        45400535L(), // Translucent status bar feature flag.
-    )
-}
-
-/**
- * YouTube nav buttons.
- */
-internal val BytecodePatchContext.translucentNavigationButtonsFeatureFlagMethodMatch by composingFirstMethod {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returnType("V")
-    instructions(
-        45630927L(), // Translucent navigation bar buttons feature flag.
-    )
-}
-
-/**
- * Device on screen back/home/recent buttons.
- */
-internal val BytecodePatchContext.translucentNavigationButtonsSystemFeatureFlagMethodMatch by composingFirstMethod {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returnType("Z")
-    instructions(
-        45632194L(), // Translucent system buttons feature flag.
     )
 }
 
