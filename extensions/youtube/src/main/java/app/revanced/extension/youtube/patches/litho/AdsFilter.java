@@ -10,7 +10,12 @@ import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
 
+import java.lang.reflect.Method;
+import java.nio.charset.StandardCharsets;
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
+import java.util.WeakHashMap;
 
 import app.revanced.extension.shared.patches.litho.Filter;
 import app.revanced.extension.shared.Logger;
@@ -22,6 +27,23 @@ import app.revanced.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public final class AdsFilter extends Filter {
+    /**
+     * Browse id of the Premium page, used by the Premium offers in the You tab.
+     */
+    private static final String PREMIUM_BROWSE_ID_STRING = "SPunlimited";
+    private static final byte[] PREMIUM_BROWSE_ID = PREMIUM_BROWSE_ID_STRING.getBytes(StandardCharsets.US_ASCII);
+
+    /**
+     * Key of the "Get YouTube Premium" settings entry, filled in from the server.
+     */
+    private static final String PREMIUM_SETTINGS_KEY = "premium_category_key";
+
+    private static final Set<View> hiddenCompactLinks = Collections.newSetFromMap(new WeakHashMap<>());
+
+    @Nullable
+    private static Class<?> toByteArrayMethodClass;
+    private static Method toByteArrayMethod;
+
     // region Fullscreen ad
     private static final ByteArrayFilterGroup fullscreenAd = new ByteArrayFilterGroup(
             null,
@@ -46,6 +68,8 @@ public final class AdsFilter extends Filter {
     private final ByteArrayFilterGroup promotionBannerBuffer;
     private final StringFilterGroup buyMovieAd;
     private final ByteArrayFilterGroup buyMovieAdBuffer;
+    private final StringFilterGroup pageHeaderButton;
+    private final ByteArrayFilterGroup premiumButtonBuffer;
 
     public AdsFilter() {
         exceptions.addPatterns(
@@ -149,6 +173,17 @@ public final class AdsFilter extends Filter {
                 "SPunlimited" // Word associated with Premium, should be unique to differentiate Doodle from ad banner.
         );
 
+        // You tab header button next to "View channel" (21.36+ layout).
+        pageHeaderButton = new StringFilterGroup(
+                Settings.HIDE_YOUTUBE_PREMIUM_PROMOTIONS,
+                "flexible_actions.e"
+        );
+
+        premiumButtonBuffer = new ByteArrayFilterGroup(
+                null,
+                PREMIUM_BROWSE_ID_STRING
+        );
+
         final var selfSponsor = new StringFilterGroup(
                 Settings.HIDE_SELF_SPONSOR,
                 "cta_shelf_card"
@@ -159,6 +194,7 @@ public final class AdsFilter extends Filter {
                 generalAds,
                 merchandise,
                 movieAds,
+                pageHeaderButton,
                 promotionBanner,
                 selfSponsor,
                 shoppingLinks,
@@ -171,6 +207,13 @@ public final class AdsFilter extends Filter {
                               StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
         if (matchedGroup == buyMovieAd) {
             return contentIndex == 0 && buyMovieAdBuffer.check(buffer).isFiltered();
+        }
+
+        if (matchedGroup == pageHeaderButton) {
+            // The containers above the buttons hold the buffers of all buttons,
+            // so only check the components inside a button.
+            return path.indexOf("|button.e", contentIndex) > 0
+                    && premiumButtonBuffer.check(buffer).isFiltered();
         }
 
         if (matchedGroup == promotionBanner) {
@@ -267,6 +310,59 @@ public final class AdsFilter extends Filter {
         }
 
         elementsList.add(protobufList);
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hidePremiumCompactLink(Object renderer, View view) {
+        try {
+            if (view == null) return;
+
+            final boolean isPremiumOffer = Settings.HIDE_YOUTUBE_PREMIUM_PROMOTIONS.get()
+                    && bytesContain(protobufToByteArray(renderer), PREMIUM_BROWSE_ID);
+
+            if (isPremiumOffer) {
+                Logger.printDebug(() -> "Hiding Premium offer compact link");
+                view.setVisibility(View.GONE);
+                hiddenCompactLinks.add(view);
+            } else if (hiddenCompactLinks.remove(view)) {
+                // View is recycled for a different link.
+                view.setVisibility(View.VISIBLE);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "hidePremiumCompactLink failure", ex);
+        }
+    }
+
+    private static byte[] protobufToByteArray(Object message) throws Exception {
+        Class<?> messageClass = message.getClass();
+        if (toByteArrayMethodClass != messageClass) {
+            toByteArrayMethod = messageClass.getMethod("toByteArray");
+            toByteArrayMethodClass = messageClass;
+        }
+        return (byte[]) toByteArrayMethod.invoke(message);
+    }
+
+    private static boolean bytesContain(byte[] bytes, byte[] target) {
+        outer:
+        for (int i = 0, last = bytes.length - target.length; i <= last; i++) {
+            for (int j = 0; j < target.length; j++) {
+                if (bytes[i + j] != target[j]) continue outer;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param key Key of a settings entry filled in from the server.
+     * @return If the entry should be removed.
+     */
+    public static boolean hidePremiumSettingsEntry(String key) {
+        return Settings.HIDE_YOUTUBE_PREMIUM_PROMOTIONS.get() && PREMIUM_SETTINGS_KEY.equals(key);
     }
 
     /**

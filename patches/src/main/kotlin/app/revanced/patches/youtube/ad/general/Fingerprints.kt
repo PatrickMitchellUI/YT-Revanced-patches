@@ -48,6 +48,29 @@ internal val BytecodePatchContext.getPremiumViewMethodMatch by composingFirstMet
     )
 }
 
+/**
+ * Constructor of the compact link presenter, used for the entries in the You tab.
+ */
+internal val BytecodePatchContext.compactLinkPresenterConstructorMethodMatch by composingFirstMethod {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
+    instructions(ResourceType.LAYOUT("compact_list_item"))
+}
+
+/**
+ * 21.36+ Fills in a settings entry from the server data, or removes the entry if there is no data.
+ * Parameters: preference key, server data, list of preferences to remove.
+ */
+internal val BytecodePatchContext.settingsServerEntryMethodMatch by composingFirstMethod {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+    returnType("V")
+    parameterTypes("Ljava/lang/String;", "Lj$/util/Optional;", "Ljava/util/List;")
+    instructions(
+        method { definingClass == "Lj$/util/Optional;" && name == "ofNullable" },
+        method { definingClass == "Lj$/util/Optional;" && name == "isEmpty" },
+        method { definingClass == "Ljava/util/List;" && name == "add" },
+    )
+}
+
 internal val BytecodePatchContext.lithoDialogBuilderMethodMatch by composingFirstMethod {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returnType("V")
@@ -59,15 +82,14 @@ internal val BytecodePatchContext.lithoDialogBuilderMethodMatch by composingFirs
 }
 
 
-internal val BytecodePatchContext.playerOverlayTimelyShelfMethod by gettingFirstMethodDeclaratively {
+internal val BytecodePatchContext.playerOverlayTimelyShelfMethodMatch by composingFirstMethod {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returnType("V")
     parameterTypes("Ljava/lang/Object;")
     instructions(
-        "player_overlay_timely_shelf"(),
-        "innertube_cue_range"(),
-        "Null id"(),
-        "Null onExitActions"()
+        allOf(Opcode.IGET_OBJECT(), field { type == "Ljava/lang/String;" }),
+        after("player_overlay_timely_shelf"()),
+        after(method { name == "equals" && definingClass == "Ljava/lang/String;" }),
     )
 }
 
