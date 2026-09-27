@@ -38,8 +38,13 @@ public final class ShortsFilter extends Filter {
         {
             // Like button and Dislike button can be hidden with Litho filter.
             // put(0, Settings.HIDE_SHORTS_LIKE_BUTTON);
-            // put(1, Settings.HIDE_SHORTS_DISLIKE_BUTTON);
-            put(2, Settings.HIDE_SHORTS_COMMENTS_BUTTON);
+            if (VersionCheckPatch.IS_21_36_OR_GREATER) {
+                // Like, Comments, Save, Share, Remix. There is no Dislike button.
+                put(1, Settings.HIDE_SHORTS_COMMENTS_BUTTON);
+            } else {
+                // put(1, Settings.HIDE_SHORTS_DISLIKE_BUTTON);
+                put(2, Settings.HIDE_SHORTS_COMMENTS_BUTTON);
+            }
             put(3, Settings.HIDE_SHORTS_SHARE_BUTTON);
             put(4, Settings.HIDE_SHORTS_REMIX_BUTTON);
         }

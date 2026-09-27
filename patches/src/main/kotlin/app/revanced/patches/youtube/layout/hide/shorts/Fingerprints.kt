@@ -106,7 +106,7 @@ internal val BytecodePatchContext.renderBottomNavigationBarParentMethod by getti
 }
 
 internal val ClassDef.setPivotBarVisibilityMethodMatch by ClassDefComposing.composingFirstMethod {
-    accessFlags(AccessFlags.PRIVATE, AccessFlags.FINAL)
+    accessFlags(AccessFlags.FINAL) // Public since 21.36.
     returnType("V")
     parameterTypes("Z")
     opcodes(
