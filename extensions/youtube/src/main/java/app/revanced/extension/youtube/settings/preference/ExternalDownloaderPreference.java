@@ -384,7 +384,7 @@ public class ExternalDownloaderPreference extends CustomDialogListPreference {
                 ? downloader.downloadUrl
                 : null;
         String okButtonText = downloadUrl != null
-                ? str("gms_core_dialog_open_website_text") // Open website.
+                ? str("revanced_external_downloader_open_website_text")
                 : null; // Ok.
         // Show a dialog if the recommended app is not installed or if the custom package cannot be found.
         String message = downloader != null
