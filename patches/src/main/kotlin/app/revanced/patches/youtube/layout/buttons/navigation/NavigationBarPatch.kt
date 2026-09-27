@@ -169,6 +169,7 @@ val navigationBarPatch = bytecodePatch(
         val toolbarPreferences = mutableSetOf(
             SwitchPreference("revanced_hide_toolbar_create_button"),
             SwitchPreference("revanced_hide_toolbar_notification_button"),
+            SwitchPreference("revanced_hide_toolbar_messages_button"),
             SwitchPreference("revanced_hide_toolbar_search_button")
         )
         if (!is_20_31_or_greater) {
@@ -185,6 +186,7 @@ val navigationBarPatch = bytecodePatch(
 
         hookToolbar("${EXTENSION_CLASS_DESCRIPTOR}->hideCreateButton")
         hookToolbar("${EXTENSION_CLASS_DESCRIPTOR}->hideNotificationButton")
+        hookToolbar("${EXTENSION_CLASS_DESCRIPTOR}->hideMessagesButton")
         hookToolbar("${EXTENSION_CLASS_DESCRIPTOR}->hideSearchButton")
 
 

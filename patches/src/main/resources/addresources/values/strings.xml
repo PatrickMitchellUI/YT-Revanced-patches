@@ -872,6 +872,9 @@ Adjust volume by swiping vertically on the right side of the screen"</string>
             <string name="revanced_hide_toolbar_notification_button_title">Hide Notifications button</string>
             <string name="revanced_hide_toolbar_notification_button_summary_on">Notifications button is hidden</string>
             <string name="revanced_hide_toolbar_notification_button_summary_off">Notifications button is shown</string>
+            <string name="revanced_hide_toolbar_messages_button_title">Hide Messages button</string>
+            <string name="revanced_hide_toolbar_messages_button_summary_on">Messages button is hidden</string>
+            <string name="revanced_hide_toolbar_messages_button_summary_off">Messages button is shown</string>
             <string name="revanced_hide_toolbar_search_button_title">Hide Search button</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Search button is hidden</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Search button is shown.</string>

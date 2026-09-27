@@ -137,6 +137,13 @@ public final class NavigationBarPatch {
         hideViewUnderCondition(isNotificationButton(enumString), view);
     }
 
+    public static void hideMessagesButton(String enumString, View view) {
+        if (!Settings.HIDE_TOOLBAR_MESSAGES_BUTTON.get())
+            return;
+
+        hideViewUnderCondition(isMessagesButton(enumString), view);
+    }
+
     public static void hideSearchButton(String enumString, View view) {
         if (!Settings.HIDE_TOOLBAR_SEARCH_BUTTON.get())
             return;
@@ -160,6 +167,10 @@ public final class NavigationBarPatch {
     private static boolean isNotificationButton(String enumString) {
         return "TAB_ACTIVITY".equals(enumString) // Notification button.
                 || "TAB_ACTIVITY_CAIRO".equals(enumString); // Notification button (New layout).
+    }
+
+    private static boolean isMessagesButton(String enumString) {
+        return "MESSAGE_BUBBLE_OVERLAP".equals(enumString); // Messages inbox button.
     }
 
     private static boolean isSearchButton(String enumString) {
