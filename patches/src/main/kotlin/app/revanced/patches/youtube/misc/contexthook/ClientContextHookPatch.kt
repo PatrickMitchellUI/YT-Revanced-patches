@@ -7,14 +7,17 @@ import app.revanced.patcher.classDef
 import app.revanced.patcher.extensions.addInstructionsWithLabels
 import app.revanced.patcher.extensions.fieldReference
 import app.revanced.patcher.extensions.getInstruction
-import app.revanced.patcher.extensions.methodReference
+import app.revanced.patcher.firstImmutableClassDefOrNull
 import app.revanced.patcher.firstMethodDeclaratively
 import app.revanced.patcher.immutableClassDef
 import app.revanced.patcher.parameterTypes
 import app.revanced.patcher.patch.BytecodePatchContext
+import app.revanced.patcher.patch.PatchException
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patcher.returnType
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
+import app.revanced.patches.youtube.misc.playservice.is_21_36_or_greater
+import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.util.addInstructionsAtControlFlowLabel
 import app.revanced.util.cloneMutableAndPreserveParameters
 import app.revanced.util.findInstructionIndicesReversedOrThrow
@@ -35,7 +38,7 @@ private lateinit var messageLiteBuilderMethod: MethodReference
 private lateinit var osNameField: FieldReference
 
 enum class Endpoint(
-    vararg val getEndpointMethods: BytecodePatchContext.() -> Method,
+    vararg val getEndpointMethods: BytecodePatchContext.() -> Method?,
     var instructions: String = "",
 ) {
     BROWSE(
@@ -44,8 +47,12 @@ enum class Endpoint(
     GUIDE(
         BytecodePatchContext::guideEndpointConstructorMethod::get
     ),
+    NEXT(
+        BytecodePatchContext::nextEndpointConstructorMethod::get
+    ),
     REEL(
-        BytecodePatchContext::reelCreateItemsEndpointConstructorMethod::get,
+        // Endpoint was removed in 21.36.
+        { if (is_21_36_or_greater) null else reelCreateItemsEndpointConstructorMethod },
         BytecodePatchContext::reelItemWatchEndpointConstructorMethod::get,
         BytecodePatchContext::reelWatchSequenceEndpointConstructorMethod::get,
     ),
@@ -55,7 +62,10 @@ enum class Endpoint(
 val hookClientContextPatch = bytecodePatch(
     description = "Hooks the context body of the endpoint.",
 ) {
-    dependsOn(sharedExtensionPatch)
+    dependsOn(
+        sharedExtensionPatch,
+        versionCheckPatch,
+    )
 
     apply {
         buildDummyClientContextBodyMethodMatch.let {
@@ -73,13 +83,19 @@ val hookClientContextPatch = bytecodePatch(
             }
         }
 
-        authenticationChangeListenerMethod.apply {
-            val messageLiteBuilderIndex =
-                indexOfMessageLiteBuilderReference(this, messageLiteBuilderField.definingClass)
+        // Use the builder method of the endpoint class hierarchy,
+        // as the method is invoked on the endpoint class.
+        val builderClassType = messageLiteBuilderField.definingClass
 
-            messageLiteBuilderMethod =
-                getInstruction<ReferenceInstruction>(messageLiteBuilderIndex).methodReference!!
-        }
+        messageLiteBuilderMethod = generateSequence(browseEndpointParentMethod.immutableClassDef) {
+            it.superclass?.let(::firstImmutableClassDefOrNull)
+        }.firstNotNullOfOrNull { classDef ->
+            classDef.methods.firstOrNull { method ->
+                method.parameterTypes.isEmpty() && method.returnType == builderClassType
+            }
+        } ?: throw PatchException(
+            "Could not find a method returning $builderClassType in the endpoint hierarchy",
+        )
 
         buildClientContextBodyConstructorMethod.immutableClassDef.buildClientContextBodyMethodMatch.let {
             it.method.apply {
@@ -106,7 +122,10 @@ val hookClientContextPatch = bytecodePatch(
             it.instructions.isNotEmpty()
         }.forEach { endpoint ->
             endpoint.getEndpointMethods.forEach { getEndpointRequestBodyParentMethod ->
-                getEndpointRequestBodyParentMethod().immutableClassDef.firstMethodDeclaratively {
+                val endpointRequestBodyParentMethod =
+                    getEndpointRequestBodyParentMethod() ?: return@forEach
+
+                endpointRequestBodyParentMethod.immutableClassDef.firstMethodDeclaratively {
                     accessFlags(AccessFlags.PROTECTED, AccessFlags.FINAL)
                     returnType("V")
                     parameterTypes()
