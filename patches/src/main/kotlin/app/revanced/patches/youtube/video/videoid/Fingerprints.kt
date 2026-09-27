@@ -22,6 +22,20 @@ internal fun ClassDef.getVideoIdMethodMatch() = firstMethodComposite {
     )
 }
 
+/**
+ * Matches using the class found in [videoIdParentMethodMatch].
+ */
+context(_: BytecodePatchContext)
+internal fun ClassDef.getVideoIdParameterMethodMatch() = firstMethodComposite {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+    returnType("V")
+    parameterTypes("Ljava/lang/String;", "L")
+    instructions(
+        method { toString() == "Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;" },
+        after(Opcode.RETURN_VOID()),
+    )
+}
+
 internal val BytecodePatchContext.videoIdBackgroundPlayMethodMatch by composingFirstMethod {
     accessFlags(AccessFlags.DECLARED_SYNCHRONIZED, AccessFlags.FINAL, AccessFlags.PUBLIC)
     returnType("V")

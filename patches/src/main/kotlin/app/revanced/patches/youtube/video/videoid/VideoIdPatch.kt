@@ -6,9 +6,12 @@ import app.revanced.patcher.extensions.getInstruction
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
 import app.revanced.patches.youtube.misc.playertype.playerTypeHookPatch
+import app.revanced.patches.youtube.misc.playservice.is_21_36_or_greater
+import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.patches.youtube.video.playerresponse.Hook
 import app.revanced.patches.youtube.video.playerresponse.addPlayerResponseMethodHook
 import app.revanced.patches.youtube.video.playerresponse.playerResponseMethodHookPatch
+import app.revanced.util.p0Register
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 /**
@@ -89,15 +92,27 @@ val videoIdPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         playerResponseMethodHookPatch,
+        versionCheckPatch,
     )
 
     apply {
-        videoIdParentMethodMatch.immutableClassDef.getVideoIdMethodMatch().let {
-            videoIdMethod = it.method
+        val videoIdClassDef = videoIdParentMethodMatch.immutableClassDef
 
-            val index = it[1]
-            videoIdRegister = it.method.getInstruction<OneRegisterInstruction>(index).registerA
-            videoIdInsertIndex = index + 1
+        if (is_21_36_or_greater) {
+            // The video id is a method parameter.
+            videoIdClassDef.getVideoIdParameterMethodMatch().let {
+                videoIdMethod = it.method
+                videoIdRegister = it.method.p0Register + 1
+                videoIdInsertIndex = 0
+            }
+        } else {
+            videoIdClassDef.getVideoIdMethodMatch().let {
+                videoIdMethod = it.method
+
+                val index = it[1]
+                videoIdRegister = it.method.getInstruction<OneRegisterInstruction>(index).registerA
+                videoIdInsertIndex = index + 1
+            }
         }
 
         videoIdBackgroundPlayMethodMatch.let {
