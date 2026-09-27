@@ -12,6 +12,7 @@ import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
 import app.revanced.patches.youtube.misc.playservice.is_20_19_or_greater
 import app.revanced.patches.youtube.misc.playservice.is_20_20_or_greater
 import app.revanced.patches.youtube.misc.playservice.is_20_49_or_greater
+import app.revanced.patches.youtube.misc.playservice.is_21_36_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.patches.youtube.shared.videoQualityChangedMethodMatch
 import app.revanced.patches.youtube.video.playerresponse.Hook
@@ -139,20 +140,39 @@ val videoInformationPatch = bytecodePatch(
         }
 
         with(createVideoPlayerSeekbarMethod) {
-            val videoLengthMethodMatch = immutableClassDef.videoLengthMethodMatch
+            if (is_21_36_or_greater) {
+                val videoLengthMethodMatch = immutableClassDef.videoLengthGuardedMethodMatch
 
-            videoLengthMethodMatch.method.apply {
-                val videoLengthRegisterIndex = videoLengthMethodMatch[-1] - 2
-                val videoLengthRegister =
-                    getInstruction<OneRegisterInstruction>(videoLengthRegisterIndex).registerA
-                val dummyRegisterForLong =
-                    videoLengthRegister + 1 // Required for long values since they are wide.
+                videoLengthMethodMatch.method.apply {
+                    val videoLengthIndex = videoLengthMethodMatch[-1]
+                    val videoLengthRegister =
+                        getInstruction<OneRegisterInstruction>(videoLengthIndex).registerA
+                    val dummyRegisterForLong =
+                        videoLengthRegister + 1 // Required for long values since they are wide.
 
-                addInstruction(
-                    videoLengthMethodMatch[-1],
-                    "invoke-static {v$videoLengthRegister, v$dummyRegisterForLong}, " +
+                    // Insert where both branches of the length calculation merge.
+                    addInstructionsAtControlFlowLabel(
+                        videoLengthIndex + 1,
+                        "invoke-static {v$videoLengthRegister, v$dummyRegisterForLong}, " +
                             "$EXTENSION_CLASS_DESCRIPTOR->setVideoLength(J)V",
-                )
+                    )
+                }
+            } else {
+                val videoLengthMethodMatch = immutableClassDef.videoLengthMethodMatch
+
+                videoLengthMethodMatch.method.apply {
+                    val videoLengthRegisterIndex = videoLengthMethodMatch[-1] - 2
+                    val videoLengthRegister =
+                        getInstruction<OneRegisterInstruction>(videoLengthRegisterIndex).registerA
+                    val dummyRegisterForLong =
+                        videoLengthRegister + 1 // Required for long values since they are wide.
+
+                    addInstruction(
+                        videoLengthMethodMatch[-1],
+                        "invoke-static {v$videoLengthRegister, v$dummyRegisterForLong}, " +
+                            "$EXTENSION_CLASS_DESCRIPTOR->setVideoLength(J)V",
+                    )
+                }
             }
         }
 
@@ -282,10 +302,11 @@ val videoInformationPatch = bytecodePatch(
             )
         }
 
-        playbackSpeedClassMethod.apply {
-            val index = indexOfFirstInstructionOrThrow(Opcode.RETURN_OBJECT)
-            val register = getInstruction<OneRegisterInstruction>(index).registerA
-            val playbackSpeedClass = this.returnType
+        playbackSpeedClassMethodMatch.method.apply {
+            val playbackSpeedClass =
+                getInstruction(playbackSpeedClassMethodMatch[1]).methodReference!!.returnType
+            val index = playbackSpeedClassMethodMatch[2] + 1
+            val register = getInstruction<OneRegisterInstruction>(index - 1).registerA
 
             // Set playback speed class.
             addInstructionsAtControlFlowLabel(

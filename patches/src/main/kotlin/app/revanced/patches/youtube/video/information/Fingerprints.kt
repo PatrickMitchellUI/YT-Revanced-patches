@@ -42,10 +42,13 @@ internal fun ClassDef.getOnPlaybackSpeedItemClickMethod() = firstMethodDeclarati
 }
 
 internal val BytecodePatchContext.playerControllerSetTimeReferenceMethodMatch by
-composingFirstMethod("Media progress reported outside media playback: ") {
+composingFirstMethod {
     opcodes(
         Opcode.INVOKE_DIRECT_RANGE,
         Opcode.IGET_OBJECT,
+    )
+    instructions(
+        "Media progress reported outside media playback: "(String::startsWith),
     )
 }
 
@@ -81,6 +84,23 @@ internal val ClassDef.videoLengthMethodMatch by ClassDefComposing.composingFirst
         Opcode.MOVE_RESULT_WIDE,
         Opcode.CONST_4,
         Opcode.INVOKE_VIRTUAL,
+    )
+}
+
+internal val ClassDef.videoLengthGuardedMethodMatch by ClassDefComposing.composingFirstMethod {
+    opcodes(
+        Opcode.MOVE_RESULT_WIDE,
+        Opcode.CMP_LONG,
+        Opcode.IF_LEZ,
+        Opcode.IGET_OBJECT,
+        Opcode.CHECK_CAST,
+        Opcode.IGET_BOOLEAN,
+        Opcode.IF_NEZ,
+        Opcode.INVOKE_VIRTUAL,
+        Opcode.MOVE_RESULT_WIDE,
+        Opcode.GOTO,
+        Opcode.INVOKE_VIRTUAL,
+        Opcode.MOVE_RESULT_WIDE,
     )
 }
 
@@ -174,13 +194,12 @@ internal val ClassDef.playbackSpeedMenuSpeedChangedMethodMatch by ClassDefCompos
     instructions(allOf(Opcode.IGET(), field { type == "F" }))
 }
 
-internal val BytecodePatchContext.playbackSpeedClassMethod by gettingFirstMethodDeclaratively(
-    "PLAYBACK_RATE_MENU_BOTTOM_SHEET_FRAGMENT",
-) {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.STATIC)
-    returnType("L")
-    parameterTypes("L")
-    opcodes(Opcode.RETURN_OBJECT)
+internal val BytecodePatchContext.playbackSpeedClassMethodMatch by composingFirstMethod {
+    instructions(
+        "PLAYBACK_RATE_MENU_BOTTOM_SHEET_FRAGMENT"(),
+        after(allOf(Opcode.INVOKE_STATIC(), method { returnType == definingClass })),
+        after(Opcode.MOVE_RESULT_OBJECT()),
+    )
 }
 
 /**
