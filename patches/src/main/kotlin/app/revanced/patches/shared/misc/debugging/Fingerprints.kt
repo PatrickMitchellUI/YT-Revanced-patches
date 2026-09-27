@@ -10,46 +10,54 @@ import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patcher.returnType
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.ClassDef
+import com.android.tools.smali.dexlib2.iface.Method
+
+/**
+ * The feature flag accessors are static methods with the config object as first parameter,
+ * and instance methods of the config class since 21.x.
+ */
+internal fun Method.isFeatureFlagAccessor(valueTypes: List<String?>): Boolean {
+    if (!AccessFlags.PUBLIC.isSet(accessFlags)) return false
+
+    val types = parameterTypes.toList()
+        .let { if (AccessFlags.STATIC.isSet(accessFlags)) it.drop(1) else it }
+
+    if (types.firstOrNull() != "J") return false
+
+    return valueTypes.any { valueType ->
+        if (valueType == null) types.size == 1 else types.size == 2 && types[1] == valueType
+    }
+}
+
+internal val Method.featureFlagAccessorInvoke
+    get() = if (AccessFlags.STATIC.isSet(accessFlags)) "invoke-static" else "invoke-virtual"
 
 internal val BytecodePatchContext.experimentalFeatureFlagUtilMethod by gettingFirstImmutableMethodDeclaratively(
     "Unable to parse proto typed experiment flag: "
 ) {
     returnType("L")
-    custom {
-        // 'public static' or 'public static final'
-        AccessFlags.STATIC.isSet(accessFlags)
-                && AccessFlags.PUBLIC.isSet(accessFlags)
-                // "L", "J", "[B" or "L", "J"
-                && parameters.let { (it.size == 2 || it.size == 3) && it[1].type == "J" }
-    }
+    custom { isFeatureFlagAccessor(listOf(null, "[B")) }
 }
 
 internal val ClassDef.experimentalBooleanFeatureFlagMethodMatch by ClassDefComposing.composingFirstMethod {
     returnType("Z")
-    parameterTypes("L", "J", "Z")
-    custom {
-        // 'public static' or 'public static final'
-        AccessFlags.STATIC.isSet(accessFlags) && AccessFlags.PUBLIC.isSet(accessFlags)
-    }
+    custom { isFeatureFlagAccessor(listOf("Z")) }
 }
 
 context(_: BytecodePatchContext)
 internal fun ClassDef.getExperimentalDoubleFeatureFlagMethod() = firstMethodDeclaratively {
     returnType("D")
-    parameterTypes("L", "J", "D")
-    custom { AccessFlags.STATIC.isSet(accessFlags) }
+    custom { isFeatureFlagAccessor(listOf("D")) }
 }
 
 context(_: BytecodePatchContext)
 internal fun ClassDef.getExperimentalLongFeatureFlagMethod() = firstMethodDeclaratively {
     returnType("J")
-    parameterTypes("L", "J", "J")
-    custom { AccessFlags.STATIC.isSet(accessFlags) }
+    custom { isFeatureFlagAccessor(listOf("J")) }
 }
 
 context(_: BytecodePatchContext)
 internal fun ClassDef.getExperimentalStringFeatureFlagMethod() = firstMethodDeclaratively {
     returnType("Ljava/lang/String;")
-    parameterTypes("L", "J", "Ljava/lang/String;")
-    custom { AccessFlags.STATIC.isSet(accessFlags) }
+    custom { isFeatureFlagAccessor(listOf("Ljava/lang/String;")) }
 }

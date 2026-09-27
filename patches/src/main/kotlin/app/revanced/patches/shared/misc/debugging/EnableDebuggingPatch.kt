@@ -125,7 +125,7 @@ internal fun enableDebuggingPatch(
                     0,
                     """
                         # Invoke the copied method (helper method).
-                        invoke-static { p0, p1, p2, p3 }, $helperMethod
+                        ${it.method.featureFlagAccessorInvoke} { p0, p1, p2, p3 }, $helperMethod
                         move-result p0
                         
                         # Redefine boolean in the extension.
@@ -151,7 +151,7 @@ internal fun enableDebuggingPatch(
                         0,
                         """
                         # Invoke the copied method (helper method).
-                        invoke-static/range { p0 .. p4 }, $helperMethod
+                        $featureFlagAccessorInvoke/range { p0 .. p4 }, $helperMethod
                         move-result-wide v0
                         
                         # Move parameter registers to lower register range to use invoke-static/range.
@@ -178,7 +178,7 @@ internal fun enableDebuggingPatch(
                         0,
                         """
                         # Invoke the copied method (helper method).
-                        invoke-static/range { p0 .. p4 }, $helperMethod
+                        $featureFlagAccessorInvoke/range { p0 .. p4 }, $helperMethod
                         move-result-wide v0
                         
                         # Move parameter registers to lower register range to use invoke-static/range.
@@ -204,7 +204,7 @@ internal fun enableDebuggingPatch(
                     addInstructions(
                         0,
                         """
-                        invoke-static { p0, p1, p2, p3 }, $helperMethod
+                        $featureFlagAccessorInvoke { p0, p1, p2, p3 }, $helperMethod
                         move-result-object p0
                         
                         invoke-static { p0, p1, p2, p3 }, ${EXTENSION_CLASS_DESCRIPTOR}->isStringFeatureFlagEnabled(Ljava/lang/String;JLjava/lang/String;)Ljava/lang/String;
