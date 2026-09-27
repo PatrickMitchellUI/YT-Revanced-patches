@@ -16,12 +16,16 @@ import app.revanced.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.revanced.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.revanced.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.revanced.patches.youtube.misc.playservice.is_20_21_or_greater
+import app.revanced.patches.youtube.misc.playservice.is_21_36_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
+import app.revanced.util.addInstructionsAtControlFlowLabel
 import app.revanced.util.findFreeRegister
 import app.revanced.util.findInstructionIndicesReversedOrThrow
+import app.revanced.util.indexOfFirstInstructionOrThrow
 import app.revanced.util.indexOfFirstInstructionReversedOrThrow
+import app.revanced.util.registersUsed
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -91,12 +95,8 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
     ),
     compatibleWithPackages = arrayOf(
         "com.google.android.youtube" to setOf(
-            "20.14.43",
-            "20.21.37",
-            "20.26.46",
-            "20.31.42",
-            "20.37.48",
-            "20.40.45"
+            "20.40.45",
+            "21.36.47"
         ),
     ),
 ) {
@@ -446,18 +446,42 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
 
     // region Hide Floating microphone
 
-    showFloatingMicrophoneButtonMethodMatch.let {
-        it.method.apply {
-            val index = it[-1]
-            val register = getInstruction<TwoRegisterInstruction>(index).registerA
+    if (is_21_36_or_greater) {
+        // Skip the calls that set up the button.
+        showFloatingMicrophoneButtonControllerMethodMatch.method.apply {
+            findInstructionIndicesReversedOrThrow {
+                val reference = methodReference
+                opcode == Opcode.INVOKE_INTERFACE && reference?.returnType == "V" &&
+                    reference.parameterTypes.lastOrNull() == "Landroid/view/ViewStub;"
+            }.forEach { index ->
+                val register = findFreeRegister(index, getInstruction(index).registersUsed)
 
-            addInstructions(
-                index + 1,
-                """
+                addInstructionsAtControlFlowLabel(
+                    index,
+                    """
+                        const/4 v$register, 0x0
+                        invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideFloatingMicrophoneButton(Z)Z
+                        move-result v$register
+                        if-nez v$register, :hide
+                    """,
+                    ExternalLabel("hide", getInstruction(index + 1)),
+                )
+            }
+        }
+    } else {
+        showFloatingMicrophoneButtonMethodMatch.let {
+            it.method.apply {
+                val index = it[-1]
+                val register = getInstruction<TwoRegisterInstruction>(index).registerA
+
+                addInstructions(
+                    index + 1,
+                    """
                         invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideFloatingMicrophoneButton(Z)Z
                         move-result v$register
                     """,
-            )
+                )
+            }
         }
     }
 
@@ -570,9 +594,33 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
         """
     }
 
-    relatedChipCloudMethodMatch.patch<OneRegisterInstruction>(1) { register ->
-        "invoke-static { v$register }, " +
-                "$LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideInRelatedVideos(Landroid/view/View;)V"
+    if (is_21_36_or_greater) {
+        // 21.36 shows the chip cloud again every time the presenter binds, so hide it after binding.
+        relatedChipCloudMethodMatch.let { match ->
+            val chipCloudField = match.method.getInstruction(match[-1] + 1).fieldReference!!
+
+            match.classDef.methods.single { method ->
+                method.returnType == "V" && method.parameterTypes.size == 2 &&
+                    method.parameterTypes[1] == "Ljava/lang/Object;" &&
+                    AccessFlags.SYNTHETIC.isSet(method.accessFlags)
+            }.apply {
+                findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
+                    addInstructionsAtControlFlowLabel(
+                        index,
+                        """
+                            move-object/from16 v0, p0
+                            iget-object v0, v0, $chipCloudField
+                            invoke-static { v0 }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideInRelatedVideos(Landroid/view/View;)V
+                        """,
+                    )
+                }
+            }
+        }
+    } else {
+        relatedChipCloudMethodMatch.patch<OneRegisterInstruction>(1) { register ->
+            "invoke-static { v$register }, " +
+                    "$LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideInRelatedVideos(Landroid/view/View;)V"
+        }
     }
 
     // endregion
@@ -709,7 +757,54 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
 
     // region Hide channel tab
 
-    channelTabRendererMethod.apply {
+    if (is_21_36_or_greater) channelTabRendererMethod.apply {
+        val iteratorIndex = indexOfFirstInstructionReversedOrThrow {
+            methodReference?.name == "hasNext"
+        }
+        val iteratorRegister = getInstruction<FiveRegisterInstruction>(iteratorIndex).registerC
+
+        val nextIndex = indexOfFirstInstructionOrThrow(iteratorIndex) {
+            methodReference?.name == "next"
+        }
+        val tabType = getInstruction(nextIndex + 2).typeReference!!.type
+
+        // The tab renderer holds the tab title.
+        val rendererField = getInstruction(
+            indexOfFirstInstructionOrThrow(nextIndex, Opcode.IGET_OBJECT),
+        ).fieldReference!!
+        val titleField = getInstruction(
+            indexOfFirstInstructionOrThrow {
+                val reference = fieldReference
+                opcode == Opcode.IGET_OBJECT && reference?.definingClass == rendererField.type &&
+                    reference.type == "Ljava/lang/String;"
+            },
+        ).fieldReference!!
+
+        // Method that builds the tab view.
+        val targetIndex = indexOfFirstInstructionOrThrow(nextIndex) {
+            val reference = methodReference
+            opcode == Opcode.INVOKE_VIRTUAL && reference?.definingClass == definingClass &&
+                reference.parameterTypes.firstOrNull() == tabType
+        }
+        val tabRegister = getInstruction<FiveRegisterInstruction>(targetIndex).registerD
+        val freeRegister = findFreeRegister(targetIndex, iteratorRegister, tabRegister)
+
+        addInstructionsAtControlFlowLabel(
+            targetIndex,
+            """
+                iget-object v$freeRegister, v$tabRegister, $rendererField
+                iget-object v$freeRegister, v$freeRegister, $titleField
+                invoke-static { v$freeRegister }, ${LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR}->hideChannelTab(Ljava/lang/String;)Z
+                move-result v$freeRegister
+                if-eqz v$freeRegister, :ignore
+                invoke-interface { v$iteratorRegister }, Ljava/util/Iterator;->remove()V
+                goto :next_iterator
+                :ignore
+                nop
+            """,
+            ExternalLabel("next_iterator", getInstruction(iteratorIndex)),
+        )
+    } else channelTabRendererMethod.apply {
         val iteratorIndex = indexOfFirstInstructionReversedOrThrow {
             methodReference?.name == "hasNext"
         }

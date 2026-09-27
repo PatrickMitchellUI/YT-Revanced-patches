@@ -29,6 +29,7 @@ import app.revanced.extension.shared.settings.BooleanSetting;
 import app.revanced.extension.shared.patches.litho.Filter;
 import app.revanced.extension.shared.patches.litho.FilterGroup.ByteArrayFilterGroup;
 import app.revanced.extension.shared.patches.litho.FilterGroup.StringFilterGroup;
+import app.revanced.extension.shared.patches.litho.FilterGroupList.ByteArrayFilterGroupList;
 import app.revanced.extension.shared.patches.litho.FilterGroupList.StringFilterGroupList;
 import app.revanced.extension.shared.settings.StringSetting;
 import app.revanced.extension.youtube.patches.ChangeHeaderPatch;
@@ -89,6 +90,7 @@ public final class LayoutComponentsFilter extends Filter {
     private final ByteArrayFilterGroup ticketShelfBuffer;
     private final ByteArrayFilterGroup playerShoppingShelfBuffer;
     private final ByteTrieSearch descriptionSearch;
+    private final ByteArrayFilterGroupList channelProfileButtonsGroupList;
 
     public LayoutComponentsFilter() {
         exceptions.addPatterns(
@@ -245,7 +247,8 @@ public final class LayoutComponentsFilter extends Filter {
 
         expandableMetadata = new StringFilterGroup(
                 Settings.HIDE_EXPANDABLE_CARD,
-                "inline_expander"
+                "inline_expander",
+                "|expandable_metadata.e"
         );
 
         final var compactChannelBar = new StringFilterGroup(
@@ -360,6 +363,21 @@ public final class LayoutComponentsFilter extends Filter {
                         "subscribe_button"
                 )
         );
+        // 21.36 header buttons have no accessibility id, it is only found in their buffer.
+        channelProfileButtonsGroupList = new ByteArrayFilterGroupList();
+        channelProfileButtonsGroupList.addAll(new ByteArrayFilterGroup(
+                        Settings.HIDE_COMMUNITY_BUTTON,
+                        "community_button"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_JOIN_BUTTON,
+                        "sponsor_button"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_STORE_BUTTON,
+                        "header_store_button"
+                )
+        );
 
         horizontalShelves = new StringFilterGroup(
                 null, // Setting is checked in isFiltered()
@@ -463,7 +481,12 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         if (matchedGroup == channelProfile) {
-            return channelProfileGroupList.check(accessibility).isFiltered();
+            if (channelProfileGroupList.check(accessibility).isFiltered()) {
+                return true;
+            }
+            // Only check the buttons, their containers include the buffers of all buttons.
+            return "button".equals(getElementIdentifier(buffer))
+                    && channelProfileButtonsGroupList.check(buffer).isFiltered();
         }
 
         if (matchedGroup == communityPosts

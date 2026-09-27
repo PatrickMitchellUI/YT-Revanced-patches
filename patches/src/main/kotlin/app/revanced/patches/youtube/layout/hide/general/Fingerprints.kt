@@ -197,6 +197,23 @@ internal val BytecodePatchContext.showFloatingMicrophoneButtonMethodMatch by com
     )
 }
 
+internal val BytecodePatchContext.showFloatingMicrophoneButtonControllerMethodMatch by composingFirstMethod {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+    returnType("V")
+    parameterTypes()
+    instructions(
+        ResourceType.ID("fab"),
+        afterAtMost(10, allOf(Opcode.CHECK_CAST(), type { endsWith("/FloatingActionButton;") })),
+        afterAtMost(
+            15,
+            allOf(
+                Opcode.INVOKE_INTERFACE(),
+                method { parameterTypes.any { it.endsWith("/FloatingActionButton;") } },
+            ),
+        ),
+    )
+}
+
 internal val BytecodePatchContext.hideViewCountMethodMatch by composingFirstMethod(
     "Has attachmentRuns but drawableRequester is missing.",
 ) {
