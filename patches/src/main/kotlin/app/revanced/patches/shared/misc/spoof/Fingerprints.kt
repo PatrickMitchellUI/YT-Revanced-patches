@@ -1,6 +1,8 @@
 package app.revanced.patches.shared.misc.spoof
 
 import app.revanced.patcher.accessFlags
+import app.revanced.patcher.after
+import app.revanced.patcher.allOf
 import app.revanced.patcher.anyField
 import app.revanced.patcher.composingFirstMethod
 import app.revanced.patcher.custom
@@ -30,15 +32,17 @@ internal val BytecodePatchContext.buildInitPlaybackRequestMethodMatch by composi
     )
 }
 
-internal val BytecodePatchContext.buildPlayerRequestURIMethodMatch by composingFirstMethod("key", "asig") {
+internal val BytecodePatchContext.buildPlayerRequestURIMethodMatch by composingFirstMethod {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL, AccessFlags.DECLARED_SYNCHRONIZED)
     returnType("Ljava/lang/String;")
-    opcodes(
-        Opcode.INVOKE_VIRTUAL, // Register holds player request URI.
-        Opcode.MOVE_RESULT_OBJECT,
-        Opcode.IPUT_OBJECT,
-        Opcode.IGET_OBJECT,
-        Opcode.MONITOR_EXIT,
-        Opcode.RETURN_OBJECT,
+    parameterTypes()
+    instructions(
+        allOf(
+            Opcode.INVOKE_VIRTUAL(), // Register holds player request URI.
+            method { toString() == "Landroid/net/Uri;->toString()Ljava/lang/String;" },
+        ),
+        after(Opcode.MOVE_RESULT_OBJECT()),
+        after(Opcode.IPUT_OBJECT()),
     )
 }
 
@@ -183,12 +187,6 @@ internal val BytecodePatchContext.mediaFetchHotConfigAlternativeMethodMatch by c
 // but its exact purpose is not known. If this flag is enabled while stream spoofing
 // then videos will never start playback and load forever.
 // Flag does not seem to affect playback if spoofing is off.
-internal val BytecodePatchContext.playbackStartDescriptorFeatureFlagMethodMatch by composingFirstMethod {
-    parameterTypes()
-    returnType("Z")
-    instructions(45665455L())
-}
-
 internal fun indexOfNewUrlRequestBuilderInstruction(method: Method) = method.indexOfFirstInstruction {
     val reference = methodReference ?: return@indexOfFirstInstruction false
 

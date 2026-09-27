@@ -12,6 +12,8 @@ import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patcher.returnType
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
+import app.revanced.patches.shared.misc.featureflag.featureFlagOverridePatch
+import app.revanced.patches.shared.misc.featureflag.overrideBooleanFeatureFlag
 import app.revanced.util.*
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -43,7 +45,10 @@ internal fun spoofVideoStreamsPatch(
 ) {
     block()
 
-    dependsOn(addResourcesPatch)
+    dependsOn(
+        addResourcesPatch,
+        featureFlagOverridePatch,
+    )
 
     apply {
         addResources("shared", "misc.fix.playback.spoofVideoStreamsPatch")
@@ -323,8 +328,8 @@ internal fun spoofVideoStreamsPatch(
         }
 
         if (fixParsePlaybackResponseFeatureFlag()) {
-            playbackStartDescriptorFeatureFlagMethodMatch.method.insertLiteralOverride(
-                playbackStartDescriptorFeatureFlagMethodMatch[0],
+            overrideBooleanFeatureFlag(
+                45665455L,
                 "$EXTENSION_CLASS_DESCRIPTOR->usePlaybackStartFeatureFlag(Z)Z",
             )
         }
