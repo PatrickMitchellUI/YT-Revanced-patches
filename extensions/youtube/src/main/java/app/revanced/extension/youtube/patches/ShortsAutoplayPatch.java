@@ -24,7 +24,11 @@ public class ShortsAutoplayPatch {
         /**
          * Pause playback after 1 play.
          */
-        END_SCREEN;
+        END_SCREEN,
+        /**
+         * Advance to the next Short after 1 play.
+         */
+        AUTO_ADVANCE;
 
         static void setYTEnumValue(Enum<?> ytBehavior) {
             for (ShortsLoopBehavior rvBehavior : values()) {
@@ -36,7 +40,7 @@ public class ShortsAutoplayPatch {
                 }
             }
 
-            Logger.printException(() -> "Unknown Shorts loop behavior: " + ytBehavior.name());
+            Logger.printDebug(() -> "Ignoring Shorts loop behavior: " + ytBehavior.name());
         }
 
         /**
@@ -93,8 +97,9 @@ public class ShortsAutoplayPatch {
                 autoplay = Settings.SHORTS_AUTOPLAY.get();
             }
 
+            // 20.x has no auto advance behavior, the patch performs autoplay for single play.
             Enum<?> overrideBehavior = (autoplay
-                    ? ShortsLoopBehavior.SINGLE_PLAY
+                    ? (VersionCheckPatch.IS_21_36_OR_GREATER ? ShortsLoopBehavior.AUTO_ADVANCE : ShortsLoopBehavior.SINGLE_PLAY)
                     : ShortsLoopBehavior.REPEAT).ytEnumValue;
 
             if (overrideBehavior != null) {
@@ -108,7 +113,7 @@ public class ShortsAutoplayPatch {
                 return overrideBehavior;
             }
 
-            if (original == null) {
+            if (original == null && !VersionCheckPatch.IS_21_36_OR_GREATER) {
                 // Cannot return null, as null is used to indicate the Short was autoplayed.
                 // Unpatched app replaces null with unknown enum type (appears to fix for bad api data).
                 Enum<?> unknown = ShortsLoopBehavior.UNKNOWN.ytEnumValue;

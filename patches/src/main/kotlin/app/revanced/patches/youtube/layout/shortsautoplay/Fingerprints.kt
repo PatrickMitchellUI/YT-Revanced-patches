@@ -17,6 +17,9 @@ internal val BytecodePatchContext.reelEnumConstructorMethodMatch by composingFir
     )
 }
 
+/**
+ * 20.x
+ */
 internal val BytecodePatchContext.reelPlaybackRepeatParentMethod by gettingFirstImmutableMethodDeclaratively {
     returnType("V")
     instructions(
@@ -25,7 +28,7 @@ internal val BytecodePatchContext.reelPlaybackRepeatParentMethod by gettingFirst
 }
 
 /**
- * Matches class found in [reelPlaybackRepeatParentMethod].
+ * 20.x, matches class found in [reelPlaybackRepeatParentMethod].
  */
 context(_: BytecodePatchContext)
 internal fun ClassDef.getReelPlaybackRepeatMethod() = firstMethodDeclaratively {
@@ -34,27 +37,17 @@ internal fun ClassDef.getReelPlaybackRepeatMethod() = firstMethodDeclaratively {
     instructions(method { toString() == "Lcom/google/common/util/concurrent/ListenableFuture;->isDone()Z" })
 }
 
-internal val BytecodePatchContext.reelPlaybackMethodMatch by composingFirstMethod {
+/**
+ * 21.36+, resolves the loop behavior of a Short.
+ */
+internal fun BytecodePatchContext.getReelLoopBehaviorResolverMethod(reelEnumClass: String) = firstMethodDeclaratively {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    parameterTypes("J")
-    returnType("V")
-
-    val methodParametersPrefix = listOf("I", "L", "L")
+    returnType(reelEnumClass)
+    parameterTypes("L", "L")
     instructions(
-        field { definingClass == "Ljava/util/concurrent/TimeUnit;" && name == "MILLISECONDS" },
-        afterAtMost(
-            15,
-            method {
-                name == "<init>" &&
-                    parameterTypes.zip(methodParametersPrefix).all { (a, b) -> a.startsWith(b) }
-            },
-        ),
-        afterAtMost(
-            5,
-            allOf(
-                Opcode.INVOKE_VIRTUAL(),
-                method { returnType == "I" && parameterTypes.count() == 1 && parameterTypes.first().startsWith("L") },
-            ),
-        ),
+        method {
+            definingClass == reelEnumClass && returnType == reelEnumClass &&
+                parameterTypes.joinToString("") == "I"
+        },
     )
 }
