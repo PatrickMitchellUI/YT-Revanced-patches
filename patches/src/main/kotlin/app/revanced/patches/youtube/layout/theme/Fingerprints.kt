@@ -37,11 +37,9 @@ internal val BytecodePatchContext.showSplashScreen1MethodMatch by composingFirst
             20,
             method {
                 returnType == "V" &&
-                        parameterTypes.size == 2 &&
+                        parameterTypes.size in 2..3 &&
                         parameterTypes[0].startsWith("L") &&
                         parameterTypes[1] == "Ljava/lang/Runnable;"
-
-
             },
         ),
         afterAtMost(10, Opcode.APUT_OBJECT()),
@@ -50,7 +48,10 @@ internal val BytecodePatchContext.showSplashScreen1MethodMatch by composingFirst
             method { returnType == "V" && parameterTypes.size == 1 && parameterTypes[0].startsWith("[L") },
         ),
         after(Opcode.IGET_OBJECT()),
-        after(method { returnType == "I" && parameterTypes.isEmpty() }),
+        afterAtMost(
+            2,
+            method { returnType == "I" && parameterTypes.joinToString("").let { it.isEmpty() || it == "I" } },
+        ),
         after(Opcode.MOVE_RESULT()),
         after(method { returnType == "Z" && parameterTypes.size == 1 && parameterTypes[0] == "I" }),
         after(Opcode.MOVE_RESULT()),

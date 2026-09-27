@@ -27,9 +27,11 @@ import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
 import app.revanced.patches.youtube.misc.playservice.is_19_47_or_greater
 import app.revanced.patches.youtube.misc.playservice.is_20_02_or_greater
 import app.revanced.patches.youtube.misc.playservice.is_21_06_or_greater
+import app.revanced.patches.youtube.misc.playservice.is_21_36_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
+import app.revanced.util.findElementByAttributeValue
 import app.revanced.util.forEachChildElement
 import app.revanced.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -126,10 +128,16 @@ val themePatch = baseThemePatch(
                 // Fix the splash screen dark mode background color.
                 // In 19.32+ the dark mode splash screen is white and fades to black.
                 document("res/values-night/styles.xml").use { document ->
-                    // Create a night mode specific override for the splash screen background.
-                    val style = document.createElement("style")
-                    style.setAttribute("name", "Theme.YouTube.Home")
-                    style.setAttribute("parent", "@style/Base.V27.Theme.YouTube.Home")
+                    // Create a night mode specific override for the splash screen background,
+                    // or use the existing style if the app already declares it.
+                    val existingStyle = document.childNodes.findElementByAttributeValue(
+                        "name",
+                        "Theme.YouTube.Home",
+                    )
+                    val style = existingStyle ?: document.createElement("style").apply {
+                        setAttribute("name", "Theme.YouTube.Home")
+                        setAttribute("parent", "@style/Base.V27.Theme.YouTube.Home")
+                    }
 
                     // Fix status and navigation bar showing white on some Android devices,
                     // such as SDK 28 Android 10 medium tablet.
@@ -147,9 +155,45 @@ val themePatch = baseThemePatch(
                         style.appendChild(styleItem)
                     }
 
-                    val resourcesNode =
-                        document.getElementsByTagName("resources").item(0) as Element
-                    resourcesNode.appendChild(style)
+                    if (existingStyle == null) {
+                        val resourcesNode =
+                            document.getElementsByTagName("resources").item(0) as Element
+                        resourcesNode.appendChild(style)
+                    }
+                }
+
+                // 21.36+ sets the background colors as theme attributes instead of color resources.
+                if (is_21_36_or_greater) {
+                    val backgroundAttributes = setOf(
+                        "yt_sys_color_baseline_base_background",
+                        "yt_sys_color_baseline_raised_background",
+                        "yt_sys_color_baseline_menu_background",
+                    )
+                    val styleColors = mapOf(
+                        "yt.sys.color.baseline" to lightThemeBackgroundColor!!,
+                        "yt.sys.color.baseline.dark" to darkThemeBackgroundColorOption.value!!,
+                        "yt.sys.color.baseline.dark.cooler" to darkThemeBackgroundColorOption.value!!,
+                    )
+
+                    document("res/values/styles.xml").use { document ->
+                        val resourcesNode = document.getElementsByTagName("resources").item(0)
+                        var stylesFound = 0
+
+                        resourcesNode.forEachChildElement { style ->
+                            val color = styleColors[style.getAttribute("name")] ?: return@forEachChildElement
+                            stylesFound++
+
+                            style.forEachChildElement { item ->
+                                if (item.getAttribute("name") in backgroundAttributes) {
+                                    item.textContent = color
+                                }
+                            }
+                        }
+
+                        if (stylesFound != styleColors.size) {
+                            throw PatchException("Could not find the background color styles")
+                        }
+                    }
                 }
             }
         }
@@ -190,12 +234,8 @@ val themePatch = baseThemePatch(
 
         compatibleWith(
             "com.google.android.youtube"(
-                "20.14.43",
-                "20.21.37",
-                "20.26.46",
-                "20.31.42",
-                "20.37.48",
-                "20.40.45"
+                "20.40.45",
+                "21.36.47"
             ),
         )
     },
@@ -229,6 +269,7 @@ val themePatch = baseThemePatch(
                 preferences = preferences,
             ),
         )
+
 
         if (is_19_47_or_greater) {
             PreferenceScreen.GENERAL.addPreferences(
