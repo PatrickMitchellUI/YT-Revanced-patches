@@ -40,6 +40,19 @@ internal val BytecodePatchContext.pivotBarChangedMethodMatch by composingFirstMe
     )
 }
 
+/**
+ * 21.36+ BottomBarModel.toString(), used to find the shouldShowPivotBar field.
+ */
+internal val BytecodePatchContext.bottomBarModelToStringMethodMatch by composingFirstMethod {
+    name("toString")
+    returnType("Ljava/lang/String;")
+    instructions(
+        "BottomBarModel{pivotBarStyle="(),
+        ", shouldShowPivotBar="(),
+        afterAtMost(5, allOf(Opcode.IGET_BOOLEAN(), field { type == "Z" })),
+    )
+}
+
 internal val BytecodePatchContext.setWordmarkHeaderMethod by gettingFirstMethodDeclaratively {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returnType("V")

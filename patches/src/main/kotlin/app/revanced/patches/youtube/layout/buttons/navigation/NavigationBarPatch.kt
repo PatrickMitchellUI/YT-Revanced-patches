@@ -1,7 +1,11 @@
 package app.revanced.patches.youtube.layout.buttons.navigation
 
+import app.revanced.patcher.*
 import app.revanced.patcher.extensions.addInstruction
 import app.revanced.patcher.extensions.addInstructions
+import app.revanced.patcher.extensions.ExternalLabel
+import app.revanced.patcher.extensions.addInstructionsWithLabels
+import app.revanced.patcher.extensions.fieldReference
 import app.revanced.patcher.extensions.getInstruction
 import app.revanced.patcher.extensions.methodReference
 import app.revanced.patcher.patch.bytecodePatch
@@ -23,6 +27,7 @@ import app.revanced.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.revanced.patches.youtube.misc.playservice.is_19_25_or_greater
 import app.revanced.patches.youtube.misc.playservice.is_20_15_or_greater
 import app.revanced.patches.youtube.misc.playservice.is_20_31_or_greater
+import app.revanced.patches.youtube.misc.playservice.is_21_36_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
@@ -32,6 +37,9 @@ import app.revanced.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import kotlin.collections.plusAssign
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
@@ -140,6 +148,68 @@ val navigationBarPatch = bytecodePatch(
                 45680008L,
                 "$EXTENSION_CLASS_DESCRIPTOR->useAnimatedNavigationButtons(Z)Z",
             )
+        }
+
+        // 21.36 builds a hidden bottom bar model if the last feed scroll hid the pivot bar,
+        // for example when the player is minimized. Scrolling up then cannot show the pivot bar,
+        // because the model is only built again when the player or page changes.
+        // Allow showing the pivot bar if the last scroll was up and the pivot bar is not blocked by the player.
+        if (is_21_36_or_greater) {
+            val shouldShowPivotBarField = bottomBarModelToStringMethodMatch.let {
+                it.method.getInstruction<ReferenceInstruction>(it[-1]).reference as FieldReference
+            }
+
+            // The method that builds the bottom bar model, used to find the pivot bar controller fields.
+            val modelMatch = firstMethodComposite {
+                instructions(
+                    allOf(Opcode.IGET_BOOLEAN(), field { this == shouldShowPivotBarField }),
+                    after(Opcode.IPUT_BOOLEAN()),
+                    afterAtMost(3, method { toString() == "Lj\$/util/Optional;->isPresent()Z" }),
+                    afterAtMost(6, Opcode.SGET_OBJECT()), // Scroll direction DOWN.
+                    after(Opcode.IF_NE()),
+                )
+            }
+
+            val (pivotBarAllowedField, scrollDirectionField, scrollDirectionDown) = modelMatch.method.let {
+                Triple(
+                    it.getInstruction<ReferenceInstruction>(modelMatch[0] - 1).reference as FieldReference,
+                    it.getInstruction<ReferenceInstruction>(modelMatch[2] - 1).reference as FieldReference,
+                    it.getInstruction<ReferenceInstruction>(modelMatch[3]).reference as FieldReference,
+                )
+            }
+
+            // Show pivot bar method.
+            firstClassDef(pivotBarAllowedField.definingClass).methods.single { method ->
+                method.returnType == "V" && method.parameterTypes == listOf("Z") &&
+                    method.implementation?.instructions?.any { instruction ->
+                        instruction.opcode == Opcode.IGET_BOOLEAN &&
+                            (instruction as ReferenceInstruction).reference == shouldShowPivotBarField
+                    } == true
+            }.apply {
+                val index = indexOfFirstInstructionOrThrow {
+                    opcode == Opcode.IGET_BOOLEAN && fieldReference == shouldShowPivotBarField
+                }
+                val register = getInstruction<TwoRegisterInstruction>(index).registerA
+
+                // Registers v1, v3 and v4 are free here.
+                addInstructionsWithLabels(
+                    index + 1,
+                    """
+                        iget-object v3, p0, $scrollDirectionField
+                        invoke-virtual { v3 }, Lj${'$'}/util/Optional;->isPresent()Z
+                        move-result v4
+                        if-eqz v4, :original
+                        invoke-virtual { v3 }, Lj${'$'}/util/Optional;->get()Ljava/lang/Object;
+                        move-result-object v3
+                        sget-object v4, $scrollDirectionDown
+                        if-eq v3, v4, :original
+                        iget-boolean v1, p0, $pivotBarAllowedField
+                        if-eqz v1, :original
+                        const/4 v$register, 0x1
+                    """,
+                    ExternalLabel("original", getInstruction(index + 1)),
+                )
+            }
         }
 
         arrayOf(
