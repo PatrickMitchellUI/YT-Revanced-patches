@@ -9,6 +9,7 @@ import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.youtube.layout.seekbar.seekbarColorPatch
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
 import app.revanced.patches.youtube.misc.playservice.is_20_28_or_greater
+import app.revanced.patches.youtube.misc.playservice.is_21_36_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
@@ -35,8 +36,16 @@ val hideSeekbarPatch = bytecodePatch(
         PreferenceScreen.SEEKBAR.addPreferences(
             SwitchPreference("revanced_hide_seekbar"),
             SwitchPreference("revanced_hide_seekbar_thumbnail"),
-            SwitchPreference("revanced_fullscreen_large_seekbar"),
         )
+
+        // Flag was removed in 21.36.
+        val useFullscreenLargeSeekbarFlag = is_20_28_or_greater && !is_21_36_or_greater
+
+        if (useFullscreenLargeSeekbarFlag) {
+            PreferenceScreen.SEEKBAR.addPreferences(
+                SwitchPreference("revanced_fullscreen_large_seekbar"),
+            )
+        }
 
         seekbarMethod.immutableClassDef.getSeekbarOnDrawMethodMatch().method.addInstructionsWithLabels(
             0,
@@ -51,7 +60,7 @@ val hideSeekbarPatch = bytecodePatch(
             """,
         )
 
-        if (is_20_28_or_greater) {
+        if (useFullscreenLargeSeekbarFlag) {
             fullscreenLargeSeekbarFeatureFlagMethodMatch.let {
                 it.method.insertLiteralOverride(
                     it[0],

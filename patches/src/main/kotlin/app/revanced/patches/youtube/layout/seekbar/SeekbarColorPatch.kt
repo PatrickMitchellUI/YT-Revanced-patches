@@ -208,9 +208,10 @@ val seekbarColorPatch = bytecodePatch(
                     factoryStreamReturnType = it.returnType
                 }
 
+            // Method is private since 21.02.
             val lottieAnimationViewSetAnimationStreamMethod = firstImmutableMethodDeclaratively {
                 definingClass(lottieAnimationViewSetAnimationIntMethod.immutableClassDef.type)
-                accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+                accessFlags(AccessFlags.FINAL)
                 parameterTypes(factoryStreamReturnType.toString())
                 returnType("V")
             }
