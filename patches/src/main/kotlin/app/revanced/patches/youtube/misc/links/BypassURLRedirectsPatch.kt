@@ -1,8 +1,10 @@
 package app.revanced.patches.youtube.misc.links
 
-import app.revanced.patcher.CompositeMatch
+import app.revanced.com.android.tools.smali.dexlib2.mutable.MutableMethod
+import app.revanced.patcher.extensions.addInstructions
 import app.revanced.patcher.extensions.getInstruction
 import app.revanced.patcher.extensions.replaceInstruction
+import app.revanced.patcher.patch.PatchException
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
@@ -12,6 +14,7 @@ import app.revanced.patches.youtube.misc.playservice.is_20_37_or_greater
 import app.revanced.patches.youtube.misc.playservice.is_20_49_or_greater
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
+import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
@@ -42,18 +45,34 @@ val bypassURLRedirectsPatch = bytecodePatch(
             SwitchPreference("revanced_bypass_url_redirects"),
         )
 
-        arrayOf(
-            if (is_20_49_or_greater) {
-                // Code has moved, and now seems to be an account URL
-                // and may not be anything to do with sharing links.
-                null to -1
-            } else if (is_20_37_or_greater) {
-                abUriParserMethodMatch to 2
-            } else {
-                abUriParserLegacyMethodMatch to 2
-            }
-        ).forEach { (match, index) ->
-            val insertIndex = match?.get(index) ?: return@forEach
+        if (is_20_49_or_greater) {
+            // The redirect link is no longer parsed from the endpoint.
+            // Replace it where it is opened in the browser.
+            fun MutableMethod.replaceUriParameter(register: String) = addInstructions(
+                0,
+                """
+                    invoke-virtual { $register }, Landroid/net/Uri;->toString()Ljava/lang/String;
+                    move-result-object v0
+                    invoke-static { v0 }, $EXTENSION_CLASS_DESCRIPTOR->parseRedirectUri(Ljava/lang/String;)Landroid/net/Uri;
+                    move-result-object $register
+                """,
+            )
+
+            // Browser.
+            launchBrowserIntentForUriMethod.replaceUriParameter("p1")
+
+            // Custom tab.
+            customTabsIntentMethodMatch.classDef.methods.filter { method ->
+                AccessFlags.PUBLIC.isSet(method.accessFlags) &&
+                    !AccessFlags.STATIC.isSet(method.accessFlags) &&
+                    method.returnType == "Z" &&
+                    method.parameterTypes == listOf("Landroid/content/Context;", "Landroid/net/Uri;")
+            }.also { methods ->
+                if (methods.isEmpty()) throw PatchException("Could not find the custom tab methods")
+            }.forEach { it.replaceUriParameter("p2") }
+        } else {
+            val match = if (is_20_37_or_greater) abUriParserMethodMatch else abUriParserLegacyMethodMatch
+            val insertIndex = match[2]
             val uriStringRegister =
                 match.method.getInstruction<FiveRegisterInstruction>(insertIndex).registerC
 

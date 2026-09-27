@@ -34,3 +34,23 @@ internal val BytecodePatchContext.abUriParserMethodMatch by composingFirstMethod
         method { toString() == "Ljava/util/List;->get(I)Ljava/lang/Object;" },
     )
 }
+
+/**
+ * 20.49+ ExternalIntents.launchBrowserIntentForUri(Context, Uri), which opens links in the browser.
+ */
+internal val BytecodePatchContext.launchBrowserIntentForUriMethod by gettingFirstMethodDeclaratively(
+    "launchBrowserIntentForUri",
+) {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.STATIC)
+    returnType("Z")
+    parameterTypes("Landroid/content/Context;", "Landroid/net/Uri;")
+}
+
+/**
+ * 20.49+ Resolves to the class that opens links in a custom tab.
+ */
+internal val BytecodePatchContext.customTabsIntentMethodMatch by composingFirstMethod {
+    instructions(
+        "android.support.customtabs.extra.SEND_TO_EXTERNAL_HANDLER"(),
+    )
+}
