@@ -16,10 +16,10 @@ import app.revanced.patcher.instructions
 import app.revanced.patcher.invoke
 import app.revanced.patcher.method
 import app.revanced.patcher.name
-import app.revanced.patcher.opcodes
 import app.revanced.patcher.parameterTypes
 import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patcher.returnType
+import app.revanced.patcher.type
 import app.revanced.patches.shared.misc.mapping.ResourceType
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -109,20 +109,19 @@ internal val BytecodePatchContext.rollingNumberTextViewAnimationUpdateMethodMatc
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returnType("V")
     parameterTypes("Landroid/graphics/Bitmap;")
-    opcodes(
-        Opcode.NEW_INSTANCE, // bitmap ImageSpan
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT_OBJECT,
-        Opcode.CONST_4,
-        Opcode.INVOKE_DIRECT,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT,
-        Opcode.CONST_16,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT,
-        Opcode.INT_TO_FLOAT,
-        Opcode.INVOKE_VIRTUAL, // set textview padding using bitmap width
+    instructions(
+        allOf(Opcode.NEW_INSTANCE(), type("Landroid/text/style/ImageSpan;")),
+        after(Opcode.INVOKE_VIRTUAL()),
+        after(Opcode.MOVE_RESULT_OBJECT()),
+        afterAtMost(2, Opcode.INVOKE_DIRECT()), // 21.36+ has no const/4 before the invoke.
+        after(Opcode.INVOKE_VIRTUAL()),
+        after(Opcode.MOVE_RESULT()),
+        after(Opcode.CONST_16()),
+        after(Opcode.INVOKE_VIRTUAL()),
+        after(Opcode.INVOKE_VIRTUAL()),
+        after(Opcode.MOVE_RESULT()),
+        after(Opcode.INT_TO_FLOAT()),
+        after(Opcode.INVOKE_VIRTUAL()), // set textview padding using bitmap width
     )
     custom {
         immutableClassDef.superclass == "Landroid/support/v7/widget/AppCompatTextView;" ||
