@@ -56,6 +56,17 @@ internal val ClassDef.rollingNumberMeasureStaticLabelMethodMatch by ClassDefComp
     )
 }
 
+/**
+ * Matches to class found in [rollingNumberMeasureStaticLabelParentMethod].
+ */
+context(_: BytecodePatchContext)
+internal fun ClassDef.getRollingNumberMeasureTextMethod() = firstMethodDeclaratively {
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+    returnType("F")
+    parameterTypes("Ljava/lang/String;")
+    instructions(method { toString() == "Landroid/text/TextPaint;->measureText([CII)F" })
+}
+
 internal val BytecodePatchContext.rollingNumberMeasureStaticLabelParentMethod by gettingFirstImmutableMethodDeclaratively {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returnType("Ljava/lang/String;")

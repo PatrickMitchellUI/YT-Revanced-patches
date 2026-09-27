@@ -30,6 +30,7 @@ import app.revanced.util.addInstructionsAtControlFlowLabel
 import app.revanced.util.cloneMutableAndPreserveParameters
 import app.revanced.util.findFreeRegister
 import app.revanced.util.indexOfFirstInstructionOrThrow
+import app.revanced.util.indexOfFirstInstructionReversedOrThrow
 import app.revanced.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
@@ -60,12 +61,8 @@ val returnYouTubeDislikePatch = bytecodePatch(
 
     compatibleWith(
         "com.google.android.youtube"(
-            "20.14.43",
-            "20.21.37",
-            "20.26.46",
-            "20.31.42",
-            "20.37.48",
-            "20.40.45"
+            "20.40.45",
+            "21.36.47"
         ),
     )
 
@@ -214,11 +211,27 @@ val returnYouTubeDislikePatch = bytecodePatch(
                     val conversionContextPathRegister =
                         findFreeRegister(insertIndex, charSequenceRegister)
 
-                    addInstructions(
-                        insertIndex,
+                    // 21.36 reuses the p0 register. Use the conversion context the method already read.
+                    val getConversionContext = if (is_21_36_or_greater) {
+                        val conversionContextRegister = getInstruction<TwoRegisterInstruction>(
+                            indexOfFirstInstructionReversedOrThrow(insertIndex) {
+                                opcode == Opcode.IGET_OBJECT &&
+                                    fieldReference?.toString() == conversionContextField
+                            },
+                        ).registerA
+
+                        "move-object/from16 v$conversionContextPathRegister, v$conversionContextRegister"
+                    } else {
                         """
                             move-object/from16 v$conversionContextPathRegister, p0
                             iget-object v$conversionContextPathRegister, v$conversionContextPathRegister, $conversionContextField
+                        """
+                    }
+
+                    addInstructions(
+                        insertIndex,
+                        """
+                            $getConversionContext
                             iget-object v$conversionContextPathRegister, v$conversionContextPathRegister, $conversionContextPathBuilderField
                             invoke-static { v$conversionContextPathRegister, v$charSequenceRegister }, $EXTENSION_CLASS_DESCRIPTOR->onLithoTextLoaded(Ljava/lang/Object;Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
                             move-result-object v$charSequenceRegister
@@ -270,7 +283,23 @@ val returnYouTubeDislikePatch = bytecodePatch(
 
         // Rolling Number text views use the measured width of the raw string for layout.
         // Modify the measure text calculation to include the left drawable separator if needed.
-        rollingNumberMeasureAnimatedTextMethodMatch.let {
+        if (is_21_36_or_greater) {
+            // The measured width is returned directly.
+            rollingNumberMeasureStaticLabelParentMethod.immutableClassDef
+                .getRollingNumberMeasureTextMethod().apply {
+                    val returnIndex = indexOfFirstInstructionReversedOrThrow(Opcode.RETURN)
+                    val measuredTextWidthRegister =
+                        getInstruction<OneRegisterInstruction>(returnIndex).registerA
+
+                    addInstructionsAtControlFlowLabel(
+                        returnIndex,
+                        """
+                            invoke-static { p1, v$measuredTextWidthRegister }, $EXTENSION_CLASS_DESCRIPTOR->onRollingNumberMeasured(Ljava/lang/String;F)F
+                            move-result v$measuredTextWidthRegister
+                        """,
+                    )
+                }
+        } else rollingNumberMeasureAnimatedTextMethodMatch.let {
             // Additional check to verify the opcodes are at the start of the method
             if (it[0] != 0) throw PatchException("Unexpected opcode location")
             val endIndex = it[-1]
