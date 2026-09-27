@@ -12,6 +12,8 @@ import app.revanced.patches.all.misc.packagename.setOrGetFallbackPackageName
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
 import app.revanced.patches.shared.boldIconsFeatureFlagMethodMatch
+import app.revanced.patches.shared.misc.featureflag.featureFlagOverridePatch
+import app.revanced.patches.shared.misc.featureflag.overrideBooleanFeatureFlag
 import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
 import app.revanced.patches.shared.misc.settings.overrideThemeColors
 import app.revanced.patches.shared.misc.settings.preference.*
@@ -21,8 +23,10 @@ import app.revanced.patches.youtube.misc.check.checkEnvironmentPatch
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
 import app.revanced.patches.youtube.misc.fix.contentprovider.fixContentProviderPatch
 import app.revanced.patches.youtube.misc.fix.playbackspeed.fixPlaybackSpeedWhilePlayingPatch
+import app.revanced.patches.youtube.misc.fix.preference.fixPreferenceIconPatch
 import app.revanced.patches.youtube.misc.playservice.is_19_34_or_greater
 import app.revanced.patches.youtube.misc.playservice.is_20_31_or_greater
+import app.revanced.patches.youtube.misc.playservice.is_21_36_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.util.*
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -166,7 +170,9 @@ val settingsPatch = bytecodePatch(
         settingsResourcePatch,
         addResourcesPatch,
         versionCheckPatch,
+        fixPreferenceIconPatch,
         fixPlaybackSpeedWhilePlayingPatch,
+        featureFlagOverridePatch,
         fixContentProviderPatch,
         // Currently there is no easy way to make a mandatory patch,
         // so for now this is a dependent of this patch.
@@ -187,7 +193,10 @@ val settingsPatch = bytecodePatch(
             selectable = true,
         )
 
-        if (is_19_34_or_greater) {
+        // Old settings menus are half broken with 21.36+.
+        val restoreOldSettingsMenus = is_19_34_or_greater && !is_21_36_or_greater
+
+        if (restoreOldSettingsMenus) {
             PreferenceScreen.GENERAL.addPreferences(
                 SwitchPreference("revanced_restore_old_settings_menus"),
             )
@@ -241,14 +250,26 @@ val settingsPatch = bytecodePatch(
         }
 
         // Add setting to force Cairo settings fragment on/off.
-        cairoFragmentConfigMethodMatch.method.insertLiteralOverride(
-            cairoFragmentConfigMethodMatch[0],
-            "$YOUTUBE_ACTIVITY_HOOK_CLASS_DESCRIPTOR->useCairoSettingsFragment(Z)Z",
-        )
+        if (restoreOldSettingsMenus) {
+            overrideBooleanFeatureFlag(
+                45532100L,
+                "$YOUTUBE_ACTIVITY_HOOK_CLASS_DESCRIPTOR->useCairoSettingsFragment(Z)Z",
+            )
+        } else {
+            // The old settings menus are half broken, but YouTube shows them on the first launch
+            // of a clean install, as the flag is off until the server config is loaded.
+            overrideBooleanFeatureFlag(45532100L, true)
+        }
 
         // Bold icon resources are found starting in 20.23, but many YT icons are not bold.
         // 20.31 is the first version that seems to have all the bold icons.
-        if (is_20_31_or_greater) {
+        if (is_21_36_or_greater) {
+            // The flag is read inline at each call site.
+            overrideBooleanFeatureFlag(
+                45685201L,
+                "$YOUTUBE_ACTIVITY_HOOK_CLASS_DESCRIPTOR->useBoldIcons(Z)Z",
+            )
+        } else if (is_20_31_or_greater) {
             boldIconsFeatureFlagMethodMatch.let {
                 it.method.insertLiteralOverride(
                     it[0],
