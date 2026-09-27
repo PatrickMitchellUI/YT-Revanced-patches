@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import app.revanced.extension.shared.Logger;
 import app.revanced.extension.shared.ResourceType;
 import app.revanced.extension.shared.Utils;
+import app.revanced.extension.youtube.patches.LoopVideoPatch;
 import app.revanced.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -104,8 +105,15 @@ public class LoopVideoButton {
         PlayerControlButton localInstance = instance;
         if (localInstance == null) return;
 
-        final boolean currentState = Settings.LOOP_VIDEO.get();
+        final boolean currentState = LoopVideoPatch.isLoopVideoEnabled();
         localInstance.setIcon(currentState ? LOOP_VIDEO_ON : LOOP_VIDEO_OFF);
+    }
+
+    /**
+     * Update icon after the loop state changed.
+     */
+    public static void updateIcon() {
+        Utils.runOnMainThread(LoopVideoButton::updateIconFromSettings);
     }
 
     /**
@@ -117,15 +125,18 @@ public class LoopVideoButton {
         try {
             Utils.verifyOnMainThread();
 
-            final boolean currentState = Settings.LOOP_VIDEO.get();
+            final boolean currentState = LoopVideoPatch.isLoopVideoEnabled();
 
             if (userClickedButton) {
                 final boolean newState = !currentState;
 
-                Settings.LOOP_VIDEO.save(newState);
-                Utils.showToastShort(str(newState
-                        ? "revanced_loop_video_button_toast_on"
-                        : "revanced_loop_video_button_toast_off"));
+                LoopVideoPatch.setLoopVideoEnabled(newState);
+                // The native loop shows its own toast.
+                if (!LoopVideoPatch.usesNativeLoop()) {
+                    Utils.showToastShort(str(newState
+                            ? "revanced_loop_video_button_toast_on"
+                            : "revanced_loop_video_button_toast_off"));
+                }
 
                 // Animate with the new state.
                 if (buttonView != null) animateButtonTransition(buttonView, newState);
