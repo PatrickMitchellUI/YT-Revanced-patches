@@ -11,6 +11,7 @@ public final class SanitizeSharingLinksPatch {
 
     private static final LinkSanitizer sanitizer = new LinkSanitizer(
             "si",
+            "is", // Replaces "si" in 21.x.
             "feature" // Old tracking parameter name, and may be obsolete.
     );
 
