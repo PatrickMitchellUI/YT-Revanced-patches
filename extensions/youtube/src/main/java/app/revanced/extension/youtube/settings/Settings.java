@@ -6,6 +6,7 @@ import static app.revanced.extension.shared.settings.Setting.parent;
 import static app.revanced.extension.shared.settings.Setting.parentNot;
 import static app.revanced.extension.shared.settings.Setting.parentsAll;
 import static app.revanced.extension.shared.settings.Setting.parentsAny;
+import static app.revanced.extension.youtube.patches.ActionButtonStylePatch.ActionButtonStyle;
 import static app.revanced.extension.youtube.patches.ChangeFormFactorPatch.FormFactor;
 import static app.revanced.extension.youtube.patches.ChangeHeaderPatch.HeaderLogo;
 import static app.revanced.extension.youtube.patches.ChangeStartPagePatch.ChangeStartPageTypeAvailability;
@@ -244,10 +245,16 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final BooleanSetting HIDE_QUIZZES_SECTION = new BooleanSetting("revanced_hide_quizzes_section", FALSE);
 
     // Action buttons
+    public static final EnumSetting<ActionButtonStyle> ACTION_BUTTON_STYLE = new EnumSetting<>("revanced_action_button_style", ActionButtonStyle.DEFAULT);
     public static final BooleanSetting DISABLE_LIKE_SUBSCRIBE_GLOW = new BooleanSetting("revanced_disable_like_subscribe_glow", FALSE);
     public static final BooleanSetting HIDE_ASK_BUTTON = new BooleanSetting("revanced_hide_ask_button", FALSE);
     public static final BooleanSetting HIDE_CLIP_BUTTON = new BooleanSetting("revanced_hide_clip_button", FALSE, "revanced_hide_clip_button_user_dialog_message");
     public static final BooleanSetting HIDE_COMMENTS_BUTTON = new BooleanSetting("revanced_hide_comments_button", FALSE);
+    public static final BooleanSetting HIDE_COMPACT_DISLIKE_BUTTON = new BooleanSetting("revanced_hide_compact_dislike_button", FALSE);
+    public static final BooleanSetting HIDE_COMPACT_LIKE_BUTTON = new BooleanSetting("revanced_hide_compact_like_button", FALSE);
+    public static final BooleanSetting HIDE_COMPACT_MORE_ACTIONS_BUTTON = new BooleanSetting("revanced_hide_compact_more_actions_button", FALSE);
+    public static final BooleanSetting HIDE_COMPACT_SAVE_BUTTON = new BooleanSetting("revanced_hide_compact_save_button", FALSE);
+    public static final BooleanSetting HIDE_COMPACT_SHARE_BUTTON = new BooleanSetting("revanced_hide_compact_share_button", FALSE);
     public static final BooleanSetting HIDE_DOWNLOAD_BUTTON = new BooleanSetting("revanced_hide_download_button", FALSE);
     public static final BooleanSetting HIDE_HYPE_BUTTON = new BooleanSetting("revanced_hide_hype_button", FALSE);
     public static final BooleanSetting HIDE_LIKE_DISLIKE_BUTTON = new BooleanSetting("revanced_hide_like_dislike_button", FALSE);

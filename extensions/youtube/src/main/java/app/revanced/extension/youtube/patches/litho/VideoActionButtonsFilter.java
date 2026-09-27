@@ -22,6 +22,8 @@ public final class VideoActionButtonsFilter extends Filter {
     private final StringFilterGroup likeSubscribeGlow;
     private final StringFilterGroup actionBarGroup;
     private final StringFilterGroup buttonFilterPathGroup;
+    private final StringFilterGroupList compactButtonsGroupList = new StringFilterGroupList();
+    private final StringFilterGroup compactShareButton;
     private final StringFilterGroupList accessibilityButtonsGroupList = new StringFilterGroupList();
     private final ByteArrayFilterGroupList bufferButtonsGroupList = new ByteArrayFilterGroupList();
 
@@ -64,6 +66,31 @@ public final class VideoActionButtonsFilter extends Filter {
         );
 
         addPathCallbacks(buttonFilterPathGroup);
+
+        // Buttons of the compact action bar.
+        compactButtonsGroupList.addAll(
+                new StringFilterGroup(
+                        Settings.HIDE_COMPACT_LIKE_BUTTON,
+                        "|like_button_with_vm_input.e"
+                ),
+                new StringFilterGroup(
+                        Settings.HIDE_COMPACT_DISLIKE_BUTTON,
+                        "|dislike_button_vm.e"
+                ),
+                new StringFilterGroup(
+                        Settings.HIDE_COMPACT_SAVE_BUTTON,
+                        "|save_to_playlist_button_vm.e"
+                ),
+                new StringFilterGroup(
+                        Settings.HIDE_COMPACT_MORE_ACTIONS_BUTTON,
+                        "|overflow_menu_button.e"
+                )
+        );
+        compactShareButton = new StringFilterGroup(
+                Settings.HIDE_COMPACT_SHARE_BUTTON,
+                "id.video.share.button"
+        );
+        compactButtonsGroupList.forEach(this::addPathCallbacks);
 
         if (VersionCheckPatch.IS_20_22_OR_GREATER) {
             // FIXME: Most buttons do not have an accessibilityId.
@@ -147,8 +174,12 @@ public final class VideoActionButtonsFilter extends Filter {
     }
 
     private boolean hideButtons(String path, String accessibility, byte[] buffer) {
+        if (path.startsWith(COMPACTIFY_VIDEO_ACTION_BAR_PATH)) {
+            return compactShareButton.check(accessibility).isFiltered();
+        }
+
         // Make sure the current path is the right one to avoid false positives.
-        if (!path.startsWith(VIDEO_ACTION_BAR_PATH) && !path.startsWith(COMPACTIFY_VIDEO_ACTION_BAR_PATH)) {
+        if (!path.startsWith(VIDEO_ACTION_BAR_PATH)) {
             return false;
         }
 
@@ -175,6 +206,12 @@ public final class VideoActionButtonsFilter extends Filter {
             return hideButtons(path, accessibility, buffer);
         }
 
-        return true;
+        // Compact action bar buttons have their own settings.
+        final boolean isCompactActionBar = path.startsWith(COMPACTIFY_VIDEO_ACTION_BAR_PATH);
+        for (StringFilterGroup group : compactButtonsGroupList) {
+            if (matchedGroup == group) return isCompactActionBar;
+        }
+
+        return !isCompactActionBar;
     }
 }
