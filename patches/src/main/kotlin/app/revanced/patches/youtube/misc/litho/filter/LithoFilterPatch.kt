@@ -59,13 +59,16 @@ val lithoFilterPatch = lithoFilterPatch(
         }
 
         // Turn off a feature flag that enables native code of protobuf parsing (Upb protobuf).
-        lithoConverterBufferUpbFeatureFlagMethodMatch.let {
-            // 20.22 the flag is still enabled in one location, but what it does is not known.
-            // Disable it anyway.
-            it.method.insertLiteralOverride(
-                it[0],
-                false,
-            )
+        // Flag was removed in 21.36.
+        if (!is_21_36_or_greater) {
+            lithoConverterBufferUpbFeatureFlagMethodMatch.let {
+                // 20.22 the flag is still enabled in one location, but what it does is not known.
+                // Disable it anyway.
+                it.method.insertLiteralOverride(
+                    it[0],
+                    false,
+                )
+            }
         }
         // endregion
     }
