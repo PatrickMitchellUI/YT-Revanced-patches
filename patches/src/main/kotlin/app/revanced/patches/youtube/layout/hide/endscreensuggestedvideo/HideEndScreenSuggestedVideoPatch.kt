@@ -31,12 +31,8 @@ val hideEndScreenSuggestedVideoPatch = bytecodePatch(
 
     compatibleWith(
         "com.google.android.youtube"(
-            "20.14.43",
-            "20.21.37",
-            "20.26.46",
-            "20.31.42",
-            "20.37.48",
-            "20.40.45"
+            "20.40.45",
+            "21.36.47"
         ),
     )
 
