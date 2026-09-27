@@ -22,6 +22,16 @@ internal val BytecodePatchContext.playerTypeEnumMethod by gettingFirstImmutableM
     accessFlags(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR)
 }
 
+/**
+ * Maps to a player type and is declared in the class that holds the current player type.
+ */
+internal fun BytecodePatchContext.getPlayerTypeControllerMethod(playerTypeClass: String) =
+    firstMethodDeclaratively {
+        accessFlags(AccessFlags.PUBLIC, AccessFlags.STATIC)
+        returnType(playerTypeClass)
+        parameterTypes("I", playerTypeClass)
+    }
+
 internal val BytecodePatchContext.reelWatchPagerMethodMatch by composingFirstMethod {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returnType("Landroid/view/View;")
