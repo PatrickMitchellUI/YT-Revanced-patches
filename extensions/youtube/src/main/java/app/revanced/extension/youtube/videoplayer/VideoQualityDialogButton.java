@@ -184,7 +184,7 @@ public class VideoQualityDialogButton {
     /**
      * Shows a dialog with available video qualities, excluding Auto, with a title showing the current quality.
      */
-    private static void showVideoQualityDialog(Context context) {
+    public static void showVideoQualityDialog(Context context) {
         try {
             VideoQualityInterface[] currentQualities = VideoInformation.getCurrentQualities();
             VideoQualityInterface currentQuality = VideoInformation.getCurrentQuality();

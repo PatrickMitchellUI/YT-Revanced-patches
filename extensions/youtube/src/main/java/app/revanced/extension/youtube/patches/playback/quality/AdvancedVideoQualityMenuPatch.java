@@ -9,7 +9,9 @@ import android.widget.ListView;
 import app.revanced.extension.shared.Logger;
 import app.revanced.extension.shared.Utils;
 import app.revanced.extension.youtube.patches.litho.AdvancedVideoQualityMenuFilter;
+import app.revanced.extension.youtube.patches.VersionCheckPatch;
 import app.revanced.extension.youtube.settings.Settings;
+import app.revanced.extension.youtube.videoplayer.VideoQualityDialogButton;
 
 /**
  * This patch contains the logic to always open the advanced video quality menu.
@@ -47,6 +49,26 @@ public final class AdvancedVideoQualityMenuPatch {
 
                 View advancedQualityView = firstChildGroup.getChildAt(3);
                 if (advancedQualityView == null) {
+                    return;
+                }
+
+                if (VersionCheckPatch.IS_21_36_OR_GREATER) {
+                    // The advanced menu opens in the same bottom sheet and is left empty
+                    // when opened by the patch. Hide and dismiss the sheet before it is drawn,
+                    // and show the quality dialog instead.
+                    if (!(quickQualityViewParent.getParent() instanceof ViewGroup sheetContainer)) {
+                        return;
+                    }
+
+                    // Dismiss view [R.id.touch_outside] is the first child of the container. Phone layout only.
+                    View touchOutsideView = sheetContainer.getChildAt(0);
+                    touchOutsideView.setSoundEffectsEnabled(false);
+                    touchOutsideView.performClick();
+
+                    ((ViewGroup) quickQualityViewParent).setVisibility(View.GONE);
+                    sheetContainer.setVisibility(View.GONE);
+
+                    VideoQualityDialogButton.showVideoQualityDialog(recyclerView.getContext());
                     return;
                 }
 
