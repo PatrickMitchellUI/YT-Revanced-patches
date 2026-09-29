@@ -7,16 +7,18 @@ import android.preference.SwitchPreference;
 import android.util.AttributeSet;
 
 import app.revanced.extension.shared.settings.BaseSettings;
-import app.revanced.extension.shared.spoof.ClientType;
 import app.revanced.extension.shared.spoof.SpoofVideoStreamsPatch;
 
 @SuppressWarnings({"deprecation", "unused"})
 public class ForceOriginalAudioSwitchPreference extends SwitchPreference {
 
-    // Spoof stream patch is not included, or is not currently spoofing to Android Studio.
+    // Spoof stream patch is not included, or is not currently spoofing to a client that
+    // uses authentication and has no multiple audio tracks (Android Studio).
+    // Authenticated requests ignore the language override used by ForceOriginalAudioPatch.
     private static final boolean available = !SpoofVideoStreamsPatch.isPatchIncluded()
             || !(BaseSettings.SPOOF_VIDEO_STREAMS.get()
-            || SpoofVideoStreamsPatch.getPreferredClient() == ClientType.ANDROID_REEL);
+            && SpoofVideoStreamsPatch.getPreferredClient().useAuth
+            && !SpoofVideoStreamsPatch.getPreferredClient().supportsMultiAudioTracks);
 
     {
         if (!available) {
