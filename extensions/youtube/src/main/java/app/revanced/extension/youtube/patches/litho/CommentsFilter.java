@@ -3,6 +3,7 @@ package app.revanced.extension.youtube.patches.litho;
 import app.revanced.extension.shared.patches.litho.Filter;
 import app.revanced.extension.shared.patches.litho.FilterGroup.*;
 import app.revanced.extension.youtube.settings.Settings;
+import app.revanced.extension.youtube.shared.NavigationBar.NavigationButton;
 import app.revanced.extension.youtube.shared.PlayerType;
 
 @SuppressWarnings("unused")
@@ -10,6 +11,7 @@ public final class CommentsFilter extends Filter {
 
     private static final String COMMENT_COMPOSER_PATH = "comment_composer.e";
     private static final String VIDEO_LOCKUP_WITH_ATTACHMENT_PATH = "video_lockup_with_attachment.e";
+    private static final String POST_COMMENTS_PATH = "post_comments_carousel.e";
 
     private final StringFilterGroup chipBar;
     private final ByteArrayFilterGroup aiCommentsSummary;
@@ -43,8 +45,9 @@ public final class CommentsFilter extends Filter {
                 "sponsorships_comments_footer.e"
         );
 
+        // No setting, as feed items use their own settings.
         comments = new StringFilterGroup(
-                Settings.HIDE_COMMENTS_SECTION,
+                null,
                 "video_metadata_carousel",
                 "_comments"
         );
@@ -101,8 +104,11 @@ public final class CommentsFilter extends Filter {
         }
 
         if (matchedGroup == comments) {
-            if (path.startsWith(VIDEO_LOCKUP_WITH_ATTACHMENT_PATH)) {
-                return Settings.HIDE_COMMENTS_SECTION_IN_HOME_FEED.get();
+            // Comment sections of videos and community posts in the feeds.
+            if (path.startsWith(VIDEO_LOCKUP_WITH_ATTACHMENT_PATH) || path.contains(POST_COMMENTS_PATH)) {
+                return NavigationButton.getSelectedNavigationButton() == NavigationButton.SUBSCRIPTIONS
+                        ? Settings.HIDE_COMMENTS_SECTION_IN_SUBSCRIPTIONS_FEED.get()
+                        : Settings.HIDE_COMMENTS_SECTION_IN_HOME_FEED.get();
             }
             return Settings.HIDE_COMMENTS_SECTION.get();
         }
