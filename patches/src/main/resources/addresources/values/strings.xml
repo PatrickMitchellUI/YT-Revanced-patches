@@ -668,6 +668,12 @@ Limitations:
 Verify the package name is correct and the app is installed"</string>
             <string name="revanced_external_downloader_empty_warning">The package name cannot be empty</string>
         </patch>
+        <patch id="interaction.queue.playbackQueuePatch">
+            <string name="revanced_playback_queue_play_last">Play last in queue</string>
+            <string name="revanced_playback_queue_toast_play_next">Playing next</string>
+            <string name="revanced_playback_queue_toast_play_last">Added to queue</string>
+            <string name="revanced_playback_queue_title">Queue</string>
+        </patch>
         <patch id="interaction.seekbar.disablePreciseSeekingGesturePatch">
             <string name="revanced_disable_precise_seeking_gesture_title">Disable precise seeking gesture</string>
             <string name="revanced_disable_precise_seeking_gesture_summary_on">Precise seeking gesture is disabled</string>

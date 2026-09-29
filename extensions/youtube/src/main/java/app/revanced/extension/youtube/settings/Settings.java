@@ -386,6 +386,8 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final IntegerSetting ANNOUNCEMENT_LAST_ID = new IntegerSetting("revanced_announcement_last_id", -1, false, false);
     public static final BooleanSetting LOOP_VIDEO = new BooleanSetting("revanced_loop_video", FALSE);
     public static final BooleanSetting LOOP_VIDEO_BUTTON = new BooleanSetting("revanced_loop_video_button", FALSE);
+    /** Localized "Play last in queue" text of feed menus. */
+    public static final StringSetting PLAYBACK_QUEUE_PLAY_LAST_LABEL = new StringSetting("revanced_playback_queue_play_last_label", "", false, false);
     public static final BooleanSetting PAUSE_ON_AUDIO_INTERRUPT = new BooleanSetting("revanced_pause_on_audio_interrupt", FALSE, true);
     public static final BooleanSetting BYPASS_URL_REDIRECTS = new BooleanSetting("revanced_bypass_url_redirects", TRUE);
     public static final BooleanSetting EXTERNAL_BROWSER = new BooleanSetting("revanced_external_browser", TRUE, true);
