@@ -5,6 +5,7 @@ import android.text.TextUtils;
 
 import androidx.annotation.Nullable;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -217,12 +218,27 @@ public class SpoofVideoStreamsPatch {
     /**
      * Injection point.
      */
+    /**
+     * Headers of the last YouTube API request, used to fetch streams on demand.
+     */
+    @Nullable
+    private static volatile Map<String, String> lastRequestHeaders;
+
     public static void fetchStreams(String url, Map<String, String> requestHeaders) {
         if (SPOOF_STREAMING_DATA) {
             try {
                 Uri uri = Uri.parse(url);
                 String path = uri.getPath();
-                if (path == null || !path.contains("player")) {
+                if (path == null) {
+                    return;
+                }
+
+                if (path.startsWith("/youtubei/")) {
+                    // Headers for videos whose player response is not loaded with a player request.
+                    lastRequestHeaders = new HashMap<>(requestHeaders);
+                }
+
+                if (!path.contains("player")) {
                     return;
                 }
 
@@ -259,6 +275,17 @@ public class SpoofVideoStreamsPatch {
         if (SPOOF_STREAMING_DATA) {
             try {
                 StreamingDataRequest request = StreamingDataRequest.getRequestForVideoId(videoId);
+                if (request == null) {
+                    // Shorts can be loaded with 'reel/reel_item_watch', which has the video id
+                    // in the request body instead of the url, so no stream was fetched yet.
+                    Map<String, String> headers = lastRequestHeaders;
+                    if (headers != null) {
+                        Logger.printDebug(() -> "Fetching video streams on demand: " + videoId);
+                        StreamingDataRequest.fetchRequest(videoId, headers);
+                        request = StreamingDataRequest.getRequestForVideoId(videoId);
+                    }
+                }
+
                 if (request != null) {
                     // This hook is always called off the main thread,
                     // but this can later be called for the same video id from the main thread.
