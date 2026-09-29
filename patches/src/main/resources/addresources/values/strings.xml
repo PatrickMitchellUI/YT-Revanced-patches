@@ -1449,6 +1449,11 @@ Ready to submit?"</string>
             <string name="revanced_sb_about_api_title" translatable="false">sponsor.ajay.app</string>
             <string name="revanced_sb_about_api_summary">Data is provided by the SponsorBlock API. Tap here to learn more and see downloads for other platforms</string>
         </patch>
+        <patch id="layout.feedspacing.feedSpacingPatch">
+            <string name="revanced_feed_spacing_title">Even feed spacing</string>
+            <string name="revanced_feed_spacing_summary_on">Space below videos is the same in all feeds</string>
+            <string name="revanced_feed_spacing_summary_off">Space below videos is set by YouTube</string>
+        </patch>
         <patch id="layout.formfactor.changeFormFactorPatch">
             <string name="revanced_change_form_factor_title">Layout form factor</string>
             <string name="revanced_change_form_factor_entry_1">Default</string>

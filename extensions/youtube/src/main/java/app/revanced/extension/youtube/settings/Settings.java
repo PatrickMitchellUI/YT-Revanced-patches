@@ -88,6 +88,7 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final BooleanSetting HIDE_YOUTUBE_PREMIUM_PROMOTIONS = new BooleanSetting("revanced_hide_youtube_premium_promotions", TRUE);
 
     // Feed
+    public static final BooleanSetting FEED_SPACING = new BooleanSetting("revanced_feed_spacing", TRUE, true);
     public static final BooleanSetting HIDE_ALBUM_CARDS = new BooleanSetting("revanced_hide_album_cards", FALSE, true);
     public static final BooleanSetting HIDE_ARTIST_CARDS = new BooleanSetting("revanced_hide_artist_cards", FALSE);
     public static final BooleanSetting HIDE_CHIPS_SHELF = new BooleanSetting("revanced_hide_chips_shelf", TRUE);
