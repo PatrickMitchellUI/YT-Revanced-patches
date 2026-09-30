@@ -23,13 +23,11 @@ val disableAnalyticsPatch = bytecodePatch(
             """
         )
 
-        // Replaces analytics url as BOGUS.
-        facebookAnalyticsUrlInitMethodMatch.let { match ->
-            match.method.apply {
-                val urlIndex = match[1]
-                val register = getInstruction<OneRegisterInstruction>(urlIndex).registerA
-                replaceInstruction(urlIndex, "const-string v$register, \"BOGUS\"")
-            }
+        // Replaces the Facebook analytics url with BOGUS, skipped on builds where the match is null.
+        facebookAnalyticsUrlInitMethodMatch.methodOrNull?.let { method ->
+            val urlIndex = facebookAnalyticsUrlInitMethodMatch[0]
+            val register = method.getInstruction<OneRegisterInstruction>(urlIndex).registerA
+            method.replaceInstruction(urlIndex, "const-string v$register, \"BOGUS\"")
         }
     }
 }

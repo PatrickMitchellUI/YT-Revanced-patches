@@ -1,4 +1,3 @@
-
 package app.revanced.patches.instagram.misc.removeBuildExpiredPopup
 
 import app.revanced.patcher.gettingFirstMethodDeclaratively
@@ -10,5 +9,5 @@ internal val BytecodePatchContext.appUpdateLockoutPresenterMethod by gettingFirs
     "lockout_active",
 ) {
     returnType("V")
-    parameterTypes("Landroidx/fragment/app/FragmentActivity;", "LX/748;")
+    parameterTypes("Landroidx/fragment/app/FragmentActivity;", "L")
 }
