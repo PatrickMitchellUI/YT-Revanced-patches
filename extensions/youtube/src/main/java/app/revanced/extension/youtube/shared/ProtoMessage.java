@@ -166,6 +166,20 @@ public final class ProtoMessage {
     }
 
     /**
+     * @return All length delimited fields with the number that are valid messages, in order.
+     */
+    public List<ProtoMessage> getMessages(int number) {
+        List<ProtoMessage> messages = new ArrayList<>();
+        for (Field field : fields) {
+            if (field.number == number && field.isLengthDelimited()) {
+                ProtoMessage message = parse(field.value);
+                if (message != null) messages.add(message);
+            }
+        }
+        return messages;
+    }
+
+    /**
      * @return The first varint field, or the default value if absent.
      */
     public long getVarint(int number, long defaultValue) {
@@ -215,9 +229,27 @@ public final class ProtoMessage {
     }
 
     public ProtoMessage addVarint(int number, long value) {
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        writeVarint(out, value);
-        fields.add(new Field(number, WIRE_TYPE_VARINT, out.toByteArray()));
+        fields.add(new Field(number, WIRE_TYPE_VARINT, encodeVarint(value)));
+        return this;
+    }
+
+    /**
+     * Replaces the first varint field with the number, or adds it if absent.
+     */
+    public ProtoMessage setVarint(int number, long value) {
+        for (Field field : fields) {
+            if (field.number == number && field.wireType == WIRE_TYPE_VARINT) {
+                field.value = encodeVarint(value);
+                return this;
+            }
+        }
+        return addVarint(number, value);
+    }
+
+    public ProtoMessage addFloat(int number, float value) {
+        final int bits = Float.floatToIntBits(value);
+        fields.add(new Field(number, WIRE_TYPE_FIXED32, new byte[]{
+                (byte) bits, (byte) (bits >> 8), (byte) (bits >> 16), (byte) (bits >> 24)}));
         return this;
     }
 
@@ -274,6 +306,12 @@ public final class ProtoMessage {
         int size = 1;
         while ((value >>>= 7) != 0) size++;
         return size;
+    }
+
+    private static byte[] encodeVarint(long value) {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        writeVarint(out, value);
+        return out.toByteArray();
     }
 
     private static void writeVarint(ByteArrayOutputStream out, long value) {

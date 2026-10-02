@@ -7,6 +7,7 @@ import static app.revanced.extension.shared.settings.Setting.parentNot;
 import static app.revanced.extension.shared.settings.Setting.parentsAll;
 import static app.revanced.extension.shared.settings.Setting.parentsAny;
 import static app.revanced.extension.youtube.patches.ActionButtonStylePatch.ActionButtonStyle;
+import static app.revanced.extension.youtube.patches.ActionButtonStylePatch.ActionButtonStyleAvailability;
 import static app.revanced.extension.youtube.patches.ChangeFormFactorPatch.FormFactor;
 import static app.revanced.extension.youtube.patches.ChangeHeaderPatch.HeaderLogo;
 import static app.revanced.extension.youtube.patches.ChangeStartPagePatch.ChangeStartPageTypeAvailability;
@@ -253,25 +254,28 @@ public class Settings extends YouTubeAndMusicSettings {
     // Action buttons
     public static final EnumSetting<ActionButtonStyle> ACTION_BUTTON_STYLE = new EnumSetting<>("revanced_action_button_style", ActionButtonStyle.DEFAULT);
     public static final BooleanSetting DISABLE_LIKE_SUBSCRIBE_GLOW = new BooleanSetting("revanced_disable_like_subscribe_glow", FALSE);
-    public static final BooleanSetting HIDE_ASK_BUTTON = new BooleanSetting("revanced_hide_ask_button", FALSE);
-    public static final BooleanSetting HIDE_CLIP_BUTTON = new BooleanSetting("revanced_hide_clip_button", FALSE, "revanced_hide_clip_button_user_dialog_message");
-    public static final BooleanSetting HIDE_COMMENTS_BUTTON = new BooleanSetting("revanced_hide_comments_button", FALSE);
-    public static final BooleanSetting HIDE_COMPACT_DISLIKE_BUTTON = new BooleanSetting("revanced_hide_compact_dislike_button", FALSE);
-    public static final BooleanSetting HIDE_COMPACT_LIKE_BUTTON = new BooleanSetting("revanced_hide_compact_like_button", FALSE);
-    public static final BooleanSetting HIDE_COMPACT_MORE_ACTIONS_BUTTON = new BooleanSetting("revanced_hide_compact_more_actions_button", FALSE);
-    public static final BooleanSetting HIDE_COMPACT_SAVE_BUTTON = new BooleanSetting("revanced_hide_compact_save_button", FALSE);
-    public static final BooleanSetting HIDE_COMPACT_SHARE_BUTTON = new BooleanSetting("revanced_hide_compact_share_button", FALSE);
-    public static final BooleanSetting HIDE_DOWNLOAD_BUTTON = new BooleanSetting("revanced_hide_download_button", FALSE);
-    public static final BooleanSetting HIDE_HYPE_BUTTON = new BooleanSetting("revanced_hide_hype_button", FALSE);
-    public static final BooleanSetting HIDE_LIKE_DISLIKE_BUTTON = new BooleanSetting("revanced_hide_like_dislike_button", FALSE);
-    public static final BooleanSetting HIDE_PROMOTE_BUTTON = new BooleanSetting("revanced_hide_promote_button", FALSE);
-    public static final BooleanSetting HIDE_REMIX_BUTTON = new BooleanSetting("revanced_hide_remix_button", FALSE);
-    public static final BooleanSetting HIDE_REPORT_BUTTON = new BooleanSetting("revanced_hide_report_button", FALSE);
-    public static final BooleanSetting HIDE_SAVE_BUTTON = new BooleanSetting("revanced_hide_save_button", FALSE);
-    public static final BooleanSetting HIDE_SHARE_BUTTON = new BooleanSetting("revanced_hide_share_button", FALSE);
-    public static final BooleanSetting HIDE_SHOP_BUTTON = new BooleanSetting("revanced_hide_shop_button", TRUE);
-    public static final BooleanSetting HIDE_STOP_ADS_BUTTON = new BooleanSetting("revanced_hide_stop_ads_button", TRUE);
-    public static final BooleanSetting HIDE_THANKS_BUTTON = new BooleanSetting("revanced_hide_thanks_button", TRUE);
+    public static final BooleanSetting HIDE_ASK_BUTTON = new BooleanSetting("revanced_hide_ask_button", FALSE, new ActionButtonStyleAvailability(ActionButtonStyle.OLD));
+    public static final BooleanSetting HIDE_CLIP_BUTTON = new BooleanSetting("revanced_hide_clip_button", FALSE, false, "revanced_hide_clip_button_user_dialog_message", new ActionButtonStyleAvailability(ActionButtonStyle.OLD));
+    public static final BooleanSetting HIDE_COMMENTS_BUTTON = new BooleanSetting("revanced_hide_comments_button", FALSE, new ActionButtonStyleAvailability(ActionButtonStyle.OLD));
+    public static final BooleanSetting HIDE_COMPACT_DOWNLOAD_BUTTON = new BooleanSetting("revanced_hide_compact_download_button", FALSE, new ActionButtonStyleAvailability(ActionButtonStyle.DEFAULT));
+    public static final BooleanSetting HIDE_COMPACT_DISLIKE_BUTTON = new BooleanSetting("revanced_hide_compact_dislike_button", FALSE, new ActionButtonStyleAvailability(ActionButtonStyle.DEFAULT));
+    public static final BooleanSetting HIDE_COMPACT_LIKE_BUTTON = new BooleanSetting("revanced_hide_compact_like_button", FALSE, new ActionButtonStyleAvailability(ActionButtonStyle.DEFAULT));
+    public static final BooleanSetting HIDE_COMPACT_MORE_ACTIONS_BUTTON = new BooleanSetting("revanced_hide_compact_more_actions_button", FALSE, new ActionButtonStyleAvailability(ActionButtonStyle.DEFAULT));
+    public static final BooleanSetting HIDE_COMPACT_REPORT_BUTTON = new BooleanSetting("revanced_hide_compact_report_button", FALSE, new ActionButtonStyleAvailability(ActionButtonStyle.DEFAULT));
+    public static final BooleanSetting HIDE_COMPACT_SAVE_BUTTON = new BooleanSetting("revanced_hide_compact_save_button", FALSE, new ActionButtonStyleAvailability(ActionButtonStyle.DEFAULT));
+    public static final BooleanSetting HIDE_COMPACT_SHARE_BUTTON = new BooleanSetting("revanced_hide_compact_share_button", FALSE, new ActionButtonStyleAvailability(ActionButtonStyle.DEFAULT));
+    public static final BooleanSetting HIDE_COMPACT_THANKS_BUTTON = new BooleanSetting("revanced_hide_compact_thanks_button", TRUE, new ActionButtonStyleAvailability(ActionButtonStyle.DEFAULT));
+    public static final BooleanSetting HIDE_DOWNLOAD_BUTTON = new BooleanSetting("revanced_hide_download_button", FALSE, new ActionButtonStyleAvailability(ActionButtonStyle.OLD));
+    public static final BooleanSetting HIDE_HYPE_BUTTON = new BooleanSetting("revanced_hide_hype_button", FALSE, new ActionButtonStyleAvailability(ActionButtonStyle.OLD));
+    public static final BooleanSetting HIDE_LIKE_DISLIKE_BUTTON = new BooleanSetting("revanced_hide_like_dislike_button", FALSE, new ActionButtonStyleAvailability(ActionButtonStyle.OLD));
+    public static final BooleanSetting HIDE_PROMOTE_BUTTON = new BooleanSetting("revanced_hide_promote_button", FALSE, new ActionButtonStyleAvailability(ActionButtonStyle.OLD));
+    public static final BooleanSetting HIDE_REMIX_BUTTON = new BooleanSetting("revanced_hide_remix_button", FALSE, new ActionButtonStyleAvailability(ActionButtonStyle.OLD));
+    public static final BooleanSetting HIDE_REPORT_BUTTON = new BooleanSetting("revanced_hide_report_button", FALSE, new ActionButtonStyleAvailability(ActionButtonStyle.OLD));
+    public static final BooleanSetting HIDE_SAVE_BUTTON = new BooleanSetting("revanced_hide_save_button", FALSE, new ActionButtonStyleAvailability(ActionButtonStyle.OLD));
+    public static final BooleanSetting HIDE_SHARE_BUTTON = new BooleanSetting("revanced_hide_share_button", FALSE, new ActionButtonStyleAvailability(ActionButtonStyle.OLD));
+    public static final BooleanSetting HIDE_SHOP_BUTTON = new BooleanSetting("revanced_hide_shop_button", TRUE, new ActionButtonStyleAvailability(ActionButtonStyle.OLD));
+    public static final BooleanSetting HIDE_STOP_ADS_BUTTON = new BooleanSetting("revanced_hide_stop_ads_button", TRUE, new ActionButtonStyleAvailability(ActionButtonStyle.OLD));
+    public static final BooleanSetting HIDE_THANKS_BUTTON = new BooleanSetting("revanced_hide_thanks_button", TRUE, new ActionButtonStyleAvailability(ActionButtonStyle.OLD));
 
     // Player flyout menu items
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_ADDITIONAL_SETTINGS = new BooleanSetting("revanced_hide_player_flyout_additional_settings", FALSE);
@@ -440,7 +444,7 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final StringSetting RYD_USER_ID = new StringSetting("revanced_ryd_user_id", "", false, false);
     public static final BooleanSetting RYD_SHORTS = new BooleanSetting("revanced_ryd_shorts", TRUE, parent(RYD_ENABLED));
     public static final BooleanSetting RYD_DISLIKE_PERCENTAGE = new BooleanSetting("revanced_ryd_dislike_percentage", FALSE, true, parent(RYD_ENABLED));
-    public static final BooleanSetting RYD_COMPACT_LAYOUT = new BooleanSetting("revanced_ryd_compact_layout", FALSE, true, parent(RYD_ENABLED));
+    public static final BooleanSetting RYD_COMPACT_LAYOUT = new BooleanSetting("revanced_ryd_compact_layout", FALSE, true, new ActionButtonStyleAvailability(ActionButtonStyle.OLD, RYD_ENABLED));
     public static final BooleanSetting RYD_ESTIMATED_LIKE = new BooleanSetting("revanced_ryd_estimated_like", TRUE, true, parent(RYD_ENABLED));
     public static final BooleanSetting RYD_TOAST_ON_CONNECTION_ERROR = new BooleanSetting("revanced_ryd_toast_on_connection_error", TRUE, parent(RYD_ENABLED));
 

@@ -1,6 +1,10 @@
 package app.revanced.extension.youtube.patches;
 
+import static app.revanced.extension.shared.StringRef.str;
+
 import android.util.Pair;
+
+import androidx.annotation.Nullable;
 
 import java.io.ByteArrayOutputStream;
 import java.nio.charset.StandardCharsets;
@@ -8,7 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.revanced.extension.shared.Logger;
+import app.revanced.extension.shared.ResourceType;
+import app.revanced.extension.shared.Utils;
 import app.revanced.extension.shared.settings.BooleanSetting;
+import app.revanced.extension.shared.settings.Setting;
 import app.revanced.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -25,7 +32,74 @@ public final class ActionButtonStylePatch {
         OLD
     }
 
-    private static final byte[] ACTION_BAR_IDENTIFIER = bytes("video_action_bar.eml|");
+    /**
+     * Available if the action button style is selected.
+     */
+    public static final class ActionButtonStyleAvailability implements Setting.Availability {
+        private final ActionButtonStyle style;
+        @Nullable
+        private final BooleanSetting parent;
+
+        public ActionButtonStyleAvailability(ActionButtonStyle style) {
+            this(style, null);
+        }
+
+        /**
+         * @param parent Setting that must also be enabled.
+         */
+        public ActionButtonStyleAvailability(ActionButtonStyle style, @Nullable BooleanSetting parent) {
+            this.style = style;
+            this.parent = parent;
+        }
+
+        @Override
+        public boolean isAvailable() {
+            return (parent == null || parent.get()) && isStyleSelected();
+        }
+
+        private boolean isStyleSelected() {
+            return Settings.ACTION_BUTTON_STYLE.get() == style;
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return parent == null
+                    ? List.of(Settings.ACTION_BUTTON_STYLE)
+                    : List.of(Settings.ACTION_BUTTON_STYLE, parent);
+        }
+
+        @Nullable
+        @Override
+        public String getUnavailableMessage() {
+            // The message is a resource of the action buttons patch, which may not be included.
+            if (isStyleSelected() || Utils.getResourceIdentifier(ResourceType.STRING,
+                    "revanced_action_button_style_unavailable") == 0) {
+                return null;
+            }
+            return str("revanced_action_button_style_unavailable",
+                    str("revanced_action_button_style_entry_" + style.ordinal()));
+        }
+    }
+
+    /**
+     * Template of the new watch page element that combines the channel bar and the action bar.
+     */
+    private static final byte[] NEW_ACTION_BAR_IDENTIFIER = bytes("compactify_video_action_bar.eml");
+
+    /**
+     * Template of the video metadata (title, views, date) above the action bar.
+     */
+    private static final byte[] METADATA_IDENTIFIER = bytes("video_metadata.eml");
+
+    /**
+     * Only the end of the element is searched for the template name.
+     */
+    private static final int NEW_ACTION_BAR_IDENTIFIER_SEARCH_LENGTH = 256;
+
+    /**
+     * Template of the old action bar, see {@link OldActionBarBuilder}.
+     */
+    private static final byte[] ACTION_BAR_IDENTIFIER = bytes("video_action_bar.eml-js|");
 
     /**
      * Only the start of the element is searched for the identifier.
@@ -39,11 +113,14 @@ public final class ActionButtonStylePatch {
     private static final List<Pair<BooleanSetting, byte[]>> ACTION_BAR_BUTTONS = List.of(
             new Pair<>(Settings.HIDE_ASK_BUTTON, bytes("yt_fill_spark_")),
             new Pair<>(Settings.HIDE_CLIP_BUTTON, bytes("yt_outline_scissors")),
+            new Pair<>(Settings.HIDE_COMMENTS_BUTTON, bytes("yt_outline_message_bubble_right")),
             new Pair<>(Settings.HIDE_HYPE_BUTTON, bytes("yt_outline_star_shooting")),
             new Pair<>(Settings.HIDE_HYPE_BUTTON, bytes("yt_outline_experimental_hype")),
             new Pair<>(Settings.HIDE_HYPE_BUTTON, bytes("yt_outline_hype")),
             new Pair<>(Settings.HIDE_PROMOTE_BUTTON, bytes("yt_outline_megaphone")),
+            new Pair<>(Settings.HIDE_REMIX_BUTTON, bytes("yt_outline_youtube_shorts_plus")),
             new Pair<>(Settings.HIDE_REPORT_BUTTON, bytes("yt_outline_flag")),
+            new Pair<>(Settings.HIDE_SHARE_BUTTON, bytes("yt_outline_share")),
             new Pair<>(Settings.HIDE_SHOP_BUTTON, bytes("yt_outline_bag")),
             new Pair<>(Settings.HIDE_STOP_ADS_BUTTON, bytes("yt_outline_slash_circle_left")),
             new Pair<>(Settings.HIDE_THANKS_BUTTON, bytes("yt_outline_dollar_sign_heart"))
@@ -73,10 +150,60 @@ public final class ActionButtonStylePatch {
     /**
      * Injection point.
      * <p>
+     * Called before a watch page item with a serialized element is added to the item list.
+     * The new element that combines the channel bar and the action bar is replaced
+     * by the old channel bar and action bar elements, built from its data.
+     *
+     * @param item The item with the element.
+     * @param list Collects the items of the list.
+     */
+    public static void addOldActionBar(Object item, Object list) {
+        try {
+            byte[] element = getElementBytes(item);
+            if (element == null) return;
+            final int templateSearchStart = Math.max(0, element.length - NEW_ACTION_BAR_IDENTIFIER_SEARCH_LENGTH);
+
+            if (Settings.ACTION_BUTTON_STYLE.get() != ActionButtonStyle.OLD) {
+                if (indexOf(element, NEW_ACTION_BAR_IDENTIFIER, templateSearchStart, element.length) < 0) return;
+
+                byte[] sanitized = OldActionBarBuilder.removeMenuEntries(element, new OldActionBarBuilder.MenuEntries(
+                        Settings.HIDE_COMPACT_THANKS_BUTTON.get(),
+                        Settings.HIDE_COMPACT_DOWNLOAD_BUTTON.get(),
+                        Settings.HIDE_COMPACT_REPORT_BUTTON.get(),
+                        Settings.HIDE_YOUTUBE_PREMIUM_PROMOTIONS.get()));
+                if (sanitized != null) setElementBytes(item, sanitized);
+                return;
+            }
+
+            if (indexOf(element, METADATA_IDENTIFIER, templateSearchStart, element.length) >= 0) {
+                byte[] metadata = OldActionBarBuilder.buildOldMetadata(element);
+                if (metadata != null) setElementBytes(item, metadata);
+                return;
+            }
+
+            if (indexOf(element, NEW_ACTION_BAR_IDENTIFIER, templateSearchStart, element.length) < 0) return;
+
+            OldActionBarBuilder.Elements elements = OldActionBarBuilder.build(element);
+            if (elements == null) {
+                Logger.printDebug(() -> "Unexpected action bar element, keeping the new action bar");
+                return;
+            }
+
+            Object channelBar = copyItem(item);
+            setElementBytes(channelBar, elements.channelBar());
+            setElementBytes(item, removeActionBarButtons(elements.actionBar()));
+            // The original item is added after this, so the channel bar is above the action bar.
+            addToList(list, channelBar);
+        } catch (Exception ex) {
+            Logger.printException(() -> "addOldActionBar failure", ex);
+        }
+    }
+
+    /**
      * Removes buttons from the serialized old action bar element,
      * as these buttons cannot be identified by a litho filter.
      */
-    public static byte[] removeActionBarButtons(byte[] element) {
+    private static byte[] removeActionBarButtons(byte[] element) {
         try {
             if (element == null || indexOf(element, ACTION_BAR_IDENTIFIER, 0,
                     Math.min(element.length, ACTION_BAR_IDENTIFIER_SEARCH_LENGTH)) < 0) {
@@ -246,5 +373,23 @@ public final class ActionButtonStylePatch {
 
     private static byte[] bytes(String string) {
         return string.getBytes(StandardCharsets.US_ASCII);
+    }
+
+    // Method bodies are replaced during patching.
+
+    private static byte[] getElementBytes(Object item) {
+        throw new IllegalStateException();
+    }
+
+    private static void setElementBytes(Object item, byte[] element) {
+        throw new IllegalStateException();
+    }
+
+    private static Object copyItem(Object item) {
+        throw new IllegalStateException();
+    }
+
+    private static void addToList(Object list, Object item) {
+        throw new IllegalStateException();
     }
 }

@@ -787,6 +787,7 @@ Adjust volume by swiping vertically on the right side of the screen"</string>
             <string name="revanced_action_button_style_summary">Style of the buttons under videos. The old style shows labels and the like and dislike counts</string>
             <string name="revanced_action_button_style_entry_0">Default</string>
             <string name="revanced_action_button_style_entry_1">Old</string>
+            <string name="revanced_action_button_style_unavailable">Only available with action button style %s</string>
             <string name="revanced_hide_buttons_old_category_title">Old action buttons</string>
             <string name="revanced_hide_buttons_new_category_title">New action buttons</string>
             <string name="revanced_hide_compact_like_button_title">Hide Like</string>
@@ -798,6 +799,15 @@ Adjust volume by swiping vertically on the right side of the screen"</string>
             <string name="revanced_hide_compact_more_actions_button_title">Hide More actions</string>
             <string name="revanced_hide_compact_more_actions_button_summary_on">More actions button is hidden</string>
             <string name="revanced_hide_compact_more_actions_button_summary_off">More actions button is shown</string>
+            <string name="revanced_hide_compact_thanks_button_title">Hide Thanks in More actions</string>
+            <string name="revanced_hide_compact_thanks_button_summary_on">Thanks is hidden in the More actions menu</string>
+            <string name="revanced_hide_compact_thanks_button_summary_off">Thanks is shown in the More actions menu</string>
+            <string name="revanced_hide_compact_download_button_title">Hide Download in More actions</string>
+            <string name="revanced_hide_compact_download_button_summary_on">Download is hidden in the More actions menu</string>
+            <string name="revanced_hide_compact_download_button_summary_off">Download is shown in the More actions menu</string>
+            <string name="revanced_hide_compact_report_button_title">Hide Report in More actions</string>
+            <string name="revanced_hide_compact_report_button_summary_on">Report is hidden in the More actions menu</string>
+            <string name="revanced_hide_compact_report_button_summary_off">Report is shown in the More actions menu</string>
             <string name="revanced_disable_like_subscribe_glow_title">Disable Like and Subscribe glow</string>
             <string name="revanced_disable_like_subscribe_glow_summary_on">Like and Subscribe button will not glow when mentioned</string>
             <string name="revanced_disable_like_subscribe_glow_summary_off">Like and Subscribe button will glow when mentioned</string>
