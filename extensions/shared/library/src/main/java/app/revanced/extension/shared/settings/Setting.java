@@ -39,6 +39,15 @@ public abstract class Setting<T> {
         default List<Setting<?>> getParentSettings() {
             return Collections.emptyList();
         }
+
+        /**
+         * @return Why the setting is not available, shown with the setting while it is not available.
+         *         Null shows no message.
+         */
+        @Nullable
+        default String getUnavailableMessage() {
+            return null;
+        }
     }
 
     /**
@@ -351,6 +360,14 @@ public abstract class Setting<T> {
      */
     public boolean isAvailable() {
         return availability == null || availability.isAvailable();
+    }
+
+    /**
+     * @return Why the setting is not available, or null if it is available or there is no message.
+     */
+    @Nullable
+    public String getUnavailableMessage() {
+        return availability == null || availability.isAvailable() ? null : availability.getUnavailableMessage();
     }
 
     /**

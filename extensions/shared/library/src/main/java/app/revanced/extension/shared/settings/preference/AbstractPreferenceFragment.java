@@ -20,7 +20,9 @@ import android.preference.PreferenceGroup;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
+import android.preference.TwoStatePreference;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,8 +43,10 @@ import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Scanner;
+import java.util.WeakHashMap;
 
 import app.revanced.extension.shared.Logger;
 import app.revanced.extension.shared.ResourceType;
@@ -373,6 +377,47 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
     protected void updatePreferenceAvailability(@NonNull Preference pref, @NonNull Setting<?> setting) {
         pref.setEnabled(setting.isAvailable());
+        updateUnavailableMessage(pref, setting.getUnavailableMessage());
+    }
+
+    /**
+     * Summaries of preferences before an unavailable message was added to them.
+     */
+    private final Map<Preference, CharSequence[]> summariesWithoutUnavailableMessage = new WeakHashMap<>();
+
+    /**
+     * Adds the message of why a setting is not available to the summary, or restores the summary without it.
+     */
+    private void updateUnavailableMessage(@NonNull Preference pref, @Nullable String message) {
+        CharSequence[] original = summariesWithoutUnavailableMessage.get(pref);
+        if (message == null) {
+            if (original == null) return;
+            summariesWithoutUnavailableMessage.remove(pref);
+            setSummaries(pref, original);
+            return;
+        }
+
+        if (original == null) {
+            original = pref instanceof TwoStatePreference twoState
+                    ? new CharSequence[]{twoState.getSummaryOn(), twoState.getSummaryOff()}
+                    : new CharSequence[]{pref.getSummary()};
+            summariesWithoutUnavailableMessage.put(pref, original);
+        }
+
+        CharSequence[] withMessage = new CharSequence[original.length];
+        for (int i = 0; i < original.length; i++) {
+            withMessage[i] = TextUtils.isEmpty(original[i]) ? message : original[i] + "\n" + message;
+        }
+        setSummaries(pref, withMessage);
+    }
+
+    private static void setSummaries(Preference pref, CharSequence[] summaries) {
+        if (pref instanceof TwoStatePreference twoState) {
+            twoState.setSummaryOn(summaries[0]);
+            twoState.setSummaryOff(summaries[1]);
+        } else {
+            pref.setSummary(summaries[0]);
+        }
     }
 
     protected void updateListPreferenceSummary(ListPreference listPreference, Setting<?> setting) {
