@@ -1,14 +1,20 @@
 package app.revanced.patches.youtube.misc.links
 
+import app.revanced.patcher.extensions.addInstruction
 import app.revanced.patcher.extensions.addInstructions
+import app.revanced.patcher.extensions.getInstruction
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.transformation.transformInstructionsPatch
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.StringReference
+
+private const val EXTENSION_CLASS_DESCRIPTOR =
+    "Lapp/revanced/extension/youtube/patches/OpenLinksExternallyPatch;"
 
 @Suppress("unused")
 val openLinksExternallyPatch = bytecodePatch(
@@ -53,5 +59,16 @@ val openLinksExternallyPatch = bytecodePatch(
         PreferenceScreen.MISC.addPreferences(
             SwitchPreference("revanced_external_browser"),
         )
+
+        // Without a custom tab app, links are opened with a plain view intent.
+        // Android resolves YouTube web pages to a YouTube app, which only passes them on to the browser.
+        openUrlFallbackMethodMatch.let {
+            val intentRegister = it.method.getInstruction<FiveRegisterInstruction>(it[-1]).registerD
+
+            it.method.addInstruction(
+                it[-1],
+                "invoke-static { v$intentRegister }, $EXTENSION_CLASS_DESCRIPTOR->openInBrowser(Landroid/content/Intent;)V",
+            )
+        }
     }
 }

@@ -54,3 +54,17 @@ internal val BytecodePatchContext.customTabsIntentMethodMatch by composingFirstM
         "android.support.customtabs.extra.SEND_TO_EXTERNAL_HANDLER"(),
     )
 }
+
+/**
+ * Opens a link with a plain view intent when no custom tab app is found.
+ * "Open links externally" always takes this path.
+ */
+internal val BytecodePatchContext.openUrlFallbackMethodMatch by composingFirstMethod {
+    accessFlags(AccessFlags.PRIVATE, AccessFlags.FINAL)
+    returnType("V")
+    parameterTypes("Landroid/content/Intent;", "Landroid/net/Uri;", "L", "Ljava/util/Map;")
+    instructions(
+        "original_click_tracking_params"(),
+        method { name == "startActivity" && definingClass == "Landroid/app/Activity;" },
+    )
+}
