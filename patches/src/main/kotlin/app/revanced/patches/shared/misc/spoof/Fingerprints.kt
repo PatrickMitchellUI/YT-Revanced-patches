@@ -19,6 +19,7 @@ import app.revanced.patcher.opcodes
 import app.revanced.patcher.parameterTypes
 import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patcher.returnType
+import app.revanced.patches.shared.misc.featureflag.FeatureFlag
 import app.revanced.util.indexOfFirstInstruction
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -138,7 +139,7 @@ internal val BytecodePatchContext.hlsCurrentTimeMethodMatch by composingFirstMet
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     parameterTypes("Z", "L")
     instructions(
-        45355374L(), // HLS current time feature flag.
+        FeatureFlag.HLS_LIVESTREAM_CURRENT_TIME_ENABLED(),
     )
 }
 
@@ -174,13 +175,13 @@ internal val BytecodePatchContext.patchIncludedExtensionMethodMethod by gettingF
 // Flag is present in YouTube 19.34, but is missing Platypus stream replacement code until 19.43.
 // Flag and Platypus code is also present in newer versions of YouTube Music.
 internal val BytecodePatchContext.mediaFetchHotConfigMethodMatch by composingFirstMethod {
-    instructions(45645570L())
+    instructions(FeatureFlag.MEDIA_FETCH_HOT_CONFIG_REPLACEMENT())
 }
 
 // YT 20.10+, YT Music 8.11 - 8.14.
 // Flag is missing in YT Music 8.15+, and it is not known if a replacement flag/feature exists.
 internal val BytecodePatchContext.mediaFetchHotConfigAlternativeMethodMatch by composingFirstMethod {
-    instructions(45683169L())
+    instructions(FeatureFlag.MEDIA_FETCH_HOT_CONFIG_REPLACEMENT_ALTERNATIVE())
 }
 
 // Feature flag that enables different code for parsing and starting video playback,

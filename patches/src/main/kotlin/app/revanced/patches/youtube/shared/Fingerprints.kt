@@ -20,6 +20,7 @@ import app.revanced.patcher.parameterTypes
 import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patcher.returnType
 import app.revanced.patcher.type
+import app.revanced.patches.shared.misc.featureflag.FeatureFlag
 import app.revanced.patches.shared.misc.mapping.ResourceType
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -58,7 +59,7 @@ internal fun BytecodePatchContext.getEngagementPanelControllerMethodMatch() = fi
         afterAtMost(4, Opcode.CHECK_CAST()),
         after(Opcode.IF_EQZ()),
         after(Opcode.IGET_OBJECT()),
-        45615449L(),
+        FeatureFlag.UNKNOWN_ENGAGEMENT_PANEL_FEATURE_ENABLED(),
         method { toString() == "Ljava/util/ArrayDeque;->iterator()Ljava/util/Iterator;" },
         afterAtMost(10, allOf(Opcode.IGET_OBJECT(), field { type == "Ljava/lang/String;" }))
     )

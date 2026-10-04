@@ -13,6 +13,7 @@ import app.revanced.patcher.parameterTypes
 import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patcher.returnType
 import app.revanced.patcher.type
+import app.revanced.patches.shared.misc.featureflag.FeatureFlag
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -44,5 +45,5 @@ internal val BytecodePatchContext.recyclerViewTopScrollingMethodMatch by composi
 internal val BytecodePatchContext.backToRefreshFeatureFlagMethodMatch by composingFirstMethod {
     returnType("Z")
     parameterTypes()
-    instructions(45359221L())
+    instructions(FeatureFlag.BACK_TO_REFRESH())
 }

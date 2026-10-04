@@ -10,8 +10,6 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.ClassDef
 
-internal const val MINIPLAYER_DISABLED_FEATURE_KEY = 45657015L
-
 internal val BytecodePatchContext.miniplayerModernViewParentMethod by gettingFirstImmutableMethodDeclaratively {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returnType("Ljava/lang/String;")

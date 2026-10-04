@@ -11,6 +11,7 @@ import app.revanced.patcher.immutableClassDef
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
+import app.revanced.patches.shared.misc.featureflag.FeatureFlag
 import app.revanced.patches.shared.misc.featureflag.featureFlagOverridePatch
 import app.revanced.patches.shared.misc.featureflag.overrideBooleanFeatureFlag
 import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
@@ -65,7 +66,7 @@ val miniplayerPatch = bytecodePatch(
 
         // Enables a handler that immediately closes the miniplayer.
         overrideBooleanFeatureFlag(
-            MINIPLAYER_DISABLED_FEATURE_KEY,
+            FeatureFlag.MINIPLAYER_DISABLED,
             "$EXTENSION_CLASS_DESCRIPTOR->getMiniplayerOnCloseHandler(Z)Z",
         )
 

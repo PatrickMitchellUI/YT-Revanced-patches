@@ -2,6 +2,7 @@ package app.revanced.patches.youtube.video.speed.custom
 
 import app.revanced.patcher.*
 import app.revanced.patcher.patch.BytecodePatchContext
+import app.revanced.patches.shared.misc.featureflag.FeatureFlag
 import app.revanced.patches.shared.misc.mapping.ResourceType
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -28,7 +29,7 @@ internal val BytecodePatchContext.serverSideMaxSpeedFeatureFlagMethod by getting
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returnType("Z")
     instructions(
-        45719140L(),
+        FeatureFlag.SERVER_SIDE_PLAYBACK_SPEED_LIMITS(),
     )
 }
 

@@ -2,6 +2,7 @@ package app.revanced.patches.youtube.layout.player.fullscreen
 
 import app.revanced.patcher.*
 import app.revanced.patcher.patch.BytecodePatchContext
+import app.revanced.patches.shared.misc.featureflag.FeatureFlag
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -13,8 +14,7 @@ internal val BytecodePatchContext.openVideosFullscreenPortraitMethodMatch by com
     parameterTypes("L", "Lj\$/util/Optional;")
     instructions(
         Opcode.MOVE_RESULT(), // Conditional check to modify.
-        // Open videos fullscreen portrait feature flag.
-        afterAtMost(5, 45666112L()), // Cannot be more than 5.
+        afterAtMost(5, FeatureFlag.OPEN_VIDEOS_FULLSCREEN_PORTRAIT()), // Cannot be more than 5.
         afterAtMost(10, Opcode.MOVE_RESULT()),
     )
 }

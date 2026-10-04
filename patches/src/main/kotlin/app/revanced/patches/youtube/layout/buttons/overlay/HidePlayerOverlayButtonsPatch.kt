@@ -4,6 +4,7 @@ import app.revanced.patcher.extensions.*
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
+import app.revanced.patches.shared.misc.featureflag.FeatureFlag
 import app.revanced.patches.shared.misc.featureflag.featureFlagOverridePatch
 import app.revanced.patches.shared.misc.featureflag.overrideBooleanFeatureFlag
 import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
@@ -89,8 +90,8 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
         if (is_21_36_or_greater) {
             // The flags are read inline at each call site.
             arrayOf(
-                45690091L, // Cast button in the player.
-                45690090L, // Cast button in the feed.
+                FeatureFlag.SHOW_CAST_BUTTON_IN_PLAYER,
+                FeatureFlag.SHOW_CAST_BUTTON_IN_FEED,
             ).forEach { flag ->
                 overrideBooleanFeatureFlag(
                     flag,

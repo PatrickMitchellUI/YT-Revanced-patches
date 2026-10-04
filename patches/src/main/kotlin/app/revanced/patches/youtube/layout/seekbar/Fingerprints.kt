@@ -2,6 +2,7 @@ package app.revanced.patches.youtube.layout.seekbar
 
 import app.revanced.patcher.*
 import app.revanced.patcher.patch.BytecodePatchContext
+import app.revanced.patches.shared.misc.featureflag.FeatureFlag
 import app.revanced.patches.shared.misc.mapping.ResourceType
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -12,7 +13,7 @@ internal val BytecodePatchContext.fullscreenSeekbarThumbnailsMethod by gettingFi
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     parameterTypes()
     instructions(
-        45398577L(),
+        FeatureFlag.FULLSCREEN_SEEKBAR_THUMBNAILS(),
     )
 }
 

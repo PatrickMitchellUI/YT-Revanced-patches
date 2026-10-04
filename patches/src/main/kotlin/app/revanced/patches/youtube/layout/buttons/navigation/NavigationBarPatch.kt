@@ -11,6 +11,7 @@ import app.revanced.patcher.extensions.methodReference
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
+import app.revanced.patches.shared.misc.featureflag.FeatureFlag
 import app.revanced.patches.shared.misc.featureflag.featureFlagOverridePatch
 import app.revanced.patches.shared.misc.featureflag.overrideBooleanFeatureFlag
 import app.revanced.patches.shared.misc.settings.preference.PreferenceScreenPreference
@@ -136,22 +137,22 @@ val navigationBarPatch = bytecodePatch(
         // Force on/off translucent effect on status bar and navigation buttons.
         if (is_19_25_or_greater) {
             overrideBooleanFeatureFlag(
-                45400535L, // Status bar.
+                FeatureFlag.TRANSLUCENT_STATUS_BAR,
                 "$EXTENSION_CLASS_DESCRIPTOR->useTranslucentNavigationStatusBar(Z)Z",
             )
             overrideBooleanFeatureFlag(
-                45630927L, // YouTube navigation buttons.
+                FeatureFlag.TRANSLUCENT_NAVIGATION_BUTTONS,
                 "$EXTENSION_CLASS_DESCRIPTOR->useTranslucentNavigationButtons(Z)Z",
             )
             overrideBooleanFeatureFlag(
-                45632194L, // Device back/home/recent buttons.
+                FeatureFlag.TRANSLUCENT_SYSTEM_NAVIGATION_BAR,
                 "$EXTENSION_CLASS_DESCRIPTOR->useTranslucentNavigationButtons(Z)Z",
             )
         }
 
         if (is_20_15_or_greater) {
             overrideBooleanFeatureFlag(
-                45680008L,
+                FeatureFlag.ANIMATED_NAVIGATION_TABS,
                 "$EXTENSION_CLASS_DESCRIPTOR->useAnimatedNavigationButtons(Z)Z",
             )
         }

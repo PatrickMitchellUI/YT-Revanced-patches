@@ -2,6 +2,7 @@ package app.revanced.patches.shared.misc.audio
 
 import app.revanced.patcher.*
 import app.revanced.patcher.patch.BytecodePatchContext
+import app.revanced.patches.shared.misc.featureflag.FeatureFlag
 import com.android.tools.smali.dexlib2.AccessFlags
 
 internal val BytecodePatchContext.formatStreamModelToStringMethodMatch by composingFirstMethod {
@@ -15,5 +16,5 @@ internal val BytecodePatchContext.formatStreamModelToStringMethodMatch by compos
 }
 
 internal val BytecodePatchContext.selectAudioStreamMethodMatch by composingFirstMethod {
-    instructions(45666189L())
+    instructions(FeatureFlag.LOCALIZED_DEFAULT_AUDIO_TRACK())
 }

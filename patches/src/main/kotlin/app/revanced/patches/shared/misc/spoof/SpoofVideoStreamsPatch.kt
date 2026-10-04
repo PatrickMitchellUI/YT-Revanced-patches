@@ -12,6 +12,7 @@ import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patcher.returnType
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
+import app.revanced.patches.shared.misc.featureflag.FeatureFlag
 import app.revanced.patches.shared.misc.featureflag.featureFlagOverridePatch
 import app.revanced.patches.shared.misc.featureflag.overrideBooleanFeatureFlag
 import app.revanced.util.*
@@ -329,7 +330,7 @@ internal fun spoofVideoStreamsPatch(
 
         if (fixParsePlaybackResponseFeatureFlag()) {
             overrideBooleanFeatureFlag(
-                45665455L,
+                FeatureFlag.PARSE_PLAYBACK_RESPONSE_ON_START,
                 "$EXTENSION_CLASS_DESCRIPTOR->usePlaybackStartFeatureFlag(Z)Z",
             )
         }

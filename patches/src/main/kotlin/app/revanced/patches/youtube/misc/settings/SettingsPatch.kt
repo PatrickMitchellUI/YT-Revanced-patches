@@ -13,6 +13,7 @@ import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
 import app.revanced.patches.shared.boldIconsFeatureFlagMethodMatch
 import app.revanced.patches.shared.googleApiActivityOnCreateMethod
+import app.revanced.patches.shared.misc.featureflag.FeatureFlag
 import app.revanced.patches.shared.misc.featureflag.featureFlagOverridePatch
 import app.revanced.patches.shared.misc.featureflag.overrideBooleanFeatureFlag
 import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
@@ -261,13 +262,13 @@ val settingsPatch = bytecodePatch(
         // Add setting to force Cairo settings fragment on/off.
         if (restoreOldSettingsMenus) {
             overrideBooleanFeatureFlag(
-                45532100L,
+                FeatureFlag.CAIRO_SETTINGS_FRAGMENT,
                 "$YOUTUBE_ACTIVITY_HOOK_CLASS_DESCRIPTOR->useCairoSettingsFragment(Z)Z",
             )
         } else {
             // The old settings menus are half broken, but YouTube shows them on the first launch
             // of a clean install, as the flag is off until the server config is loaded.
-            overrideBooleanFeatureFlag(45532100L, true)
+            overrideBooleanFeatureFlag(FeatureFlag.CAIRO_SETTINGS_FRAGMENT, true)
         }
 
         // Bold icon resources are found starting in 20.23, but many YT icons are not bold.
@@ -275,7 +276,7 @@ val settingsPatch = bytecodePatch(
         if (is_21_36_or_greater) {
             // The flag is read inline at each call site.
             overrideBooleanFeatureFlag(
-                45685201L,
+                FeatureFlag.BOLD_ICONS,
                 "$YOUTUBE_ACTIVITY_HOOK_CLASS_DESCRIPTOR->useBoldIcons(Z)Z",
             )
         } else if (is_20_31_or_greater) {

@@ -10,6 +10,7 @@ import app.revanced.patcher.name
 import app.revanced.patcher.parameterTypes
 import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patcher.returnType
+import app.revanced.patches.shared.misc.featureflag.FeatureFlag
 import com.android.tools.smali.dexlib2.AccessFlags
 
 internal val BytecodePatchContext.googleApiActivityOnCreateMethod by gettingFirstMethodDeclaratively {
@@ -35,6 +36,6 @@ internal val BytecodePatchContext.boldIconsFeatureFlagMethodMatch by composingFi
     returnType("Z")
     parameterTypes()
     instructions(
-        45685201L(),
+        FeatureFlag.BOLD_ICONS(),
     )
 }

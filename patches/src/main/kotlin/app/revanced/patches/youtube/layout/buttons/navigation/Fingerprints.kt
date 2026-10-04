@@ -2,6 +2,7 @@ package app.revanced.patches.youtube.layout.buttons.navigation
 
 import app.revanced.patcher.*
 import app.revanced.patcher.patch.BytecodePatchContext
+import app.revanced.patches.shared.misc.featureflag.FeatureFlag
 import app.revanced.patches.shared.misc.mapping.ResourceType
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -23,7 +24,7 @@ internal val BytecodePatchContext.animatedNavigationTabsFeatureFlagMethodMatch b
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returnType("Z")
     instructions(
-        45680008L(),
+        FeatureFlag.ANIMATED_NAVIGATION_TABS(),
     )
 }
 
@@ -32,7 +33,7 @@ internal val BytecodePatchContext.autoHideNavigationBarMethod by gettingFirstMet
     returnType("V")
     parameterTypes("Landroid/support/v7/widget/RecyclerView;", "I", "I")
     instructions(
-        45677535L(),
+        FeatureFlag.AUTO_HIDE_NAVIGATION_BAR(),
     )
 }
 

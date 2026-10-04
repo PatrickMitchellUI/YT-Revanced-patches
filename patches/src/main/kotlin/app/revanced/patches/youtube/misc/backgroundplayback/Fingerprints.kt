@@ -2,6 +2,7 @@ package app.revanced.patches.youtube.misc.backgroundplayback
 
 import app.revanced.patcher.*
 import app.revanced.patcher.patch.BytecodePatchContext
+import app.revanced.patches.shared.misc.featureflag.FeatureFlag
 import app.revanced.util.literal
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -74,14 +75,13 @@ internal val BytecodePatchContext.shortsBackgroundPlaybackFeatureFlagMethod by g
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returnType("Z")
     parameterTypes()
-    instructions(45415425L())
+    instructions(FeatureFlag.SHORTS_BACKGROUND_PLAYBACK())
 }
 
 // Fix 'E/InputDispatcher: Window handle pip_input_consumer has no registered input channel'
 internal val BytecodePatchContext.pipInputConsumerFeatureFlagMethodMatch by composingFirstMethod {
     instructions(
-        // PiP input consumer feature flag.
-        45638483L(),
+        FeatureFlag.PIP_INPUT_CONSUMER_ENABLED(),
     )
 }
 

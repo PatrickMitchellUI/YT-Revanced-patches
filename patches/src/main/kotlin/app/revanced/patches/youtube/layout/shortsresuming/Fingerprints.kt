@@ -2,6 +2,7 @@ package app.revanced.patches.youtube.layout.shortsresuming
 
 import app.revanced.patcher.*
 import app.revanced.patcher.patch.BytecodePatchContext
+import app.revanced.patches.shared.misc.featureflag.FeatureFlag
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import kotlin.collections.all
@@ -74,6 +75,6 @@ val BytecodePatchContext.userWasInShortsConfigMethod by gettingFirstMethodDeclar
     returnType("Z")
     parameterTypes()
     instructions(
-        45358360L(),
+        FeatureFlag.RESUME_SHORTS_ON_STARTUP(),
     )
 }

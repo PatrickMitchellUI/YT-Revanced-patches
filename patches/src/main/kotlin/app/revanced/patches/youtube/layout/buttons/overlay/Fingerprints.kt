@@ -2,6 +2,7 @@ package app.revanced.patches.youtube.layout.buttons.overlay
 
 import app.revanced.patcher.*
 import app.revanced.patcher.patch.BytecodePatchContext
+import app.revanced.patches.shared.misc.featureflag.FeatureFlag
 import app.revanced.patches.shared.misc.mapping.ResourceType
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -14,12 +15,12 @@ internal val BytecodePatchContext.mediaRouteButtonMethod by gettingFirstMethodDe
 
 internal val BytecodePatchContext.castButtonPlayerFeatureFlagMethodMatch by composingFirstMethod {
     returnType("Z")
-    instructions(45690091L())
+    instructions(FeatureFlag.SHOW_CAST_BUTTON_IN_PLAYER())
 }
 
 internal val BytecodePatchContext.castButtonActionFeatureFlagMethodMatch by composingFirstMethod {
     returnType("Z")
-    instructions(45690090L())
+    instructions(FeatureFlag.SHOW_CAST_BUTTON_IN_FEED())
 }
 
 internal val BytecodePatchContext.inflateControlsGroupLayoutStubMethodMatch by composingFirstMethod {

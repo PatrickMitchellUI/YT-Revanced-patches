@@ -3,6 +3,7 @@ package app.revanced.patches.youtube.interaction.seekbar
 import app.revanced.patcher.*
 import app.revanced.patcher.extensions.instructions
 import app.revanced.patcher.patch.BytecodePatchContext
+import app.revanced.patches.shared.misc.featureflag.FeatureFlag
 import app.revanced.util.getting
 import app.revanced.util.literal
 import app.revanced.util.using
@@ -14,7 +15,7 @@ internal val BytecodePatchContext.swipingUpGestureParentMethod by gettingFirstIm
     returnType("Z")
     parameterTypes()
     instructions(
-        45379021L(), // Swipe up fullscreen feature flag
+        FeatureFlag.SWIPE_UP_TO_FULLSCREEN(),
     )
 }
 
@@ -44,7 +45,7 @@ internal val BytecodePatchContext.disableFastForwardLegacyMethodMatch by composi
     parameterTypes()
     opcodes(Opcode.MOVE_RESULT)
     // Intent start flag only used in the subscription activity
-    literal { 45411330 }
+    literal { FeatureFlag.DOUBLE_SPEED_SEEK_GESTURE_LEGACY.id }
 }
 
 internal val BytecodePatchContext.disableFastForwardGestureMethodMatch by composingFirstMethod {
@@ -116,7 +117,7 @@ internal val BytecodePatchContext.fullscreenLargeSeekbarFeatureFlagMethodMatch b
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returnType("Z")
     parameterTypes()
-    instructions(45691569L())
+    instructions(FeatureFlag.LARGE_FULLSCREEN_SEEKBAR())
 }
 
 internal val BytecodePatchContext.videoStreamingDataAllowSeekingMethod by getting {

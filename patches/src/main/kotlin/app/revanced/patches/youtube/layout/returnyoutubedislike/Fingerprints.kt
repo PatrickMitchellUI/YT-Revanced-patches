@@ -4,6 +4,7 @@ import app.revanced.patcher.*
 import app.revanced.patcher.extensions.instructions
 import app.revanced.patcher.gettingFirstMethodDeclaratively
 import app.revanced.patcher.patch.BytecodePatchContext
+import app.revanced.patches.shared.misc.featureflag.FeatureFlag
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.ClassDef
@@ -138,7 +139,7 @@ internal val BytecodePatchContext.textComponentFeatureFlagMethodMatch by composi
     accessFlags(AccessFlags.FINAL)
     returnType("Z")
     parameterTypes()
-    instructions(45675738L())
+    instructions(FeatureFlag.NEW_LITHO_TEXT_CREATION())
 }
 
 

@@ -9,6 +9,7 @@ import app.revanced.patcher.patch.PatchException
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patcher.patch.resourcePatch
 import app.revanced.patcher.util.Document
+import app.revanced.patches.shared.misc.featureflag.FeatureFlag
 import app.revanced.patches.shared.misc.featureflag.featureFlagOverridePatch
 import app.revanced.patches.shared.misc.featureflag.overrideBooleanFeatureFlag
 import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
@@ -310,12 +311,12 @@ val playerControlsPatch = bytecodePatch(
         // region Layout A/B tests.
 
         // Different bottom controls layout (youtube_video_exploder_controls_bottom_ui_container.xml).
-        overrideBooleanFeatureFlag(45643739L, false)
+        overrideBooleanFeatureFlag(FeatureFlag.EXPLODER_BOTTOM_CONTROLS_LAYOUT, false)
 
         // Button styles that do not match the ReVanced buttons.
-        overrideBooleanFeatureFlag(45686474L, false) // Fullscreen large buttons.
-        overrideBooleanFeatureFlag(45709810L, false) // Large overlay buttons.
-        overrideBooleanFeatureFlag(45713296L, false) // Button stroke.
+        overrideBooleanFeatureFlag(FeatureFlag.LARGE_FULLSCREEN_BUTTONS, false)
+        overrideBooleanFeatureFlag(FeatureFlag.LARGE_OVERLAY_BUTTONS, false)
+        overrideBooleanFeatureFlag(FeatureFlag.PLAYER_BUTTON_STROKE, false)
 
         // endregion
     }

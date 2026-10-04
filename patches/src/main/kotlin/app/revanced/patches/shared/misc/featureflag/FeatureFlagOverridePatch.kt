@@ -40,6 +40,18 @@ fun overrideBooleanFeatureFlag(flag: Long, extensionMethodDescriptor: String) =
 fun overrideBooleanFeatureFlag(flag: Long, value: Boolean) =
     addBooleanFeatureFlagOverride(flag, "const/4 p0, ${if (value) "0x1" else "0x0"}")
 
+/**
+ * @see overrideBooleanFeatureFlag
+ */
+fun overrideBooleanFeatureFlag(flag: FeatureFlag, extensionMethodDescriptor: String) =
+    overrideBooleanFeatureFlag(flag.id, extensionMethodDescriptor)
+
+/**
+ * @see overrideBooleanFeatureFlag
+ */
+fun overrideBooleanFeatureFlag(flag: FeatureFlag, value: Boolean) =
+    overrideBooleanFeatureFlag(flag.id, value)
+
 val featureFlagOverridePatch = bytecodePatch(
     description = "Hooks the boolean feature flag accessor to allow overriding feature flags.",
 ) {

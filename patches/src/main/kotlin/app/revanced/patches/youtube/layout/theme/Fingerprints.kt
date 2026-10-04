@@ -2,11 +2,12 @@ package app.revanced.patches.youtube.layout.theme
 
 import app.revanced.patcher.*
 import app.revanced.patcher.patch.BytecodePatchContext
+import app.revanced.patches.shared.misc.featureflag.FeatureFlag
 import app.revanced.patches.youtube.shared.YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE
 import com.android.tools.smali.dexlib2.Opcode
 
 internal val BytecodePatchContext.useGradientLoadingScreenMethodMatch by composingFirstMethod {
-    instructions(45412406L())
+    instructions(FeatureFlag.GRADIENT_LOADING_SCREEN())
 }
 
 internal val BytecodePatchContext.splashScreenStyleMethodMatch by composingFirstMethod {

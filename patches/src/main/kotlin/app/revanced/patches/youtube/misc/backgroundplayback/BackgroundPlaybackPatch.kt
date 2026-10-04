@@ -7,6 +7,7 @@ import app.revanced.patcher.immutableClassDef
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
+import app.revanced.patches.shared.misc.featureflag.FeatureFlag
 import app.revanced.patches.shared.misc.featureflag.featureFlagOverridePatch
 import app.revanced.patches.shared.misc.featureflag.overrideBooleanFeatureFlag
 import app.revanced.patches.shared.misc.mapping.ResourceType
@@ -125,7 +126,7 @@ val removeBackgroundPlaybackRestrictionsPatch = bytecodePatch(
         // Exact purpose is not clear and it's used in ~ 100 locations.
         // 21.36 requires the flag, otherwise the player controls are not shown.
         if (is_20_29_or_greater && !is_21_36_or_greater) {
-            overrideBooleanFeatureFlag(45698813L, false)
+            overrideBooleanFeatureFlag(FeatureFlag.UNKNOWN_PLAYER_FEATURE_ENABLED, false)
         }
     }
 }

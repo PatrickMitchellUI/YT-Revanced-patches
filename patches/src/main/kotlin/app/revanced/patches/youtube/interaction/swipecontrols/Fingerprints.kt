@@ -8,6 +8,7 @@ import app.revanced.patcher.instructions
 import app.revanced.patcher.invoke
 import app.revanced.patcher.parameterTypes
 import app.revanced.patcher.patch.BytecodePatchContext
+import app.revanced.patches.shared.misc.featureflag.FeatureFlag
 import com.android.tools.smali.dexlib2.AccessFlags
 
 internal val BytecodePatchContext.swipeControlsHostActivityMethod by gettingFirstImmutableMethodDeclaratively {
@@ -19,6 +20,6 @@ internal val BytecodePatchContext.swipeControlsHostActivityMethod by gettingFirs
 internal val BytecodePatchContext.swipeChangeVideoMethodMatch by composingFirstMethod {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
     instructions(
-        45631116L(), // Swipe to change fullscreen video feature flag.
+        FeatureFlag.SWIPE_TO_CHANGE_VIDEO_IN_FULLSCREEN(),
     )
 }

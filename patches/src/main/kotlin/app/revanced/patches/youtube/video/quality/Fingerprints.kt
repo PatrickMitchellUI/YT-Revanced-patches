@@ -20,6 +20,7 @@ import app.revanced.patcher.opcodes
 import app.revanced.patcher.parameterTypes
 import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patcher.returnType
+import app.revanced.patches.shared.misc.featureflag.FeatureFlag
 import app.revanced.util.findFieldFromToString
 import app.revanced.util.literal
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -28,7 +29,7 @@ import com.android.tools.smali.dexlib2.iface.ClassDef
 
 internal val BytecodePatchContext.newAdvancedQualityMenuStyleFlyoutMethodMatch by composingFirstMethod {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    instructions(45712556L())
+    instructions(FeatureFlag.NEW_ADVANCED_QUALITY_MENU_STYLE())
 }
 
 internal val BytecodePatchContext.currentVideoFormatToStringMethod by gettingFirstImmutableMethodDeclaratively(

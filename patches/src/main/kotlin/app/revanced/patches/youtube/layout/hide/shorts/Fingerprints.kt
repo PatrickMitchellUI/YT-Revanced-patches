@@ -2,6 +2,7 @@ package app.revanced.patches.youtube.layout.hide.shorts
 
 import app.revanced.patcher.*
 import app.revanced.patcher.patch.BytecodePatchContext
+import app.revanced.patches.shared.misc.featureflag.FeatureFlag
 import app.revanced.patches.shared.misc.mapping.ResourceType
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -112,7 +113,7 @@ internal val BytecodePatchContext.shortsExperimentalPlayerFeatureFlagMethod by g
     returnType("Z")
     parameterTypes()
     instructions(
-        45677719L(),
+        FeatureFlag.SHORTS_EXPERIMENTAL_PLAYER(),
     )
 }
 
@@ -121,6 +122,6 @@ internal val BytecodePatchContext.renderNextUIFeatureFlagMethod by gettingFirstM
     returnType("Z")
     parameterTypes()
     instructions(
-        45649743L(),
+        FeatureFlag.SHORTS_EXPERIMENTAL_UI_RENDERER(),
     )
 }
