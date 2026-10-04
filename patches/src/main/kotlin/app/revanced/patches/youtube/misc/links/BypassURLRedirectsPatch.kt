@@ -10,12 +10,11 @@ import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
-import app.revanced.patches.youtube.misc.playservice.is_20_37_or_greater
-import app.revanced.patches.youtube.misc.playservice.is_20_49_or_greater
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import app.revanced.patches.youtube.misc.playservice.is_21_36_or_greater
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/revanced/extension/youtube/patches/BypassURLRedirectsPatch;"
@@ -45,7 +44,7 @@ val bypassURLRedirectsPatch = bytecodePatch(
             SwitchPreference("revanced_bypass_url_redirects"),
         )
 
-        if (is_20_49_or_greater) {
+        if (is_21_36_or_greater) {
             // The redirect link is no longer parsed from the endpoint.
             // Replace it where it is opened in the browser.
             fun MutableMethod.replaceUriParameter(register: String) = addInstructions(
@@ -71,7 +70,7 @@ val bypassURLRedirectsPatch = bytecodePatch(
                 if (methods.isEmpty()) throw PatchException("Could not find the custom tab methods")
             }.forEach { it.replaceUriParameter("p2") }
         } else {
-            val match = if (is_20_37_or_greater) abUriParserMethodMatch else abUriParserLegacyMethodMatch
+            val match = abUriParserMethodMatch
             val insertIndex = match[2]
             val uriStringRegister =
                 match.method.getInstruction<FiveRegisterInstruction>(insertIndex).registerC

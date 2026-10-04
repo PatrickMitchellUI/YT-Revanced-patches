@@ -294,9 +294,6 @@ Second \"item\" text"</string>
             <string name="revanced_hide_toolbar_search_button_title">የፍለጋ ቁልፍን ደብቅ</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">የፍለጋ ቁልፍ ተደብቋል</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">የፍለጋ ቁልፍ ይታያል።</string>
-            <string name="revanced_wide_searchbar_title">ሰፊ የፍለጋ አሞሌን አንቃ</string>
-            <string name="revanced_wide_searchbar_summary_on">ሰፊ የፍለጋ አሞሌ ነቅቷል</string>
-            <string name="revanced_wide_searchbar_summary_off">ሰፊ የፍለጋ አሞሌ ቦዝኗል</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->

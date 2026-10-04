@@ -40,14 +40,6 @@ internal fun ClassDef.getAllowSwipingUpGestureMethod() = firstMethodDeclarativel
     parameterTypes("L")
 }
 
-internal val BytecodePatchContext.disableFastForwardLegacyMethodMatch by composingFirstMethod {
-    returnType("Z")
-    parameterTypes()
-    opcodes(Opcode.MOVE_RESULT)
-    // Intent start flag only used in the subscription activity
-    literal { FeatureFlag.DOUBLE_SPEED_SEEK_GESTURE_LEGACY.id }
-}
-
 internal val BytecodePatchContext.disableFastForwardGestureMethodMatch by composingFirstMethod {
     definingClass("/NextGenWatchLayout;")
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)

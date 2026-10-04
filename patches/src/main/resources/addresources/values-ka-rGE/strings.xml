@@ -292,9 +292,6 @@ MicroG-ისთვის ბატარეის ოპტიმიზაც�
             <string name="revanced_hide_toolbar_search_button_title">ძიების ღილაკის დამალვა</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">ძიების ღილაკი დამალულია</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">ძიების ღილაკი ნაჩვენებია.</string>
-            <string name="revanced_wide_searchbar_title">ფართო საძიებო ზოლის ჩართვა</string>
-            <string name="revanced_wide_searchbar_summary_on">ფართო საძიებო ზოლი ჩართულია</string>
-            <string name="revanced_wide_searchbar_summary_off">ფართო საძიებო ზოლი გამორთულია</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->

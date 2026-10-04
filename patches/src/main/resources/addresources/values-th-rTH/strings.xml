@@ -702,9 +702,6 @@ Second \"item\" text"</string>
             <string name="revanced_swipe_overlay_style_entry_5">โอเวอร์เลย์แบบวงกลม (มินิมอล)</string>
             <string name="revanced_swipe_overlay_style_entry_6">โอเวอร์เลย์แนวตั้ง</string>
             <string name="revanced_swipe_overlay_style_entry_7">โอเวอร์เลย์แนวตั้ง (มินิมอล)</string>
-            <string name="revanced_swipe_change_video_title">เปิดใช้การปัดเพื่อเปลี่ยนวิดีโอ</string>
-            <string name="revanced_swipe_change_video_summary_on">การปัดในโหมดเต็มหน้าจอจะเปลี่ยนไปเป็นวิดีโอถัดไป/ก่อนหน้า</string>
-            <string name="revanced_swipe_change_video_summary_off">การปัดในโหมดเต็มหน้าจอจะไม่เปลี่ยนเป็นวิดีโอถัดไป/ก่อนหน้า</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">ปิดใช้งานคำบรรยายอัตโนมัติ</string>
@@ -836,9 +833,6 @@ Second \"item\" text"</string>
             <string name="revanced_hide_toolbar_search_button_title">ซ่อนปุ่มค้นหา</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">ซ่อนปุ่มค้นหาแล้ว</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">แสดงปุ่มค้นหาแล้ว.</string>
-            <string name="revanced_wide_searchbar_title">ทั้งหละเย้ยนตะโรกเลียด</string>
-            <string name="revanced_wide_searchbar_summary_on">ทั้งละเย้ยนตะโรกเลียด รตรอกลาดต้อง</string>
-            <string name="revanced_wide_searchbar_summary_off">ทั้งหละเย้ยนตะโรกเลียด รบกใหม่ยเทศไทย</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">เมนูแบบเลื่อนลง</string>

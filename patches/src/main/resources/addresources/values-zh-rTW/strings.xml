@@ -706,9 +706,6 @@ Second \"item\" text"</string>
             <string name="revanced_swipe_overlay_style_entry_5">圓形疊加（極簡風格）</string>
             <string name="revanced_swipe_overlay_style_entry_6">垂直疊加</string>
             <string name="revanced_swipe_overlay_style_entry_7">垂直覆蓋（最小）</string>
-            <string name="revanced_swipe_change_video_title">啟用滑動切換影片</string>
-            <string name="revanced_swipe_change_video_summary_on">在全螢幕模式下滑動將切換到下一部/上一部影片</string>
-            <string name="revanced_swipe_change_video_summary_off">在全螢幕模式下滑動將不會切換到下一部/上一部影片</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">停用自動產生的字幕</string>
@@ -840,9 +837,6 @@ Second \"item\" text"</string>
             <string name="revanced_hide_toolbar_search_button_title">隱藏搜尋按鈕</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">搜尋按鈕已隱藏</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">搜尋按鈕已顯示。</string>
-            <string name="revanced_wide_searchbar_title">啟用寬搜尋列</string>
-            <string name="revanced_wide_searchbar_summary_on">已啟用寬搜尋列</string>
-            <string name="revanced_wide_searchbar_summary_off">已停用寬搜尋列</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">介面選單</string>

@@ -294,9 +294,6 @@ Second \"item\" text"</string>
             <string name="revanced_hide_toolbar_search_button_title">Сокриј го копчето „Пребарај“</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Копчето „Пребарај“ е скриено</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Копчето „Пребарај“ е прикажано.</string>
-            <string name="revanced_wide_searchbar_title">Овозможи широка лента за пребарување</string>
-            <string name="revanced_wide_searchbar_summary_on">Широката лента за пребарување е овозможена</string>
-            <string name="revanced_wide_searchbar_summary_off">Широката лента за пребарување е оневозможена</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->

@@ -700,9 +700,6 @@ Second \"item\" text"</string>
             <string name="revanced_swipe_overlay_style_entry_5">שכבת-על מעגלית (מזערית)</string>
             <string name="revanced_swipe_overlay_style_entry_6">שכבת-על אנכית</string>
             <string name="revanced_swipe_overlay_style_entry_7">שכבת-על אנכית (מזערית)</string>
-            <string name="revanced_swipe_change_video_title">הפעל החלקה כדי לשנות סרטונים</string>
-            <string name="revanced_swipe_change_video_summary_on">החלקה במצב מסך מלא תשנה לסרטון הבא/הקודם</string>
-            <string name="revanced_swipe_change_video_summary_off">החלקה במצב מסך מלא לא תשנה לסרטון הבא/הקודם</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">השבת כתוביות אוטומטיות</string>
@@ -834,9 +831,6 @@ Second \"item\" text"</string>
             <string name="revanced_hide_toolbar_search_button_title">הסתר לחצן חיפוש</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">לחצן החיפוש מוסתר</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">לחצן החיפוש מוצג.</string>
-            <string name="revanced_wide_searchbar_title">הפעל סרגל חיפוש רחב</string>
-            <string name="revanced_wide_searchbar_summary_on">סרגל חיפוש רחב מופעל</string>
-            <string name="revanced_wide_searchbar_summary_off">סרגל חיפוש רחב מושבת</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">תפריט נשלף</string>

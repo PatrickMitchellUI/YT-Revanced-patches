@@ -10,7 +10,6 @@ import android.widget.Toolbar;
 import app.revanced.extension.shared.ResourceType;
 import app.revanced.extension.shared.Utils;
 import app.revanced.extension.shared.settings.BaseActivityHook;
-import app.revanced.extension.youtube.patches.VersionCheckPatch;
 import app.revanced.extension.youtube.patches.spoof.SpoofAppVersionPatch;
 import app.revanced.extension.youtube.settings.preference.YouTubePreferenceFragment;
 import app.revanced.extension.youtube.settings.search.YouTubeSearchViewController;
@@ -29,8 +28,7 @@ public class YouTubeActivityHook extends BaseActivityHook {
      */
     private static final long MINIMUM_TIME_AFTER_FIRST_LAUNCH_BEFORE_ALLOWING_BOLD_ICONS = 30 * 1000; // 30 seconds.
 
-    private static final boolean USE_BOLD_ICONS = VersionCheckPatch.IS_20_31_OR_GREATER
-            && !Settings.SETTINGS_DISABLE_BOLD_ICONS.get()
+    private static final boolean USE_BOLD_ICONS = !Settings.SETTINGS_DISABLE_BOLD_ICONS.get()
             && !Settings.RESTORE_OLD_SETTINGS_MENUS.get()
             && (System.currentTimeMillis() - Settings.FIRST_TIME_APP_LAUNCHED.get())
             > MINIMUM_TIME_AFTER_FIRST_LAUNCH_BEFORE_ALLOWING_BOLD_ICONS;
@@ -127,10 +125,6 @@ public class YouTubeActivityHook extends BaseActivityHook {
      */
     @SuppressWarnings("unused")
     public static boolean useCairoSettingsFragment(boolean original) {
-        // Early targets have layout issues and it's better to always force off.
-        if (!VersionCheckPatch.IS_19_34_OR_GREATER) {
-            return false;
-        }
         if (Settings.RESTORE_OLD_SETTINGS_MENUS.get()) {
             return false;
         }

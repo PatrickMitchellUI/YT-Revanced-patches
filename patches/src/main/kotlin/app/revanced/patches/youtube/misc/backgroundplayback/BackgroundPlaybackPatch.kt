@@ -15,8 +15,6 @@ import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
 import app.revanced.patches.youtube.misc.playertype.playerTypeHookPatch
-import app.revanced.patches.youtube.misc.playservice.is_19_34_or_greater
-import app.revanced.patches.youtube.misc.playservice.is_20_29_or_greater
 import app.revanced.patches.youtube.misc.playservice.is_21_36_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
@@ -113,7 +111,7 @@ val removeBackgroundPlaybackRestrictionsPatch = bytecodePatch(
 
         // Fix PiP buttons not working after locking/unlocking device screen.
         // Flag was removed in 21.36.
-        if (is_19_34_or_greater && !is_21_36_or_greater) {
+        if (!is_21_36_or_greater) {
             pipInputConsumerFeatureFlagMethodMatch.let {
                 it.method.insertLiteralOverride(
                     it[0],
@@ -125,7 +123,7 @@ val removeBackgroundPlaybackRestrictionsPatch = bytecodePatch(
         // Client flag that interferes with background playback of some video types.
         // Exact purpose is not clear and it's used in ~ 100 locations.
         // 21.36 requires the flag, otherwise the player controls are not shown.
-        if (is_20_29_or_greater && !is_21_36_or_greater) {
+        if (!is_21_36_or_greater) {
             overrideBooleanFeatureFlag(FeatureFlag.UNKNOWN_PLAYER_FEATURE_ENABLED, false)
         }
     }

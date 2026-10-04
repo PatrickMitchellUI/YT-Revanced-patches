@@ -704,9 +704,6 @@ YouTube Premium 사용자라면 이 설정은 필요하지 않을 수 있습니�
             <string name="revanced_swipe_overlay_style_entry_5">원형 (최소화)</string>
             <string name="revanced_swipe_overlay_style_entry_6">세로</string>
             <string name="revanced_swipe_overlay_style_entry_7">세로 (최소화)</string>
-            <string name="revanced_swipe_change_video_title">스와이프 제스처로 동영상 전환 비활성화하기</string>
-            <string name="revanced_swipe_change_video_summary_on">전체 화면 중앙에서 위로/아래로 스와이프하여 다음/이전 동영상으로 전환합니다</string>
-            <string name="revanced_swipe_change_video_summary_off">전체 화면 중앙에서 위로/아래로 스와이프하여 다음/이전 동영상으로 전환하지 않습니다</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">자동 자막 비활성화하기</string>
@@ -838,9 +835,6 @@ YouTube Premium 사용자라면 이 설정은 필요하지 않을 수 있습니�
             <string name="revanced_hide_toolbar_search_button_title">검색 버튼 숨기기</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">검색 버튼이 숨겨집니다</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">검색 버튼이 표시됩니다.</string>
-            <string name="revanced_wide_searchbar_title">넓은 검색창 활성화하기</string>
-            <string name="revanced_wide_searchbar_summary_on">넓은 검색창을 활성화합니다</string>
-            <string name="revanced_wide_searchbar_summary_off">넓은 검색창을 비활성화합니다</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">메뉴 구성요소</string>

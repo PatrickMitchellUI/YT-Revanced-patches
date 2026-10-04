@@ -706,9 +706,6 @@ Second \"item\" text"</string>
             <string name="revanced_swipe_overlay_style_entry_5">Круговий індикатор (мінімальний)</string>
             <string name="revanced_swipe_overlay_style_entry_6">Вертикальний індикатор</string>
             <string name="revanced_swipe_overlay_style_entry_7">Вертикальний індикатор (мінімальний)</string>
-            <string name="revanced_swipe_change_video_title">Увімкнути зміну відео проведенням</string>
-            <string name="revanced_swipe_change_video_summary_on">Проведення пальцем у повноекранному режимі перейде до наступного/попереднього відео</string>
-            <string name="revanced_swipe_change_video_summary_off">Проведення пальцем у повноекранному режимі не перейде до наступного/попереднього відео</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">Вимкнути автоматичні субтитри</string>
@@ -840,9 +837,6 @@ Second \"item\" text"</string>
             <string name="revanced_hide_toolbar_search_button_title">Приховати кнопку пошуку</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Кнопку пошуку приховано</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Кнопка пошуку показується.</string>
-            <string name="revanced_wide_searchbar_title">Увімкнути широку панель пошуку</string>
-            <string name="revanced_wide_searchbar_summary_on">Широка панель пошуку увімкнена</string>
-            <string name="revanced_wide_searchbar_summary_off">Широка панель пошуку вимкнена</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">Висувне меню</string>

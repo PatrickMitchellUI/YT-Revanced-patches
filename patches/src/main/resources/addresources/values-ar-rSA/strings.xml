@@ -698,9 +698,6 @@ Second \"item\" text"</string>
             <string name="revanced_swipe_overlay_style_entry_5">النمط الدائري (الأدنى)</string>
             <string name="revanced_swipe_overlay_style_entry_6">النمط العمودي</string>
             <string name="revanced_swipe_overlay_style_entry_7">النمط العمودي (الأدنى)</string>
-            <string name="revanced_swipe_change_video_title">تمكين إيماءة التمرير لتغيير الفيديوهات</string>
-            <string name="revanced_swipe_change_video_summary_on">سيؤدي التمرير في وضع ملء الشاشة إلى التغيير للفيديو التالي/السابق</string>
-            <string name="revanced_swipe_change_video_summary_off">لن يؤدي التمرير في وضع ملء الشاشة إلى التغيير للفيديو التالي/السابق</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">تعطيل الترجمة التلقائية</string>
@@ -832,9 +829,6 @@ Second \"item\" text"</string>
             <string name="revanced_hide_toolbar_search_button_title">إخفاء زر البحث</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">تم إخفاء زر البحث</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">يتم عرض زر البحث.</string>
-            <string name="revanced_wide_searchbar_title">تمكين شريط البحث العريض</string>
-            <string name="revanced_wide_searchbar_summary_on">تم تمكين شريط البحث العريض</string>
-            <string name="revanced_wide_searchbar_summary_off">تم تعطيل شريط البحث العريض</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">القائمة المنبثقة</string>

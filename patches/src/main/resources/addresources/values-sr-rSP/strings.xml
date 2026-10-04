@@ -706,9 +706,6 @@ Second \"item\" text"</string>
             <string name="revanced_swipe_overlay_style_entry_5">Кружни преклоп (минимални)</string>
             <string name="revanced_swipe_overlay_style_entry_6">Вертикални преклоп</string>
             <string name="revanced_swipe_overlay_style_entry_7">Вертикални преклоп (минимални)</string>
-            <string name="revanced_swipe_change_video_title">Омогући превлачење за промену видеа</string>
-            <string name="revanced_swipe_change_video_summary_on">Превлачење у режиму целог екрана ће променити на следећи/претходни видео</string>
-            <string name="revanced_swipe_change_video_summary_off">Превлачење у режиму целог екрана неће променити на следећи/претходни видео</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">Онемогући аутоматски титл</string>
@@ -840,9 +837,6 @@ Second \"item\" text"</string>
             <string name="revanced_hide_toolbar_search_button_title">Сакриј дугме „Претрага”</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Дугме „Претрага” је скривено</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Дугме „Претрага” је приказано.</string>
-            <string name="revanced_wide_searchbar_title">Омогући широку траку за претрагу</string>
-            <string name="revanced_wide_searchbar_summary_on">Широка трака за претрагу је омогућена</string>
-            <string name="revanced_wide_searchbar_summary_off">Широка трака за претрагу је онемогућена</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">Падајући мени</string>

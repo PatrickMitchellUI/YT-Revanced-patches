@@ -294,9 +294,6 @@ Ograničenja:
             <string name="revanced_hide_toolbar_search_button_title">Sakrij dugme Pretraga</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Dugme Pretraga je skriveno</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Dugme Pretraga je prikazano.</string>
-            <string name="revanced_wide_searchbar_title">Omogući široku traku za pretraživanje</string>
-            <string name="revanced_wide_searchbar_summary_on">Široka traka za pretraživanje je omogućena</string>
-            <string name="revanced_wide_searchbar_summary_off">Široka traka za pretraživanje je onemogućena</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->

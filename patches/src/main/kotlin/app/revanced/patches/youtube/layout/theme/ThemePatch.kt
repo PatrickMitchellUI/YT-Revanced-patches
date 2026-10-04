@@ -24,9 +24,6 @@ import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.shared.misc.settings.preference.TextPreference
 import app.revanced.patches.youtube.layout.seekbar.seekbarColorPatch
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
-import app.revanced.patches.youtube.misc.playservice.is_19_47_or_greater
-import app.revanced.patches.youtube.misc.playservice.is_20_02_or_greater
-import app.revanced.patches.youtube.misc.playservice.is_21_06_or_greater
 import app.revanced.patches.youtube.misc.playservice.is_21_36_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
@@ -209,7 +206,7 @@ val themePatch = baseThemePatch(
             baseThemeResourcePatch(
                 lightColorReplacement = { lightThemeBackgroundColor!! },
                 getDarkColorNames = {
-                    THEME_DEFAULT_DARK_COLOR_NAMES + if (is_21_06_or_greater)
+                    THEME_DEFAULT_DARK_COLOR_NAMES + if (is_21_36_or_greater)
                         setOf(
                             // yt_ref_color_constants_baseline_black_black0
                             "yt_sys_color_baseline_dark_menu_background",
@@ -224,7 +221,7 @@ val themePatch = baseThemePatch(
                         ) else emptySet()
                 },
                 getLightColorNames = {
-                    THEME_DEFAULT_LIGHT_COLOR_NAMES + if (is_21_06_or_greater)
+                    THEME_DEFAULT_LIGHT_COLOR_NAMES + if (is_21_36_or_greater)
                         setOf(
                             "yt_sys_color_baseline_light_base_background",
                             "yt_sys_color_baseline_light_raised_background"
@@ -274,24 +271,19 @@ val themePatch = baseThemePatch(
         )
 
 
-        if (is_19_47_or_greater) {
-            PreferenceScreen.GENERAL.addPreferences(
-                ListPreference("revanced_splash_screen_animation_style"),
-            )
-        }
+        PreferenceScreen.GENERAL.addPreferences(
+            ListPreference("revanced_splash_screen_animation_style"),
+        )
 
         useGradientLoadingScreenMethodMatch.method.insertLiteralOverride(
             useGradientLoadingScreenMethodMatch[0],
             "$EXTENSION_CLASS_DESCRIPTOR->gradientLoadingScreenEnabled(Z)Z",
         )
 
-        if (is_19_47_or_greater) {
-            // Lottie splash screen exists in earlier versions, but it may not be always on.
-            splashScreenStyleMethodMatch.method.insertLiteralOverride(
-                splashScreenStyleMethodMatch[0],
-                "$EXTENSION_CLASS_DESCRIPTOR->getLoadingScreenType(I)I",
-            )
-        }
+        splashScreenStyleMethodMatch.method.insertLiteralOverride(
+            splashScreenStyleMethodMatch[0],
+            "$EXTENSION_CLASS_DESCRIPTOR->getLoadingScreenType(I)I",
+        )
 
         showSplashScreen1MethodMatch.let {
             it.method.apply {
@@ -308,22 +300,20 @@ val themePatch = baseThemePatch(
             }
         }
 
-        if (is_20_02_or_greater) {
-            showSplashScreen2MethodMatch.let {
-                val insertIndex = it[1]
-                it.method.apply {
-                    val insertInstruction = getInstruction<TwoRegisterInstruction>(insertIndex)
-                    val registerA = insertInstruction.registerA
-                    val registerB = insertInstruction.registerB
+        showSplashScreen2MethodMatch.let {
+            val insertIndex = it[1]
+            it.method.apply {
+                val insertInstruction = getInstruction<TwoRegisterInstruction>(insertIndex)
+                val registerA = insertInstruction.registerA
+                val registerB = insertInstruction.registerB
 
-                    addInstructions(
-                        insertIndex,
-                        """
-                            invoke-static { v$registerA, v$registerB }, ${EXTENSION_CLASS_DESCRIPTOR}->showSplashScreen(II)I
-                            move-result v$registerA
-                        """
-                    )
-                }
+                addInstructions(
+                    insertIndex,
+                    """
+                        invoke-static { v$registerA, v$registerB }, ${EXTENSION_CLASS_DESCRIPTOR}->showSplashScreen(II)I
+                        move-result v$registerA
+                    """
+                )
             }
         }
     },

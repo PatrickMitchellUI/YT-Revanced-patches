@@ -22,7 +22,6 @@ import app.revanced.extension.shared.Logger;
 import app.revanced.extension.shared.ResourceType;
 import app.revanced.extension.shared.Utils;
 import app.revanced.extension.shared.settings.BaseSettings;
-import app.revanced.extension.youtube.patches.VersionCheckPatch;
 import app.revanced.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -284,7 +283,7 @@ public final class NavigationBar {
     private static final int fillBellCairoBlack = Utils.getResourceIdentifier(ResourceType.DRAWABLE,
             // The bold cairo notification filled icon is present,
             // but YT still has not fixed the icon not associated to the enum.
-            VersionCheckPatch.IS_20_31_OR_GREATER && !Settings.SETTINGS_DISABLE_BOLD_ICONS.get()
+            !Settings.SETTINGS_DISABLE_BOLD_ICONS.get()
                     ? "yt_fill_experimental_bell_vd_theme_24"
                     : "revanced_fill_bell_cairo_black_24");
 

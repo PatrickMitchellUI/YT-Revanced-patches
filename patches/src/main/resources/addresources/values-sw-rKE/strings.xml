@@ -294,9 +294,6 @@ Mapungufu:
             <string name="revanced_hide_toolbar_search_button_title">Ficha kitufe cha Tafuta</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Kitufe cha Tafuta kimefichwa</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Kitufe cha Tafuta kimeonyeshwa.</string>
-            <string name="revanced_wide_searchbar_title">Washa upau mpana wa utafutaji</string>
-            <string name="revanced_wide_searchbar_summary_on">Upau mpana wa utafutaji umewashwa</string>
-            <string name="revanced_wide_searchbar_summary_off">Upau mpana wa utafutaji umezimwa</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->

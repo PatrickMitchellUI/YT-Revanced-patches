@@ -707,9 +707,6 @@ Ekranın sağ tarafında dikey olarak kaydırarak sesi ayarlayın"</string>
             <string name="revanced_swipe_overlay_style_entry_5">Dairesel katman (minimal)</string>
             <string name="revanced_swipe_overlay_style_entry_6">Dikey katman</string>
             <string name="revanced_swipe_overlay_style_entry_7">Dikey katman (minimal)</string>
-            <string name="revanced_swipe_change_video_title">Kaydırarak video değiştirmeyi etkinleştir</string>
-            <string name="revanced_swipe_change_video_summary_on">Tam ekran modunda kaydırma, bir sonraki/önceki videoya geçecektir</string>
-            <string name="revanced_swipe_change_video_summary_off">Tam ekran modunda kaydırma, bir sonraki/önceki videoya geçmeyecektir</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">Otomatik altyazıları devre dışı bırak</string>
@@ -841,9 +838,6 @@ Ekranın sağ tarafında dikey olarak kaydırarak sesi ayarlayın"</string>
             <string name="revanced_hide_toolbar_search_button_title">Arama düğmesini gizle</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Arama düğmesi gizli</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Arama düğmesi görünür.</string>
-            <string name="revanced_wide_searchbar_title">Geniş arama çubuğunu etkinleştir</string>
-            <string name="revanced_wide_searchbar_summary_on">Geniş arama çubuğu etkin</string>
-            <string name="revanced_wide_searchbar_summary_off">Geniş arama çubuğu devre dışı</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">Açılır menü</string>

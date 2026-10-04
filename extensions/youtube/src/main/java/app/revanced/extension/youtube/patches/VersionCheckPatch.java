@@ -7,28 +7,8 @@ public class VersionCheckPatch {
         return Utils.getAppVersionName().compareTo(version) >= 0;
     }
 
-    @Deprecated
-    public static final boolean IS_19_17_OR_GREATER = isVersionOrGreater("19.17.00");
-    @Deprecated
-    public static final boolean IS_19_20_OR_GREATER = isVersionOrGreater("19.20.00");
-    @Deprecated
-    public static final boolean IS_19_21_OR_GREATER = isVersionOrGreater("19.21.00");
-    @Deprecated
-    public static final boolean IS_19_26_OR_GREATER = isVersionOrGreater("19.26.00");
-    @Deprecated
-    public static final boolean IS_19_29_OR_GREATER = isVersionOrGreater("19.29.00");
-    @Deprecated
-    public static final boolean IS_19_34_OR_GREATER = isVersionOrGreater("19.34.00");
-
-    public static final boolean IS_20_21_OR_GREATER = isVersionOrGreater("20.21.00");
-
-    public static final boolean IS_20_22_OR_GREATER = isVersionOrGreater("20.22.00");
-
-    public static final boolean IS_20_31_OR_GREATER = isVersionOrGreater("20.31.00");
-
-    public static final boolean IS_20_37_OR_GREATER = isVersionOrGreater("20.37.00");
-
-    public static final boolean IS_20_45_OR_GREATER = isVersionOrGreater("20.45.00");
-
+    /**
+     * The supported targets are 20.40.45 and 21.36.47, so this check tells them apart.
+     */
     public static final boolean IS_21_36_OR_GREATER = isVersionOrGreater("21.36.00");
 }

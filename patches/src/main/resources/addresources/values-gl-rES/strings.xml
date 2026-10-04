@@ -294,9 +294,6 @@ Limitacións:
             <string name="revanced_hide_toolbar_search_button_title">Ocultar o botón Buscar</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">O botón Buscar está oculto</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">O botón Buscar está visible.</string>
-            <string name="revanced_wide_searchbar_title">Activar a barra de busca ampla</string>
-            <string name="revanced_wide_searchbar_summary_on">A barra de busca ampla está activada</string>
-            <string name="revanced_wide_searchbar_summary_off">A barra de busca ampla está desactivada</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->

@@ -686,9 +686,6 @@ Reglați volumul glisând vertical pe partea dreaptă a ecranului"</string>
             <string name="revanced_swipe_overlay_style_entry_5">Suprapunere circulară (minimală)</string>
             <string name="revanced_swipe_overlay_style_entry_6">Suprapunere verticală</string>
             <string name="revanced_swipe_overlay_style_entry_7">Suprapunere verticală (minimală)</string>
-            <string name="revanced_swipe_change_video_title">Activați glisarea pentru a schimba videoclipurile</string>
-            <string name="revanced_swipe_change_video_summary_on">Glisarea în modul pe ecran complet va trece la următorul/anteriorul videoclip</string>
-            <string name="revanced_swipe_change_video_summary_off">Glisarea în modul pe ecran complet nu va trece la următorul/anteriorul videoclip</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">Dezactivează subtitrările automate</string>
@@ -818,9 +815,6 @@ Reglați volumul glisând vertical pe partea dreaptă a ecranului"</string>
             <string name="revanced_hide_toolbar_search_button_title">Ascunde butonul Căutare</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Butonul Căutare este ascuns</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Butonul Căutare este afișat.</string>
-            <string name="revanced_wide_searchbar_title">Activează bara de căutare largă</string>
-            <string name="revanced_wide_searchbar_summary_on">Bara de căutare largă este activată</string>
-            <string name="revanced_wide_searchbar_summary_off">Bara de căutare largă este dezactivată</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">Meniu flyout</string>

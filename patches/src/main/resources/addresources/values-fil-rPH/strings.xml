@@ -685,9 +685,6 @@ Ayusin ang volume sa pamamagitan ng pag-swipe nang patayo sa kanang bahagi ng sc
             <string name="revanced_swipe_overlay_style_entry_5">Pabilog na overlay (minimal)</string>
             <string name="revanced_swipe_overlay_style_entry_6">Patayong overlay</string>
             <string name="revanced_swipe_overlay_style_entry_7">Patayong overlay (minimal)</string>
-            <string name="revanced_swipe_change_video_title">I-enable ang swipe para magpalit ng mga video</string>
-            <string name="revanced_swipe_change_video_summary_on">Ang pag-swipe sa full screen mode ay magpapalit sa susunod/nakaraang video</string>
-            <string name="revanced_swipe_change_video_summary_off">Ang pag-swipe sa full screen ay hindi magpapalit sa susunod/nakaraang video</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">Huwag paganahin ang mga auto caption</string>
@@ -819,9 +816,6 @@ Ayusin ang volume sa pamamagitan ng pag-swipe nang patayo sa kanang bahagi ng sc
             <string name="revanced_hide_toolbar_search_button_title">Itago ang button ng paghahanap</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Nakakubli ang button ng paghahanap</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Ipinapakita ang button ng paghahanap.</string>
-            <string name="revanced_wide_searchbar_title">Paganahin ang malawak na search bar</string>
-            <string name="revanced_wide_searchbar_summary_on">Ang malawak na search bar ay pinagana</string>
-            <string name="revanced_wide_searchbar_summary_off">Naka-disable ang malawak na search bar</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">Menu ng flyout</string>

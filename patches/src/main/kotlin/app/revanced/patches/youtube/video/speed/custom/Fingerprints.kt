@@ -61,26 +61,6 @@ internal val BytecodePatchContext.speedLimiterMethod by gettingFirstMethodDeclar
     )
 }
 
-/**
- * 20.33 and lower.
- */
-internal val BytecodePatchContext.speedLimiterLegacyMethod by gettingFirstMethodDeclaratively {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returnType("V")
-    parameterTypes("F")
-    opcodes(
-        Opcode.INVOKE_STATIC,
-        Opcode.MOVE_RESULT,
-        Opcode.IF_EQZ,
-        Opcode.CONST_HIGH16,
-        Opcode.GOTO,
-        Opcode.CONST_HIGH16,
-        Opcode.CONST_HIGH16,
-        Opcode.INVOKE_STATIC,
-    )
-}
-
-
 internal fun BytecodePatchContext.getTapAndHoldSpeedMethodMatch() = firstMethodComposite {
     name("run")
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)

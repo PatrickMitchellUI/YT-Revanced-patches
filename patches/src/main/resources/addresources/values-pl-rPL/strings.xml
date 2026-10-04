@@ -702,9 +702,6 @@ Dostosuj głośność, przesuwając pionowo po prawej stronie ekranu"</string>
             <string name="revanced_swipe_overlay_style_entry_5">Nakładka okrągła (minimalna)</string>
             <string name="revanced_swipe_overlay_style_entry_6">Nakładka pionowa</string>
             <string name="revanced_swipe_overlay_style_entry_7">Nakładka pionowa (minimalna)</string>
-            <string name="revanced_swipe_change_video_title">Włącz przesuwanie palcem, aby zmienić filmy</string>
-            <string name="revanced_swipe_change_video_summary_on">Przesunięcie palcem w trybie pełnoekranowym spowoduje przejście do następnego lub poprzedniego filmu</string>
-            <string name="revanced_swipe_change_video_summary_off">Przesunięcie palcem w trybie pełnoekranowym nie spowoduje przejścia do następnego lub poprzedniego filmu</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">Automatyczne napisy</string>
@@ -836,9 +833,6 @@ Dostosuj głośność, przesuwając pionowo po prawej stronie ekranu"</string>
             <string name="revanced_hide_toolbar_search_button_title">Ukryj przycisk Wyszukiwania</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Przycisk wyszukiwania jest ukryty</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Przycisk wyszukiwania jest widoczny.</string>
-            <string name="revanced_wide_searchbar_title">Szeroki pasek wyszukiwania</string>
-            <string name="revanced_wide_searchbar_summary_on">Szeroki pasek wyszukiwania jest włączony</string>
-            <string name="revanced_wide_searchbar_summary_off">Szeroki pasek wyszukiwania jest wyłączony</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">Menu ustawień</string>

@@ -294,9 +294,6 @@ MicroG-യുടെ ബാറ്ററി ഒപ്റ്റിമൈസേഷ�
             <string name="revanced_hide_toolbar_search_button_title">തിരയൽ ബട്ടൺ മറയ്ക്കുക</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">തിരയൽ ബട്ടൺ മറച്ചിരിക്കുന്നു</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">തിരയൽ ബട്ടൺ കാണിക്കുന്നു.</string>
-            <string name="revanced_wide_searchbar_title">വിശാലമായ തിരയൽ ബാർ പ്രവർത്തനക്ഷമമാക്കുക</string>
-            <string name="revanced_wide_searchbar_summary_on">വിശാലമായ തിരയൽ ബാർ പ്രവർത്തനക്ഷമമാക്കിയിരിക്കുന്നു</string>
-            <string name="revanced_wide_searchbar_summary_off">വിശാലമായ തിരയൽ ബാർ പ്രവർത്തനരഹിതമാക്കിയിരിക്കുന്നു</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->

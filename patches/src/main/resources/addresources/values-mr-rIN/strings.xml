@@ -294,9 +294,6 @@ MicroG साठी बॅटरी ऑप्टिमायझेशन अक�
             <string name="revanced_hide_toolbar_search_button_title">शोध बटण लपवा</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">शोध बटण लपवलेले आहे</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">शोध बटण दिसत आहे.</string>
-            <string name="revanced_wide_searchbar_title">रुंद शोध बार सक्षम करा</string>
-            <string name="revanced_wide_searchbar_summary_on">रुंद शोध बार सक्षम केला आहे</string>
-            <string name="revanced_wide_searchbar_summary_off">रुंद शोध बार अक्षम केला आहे</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->

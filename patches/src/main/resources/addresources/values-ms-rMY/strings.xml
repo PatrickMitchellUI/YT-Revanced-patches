@@ -294,9 +294,6 @@ Had:
             <string name="revanced_hide_toolbar_search_button_title">Sembunyikan butang Carian</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Butang Carian disembunyikan</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Butang Carian dipaparkan.</string>
-            <string name="revanced_wide_searchbar_title">Dayakan bar carian lebar</string>
-            <string name="revanced_wide_searchbar_summary_on">Bar carian lebar didayakan</string>
-            <string name="revanced_wide_searchbar_summary_off">Bar carian lebar dilumpuhkan</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->

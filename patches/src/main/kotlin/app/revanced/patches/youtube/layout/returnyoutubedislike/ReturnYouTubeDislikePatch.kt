@@ -141,32 +141,17 @@ val returnYouTubeDislikePatch = bytecodePatch(
                 val insertIndex: Int
                 val charSequenceRegister: Int
 
-                if (is_19_33_or_greater && !is_20_10_or_greater) {
-                    val index = indexOfFirstInstructionOrThrow {
-                        (opcode == Opcode.INVOKE_STATIC || opcode == Opcode.INVOKE_STATIC_RANGE) &&
-                                methodReference?.returnType == textDataClassType
-                    }
-
-                    insertIndex = indexOfFirstInstructionOrThrow(index) {
-                        opcode == Opcode.INVOKE_VIRTUAL &&
-                                methodReference?.parameterTypes?.firstOrNull() == "Ljava/lang/CharSequence;"
-                    }
-
-                    charSequenceRegister =
-                        getInstruction<FiveRegisterInstruction>(insertIndex).registerD
-                } else {
-                    insertIndex = indexOfFirstInstructionOrThrow {
-                        opcode == Opcode.NEW_INSTANCE &&
-                                typeReference?.type == textDataClassType
-                    }
-
-                    val charSequenceIndex = indexOfFirstInstructionOrThrow(insertIndex) {
-                        opcode == Opcode.IPUT_OBJECT &&
-                                fieldReference?.type == "Ljava/lang/CharSequence;"
-                    }
-                    charSequenceRegister =
-                        getInstruction<TwoRegisterInstruction>(charSequenceIndex).registerA
+                insertIndex = indexOfFirstInstructionOrThrow {
+                    opcode == Opcode.NEW_INSTANCE &&
+                            typeReference?.type == textDataClassType
                 }
+
+                val charSequenceIndex = indexOfFirstInstructionOrThrow(insertIndex) {
+                    opcode == Opcode.IPUT_OBJECT &&
+                            fieldReference?.type == "Ljava/lang/CharSequence;"
+                }
+                charSequenceRegister =
+                    getInstruction<TwoRegisterInstruction>(charSequenceIndex).registerA
 
                 val conversionContext = findFreeRegister(insertIndex, charSequenceRegister)
 
@@ -186,52 +171,50 @@ val returnYouTubeDislikePatch = bytecodePatch(
             }
 
         // Hook new litho text creation code.
-        if (is_20_07_or_greater) {
-            textComponentFeatureFlagMethodMatch.let {
-                it.method.insertLiteralOverride(
-                    it[0],
-                    "$EXTENSION_CLASS_DESCRIPTOR->useNewLithoTextCreation(Z)Z"
-                )
-            }
+        textComponentFeatureFlagMethodMatch.let {
+            it.method.insertLiteralOverride(
+                it[0],
+                "$EXTENSION_CLASS_DESCRIPTOR->useNewLithoTextCreation(Z)Z"
+            )
+        }
 
-            lithoSpannableStringCreationMethodMatch.let {
-                val conversionContextField = it.immutableClassDef.type +
-                        "->" + textComponentConversionContextField.name +
-                        ":" + textComponentConversionContextField.type
+        lithoSpannableStringCreationMethodMatch.let {
+            val conversionContextField = it.immutableClassDef.type +
+                    "->" + textComponentConversionContextField.name +
+                    ":" + textComponentConversionContextField.type
 
-                it.method.apply {
-                    val insertIndex = it[1]
-                    val charSequenceRegister =
-                        getInstruction<FiveRegisterInstruction>(insertIndex).registerD
-                    val conversionContextRegister =
-                        findFreeRegister(insertIndex, charSequenceRegister)
+            it.method.apply {
+                val insertIndex = it[1]
+                val charSequenceRegister =
+                    getInstruction<FiveRegisterInstruction>(insertIndex).registerD
+                val conversionContextRegister =
+                    findFreeRegister(insertIndex, charSequenceRegister)
 
-                    // 21.36 reuses the p0 register. Use the conversion context the method already read.
-                    val getConversionContext = if (is_21_36_or_greater) {
-                        val existingConversionContextRegister = getInstruction<TwoRegisterInstruction>(
-                            indexOfFirstInstructionReversedOrThrow(insertIndex) {
-                                opcode == Opcode.IGET_OBJECT &&
-                                    fieldReference?.toString() == conversionContextField
-                            },
-                        ).registerA
+                // 21.36 reuses the p0 register. Use the conversion context the method already read.
+                val getConversionContext = if (is_21_36_or_greater) {
+                    val existingConversionContextRegister = getInstruction<TwoRegisterInstruction>(
+                        indexOfFirstInstructionReversedOrThrow(insertIndex) {
+                            opcode == Opcode.IGET_OBJECT &&
+                                fieldReference?.toString() == conversionContextField
+                        },
+                    ).registerA
 
-                        "move-object/from16 v$conversionContextRegister, v$existingConversionContextRegister"
-                    } else {
-                        """
-                            move-object/from16 v$conversionContextRegister, p0
-                            iget-object v$conversionContextRegister, v$conversionContextRegister, $conversionContextField
-                        """
-                    }
-
-                    addInstructions(
-                        insertIndex,
-                        """
-                            $getConversionContext
-                            invoke-static { v$conversionContextRegister, v$charSequenceRegister }, $EXTENSION_CLASS_DESCRIPTOR->onLithoTextLoaded(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
-                            move-result-object v$charSequenceRegister
-                        """
-                    )
+                    "move-object/from16 v$conversionContextRegister, v$existingConversionContextRegister"
+                } else {
+                    """
+                        move-object/from16 v$conversionContextRegister, p0
+                        iget-object v$conversionContextRegister, v$conversionContextRegister, $conversionContextField
+                    """
                 }
+
+                addInstructions(
+                    insertIndex,
+                    """
+                        $getConversionContext
+                        invoke-static { v$conversionContextRegister, v$charSequenceRegister }, $EXTENSION_CLASS_DESCRIPTOR->onLithoTextLoaded(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+                        move-result-object v$charSequenceRegister
+                    """
+                )
             }
         }
 

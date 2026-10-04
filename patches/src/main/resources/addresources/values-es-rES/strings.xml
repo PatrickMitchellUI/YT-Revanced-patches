@@ -706,9 +706,6 @@ Ajusta el volumen deslizando verticalmente en el lado derecho de la pantalla"</s
             <string name="revanced_swipe_overlay_style_entry_5">Superposición circular (mínima)</string>
             <string name="revanced_swipe_overlay_style_entry_6">Superposición vertical</string>
             <string name="revanced_swipe_overlay_style_entry_7">Superposición vertical (mínima)</string>
-            <string name="revanced_swipe_change_video_title">Habilita el deslizamiento para cambiar videos</string>
-            <string name="revanced_swipe_change_video_summary_on">Deslizar en modo de pantalla completa cambiará al video siguiente/anterior</string>
-            <string name="revanced_swipe_change_video_summary_off">Deslizar en modo de pantalla completa no cambiará al video siguiente/anterior</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">Desactivar auto subtítulos</string>
@@ -840,9 +837,6 @@ Ajusta el volumen deslizando verticalmente en el lado derecho de la pantalla"</s
             <string name="revanced_hide_toolbar_search_button_title">Ocultar el botón Buscar</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">El botón de búsqueda está oculto</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Se muestra el botón de búsqueda.</string>
-            <string name="revanced_wide_searchbar_title">Habilitar barra de búsqueda ancha</string>
-            <string name="revanced_wide_searchbar_summary_on">Barra de búsqueda ancha habilitada</string>
-            <string name="revanced_wide_searchbar_summary_off">La barra de búsqueda ancha está desactivada</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">Menú desplegable</string>

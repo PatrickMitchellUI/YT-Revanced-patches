@@ -700,9 +700,6 @@ Second \"item\" text"</string>
             <string name="revanced_swipe_overlay_style_entry_5">Кругавая накладка (мінімальная)</string>
             <string name="revanced_swipe_overlay_style_entry_6">Вертыкальная накладка</string>
             <string name="revanced_swipe_overlay_style_entry_7">Вертыкальная накладка (мінімальная)</string>
-            <string name="revanced_swipe_change_video_title">Уключыць зьмену відэа праз правядзенне пальцам</string>
-            <string name="revanced_swipe_change_video_summary_on">Правядзенне пальцам у рэжыме поўнага экрана зьменіць відэа на наступнае/папярэдняе</string>
-            <string name="revanced_swipe_change_video_summary_off">Правядзенне пальцам у рэжыме поўнага экрана не зьменіць відэа на наступнае/папярэдняе</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">Адключыць аўтаматычныя цітры</string>
@@ -834,9 +831,6 @@ Second \"item\" text"</string>
             <string name="revanced_hide_toolbar_search_button_title">Схаваць кнопку «Пошук»</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Кнопка «Пошук» схавана</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Кнопка «Пошук» паказана.</string>
-            <string name="revanced_wide_searchbar_title">Уключыць шырокую панэль пошуку</string>
-            <string name="revanced_wide_searchbar_summary_on">Уключана шырокая панэль пошуку</string>
-            <string name="revanced_wide_searchbar_summary_off">Шырокая панэль пошуку адключана</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">Выпадаючае меню</string>

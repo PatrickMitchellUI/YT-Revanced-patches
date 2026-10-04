@@ -3,11 +3,8 @@ package app.revanced.extension.youtube.patches.litho;
 import app.revanced.extension.shared.ConversionContext;
 import app.revanced.extension.shared.ConversionContext.ContextInterface;
 import app.revanced.extension.shared.patches.litho.Filter;
-import app.revanced.extension.shared.patches.litho.FilterGroup.ByteArrayFilterGroup;
 import app.revanced.extension.shared.patches.litho.FilterGroup.StringFilterGroup;
-import app.revanced.extension.shared.patches.litho.FilterGroupList.ByteArrayFilterGroupList;
 import app.revanced.extension.shared.patches.litho.FilterGroupList.StringFilterGroupList;
-import app.revanced.extension.youtube.patches.VersionCheckPatch;
 import app.revanced.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -27,7 +24,6 @@ public final class VideoActionButtonsFilter extends Filter {
     private final StringFilterGroupList compactButtonsGroupList = new StringFilterGroupList();
     private final StringFilterGroup compactShareButton;
     private final StringFilterGroupList accessibilityButtonsGroupList = new StringFilterGroupList();
-    private final ByteArrayFilterGroupList bufferButtonsGroupList = new ByteArrayFilterGroupList();
 
     public VideoActionButtonsFilter() {
         actionBarGroup = new StringFilterGroup(
@@ -94,70 +90,19 @@ public final class VideoActionButtonsFilter extends Filter {
         );
         compactButtonsGroupList.forEach(this::addPathCallbacks);
 
-        if (VersionCheckPatch.IS_20_22_OR_GREATER) {
-            // FIXME: Most buttons do not have an accessibilityId.
-            //        Instead, they have an accessibilityText, so hiding functionality must be implemented using this
-            //        (e.g. custom filter - 'video_action_bar#Hype')
-            accessibilityButtonsGroupList.addAll(
-                    new StringFilterGroup(
-                            Settings.HIDE_SHARE_BUTTON,
-                            "id.video.share.button"
-                    ),
-                    new StringFilterGroup(
-                            Settings.HIDE_REMIX_BUTTON,
-                            "id.video.remix.button"
-                    )
-            );
-        } else {
-            bufferButtonsGroupList.addAll(
-                    new ByteArrayFilterGroup(
-                            Settings.HIDE_REPORT_BUTTON,
-                            "yt_outline_flag"
-                    ),
-                    new ByteArrayFilterGroup(
-                            Settings.HIDE_SHARE_BUTTON,
-                            "yt_outline_share"
-                    ),
-                    new ByteArrayFilterGroup(
-                            Settings.HIDE_REMIX_BUTTON,
-                            "yt_outline_youtube_shorts_plus"
-                    ),
-                    new ByteArrayFilterGroup(
-                            Settings.HIDE_THANKS_BUTTON,
-                            "yt_outline_dollar_sign_heart"
-                    ),
-                    new ByteArrayFilterGroup(
-                            Settings.HIDE_ASK_BUTTON,
-                            "yt_fill_spark"
-                    ),
-                    new ByteArrayFilterGroup(
-                            Settings.HIDE_SHOP_BUTTON,
-                            "yt_outline_bag"
-                    ),
-                    new ByteArrayFilterGroup(
-                            Settings.HIDE_STOP_ADS_BUTTON,
-                            "yt_outline_slash_circle_left"
-                    ),
-                    new ByteArrayFilterGroup(
-                            Settings.HIDE_COMMENTS_BUTTON,
-                            "yt_outline_message_bubble_right"
-                    ),
-                    // Check for clip button both here and using a path filter,
-                    // as there's a chance the path is a generic action button and won't contain 'clip_button'
-                    new ByteArrayFilterGroup(
-                            Settings.HIDE_CLIP_BUTTON,
-                            "yt_outline_scissors"
-                    ),
-                    new ByteArrayFilterGroup(
-                            Settings.HIDE_HYPE_BUTTON,
-                            "yt_outline_star_shooting"
-                    ),
-                    new ByteArrayFilterGroup(
-                            Settings.HIDE_PROMOTE_BUTTON,
-                            "yt_outline_megaphone"
-                    )
-            );
-        }
+        // FIXME: Most buttons do not have an accessibilityId.
+        //        Instead, they have an accessibilityText, so hiding functionality must be implemented using this
+        //        (e.g. custom filter - 'video_action_bar#Hype')
+        accessibilityButtonsGroupList.addAll(
+                new StringFilterGroup(
+                        Settings.HIDE_SHARE_BUTTON,
+                        "id.video.share.button"
+                ),
+                new StringFilterGroup(
+                        Settings.HIDE_REMIX_BUTTON,
+                        "id.video.remix.button"
+                )
+        );
     }
 
     private boolean isEveryFilterGroupEnabled() {
@@ -165,17 +110,14 @@ public final class VideoActionButtonsFilter extends Filter {
             if (!group.isEnabled()) return false;
         }
 
-        var buttonList = VersionCheckPatch.IS_20_22_OR_GREATER
-                ? accessibilityButtonsGroupList
-                : bufferButtonsGroupList;
-        for (var group : buttonList) {
+        for (var group : accessibilityButtonsGroupList) {
             if (!group.isEnabled()) return false;
         }
 
         return true;
     }
 
-    private boolean hideButtons(String path, String accessibility, byte[] buffer) {
+    private boolean hideButtons(String path, String accessibility) {
         if (path.startsWith(COMPACTIFY_VIDEO_ACTION_BAR_PATH)) {
             return compactShareButton.check(accessibility).isFiltered();
         }
@@ -185,9 +127,7 @@ public final class VideoActionButtonsFilter extends Filter {
             return false;
         }
 
-        return VersionCheckPatch.IS_20_22_OR_GREATER
-                ? accessibilityButtonsGroupList.check(accessibility).isFiltered()
-                : bufferButtonsGroupList.check(buffer).isFiltered();
+        return accessibilityButtonsGroupList.check(accessibility).isFiltered();
     }
 
     @Override
@@ -211,7 +151,7 @@ public final class VideoActionButtonsFilter extends Filter {
         }
 
         if (matchedGroup == buttonFilterPathGroup) {
-            return hideButtons(path, accessibility, buffer);
+            return hideButtons(path, accessibility);
         }
 
         // Compact action bar buttons have their own settings.

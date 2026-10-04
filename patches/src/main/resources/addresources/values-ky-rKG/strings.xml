@@ -294,9 +294,6 @@ MicroG үчүн батареяны оптималдаштырууну өчүрү
             <string name="revanced_hide_toolbar_search_button_title">Издөө баскычын жашыруу</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Издөө баскычы жашырылган</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Издөө баскычы көрсөтүлгөн.</string>
-            <string name="revanced_wide_searchbar_title">Кең издөө тилкесин иштетүү</string>
-            <string name="revanced_wide_searchbar_summary_on">Кең издөө тилкеси иштетилген</string>
-            <string name="revanced_wide_searchbar_summary_off">Кең издөө тилкеси өчүрүлгөн</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->

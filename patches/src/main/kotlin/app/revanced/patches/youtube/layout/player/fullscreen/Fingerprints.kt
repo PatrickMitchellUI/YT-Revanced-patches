@@ -19,28 +19,6 @@ internal val BytecodePatchContext.openVideosFullscreenPortraitMethodMatch by com
     )
 }
 
-/**
- * Pre 19.46.
- */
-internal val BytecodePatchContext.openVideosFullscreenPortraitLegacyMethodMatch by composingFirstMethod {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returnType("V")
-    parameterTypes("L", "Lj\$/util/Optional;")
-    opcodes(
-        Opcode.GOTO,
-        Opcode.SGET_OBJECT,
-        Opcode.GOTO,
-        Opcode.SGET_OBJECT,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT,
-        Opcode.IF_EQ,
-        Opcode.IF_EQ,
-        Opcode.IGET_OBJECT,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT, // Conditional check to modify.
-    )
-}
-
 internal val BytecodePatchContext.openVideosFullscreenHookPatchExtensionMethod by gettingFirstMethodDeclaratively {
     name("isFullScreenPatchIncluded")
     definingClass(EXTENSION_CLASS_DESCRIPTOR)

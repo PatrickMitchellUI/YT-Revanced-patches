@@ -699,9 +699,6 @@ Upravte hlasitosť posúvaním vertikálne na pravej strane obrazovky"</string>
             <string name="revanced_swipe_overlay_style_entry_5">Kruhové prekrytie (minimálne)</string>
             <string name="revanced_swipe_overlay_style_entry_6">Vertikálne prekrytie</string>
             <string name="revanced_swipe_overlay_style_entry_7">Vertikálne prekrytie (minimálne)</string>
-            <string name="revanced_swipe_change_video_title">Potiahnite prstom a zmeňte videá</string>
-            <string name="revanced_swipe_change_video_summary_on">Potiahnutie prstom v režime celej obrazovky prepne na predchádzajúce/nasledujúce video</string>
-            <string name="revanced_swipe_change_video_summary_off">Potiahnutie prstom v režime celej obrazovky neprepne na predchádzajúce/nasledujúce video</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">Zakázať automatické titulky</string>
@@ -833,9 +830,6 @@ Upravte hlasitosť posúvaním vertikálne na pravej strane obrazovky"</string>
             <string name="revanced_hide_toolbar_search_button_title">Skryť tlačidlo vyhľadávania</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Tlačidlo vyhľadávania je skryté</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Tlačidlo vyhľadávania je zobrazené.</string>
-            <string name="revanced_wide_searchbar_title">Povoliť široký panel vyhľadávania</string>
-            <string name="revanced_wide_searchbar_summary_on">Široký panel vyhľadávania je povolený</string>
-            <string name="revanced_wide_searchbar_summary_off">Široký panel vyhľadávania je vypnutý</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">Rozbaľovacie menu</string>

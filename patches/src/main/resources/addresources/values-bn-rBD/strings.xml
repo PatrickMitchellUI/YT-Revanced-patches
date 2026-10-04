@@ -700,9 +700,6 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
             <string name="revanced_swipe_overlay_style_entry_5">বৃত্তাকার ওভারলে (ন্যূনতম)</string>
             <string name="revanced_swipe_overlay_style_entry_6">উল্লম্ব ওভারলে</string>
             <string name="revanced_swipe_overlay_style_entry_7">উল্লম্ব ওভারলে (ন্যূনতম)</string>
-            <string name="revanced_swipe_change_video_title">ভিডিও পরিবর্তন করতে সোয়াইপ করে সক্ষম করুন</string>
-            <string name="revanced_swipe_change_video_summary_on">ফুলস্ক্রিন মোডে সোয়াইপ করলে পরবর্তী/পূর্ববর্তী ভিডিওতে পরিবর্তন হবে</string>
-            <string name="revanced_swipe_change_video_summary_off">ফুলস্ক্রিন মোডে সোয়াইপ করলে পরবর্তী /পূর্ববর্তী ভিডিওতে পরিবর্তন হবে না</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">স্বয়ংক্রিয় ক্যাপশন বন্ধ করুন</string>
@@ -834,9 +831,6 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
             <string name="revanced_hide_toolbar_search_button_title">অনুসন্ধান বোতাম লুকান</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">অনুসন্ধান বোতাম লুকানো আছে</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">অনুসন্ধান বোতাম দেখানো আছে।</string>
-            <string name="revanced_wide_searchbar_title">প্রশস্ত অনুসন্ধান বার সক্রিয় করুন</string>
-            <string name="revanced_wide_searchbar_summary_on">প্রশস্ত অনুসন্ধান বার সক্রিয় হয়েছে</string>
-            <string name="revanced_wide_searchbar_summary_off">প্রশস্ত অনুসন্ধান বার নিষ্ক্রিয় হয়েছে</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">ফ্লাইআউট মেনু</string>

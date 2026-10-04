@@ -341,9 +341,6 @@ Second \"item\" text"</string>
             <string name="revanced_hide_toolbar_search_button_title">دکمه جستجو را پنهان کنید</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">دکمه جستجو پنهان است</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">دکمه جستجو نمایش داده می‌شود.</string>
-            <string name="revanced_wide_searchbar_title">فعال‌سازی نوار جستجوی عریض</string>
-            <string name="revanced_wide_searchbar_summary_on">نوار جستجوی عریض فعال است</string>
-            <string name="revanced_wide_searchbar_summary_off">نوار جستجوی عریض غیرفعال است</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->

@@ -1,7 +1,7 @@
 package app.revanced.extension.youtube.patches;
 
 import static app.revanced.extension.shared.Utils.hideViewUnderCondition;
-import static app.revanced.extension.youtube.patches.VersionCheckPatch.IS_20_45_OR_GREATER;
+import static app.revanced.extension.youtube.patches.VersionCheckPatch.IS_21_36_OR_GREATER;
 import static app.revanced.extension.youtube.shared.NavigationBar.NavigationButton;
 
 import android.os.Build;
@@ -12,9 +12,7 @@ import android.widget.TextView;
 import java.util.EnumMap;
 import java.util.Map;
 
-import app.revanced.extension.shared.Logger;
 import app.revanced.extension.shared.Utils;
-import app.revanced.extension.shared.ui.Dim;
 import app.revanced.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -75,7 +73,7 @@ public final class NavigationBarPatch {
      * Injection point.
      */
     public static boolean useAnimatedNavigationButtons(boolean original) {
-        return !IS_20_45_OR_GREATER && Settings.NAVIGATION_BAR_ANIMATIONS.get();
+        return !IS_21_36_OR_GREATER && Settings.NAVIGATION_BAR_ANIMATIONS.get();
     }
 
     /**
@@ -195,40 +193,5 @@ public final class NavigationBarPatch {
         return "SEARCH".equals(enumString) // Search button.
                 || "SEARCH_CAIRO".equals(enumString) // Search button (New layout).
                 || "SEARCH_BOLD".equals(enumString); // Search button (Shorts).
-    }
-
-    // Wide searchbar
-    private static final Boolean WIDE_SEARCHBAR_ENABLED = Settings.WIDE_SEARCHBAR.get();
-
-    /**
-     * Injection point.
-     */
-    public static boolean enableWideSearchbar(boolean original) {
-        return WIDE_SEARCHBAR_ENABLED || original;
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void setActionBar(View view) {
-        try {
-            if (!WIDE_SEARCHBAR_ENABLED) return;
-
-            View searchBarView = Utils.getChildViewByResourceName(view, "search_bar");
-
-            final int paddingLeft = searchBarView.getPaddingLeft();
-            final int paddingRight = searchBarView.getPaddingRight();
-            final int paddingTop = searchBarView.getPaddingTop();
-            final int paddingBottom = searchBarView.getPaddingBottom();
-            final int paddingStart = Dim.dp8;
-
-            if (Utils.isRightToLeftLocale()) {
-                searchBarView.setPadding(paddingLeft, paddingTop, paddingStart, paddingBottom);
-            } else {
-                searchBarView.setPadding(paddingStart, paddingTop, paddingRight, paddingBottom);
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "setActionBar failure", ex);
-        }
     }
 }

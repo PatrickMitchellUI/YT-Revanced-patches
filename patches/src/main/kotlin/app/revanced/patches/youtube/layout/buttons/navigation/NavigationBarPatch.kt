@@ -7,7 +7,6 @@ import app.revanced.patcher.extensions.ExternalLabel
 import app.revanced.patcher.extensions.addInstructionsWithLabels
 import app.revanced.patcher.extensions.fieldReference
 import app.revanced.patcher.extensions.getInstruction
-import app.revanced.patcher.extensions.methodReference
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
@@ -25,16 +24,10 @@ import app.revanced.patches.youtube.misc.contexthook.hookClientContextPatch
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
 import app.revanced.patches.youtube.misc.navigation.hookNavigationButtonCreated
 import app.revanced.patches.youtube.misc.navigation.navigationBarHookPatch
-import app.revanced.patches.youtube.misc.playservice.is_19_25_or_greater
-import app.revanced.patches.youtube.misc.playservice.is_20_15_or_greater
-import app.revanced.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.revanced.patches.youtube.misc.playservice.is_21_36_or_greater
-import app.revanced.patches.youtube.misc.playservice.is_20_45_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
-import app.revanced.util.addInstructionsAtControlFlowLabel
-import app.revanced.util.findInstructionIndicesReversedOrThrow
 import app.revanced.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
@@ -42,7 +35,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import kotlin.collections.plusAssign
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/revanced/extension/youtube/patches/NavigationBarPatch;"
@@ -84,23 +76,19 @@ val navigationBarPatch = bytecodePatch(
             SwitchPreference("revanced_narrow_navigation_buttons"),
         )
 
-        if (is_19_25_or_greater) {
-            preferences += SwitchPreference("revanced_disable_translucent_navigation_bar_light")
-            preferences += SwitchPreference("revanced_disable_translucent_navigation_bar_dark")
+        preferences += SwitchPreference("revanced_disable_translucent_navigation_bar_light")
+        preferences += SwitchPreference("revanced_disable_translucent_navigation_bar_dark")
 
-            PreferenceScreen.GENERAL.addPreferences(
-                SwitchPreference("revanced_disable_translucent_status_bar")
-            )
+        PreferenceScreen.GENERAL.addPreferences(
+            SwitchPreference("revanced_disable_translucent_status_bar")
+        )
 
-            if (is_20_15_or_greater && !is_20_45_or_greater) {
-                // Feature has not worked well for a while and YT seems to have abandoned this a/b test.
-                preferences += SwitchPreference("revanced_navigation_bar_animations")
-            }
-
-            if (is_20_31_or_greater) {
-                preferences += SwitchPreference("revanced_disable_auto_hide_navigation_bar")
-            }
+        if (!is_21_36_or_greater) {
+            // Feature has not worked well for a while and YT seems to have abandoned this a/b test.
+            preferences += SwitchPreference("revanced_navigation_bar_animations")
         }
+
+        preferences += SwitchPreference("revanced_disable_auto_hide_navigation_bar")
 
         PreferenceScreen.GENERAL.addPreferences(
             PreferenceScreenPreference(
@@ -135,27 +123,23 @@ val navigationBarPatch = bytecodePatch(
         hookNavigationButtonCreated(EXTENSION_CLASS_DESCRIPTOR)
 
         // Force on/off translucent effect on status bar and navigation buttons.
-        if (is_19_25_or_greater) {
-            overrideBooleanFeatureFlag(
-                FeatureFlag.TRANSLUCENT_STATUS_BAR,
-                "$EXTENSION_CLASS_DESCRIPTOR->useTranslucentNavigationStatusBar(Z)Z",
-            )
-            overrideBooleanFeatureFlag(
-                FeatureFlag.TRANSLUCENT_NAVIGATION_BUTTONS,
-                "$EXTENSION_CLASS_DESCRIPTOR->useTranslucentNavigationButtons(Z)Z",
-            )
-            overrideBooleanFeatureFlag(
-                FeatureFlag.TRANSLUCENT_SYSTEM_NAVIGATION_BAR,
-                "$EXTENSION_CLASS_DESCRIPTOR->useTranslucentNavigationButtons(Z)Z",
-            )
-        }
+        overrideBooleanFeatureFlag(
+            FeatureFlag.TRANSLUCENT_STATUS_BAR,
+            "$EXTENSION_CLASS_DESCRIPTOR->useTranslucentNavigationStatusBar(Z)Z",
+        )
+        overrideBooleanFeatureFlag(
+            FeatureFlag.TRANSLUCENT_NAVIGATION_BUTTONS,
+            "$EXTENSION_CLASS_DESCRIPTOR->useTranslucentNavigationButtons(Z)Z",
+        )
+        overrideBooleanFeatureFlag(
+            FeatureFlag.TRANSLUCENT_SYSTEM_NAVIGATION_BAR,
+            "$EXTENSION_CLASS_DESCRIPTOR->useTranslucentNavigationButtons(Z)Z",
+        )
 
-        if (is_20_15_or_greater) {
-            overrideBooleanFeatureFlag(
-                FeatureFlag.ANIMATED_NAVIGATION_TABS,
-                "$EXTENSION_CLASS_DESCRIPTOR->useAnimatedNavigationButtons(Z)Z",
-            )
-        }
+        overrideBooleanFeatureFlag(
+            FeatureFlag.ANIMATED_NAVIGATION_TABS,
+            "$EXTENSION_CLASS_DESCRIPTOR->useAnimatedNavigationButtons(Z)Z",
+        )
 
         // 21.36 builds a hidden bottom bar model if the last feed scroll hid the pivot bar,
         // for example when the player is minimized. Scrolling up then cannot show the pivot bar,
@@ -254,7 +238,7 @@ val navigationBarPatch = bytecodePatch(
                     )
                 }
             }
-        } else if (is_20_31_or_greater) {
+        } else {
             autoHideNavigationBarMethod.addInstructionsWithLabels(
                 0,
                 """
@@ -278,9 +262,6 @@ val navigationBarPatch = bytecodePatch(
             SwitchPreference("revanced_hide_toolbar_messages_button"),
             SwitchPreference("revanced_hide_toolbar_search_button")
         )
-        if (!is_20_31_or_greater) {
-            toolbarPreferences += SwitchPreference("revanced_wide_searchbar")
-        }
 
         PreferenceScreen.GENERAL.addPreferences(
             PreferenceScreenPreference(
@@ -294,54 +275,5 @@ val navigationBarPatch = bytecodePatch(
         hookToolbar("${EXTENSION_CLASS_DESCRIPTOR}->hideNotificationButton")
         hookToolbar("${EXTENSION_CLASS_DESCRIPTOR}->hideMessagesButton")
         hookToolbar("${EXTENSION_CLASS_DESCRIPTOR}->hideSearchButton")
-
-
-        //
-        // Wide searchbar.
-        //
-
-        // YT removed the legacy text search text field all code required to use it.
-        // This functionality could be restored by adding a search text field to the toolbar
-        // with a listener that artificially clicks the toolbar search button.
-        if (!is_20_31_or_greater) {
-            // Navigate to the method that checks if the YT logo is shown beside the search bar.
-            val shouldShowLogoMethod = with(setWordmarkHeaderMethod) {
-                val invokeStaticIndex = indexOfFirstInstructionOrThrow {
-                    opcode == Opcode.INVOKE_STATIC && methodReference?.returnType == "Z"
-                }
-                navigate(this).to(invokeStaticIndex).stop()
-            }
-
-            shouldShowLogoMethod.apply {
-                findInstructionIndicesReversedOrThrow(Opcode.RETURN).forEach { index ->
-                    val register = getInstruction<OneRegisterInstruction>(index).registerA
-
-                    addInstructionsAtControlFlowLabel(
-                        index,
-                        """
-                            invoke-static { v$register }, ${EXTENSION_CLASS_DESCRIPTOR}->enableWideSearchbar(Z)Z
-                            move-result v$register
-                        """
-                    )
-                }
-            }
-
-            // Fix missing left padding when using wide searchbar.
-            wideSearchbarLayoutMethod.apply {
-                findInstructionIndicesReversedOrThrow {
-                    val reference = methodReference
-                    reference?.definingClass == "Landroid/view/LayoutInflater;" && reference.name == "inflate"
-                }.forEach { inflateIndex ->
-                    val register =
-                        getInstruction<OneRegisterInstruction>(inflateIndex + 1).registerA
-
-                    addInstruction(
-                        inflateIndex + 2,
-                        "invoke-static { v$register }, " +
-                                "${EXTENSION_CLASS_DESCRIPTOR}->setActionBar(Landroid/view/View;)V"
-                    )
-                }
-            }
-        }
     }
 }

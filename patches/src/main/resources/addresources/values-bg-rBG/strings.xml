@@ -700,9 +700,6 @@ Second \"item\" text"</string>
             <string name="revanced_swipe_overlay_style_entry_5">Кръгово наслагване (минимално)</string>
             <string name="revanced_swipe_overlay_style_entry_6">Вертикално наслагване</string>
             <string name="revanced_swipe_overlay_style_entry_7">Вертикално наслагване (минимално)</string>
-            <string name="revanced_swipe_change_video_title">Включване на превключване на видеото чрез плъзване</string>
-            <string name="revanced_swipe_change_video_summary_on">Плъзването в режим на цял екран ще превключи към следващото/предишно видео</string>
-            <string name="revanced_swipe_change_video_summary_off">Плъзването в режим на цял екран няма да превключи към следващото/предишно видео</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">Автоматични Субтитри</string>
@@ -834,9 +831,6 @@ Second \"item\" text"</string>
             <string name="revanced_hide_toolbar_search_button_title">Скриване на бутона за търсене</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Бутонът за търсене е скрит</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Бутонът за търсене е показан.</string>
-            <string name="revanced_wide_searchbar_title">Широка лента за търсене</string>
-            <string name="revanced_wide_searchbar_summary_on">Широката лента за търсене е включена</string>
-            <string name="revanced_wide_searchbar_summary_off">Широката лента за търсене е изключена</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">Падащо меню</string>

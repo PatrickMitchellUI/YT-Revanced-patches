@@ -699,9 +699,6 @@ Podesite jačinu zvuka prevlačenjem vertikalno na desnoj strani ekrana"</string
             <string name="revanced_swipe_overlay_style_entry_5">Kružni preklop (minimalni)</string>
             <string name="revanced_swipe_overlay_style_entry_6">Vertikalni preklop</string>
             <string name="revanced_swipe_overlay_style_entry_7">Vertikalni preklop (minimalni)</string>
-            <string name="revanced_swipe_change_video_title">Omogući prevlačenje za promenu videa</string>
-            <string name="revanced_swipe_change_video_summary_on">Prevlačenje u režimu celog ekrana će promeniti na sledeći/prethodni video</string>
-            <string name="revanced_swipe_change_video_summary_off">Prevlačenje u režimu celog ekrana neće promeniti na sledeći/prethodni video</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">Onemogući automatski titl</string>
@@ -833,9 +830,6 @@ Podesite jačinu zvuka prevlačenjem vertikalno na desnoj strani ekrana"</string
             <string name="revanced_hide_toolbar_search_button_title">Sakrij dugme „Pretraga”</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Dugme „Pretraga” je skriveno</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Dugme „Pretraga” je prikazano.</string>
-            <string name="revanced_wide_searchbar_title">Omogući široku traku za pretragu</string>
-            <string name="revanced_wide_searchbar_summary_on">Široka traka za pretragu je omogućena</string>
-            <string name="revanced_wide_searchbar_summary_off">Široka traka za pretragu je onemogućena</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">Padajući meni</string>

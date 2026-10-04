@@ -98,19 +98,6 @@ internal val BytecodePatchContext.pivotBarButtonsCreateResourceStyledViewMethod 
     parameterTypes("L", "Z", "I", "L")
 }
 
-/**
- * 20.21+
- */
-internal val BytecodePatchContext.pivotBarButtonsCreateResourceIntViewMethod by gettingFirstImmutableMethodDeclaratively {
-    definingClass("Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;")
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returnType("Landroid/view/View;")
-    custom {
-        // Only one view creation method has an int first parameter.
-        parameterTypes.firstOrNull() == "I"
-    }
-}
-
 internal val BytecodePatchContext.pivotBarButtonsViewSetSelectedMethodMatch by composingFirstMethod {
     definingClass("Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;")
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)

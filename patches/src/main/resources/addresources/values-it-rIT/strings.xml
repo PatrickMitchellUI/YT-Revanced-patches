@@ -706,9 +706,6 @@ Regola il volume scorrendo verticalmente sul lato destro dello schermo"</string>
             <string name="revanced_swipe_overlay_style_entry_5">Sovrapposizione circolare (minima)</string>
             <string name="revanced_swipe_overlay_style_entry_6">Sovrapposizione verticale</string>
             <string name="revanced_swipe_overlay_style_entry_7">Sovrapposizione verticale (minima)</string>
-            <string name="revanced_swipe_change_video_title">Attiva il gesto per cambiare video</string>
-            <string name="revanced_swipe_change_video_summary_on">Lo scorrimento in modalità a schermo intero passerà al video successivo/precedente</string>
-            <string name="revanced_swipe_change_video_summary_off">Lo scorrimento in modalità schermo intero non cambierà al video successivo/precedente</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">Disabilita i sottotitoli automatici </string>
@@ -840,9 +837,6 @@ Regola il volume scorrendo verticalmente sul lato destro dello schermo"</string>
             <string name="revanced_hide_toolbar_search_button_title">Nascondi pulsante Cerca</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Il pulsante di ricerca è nascosto</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Il pulsante di ricerca è mostrato.</string>
-            <string name="revanced_wide_searchbar_title">Attiva la barra di ricerca estesa</string>
-            <string name="revanced_wide_searchbar_summary_on">La barra di ricerca estesa è abilitata</string>
-            <string name="revanced_wide_searchbar_summary_off">La barra di ricerca estesa è disabilitata</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">Menù a comparsa</string>

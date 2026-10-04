@@ -26,8 +26,6 @@ import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
 import app.revanced.patches.youtube.misc.fix.contentprovider.fixContentProviderPatch
 import app.revanced.patches.youtube.misc.fix.playbackspeed.fixPlaybackSpeedWhilePlayingPatch
 import app.revanced.patches.youtube.misc.fix.preference.fixPreferenceIconPatch
-import app.revanced.patches.youtube.misc.playservice.is_19_34_or_greater
-import app.revanced.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.revanced.patches.youtube.misc.playservice.is_21_36_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.util.*
@@ -204,7 +202,7 @@ val settingsPatch = bytecodePatch(
         )
 
         // Old settings menus are half broken with 21.36+.
-        val restoreOldSettingsMenus = is_19_34_or_greater && !is_21_36_or_greater
+        val restoreOldSettingsMenus = !is_21_36_or_greater
 
         if (restoreOldSettingsMenus) {
             PreferenceScreen.GENERAL.addPreferences(
@@ -217,19 +215,15 @@ val settingsPatch = bytecodePatch(
         )
 
         PreferenceScreen.GENERAL.addPreferences(
-            if (is_20_31_or_greater) {
-                PreferenceCategory(
-                    titleKey = null,
-                    sorting = Sorting.UNSORTED,
-                    tag = "app.revanced.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                    preferences = setOf(
-                        SwitchPreference("revanced_show_menu_icons"),
-                        SwitchPreference("revanced_settings_disable_bold_icons"),
-                    ),
-                )
-            } else {
-                SwitchPreference("revanced_show_menu_icons")
-            },
+            PreferenceCategory(
+                titleKey = null,
+                sorting = Sorting.UNSORTED,
+                tag = "app.revanced.extension.shared.settings.preference.NoTitlePreferenceCategory",
+                preferences = setOf(
+                    SwitchPreference("revanced_show_menu_icons"),
+                    SwitchPreference("revanced_settings_disable_bold_icons"),
+                ),
+            ),
         )
 
         PreferenceScreen.MISC.addPreferences(
@@ -279,7 +273,7 @@ val settingsPatch = bytecodePatch(
                 FeatureFlag.BOLD_ICONS,
                 "$YOUTUBE_ACTIVITY_HOOK_CLASS_DESCRIPTOR->useBoldIcons(Z)Z",
             )
-        } else if (is_20_31_or_greater) {
+        } else {
             boldIconsFeatureFlagMethodMatch.let {
                 it.method.insertLiteralOverride(
                     it[0],

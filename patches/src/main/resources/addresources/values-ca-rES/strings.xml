@@ -294,9 +294,6 @@ Limitacions:
             <string name="revanced_hide_toolbar_search_button_title">Amaga el botó Cerca</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">El botó Cerca està ocult</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">El botó Cerca es mostra.</string>
-            <string name="revanced_wide_searchbar_title">Activa la barra de cerca ampla</string>
-            <string name="revanced_wide_searchbar_summary_on">La barra de cerca ampla està activada</string>
-            <string name="revanced_wide_searchbar_summary_off">La barra de cerca ampla està desactivada</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->

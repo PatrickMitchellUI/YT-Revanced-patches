@@ -286,9 +286,6 @@ Takmarkanir:
             <string name="revanced_hide_toolbar_search_button_title">Fela leitarhnapp</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Leitarhnappur er falinn</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Leitarhnappur er sýndur.</string>
-            <string name="revanced_wide_searchbar_title">Virkja breiða leitarstiku</string>
-            <string name="revanced_wide_searchbar_summary_on">Breið leitarstika er virkjuð</string>
-            <string name="revanced_wide_searchbar_summary_off">Breið leitarstika er óvirk</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->

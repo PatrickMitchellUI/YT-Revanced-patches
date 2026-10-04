@@ -294,9 +294,6 @@ Mugaketak:
             <string name="revanced_hide_toolbar_search_button_title">Ezkutatu Bilatu botoia</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Bilatu botoia ezkutatuta dago</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Bilatu botoia ikusgai dago.</string>
-            <string name="revanced_wide_searchbar_title">Gaitu bilaketa-barra zabala</string>
-            <string name="revanced_wide_searchbar_summary_on">Bilaketa-barra zabala gaituta dago</string>
-            <string name="revanced_wide_searchbar_summary_off">Bilaketa-barra zabala desgaituta dago</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->

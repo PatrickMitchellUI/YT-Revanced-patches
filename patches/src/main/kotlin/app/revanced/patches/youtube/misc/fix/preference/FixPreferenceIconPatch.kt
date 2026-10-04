@@ -7,8 +7,8 @@ import app.revanced.patcher.extensions.fieldReference
 import app.revanced.patcher.extensions.getInstruction
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
-import app.revanced.patches.youtube.misc.playservice.is_21_14_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
+import app.revanced.patches.youtube.misc.playservice.is_21_36_or_greater
 import app.revanced.util.addInstructionsAtControlFlowLabel
 import app.revanced.util.findFreeRegister
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -27,7 +27,7 @@ internal val fixPreferenceIconPatch = bytecodePatch {
     )
 
     apply {
-        if (!is_21_14_or_greater) {
+        if (!is_21_36_or_greater) {
             return@apply
         }
 

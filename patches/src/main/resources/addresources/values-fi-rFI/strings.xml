@@ -706,9 +706,6 @@ Säädä äänenvoimakkuutta pyyhkäisemällä pystysuoraan näytön oikealta pu
             <string name="revanced_swipe_overlay_style_entry_5">Pyöreä peittokuva (minimaalinen)</string>
             <string name="revanced_swipe_overlay_style_entry_6">Pystysuuntainen peittokuva</string>
             <string name="revanced_swipe_overlay_style_entry_7">Pystysuuntainen peittokuva (minimaalinen)</string>
-            <string name="revanced_swipe_change_video_title">Ota videon vaihto pyyhkäisemällä käyttöön</string>
-            <string name="revanced_swipe_change_video_summary_on">Pyyhkäisemällä kokoruututilassa siirrytään seuraavaan/edelliseen videoon</string>
-            <string name="revanced_swipe_change_video_summary_off">Pyyhkäisemällä kokoruututilassa ei siirrytä seuraavaan/edelliseen videoon</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">Poista automaattiset tekstitykset käytöstä</string>
@@ -840,9 +837,6 @@ Säädä äänenvoimakkuutta pyyhkäisemällä pystysuoraan näytön oikealta pu
             <string name="revanced_hide_toolbar_search_button_title">Piilota Haku-painike</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Hakupainike piilotetaan</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Hakupainike näytetään.</string>
-            <string name="revanced_wide_searchbar_title">Ota leveä hakupalkki käyttöön</string>
-            <string name="revanced_wide_searchbar_summary_on">Leveä hakupalkki on käytössä</string>
-            <string name="revanced_wide_searchbar_summary_off">Leveä hakupalkki ei ole käytössä</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">Flyout-valikko</string>

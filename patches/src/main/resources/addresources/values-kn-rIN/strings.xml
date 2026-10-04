@@ -302,9 +302,6 @@ Second \"item\" text"</string>
             <string name="revanced_hide_toolbar_search_button_title">ಹುಡುಕಾಟ ಬಟನ್ ಮರೆಮಾಡಿ</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">ಹುಡುಕಾಟ ಬಟನ್ ಅನ್ನು ಮರೆಮಾಡಲಾಗಿದೆ</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">ಹುಡುಕಾಟ ಬಟನ್ ಅನ್ನು ತೋರಿಸಲಾಗಿದೆ.</string>
-            <string name="revanced_wide_searchbar_title">ವೈಡ್ ಸರ್ಚ್ ಬಾರ್ ಅನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ</string>
-            <string name="revanced_wide_searchbar_summary_on">ವೈಡ್ ಸರ್ಚ್ ಬಾರ್ ಸಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ</string>
-            <string name="revanced_wide_searchbar_summary_off">ವೈಡ್ ಸರ್ಚ್ ಬಾರ್ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->

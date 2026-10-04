@@ -701,9 +701,6 @@ Regulējiet skaļumu, velkot vertikāli ekrāna labajā pusē"</string>
             <string name="revanced_swipe_overlay_style_entry_5">Apļveida pārklājums (minimāls)</string>
             <string name="revanced_swipe_overlay_style_entry_6">Vertikāls pārklājums</string>
             <string name="revanced_swipe_overlay_style_entry_7">Vertikāls pārklājums (minimāls)</string>
-            <string name="revanced_swipe_change_video_title">Iespējot pārvilkšanu, lai mainītu videoklipus</string>
-            <string name="revanced_swipe_change_video_summary_on">Pārvelkot pilnekrāna režīmā, tiks mainīts nākamais/iepriekšējais videoklips</string>
-            <string name="revanced_swipe_change_video_summary_off">Pārvelkot pilnekrāna režīmā, nākamais/iepriekšējais videoklips netiks mainīts</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">Atslēgt automātiskos titrus</string>
@@ -835,9 +832,6 @@ Regulējiet skaļumu, velkot vertikāli ekrāna labajā pusē"</string>
             <string name="revanced_hide_toolbar_search_button_title">Slēpt meklēšanas pogu</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Meklēšanas poga ir paslēpta</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Meklēšanas poga ir redzama.</string>
-            <string name="revanced_wide_searchbar_title">Iespējot platu meklēšanas joslu</string>
-            <string name="revanced_wide_searchbar_summary_on">Plata meklēšanas josla ir iespējota</string>
-            <string name="revanced_wide_searchbar_summary_off">Plata meklēšanas josla ir atspējota</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">Izvelkamo izvēlni</string>

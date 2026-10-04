@@ -286,9 +286,6 @@ Second \"item\" text"</string>
             <string name="revanced_hide_toolbar_search_button_title">શોધ બટન છુપાવો</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">શોધ બટન છુપાવેલ છે</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">શોધ બટન બતાવવામાં આવ્યું છે.</string>
-            <string name="revanced_wide_searchbar_title">પહોળી શોધ બાર સક્ષમ કરો</string>
-            <string name="revanced_wide_searchbar_summary_on">પહોળી શોધ બાર સક્ષમ છે</string>
-            <string name="revanced_wide_searchbar_summary_off">પહોળી શોધ બાર અક્ષમ છે</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->

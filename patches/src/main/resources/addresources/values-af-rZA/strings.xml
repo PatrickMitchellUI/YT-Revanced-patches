@@ -294,9 +294,6 @@ Beperkings:
             <string name="revanced_hide_toolbar_search_button_title">Versteek Soek-knoppie</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Soek-knoppie is versteek</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Soek-knoppie word gewys.</string>
-            <string name="revanced_wide_searchbar_title">Aktiveer wye soekbalk</string>
-            <string name="revanced_wide_searchbar_summary_on">Wye soekbalk is geaktiveer</string>
-            <string name="revanced_wide_searchbar_summary_off">Wye soekbalk is gedeaktiveer</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->

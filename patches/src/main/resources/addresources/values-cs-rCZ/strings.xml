@@ -706,9 +706,6 @@ Hlasitost se upravuje svislým přejetím po pravé straně obrazovky"</string>
             <string name="revanced_swipe_overlay_style_entry_5">Kruhové překrytí (minimalistické)</string>
             <string name="revanced_swipe_overlay_style_entry_6">Svislé překrytí</string>
             <string name="revanced_swipe_overlay_style_entry_7">Svislé překrytí (minimalistické)</string>
-            <string name="revanced_swipe_change_video_title">Povolit přejetí prstem pro změnu videa</string>
-            <string name="revanced_swipe_change_video_summary_on">Přejetí prstem v režimu celé obrazovky změní video na další/předchozí</string>
-            <string name="revanced_swipe_change_video_summary_off">Přejetí prstem v režimu celé obrazovky nebude video měnit na další/předchozí</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">Zakázat automatické titulky</string>
@@ -840,9 +837,6 @@ Hlasitost se upravuje svislým přejetím po pravé straně obrazovky"</string>
             <string name="revanced_hide_toolbar_search_button_title">Skrýt tlačítko vyhledávání</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Tlačítko vyhledávání je skryté</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Tlačítko vyhledávání je zobrazené.</string>
-            <string name="revanced_wide_searchbar_title">Povolit široký vyhledávací panel</string>
-            <string name="revanced_wide_searchbar_summary_on">Široký vyhledávací panel je povolen</string>
-            <string name="revanced_wide_searchbar_summary_off">Široký vyhledávací panel je zakázán</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">Menu vyskakovacích oken</string>

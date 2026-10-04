@@ -292,9 +292,6 @@ MicroG အတွက် ဘက်ထရီ အကောင်းဆုံးပ�
             <string name="revanced_hide_toolbar_search_button_title">ရှာဖွေရန်ခလုတ်ကို ဖျောက်ပါ</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">ရှာဖွေရန်ခလုတ်ကို ဖျောက်ထားသည်</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">ရှာဖွေရန်ခလုတ်ကို ပြသထားသည်</string>
-            <string name="revanced_wide_searchbar_title">ကျယ်ပြန့်သော ရှာဖွေရေးဘားကို ဖွင့်ပါ</string>
-            <string name="revanced_wide_searchbar_summary_on">ကျယ်ပြန့်သော ရှာဖွေရေးဘားကို ဖွင့်ထားသည်</string>
-            <string name="revanced_wide_searchbar_summary_off">ကျယ်ပြန့်သော ရှာဖွေရေးဘားကို ပိတ်ထားသည်</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->

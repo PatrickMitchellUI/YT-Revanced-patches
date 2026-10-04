@@ -20,7 +20,6 @@ internal val BytecodePatchContext.shortsBottomBarContainerMethodMatch by composi
     )
 }
 
-
 context(_: BytecodePatchContext)
 internal fun ClassDef.getRenderBottomNavigationBarMethodMatch() = firstMethodDeclaratively {
     returnType("V")
@@ -36,23 +35,6 @@ internal fun ClassDef.getRenderBottomNavigationBarMethodMatch() = firstMethodDec
         Opcode.MOVE_EXCEPTION(),
         Opcode.MONITOR_EXIT(),
         Opcode.THROW()
-    )
-}
-
-/**
- * Less than 19.41.
- */
-internal val BytecodePatchContext.legacyRenderBottomNavigationBarLegacyParentMethod by gettingFirstImmutableMethodDeclaratively {
-    parameterTypes(
-        "I",
-        "I",
-        "L",
-        "L",
-        "J",
-        "L",
-    )
-    instructions(
-        "aa"(),
     )
 }
 

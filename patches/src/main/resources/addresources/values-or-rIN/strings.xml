@@ -294,9 +294,6 @@ MicroG ପାଇଁ ବ୍ୟାଟେରୀ ଅପ୍ଟିମାଇଜେସ�
             <string name="revanced_hide_toolbar_search_button_title">ସନ୍ଧାନ ବଟନ୍ ଲୁଚାନ୍ତୁ</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">ସନ୍ଧାନ ବଟନ୍ ଲୁଚିଛି</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">ସନ୍ଧାନ ବଟନ୍ ଦେଖାଯାଉଛି।</string>
-            <string name="revanced_wide_searchbar_title">ବିସ୍ତୃତ ସନ୍ଧାନ ବାର୍ ସକ୍ଷମ କରନ୍ତୁ</string>
-            <string name="revanced_wide_searchbar_summary_on">ବିସ୍ତୃତ ସନ୍ଧାନ ବାର୍ ସକ୍ଷମ ହୋଇଛି</string>
-            <string name="revanced_wide_searchbar_summary_off">ବିସ୍ତୃତ ସନ୍ଧାନ ବାର୍ ଅକ୍ଷମ ହୋଇଛି</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->

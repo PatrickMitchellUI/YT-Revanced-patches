@@ -290,9 +290,6 @@ MicroG க்கான பேட்டரி மேம்படுத்தல�
             <string name="revanced_hide_toolbar_search_button_title">தேடல் பொத்தானை மறை</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">தேடல் பொத்தான் மறைக்கப்பட்டுள்ளது</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">தேடல் பொத்தான் காட்டப்பட்டுள்ளது.</string>
-            <string name="revanced_wide_searchbar_title">அகலமான தேடல் பட்டியை இயக்கு</string>
-            <string name="revanced_wide_searchbar_summary_on">அகலமான தேடல் பட்டி இயக்கப்பட்டுள்ளது</string>
-            <string name="revanced_wide_searchbar_summary_off">அகலமான தேடல் பட்டி முடக்கப்பட்டுள்ளது</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->

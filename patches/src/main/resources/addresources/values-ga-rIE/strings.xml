@@ -704,9 +704,6 @@ Coigeartaigh an toirt trí swipeáil go hingearach ar thaobh na láimhe deise de
             <string name="revanced_swipe_overlay_style_entry_5">Forleagan ciorclach (íosmhéid)</string>
             <string name="revanced_swipe_overlay_style_entry_6">Forleagan ingearach</string>
             <string name="revanced_swipe_overlay_style_entry_7">Forleagan ingearach (íosmhéid)</string>
-            <string name="revanced_swipe_change_video_title">Cumasaigh svaidhpeáil chun físeáin a athrú</string>
-            <string name="revanced_swipe_change_video_summary_on">Athróidh svaidhpeáil i mód lánscáileáin go dtí an chéad fhíseán eile/roimhe seo</string>
-            <string name="revanced_swipe_change_video_summary_off">Ní athróidh svaidhpeáil i mód lánscáileáin go dtí an chéad fhíseán eile/roimhe seo</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">Díchumasaigh fotheidil uathoibríocha</string>
@@ -838,9 +835,6 @@ Coigeartaigh an toirt trí swipeáil go hingearach ar thaobh na láimhe deise de
             <string name="revanced_hide_toolbar_search_button_title">Folaigh cnaipe Cuardaigh</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Tá cnaipe Cuardaigh i bhfolach</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Taispeántar cnaipe Cuardaigh.</string>
-            <string name="revanced_wide_searchbar_title">Cumasaigh barra cuardaigh leathan</string>
-            <string name="revanced_wide_searchbar_summary_on">Tá barra cuardaigh leathan cumasaithe</string>
-            <string name="revanced_wide_searchbar_summary_off">Tá an barra cuardaigh leathan díchumasaithe</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">Roghchlár Flyout</string>

@@ -11,7 +11,6 @@ import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
 import app.revanced.patches.youtube.misc.playercontrols.overlayFullscreenButtonMethodMatch
-import app.revanced.patches.youtube.misc.playservice.is_20_28_or_greater
 import app.revanced.patches.youtube.misc.playservice.is_21_36_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
@@ -98,7 +97,7 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
                     "$EXTENSION_CLASS_DESCRIPTOR->getCastButtonOverrideV2(Z)Z",
                 )
             }
-        } else if (is_20_28_or_greater) {
+        } else {
             arrayOf(
                 castButtonPlayerFeatureFlagMethodMatch,
                 castButtonActionFeatureFlagMethodMatch, // Cast button in the feed.

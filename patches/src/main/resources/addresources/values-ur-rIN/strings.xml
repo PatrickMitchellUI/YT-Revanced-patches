@@ -294,9 +294,6 @@ MicroG کے لیے بیٹری آپٹیمائزیشنز کو غیر فعال کر
             <string name="revanced_hide_toolbar_search_button_title">تلاش بٹن چھپائیں</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">تلاش بٹن چھپا ہوا ہے</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">تلاش بٹن دکھایا گیا ہے۔</string>
-            <string name="revanced_wide_searchbar_title">وسیع تلاش بار فعال کریں</string>
-            <string name="revanced_wide_searchbar_summary_on">وسیع تلاش بار فعال ہے</string>
-            <string name="revanced_wide_searchbar_summary_off">وسیع تلاش بار غیر فعال ہے</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->

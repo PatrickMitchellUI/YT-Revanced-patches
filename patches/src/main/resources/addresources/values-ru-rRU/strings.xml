@@ -706,9 +706,6 @@ Second \"item\" text"</string>
             <string name="revanced_swipe_overlay_style_entry_5">Круговой индикатор (минимальный)</string>
             <string name="revanced_swipe_overlay_style_entry_6">Вертикальный индикатор</string>
             <string name="revanced_swipe_overlay_style_entry_7">Вертикальный индикатор (минимальный)</string>
-            <string name="revanced_swipe_change_video_title">Включить переключение видео жестом</string>
-            <string name="revanced_swipe_change_video_summary_on">Жест в полноэкранном режиме переключает на следующее/предыдущее видео</string>
-            <string name="revanced_swipe_change_video_summary_off">Жест в полноэкранном режиме не переключает на следующее/предыдущее видео</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">Отключить автоматические субтитры</string>
@@ -840,9 +837,6 @@ Second \"item\" text"</string>
             <string name="revanced_hide_toolbar_search_button_title">Скрыть кнопку поиска</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Кнопка поиска скрыта</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Кнопка поиска показана.</string>
-            <string name="revanced_wide_searchbar_title">Включить широкую панель поиска</string>
-            <string name="revanced_wide_searchbar_summary_on">Широкая панель поиска включена</string>
-            <string name="revanced_wide_searchbar_summary_off">Широкая панель поиска отключена</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">Выдвижное меню плеера</string>

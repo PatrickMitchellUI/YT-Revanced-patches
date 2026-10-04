@@ -692,9 +692,6 @@ Juster lydstyrken ved at swipe lodret i højre side af skærmen"</string>
             <string name="revanced_swipe_overlay_style_entry_5">Cirkulært overlay (minimal)</string>
             <string name="revanced_swipe_overlay_style_entry_6">Vertikalt overlay</string>
             <string name="revanced_swipe_overlay_style_entry_7">Vertikalt overlay (minimal)</string>
-            <string name="revanced_swipe_change_video_title">Aktivér swipe for at skifte videoer</string>
-            <string name="revanced_swipe_change_video_summary_on">Strygning i fuldskærmstilstand vil ændre til den næste/forrige video</string>
-            <string name="revanced_swipe_change_video_summary_off">Strygning i fuldskærmstilstand vil ikke ændre til den næste/forrige video</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">Deaktivér auto-billedtekster</string>
@@ -826,9 +823,6 @@ Juster lydstyrken ved at swipe lodret i højre side af skærmen"</string>
             <string name="revanced_hide_toolbar_search_button_title">Skjul søgeknap</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Søgeknappen er skjult</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Søgeknappen vises.</string>
-            <string name="revanced_wide_searchbar_title">Aktiver bred søgelinje</string>
-            <string name="revanced_wide_searchbar_summary_on">Bred søgelinje er aktiveret</string>
-            <string name="revanced_wide_searchbar_summary_off">Bred søgelinje er deaktiveret</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">Udfyldningsmenu</string>

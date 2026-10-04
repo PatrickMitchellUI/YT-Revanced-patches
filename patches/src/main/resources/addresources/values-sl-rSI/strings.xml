@@ -702,9 +702,6 @@ Prilagodite glasnost s potegom navpično na desni strani zaslona"</string>
             <string name="revanced_swipe_overlay_style_entry_5">Krožni prekrivni element (minimalno)</string>
             <string name="revanced_swipe_overlay_style_entry_6">Navpični prekrivni element</string>
             <string name="revanced_swipe_overlay_style_entry_7">Navpični prekrivni element (minimalno)</string>
-            <string name="revanced_swipe_change_video_title">Omogoči menjavanje videoposnetkov z drsenjem</string>
-            <string name="revanced_swipe_change_video_summary_on">Drsenje v celozaslonskem načinu bo prešlo na naslednji/prejšnji videoposnetek.</string>
-            <string name="revanced_swipe_change_video_summary_off">Drsenje v celozaslonskem načinu ne bo prešlo na naslednji/prejšnji videoposnetek.</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">Onemogoči samodejne podnapise</string>
@@ -836,9 +833,6 @@ Prilagodite glasnost s potegom navpično na desni strani zaslona"</string>
             <string name="revanced_hide_toolbar_search_button_title">Skrij gumb za iskanje</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Gumb za iskanje je skrit</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Gumb za iskanje je prikazan.</string>
-            <string name="revanced_wide_searchbar_title">Omogoči široko iskalno vrstico</string>
-            <string name="revanced_wide_searchbar_summary_on">Široka iskalna vrstica je omogočena</string>
-            <string name="revanced_wide_searchbar_summary_off">Široka iskalna vrstica je onemogočena</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">Izbirni meni</string>

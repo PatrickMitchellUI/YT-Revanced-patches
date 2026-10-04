@@ -700,9 +700,6 @@ Reguliuokite garsumą braukdami vertikaliai dešinėje ekrano pusėje"</string>
             <string name="revanced_swipe_overlay_style_entry_5">Apskrita perdanga (minimali)</string>
             <string name="revanced_swipe_overlay_style_entry_6">Vertikali perdanga</string>
             <string name="revanced_swipe_overlay_style_entry_7">Vertikali perdanga (minimali)</string>
-            <string name="revanced_swipe_change_video_title">Braukimas norint pakeisti vaizdo įrašus</string>
-            <string name="revanced_swipe_change_video_summary_on">Braukimas viso ekrano režimu pakeis į kitą/ankstesnį vaizdo įrašą</string>
-            <string name="revanced_swipe_change_video_summary_off">Braukimas viso ekrano režimu nepakeis į kitą/ankstesnį vaizdo įrašą</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">Išjungti automatinius antraštus</string>
@@ -834,9 +831,6 @@ Reguliuokite garsumą braukdami vertikaliai dešinėje ekrano pusėje"</string>
             <string name="revanced_hide_toolbar_search_button_title">Slėpti paieškos mygtuką</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Paieškos mygtukas paslėptas</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Paieškos mygtukas rodomas.</string>
-            <string name="revanced_wide_searchbar_title">Įjungti plačią paieškos juostą</string>
-            <string name="revanced_wide_searchbar_summary_on">Plačioji paieškos juosta įjungta</string>
-            <string name="revanced_wide_searchbar_summary_off">Plačioji paieškos juosta išjungta</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">Išskleidžiamasis meniu</string>

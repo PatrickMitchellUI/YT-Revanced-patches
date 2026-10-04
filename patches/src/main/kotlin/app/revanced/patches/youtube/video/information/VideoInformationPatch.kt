@@ -9,9 +9,6 @@ import app.revanced.patcher.firstClassDef
 import app.revanced.patcher.immutableClassDef
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
-import app.revanced.patches.youtube.misc.playservice.is_20_19_or_greater
-import app.revanced.patches.youtube.misc.playservice.is_20_20_or_greater
-import app.revanced.patches.youtube.misc.playservice.is_20_49_or_greater
 import app.revanced.patches.youtube.misc.playservice.is_21_36_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.patches.youtube.shared.videoQualityChangedMethodMatch
@@ -229,7 +226,7 @@ val videoInformationPatch = bytecodePatch(
                 indexOfFirstInstructionOrThrow(Opcode.IF_EQZ) - 1
             ).reference as FieldReference
 
-            if (is_20_49_or_greater) {
+            if (is_21_36_or_greater) {
                 // Only one class implements the interface. Patcher currently does not have a
                 // 'first' accessor for looking up classes, so do it ourselves to verify
                 // we're using the expected class type.
@@ -345,15 +342,14 @@ val videoInformationPatch = bytecodePatch(
         }
 
         val videoQualityClassType : String
-        (if (is_20_19_or_greater) videoQualityMethod else videoQualityLegacyMethod).apply {
+        videoQualityMethod.apply {
             videoQualityClassType = immutableClassDef.type
 
             // Fix bad data used by YouTube.
-            val nameRegister = if (is_20_20_or_greater) "p3" else "p2"
-            addInstructions(
+                        addInstructions(
                 0,
                 """
-                    invoke-static { $nameRegister, p1 }, $EXTENSION_CLASS_DESCRIPTOR->fixVideoQualityResolution(Ljava/lang/String;I)I    
+                    invoke-static { p3, p1 }, $EXTENSION_CLASS_DESCRIPTOR->fixVideoQualityResolution(Ljava/lang/String;I)I    
                     move-result p1
                 """,
             )

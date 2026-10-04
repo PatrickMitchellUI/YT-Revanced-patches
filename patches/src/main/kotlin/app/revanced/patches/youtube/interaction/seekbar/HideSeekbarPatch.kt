@@ -8,7 +8,6 @@ import app.revanced.patches.all.misc.resources.addResourcesPatch
 import app.revanced.patches.shared.misc.settings.preference.SwitchPreference
 import app.revanced.patches.youtube.layout.seekbar.seekbarColorPatch
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
-import app.revanced.patches.youtube.misc.playservice.is_20_28_or_greater
 import app.revanced.patches.youtube.misc.playservice.is_21_36_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
@@ -39,7 +38,7 @@ val hideSeekbarPatch = bytecodePatch(
         )
 
         // Flag was removed in 21.36.
-        val useFullscreenLargeSeekbarFlag = is_20_28_or_greater && !is_21_36_or_greater
+        val useFullscreenLargeSeekbarFlag = !is_21_36_or_greater
 
         if (useFullscreenLargeSeekbarFlag) {
             PreferenceScreen.SEEKBAR.addPreferences(

@@ -9,7 +9,6 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.ClassDef
 
-
 internal val BytecodePatchContext.hideShowMoreButtonSetViewMethodMatch by composingFirstMethod {
     returnType("V")
 
@@ -52,7 +51,6 @@ internal fun ClassDef.getHideShowMoreButtonMethod() = firstMethodDeclaratively {
     )
 }
 
-
 /**
  * 20.21+
  */
@@ -67,21 +65,6 @@ internal val BytecodePatchContext.hideSubscribedChannelsBarConstructorMethodMatc
         )
     )
     custom { immutableClassDef.anyField { type == "Landroid/support/v7/widget/RecyclerView;" } }
-}
-
-/**
- * ~ 20.21
- */
-internal val BytecodePatchContext.hideSubscribedChannelsBarConstructorLegacyMethodMatch by composingFirstMethod {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
-    instructions(
-        ResourceType.ID("parent_container"),
-        afterAtMost(3, Opcode.MOVE_RESULT_OBJECT()),
-        afterAtMost(
-            5,
-            allOf(Opcode.NEW_INSTANCE(), type($$"Landroid/widget/LinearLayout$LayoutParams;"))
-        )
-    )
 }
 
 internal val ClassDef.hideSubscribedChannelsBarLandscapeMethodMatch by ClassDefComposing.composingFirstMethod {
@@ -128,9 +111,6 @@ internal fun ClassDef.getShowWatermarkMethod() = firstMethodDeclaratively {
     parameterTypes("L", "L")
 }
 
-/**
- * Matches same method as [wideSearchbarLayoutMethod].
- */
 internal val BytecodePatchContext.yoodlesImageViewMethod by gettingFirstMethodDeclaratively {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returnType("Landroid/view/View;")
@@ -302,7 +282,6 @@ internal val BytecodePatchContext.latestVideosBarMethodMatch by composingFirstMe
         after(Opcode.MOVE_RESULT_OBJECT())
     )
 }
-
 
 internal val BytecodePatchContext.bottomSheetMenuItemBuilderMethodMatch by composingFirstMethod {
     returnType("L")

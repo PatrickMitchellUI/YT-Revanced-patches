@@ -13,7 +13,6 @@ internal val BytecodePatchContext.createVideoPlayerSeekbarMethod by gettingFirst
     instructions("timed_markers_width"())
 }
 
-
 internal val BytecodePatchContext.onPlaybackSpeedItemClickParentMethod by gettingFirstImmutableMethodDeclaratively {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.STATIC)
     returnType("L")
@@ -201,21 +200,6 @@ internal val BytecodePatchContext.playbackSpeedClassMethodMatch by composingFirs
         after(Opcode.MOVE_RESULT_OBJECT()),
     )
 }
-
-/**
- * YouTube 20.19 and lower.
- */
-internal val BytecodePatchContext.videoQualityLegacyMethod by gettingFirstMethodDeclaratively {
-    definingClass("Lcom/google/android/libraries/youtube/innertube/model/media/VideoQuality;")
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
-    parameterTypes(
-        "I", // Resolution.
-        "Ljava/lang/String;", // Human readable resolution: "480p", "1080p Premium", etc
-        "Z",
-        "L",
-    )
-}
-
 
 internal val BytecodePatchContext.playbackStartDescriptorToStringMethodMatch by composingFirstMethod {
     name("toString")

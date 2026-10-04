@@ -706,9 +706,6 @@ Pas het volume aan door verticaal over de rechterkant van het scherm te vegen"</
             <string name="revanced_swipe_overlay_style_entry_5">Circulaire overlay (minimaal)</string>
             <string name="revanced_swipe_overlay_style_entry_6">Verticale overlay</string>
             <string name="revanced_swipe_overlay_style_entry_7">Verticale overlay (minimaal)</string>
-            <string name="revanced_swipe_change_video_title">Schakel vegen in om te wisselen tussen video\'s</string>
-            <string name="revanced_swipe_change_video_summary_on">Vegen in de modus volledig scherm weergegeven, verandert naar de volgende/vorige video</string>
-            <string name="revanced_swipe_change_video_summary_off">Vegen in de modus volledig scherm weergegeven, verandert niet naar de volgende/vorige video</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">Automatische ondertitels uitschakelen</string>
@@ -840,9 +837,6 @@ Pas het volume aan door verticaal over de rechterkant van het scherm te vegen"</
             <string name="revanced_hide_toolbar_search_button_title">Verberg zoekknop</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Zoekknop is verborgen</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Zoekknop is weergegeven.</string>
-            <string name="revanced_wide_searchbar_title">Schakel de brede zoekbalk in</string>
-            <string name="revanced_wide_searchbar_summary_on">De brede zoekbalk is ingeschakeld</string>
-            <string name="revanced_wide_searchbar_summary_off">De brede zoekbalk is uitgeschakeld</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">Uitklapmenu</string>

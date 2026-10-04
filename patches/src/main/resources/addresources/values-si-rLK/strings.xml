@@ -294,9 +294,6 @@ MicroG සඳහා බැටරි ප්‍රශස්තකරණය අක�
             <string name="revanced_hide_toolbar_search_button_title">සෙවුම් බොත්තම සඟවන්න</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">සෙවුම් බොත්තම සඟවා ඇත</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">සෙවුම් බොත්තම පෙන්වා ඇත.</string>
-            <string name="revanced_wide_searchbar_title">පුළුල් සෙවුම් තීරුව සක්‍රීය කරන්න</string>
-            <string name="revanced_wide_searchbar_summary_on">පුළුල් සෙවුම් තීරුව සක්‍රීය කර ඇත</string>
-            <string name="revanced_wide_searchbar_summary_off">පුළුල් සෙවුම් තීරුව අක්‍රීය කර ඇත</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->

@@ -286,9 +286,6 @@ Imikhawulo:
             <string name="revanced_hide_toolbar_search_button_title">Fihla inkinobho yokusesha</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Inkinobho yokusesha ifihliwe</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Inkinobho yokusesha ibonisiwe.</string>
-            <string name="revanced_wide_searchbar_title">Vumela ibha yokusesha ebanzi</string>
-            <string name="revanced_wide_searchbar_summary_on">Ibha yokusesha ebanzi ivuliwe</string>
-            <string name="revanced_wide_searchbar_summary_off">Ibha yokusesha ebanzi ikhutshaziwe</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->

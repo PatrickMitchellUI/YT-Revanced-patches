@@ -706,9 +706,6 @@ Vui lòng kiểm tra lại tên gói và đảm bảo ứng dụng đã được
             <string name="revanced_swipe_overlay_style_entry_5">Lớp phủ tròn (tối giản)</string>
             <string name="revanced_swipe_overlay_style_entry_6">Lớp phủ dọc</string>
             <string name="revanced_swipe_overlay_style_entry_7">Lớp phủ dọc (tối giản)</string>
-            <string name="revanced_swipe_change_video_title">Bật vuốt để chuyển video</string>
-            <string name="revanced_swipe_change_video_summary_on">Vuốt trong chế độ toàn màn hình sẽ chuyển sang video tiếp theo/trước đó</string>
-            <string name="revanced_swipe_change_video_summary_off">Vuốt trong chế độ toàn màn hình sẽ không chuyển sang video tiếp theo/trước đó</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">Tắt phụ đề tự động</string>
@@ -840,9 +837,6 @@ Vui lòng kiểm tra lại tên gói và đảm bảo ứng dụng đã được
             <string name="revanced_hide_toolbar_search_button_title">Ẩn nút Tìm kiếm</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Nút tìm kiếm đã bị ẩn</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Nút tìm kiếm được hiển thị.</string>
-            <string name="revanced_wide_searchbar_title">Bật thanh tìm kiếm rộng</string>
-            <string name="revanced_wide_searchbar_summary_on">Thanh tìm kiếm rộng đã bật</string>
-            <string name="revanced_wide_searchbar_summary_off">Thanh tìm kiếm rộng đã tắt</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">Trình đơn tuỳ chọn</string>

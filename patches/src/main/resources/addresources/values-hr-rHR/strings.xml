@@ -289,9 +289,6 @@ Ograničenja:
             <string name="revanced_hide_toolbar_search_button_title">Sakrij gumb „Traži”</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Gumb za pretraživanje je sakriven</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Gumb za pretraživanje je prikazan.</string>
-            <string name="revanced_wide_searchbar_title">Omogući široku traku za pretraživanje</string>
-            <string name="revanced_wide_searchbar_summary_on">Široka traka za pretraživanje je omogućena</string>
-            <string name="revanced_wide_searchbar_summary_off">Široka traka za pretraživanje je onemogućena</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->

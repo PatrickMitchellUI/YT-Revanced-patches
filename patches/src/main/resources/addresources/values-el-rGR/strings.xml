@@ -708,9 +708,6 @@ Second \"item\" text"</string>
             <string name="revanced_swipe_overlay_style_entry_5">Κυκλική διάταξη (μινιμαλιστική)</string>
             <string name="revanced_swipe_overlay_style_entry_6">Κάθετη διάταξη</string>
             <string name="revanced_swipe_overlay_style_entry_7">Κάθετη διάταξη (μινιμαλιστική)</string>
-            <string name="revanced_swipe_change_video_title">Χειρονομία εναλλαγής βίντεο στην πλήρη οθόνη</string>
-            <string name="revanced_swipe_change_video_summary_on">Σάρωση αριστερά/δεξιά κατά τη λειτουργία πλήρους οθόνης για αλλαγή σε επόμενο/προηγούμενο βίντεο</string>
-            <string name="revanced_swipe_change_video_summary_off">Η χειρονομία αλλαγής βίντεο κατά τη λειτουργία πλήρους οθόνης είναι ανενεργή</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">Απενεργοποίηση αυτόματων υπότιτλων</string>
@@ -842,9 +839,6 @@ Second \"item\" text"</string>
             <string name="revanced_hide_toolbar_search_button_title">Κουμπί αναζήτησης</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Κρυμμένο</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Εμφανίζεται</string>
-            <string name="revanced_wide_searchbar_title">Ευρεία γραμμή αναζήτησης</string>
-            <string name="revanced_wide_searchbar_summary_on">Η ευρεία γραμμή αναζήτησης είναι ενεργοποιημένη</string>
-            <string name="revanced_wide_searchbar_summary_off">Η ευρεία γραμμή αναζήτησης είναι απενεργοποιημένη</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">Αναδυόμενο μενού ρυθμίσεων</string>

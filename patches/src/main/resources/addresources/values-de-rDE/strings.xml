@@ -694,9 +694,6 @@ Passen Sie die Helligkeit an, indem Sie auf der linken Seite des Bildschirms ver
             <string name="revanced_swipe_overlay_style_entry_5">Kreisförmiges Overlay (minimal)</string>
             <string name="revanced_swipe_overlay_style_entry_6">Vertikales Overlay</string>
             <string name="revanced_swipe_overlay_style_entry_7">Vertikales Overlay (minimal)</string>
-            <string name="revanced_swipe_change_video_title">Mit Wischen wechseln Sie zu den Videos</string>
-            <string name="revanced_swipe_change_video_summary_on">Im Vollbildmodus wischen, um zum nächsten/vorherigen Video zu wechseln</string>
-            <string name="revanced_swipe_change_video_summary_off">Im Vollbildmodus wischen, um nicht zum nächsten/vorherigen Video zu wechseln</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">Autounterschriften deaktivieren</string>
@@ -828,9 +825,6 @@ Passen Sie die Helligkeit an, indem Sie auf der linken Seite des Bildschirms ver
             <string name="revanced_hide_toolbar_search_button_title">Suchschaltfläche ausblenden</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Suchschaltfläche ist ausgeblendet</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Suchschaltfläche wird angezeigt.</string>
-            <string name="revanced_wide_searchbar_title">breite Suchleiste aktivieren</string>
-            <string name="revanced_wide_searchbar_summary_on">Breite Suchleiste ist aktiviert</string>
-            <string name="revanced_wide_searchbar_summary_off">Breite Suchleiste ist deaktiviert</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">Einblendmenü</string>

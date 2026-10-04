@@ -696,9 +696,6 @@ Justera volymen genom att svepa vertikalt till höger på skärmen"</string>
             <string name="revanced_swipe_overlay_style_entry_5">Cirkulärt överlägg (minimalt)</string>
             <string name="revanced_swipe_overlay_style_entry_6">Vertikalt överlägg</string>
             <string name="revanced_swipe_overlay_style_entry_7">Vertikalt överlägg (minimalt)</string>
-            <string name="revanced_swipe_change_video_title">Aktivera svep för att byta videor</string>
-            <string name="revanced_swipe_change_video_summary_on">Svep i helskärmsläge byter till nästa/föregående video</string>
-            <string name="revanced_swipe_change_video_summary_off">Svep i helskärmsläge byter inte till nästa/föregående video</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">Inaktivera automatisk textning</string>
@@ -830,9 +827,6 @@ Justera volymen genom att svepa vertikalt till höger på skärmen"</string>
             <string name="revanced_hide_toolbar_search_button_title">Dölj Sök-knappen</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Sök-knappen är dold</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Sök-knappen visas.</string>
-            <string name="revanced_wide_searchbar_title">Aktivera brett sökfält</string>
-            <string name="revanced_wide_searchbar_summary_on">Brett sökfält är aktiverat</string>
-            <string name="revanced_wide_searchbar_summary_off">Brett sökfält är inaktiverat</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">Flyout-meny</string>

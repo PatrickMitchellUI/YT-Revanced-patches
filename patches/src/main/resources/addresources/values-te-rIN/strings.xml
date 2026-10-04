@@ -292,9 +292,6 @@ MicroG కోసం బ్యాటరీ ఆప్టిమైజేషన్�
             <string name="revanced_hide_toolbar_search_button_title">శోధన బటన్‌ను దాచు.</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">శోధన బటన్ దాచివేయబడింది.</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">శోధన బటన్ చూపబడింది.</string>
-            <string name="revanced_wide_searchbar_title">విస్తృత శోధన పట్టీని ప్రారంభించండి</string>
-            <string name="revanced_wide_searchbar_summary_on">విస్తృత శోధన పట్టీ ప్రారంభించబడింది</string>
-            <string name="revanced_wide_searchbar_summary_off">విస్తృత శోధన పట్టీ నిలిపివేయబడింది</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->

@@ -3,7 +3,6 @@ package app.revanced.patches.youtube.video.audio
 import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patches.shared.misc.audio.forceOriginalAudioPatch
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
-import app.revanced.patches.youtube.misc.playservice.is_20_07_or_greater
 import app.revanced.patches.youtube.misc.playservice.is_21_36_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
@@ -27,7 +26,7 @@ val forceOriginalAudioPatch = forceOriginalAudioPatch(
         )
     },
     // Flag was removed in 21.36.
-    fixUseLocalizedAudioTrackFlag = { is_20_07_or_greater && !is_21_36_or_greater },
+    fixUseLocalizedAudioTrackFlag = { !is_21_36_or_greater },
     getMainActivityOnCreateMethod = BytecodePatchContext::mainActivityOnCreateMethod::get,
     subclassExtensionClassDescriptor = "Lapp/revanced/extension/youtube/patches/ForceOriginalAudioPatch;",
     preferenceScreen = PreferenceScreen.VIDEO,

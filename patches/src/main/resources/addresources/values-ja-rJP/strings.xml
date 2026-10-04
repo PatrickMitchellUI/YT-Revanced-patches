@@ -706,9 +706,6 @@ YouTube Premium ユーザーの場合、この設定は必要ない可能性が�
             <string name="revanced_swipe_overlay_style_entry_5">円形（シンプル）</string>
             <string name="revanced_swipe_overlay_style_entry_6">縦型</string>
             <string name="revanced_swipe_overlay_style_entry_7">縦型（シンプル）</string>
-            <string name="revanced_swipe_change_video_title">スワイプによる動画の切り替えを有効化</string>
-            <string name="revanced_swipe_change_video_summary_on">全画面表示中に左 / 右にスワイプすると、前 / 次の動画に切り替わります</string>
-            <string name="revanced_swipe_change_video_summary_off">全画面表示中に左 / 右にスワイプしても、前 / 次の動画に切り替わりません</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">自動字幕表示を無効化</string>
@@ -840,9 +837,6 @@ YouTube Premium ユーザーの場合、この設定は必要ない可能性が�
             <string name="revanced_hide_toolbar_search_button_title">検索ボタンを非表示</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">検索ボタンは表示されません</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">検索ボタンは表示されます.</string>
-            <string name="revanced_wide_searchbar_title">ワイド検索バーを有効化</string>
-            <string name="revanced_wide_searchbar_summary_on">ワイド検索バーは有効です</string>
-            <string name="revanced_wide_searchbar_summary_off">ワイド検索バーは無効です</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">フライアウト メニュー</string>

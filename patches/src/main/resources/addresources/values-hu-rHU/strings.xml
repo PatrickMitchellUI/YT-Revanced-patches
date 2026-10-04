@@ -700,9 +700,6 @@ A hangerő a képernyő jobb oldalán függőlegesen húzva állítható be"</st
             <string name="revanced_swipe_overlay_style_entry_5">Körkörös fedvény (minimalista)</string>
             <string name="revanced_swipe_overlay_style_entry_6">Függőleges fedvény</string>
             <string name="revanced_swipe_overlay_style_entry_7">Függőleges fedvény (minimalista)</string>
-            <string name="revanced_swipe_change_video_title">Engedélyezze az ujjbegyújtással történő videóváltást</string>
-            <string name="revanced_swipe_change_video_summary_on">Teljes képernyős módban történő ujjbegyújtás megváltoztatja a következő/előző videóra</string>
-            <string name="revanced_swipe_change_video_summary_off">Teljes képernyős módban történő ujjbegyújtás nem változtatja meg a következő/előző videóra</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">Automatikus feliratok letiltása</string>
@@ -834,9 +831,6 @@ A hangerő a képernyő jobb oldalán függőlegesen húzva állítható be"</st
             <string name="revanced_hide_toolbar_search_button_title">Keresés gomb elrejtése</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">A keresés gomb el van rejtve</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">A keresés gomb látható.</string>
-            <string name="revanced_wide_searchbar_title">Széles keresősáv bekapcsolása</string>
-            <string name="revanced_wide_searchbar_summary_on">Széles keresősáv bekapcsolva</string>
-            <string name="revanced_wide_searchbar_summary_off">Széles keresősáv kikapcsolva</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">Előugró menü</string>

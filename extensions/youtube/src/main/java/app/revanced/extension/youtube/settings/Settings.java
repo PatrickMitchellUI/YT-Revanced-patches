@@ -332,7 +332,6 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final BooleanSetting HIDE_TOOLBAR_NOTIFICATION_BUTTON = new BooleanSetting("revanced_hide_toolbar_notification_button", FALSE, true);
     public static final BooleanSetting HIDE_TOOLBAR_MESSAGES_BUTTON = new BooleanSetting("revanced_hide_toolbar_messages_button", FALSE, true);
     public static final BooleanSetting HIDE_TOOLBAR_SEARCH_BUTTON = new BooleanSetting("revanced_hide_toolbar_search_button", FALSE, true);
-    public static final BooleanSetting WIDE_SEARCHBAR = new BooleanSetting("revanced_wide_searchbar", FALSE, true);
 
     // Shorts
     public static final BooleanSetting DISABLE_RESUMING_SHORTS_ON_STARTUP = new BooleanSetting("revanced_disable_resuming_shorts_on_startup", FALSE);
@@ -411,7 +410,6 @@ public class Settings extends YouTubeAndMusicSettings {
             "revanced_spoof_video_streams_av1_user_dialog_message", new SpoofClientAv1Availability());
 
     // Swipe controls
-    public static final BooleanSetting SWIPE_CHANGE_VIDEO = new BooleanSetting("revanced_swipe_change_video", FALSE, true);
     public static final BooleanSetting SWIPE_BRIGHTNESS = new BooleanSetting("revanced_swipe_brightness", FALSE, true);
     public static final BooleanSetting SWIPE_VOLUME = new BooleanSetting("revanced_swipe_volume", FALSE, true);
     public static final BooleanSetting SWIPE_PRESS_TO_ENGAGE = new BooleanSetting("revanced_swipe_press_to_engage", FALSE, true,

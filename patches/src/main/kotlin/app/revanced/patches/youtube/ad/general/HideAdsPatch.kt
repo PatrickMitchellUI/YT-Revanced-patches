@@ -24,8 +24,6 @@ import app.revanced.patches.youtube.misc.engagement.addEngagementPanelIdHook
 import app.revanced.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.revanced.patches.youtube.misc.fix.backtoexitgesture.fixBackToExitGesturePatch
 import app.revanced.patches.youtube.misc.litho.filter.lithoFilterPatch
-import app.revanced.patches.youtube.misc.playservice.is_20_14_or_greater
-import app.revanced.patches.youtube.misc.playservice.is_20_40_or_greater
 import app.revanced.patches.youtube.misc.playservice.is_21_36_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
@@ -154,33 +152,30 @@ val hideAdsPatch = bytecodePatch(
         }
 
         // The Premium offer is a regular compact link in the You tab.
-        // Older versions are not verified.
-        if (is_20_40_or_greater) {
-            compactLinkPresenterConstructorMethodMatch.classDef.let { presenterClass ->
-                val rootViewMethod = presenterClass.methods.single { method ->
-                    method.returnType == "Landroid/view/View;" && method.parameterTypes.isEmpty() &&
-                        !AccessFlags.STATIC.isSet(method.accessFlags)
-                }
+        compactLinkPresenterConstructorMethodMatch.classDef.let { presenterClass ->
+            val rootViewMethod = presenterClass.methods.single { method ->
+                method.returnType == "Landroid/view/View;" && method.parameterTypes.isEmpty() &&
+                    !AccessFlags.STATIC.isSet(method.accessFlags)
+            }
 
-                // Bind method, (presentContext, renderer). Hook after binding,
-                // so the visibility set by the app is overridden.
-                presenterClass.methods.single { method ->
-                    method.returnType == "V" && method.parameterTypes.size == 2 &&
-                        method.parameterTypes[1] == "Ljava/lang/Object;" &&
-                        AccessFlags.SYNTHETIC.isSet(method.accessFlags)
-                }.apply {
-                    findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
-                        addInstructionsAtControlFlowLabel(
-                            index,
-                            """
-                                move-object/from16 v0, p0
-                                invoke-virtual { v0 }, $rootViewMethod
-                                move-result-object v0
-                                move-object/from16 v1, p2
-                                invoke-static { v1, v0 }, $EXTENSION_CLASS_DESCRIPTOR->hidePremiumCompactLink(Ljava/lang/Object;Landroid/view/View;)V
-                            """,
-                        )
-                    }
+            // Bind method, (presentContext, renderer). Hook after binding,
+            // so the visibility set by the app is overridden.
+            presenterClass.methods.single { method ->
+                method.returnType == "V" && method.parameterTypes.size == 2 &&
+                    method.parameterTypes[1] == "Ljava/lang/Object;" &&
+                    AccessFlags.SYNTHETIC.isSet(method.accessFlags)
+            }.apply {
+                findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
+                    addInstructionsAtControlFlowLabel(
+                        index,
+                        """
+                            move-object/from16 v0, p0
+                            invoke-virtual { v0 }, $rootViewMethod
+                            move-result-object v0
+                            move-object/from16 v1, p2
+                            invoke-static { v1, v0 }, $EXTENSION_CLASS_DESCRIPTOR->hidePremiumCompactLink(Ljava/lang/Object;Landroid/view/View;)V
+                        """,
+                    )
                 }
             }
         }
@@ -204,25 +199,23 @@ val hideAdsPatch = bytecodePatch(
 
         // Hide player overlay view. This can be hidden with a regular litho filter
         // but an empty space remains.
-        if (is_20_14_or_greater) {
-            playerOverlayTimelyShelfMethodMatch.let {
-                it.method.apply {
-                    // The handler can be part of a switch, so hook the timely shelf case only.
-                    val index = it[0]
-                    val register = getInstruction<TwoRegisterInstruction>(index).registerA
+        playerOverlayTimelyShelfMethodMatch.let {
+            it.method.apply {
+                // The handler can be part of a switch, so hook the timely shelf case only.
+                val index = it[0]
+                val register = getInstruction<TwoRegisterInstruction>(index).registerA
 
-                    addInstructionsWithLabels(
-                        index,
-                        """
-                            invoke-static {}, ${EXTENSION_CLASS_DESCRIPTOR}->hideAds()Z
-                            move-result v$register
-                            if-eqz v$register, :show
-                            return-void
-                            :show
-                            nop
-                        """
-                    )
-                }
+                addInstructionsWithLabels(
+                    index,
+                    """
+                        invoke-static {}, ${EXTENSION_CLASS_DESCRIPTOR}->hideAds()Z
+                        move-result v$register
+                        if-eqz v$register, :show
+                        return-void
+                        :show
+                        nop
+                    """
+                )
             }
         }
 

@@ -294,9 +294,6 @@ MicroG үшін батареяны оңтайландыруды өшіру ба�
             <string name="revanced_hide_toolbar_search_button_title">\'Іздеу\' түймесін жасыру</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Іздеу түймесі жасырылған</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Іздеу түймесі көрсетілген.</string>
-            <string name="revanced_wide_searchbar_title">Кең іздеу жолағын қосу</string>
-            <string name="revanced_wide_searchbar_summary_on">Кең іздеу жолағы қосулы</string>
-            <string name="revanced_wide_searchbar_summary_off">Кең іздеу жолағы өшірулі</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->

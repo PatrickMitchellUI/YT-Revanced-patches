@@ -286,9 +286,6 @@ Second \"item\" text"</string>
             <string name="revanced_hide_toolbar_search_button_title">ເຊື່ອງປຸ່ມຄົ້ນຫາ</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">ປຸ່ມຄົ້ນຫາຖືກເຊື່ອງໄວ້</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">ປຸ່ມຄົ້ນຫາຖືກສະແດງ.</string>
-            <string name="revanced_wide_searchbar_title">ເປີດໃຊ້ແຖບຄົ້ນຫາແບບກວ້າງ</string>
-            <string name="revanced_wide_searchbar_summary_on">ແຖບຄົ້ນຫາແບບກວ້າງຖືກເປີດໃຊ້ງານ</string>
-            <string name="revanced_wide_searchbar_summary_off">ແຖບຄົ້ນຫາແບບກວ້າງຖືກປິດໃຊ້ງານ</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->

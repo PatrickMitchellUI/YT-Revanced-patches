@@ -690,9 +690,6 @@ Përshtate shkëlqimin duke rrëshqitur vertikalisht në anën e majtë të ekra
             <string name="revanced_swipe_overlay_style_entry_5">Mbivendosje rrethore (minimale)</string>
             <string name="revanced_swipe_overlay_style_entry_6">Mbivendosje vertikale</string>
             <string name="revanced_swipe_overlay_style_entry_7">Mbivendosje vertikale (minimale)</string>
-            <string name="revanced_swipe_change_video_title">Aktivizoni lëshimin për të ndryshuar videot</string>
-            <string name="revanced_swipe_change_video_summary_on">Lëvizja në modalitetin në ekran të plotë do të ndryshojë në videon e ardhshme/të mëparshme</string>
-            <string name="revanced_swipe_change_video_summary_off">Lëvizja në modalitetin në ekran të plotë nuk do të ndryshojë në videon e ardhshme/të mëparshme</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">Çaktivizo titrat automatikë</string>
@@ -824,9 +821,6 @@ Përshtate shkëlqimin duke rrëshqitur vertikalisht në anën e majtë të ekra
             <string name="revanced_hide_toolbar_search_button_title">Fsheh butonin e kërkimit</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Butoni i kërkimit është fshehur</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Butoni i kërkimit është shfaqur.</string>
-            <string name="revanced_wide_searchbar_title">Aktivizo shiritin e gjerë kërkimi</string>
-            <string name="revanced_wide_searchbar_summary_on">Shiriti i gjerë kërkimi është i aktivizuar</string>
-            <string name="revanced_wide_searchbar_summary_off">Shiriti i gjerë kërkimi është i deaktivizuar</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">Menyja \"Fshi\"</string>

@@ -704,9 +704,6 @@ Helitugevuse reguleerimiseks pühkige ekraani paremal küljel vertikaalselt"</st
             <string name="revanced_swipe_overlay_style_entry_5">Ümmargune ülekate (minimaalne)</string>
             <string name="revanced_swipe_overlay_style_entry_6">Vertikaalne ülekate</string>
             <string name="revanced_swipe_overlay_style_entry_7">Vertikaalne ülekate (minimaalne)</string>
-            <string name="revanced_swipe_change_video_title">Luba pühkimine videote vahetamiseks</string>
-            <string name="revanced_swipe_change_video_summary_on">Täisekraanrežiimis pühkimine vahetab järgmise/eelmise video</string>
-            <string name="revanced_swipe_change_video_summary_off">Täisekraanrežiimis pühkimine ei vaheta järgmise/eelmise video</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">Keela automaatsed pealdised</string>
@@ -838,9 +835,6 @@ Helitugevuse reguleerimiseks pühkige ekraani paremal küljel vertikaalselt"</st
             <string name="revanced_hide_toolbar_search_button_title">Peida otsingunupp</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Otsingunupp on peidetud</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Otsingunupp on nähtav.</string>
-            <string name="revanced_wide_searchbar_title">Luba lai otsinguriba</string>
-            <string name="revanced_wide_searchbar_summary_on">Lai otsinguriba on lubatud</string>
-            <string name="revanced_wide_searchbar_summary_off">Lai otsinguriba on keelatud</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">Väljuv menüü</string>

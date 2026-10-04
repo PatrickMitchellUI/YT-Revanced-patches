@@ -706,9 +706,6 @@ Menyesuaikan volume dengan mengusap secara vertikal di sisi kanan layar"</string
             <string name="revanced_swipe_overlay_style_entry_5">Hamparan melingkar (minimal)</string>
             <string name="revanced_swipe_overlay_style_entry_6">Hamparan vertikal</string>
             <string name="revanced_swipe_overlay_style_entry_7">Hamparan vertikal (minimal)</string>
-            <string name="revanced_swipe_change_video_title">Aktifkan usapan untuk beralih video</string>
-            <string name="revanced_swipe_change_video_summary_on">Mengusap dalam mode layar penuh akan beralih ke video berikutnya/sebelumnya</string>
-            <string name="revanced_swipe_change_video_summary_off">Mengusap dalam mode layar penuh tidak akan beralih ke video berikutnya/sebelumnya</string>
         </patch>
         <patch id="layout.autocaptions.autoCaptionsPatch">
             <string name="revanced_disable_auto_captions_title">Matikan teks otomatis</string>
@@ -840,9 +837,6 @@ Menyesuaikan volume dengan mengusap secara vertikal di sisi kanan layar"</string
             <string name="revanced_hide_toolbar_search_button_title">Sembunyikan tombol Pencarian</string>
             <string name="revanced_hide_toolbar_search_button_summary_on">Tombol pencarian disembunyikan</string>
             <string name="revanced_hide_toolbar_search_button_summary_off">Tombol pencarian ditampilkan.</string>
-            <string name="revanced_wide_searchbar_title">Aktifkan bilah pencarian lebar</string>
-            <string name="revanced_wide_searchbar_summary_on">Bilah pencarian lebar diaktifkan</string>
-            <string name="revanced_wide_searchbar_summary_off">Bilah pencarian lebar dinonaktifkan</string>
         </patch>
         <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
             <string name="revanced_hide_player_flyout_title">Menu flyout</string>

@@ -92,14 +92,6 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
                 )
             }
 
-            if (is_20_21_or_greater && !is_20_28_or_greater) {
-                addHook(NavigationHook.NAVIGATION_TAB_LOADED) predicate@{
-                    MethodUtil.methodSignaturesMatch(
-                        methodReference ?: return@predicate false,
-                        pivotBarButtonsCreateResourceIntViewMethod,
-                    )
-                }
-            }
 
             addHook(NavigationHook.NAVIGATION_IMAGE_RESOURCE_TAB_LOADED) predicate@{
                 MethodUtil.methodSignaturesMatch(
@@ -201,25 +193,23 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
         }
 
         // Fix YT bug of notification tab missing the filled icon.
-        if (is_19_35_or_greater) {
-            val cairoNotificationEnumReference =
-                imageEnumConstructorMethodMatch.method.getInstruction(imageEnumConstructorMethodMatch[-1]).reference
+        val cairoNotificationEnumReference =
+            imageEnumConstructorMethodMatch.method.getInstruction(imageEnumConstructorMethodMatch[-1]).reference
 
-            setEnumMapMethodMatch.apply {
-                val setEnumIntegerIndex = setEnumMapMethodMatch[-1]
-                method.apply {
-                    val enumMapRegister = getInstruction<FiveRegisterInstruction>(setEnumIntegerIndex).registerC
-                    val insertIndex = setEnumIntegerIndex + 1
-                    val freeRegister = findFreeRegister(insertIndex, enumMapRegister)
+        setEnumMapMethodMatch.apply {
+            val setEnumIntegerIndex = setEnumMapMethodMatch[-1]
+            method.apply {
+                val enumMapRegister = getInstruction<FiveRegisterInstruction>(setEnumIntegerIndex).registerC
+                val insertIndex = setEnumIntegerIndex + 1
+                val freeRegister = findFreeRegister(insertIndex, enumMapRegister)
 
-                    addInstructions(
-                        insertIndex,
-                        """
-                            sget-object v$freeRegister, $cairoNotificationEnumReference
-                            invoke-static { v$enumMapRegister, v$freeRegister }, $EXTENSION_CLASS_DESCRIPTOR->setCairoNotificationFilledIcon(Ljava/util/EnumMap;Ljava/lang/Enum;)V
-                        """,
-                    )
-                }
+                addInstructions(
+                    insertIndex,
+                    """
+                        sget-object v$freeRegister, $cairoNotificationEnumReference
+                        invoke-static { v$enumMapRegister, v$freeRegister }, $EXTENSION_CLASS_DESCRIPTOR->setCairoNotificationFilledIcon(Ljava/util/EnumMap;Ljava/lang/Enum;)V
+                    """,
+                )
             }
         }
     }

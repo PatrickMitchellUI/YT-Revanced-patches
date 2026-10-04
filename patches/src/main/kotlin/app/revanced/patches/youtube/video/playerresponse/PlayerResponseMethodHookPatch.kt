@@ -5,13 +5,8 @@ import app.revanced.patcher.extensions.addInstruction
 import app.revanced.patcher.extensions.addInstructions
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
-import app.revanced.patches.youtube.misc.playservice.is_19_23_or_greater
-import app.revanced.patches.youtube.misc.playservice.is_20_02_or_greater
-import app.revanced.patches.youtube.misc.playservice.is_20_10_or_greater
-import app.revanced.patches.youtube.misc.playservice.is_20_15_or_greater
-import app.revanced.patches.youtube.misc.playservice.is_20_26_or_greater
-import app.revanced.patches.youtube.misc.playservice.is_20_46_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
+import app.revanced.patches.youtube.misc.playservice.is_21_36_or_greater
 
 private val hooks = mutableSetOf<Hook>()
 
@@ -40,30 +35,12 @@ val playerResponseMethodHookPatch = bytecodePatch {
     )
 
     apply {
-        val method: MutableMethod
-        if (is_20_46_or_greater) {
-            parameterIsShortAndOpeningOrPlaying = 13
-            method = playerParameterBuilderMethod
-        } else if (is_20_26_or_greater) {
-            parameterIsShortAndOpeningOrPlaying = 13
-            method = playerParameterBuilder2026Method
-        } else if (is_20_15_or_greater) {
-            parameterIsShortAndOpeningOrPlaying = 13
-            method = playerParameterBuilder2015Method
-        } else if (is_20_10_or_greater) {
-            parameterIsShortAndOpeningOrPlaying = 13
-            method = playerParameterBuilder2010Method
-        } else if (is_20_02_or_greater) {
-            parameterIsShortAndOpeningOrPlaying = 12
-            method = playerParameterBuilder2002Method
-        } else if (is_19_23_or_greater) {
-            parameterIsShortAndOpeningOrPlaying = 12
-            method = playerParameterBuilder1925Method
+        parameterIsShortAndOpeningOrPlaying = 13
+        playerResponseMethod = if (is_21_36_or_greater) {
+            playerParameterBuilderMethod
         } else {
-            parameterIsShortAndOpeningOrPlaying = 11
-            method = playerParameterBuilderLegacyMethod
+            playerParameterBuilder2026Method
         }
-        playerResponseMethod = method
 
         // On some app targets the method has too many registers pushing the parameters past v15.
         // If needed, move the parameters to 4-bit registers, so they can be passed to the extension.
