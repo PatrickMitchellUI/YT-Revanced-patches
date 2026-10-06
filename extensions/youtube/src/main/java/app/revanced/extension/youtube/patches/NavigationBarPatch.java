@@ -9,10 +9,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import java.util.EnumMap;
 import java.util.Map;
 
 import app.revanced.extension.shared.Utils;
+import app.revanced.extension.youtube.shared.NavigationBar;
 import app.revanced.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -60,6 +63,36 @@ public final class NavigationBarPatch {
         if (Boolean.TRUE.equals(shouldHideMap.get(button))) {
             tabView.setVisibility(View.GONE);
         }
+    }
+
+    private static boolean showNavigationButtonBadge(@Nullable NavigationButton button, boolean show) {
+        if (button == NavigationButton.SUBSCRIPTIONS) {
+            return show && !Settings.HIDE_SUBSCRIPTIONS_BUTTON_BADGE.get();
+        }
+        if (button == NavigationButton.NOTIFICATIONS) {
+            return show && !Settings.HIDE_NOTIFICATIONS_BUTTON_BADGE.get();
+        }
+        return show;
+    }
+
+    /**
+     * Injection point.
+     * Called while a navigation tab is created, before its view is loaded.
+     *
+     * @param show If the new content dot or unread count is shown.
+     */
+    public static boolean showNavigationButtonBadge(boolean show) {
+        return showNavigationButtonBadge(NavigationBar.getLastLoadedNavigationButton(), show);
+    }
+
+    /**
+     * Injection point.
+     * Called when the badge of a loaded navigation tab changes.
+     *
+     * @param show If the new content dot or unread count is shown.
+     */
+    public static boolean showNavigationButtonBadge(View tabView, boolean show) {
+        return showNavigationButtonBadge(NavigationBar.getNavigationButton(tabView), show);
     }
 
     /**

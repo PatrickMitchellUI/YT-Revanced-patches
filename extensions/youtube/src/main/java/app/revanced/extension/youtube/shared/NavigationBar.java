@@ -191,6 +191,31 @@ public final class NavigationBar {
     }
 
     /**
+     * @return The button of the last YT navigation enum loaded, or null if unknown.
+     *         While a tab with an enum is created, this is the button of that tab.
+     */
+    @Nullable
+    public static NavigationButton getLastLoadedNavigationButton() {
+        String lastEnumName = lastYTNavigationEnumName;
+
+        for (NavigationButton buttonType : NavigationButton.values()) {
+            if (buttonType.ytEnumNames.contains(lastEnumName)) {
+                return buttonType;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @return The button of a loaded navigation tab view, or null if the view is unknown.
+     */
+    @Nullable
+    public static NavigationButton getNavigationButton(View navigationButtonGroup) {
+        return viewToButtonMap.get(navigationButtonGroup);
+    }
+
+    /**
      * Injection point.
      */
     public static void navigationTabLoaded(final View navigationButtonGroup) {

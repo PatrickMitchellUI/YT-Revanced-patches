@@ -318,6 +318,8 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final BooleanSetting HIDE_NAVIGATION_BUTTON_LABELS = new BooleanSetting("revanced_hide_navigation_button_labels", FALSE, true);
     public static final BooleanSetting NARROW_NAVIGATION_BUTTONS = new BooleanSetting("revanced_narrow_navigation_buttons", FALSE, true);
     public static final BooleanSetting HIDE_NOTIFICATIONS_BUTTON = new BooleanSetting("revanced_hide_notifications_button", FALSE, true);
+    public static final BooleanSetting HIDE_SUBSCRIPTIONS_BUTTON_BADGE = new BooleanSetting("revanced_hide_subscriptions_button_badge", FALSE, true);
+    public static final BooleanSetting HIDE_NOTIFICATIONS_BUTTON_BADGE = new BooleanSetting("revanced_hide_notifications_button_badge", FALSE, true);
     public static final BooleanSetting SWITCH_CREATE_WITH_NOTIFICATIONS_BUTTON = new BooleanSetting("revanced_switch_create_with_notifications_button", TRUE, true,
             "revanced_switch_create_with_notifications_button_user_dialog_message");
     public static final BooleanSetting DISABLE_AUTO_HIDE_NAVIGATION_BAR = new BooleanSetting("revanced_disable_auto_hide_navigation_bar", FALSE, true);

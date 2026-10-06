@@ -890,6 +890,14 @@ Adjust volume by swiping vertically on the right side of the screen"</string>
             <string name="revanced_hide_notifications_button_title">Hide Notifications</string>
             <string name="revanced_hide_notifications_button_summary_on">Notifications button is hidden</string>
             <string name="revanced_hide_notifications_button_summary_off">Notifications button is shown</string>
+            <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays the tab. -->
+            <string name="revanced_hide_subscriptions_button_badge_title">Hide Subscriptions dot</string>
+            <string name="revanced_hide_subscriptions_button_badge_summary_on">New content dot on the Subscriptions button is hidden</string>
+            <string name="revanced_hide_subscriptions_button_badge_summary_off">New content dot on the Subscriptions button is shown</string>
+            <!-- 'Notifications' should be translated using the same localized wording YouTube displays the tab. -->
+            <string name="revanced_hide_notifications_button_badge_title">Hide Notifications dot</string>
+            <string name="revanced_hide_notifications_button_badge_summary_on">Unread count on the Notifications button is hidden</string>
+            <string name="revanced_hide_notifications_button_badge_summary_off">Unread count on the Notifications button is shown</string>
             <!-- 'Notifications' should be translated using the same localized wording YouTube displays the tab. -->
             <string name="revanced_switch_create_with_notifications_button_title">Switch Create with Notifications</string>
             <string name="revanced_switch_create_with_notifications_button_summary_on">Create button is switched with Notifications button</string>

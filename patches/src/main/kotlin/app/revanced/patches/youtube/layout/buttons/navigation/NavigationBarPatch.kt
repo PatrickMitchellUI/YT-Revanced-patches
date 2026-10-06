@@ -7,6 +7,7 @@ import app.revanced.patcher.extensions.ExternalLabel
 import app.revanced.patcher.extensions.addInstructionsWithLabels
 import app.revanced.patcher.extensions.fieldReference
 import app.revanced.patcher.extensions.getInstruction
+import app.revanced.patcher.extensions.methodReference
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
@@ -24,6 +25,7 @@ import app.revanced.patches.youtube.misc.contexthook.hookClientContextPatch
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
 import app.revanced.patches.youtube.misc.navigation.hookNavigationButtonCreated
 import app.revanced.patches.youtube.misc.navigation.navigationBarHookPatch
+import app.revanced.patches.youtube.misc.navigation.pivotBarButtonsCreateDrawableViewMethod
 import app.revanced.patches.youtube.misc.playservice.is_21_36_or_greater
 import app.revanced.patches.youtube.misc.playservice.versionCheckPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
@@ -71,6 +73,8 @@ val navigationBarPatch = bytecodePatch(
             SwitchPreference("revanced_hide_create_button"),
             SwitchPreference("revanced_hide_subscriptions_button"),
             SwitchPreference("revanced_hide_notifications_button"),
+            SwitchPreference("revanced_hide_subscriptions_button_badge"),
+            SwitchPreference("revanced_hide_notifications_button_badge"),
             SwitchPreference("revanced_switch_create_with_notifications_button"),
             SwitchPreference("revanced_hide_navigation_button_labels"),
             SwitchPreference("revanced_narrow_navigation_buttons"),
@@ -121,6 +125,45 @@ val navigationBarPatch = bytecodePatch(
 
         // Hook navigation button created, in order to hide them.
         hookNavigationButtonCreated(EXTENSION_CLASS_DESCRIPTOR)
+
+        // Hide the new content dot and unread count of navigation buttons.
+        // Initial badge of a new tab, the tab view is not loaded yet.
+        firstMethod(pivotBarButtonsCreateDrawableViewMethod).apply {
+            val showBadgeRegister = "p" + (parameterTypes.map { it.toString() }.indexOf("Z") + 1)
+
+            addInstructions(
+                0,
+                """
+                    invoke-static/range { $showBadgeRegister .. $showBadgeRegister }, $EXTENSION_CLASS_DESCRIPTOR->showNavigationButtonBadge(Z)Z
+                    move-result $showBadgeRegister
+                """,
+            )
+        }
+
+        // Badge changes of loaded tabs.
+        pivotBarSetBadgeMethodMatch.let {
+            it.method.apply {
+                val index = it[0]
+                val instruction = getInstruction<FiveRegisterInstruction>(index)
+                val buttonRegister = instruction.registerC
+                val showBadgeRegister = instruction.registerD
+                val viewField = firstClassDef(instruction.methodReference!!.definingClass).fields.single { field ->
+                    field.type == "Landroid/view/View;"
+                }
+
+                // The button is looked up by index, so this and the index register are free after the lookup.
+                val freeRegister = listOf(0, 1).first { register -> register != buttonRegister }
+
+                addInstructions(
+                    index,
+                    """
+                        iget-object v$freeRegister, v$buttonRegister, $viewField
+                        invoke-static { v$freeRegister, v$showBadgeRegister }, $EXTENSION_CLASS_DESCRIPTOR->showNavigationButtonBadge(Landroid/view/View;Z)Z
+                        move-result v$showBadgeRegister
+                    """,
+                )
+            }
+        }
 
         // Force on/off translucent effect on status bar and navigation buttons.
         overrideBooleanFeatureFlag(

@@ -77,3 +77,16 @@ internal val BytecodePatchContext.bottomBarModelToStringMethodMatch by composing
         afterAtMost(5, allOf(Opcode.IGET_BOOLEAN(), field { type == "Z" })),
     )
 }
+
+/**
+ * Sets the new content dot or unread count of a navigation button (index, show badge, count).
+ */
+internal val BytecodePatchContext.pivotBarSetBadgeMethodMatch by composingFirstMethod {
+    definingClass("Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;")
+    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
+    returnType("V")
+    parameterTypes("I", "Z", "I")
+    instructions(
+        method { returnType == "V" && parameterTypes.map { it.toString() } == listOf("Z", "I") },
+    )
+}
