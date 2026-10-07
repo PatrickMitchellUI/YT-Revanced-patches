@@ -78,6 +78,8 @@ private const val CUSTOM_FILTER_CLASS_NAME =
     "Lapp/revanced/extension/shared/patches/litho/CustomFilter;"
 private const val KEYWORD_FILTER_CLASS_NAME =
     "Lapp/revanced/extension/youtube/patches/litho/KeywordContentFilter;"
+private const val SHARE_SHEET_PATCH_CLASS_NAME =
+    "Lapp/revanced/extension/youtube/patches/ShareSheetPatch;"
 
 val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
     lithoFilterPatch = lithoFilterPatch,
@@ -108,6 +110,19 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
     ),
 ) {
     addResources("youtube", "layout.hide.general.hideLayoutComponentsPatch")
+
+    PreferenceScreen.GENERAL.addPreferences(
+        PreferenceScreenPreference(
+            key = "revanced_share_sheet_screen",
+            preferences = setOf(
+                SwitchPreference("revanced_hide_share_sheet_invite"),
+                SwitchPreference("revanced_hide_share_sheet_create_post"),
+                SwitchPreference("revanced_hide_share_sheet_quick_share"),
+                SwitchPreference("revanced_hide_share_sheet_remix"),
+                SwitchPreference("revanced_hide_share_sheet_repost"),
+            ),
+        ),
+    )
 
     PreferenceScreen.ADS.addPreferences(
         // Uses horizontal shelf and a buffer, which requires managing in a single place in the code
@@ -462,6 +477,7 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
     // region Hide comment carousel
 
     hookElement("${COMMENTS_FILTER_CLASS_NAME}->onCommentsLoaded([B)[B")
+    hookElement("${SHARE_SHEET_PATCH_CLASS_NAME}->onElementLoaded([B)[B")
 
     // endregion
 

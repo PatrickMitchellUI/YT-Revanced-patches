@@ -297,6 +297,11 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_WATCH_IN_VR = new BooleanSetting("revanced_hide_player_flyout_watch_in_vr", FALSE);
 
     // General layout
+    public static final BooleanSetting HIDE_SHARE_SHEET_INVITE = new BooleanSetting("revanced_hide_share_sheet_invite", FALSE);
+    public static final BooleanSetting HIDE_SHARE_SHEET_CREATE_POST = new BooleanSetting("revanced_hide_share_sheet_create_post", FALSE);
+    public static final BooleanSetting HIDE_SHARE_SHEET_QUICK_SHARE = new BooleanSetting("revanced_hide_share_sheet_quick_share", FALSE);
+    public static final BooleanSetting HIDE_SHARE_SHEET_REMIX = new BooleanSetting("revanced_hide_share_sheet_remix", FALSE);
+    public static final BooleanSetting HIDE_SHARE_SHEET_REPOST = new BooleanSetting("revanced_hide_share_sheet_repost", FALSE);
     public static final BooleanSetting RESTORE_OLD_SETTINGS_MENUS = new BooleanSetting("revanced_restore_old_settings_menus", FALSE, true);
     public static final EnumSetting<FormFactor> CHANGE_FORM_FACTOR = new EnumSetting<>("revanced_change_form_factor", FormFactor.DEFAULT, true, "revanced_change_form_factor_user_dialog_message");
     public static final BooleanSetting BYPASS_IMAGE_REGION_RESTRICTIONS = new BooleanSetting("revanced_bypass_image_region_restrictions", FALSE, true);

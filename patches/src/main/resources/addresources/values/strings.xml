@@ -493,6 +493,25 @@ However, enabling this will also log some user data such as your IP address."</s
             <string name="revanced_hide_filter_bar_feed_in_history_summary_on">Hidden in watch history</string>
             <string name="revanced_hide_filter_bar_feed_in_history_summary_off">Shown in watch history</string>
 
+            <string name="revanced_share_sheet_screen_title">Share menu</string>
+            <string name="revanced_share_sheet_screen_summary">Hide or show buttons in the share menu</string>
+            <!-- 'Invite others to message' should be translated with the same localized wording that YouTube displays. -->
+            <string name="revanced_hide_share_sheet_invite_title">Hide Invite others to message</string>
+            <string name="revanced_hide_share_sheet_invite_summary_on">Invite others to message is hidden</string>
+            <string name="revanced_hide_share_sheet_invite_summary_off">Invite others to message is shown</string>
+            <!-- 'Create post', 'Quick Share', 'Remix' and 'Repost on YouTube' should be translated with the same localized wording that YouTube displays. -->
+            <string name="revanced_hide_share_sheet_create_post_title">Hide Create post</string>
+            <string name="revanced_hide_share_sheet_create_post_summary_on">Create post is hidden</string>
+            <string name="revanced_hide_share_sheet_create_post_summary_off">Create post is shown</string>
+            <string name="revanced_hide_share_sheet_quick_share_title">Hide Quick Share</string>
+            <string name="revanced_hide_share_sheet_quick_share_summary_on">Quick Share is hidden</string>
+            <string name="revanced_hide_share_sheet_quick_share_summary_off">Quick Share is shown</string>
+            <string name="revanced_hide_share_sheet_remix_title">Hide Remix</string>
+            <string name="revanced_hide_share_sheet_remix_summary_on">Remix is hidden</string>
+            <string name="revanced_hide_share_sheet_remix_summary_off">Remix is shown</string>
+            <string name="revanced_hide_share_sheet_repost_title">Hide Repost on YouTube</string>
+            <string name="revanced_hide_share_sheet_repost_summary_on">Repost on YouTube is hidden</string>
+            <string name="revanced_hide_share_sheet_repost_summary_off">Repost on YouTube is shown</string>
             <string name="revanced_channel_screen_title">Channel page</string>
             <string name="revanced_channel_screen_summary">Hide or show channel page components</string>
             <string name="revanced_hide_channel_tab_title">Enable channel tab filter</string>

@@ -87,10 +87,42 @@ message ComponentType {
 message Model {
     oneof data {
         VideoActionBarModel videoActionBarModel = 389155117;
+        ShareSheetModel shareSheetModel = 393920901;
         VideoMetadataCarouselModel videoMetadataCarouselModel = 408379376;
         YoutubeModel youtubeModel = 413471385;
     }
 }
+
+// region share sheet
+
+message ShareSheetModel {
+    ShareSheetData data = 1;
+}
+
+message ShareSheetData {
+    ShareTargetSegment firstPartyShareTargets = 3;
+    OnPlatformSharing onPlatformSharing = 5;
+}
+
+message ShareTargetSegment {
+    ShareTargetList shareTargetList = 382234775;
+}
+
+message ShareTargetList {
+    // Kept serialized, the share targets are identified by their icon url.
+    repeated bytes shareTargets = 1;
+}
+
+message OnPlatformSharing {
+    OnPlatformSharingSegment segment = 1945;
+}
+
+message OnPlatformSharingSegment {
+    // "Invite others to message" button.
+    bytes inviteButton = 4;
+}
+
+// endregion
 
 // region video metadata carousel
 
