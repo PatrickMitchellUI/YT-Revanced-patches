@@ -105,6 +105,10 @@ final class OldActionBarBuilder {
     private static final int CHANNEL_INFO_CONTENT = 477514866;
     private static final int CHANNEL_INFO_STYLE = 5;
 
+    // Like counts entity, the counts are numbers of likes with and without the like of the user.
+    private static final int LIKE_COUNTS_LIKED = 12;
+    private static final int LIKE_COUNTS_NOT_LIKED = 13;
+
     // Entity types of the entity keys.
     private static final int LIKE_STATUS_ENTITY = 508;
     private static final int LIKE_COUNT_ENTITY = 445;
@@ -159,14 +163,15 @@ final class OldActionBarBuilder {
     private static volatile byte[] metadataLikeCounts;
 
     /**
-     * Removes the channel handle and the likes from the metadata line under the video title,
-     * as the old layout shows the channel in the channel bar and the likes in the action bar.
-     * The likes are kept for the old action bar.
+     * Removes the likes from the metadata line under the video title, as they are shown in the action bar.
+     * The likes are kept for the action bar.
      *
-     * @return The metadata element of the old layout, or null if it has an unexpected structure.
+     * @param removeChannelHandle If the channel handle is removed too,
+     *                            as the old layout shows the channel in the channel bar.
+     * @return The metadata element, or null if it has an unexpected structure.
      */
     @Nullable
-    static byte[] buildOldMetadata(byte[] metadataElement) {
+    static byte[] removeMetadataLikes(byte[] metadataElement, boolean removeChannelHandle) {
         ProtoMessage root = ProtoMessage.parse(metadataElement);
         ProtoMessage element = root == null ? null : root.getMessage(ELEMENT_FIELD, ELEMENT);
         ProtoMessage elementModel = element == null ? null : element.getMessage(ELEMENT_MODEL);
@@ -178,7 +183,8 @@ final class OldActionBarBuilder {
         if (lineContent == null) return null;
 
         metadataLikeCounts = lineContent.getBytes(METADATA_LINE_LIKES);
-        lineContent.remove(METADATA_LINE_LIKES).remove(METADATA_LINE_CHANNEL_HANDLE);
+        lineContent.remove(METADATA_LINE_LIKES);
+        if (removeChannelHandle) lineContent.remove(METADATA_LINE_CHANNEL_HANDLE);
         for (int field : METADATA_LINE_LIKES_EXTRA) lineContent.remove(field);
 
         line.setMessage(METADATA_LINE_CONTENT, lineContent);
@@ -234,15 +240,99 @@ final class OldActionBarBuilder {
     @Nullable
     static byte[] removeMenuEntries(byte[] newElement, MenuEntries remove) {
         if (!remove.any()) return null;
+        return editNewActionBar(newElement, (model, bar) -> removeMenuEntries(bar, remove));
+    }
 
+    /**
+     * Gets the like counts of the new action bar for {@link CompactActionBarCounts},
+     * and marks the descriptions of the liked and disliked states, as the descriptions are the same in all states.
+     *
+     * @return The new action bar with the marked descriptions, or null if it has an unexpected structure.
+     */
+    @Nullable
+    static byte[] addCountMarkers(byte[] newElement) {
+        return editNewActionBar(newElement, OldActionBarBuilder::addCountMarkers);
+    }
+
+    private interface NewActionBarEditor {
+        /**
+         * @return If the bar changed.
+         */
+        boolean edit(ProtoMessage model, ProtoMessage bar);
+    }
+
+    /**
+     * @return The new action bar edited by the editor, or null if nothing changed.
+     */
+    @Nullable
+    private static byte[] editNewActionBar(byte[] newElement, NewActionBarEditor editor) {
         ProtoMessage root = ProtoMessage.parse(newElement);
         ProtoMessage element = root == null ? null : root.getMessage(ELEMENT_FIELD, ELEMENT);
         ProtoMessage elementModel = element == null ? null : element.getMessage(ELEMENT_MODEL);
         ProtoMessage model = elementModel == null ? null : elementModel.getMessage(NEW_MODEL);
         ProtoMessage barContainer = model == null ? null : model.getMessage(NEW_BAR);
         ProtoMessage bar = barContainer == null ? null : barContainer.getMessage(NEW_BAR_CONTENT);
-        if (bar == null) return null;
+        if (bar == null || !editor.edit(model, bar)) return null;
 
+        barContainer.setMessage(NEW_BAR_CONTENT, bar);
+        model.setMessage(NEW_BAR, barContainer);
+        elementModel.setMessage(NEW_MODEL, model);
+        element.setMessage(ELEMENT_MODEL, elementModel);
+        return root.setMessage(ELEMENT_FIELD, new ProtoMessage().addMessage(ELEMENT, element)).toByteArray();
+    }
+
+    private static boolean addCountMarkers(ProtoMessage model, ProtoMessage bar) {
+        ProtoMessage.Field likeField = null;
+        ProtoMessage.Field dislikeField = null;
+        for (ProtoMessage.Field barField : bar.fields()) {
+            if (barField.number != NEW_BAR_BUTTON || !barField.isLengthDelimited()) continue;
+            ProtoMessage item = ProtoMessage.parse(barField.value);
+            ProtoMessage button = item == null ? null : item.getMessage(BUTTON_CONTENT);
+            if (button == null) continue;
+
+            if (button.has(LIKE_BUTTON)) likeField = barField;
+            else if (button.has(DISLIKE_BUTTON)) dislikeField = barField;
+        }
+        String videoId = videoId(model);
+        if (likeField == null || dislikeField == null || videoId == null) return false;
+
+        ProtoMessage likeItem = ProtoMessage.parse(likeField.value);
+        ProtoMessage like = likeItem.getMessage(BUTTON_CONTENT);
+        ProtoMessage dislikeItem = ProtoMessage.parse(dislikeField.value);
+        ProtoMessage dislike = dislikeItem.getMessage(BUTTON_CONTENT);
+        String likeDescription = like.getString(LIKE_BUTTON, TOGGLE_BUTTON, TOGGLE_BUTTON_STATES,
+                TOGGLE_BUTTON_STATE_OFF, BUTTON_VIEW_MODEL, BUTTON_ACCESSIBILITY);
+        String dislikeDescription = dislike.getString(DISLIKE_BUTTON, TOGGLE_BUTTON, TOGGLE_BUTTON_STATES,
+                TOGGLE_BUTTON_STATE_OFF, BUTTON_VIEW_MODEL, BUTTON_ACCESSIBILITY);
+        if (likeDescription == null || dislikeDescription == null) return false;
+
+        // The description has no like count if the video has no likes or the video owner hides the likes,
+        // but the like counts of the video metadata are only missing if the likes are hidden.
+        ProtoMessage counts = metadataLikeCounts(videoId);
+        if (counts == null) {
+            final long likes = parseNumber(likeDescription);
+            if (likes >= 0) {
+                counts = ProtoMessage.parse(likeCounts(videoId, likes, compactNumber(likes), likeDescription));
+            }
+        }
+        String notLiked = null;
+        String liked = null;
+        if (counts != null) {
+            final long notLikedCount = counts.getVarint(LIKE_COUNTS_NOT_LIKED, 0);
+            notLiked = compactNumber(notLikedCount);
+            // Videos without likes have no like of the user in the liked count.
+            liked = compactNumber(Math.max(counts.getVarint(LIKE_COUNTS_LIKED, 0), notLikedCount + 1));
+        }
+
+        likeField.value = likeItem.setBytes(BUTTON_CONTENT, markToggledDescription(like, LIKE_BUTTON)).toByteArray();
+        dislikeField.value = dislikeItem.setBytes(BUTTON_CONTENT,
+                markToggledDescription(dislike, DISLIKE_BUTTON)).toByteArray();
+        CompactActionBarCounts.setCounts(new CompactActionBarCounts.Counts(
+                videoId, likeDescription, dislikeDescription, notLiked, liked));
+        return true;
+    }
+
+    private static boolean removeMenuEntries(ProtoMessage bar, MenuEntries remove) {
         boolean changed = false;
         for (ProtoMessage.Field barField : bar.fields()) {
             if (barField.number != NEW_BAR_BUTTON || !barField.isLengthDelimited()) continue;
@@ -276,13 +366,7 @@ final class OldActionBarBuilder {
             button.setMessage(OVERFLOW, sanitized);
             barField.value = item.setMessage(BUTTON_CONTENT, button).toByteArray();
         }
-        if (!changed) return null;
-
-        barContainer.setMessage(NEW_BAR_CONTENT, bar);
-        model.setMessage(NEW_BAR, barContainer);
-        elementModel.setMessage(NEW_MODEL, model);
-        element.setMessage(ELEMENT_MODEL, elementModel);
-        return root.setMessage(ELEMENT_FIELD, new ProtoMessage().addMessage(ELEMENT, element)).toByteArray();
+        return changed;
     }
 
     private static boolean isRemovedMenuEntry(ProtoMessage entry, MenuEntries remove) {
@@ -478,11 +562,9 @@ final class OldActionBarBuilder {
      *         or like counts built from the like button if the metadata has none for this video.
      */
     private static byte[] likeCounts(String videoId, long likes, String count, String accessibility) {
-        String key = entityKey(videoId, LIKE_COUNT_ENTITY);
-        byte[] counts = metadataLikeCounts;
-        ProtoMessage metadataCounts = ProtoMessage.parse(counts);
-        if (metadataCounts != null && key.equals(metadataCounts.getString(1))) {
-            return counts;
+        ProtoMessage metadataCounts = metadataLikeCounts(videoId);
+        if (metadataCounts != null) {
+            return metadataCounts.toByteArray();
         }
 
         return new ProtoMessage()
@@ -505,6 +587,15 @@ final class OldActionBarBuilder {
                 .addMessage(23, text(count).addVarint(2, likes))
                 .addMessage(24, text(fullNumber(likes)).addVarint(2, likes))
                 .toByteArray();
+    }
+
+    /**
+     * @return The like counts of the video metadata, or null if the metadata has none for this video.
+     */
+    @Nullable
+    private static ProtoMessage metadataLikeCounts(String videoId) {
+        ProtoMessage counts = ProtoMessage.parse(metadataLikeCounts);
+        return counts != null && entityKey(videoId, LIKE_COUNT_ENTITY).equals(counts.getString(1)) ? counts : null;
     }
 
     private static ProtoMessage text(String text) {
@@ -549,6 +640,26 @@ final class OldActionBarBuilder {
             states.setMessage(state, wrapper.setMessage(BUTTON_VIEW_MODEL, viewModel.setBytes(BUTTON_TITLE,
                     title.getBytes(StandardCharsets.UTF_8))));
         }
+        toggleButton.setMessage(TOGGLE_BUTTON, toggle.setMessage(TOGGLE_BUTTON_STATES, states));
+        return button.setMessage(buttonType, toggleButton).toByteArray();
+    }
+
+    /**
+     * @return The toggle button with {@link CompactActionBarCounts#TOGGLED_MARKER}
+     *         added to the description of the toggled state.
+     */
+    private static byte[] markToggledDescription(ProtoMessage button, int buttonType) {
+        ProtoMessage toggleButton = button.getMessage(buttonType);
+        ProtoMessage toggle = toggleButton == null ? null : toggleButton.getMessage(TOGGLE_BUTTON);
+        ProtoMessage states = toggle == null ? null : toggle.getMessage(TOGGLE_BUTTON_STATES);
+        ProtoMessage wrapper = states == null ? null : states.getMessage(TOGGLE_BUTTON_STATE_ON);
+        ProtoMessage viewModel = wrapper == null ? null : wrapper.getMessage(BUTTON_VIEW_MODEL);
+        String description = viewModel == null ? null : viewModel.getString(BUTTON_ACCESSIBILITY);
+        if (description == null) return button.toByteArray();
+
+        states.setMessage(TOGGLE_BUTTON_STATE_ON, wrapper.setMessage(BUTTON_VIEW_MODEL, viewModel.setBytes(
+                BUTTON_ACCESSIBILITY, (description + CompactActionBarCounts.TOGGLED_MARKER)
+                        .getBytes(StandardCharsets.UTF_8))));
         toggleButton.setMessage(TOGGLE_BUTTON, toggle.setMessage(TOGGLE_BUTTON_STATES, states));
         return button.setMessage(buttonType, toggleButton).toByteArray();
     }

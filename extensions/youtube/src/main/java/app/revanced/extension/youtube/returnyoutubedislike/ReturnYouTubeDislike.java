@@ -484,6 +484,24 @@ public class ReturnYouTubeDislike {
     }
 
     /**
+     * @return The dislike count or percentage including the vote of the user,
+     *         or null if the votes are not fetched yet or are for a Short.
+     */
+    @Nullable
+    public synchronized String getDislikeText() {
+        if (isShort || !fetchCompleted()) return null;
+        RYDVoteData votingData = getFetchData(0);
+        if (votingData == null) return null;
+
+        if (userVote != null) {
+            votingData.updateUsingVote(userVote);
+        }
+        return Settings.RYD_DISLIKE_PERCENTAGE.get()
+                ? formatDislikePercentage(votingData.getDislikePercentage())
+                : formatDislikeCount(votingData.getDislikeCount());
+    }
+
+    /**
      * Called when a Shorts like Spannable is created.
      */
     @NonNull

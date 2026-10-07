@@ -163,21 +163,32 @@ public final class ActionButtonStylePatch {
             if (element == null) return;
             final int templateSearchStart = Math.max(0, element.length - NEW_ACTION_BAR_IDENTIFIER_SEARCH_LENGTH);
 
-            if (Settings.ACTION_BUTTON_STYLE.get() != ActionButtonStyle.OLD) {
+            final boolean oldStyle = Settings.ACTION_BUTTON_STYLE.get() == ActionButtonStyle.OLD;
+            final boolean likeDislikeCounts = !oldStyle && Settings.SHOW_COMPACT_LIKE_DISLIKE_COUNTS.get();
+
+            // The likes stay under the title if the like button is hidden.
+            if ((oldStyle || (likeDislikeCounts && !Settings.HIDE_COMPACT_LIKE_BUTTON.get()))
+                    && indexOf(element, METADATA_IDENTIFIER, templateSearchStart, element.length) >= 0) {
+                byte[] metadata = OldActionBarBuilder.removeMetadataLikes(element, oldStyle);
+                if (metadata != null) setElementBytes(item, metadata);
+                return;
+            }
+
+            if (!oldStyle) {
                 if (indexOf(element, NEW_ACTION_BAR_IDENTIFIER, templateSearchStart, element.length) < 0) return;
 
+                final byte[] original = element;
                 byte[] sanitized = OldActionBarBuilder.removeMenuEntries(element, new OldActionBarBuilder.MenuEntries(
                         Settings.HIDE_COMPACT_THANKS_BUTTON.get(),
                         Settings.HIDE_COMPACT_DOWNLOAD_BUTTON.get(),
                         Settings.HIDE_COMPACT_REPORT_BUTTON.get(),
                         Settings.HIDE_YOUTUBE_PREMIUM_PROMOTIONS.get()));
-                if (sanitized != null) setElementBytes(item, sanitized);
-                return;
-            }
-
-            if (indexOf(element, METADATA_IDENTIFIER, templateSearchStart, element.length) >= 0) {
-                byte[] metadata = OldActionBarBuilder.buildOldMetadata(element);
-                if (metadata != null) setElementBytes(item, metadata);
+                if (sanitized != null) element = sanitized;
+                if (likeDislikeCounts) {
+                    byte[] marked = OldActionBarBuilder.addCountMarkers(element);
+                    if (marked != null) element = marked;
+                }
+                if (element != original) setElementBytes(item, element);
                 return;
             }
 

@@ -48,6 +48,7 @@ val hideVideoActionButtonsPatch = resourcePatch(
                 "revanced_hide_buttons_new_category",
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
+                    SwitchPreference("revanced_show_compact_like_dislike_counts"),
                     SwitchPreference("revanced_hide_compact_like_button"),
                     SwitchPreference("revanced_hide_compact_dislike_button"),
                     SwitchPreference(

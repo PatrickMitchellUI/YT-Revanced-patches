@@ -187,6 +187,17 @@ public class ReturnYouTubeDislikePatch {
         return original;
     }
 
+    /**
+     * @return The dislike count or percentage of the regular video, or null if it is not available.
+     */
+    @Nullable
+    public static String getDislikeText(String videoId) {
+        if (!Settings.RYD_ENABLED.get()) return null;
+        ReturnYouTubeDislike videoData = currentVideoData;
+        if (videoData == null || !videoData.getVideoId().equals(videoId)) return null;
+        return videoData.getDislikeText();
+    }
+
     private static CharSequence getShortsSpan(@NonNull CharSequence original, boolean isDislikesSpan) {
         // Litho Shorts player.
         if (!Settings.RYD_SHORTS.get() || (isDislikesSpan && Settings.HIDE_SHORTS_DISLIKE_BUTTON.get())

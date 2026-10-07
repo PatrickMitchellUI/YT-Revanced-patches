@@ -1,6 +1,7 @@
 package app.revanced.patches.youtube.layout.buttons.action
 
 import app.revanced.com.android.tools.smali.dexlib2.mutable.MutableMethod.Companion.toMutable
+import app.revanced.patcher.extensions.addInstruction
 import app.revanced.patcher.extensions.addInstructions
 import app.revanced.patcher.extensions.addInstructionsWithLabels
 import app.revanced.patcher.extensions.getInstruction
@@ -10,6 +11,7 @@ import app.revanced.patcher.firstMethod
 import app.revanced.patcher.patch.PatchException
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.youtube.misc.extension.sharedExtensionPatch
+import app.revanced.patches.youtube.shared.mainActivityOnCreateMethod
 import app.revanced.util.removeFlags
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -21,6 +23,9 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/revanced/extension/youtube/patches/ActionButtonStylePatch;"
+
+private const val COUNTS_CLASS_DESCRIPTOR =
+    "Lapp/revanced/extension/youtube/patches/CompactActionBarCounts;"
 
 internal val actionButtonStylePatch = bytecodePatch(
     description = "Adds an option to use the old action buttons, and hides old action buttons.",
@@ -80,6 +85,12 @@ internal val actionButtonStylePatch = bytecodePatch(
             addIndex,
             "invoke-static { v${addInstruction.registerD}, v${addInstruction.registerC} }, " +
                 "$EXTENSION_CLASS_DESCRIPTOR->addOldActionBar(Ljava/lang/Object;Ljava/lang/Object;)V",
+        )
+
+        // The counts of the new action bar are drawn on its views.
+        mainActivityOnCreateMethod.addInstruction(
+            0,
+            "invoke-static/range { p0 .. p0 }, $COUNTS_CLASS_DESCRIPTOR->setMainActivity(Landroid/app/Activity;)V",
         )
 
         firstClassDef(EXTENSION_CLASS_DESCRIPTOR).apply {

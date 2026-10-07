@@ -815,6 +815,11 @@ Adjust volume by swiping vertically on the right side of the screen"</string>
             <string name="revanced_action_button_style_unavailable">Only available with action button style %s</string>
             <string name="revanced_hide_buttons_old_category_title">Old action buttons</string>
             <string name="revanced_hide_buttons_new_category_title">New action buttons</string>
+            <string name="revanced_show_compact_like_dislike_counts_title">Show like and dislike counts</string>
+            <string name="revanced_show_compact_like_dislike_counts_summary_on">"Like and dislike counts are shown next to the buttons
+
+Dislike counts require Return YouTube Dislike"</string>
+            <string name="revanced_show_compact_like_dislike_counts_summary_off">Like and dislike counts are not shown next to the buttons</string>
             <string name="revanced_hide_compact_like_button_title">Hide Like</string>
             <string name="revanced_hide_compact_like_button_summary_on">Like button is hidden</string>
             <string name="revanced_hide_compact_like_button_summary_off">Like button is shown</string>

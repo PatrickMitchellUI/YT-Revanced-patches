@@ -268,6 +268,7 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final BooleanSetting HIDE_COMPACT_SAVE_BUTTON = new BooleanSetting("revanced_hide_compact_save_button", FALSE, new ActionButtonStyleAvailability(ActionButtonStyle.DEFAULT));
     public static final BooleanSetting HIDE_COMPACT_SHARE_BUTTON = new BooleanSetting("revanced_hide_compact_share_button", FALSE, new ActionButtonStyleAvailability(ActionButtonStyle.DEFAULT));
     public static final BooleanSetting HIDE_COMPACT_THANKS_BUTTON = new BooleanSetting("revanced_hide_compact_thanks_button", TRUE, new ActionButtonStyleAvailability(ActionButtonStyle.DEFAULT));
+    public static final BooleanSetting SHOW_COMPACT_LIKE_DISLIKE_COUNTS = new BooleanSetting("revanced_show_compact_like_dislike_counts", TRUE, new ActionButtonStyleAvailability(ActionButtonStyle.DEFAULT));
     public static final BooleanSetting HIDE_DOWNLOAD_BUTTON = new BooleanSetting("revanced_hide_download_button", FALSE, new ActionButtonStyleAvailability(ActionButtonStyle.OLD));
     public static final BooleanSetting HIDE_HYPE_BUTTON = new BooleanSetting("revanced_hide_hype_button", FALSE, new ActionButtonStyleAvailability(ActionButtonStyle.OLD));
     public static final BooleanSetting HIDE_LIKE_DISLIKE_BUTTON = new BooleanSetting("revanced_hide_like_dislike_button", FALSE, new ActionButtonStyleAvailability(ActionButtonStyle.OLD));
