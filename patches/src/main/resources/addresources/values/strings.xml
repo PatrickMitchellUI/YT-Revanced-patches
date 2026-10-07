@@ -279,6 +279,15 @@ However, enabling this will also log some user data such as your IP address."</s
             <string name="revanced_hide_community_posts_title">Hide community posts</string>
             <string name="revanced_hide_community_posts_summary_on">Community posts are hidden</string>
             <string name="revanced_hide_community_posts_summary_off">Community posts are shown</string>
+            <string name="revanced_hide_community_post_comment_button_title">Hide community post Comment button</string>
+            <string name="revanced_hide_community_post_comment_button_summary_on">Comment button below community posts is hidden</string>
+            <string name="revanced_hide_community_post_comment_button_summary_off">Comment button below community posts is shown</string>
+            <string name="revanced_hide_community_post_quote_button_title">Hide community post Quote button</string>
+            <string name="revanced_hide_community_post_quote_button_summary_on">Quote button below community posts is hidden</string>
+            <string name="revanced_hide_community_post_quote_button_summary_off">Quote button below community posts is shown</string>
+            <string name="revanced_hide_community_post_share_button_title">Hide community post Share button</string>
+            <string name="revanced_hide_community_post_share_button_summary_on">Share button below community posts is hidden</string>
+            <string name="revanced_hide_community_post_share_button_summary_off">Share button below community posts is shown</string>
             <string name="revanced_hide_compact_banner_title">Hide compact banners</string>
             <string name="revanced_hide_compact_banner_summary_on">Compact banners are hidden</string>
             <string name="revanced_hide_compact_banner_summary_off">Compact banners are shown</string>

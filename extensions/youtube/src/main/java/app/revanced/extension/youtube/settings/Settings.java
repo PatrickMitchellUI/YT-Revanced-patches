@@ -95,6 +95,9 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final BooleanSetting HIDE_ARTIST_CARDS = new BooleanSetting("revanced_hide_artist_cards", FALSE);
     public static final BooleanSetting HIDE_CHIPS_SHELF = new BooleanSetting("revanced_hide_chips_shelf", TRUE);
     public static final BooleanSetting HIDE_COMMUNITY_POSTS = new BooleanSetting("revanced_hide_community_posts", FALSE);
+    public static final BooleanSetting HIDE_COMMUNITY_POST_COMMENT_BUTTON = new BooleanSetting("revanced_hide_community_post_comment_button", FALSE);
+    public static final BooleanSetting HIDE_COMMUNITY_POST_QUOTE_BUTTON = new BooleanSetting("revanced_hide_community_post_quote_button", FALSE);
+    public static final BooleanSetting HIDE_COMMUNITY_POST_SHARE_BUTTON = new BooleanSetting("revanced_hide_community_post_share_button", FALSE);
     public static final BooleanSetting HIDE_COMPACT_BANNER = new BooleanSetting("revanced_hide_compact_banner", TRUE);
     public static final BooleanSetting HIDE_EXPANDABLE_CARD = new BooleanSetting("revanced_hide_expandable_card", TRUE);
     public static final BooleanSetting HIDE_FEED_FLYOUT_MENU = new BooleanSetting("revanced_hide_feed_flyout_menu", FALSE);

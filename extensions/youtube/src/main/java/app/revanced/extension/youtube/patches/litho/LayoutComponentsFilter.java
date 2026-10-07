@@ -43,11 +43,20 @@ public final class LayoutComponentsFilter extends Filter {
             "&list="
     );
 
+    /**
+     * Destination of the Quote button of community posts.
+     */
+    private static final ByteArrayFilterGroup communityPostQuoteButton = new ByteArrayFilterGroup(
+            null,
+            "FEcommunity_page"
+    );
+
     private static final List<String> channelTabFilterStrings = getFilterStrings(Settings.HIDE_CHANNEL_TAB_FILTER_STRINGS);
     private static final List<String> flyoutMenuFilterStrings = getFilterStrings(Settings.HIDE_FEED_FLYOUT_MENU_FILTER_STRINGS);
 
     private final StringTrieSearch exceptions = new StringTrieSearch();
     private final StringFilterGroup communityPosts;
+    private final StringFilterGroup communityPostToolbar;
     private final StringFilterGroup surveys;
     private final StringFilterGroup notifyMe;
     private final StringFilterGroup expandableMetadata;
@@ -124,6 +133,14 @@ public final class LayoutComponentsFilter extends Filter {
                 "text_post_root_slim.e",
                 "videos_post_responsive_root.e",
                 "videos_post_root.e"
+        );
+
+        // Like, Share, Quote and Comment buttons below community posts.
+        // The buttons are direct elements of the toolbar,
+        // so the button is identified by the element identifier at the start of the buffer.
+        communityPostToolbar = new StringFilterGroup(
+                null,
+                "post_engagement_toolbar_slim.e"
         );
 
         final var subscribersCommunityGuidelines = new StringFilterGroup(
@@ -354,6 +371,7 @@ public final class LayoutComponentsFilter extends Filter {
                 compactChannelBar,
                 compactChannelBarInner,
                 communityPosts,
+                communityPostToolbar,
                 crowdfundingBox,
                 emergencyBox,
                 expandableMetadata,
@@ -407,6 +425,10 @@ public final class LayoutComponentsFilter extends Filter {
             return contextInterface.isHomeFeedOrRelatedVideo() || contextInterface.isSubscriptionOrLibrary();
         }
 
+        if (matchedGroup == communityPostToolbar) {
+            return isCommunityPostButtonFiltered(buffer);
+        }
+
         if (exceptions.matches(path)) return false; // Exceptions are not filtered.
 
         if (matchedGroup == compactChannelBarInner) {
@@ -421,6 +443,22 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         return true;
+    }
+
+    private static boolean isCommunityPostButtonFiltered(byte[] buffer) {
+        String elementIdentifier = getElementIdentifier(buffer);
+        if (elementIdentifier == null) {
+            return false;
+        }
+
+        return switch (elementIdentifier) {
+            case "post_share_button" -> Settings.HIDE_COMMUNITY_POST_SHARE_BUTTON.get();
+            case "post_comment_button" -> Settings.HIDE_COMMUNITY_POST_COMMENT_BUTTON.get();
+            // Generic button component, only the Quote button links to the community page.
+            case "button" -> Settings.HIDE_COMMUNITY_POST_QUOTE_BUTTON.get()
+                    && communityPostQuoteButton.check(buffer).isFiltered();
+            default -> false;
+        };
     }
 
     /**

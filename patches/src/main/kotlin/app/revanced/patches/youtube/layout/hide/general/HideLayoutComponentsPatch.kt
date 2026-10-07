@@ -245,6 +245,9 @@ val hideLayoutComponentsPatch = hideLayoutComponentsPatch(
         SwitchPreference("revanced_hide_comments_section_in_home_feed"),
         SwitchPreference("revanced_hide_comments_section_in_subscriptions_feed"),
         SwitchPreference("revanced_hide_community_posts"),
+        SwitchPreference("revanced_hide_community_post_comment_button"),
+        SwitchPreference("revanced_hide_community_post_quote_button"),
+        SwitchPreference("revanced_hide_community_post_share_button"),
         SwitchPreference("revanced_hide_compact_banner"),
         SwitchPreference("revanced_hide_expandable_card"),
         PreferenceCategory(
