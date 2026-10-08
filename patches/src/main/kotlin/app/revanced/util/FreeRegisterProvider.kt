@@ -21,7 +21,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstructio
 import com.android.tools.smali.dexlib2.iface.instruction.ThreeRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import java.util.EnumSet
-import java.util.LinkedList
 
 /**
  * Finds free registers at a specific index in a method.
@@ -62,6 +61,7 @@ fun Method.getFreeRegisterProvider(index: Int, numberOfFreeRegistersNeeded: Int,
 fun Method.getFreeRegisterProvider(index: Int, numberOfFreeRegistersNeeded: Int, vararg registersToExclude: Int) =
     FreeRegisterProvider(this, index, numberOfFreeRegistersNeeded, *registersToExclude)
 
+@Suppress("unused")
 class FreeRegisterProvider internal constructor(
     val method: Method,
     index: Int,
@@ -75,7 +75,9 @@ class FreeRegisterProvider internal constructor(
         vararg registersToExclude: Int
     ) : this(method, index, numberOfFreeRegistersNeeded, registersToExclude.toList())
 
-    private var freeRegisters: MutableList<Int> = LinkedList(
+    // Cannot use MutableList because removeFirst() crashes on older Android devices.
+    // https://youtrack.jetbrains.com/issue/KT-71375/
+    private var freeRegisters: ArrayDeque<Int> = ArrayDeque(
         method.findFreeRegisters(index, numberOfFreeRegistersNeeded, registersToExclude)
     )
 
@@ -94,6 +96,20 @@ class FreeRegisterProvider internal constructor(
         }
         val register = freeRegisters.removeFirst()
         allocatedFreeRegisters.add(register)
+        return register
+    }
+
+    /**
+     * Returns a free 4-bit register (v0-v15) and removes it from the available list.
+     *
+     * @return A free register number
+     * @throws IllegalStateException if no free 4-bit registers are available.
+     */
+    fun getFreeRegister4Bit(): Int {
+        val register = getFreeRegister()
+        if (register >= 16) {
+            throw IllegalStateException("Lowest free register is: $register")
+        }
         return register
     }
 
@@ -156,6 +172,7 @@ class FreeRegisterProvider internal constructor(
             MOVE_OBJECT_FROM16, MOVE_OBJECT_16, MOVE_RESULT, MOVE_RESULT_WIDE, MOVE_RESULT_OBJECT, MOVE_EXCEPTION,
             CONST, CONST_4, CONST_16, CONST_HIGH16, CONST_WIDE_16, CONST_WIDE_32,
             CONST_WIDE, CONST_WIDE_HIGH16, CONST_STRING, CONST_STRING_JUMBO,
+            CONST_CLASS,
             IGET, IGET_WIDE, IGET_OBJECT, IGET_BOOLEAN, IGET_BYTE, IGET_CHAR, IGET_SHORT,
             IGET_VOLATILE, IGET_WIDE_VOLATILE, IGET_OBJECT_VOLATILE,
             SGET, SGET_WIDE, SGET_OBJECT, SGET_BOOLEAN, SGET_BYTE, SGET_CHAR, SGET_SHORT,
@@ -203,7 +220,7 @@ class FreeRegisterProvider internal constructor(
  * but this may not work if the index is at or just before a switch statement or if the branch
  * paths have no common free registers.
  *
- * If you need multiple free registers, then instead use [Method.getFreeRegisterProvider].
+ * If you need multiple free registers, then instead use [getFreeRegisterProvider].
  *
  * @param index Index you need a use a free register at.
  * @param registersToExclude Registers to exclude, and consider as used. For most use cases,
@@ -234,7 +251,7 @@ fun Method.findFreeRegister(
  * but this may not work if the index is at or just before a switch statement or if the branch
  * paths have no common free registers.
  *
- * If you need multiple free registers, then instead use [Method.getFreeRegisterProvider].
+ * If you need multiple free registers, then instead use [getFreeRegisterProvider].
  *
  * @param index Index you need a use a free register at.
  * @param registersToExclude Registers to exclude, and consider as used. For most use cases,
@@ -261,7 +278,7 @@ private fun Method.findFreeRegisters(
     numberOfFreeRegistersNeeded: Int,
     registersToExclude: List<Int>
 ): List<Int> {
-    if (logFreeRegisterSearch) println("Searching startIndex: $startIndex method: $this")
+    if (logFreeRegisterSearch) println(" Searching startIndex: $startIndex method: $this")
 
     val freeRegisters = findFreeRegistersInternal(
         startIndex = startIndex,
@@ -278,7 +295,7 @@ private fun Method.findFreeRegisters(
                 "$startIndex excluding: $registersToExclude")
     }
 
-    if (logFreeRegisterSearch) println("Final free registers found: $freeRegisters")
+    if (logFreeRegisterSearch) println(" final free registers found: $freeRegisters")
 
     // Use 4-bit registers first, but keep sorting stable among 4-bit vs not 4-bit.
     return freeRegisters.sortedWith { first, second ->
@@ -314,7 +331,7 @@ private fun Method.findFreeRegistersInternal(
     check(implementation != null) {
         "Method has no implementation: $this"
     }
-    check(startIndex > 0 && startIndex < instructions.count()) {
+    check(startIndex >= 0 && startIndex < instructions.count()) {
         "startIndex out of bounds: $startIndex methodInstructionCount: ${instructions.count()}"
     }
     check(numberOfFreeRegistersNeeded > 0) {
@@ -345,7 +362,7 @@ private fun Method.findFreeRegistersInternal(
             // If it appears only once, it's write-only (to write).
             // If it appears more than once, it's also read.
             if (occurrences <= 1) {
-                if (logFreeRegisterSearch) println("Found free register at $i: $writeRegister " +
+                if (logFreeRegisterSearch) println(" found free register at $i: $writeRegister " +
                         "opcode: " + instruction.opcode + " reference: " + (instruction.reference))
                 freeRegisters.add(writeRegister)
                 // If the requested number of free registers is found and this is not a branch,
@@ -367,18 +384,18 @@ private fun Method.findFreeRegistersInternal(
             val allRegisters = (0 until implementation!!.registerCount).toList()
             val unusedRegisters = allRegisters - usedRegisters
             freeRegisters.addAll(unusedRegisters)
-            if (logFreeRegisterSearch) println("Encountered return index: $i and found: $freeRegisters")
+            if (logFreeRegisterSearch) println(" encountered return index: $i and found: $freeRegisters")
             return freeRegisters.toList()
         }
 
         if (instruction.isSwitchInstruction) {
             // For now, do not handle the complexity of a switch statement and handle as a leaf node.
-            if (logFreeRegisterSearch) println("Encountered switch index: $i opcode: " + instruction.opcode)
+            if (logFreeRegisterSearch) println(" encountered switch index: $i opcode: " + instruction.opcode)
             return freeRegisters.toList()
         }
 
         if (instruction.isUnconditionalBranchInstruction) {
-            if (logFreeRegisterSearch) println("encountered unconditional branch index: $i opcode: " + instruction.opcode)
+            if (logFreeRegisterSearch) println(" encountered unconditional branch index: $i opcode: " + instruction.opcode)
 
             // Continue searching from the go-to index.
             return (freeRegisters + findFreeRegistersInternal(
@@ -392,7 +409,7 @@ private fun Method.findFreeRegistersInternal(
         }
 
         if (instruction.isConditionalBranchInstruction) {
-            if (logFreeRegisterSearch) println("encountered conditional branch index: $i opcode: " + instruction.opcode)
+            if (logFreeRegisterSearch) println(" encountered conditional branch index: $i opcode: " + instruction.opcode)
             val usedRegistersList = usedRegisters.toList()
 
             val branchFreeRegisters = findFreeRegistersInternal(
@@ -403,7 +420,7 @@ private fun Method.findFreeRegistersInternal(
                 registersToExclude = usedRegistersList,
                 offsetArray = offsetArray
             )
-            if (logFreeRegisterSearch) println("branch registers: $branchFreeRegisters")
+            if (logFreeRegisterSearch) println(" branch registers: $branchFreeRegisters")
 
             val fallThruFreeRegisters = findFreeRegistersInternal(
                 startIndex = i + 1,
@@ -413,7 +430,7 @@ private fun Method.findFreeRegistersInternal(
                 registersToExclude = usedRegistersList,
                 offsetArray = offsetArray
             )
-            if (logFreeRegisterSearch) println("fall thru registers: $fallThruFreeRegisters")
+            if (logFreeRegisterSearch) println(" fall thru registers: $fallThruFreeRegisters")
 
             return (freeRegisters + branchFreeRegisters.intersect(fallThruFreeRegisters.toSet())).toList()
         }
