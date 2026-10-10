@@ -22,6 +22,8 @@ import app.revanced.patches.shared.misc.litho.context.conversionContextPatch
 import app.revanced.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.revanced.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.revanced.patches.youtube.misc.playservice.*
+import app.revanced.patches.youtube.misc.protobuf.hookElement
+import app.revanced.patches.youtube.misc.protobuf.hookProtobufElementParserPatch
 import app.revanced.patches.youtube.misc.settings.PreferenceScreen
 import app.revanced.patches.youtube.misc.settings.settingsPatch
 import app.revanced.patches.youtube.shared.rollingNumberTextViewAnimationUpdateMethodMatch
@@ -46,6 +48,9 @@ private const val EXTENSION_CLASS_DESCRIPTOR =
 private const val FILTER_CLASS_DESCRIPTOR =
     "Lapp/revanced/extension/youtube/patches/litho/ReturnYouTubeDislikeFilter;"
 
+private const val SHORTS_DISLIKE_BUTTON_CLASS_DESCRIPTOR =
+    "Lapp/revanced/extension/youtube/patches/ShortsDislikeButtonPatch;"
+
 val returnYouTubeDislikePatch = bytecodePatch(
     name = "Return YouTube Dislike",
     description = "Adds an option to show the dislike count of videos with Return YouTube Dislike.",
@@ -59,6 +64,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
         videoIdPatch,
         playerTypeHookPatch,
         versionCheckPatch,
+        hookProtobufElementParserPatch,
     )
 
     compatibleWith(
@@ -227,6 +233,9 @@ val returnYouTubeDislikePatch = bytecodePatch(
 
         // Player response video ID is needed to search for the video IDs in Shorts litho components.
         hookPlayerResponseVideoId("$FILTER_CLASS_DESCRIPTOR->newPlayerResponseVideoId(Ljava/lang/String;Z)V")
+
+        // YouTube no longer sends a Shorts dislike button. Add one for the dislikes.
+        hookElement("$SHORTS_DISLIKE_BUTTON_CLASS_DESCRIPTOR->onElementLoaded([B)[B")
 
         // endregion
 
