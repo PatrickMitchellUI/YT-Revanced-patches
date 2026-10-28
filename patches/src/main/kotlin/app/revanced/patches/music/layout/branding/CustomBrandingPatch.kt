@@ -7,8 +7,8 @@ import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.music.misc.extension.sharedExtensionPatch
 import app.revanced.patches.music.misc.gms.Constants.MUSIC_MAIN_ACTIVITY_NAME
 import app.revanced.patches.music.misc.gms.Constants.MUSIC_PACKAGE_NAME
+import app.revanced.patches.music.misc.gms.musicActivityOnCreateMethod
 import app.revanced.patches.music.misc.settings.PreferenceScreen
-import app.revanced.patches.music.shared.mainActivityOnCreateMethod
 import app.revanced.patches.shared.layout.branding.EXTENSION_CLASS_DESCRIPTOR
 import app.revanced.patches.shared.layout.branding.baseCustomBrandingPatch
 import app.revanced.patches.shared.misc.mapping.ResourceType
@@ -60,22 +60,21 @@ val customBrandingPatch = baseCustomBrandingPatch(
     originalAppPackageName = MUSIC_PACKAGE_NAME,
     isYouTubeMusic = true,
     numberOfPresetAppNames = 5,
-    getMainActivityOnCreate = { mainActivityOnCreateMethod },
+    getMainActivityOnCreate = { musicActivityOnCreateMethod },
     mainActivityName = MUSIC_MAIN_ACTIVITY_NAME,
     activityAliasNameWithIntents = MUSIC_MAIN_ACTIVITY_NAME,
     preferenceScreen = PreferenceScreen.GENERAL,
+    sharedExtensionPatch = sharedExtensionPatch,
+
     block = {
-        dependsOn(sharedExtensionPatch, disableSplashAnimationPatch)
+        dependsOn(disableSplashAnimationPatch)
 
         compatibleWith(
             "com.google.android.apps.youtube.music"(
                 "7.29.52",
+                "8.10.52",
                 "8.37.56",
-                "8.44.54",
-                "8.47.56",
-                "9.13.50",
-            "9.15.51",
-            "9.24.51"
+                "8.40.54",
             ),
         )
     },

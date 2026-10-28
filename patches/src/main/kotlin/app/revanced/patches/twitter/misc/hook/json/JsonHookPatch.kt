@@ -7,6 +7,7 @@ import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patcher.patch.PatchException
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patches.twitter.misc.extension.sharedExtensionPatch
+import app.revanced.patches.twitter.misc.hook.okhttp.customNetworkInterceptor
 import java.io.InvalidClassException
 
 /**
@@ -21,13 +22,13 @@ fun BytecodePatchContext.addJsonHook(
     if (jsonHook.added) return
 
     // Insert hooks right before calling buildList.
-    val insertIndex = jsonHookPatchMethodMatch[-1]
+    val addIndex = jsonHookPatchMethodMatch[-1]
 
     jsonHookPatchMethodMatch.method.addInstructions(
-        insertIndex,
+        addIndex + 1,
         """
             sget-object v1, ${jsonHook.descriptor}->INSTANCE:${jsonHook.descriptor}
-            invoke-interface {v0, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+            invoke-interface { v0, v1 }, Ljava/util/List;->add(Ljava/lang/Object;)Z
         """,
     )
 
@@ -42,7 +43,10 @@ private const val JSON_HOOK_CLASS_DESCRIPTOR = "L$JSON_HOOK_CLASS_NAMESPACE/$BAS
 val jsonHookPatch = bytecodePatch(
     description = "Hooks the stream which reads JSON responses.",
 ) {
-    dependsOn(sharedExtensionPatch)
+    dependsOn(
+        sharedExtensionPatch,
+        customNetworkInterceptor
+    )
 
     apply {
         jsonHookPatchMethodMatch.methodOrNull
@@ -67,10 +71,10 @@ val jsonHookPatch = bytecodePatch(
     }
 
     afterDependents {
-        // Remove hooks.add(dummyHook).
-        val addDummyHookIndex = jsonHookPatchMethodMatch[-1]
+        val getDummyHookIndex = jsonHookPatchMethodMatch[0]
 
-        jsonHookPatchMethodMatch.method.removeInstructions(addDummyHookIndex, 2)
+        // Remove 2 instructions that add DummyHook.
+        jsonHookPatchMethodMatch.method.removeInstructions(getDummyHookIndex, 2)
     }
 }
 
@@ -101,5 +105,5 @@ fun jsonHook(descriptor: String): JsonHook {
         }
     }
 
-    return JsonHook(JSON_HOOK_CLASS_DESCRIPTOR)
+    return JsonHook(descriptor)
 }

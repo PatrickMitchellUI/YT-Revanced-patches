@@ -6,6 +6,9 @@ on:
       pr:
         description: "PR to build"
         required: true
+  push:
+    branches:
+      - ccr-c47a0f0d-v6skwd
   pull_request:
     branches:
       - dev

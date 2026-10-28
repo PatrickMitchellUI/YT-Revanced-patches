@@ -212,6 +212,8 @@ public class Settings extends YouTubeAndMusicSettings {
     public static final BooleanSetting VIDEO_QUALITY_DIALOG_BUTTON = new BooleanSetting("revanced_video_quality_dialog_button", FALSE);
     public static final BooleanSetting DISABLE_NOTIFICATION_MEDIA_SEEKBAR = new BooleanSetting("revanced_disable_notification_media_seekbar", FALSE, true);
     public static final BooleanSetting HIDE_NOTIFICATION_MEDIA_PREV_NEXT = new BooleanSetting("revanced_hide_notification_media_prev_next", FALSE, true);
+    public static final IntegerSetting SHORTS_OVERLAY_OPACITY = new IntegerSetting("revanced_shorts_overlay_opacity", 90, false);
+    public static final BooleanSetting SHORTS_IMMERSIVE_MODE = new BooleanSetting("revanced_shorts_immersive_mode", TRUE);
 
     // Miniplayer
     public static final BooleanSetting MINIPLAYER_DISABLE_RESUMING = new BooleanSetting("revanced_miniplayer_disable_resuming", FALSE, true);
